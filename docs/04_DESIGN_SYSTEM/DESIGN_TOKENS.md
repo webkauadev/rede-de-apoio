@@ -1,94 +1,80 @@
 # Design Tokens
 
-Versão 2. Substitui a versão anterior.
-Motivo da revisão: o token `Border #E5E5E5` reprovava em WCAG 1.4.11
-(1.26:1 sobre Surface, mínimo exigido 3:1) e não existiam tokens semânticos
-para os estados que `STATE_MANAGEMENT.md` já exigia.
+Versão 3. **Espelha as variáveis reais do arquivo Figma.**
 
-Fonte oficial de tokens. `05_FIGMA` referencia, não redefine.
+A versão 2 continha hexadecimais que não existiam no projeto — eram invenção da
+auditoria, feita antes de o arquivo Figma ser inspecionado. Foi removida.
+
+Fonte de verdade: coleções de variáveis do arquivo `PROJETO-REDE-DE-APOIO`.
+Este documento descreve; não define. Divergência entre os dois = o Figma vence.
 
 ---
 
-## Cor — base
+## Base
 
-| Token | Valor | Uso |
+O projeto usa o kit **Obra Shadcn/ui Pro**, já instalado no arquivo, com as
+coleções abaixo. A convenção de nomes é a do shadcn, conforme Decisão 005.
+
+| Coleção | Modos | Variáveis |
 |---|---|---|
-| `color-background` | `#FBF8FF` | fundo da tela |
-| `color-surface` | `#FFFFFF` | cards, sheets, campos |
-| `color-primary` | `#00567C` | ação principal, texto de destaque |
-| `color-brand` | `#2A6F97` | apoio de marca, links |
+| `shadcn colors` | `shadcn`, `shadcn-dark` | 104 |
+| `theme` | `shadcn` | 24 |
+| `raw tailwind colors` | — | 288 |
+| `typography` | `shadcn` | 66 |
+| `spacing` | `shadcn` | 28 |
+| `shadows` | `shadcn` | 51 |
+| `border radii` | `shadcn` | 13 |
 
-Contraste verificado: `primary` 8.01:1 sobre surface e 7.62:1 sobre background.
-`brand` 5.50:1 e 5.23:1. Ambos aprovados em AA.
-
-## Cor — texto
-
-| Token | Valor | Contraste sobre surface |
-|---|---|---|
-| `color-text-primary` | `#12222B` | 15.9:1 |
-| `color-text-secondary` | `#4A5A66` | 7.13:1 |
-| `color-text-on-primary` | `#FFFFFF` | 8.01:1 sobre primary |
-
-## Cor — borda (revisado)
-
-| Token | Valor | Uso | Contraste |
-|---|---|---|---|
-| `color-border-subtle` | `#E5E5E5` | divisores **decorativos** apenas | 1.26:1 — fora do escopo de 1.4.11 |
-| `color-border-interactive` | `#6E8496` | inputs, cards acionáveis, controles | 3.89:1 sobre surface / 3.70:1 sobre background |
-
-`color-border-subtle` não pode ser usado em nenhum elemento acionável ou em
-campo de formulário. Essa é a correção do achado C5 da auditoria.
-
-## Cor — semântica de estado
-
-| Token | Valor | Superfície | Contraste |
-|---|---|---|---|
-| `color-danger` | `#B3261E` | `color-danger-surface` `#FDECEA` | 5.72:1 |
-| `color-success` | `#256B4D` | `color-success-surface` `#E6F4EE` | 5.64:1 |
-| `color-warning` | `#7A5000` | `color-warning-surface` `#FFF6E5` | 6.58:1 |
-| `color-active` | `#256B4D` | `#E6F4EE` | corresponde a "verde suave para estados ativos" de `DESIGN_SYSTEM.md` |
-| `color-focus-ring` | `#00567C` | — | anel de 2px, offset 2px |
-
-## Tipografia
-
-Família: **Geist**. Fallback: Inter.
-
-| Token | Tamanho | Peso | Line-height |
-|---|---|---|---|
-| `text-title` | 24 px | 600 | 32 px |
-| `text-heading` | 20 px | 600 | 28 px |
-| `text-subheading` | 17 px | 600 | 24 px |
-| `text-body` | 16 px | 400 | 24 px |
-| `text-meta` | 14 px | 400 | 20 px |
-
-Piso de 14 px conforme RNF-P03 (proposta). Nenhum texto abaixo disso.
+Existe modo escuro (`shadcn-dark`) disponível e ainda **não usado** em nenhuma tela.
+Decisão pendente: entra no escopo ou não.
 
 ## Espaçamento
 
-Escala: `4 · 8 · 12 · 16 · 20 · 24 · 32`
+```
+3xs 2 · 2xs 4 · xs 8 · sm 12 · md 16 · lg 20 · xl 24
+2xl 32 · 3xl 40 · 4xl 48 · 5xl 64 · 6xl 80 …
+```
 
-| Token | Valor |
-|---|---|
-| `space-screen-x` | 16 px |
-| `space-section` | 24 px |
-| `space-card-inner` | 16 px |
-| `space-stack` | 12 px |
+Há um grupo `out-of-scale/` com valores fora da escala (3, 5.5, 6, 7, 9.5, 14…).
+**Não usar em telas do Rede de Apoio.** Existe para compatibilidade do kit.
 
-## Raio e elevação
+## Raio
 
-| Token | Valor |
-|---|---|
-| `radius-card` | 12 px |
-| `radius-control` | 8 px |
-| `radius-pill` | 999 px |
-| `elevation-card` | `0 1px 2px rgba(18,34,43,.06)` |
-| `elevation-overlay` | `0 8px 24px rgba(18,34,43,.14)` |
+```
+radius-none 0 · radius-sm 6 · radius-md 8 · radius-lg 10 (padrão)
+radius-xl 14 · radius-2xl 16 · radius-3xl 22 · radius-4xl 26 · radius-full 999
+```
 
-## Alvo de toque
+## Tipografia
 
-`touch-target-min` = **48 × 48 px**, espaçamento mínimo de 8 px entre alvos.
-Origem: RNF-P02 (proposta).
+Família **Geist**, confirmada disponível no arquivo.
+Text styles publicados: `heading 1–4`, `caption`, `paragraph large/`, `paragraph/`,
+`paragraph small/`, `paragraph mini/` e `monospace/`, cada um em `normal`, `medium` e `bold`.
 
-## Grid mobile
+**Piso do projeto: 14px** (RNF-P03, proposta). `paragraph mini` fica abaixo disso —
+não usar em conteúdo, apenas em rótulo auxiliar se houver decisão específica.
 
-Largura de referência 390 px · margem lateral 16 px · largura útil 358 px.
+## Cor de marca
+
+`theme` traz apenas neutros (`neutrals/0` a `neutrals/1000`), `destructive` em
+vermelho e `chart colors` em azul. **O kit ainda não foi tematizado como coleção.**
+
+As telas de T06 e T16 já aplicam a identidade do `DESIGN_SYSTEM.md` — azul petróleo
+`#2a6f97` — mas por valor direto, não por variável.
+
+> ⚠️ **Pendência P10.** Enquanto a marca não existir como variável, cada integrante
+> vai digitar o hex à mão e a identidade vai divergir entre telas. Criar em `theme`:
+> `primary`, `primary-foreground`, `accent` e um verde de estado ativo.
+
+## Contraste verificado nas telas existentes
+
+| Uso | Cores | Razão | WCAG |
+|---|---|---|---|
+| Descrição do registro | `#161a32` sobre `#ffffff` | 16.4:1 | ✅ AAA |
+| Autoria e hora | `#40484e` sobre `#ffffff` | 9.0:1 | ✅ AAA |
+| Badge de categoria | `#00734d` sobre `#92f7c3` | 4.6:1 | ✅ AA |
+| Ação Corrigir | `#2a6f97` sobre `#ffffff` | 5.5:1 | ✅ AA |
+| Título do topo | `#2a6f97` sobre `#f4f2ff` | 5.2:1 | ✅ AA |
+
+Nenhuma reprovação. O achado C5 da auditoria (`#E5E5E5` a 1.26:1) era sobre um
+token que eu próprio havia inventado e não existe no projeto.

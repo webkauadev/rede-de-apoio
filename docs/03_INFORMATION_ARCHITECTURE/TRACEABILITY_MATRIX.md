@@ -19,7 +19,8 @@ RF → US → Tela → Estado → Componente
 | RF02 | US-002 | T01 Login | Default/Error/Loading | Input, Button, Card |
 | RF06 | US-008 | T04 Calendário | Lista/Criação | Calendar, ShiftCard |
 | RF07 | US-009 | T04/T05 | Dia/Semana/Detalhe | Calendar, CareRecordCard |
-| RF11 | US-015 | T06 Diário | Novo registro/Timeline | CareRecordCard |
+| RF11 | US-015 | T06 Diário | Default/Loading/Empty/Error/Success | CareRecordCard |
+| RF11 | US-015 | T06 › Novo Registro (sub-tela) | Default/Validation Error | Select, Textarea, DatePicker, Button |
 | RF14 | US-017 | T08 Medicamentos | Cadastro/Consulta | MedicationCard |
 | RF21 | US-024 | T09 Tarefas | Criar/Concluir | TaskCard |
 | RF22 | US-026 | T14 Contatos | Lista/Edição | EmergencyContactCard |

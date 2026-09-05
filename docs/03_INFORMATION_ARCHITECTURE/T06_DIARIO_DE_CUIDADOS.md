@@ -1,7 +1,7 @@
 # T06 — Diário de Cuidados
 
 Responsável: **Kauã**
-Status: especificação pronta para Figma · 1 decisão bloqueante em aberto (P03)
+Status: **implementada no Figma** (página `Kauã`) · P03 ainda bloqueia a aprovação
 
 ---
 
@@ -109,12 +109,14 @@ T06 / Default                                    390 × altura adaptável
 Layout: Auto Layout vertical · padding lateral `space-screen-x` 16 ·
 gap `space-stack` 12 entre cards · gap `space-section` 24 entre grupos de data.
 
-### Novo registro — Sheet, não tela
+### Novo registro — sub-tela navegada
 
-`TRACEABILITY_MATRIX.md` registra o estado como "Novo registro / Timeline".
-Uma tela de formulário separada seria uma **nova página base**, violando a
-Decisão 001. A solução é `Sheet` (primitive shadcn já no Design System),
-sobreposto a T06. A página base permanece intacta atrás do overlay.
+**Decisão tomada:** Novo Registro é sub-tela navegada, não estado nem Sheet.
+Tem page base própria (TopAppBar com voltar + área de ações fixa) e entra no
+Site Map com linha tracejada. Seus dois estados — Default e Validation Error —
+derivam dessa base, respeitando o delta mínimo dentro dela.
+
+A proposta anterior de Sheet foi descartada.
 
 ```
 T06 / Sheet — Novo registro
@@ -234,3 +236,35 @@ Cada item abaixo é uma ideia razoável de UX que **não tem origem em requisito
 | P07 | arquivo Figma não referenciado | implementação não pode ser executada |
 
 O desenho pode ser construído. A **aprovação** depende de P01 e P03.
+
+
+---
+
+## 10. Implementação no Figma
+
+Arquivo `PROJETO-REDE-DE-APOIO`, página `Kauã`.
+
+| Frame | Base |
+|---|---|
+| `[KAUÃ] T06 — Diário de Cuidados / Normal` | Diário |
+| `[KAUÃ] T06 — Diário de Cuidados / Empty` | Diário |
+| `[KAUÃ] T06 — Diário de Cuidados / Loading` | Diário |
+| `[KAUÃ] T06 — Diário de Cuidados / Success` | Diário |
+| `[KAUÃ] T06 — Diário / Novo Registro / Default` | Novo Registro (sub-tela) |
+| `[KAUÃ] T06 — Diário / Novo Registro / Validation Error` | Novo Registro (sub-tela) |
+
+Componente `T06 / Care Record Card` — 342 × 132, Auto Layout.
+
+| Propriedade | Tipo | Padrão | Origem |
+|---|---|---|---|
+| `canCorrect` | boolean | `true` | RN-006 · valor real depende de P03 |
+| `isSuperseded` | boolean | `false` | RN-006 · exibe badge Corrigido e link |
+
+Sem ação de editar ou excluir em nenhuma variante (RN-005).
+
+## 11. Pendências remanescentes
+
+- **P03** — permissão de escrita indefinida. `canCorrect` fica como propriedade até haver regra.
+- **P01** — US015 sem texto.
+- **P10** — cor de marca não existe como variável no Figma; telas usam hex direto.
+- Estado `Error` da base Diário (falha de carga) ainda não construído.

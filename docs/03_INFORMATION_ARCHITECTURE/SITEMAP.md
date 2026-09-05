@@ -14,6 +14,7 @@ T03 Home
 │
 ├── Registros de Cuidado
 │   ├── T06 Diário de Cuidados
+│   │   └╌╌ Novo Registro (sub-tela navegada)
 │   └── T07 Histórico
 │
 ├── Rotina e Saúde
@@ -31,6 +32,15 @@ T03 Home
 └── Controle e Privacidade
     ├── T16 Preferências
     └── T17 Auditoria
+
+## Sub-telas
+
+Sub-tela navegada tem page base própria e entra no Site Map com linha tracejada.
+Não é estado. Estado altera a página base; sub-tela substitui a página base.
+
+| Sub-tela | Origem | Base própria |
+|---|---|---|
+| T06 › Novo Registro | RF11 | TopAppBar com voltar + área de ações fixa |
 
 ## Regra
 Estados não são novas telas. São variações da página base.
