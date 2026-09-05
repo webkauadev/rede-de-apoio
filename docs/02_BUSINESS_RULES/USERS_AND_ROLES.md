@@ -15,7 +15,7 @@ Rules:
 - Emergência: zero or more.
 - Roles can accumulate.
 
-## Professional Health User
+## Profissional da Saúde
 
 Separate category from family.
 
