@@ -21,3 +21,11 @@ Enquanto não houver RF/US formalizados no GitLab, tratar como proposta controla
 ## Decisão 004 — Plantonista Atual
 
 Não é usuário nem perfil. É condição operacional temporária.
+
+## Decisão 005 — Rastreabilidade
+
+Toda alteração de tela deve conseguir responder:
+
+RF → US → Tela → Estado → Componente
+
+Caso não exista origem, registrar como proposta de mudança de escopo.
