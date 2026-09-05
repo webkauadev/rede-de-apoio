@@ -4,7 +4,8 @@
 Disparada para alterações de atribuição, alteração, cancelamento ou troca.
 
 ## N02 — Lembrete obrigatório
-Durante o horário programado, o Plantonista Atual recebe lembrete obrigatório.
+Durante o horário programado, o usuário que ocupa a condição de Plantonista Atual
+recebe lembrete obrigatório. A condição não é destinatária — o usuário é (RN-003).
 
 ## N03 — Cuidado realizado
 Registro realizado gera comunicação conforme permissões.

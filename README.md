@@ -16,12 +16,17 @@ Este repositório agora possui a base de contexto para IA e equipe:
 ## Ordem de leitura
 
 1. `CLAUDE.md`
-2. `docs/PROJECT_CONTEXT.md`
-3. `docs/REQUIREMENTS.md`
-4. `docs/BUSINESS_RULES.md`
-5. `docs/SITEMAP.md`
-6. `docs/TRACEABILITY.md`
-7. `docs/DESIGN_SYSTEM.md`
-8. `docs/FIGMA.md`
-9. `docs/GITLAB.md`
+2. `docs/00_PROJECT_CONTEXT.md`
+3. `docs/01_REQUIREMENTS/`
+4. `docs/02_BUSINESS_RULES/`
+5. `docs/03_INFORMATION_ARCHITECTURE/`
+6. `docs/04_DESIGN_SYSTEM/`
+7. `docs/05_FIGMA/`
+8. `docs/06_GITLAB/`
+9. `docs/07_AI_CONTEXT/`
 10. `docs/CHANGELOG.md`
+
+## Estado atual
+
+Ver `docs/AUDIT_CONTEXT_PACK.md` para a auditoria de consistencia do pack
+e `docs/01_REQUIREMENTS/PENDENCIAS_DOCUMENTAIS.md` para o que ainda falta.

@@ -1,19 +1,17 @@
 # Context Pack Status
 
-## Integrado ao GitHub
+## Sincronizado
 
-Este repositório recebeu a primeira camada do Context Pack.
+Os dez itens da ordem de leitura existem no repositorio.
 
-Conteúdo previsto:
+A sincronizacao inicial esta registrada em `CHANGELOG.md` (2026-09-05).
 
-- PROJECT_CONTEXT.md
-- REQUIREMENTS.md
-- BUSINESS_RULES.md
-- SITEMAP.md
-- TRACEABILITY.md
-- DESIGN_SYSTEM.md
-- FIGMA.md
-- GITLAB.md
-- CHANGELOG.md
+## Estado de consistencia
 
-A próxima etapa é sincronizar os documentos completos gerados no pacote local para esta estrutura.
+O pack existe mas ainda nao esta completo. Ver:
+
+- `AUDIT_CONTEXT_PACK.md` — auditoria de consistencia;
+- `01_REQUIREMENTS/PENDENCIAS_DOCUMENTAIS.md` — P01 a P09, o que falta.
+
+Bloqueadores abertos: catalogo de User Stories (P01), RNF (P02) e
+permissao de escrita por categoria (P03).

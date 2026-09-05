@@ -28,7 +28,11 @@ Estados:
 
 - Opened
 - Doing
+- Review/Validation
 - Closed
+
+Quatro estados, conforme `WORKFLOW.md`. A coluna Review/Validation é obrigatória:
+sem ela o board não consegue cumprir a Definition of Done.
 
 Uma issue só deve ser fechada após validação da entrega.
 
