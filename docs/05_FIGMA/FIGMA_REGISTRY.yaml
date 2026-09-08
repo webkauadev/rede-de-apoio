@@ -1,0 +1,112 @@
+schema_version: 1
+last_verified: 2026-09-08
+
+figma:
+  file_key: tcyj2fkTXei2CJbqaRxqCp
+  file_role: canonical_design_file
+  naming_convention: "[RESPONSÁVEL] T## — Nome / Estado"
+  legacy_prefix: "LEGADO —"
+  legacy_policy: "ignore_if_current_equivalent_exists"
+
+pages:
+  sitemap:
+    node_id: "5003:3"
+    name: "siteMap"
+    status: verified
+  david:
+    node_id: "5019:279"
+    name: "David"
+    status: verified
+  kaua:
+    node_id: "5054:211"
+    name: "Kauã"
+    status: verified
+  rhuan:
+    node_id: null
+    status: discovery_required
+  henrique:
+    node_id: null
+    status: discovery_required
+
+sitemap:
+  responsibility_labels_verified: true
+  corrected_on: 2026-09-08
+  current_assignment:
+    T09: Rhuan
+    T10: Henrique
+    T11: Rhuan
+    T14: David
+    T15: David
+
+known_current_nodes:
+  T01:
+    owner: David
+    page: david
+    frames:
+      default: "5189:730"
+      invalid_credentials: "5189:800"
+      loading: "5189:870"
+
+  T02:
+    owner: David
+    page: david
+    frames:
+      default: "5189:938"
+      validation_error: "5189:1043"
+      loading: "5189:1152"
+
+  T06:
+    owner: Kauã
+    page: kaua
+    frames:
+      new_record_default: "5201:13488"
+      new_record_validation_error: "5203:300"
+      empty: "5201:13490"
+      normal: "5201:13491"
+      success: "5288:14482"
+      loading: "5288:14618"
+    reusable_components_frame: "5201:13481"
+    local_components:
+      header_person: "5201:13483"
+      care_record_card: "5204:318"
+
+  T12:
+    owner: David
+    page: david
+    frames:
+      invitation_sent: "5125:2408"
+      registration: "5125:2567"
+      edit: "5125:2649"
+      view: "5125:2719"
+      success: "5125:2799"
+      validation_error: "5125:2888"
+      access_active: "5125:2981"
+      access_not_configured: "5125:3069"
+      access_invitation: "5125:3151"
+
+  T16:
+    owner: Kauã
+    page: kaua
+    frames:
+      default: "5211:966"
+      saved: "5212:432"
+
+unmapped_screens:
+  - T03
+  - T04
+  - T05
+  - T07
+  - T08
+  - T09
+  - T10
+  - T11
+  - T13
+  - T14
+  - T15
+  - T17
+
+agent_rules:
+  - "Resolve current frame from this registry before editing."
+  - "If a screen is unmapped, discover its current page/node and update this file before mutation."
+  - "Never use a LEGADO frame as the primary source when a current [OWNER] frame exists."
+  - "After creating a new current state, register its node id here and in STATE_MATRIX.yaml."
