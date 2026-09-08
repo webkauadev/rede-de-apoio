@@ -1,127 +1,122 @@
 # Pendências Documentais
 
-Gerado na Fase 2 do Modo Agente Executor. Registra o que **falta** no Context Pack.
-Nada aqui foi inventado. Nenhuma US, RF ou permissão foi criada.
+Registra o que **ainda falta no GitHub** após a incorporação do Guia Mestre em 2026-09-08.
 
-Enquanto um item estiver aberto, nenhuma tela dependente dele pode ser considerada aprovada.
-
----
-
-## P01 — Catálogo de User Stories (BLOQUEADOR)
-
-`01_REQUIREMENTS/REQUIREMENTS.md` resolve as US com a frase
-*"US-001 a US-035 seguem o catálogo aprovado do projeto"*.
-
-O catálogo não está no repositório. Faltam, para cada US de 001 a 035:
-
-- enunciado (Como <ator>, quero <ação>, para <objetivo>);
-- RF de origem explícito;
-- critérios de aceite;
-- ator e permissão.
-
-**US citadas na matriz de rastreabilidade e sem texto no pack:**
-US001 · US002 · US008 · US009 · US015 · US017 · US024 · US026 · US033 · US035
-
-**Impacto imediato:** US015 é a origem declarada de T06. A tela está sendo construída
-a partir de RF11 + RF13 + RN-005 + RN-006, com US015 marcada como pendente.
-
-**Ação:** exportar o catálogo do GitLab para `01_REQUIREMENTS/USER_STORIES.md`.
+RF/RNF/US, origens, responsáveis e rastreabilidade de telas agora estão canônicos no GitHub. Nada aqui autoriza inventar detalhe funcional que o Guia Mestre não fornece.
 
 ---
 
-## P02 — Requisitos Não Funcionais (BLOQUEADOR)
+## P01 — Critérios de aceite individuais das User Stories — Issue #73 — ABERTO
 
-Não existe documento de RNF. Mesmo assim:
+O Guia Mestre resolveu para US-001–US-035:
 
-| Referência | Onde aparece | Situação |
-|---|---|---|
-| RNF01 | `TRACEABILITY_MATRIX.md`, linha "Acesso negado" | não existe |
-| RNF03 | `04_DESIGN_SYSTEM/COMPONENT_ARCHITECTURE.md`, origem do `AuditEntryCard` | não existe |
+- título;
+- ator;
+- enunciado Como/Quero/Para;
+- exatamente um RF/RNF de origem;
+- responsável;
+- tela/ação relacionada.
 
-**Ação:** localizar RNF01 e RNF03 no GitLab e trazer o texto original.
-Até lá, `RNF_PROPOSTA.md` cobre a lacuna **apenas como proposta**, sem valor de requisito.
+O guia **não enumera um checklist de critérios de aceite específico para cada uma das 35 US**. As Issues individuais já registram essa limitação.
+
+**Ação restante:** quando houver critérios individuais aprovados, incorporá-los às Issues sem extrapolar o RF/RNF de origem e as regras de negócio.
 
 ---
 
-## P03 — Permissão de escrita por categoria (BLOQUEADOR)
+## P02 — Requisitos Não Funcionais canônicos — Issue #74 — RESOLVIDO
 
-`02_BUSINESS_RULES/PERMISSIONS_MATRIX.md` responde a coluna "Alterar" com
-"Conforme regra", "Conforme permissão", "Limitado" e "Conforme escopo".
+Resolvido pelo Guia Mestre:
 
-Nenhuma dessas expressões permite decidir se um botão aparece na tela.
+- RNF01 — Controle de acesso a dados pessoais e de saúde — Issue #35;
+- RNF02 — Imutabilidade e correção versionada — Issue #82;
+- RNF03 — Trilha de auditoria rastreável e preservada — Issue #36.
 
-**Perguntas em aberto que bloqueiam T06:**
+RNF02 é a origem única da US-034. RNF03 é transversal e influencia RF29/US-033 sem virar segunda origem.
 
-1. Familiar de Apoio pode criar registro de cuidado a qualquer momento, ou apenas durante plantão ativo atribuído a ele?
+---
+
+## P03 — Permissão de escrita por categoria — Issue #75 — ABERTO
+
+O Guia Mestre confirma a estrutura de categorias/papéis, mas não responde de forma totalmente determinística todas as permissões de escrita.
+
+Decisões ainda abertas que afetam T06/E12:
+
+1. Familiar de Apoio pode criar registro a qualquer momento ou apenas em plantão ativo atribuído?
 2. Familiar de Emergência pode criar registro de cuidado?
-3. Profissional da Saúde pode criar registro de cuidado?
-4. Quem pode criar um registro de **correção** (RN-006) — qualquer pessoa com permissão de escrita, ou apenas o autor do registro original?
-
-**Ação:** decisão formal no GitLab, refletida em nova versão da matriz com verbos decidíveis.
+3. Profissional da Saúde pode criar registro de cuidado em quais contextos?
+4. Quem pode criar correção RN-006/RNF02: qualquer pessoa com escrita ou apenas o autor original?
 
 ---
 
-## P04 — Superfície de exibição das notificações
+## P04 — Superfície de exibição das notificações — Issue #76 — ABERTO
 
-`NOTIFICATIONS_RULES.md` define N01–N04 e proíbe Central de Notificações
-"fora do Site Map". Nenhuma tela T01–T17 declara ser a superfície onde o
-usuário lê essas notificações. Também não há ligação declarada entre
-N01–N04 e RF10 / RF17 / RF25 / RF26.
+A origem e os destinatários agora estão definidos:
 
-**Impacto em T06:** N03 ("registro realizado gera comunicação") e N04
-("atraso de 15 minutos") citam o diário, mas não está documentado se algo
-aparece em T06. Nada foi adicionado à tela por causa disso.
+- N01 → RF10 / US-014;
+- N02 → RF17 / US-020;
+- N03 → RF25 / US-029;
+- N04 → RF26 / US-030.
 
----
+O que ainda falta é a decisão visual/arquitetural de **onde** cada aviso é lido/apresentado nas telas existentes.
 
-## P05 — Permissão de exportação (RF28)
-
-RF28 e `SCREENS_CATALOG.md` T07 ("consulta e exportação") não têm regra de
-permissão. Exportar dados de saúde é a operação de maior risco de privacidade
-do produto. **Bloqueia T07, não bloqueia T06.**
+**Restrição:** não criar Central de Notificações fora do Site Map nem nova área por preferência estética.
 
 ---
 
-## P06 — Acumulação de papéis (RN-002)
+## P05 — Permissão de exportação (RF28) — Issue #77 — ABERTO
 
-RN-002 diz "conforme regras definidas", sem definir. Em aberto:
-existe combinação proibida de papéis? No acúmulo, a permissão efetiva é a
-união das permissões ou a mais permissiva?
-
-`NOTIFICATIONS_RULES.md` já trata do efeito colateral do acúmulo antes da regra existir.
+RF28 / US-032 / T07 / E13 estão totalmente rastreados, mas o Guia Mestre diz apenas “históricos autorizados”. Ainda falta definir de forma determinística quem pode exportar dados de saúde e em quais condições.
 
 ---
 
-## P07 — Links das fontes de verdade
+## P06 — Composição de permissões em papéis acumulados — Issue #78 — PARCIAL
 
-Nem o arquivo Figma nem o projeto GitLab estão referenciados em nenhum
-documento do pack. As duas fontes de verdade declaradas são inalcançáveis
-a partir do repositório.
+O Guia Mestre resolveu:
 
-**Ação:** adicionar as URLs em `05_FIGMA/FIGMA_GUIDELINES.md` e `06_GITLAB/GITLAB.md`.
+- papéis familiares são acumuláveis;
+- Principal pode acumular Apoio;
+- Emergência pode acumular Principal ou Apoio;
+- permissões são derivadas dos papéis acumulados;
+- notificações não podem duplicar por acúmulo.
 
----
-
-## P08 — RF sem US ou tela rastreada
-
-21 de 30 RF não possuem linha na matriz de rastreabilidade:
-
-```
-RF03 RF04 RF05 RF08 RF09 RF10 RF12 RF13 RF15 RF16 RF17
-RF18 RF19 RF20 RF23 RF24 RF25 RF26 RF27 RF28 RF30
-```
-
-Correspondências prováveis (RF03→T12, RF12→T07, RF20→T11, RF27→T16)
-**não foram criadas aqui** — estabelecer a ligação é decisão de requisitos.
-
-**Impacto imediato:** T16 é a 2ª tela da fila e sua origem declarada é RF27,
-que não tem US nem linha na matriz. P01 e P08 precisam ser resolvidos antes de T16.
+Ainda falta formalizar a regra de composição quando permissões dos papéis entrarem em conflito (união, precedência ou condição específica).
 
 ---
 
-## P09 — Telas sem origem funcional
+## P07 — Fonte operacional e Figma — Issue #79 — RESOLVIDO
 
-T03 · T07 · T10 · T11 · T12 · T13 · T15 · T16
+- GitHub = fonte única operacional;
+- Figma = fonte visual;
+- agentes não dependem de tracker externo.
 
-T03 Home é a raiz da área autenticada e é descrita apenas como
-"Resumo do cuidado e acessos principais", sem definição de conteúdo.
+---
+
+## P08 — Rastreabilidade RF/RNF → US → Tela — Issue #80 — RESOLVIDO
+
+Resolvido pelo catálogo completo do Guia Mestre e registrado em:
+
+- `REQUIREMENTS_INDEX.yaml`;
+- `USER_STORIES_INDEX.yaml`;
+- `../03_INFORMATION_ARCHITECTURE/TRACEABILITY_MATRIX.md`;
+- `../07_AI_CONTEXT/SCREEN_REGISTRY.yaml`.
+
+RF13 e RNF03 permanecem transversais; RF30/US-036 permanecem proposta.
+
+---
+
+## P09 — Telas sem origem funcional completa — Issue #81 — RESOLVIDO
+
+T01–T17 agora possuem mapeamento de User Stories/origens no `SCREEN_REGISTRY.yaml` e na matriz de rastreabilidade.
+
+T03 Home está explicitamente ligada a US-009, US-020, US-029 e US-030 e continua sendo recomendada como última tela de Rhuan na ordem de prototipação.
+
+---
+
+## Regra operacional para agentes
+
+- resolver RF/RNF/US pelo `ISSUE_REGISTRY.yaml`;
+- respeitar exatamente uma origem por US;
+- não promover RF30/US-036 enquanto proposta;
+- não inventar critérios individuais ausentes;
+- registrar P03/P04/P05/P06 no PR quando afetarem uma entrega;
+- Figma resolve somente design visual, nunca lacuna funcional.

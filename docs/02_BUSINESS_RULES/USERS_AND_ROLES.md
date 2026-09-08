@@ -2,31 +2,55 @@
 
 ## Familiar
 
-Category responsible for family participation in care.
+“Familiar” é a categoria. Os papéis familiares são acumuláveis:
 
-Roles:
 - Familiar Principal
 - Familiar de Apoio
 - Familiar de Emergência
 
-Rules:
-- Principal: exactly one active per care network.
-- Apoio: zero or more.
-- Emergência: zero or more.
-- Roles can accumulate.
+Regras:
+
+- deve existir exatamente um Familiar Principal ativo por pessoa idosa/rede;
+- pode existir zero ou mais Familiares de Apoio;
+- pode existir zero ou mais Familiares de Emergência;
+- o Principal também pode acumular Apoio;
+- Emergência pode acumular Principal ou Apoio;
+- permissões familiares são derivadas dos papéis acumulados;
+- uma transferência de Principal deve ser atômica: não pode existir intervalo com dois Principais nem com nenhum Principal.
 
 ## Profissional da Saúde
 
-Separate category from family.
+Categoria independente dos familiares.
 
-Cannot receive family roles.
+- pode haver mais de um profissional vinculado;
+- deve existir ao menos um Profissional da Saúde vinculado à rede;
+- não recebe papéis familiares;
+- não deve ser representado como Principal, Apoio ou Emergência.
 
 ## Plantonista Atual
 
-Temporary operational condition.
+Não é categoria de usuário, perfil permanente nem papel familiar.
 
-Not a user category, profile or permanent role.
+É uma condição operacional temporária determinada pelo intervalo de um plantão.
 
-## Pessoa Idosa
+Um Familiar vinculado ou um Profissional da Saúde pode ocupar a condição de Plantonista Atual durante determinado intervalo. Ao terminar o plantão, essa condição deixa de existir.
 
-Read-only access is a controlled scope evolution proposal until formal GitLab approval.
+## Pessoa Idosa — proposta controlada
+
+RF30/US-036 propõem acesso próprio somente de leitura.
+
+Enquanto a proposta não for aprovada explicitamente no GitHub:
+
+- não tratar a Pessoa Idosa como usuário aprovado do escopo;
+- não criar app separado nem conjunto principal de telas;
+- não criar permissões funcionais definitivas a partir da proposta.
+
+Se aprovada, a proposta determina:
+
+- conta própria usando a mesma autenticação do aplicativo;
+- visualização apenas dos dados referentes ao próprio cuidado;
+- nenhuma alteração de registros;
+- nenhuma administração da rede;
+- nenhum papel familiar;
+- não pode ser Plantonista Atual;
+- senha definida pela própria Pessoa Idosa, nunca exibida nem definida em texto aberto por familiar.

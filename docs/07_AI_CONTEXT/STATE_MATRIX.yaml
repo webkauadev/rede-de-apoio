@@ -1,0 +1,269 @@
+schema_version: 1
+last_updated: 2026-09-08
+
+principles:
+  - "A state is a variation of the same screen, not an independent visual concept."
+  - "Preserve shell, navigation, width and unaffected component geometry between sibling states."
+  - "Only change the minimum region required to communicate behavior."
+  - "Use exact current Figma nodes when mapped; discover and register before editing when unmapped."
+
+state_semantics:
+  default:
+    inherits: null
+    rule: canonical_structure
+  normal:
+    inherits: null
+    rule: canonical_data_structure
+  loading:
+    inherits: base
+    preserve:
+      - shell
+      - navigation
+      - page_width
+      - stable_geometry
+    change_only:
+      - data_dependent_content
+      - action_pending_feedback
+  empty:
+    inherits: normal
+    preserve:
+      - shell
+      - navigation
+      - page_width
+      - context_header
+    change_only:
+      - data_region
+      - empty_message
+      - applicable_cta
+  validation_error:
+    inherits: default
+    preserve:
+      - form_structure
+      - valid_values
+      - navigation
+      - page_width
+    change_only:
+      - invalid_control_state
+      - field_message
+      - form_feedback
+  error:
+    inherits: base
+    preserve:
+      - shell
+      - navigation
+      - page_width
+    change_only:
+      - affected_region
+      - error_feedback
+  success:
+    inherits: base
+    preserve:
+      - shell
+      - navigation
+      - unaffected_content
+      - page_width
+    change_only:
+      - affected_content
+      - success_feedback
+  forbidden:
+    inherits: base
+    rule: "Preserve enough context to orient the user while removing unauthorized actions/data."
+  view_variant:
+    inherits: shared_shell
+    rule: "Alternate presentation mode of the same screen; keep shared navigation and visual system stable."
+
+screens:
+  T01:
+    owner: David
+    base_state: default
+    states:
+      default:
+        figma_node: "5189:730"
+      invalid_credentials:
+        figma_node: "5189:800"
+        inherits: default
+        semantic_type: error
+      loading:
+        figma_node: "5189:870"
+        inherits: default
+        semantic_type: loading
+
+  T02:
+    owner: David
+    base_state: default
+    states:
+      default:
+        figma_node: "5189:938"
+      validation_error:
+        figma_node: "5189:1043"
+        inherits: default
+        semantic_type: validation_error
+      loading:
+        figma_node: "5189:1152"
+        inherits: default
+        semantic_type: loading
+
+  T03:
+    owner: Rhuan
+    discovery_required: true
+
+  T04:
+    owner: Rhuan
+    mapping_status: partial
+    base_state: week
+    states:
+      week:
+        figma_node: "5122:1870"
+        semantic_type: view_variant
+      day:
+        figma_node: "5122:2031"
+        semantic_type: view_variant
+        shares_shell_with: week
+    discovery_required_for:
+      - loading
+      - empty
+      - error
+      - success_if_applicable
+
+  T05:
+    owner: Henrique
+    discovery_required: true
+
+  T06:
+    owner: Kauã
+    base_state: normal
+    states:
+      normal:
+        figma_node: "5201:13491"
+      empty:
+        figma_node: "5201:13490"
+        inherits: normal
+        semantic_type: empty
+      loading:
+        figma_node: "5288:14618"
+        inherits: normal
+        semantic_type: loading
+      success:
+        figma_node: "5288:14482"
+        inherits: normal
+        semantic_type: success
+      new_record_default:
+        figma_node: "5201:13488"
+        semantic_type: default
+        subview_of: T06
+      new_record_validation_error:
+        figma_node: "5203:300"
+        inherits: new_record_default
+        semantic_type: validation_error
+        subview_of: T06
+
+  T07:
+    owner: Henrique
+    discovery_required: true
+
+  T08:
+    owner: Henrique
+    mapping_status: partial
+    canonical_base_discovery_required: true
+    base_candidates:
+      - "5048:644"
+      - "5235:924"
+    states:
+      empty:
+        figma_node: "5118:838"
+        semantic_type: empty
+      create:
+        figma_node: "5123:1291"
+        semantic_type: default
+      create_error_name:
+        figma_node: "5130:4159"
+        inherits: create
+        semantic_type: validation_error
+      create_error_concentration:
+        figma_node: "5130:4204"
+        inherits: create
+        semantic_type: validation_error
+      create_error_form:
+        figma_node: "5130:4263"
+        inherits: create
+        semantic_type: validation_error
+      created:
+        figma_node: "5141:2758"
+        semantic_type: success
+    rule_before_edit: "Audit the two list candidates and select/register the canonical base before changing list structure."
+
+  T09:
+    owner: Rhuan
+    discovery_required: true
+  T10:
+    owner: Henrique
+    discovery_required: true
+  T11:
+    owner: Rhuan
+    discovery_required: true
+
+  T12:
+    owner: David
+    base_state: view
+    states:
+      view:
+        figma_node: "5125:2719"
+      registration:
+        figma_node: "5125:2567"
+        semantic_type: default
+      edit:
+        figma_node: "5125:2649"
+        semantic_type: default
+      validation_error:
+        figma_node: "5125:2888"
+        inherits: edit
+        semantic_type: validation_error
+      success:
+        figma_node: "5125:2799"
+        inherits: view
+        semantic_type: success
+      access_not_configured:
+        figma_node: "5125:3069"
+        inherits: view
+      access_invitation:
+        figma_node: "5125:3151"
+        inherits: access_not_configured
+        semantic_type: modal
+      invitation_sent:
+        figma_node: "5125:2408"
+        inherits: view
+        semantic_type: success
+      access_active:
+        figma_node: "5125:2981"
+        inherits: view
+
+  T13:
+    owner: David
+    discovery_required: true
+  T14:
+    owner: David
+    discovery_required: true
+  T15:
+    owner: David
+    discovery_required: true
+
+  T16:
+    owner: Kauã
+    base_state: default
+    states:
+      default:
+        figma_node: "5211:966"
+      saved:
+        figma_node: "5212:432"
+        inherits: default
+        semantic_type: success
+
+  T17:
+    owner: Kauã
+    discovery_required: true
+
+agent_checks_before_write:
+  - "Identify base_state."
+  - "Compare every sibling state already mapped for the target screen."
+  - "Do not alter global shell independently in one state unless a requirement demands it."
+  - "If creating a new state, add its Figma node here after validation."

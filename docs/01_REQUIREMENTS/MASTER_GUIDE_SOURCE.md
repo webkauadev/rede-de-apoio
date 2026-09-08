@@ -1,0 +1,1 @@
+Source incorporated from the user-provided Guia Mestre on 2026-09-08. See GUIA_MESTRE_GITHUB_REDE_DE_APOIO.md for the GitHub-adapted operational version.

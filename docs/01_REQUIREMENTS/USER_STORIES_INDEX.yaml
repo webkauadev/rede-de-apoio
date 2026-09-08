@@ -1,0 +1,401 @@
+schema_version: 3
+last_updated: 2026-09-08
+canonical_system: GitHub
+repository: webkauadev/rede-de-apoio
+catalog_status: canonical_content_complete_except_story_specific_acceptance_checklists
+issue_registry: docs/06_GITHUB/ISSUE_REGISTRY.yaml
+source_guide: docs/01_REQUIREMENTS/GUIA_MESTRE_GITHUB_REDE_DE_APOIO.md
+
+policy:
+  - "US-001 through US-035 are the official approved story identifiers represented as GitHub Issues."
+  - "Every official US has exactly one confirmed origin RF/RNF."
+  - "Titles, actors, statements, origins, owners and screen/action traceability below are canonical from the Master Guide."
+  - "The Master Guide does not enumerate a story-specific acceptance checklist for every US; agents must not fabricate one."
+  - "RF30/US-036 remain a controlled proposal until explicitly approved."
+
+owner_distribution:
+  David: 9
+  Rhuan: 9
+  Henrique: 9
+  Kauã: 8
+
+stories:
+  US-001:
+    issue: 37
+    title: "Cadastrar conta"
+    owner: David
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero cadastrar uma conta de acesso para utilizar o aplicativo conforme minhas permissões."
+    origin_requirement: RF01
+    origin_status: confirmed
+    screens: [T02]
+    content_status: complete
+  US-002:
+    issue: 38
+    title: "Entrar"
+    owner: David
+    actor: "usuário cadastrado"
+    statement: "Como usuário cadastrado, quero entrar no aplicativo para acessar os recursos permitidos da rede de cuidado."
+    origin_requirement: RF02
+    origin_status: confirmed
+    screens: [T01]
+    content_status: complete
+  US-003:
+    issue: 39
+    title: "Cadastrar pessoa idosa"
+    owner: David
+    actor: "Familiar Principal"
+    statement: "Como Familiar Principal, quero cadastrar a pessoa idosa para criar o contexto de cuidado da rede."
+    origin_requirement: RF03
+    origin_status: confirmed
+    screens: [T12]
+    content_status: complete
+  US-004:
+    issue: 40
+    title: "Atualizar perfil"
+    owner: David
+    actor: "Familiar Principal"
+    statement: "Como Familiar Principal, quero atualizar o perfil da pessoa idosa para manter seus dados atuais."
+    origin_requirement: RF03
+    origin_status: confirmed
+    screens: [T12]
+    content_status: complete
+  US-005:
+    issue: 41
+    title: "Vincular membro"
+    owner: David
+    actor: "Familiar Principal"
+    statement: "Como Familiar Principal, quero vincular um membro à rede para que ele participe do cuidado conforme suas permissões."
+    origin_requirement: RF04
+    origin_status: confirmed
+    screens: [T13]
+    content_status: complete
+  US-006:
+    issue: 42
+    title: "Desvincular membro"
+    owner: David
+    actor: "Familiar Principal"
+    statement: "Como Familiar Principal, quero desvincular um membro para retirar seu acesso futuro sem apagar seu histórico anterior."
+    origin_requirement: RF04
+    origin_status: confirmed
+    screens: [T13]
+    content_status: complete
+  US-007:
+    issue: 43
+    title: "Gerenciar papéis acumuláveis"
+    owner: David
+    actor: "Familiar Principal"
+    statement: "Como Familiar Principal, quero gerenciar os papéis familiares para controlar responsabilidades e permissões."
+    origin_requirement: RF05
+    origin_status: confirmed
+    screens: [T13]
+    content_status: complete
+  US-008:
+    issue: 44
+    title: "Criar/alterar/cancelar plantão"
+    owner: Rhuan
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero criar, alterar ou cancelar um plantão para manter a escala atualizada."
+    origin_requirement: RF06
+    origin_status: confirmed
+    screens: [T04]
+    content_status: complete
+  US-009:
+    issue: 45
+    title: "Consultar escala calendário"
+    owner: Rhuan
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero consultar a escala por calendário para visualizar os responsáveis por período."
+    origin_requirement: RF07
+    origin_status: confirmed
+    screens: [T04, T03]
+    content_status: complete
+  US-010:
+    issue: 46
+    title: "Consultar detalhes/histórico de um dia"
+    owner: Henrique
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero consultar os detalhes de um dia para verificar plantões, cuidados planejados e execuções."
+    origin_requirement: RF07
+    origin_status: confirmed
+    screens: [T05]
+    content_status: complete
+  US-011:
+    issue: 47
+    title: "Atribuir plantonista"
+    owner: Rhuan
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero atribuir um responsável a um plantão para definir quem ficará responsável naquele intervalo."
+    origin_requirement: RF08
+    origin_status: confirmed
+    screens: [T04, T13]
+    elements: [E05]
+    content_status: complete
+  US-012:
+    issue: 48
+    title: "Solicitar troca"
+    owner: Rhuan
+    actor: "usuário vinculado"
+    statement: "Como usuário vinculado, quero solicitar uma troca de plantão para reorganizar uma responsabilidade atribuída."
+    origin_requirement: RF09
+    origin_status: confirmed
+    elements: [E06]
+    content_status: complete
+  US-013:
+    issue: 49
+    title: "Responder troca"
+    owner: Rhuan
+    actor: "usuário envolvido"
+    statement: "Como usuário envolvido, quero aceitar ou recusar uma troca para confirmar a nova organização do plantão."
+    origin_requirement: RF09
+    origin_status: confirmed
+    elements: [E07]
+    content_status: complete
+  US-014:
+    issue: 50
+    title: "Receber avisos de mudanças no plantão"
+    owner: Rhuan
+    actor: "usuário afetado"
+    statement: "Como usuário afetado, quero ser avisado de mudanças no plantão para saber que minha escala foi alterada."
+    origin_requirement: RF10
+    origin_status: confirmed
+    notifications: [N01]
+    screens: [T04]
+    content_status: complete
+  US-015:
+    issue: 51
+    title: "Registrar ocorrência no diário"
+    owner: Kauã
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero registrar uma ocorrência no Diário de Cuidados para compartilhar informação relevante com a rede."
+    origin_requirement: RF11
+    origin_status: confirmed
+    screens: [T06]
+    content_status: complete
+  US-016:
+    issue: 52
+    title: "Consultar histórico"
+    owner: Henrique
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero consultar o histórico de cuidados para acompanhar os registros ao longo do tempo."
+    origin_requirement: RF12
+    origin_status: confirmed
+    screens: [T07]
+    content_status: complete
+  US-017:
+    issue: 53
+    title: "Cadastrar medicamento"
+    owner: Henrique
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero cadastrar um medicamento para incluí-lo na rotina de cuidado."
+    origin_requirement: RF14
+    origin_status: confirmed
+    screens: [T08]
+    content_status: complete
+  US-018:
+    issue: 54
+    title: "Registrar posologia/horários"
+    owner: Henrique
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero registrar posologia e horários para planejar corretamente a administração do medicamento."
+    origin_requirement: RF15
+    origin_status: confirmed
+    screens: [T08]
+    content_status: complete
+  US-019:
+    issue: 55
+    title: "Registrar administração de medicamento"
+    owner: Henrique
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero registrar uma administração de medicamento para manter o histórico real do cuidado."
+    origin_requirement: RF16
+    origin_status: confirmed
+    screens: [T08, T05]
+    elements: [E16]
+    content_status: complete
+  US-020:
+    issue: 56
+    title: "Receber lembrete obrigatório"
+    owner: Henrique
+    actor: "usuário que ocupa a condição de Plantonista Atual"
+    statement: "Como usuário que ocupa a condição de Plantonista Atual, quero receber lembrete de cuidado programado para realizá-lo no horário previsto."
+    origin_requirement: RF17
+    origin_status: confirmed
+    notifications: [N02]
+    screens: [T03, T08, T09]
+    content_status: complete
+  US-021:
+    issue: 57
+    title: "Registrar sintoma/intercorrência"
+    owner: Henrique
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero registrar sintoma/intercorrência para manter a rede informada."
+    origin_requirement: RF18
+    origin_status: confirmed
+    screens: [T06, T05]
+    content_status: complete
+  US-022:
+    issue: 58
+    title: "Registrar consulta/recomendação"
+    owner: Henrique
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero registrar consultas e recomendações para preservar orientações relevantes."
+    origin_requirement: RF19
+    origin_status: confirmed
+    screens: [T10]
+    elements: [E19]
+    content_status: complete
+  US-023:
+    issue: 59
+    title: "Registrar compromisso"
+    owner: Rhuan
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero registrar um compromisso para mantê-lo visível na rotina."
+    origin_requirement: RF20
+    origin_status: confirmed
+    screens: [T11, T05]
+    content_status: complete
+  US-024:
+    issue: 60
+    title: "Criar/atribuir tarefa"
+    owner: Rhuan
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero criar e atribuir uma tarefa para organizar ações de cuidado."
+    origin_requirement: RF21
+    origin_status: confirmed
+    screens: [T09]
+    elements: [E17]
+    content_status: complete
+  US-025:
+    issue: 61
+    title: "Concluir tarefa"
+    owner: Rhuan
+    actor: "usuário responsável"
+    statement: "Como usuário responsável, quero registrar uma tarefa como concluída para atualizar o histórico."
+    origin_requirement: RF21
+    origin_status: confirmed
+    screens: [T09, T05]
+    elements: [E18]
+    content_status: complete
+  US-026:
+    issue: 62
+    title: "Manter contatos importantes"
+    owner: David
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero consultar e manter contatos importantes para encontrá-los rapidamente."
+    origin_requirement: RF22
+    origin_status: confirmed
+    screens: [T14]
+    elements: [E26]
+    content_status: complete
+  US-027:
+    issue: 63
+    title: "Anexar documento/imagem"
+    owner: Henrique
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero anexar documento/imagem a um registro compatível para preservar informação contextual."
+    origin_requirement: RF23
+    origin_status: confirmed
+    screens: [T06, T10]
+    elements: [E10]
+    content_status: complete
+  US-028:
+    issue: 64
+    title: "Consultar informações de emergência"
+    owner: David
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero consultar informações de emergência para agir rapidamente quando necessário."
+    origin_requirement: RF24
+    origin_status: confirmed
+    screens: [T15]
+    content_status: complete
+  US-029:
+    issue: 65
+    title: "Receber notificação de cuidado realizado"
+    owner: Kauã
+    actor: "membro elegível"
+    statement: "Como membro elegível, quero ser avisado quando um cuidado for registrado para acompanhar a execução da rotina."
+    origin_requirement: RF25
+    origin_status: confirmed
+    notifications: [N03]
+    screens: [T03]
+    content_status: complete
+  US-030:
+    issue: 66
+    title: "Receber alerta de atraso após 15 min"
+    owner: Kauã
+    actor: "membro elegível"
+    statement: "Como membro elegível, quero receber alerta quando um cuidado programado permanecer sem registro após 15 minutos para verificar a situação."
+    origin_requirement: RF26
+    origin_status: confirmed
+    notifications: [N04]
+    screens: [T03, T05, T09]
+    content_status: complete
+  US-031:
+    issue: 67
+    title: "Configurar notificações opcionais"
+    owner: Kauã
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero configurar notificações opcionais para controlar alertas não obrigatórios."
+    origin_requirement: RF27
+    origin_status: confirmed
+    screens: [T16]
+    content_status: complete
+  US-032:
+    issue: 68
+    title: "Exportar históricos CSV"
+    owner: Kauã
+    actor: "usuário autorizado"
+    statement: "Como usuário autorizado, quero exportar um histórico em CSV para utilizar dados permitidos fora do aplicativo."
+    origin_requirement: RF28
+    origin_status: confirmed
+    screens: [T07]
+    elements: [E13]
+    content_status: complete
+  US-033:
+    issue: 69
+    title: "Consultar log de auditoria"
+    owner: Kauã
+    actor: "Familiar Principal autorizado"
+    statement: "Como Familiar Principal autorizado, quero consultar o log de auditoria para verificar operações realizadas na rede."
+    origin_requirement: RF29
+    origin_status: confirmed
+    screens: [T17]
+    related_requirements: [RNF03]
+    content_status: complete
+  US-034:
+    issue: 70
+    title: "Corrigir registro sem apagar original"
+    owner: Kauã
+    actor: "usuário com permissão para correção"
+    statement: "Como usuário com permissão para correção, quero registrar uma correção vinculada para corrigir informação sem apagar o original."
+    origin_requirement: RNF02
+    origin_status: confirmed
+    screens: [T06, T07]
+    elements: [E12]
+    content_status: complete
+  US-035:
+    issue: 71
+    title: "Bloquear e registrar acesso não autorizado"
+    owner: Kauã
+    actor: "responsável pela segurança da rede"
+    statement: "Como responsável pela segurança da rede, quero que acessos não autorizados sejam bloqueados e registrados para proteger os dados."
+    origin_requirement: RNF01
+    origin_status: confirmed
+    screens: [T17]
+    elements: [E27]
+    related_requirements: [RNF03]
+    content_status: complete
+
+acceptance_criteria_policy:
+  status: "not_individually_enumerated_in_master_guide"
+  rule: "Use only criteria directly supported by the origin requirement, business rules and the Master Guide; do not invent new functional scope."
+
+proposals:
+  US-036:
+    issue: 72
+    title: "Acessar informações do próprio cuidado"
+    status: proposal
+    actor: "Pessoa Idosa"
+    origin_requirement: RF30
+    statement: "Como Pessoa Idosa, quero acessar as informações relacionadas ao meu cuidado para acompanhar minha rotina e a rede responsável por mim sem alterar os registros existentes."
