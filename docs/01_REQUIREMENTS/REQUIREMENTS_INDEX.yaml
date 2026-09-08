@@ -1,55 +1,56 @@
-schema_version: 1
+schema_version: 2
 last_updated: 2026-09-08
 canonical_system: GitHub
 repository: webkauadev/rede-de-apoio
+issue_registry: docs/06_GITHUB/ISSUE_REGISTRY.yaml
 
 policy:
-  - "This index inventories requirement identifiers currently documented in GitHub."
-  - "A title/summary does not replace the approved full requirement text when that text is required for implementation."
+  - "This index inventories requirement identifiers currently documented in GitHub and their canonical Issues."
+  - "A title/summary does not replace approved full requirement text when that text is required for implementation."
   - "Any requirement referenced by the project but missing its canonical definition is migration_required."
-  - "Agents must not query external trackers to fill missing requirement content."
+  - "Agents must not query external trackers or invent requirement content."
 
 functional_requirements:
-  RF01: {title: "Conta de acesso", status: documented_summary}
-  RF02: {title: "Autenticação", status: documented_summary}
-  RF03: {title: "Perfil da pessoa idosa", status: documented_summary}
-  RF04: {title: "Vincular/desvincular membros", status: documented_summary}
-  RF05: {title: "Papéis e permissões", status: documented_summary}
-  RF06: {title: "Plantões", status: documented_summary}
-  RF07: {title: "Calendário e histórico diário", status: documented_summary}
-  RF08: {title: "Atribuição de plantonista", status: documented_summary}
-  RF09: {title: "Trocas de plantão", status: documented_summary}
-  RF10: {title: "Notificações de plantão", status: documented_summary}
-  RF11: {title: "Diário de cuidados", status: documented_summary}
-  RF12: {title: "Histórico de cuidados", status: documented_summary}
-  RF13: {title: "Autoria e data/hora", status: documented_summary}
-  RF14: {title: "Medicamentos", status: documented_summary}
-  RF15: {title: "Posologia", status: documented_summary}
-  RF16: {title: "Administração de medicamento", status: documented_summary}
-  RF17: {title: "Lembretes obrigatórios", status: documented_summary}
-  RF18: {title: "Sintomas/intercorrências", status: documented_summary}
-  RF19: {title: "Consultas e recomendações", status: documented_summary}
-  RF20: {title: "Compromissos", status: documented_summary}
-  RF21: {title: "Tarefas", status: documented_summary}
-  RF22: {title: "Contatos importantes", status: documented_summary}
-  RF23: {title: "Anexos", status: documented_summary}
-  RF24: {title: "Emergência", status: documented_summary}
-  RF25: {title: "Notificações de registros", status: documented_summary}
-  RF26: {title: "Atraso de 15 minutos", status: documented_summary}
-  RF27: {title: "Preferências de notificações", status: documented_summary}
-  RF28: {title: "Exportação CSV", status: documented_summary}
-  RF29: {title: "Auditoria", status: documented_summary}
-  RF30:
-    title: "Permitir acesso de consulta à Pessoa Idosa"
-    status: proposal
+  RF01: {issue: 5, title: "Conta de acesso", status: documented_summary}
+  RF02: {issue: 6, title: "Autenticação", status: documented_summary}
+  RF03: {issue: 7, title: "Perfil da pessoa idosa", status: documented_summary}
+  RF04: {issue: 8, title: "Vincular/desvincular membros", status: documented_summary}
+  RF05: {issue: 9, title: "Papéis e permissões", status: documented_summary}
+  RF06: {issue: 10, title: "Plantões", status: documented_summary}
+  RF07: {issue: 11, title: "Calendário e histórico diário", status: documented_summary}
+  RF08: {issue: 12, title: "Atribuição de plantonista", status: documented_summary}
+  RF09: {issue: 13, title: "Trocas de plantão", status: documented_summary}
+  RF10: {issue: 14, title: "Notificações de plantão", status: documented_summary}
+  RF11: {issue: 15, title: "Diário de cuidados", status: documented_summary}
+  RF12: {issue: 16, title: "Histórico de cuidados", status: documented_summary}
+  RF13: {issue: 17, title: "Autoria e data/hora", status: documented_summary}
+  RF14: {issue: 18, title: "Medicamentos", status: documented_summary}
+  RF15: {issue: 19, title: "Posologia", status: documented_summary}
+  RF16: {issue: 20, title: "Administração de medicamento", status: documented_summary}
+  RF17: {issue: 21, title: "Lembretes obrigatórios", status: documented_summary}
+  RF18: {issue: 22, title: "Sintomas/intercorrências", status: documented_summary}
+  RF19: {issue: 23, title: "Consultas e recomendações", status: documented_summary}
+  RF20: {issue: 24, title: "Compromissos", status: documented_summary}
+  RF21: {issue: 25, title: "Tarefas", status: documented_summary}
+  RF22: {issue: 26, title: "Contatos importantes", status: documented_summary}
+  RF23: {issue: 27, title: "Anexos", status: documented_summary}
+  RF24: {issue: 28, title: "Emergência", status: documented_summary}
+  RF25: {issue: 29, title: "Notificações de registros", status: documented_summary}
+  RF26: {issue: 30, title: "Atraso de 15 minutos", status: documented_summary}
+  RF27: {issue: 31, title: "Preferências de notificações", status: documented_summary}
+  RF28: {issue: 32, title: "Exportação CSV", status: documented_summary}
+  RF29: {issue: 33, title: "Auditoria", status: documented_summary}
+  RF30: {issue: 34, title: "Permitir acesso de consulta à Pessoa Idosa", status: proposal}
 
 non_functional_requirements:
   RNF01:
+    issue: 35
     status: migration_required
-    note: "Referenced by traceability for access denied, but canonical definition is absent from GitHub."
+    note: "Referenced by traceability for access denied, but canonical definition is absent from available GitHub/project sources."
   RNF03:
+    issue: 36
     status: migration_required
-    note: "Referenced by component architecture for AuditEntryCard, but canonical definition is absent from GitHub."
+    note: "Referenced by component architecture for AuditEntryCard, but canonical definition is absent from available GitHub/project sources."
 
 proposal_catalog:
   source: docs/01_REQUIREMENTS/RNF_PROPOSTA.md
