@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 last_updated: 2026-09-08
 
 sources:
@@ -6,7 +6,7 @@ sources:
     system: GitHub
     repository: webkauadev/rede-de-apoio
     docs: docs/01_REQUIREMENTS
-    issues: https://github.com/webkauadev/rede-de-apoio/issues
+    issue_registry: docs/06_GITHUB/ISSUE_REGISTRY.yaml
     role: canonical_source_of_truth
     missing_data_policy: migration_required
   human_catalog: docs/03_INFORMATION_ARCHITECTURE/SCREENS_CATALOG.md
@@ -16,13 +16,10 @@ sources:
 selection_policy:
   next_screen_for_owner:
     - "Prefer a screen explicitly requested by the user."
-    - "Otherwise prefer screens whose Figma mapping or required states are incomplete and whose functional basis exists in GitHub."
-    - "Resolve RF/RNF/US in GitHub before changing functional scope."
-    - "If required functional content is absent, mark migration_required; do not consult external trackers."
-  status_values:
-    - figma_mapped
-    - figma_partially_mapped
-    - figma_discovery_required
+    - "Otherwise follow owner_sequences, skipping screens already validated unless rework is required."
+    - "Resolve RF/RNF/US from the GitHub registries before changing functional scope."
+    - "RF30/US-036 are proposal-only and cannot drive read-only states until explicitly approved."
+  status_values: [figma_mapped, figma_partially_mapped, figma_discovery_required]
 
 screens:
   T01:
@@ -32,6 +29,8 @@ screens:
     figma_status: figma_mapped
     figma_page: david
     requirements: resolve_in_github
+    origin_requirements: [RF02]
+    user_stories: [US-002]
 
   T02:
     name: Cadastro de Conta
@@ -40,14 +39,19 @@ screens:
     figma_status: figma_mapped
     figma_page: david
     requirements: resolve_in_github
+    origin_requirements: [RF01]
+    user_stories: [US-001]
 
   T03:
-    name: Home
+    name: Home / Visão Geral do Cuidado
     owner: Rhuan
     flow_group: operations
     figma_status: figma_discovery_required
     figma_page: rhuan
     requirements: resolve_in_github
+    origin_requirements: [RF07, RF17, RF25, RF26]
+    user_stories: [US-009, US-020, US-029, US-030]
+    prototype_note: "Rhuan should prototype T03 last, after operational modules are defined."
 
   T04:
     name: Calendário de Cuidados
@@ -56,9 +60,9 @@ screens:
     figma_status: figma_partially_mapped
     figma_page: rhuan
     requirements: resolve_in_github
-    known_views:
-      - week
-      - day
+    origin_requirements: [RF06, RF07, RF08, RF09, RF10]
+    user_stories: [US-008, US-009, US-011, US-012, US-013, US-014]
+    known_views: [week, day]
 
   T05:
     name: Detalhamento do Dia
@@ -67,14 +71,13 @@ screens:
     figma_status: figma_discovery_required
     figma_page: henrique
     requirements: resolve_in_github
+    origin_requirements: [RF07]
+    user_stories: [US-010]
+    context_stories: [US-019, US-020, US-021, US-023, US-025, US-030, US-034]
     integrations:
-      receives_from_rhuan:
-        - plantões
-        - compromissos
-        - tarefas
-      receives_from_kaua:
-        - atraso
-        - correção
+      receives_from_rhuan: [plantões, compromissos, tarefas]
+      receives_from_kaua: [atraso, correção]
+    prototype_note: "Henrique should prototype T05 last after T08/T10/T07 dependencies are defined."
 
   T06:
     name: Diário de Cuidados
@@ -83,10 +86,10 @@ screens:
     figma_status: figma_mapped
     figma_page: kaua
     requirements: resolve_in_github
+    origin_requirements: [RF11, RF18, RF23]
+    user_stories: [US-015, US-021, US-027]
     integrations:
-      receives_from_henrique:
-        - sintomas_e_intercorrencias
-        - anexo
+      receives_from_henrique: [sintomas_e_intercorrencias, anexo]
 
   T07:
     name: Histórico de Cuidados
@@ -95,10 +98,10 @@ screens:
     figma_status: figma_discovery_required
     figma_page: henrique
     requirements: resolve_in_github
+    origin_requirements: [RF12, RF28, RNF02]
+    user_stories: [US-016, US-032, US-034]
     integrations:
-      receives_from_kaua:
-        - exportar_csv
-        - corrigir_registro
+      receives_from_kaua: [exportar_csv, corrigir_registro]
 
   T08:
     name: Medicamentos
@@ -107,6 +110,8 @@ screens:
     figma_status: figma_partially_mapped
     figma_page: henrique
     requirements: resolve_in_github
+    origin_requirements: [RF14, RF15, RF16, RF17]
+    user_stories: [US-017, US-018, US-019, US-020]
     mapping_note: "Two visible list frames share the same current-style name; canonical list base requires audit."
 
   T09:
@@ -116,12 +121,12 @@ screens:
     figma_status: figma_discovery_required
     figma_page: rhuan
     requirements: resolve_in_github
+    origin_requirements: [RF21]
+    user_stories: [US-024, US-025]
+    context_stories: [US-020, US-030]
     integrations:
-      receives_from_henrique:
-        - lembrete_operacional
-      receives_from_kaua:
-        - atraso
-        - notificacao_de_conclusao
+      receives_from_henrique: [lembrete_operacional]
+      receives_from_kaua: [atraso, notificacao_de_conclusao]
 
   T10:
     name: Consultas e Recomendações
@@ -130,6 +135,8 @@ screens:
     figma_status: figma_discovery_required
     figma_page: henrique
     requirements: resolve_in_github
+    origin_requirements: [RF19, RF23]
+    user_stories: [US-022, US-027]
 
   T11:
     name: Compromissos
@@ -138,6 +145,8 @@ screens:
     figma_status: figma_discovery_required
     figma_page: rhuan
     requirements: resolve_in_github
+    origin_requirements: [RF20]
+    user_stories: [US-023]
 
   T12:
     name: Perfil da Pessoa Idosa
@@ -146,6 +155,9 @@ screens:
     figma_status: figma_mapped
     figma_page: david
     requirements: resolve_in_github
+    origin_requirements: [RF03]
+    user_stories: [US-003, US-004]
+    proposal_note: "RF30/US-036 may later introduce an Acesso da pessoa idosa/read-only state, but not until proposal approval."
 
   T13:
     name: Rede de Cuidado
@@ -154,6 +166,9 @@ screens:
     figma_status: figma_discovery_required
     figma_page: david
     requirements: resolve_in_github
+    origin_requirements: [RF04, RF05]
+    user_stories: [US-005, US-006, US-007]
+    context_stories: [US-011]
 
   T14:
     name: Contatos Importantes
@@ -162,6 +177,8 @@ screens:
     figma_status: figma_discovery_required
     figma_page: david
     requirements: resolve_in_github
+    origin_requirements: [RF22]
+    user_stories: [US-026]
 
   T15:
     name: Informações de Emergência
@@ -170,6 +187,8 @@ screens:
     figma_status: figma_discovery_required
     figma_page: david
     requirements: resolve_in_github
+    origin_requirements: [RF24]
+    user_stories: [US-028]
 
   T16:
     name: Preferências de Notificações
@@ -178,6 +197,8 @@ screens:
     figma_status: figma_mapped
     figma_page: kaua
     requirements: resolve_in_github
+    origin_requirements: [RF27]
+    user_stories: [US-031]
 
   T17:
     name: Auditoria
@@ -186,45 +207,51 @@ screens:
     figma_status: figma_discovery_required
     figma_page: kaua
     requirements: resolve_in_github
+    origin_requirements: [RF29, RNF01]
+    transversal_requirements: [RNF03]
+    user_stories: [US-033, US-035]
 
 owner_sequences:
-  David:
-    - T01
-    - T02
-    - T12
-    - T13
-    - T14
-    - T15
-  Rhuan:
-    - T03
-    - T04
-    - T09
-    - T11
-  Henrique:
-    - T05
-    - T07
-    - T08
-    - T10
-  Kauã:
-    - T06
-    - T16
-    - T17
+  David: [T01, T02, T12, T13, T14, T15]
+  Rhuan: [T04, T11, T09, T03]
+  Henrique: [T08, T10, T07, T05]
+  Kauã: [T06, T16, T17]
 
 transversal_elements:
-  E10:
-    name: Anexo
-    owner: Henrique
-  E12:
-    name: Corrigir registro sem apagar original
-    owner: Kauã
-  E17_E18:
-    name: Criar/Concluir tarefa
-    owner: Rhuan
-  E19:
-    name: Registrar consulta/recomendação
-    owner: Henrique
-  E26:
-    name: Manutenção de contato
-    owner: David
+  E10: {name: "Anexar documento/imagem", owner: Henrique, story: US-027}
+  E12: {name: "Corrigir registro sem apagar original", owner: Kauã, story: US-034}
+  E17: {name: "Criar/atribuir tarefa", owner: Rhuan, story: US-024}
+  E18: {name: "Concluir tarefa", owner: Rhuan, story: US-025}
+  E19: {name: "Registrar consulta/recomendação", owner: Henrique, story: US-022}
+  E26: {name: "Manter contato", owner: David, story: US-026}
 
-agent_rule: "GitHub is canonical. If required content is missing, mark migration_required. Never resolve functional scope from an external tracker or from Figma."
+non_screen_catalog:
+  E01: "Credenciais inválidas"
+  E02: "Validação do cadastro"
+  E03: "Novo plantão"
+  E04: "Editar/cancelar plantão"
+  E05: "Atribuir plantonista"
+  E06: "Solicitar troca"
+  E07: "Aceitar/recusar troca"
+  E08: "Estados do dia"
+  E09: "Novo registro de cuidado"
+  E10: "Anexar documento/imagem"
+  E11: "Detalhe de registro"
+  E12: "Correção"
+  E13: "Exportação CSV"
+  E14: "Cadastro de medicamento"
+  E15: "Posologia/horários"
+  E16: "Administração de medicamento"
+  E17: "Criar/atribuir tarefa"
+  E18: "Concluir tarefa"
+  E19: "Consulta/recomendação"
+  E20: "Compromisso"
+  E21: "Cadastrar/atualizar pessoa idosa"
+  E22: "Vincular membro"
+  E23: "Desvincular membro"
+  E24: "Gerenciar papéis"
+  E25: "Transferir Principal"
+  E26: "Manter contato"
+  E27: "Acesso negado"
+
+agent_rule: "GitHub is canonical. Resolve functional scope from the requirement/story registries. Figma is visual only. RF30/US-036 are proposal-only."
