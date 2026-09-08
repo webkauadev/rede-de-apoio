@@ -29,4 +29,4 @@ Not a user category, profile or permanent role.
 
 ## Pessoa Idosa
 
-Read-only access is a controlled scope evolution proposal until formal GitLab approval.
+Read-only access is a controlled scope evolution proposal until RF30/US-036 are canonically approved in GitHub.
