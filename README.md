@@ -2,7 +2,7 @@
 
 Documentação central de contexto do projeto **Rede de Apoio a Cuidadores de Idosos**.
 
-Este repositório concentra contexto para equipe e agentes de IA. O **GitLab continua sendo a fonte oficial de requisitos, Issues e rastreabilidade**; o Figma continua sendo a fonte do protótipo visual.
+Este repositório concentra contexto para equipe e agentes de IA. O **GitLab canônico do projeto** é `https://gitlab.fslab.dev/fabrica-de-software-i-2026/projeto6` e continua sendo a fonte oficial de requisitos, Issues e rastreabilidade; o Figma continua sendo a fonte do protótipo visual.
 
 O pack contém:
 
@@ -37,7 +37,7 @@ O pack contém:
 
 ## Fluxo de design por agente
 
-`GitLab → Context Pack → Figma → Auditoria → Registry → Commit → Pull Request → Revisão humana`
+`GitLab FSLab → Context Pack → Figma → Auditoria → Registry → Commit → Pull Request → Revisão humana`
 
 A infraestrutura estruturada é validada automaticamente pelo workflow **Validate agent context** em Pull Requests.
 
@@ -50,7 +50,7 @@ Com a camada de contexto atual, um agente pode receber solicitações como:
 - `faça a próxima tela do David`;
 - `audite os states da T12`.
 
-O agente deve resolver requisitos no GitLab, reutilizar componentes/tokens existentes, alterar o Figma, auditar e registrar os node IDs/estados antes de abrir o PR.
+O agente deve resolver requisitos no GitLab canônico, reutilizar componentes/tokens existentes, alterar o Figma, auditar e registrar os node IDs/estados antes de abrir o PR.
 
 ## Estado atual
 
