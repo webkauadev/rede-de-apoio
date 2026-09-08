@@ -6,24 +6,29 @@ Contrato operacional para agentes que criam, corrigem ou auditam telas do projet
 
 Permitir comandos de alto nível como `execute a T14` ou `faça a próxima tela do David` sem depender de mega-prompts e sem perder consistência entre telas, estados, requisitos e Figma.
 
-## Pipeline obrigatório
+## Fonte única e pipeline obrigatório
 
-`GitLab → Context Pack → Figma existente → Componentes/tokens → Construção → Auditoria → Registry → Commit → Pull Request`
+O GitHub `webkauadev/rede-de-apoio` é a fonte única operacional para RF, RNF, US, Issues, tarefas e critérios de aceitação. O Figma é a fonte visual.
+
+`GitHub → Context Pack → Figma existente → Componentes/tokens → Construção → Auditoria → Registry → Commit → Pull Request`
+
+Se um requisito necessário não estiver no GitHub, marcar `migration_required`. O agente **não consulta tracker externo** e **não inventa** o conteúdo ausente.
 
 ### 1. Resolver a entrega
 
-Antes de editar o Figma, o agente deve determinar:
+Antes de editar o Figma, o agente deve determinar no GitHub:
 
 - identificador da tela (`T##`);
 - responsável atual;
-- RF/RNF/US relacionados no GitLab;
+- RF/RNF/US e GitHub Issues relacionados;
+- critérios de aceitação disponíveis;
 - regras de negócio aplicáveis;
 - estados necessários;
 - página/node atual no Figma;
 - telas aprovadas que servem de referência;
 - componentes e tokens disponíveis.
 
-Se qualquer item crítico estiver indefinido, buscar a informação nas fontes existentes. Não preencher lacunas com requisitos inventados.
+Se RF/RNF/US, permissão ou critério crítico estiver ausente, registrar `migration_required` e não preencher a lacuna por inferência. Correções puramente visuais/estruturais podem continuar quando não alterarem comportamento.
 
 ### 2. Inspecionar antes de desenhar
 
@@ -49,7 +54,7 @@ Sempre definir um estado-base e herdar dele. O agente deve comparar estados irm�
 - **Empty**: preservar navegação, cabeçalho, largura e contexto; trocar apenas a região de dados por empty state e CTA aplicável.
 - **Validation Error/Error**: preservar formulário e valores válidos; alterar somente controles/feedback relacionados ao erro.
 - **Success**: preservar a tela após a ação e adicionar/alterar somente feedback e conteúdo realmente afetado.
-- **Forbidden/Access denied**: preservar o contexto suficiente para o usuário compreender onde está, sem expor ações não autorizadas.
+- **Forbidden/Access denied**: preservar contexto suficiente para orientação sem expor ações/dados não autorizados.
 
 Quando um novo estado for necessário, registrá-lo em `STATE_MATRIX.yaml` junto do node do Figma.
 
@@ -84,17 +89,7 @@ Após cada alteração relevante:
 
 #### Auditoria visual
 
-Gerar screenshot do frame final e verificar:
-
-- alinhamento;
-- hierarquia visual;
-- legibilidade;
-- contraste;
-- densidade;
-- espaçamento;
-- consistência com telas de referência;
-- feedback de loading/error/success/empty;
-- áreas de toque e ações principais.
+Gerar screenshot do frame final e verificar alinhamento, hierarquia visual, legibilidade, contraste, densidade, espaçamento, consistência com telas de referência, feedback de estados e áreas de toque.
 
 Encontrando problema, corrigir e auditar novamente.
 
@@ -102,17 +97,16 @@ Encontrando problema, corrigir e auditar novamente.
 
 Toda tela criada/corrigida deve deixar contexto suficiente para o próximo agente:
 
-- `SCREEN_REGISTRY.yaml`: identidade, owner, estado de mapeamento e referências.
-- `STATE_MATRIX.yaml`: estados e nodes vigentes.
-- `FIGMA_REGISTRY.yaml`: arquivo/página/nodes e convenções.
-- `COMPONENT_MAP.yaml`: novos componentes reutilizáveis ou mapeamentos descobertos.
-- documentação canônica relevante quando houver decisão nova.
+- `SCREEN_REGISTRY.yaml`: identidade, owner, estado de mapeamento e referências;
+- `STATE_MATRIX.yaml`: estados e nodes vigentes;
+- `FIGMA_REGISTRY.yaml`: arquivo/página/nodes e convenções;
+- `COMPONENT_MAP.yaml`: novos componentes reutilizáveis ou mapeamentos descobertos;
+- documentação de requisitos/Issues no GitHub quando houver mudança funcional aprovada;
+- `migration_required` explícito para qualquer lacuna funcional ainda não migrada.
 
-### 7. Git workflow
+### 7. GitHub workflow
 
-Branch sugerida:
-
-`design/t##-slug` ou `chore/ai-design-*` para infraestrutura.
+Branch sugerida: `design/t##-slug` ou `chore/ai-design-*` para infraestrutura.
 
 Commits devem representar mudanças lógicas pequenas, por exemplo:
 
@@ -127,9 +121,10 @@ O Pull Request deve ficar aberto para revisão humana. Não fazer merge automát
 Ao receber `faça a próxima tela de <responsável>`:
 
 1. consultar `SCREEN_REGISTRY.yaml`;
-2. selecionar a próxima tela desse responsável com trabalho pendente ou estado incompleto;
-3. confirmar os requisitos no GitLab;
-4. executar todo este contrato;
-5. entregar Figma + branch/commits + PR para revisão.
+2. consultar as Issues/requisitos do próprio GitHub;
+3. selecionar a próxima tela desse responsável com trabalho pendente ou estado incompleto;
+4. se houver dado funcional ausente, marcar `migration_required` e não buscar fora do GitHub;
+5. executar todo este contrato;
+6. entregar Figma + branch/commits + PR para revisão.
 
-Ao receber `execute T##`, usar exatamente a tela solicitada e não expandir escopo funcional sem requisito oficial.
+Ao receber `execute T##`, usar exatamente a tela solicitada e não expandir escopo funcional sem requisito canônico no GitHub.
