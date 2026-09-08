@@ -1,17 +1,21 @@
 # AGENTS.md — Contrato de execução para agentes
 
-Este repositório é o **Context Pack** do projeto Rede de Apoio a Cuidadores de Idosos. Ele orienta agentes de IA, mas **não substitui o GitLab como fonte oficial de requisitos e rastreabilidade**.
+Este repositório GitHub (`webkauadev/rede-de-apoio`) é a **fonte única de verdade operacional** do projeto Rede de Apoio a Cuidadores de Idosos para requisitos, RF/RNF, User Stories, Issues, tarefas, status, critérios de aceitação, contexto de IA e versionamento.
+
+O Figma é a fonte canônica **somente do design visual vigente**. Nenhum agente deve depender de tracker externo para executar o projeto.
 
 ## 1. Ordem de autoridade
 
 Quando houver conflito, usar esta prioridade:
 
-1. **GitLab oficial do projeto**: `https://gitlab.fslab.dev/fabrica-de-software-i-2026/projeto6` — RF/RNF, US, Issues, status, responsáveis e critérios de aceitação.
-2. Documentos canônicos deste repositório.
-3. Figma atual, considerando somente frames vigentes/aprovados.
-4. Inferências do agente, apenas quando inevitáveis e sempre marcadas como `não especificado` ou `hipótese`.
+1. **GitHub deste repositório**: Issues aprovadas + documentos canônicos versionados na branch principal.
+2. Registries estruturados deste repositório, que devem espelhar o item 1.
+3. Figma atual, considerando somente frames vigentes/aprovados, para decisões visuais.
+4. Inferências do agente, apenas quando inevitáveis e sempre marcadas como `não especificado`, `hipótese` ou `migration_required`.
 
-Nunca criar RF, RNF, US, regra de negócio, permissão ou critério de aceitação que não esteja documentado.
+Nunca criar RF, RNF, US, regra de negócio, permissão ou critério de aceitação que não esteja documentado no GitHub.
+
+**Regra de migração:** se um dado funcional necessário não existir no GitHub, marcar `migration_required`. Não procurar em tracker externo, não reconstruir de memória e não inventar conteúdo. A informação precisa ser migrada para o GitHub antes de se tornar canônica.
 
 ## 2. Leitura mínima antes de atuar
 
@@ -19,18 +23,20 @@ Antes de criar ou alterar uma tela, ler:
 
 1. `CLAUDE.md`
 2. `docs/00_PROJECT_CONTEXT.md`
-3. `docs/07_AI_CONTEXT/AI_CONTEXT_RULES.md`
-4. `docs/07_AI_CONTEXT/AI_DESIGN_CONTRACT.md`
-5. `docs/07_AI_CONTEXT/SCREEN_REGISTRY.yaml`
-6. `docs/07_AI_CONTEXT/STATE_MATRIX.yaml`
-7. `docs/03_INFORMATION_ARCHITECTURE/TRACEABILITY_MATRIX.md`
-8. `docs/04_DESIGN_SYSTEM/DESIGN_TOKENS.md`
-9. `docs/04_DESIGN_SYSTEM/COMPONENT_ARCHITECTURE.md`
-10. `docs/04_DESIGN_SYSTEM/COMPONENT_MAP.yaml`
-11. `docs/05_FIGMA/FIGMA_GUIDELINES.md`
-12. `docs/05_FIGMA/FIGMA_REGISTRY.yaml`
+3. `docs/01_REQUIREMENTS/`
+4. `docs/07_AI_CONTEXT/AI_CONTEXT_RULES.md`
+5. `docs/07_AI_CONTEXT/AI_DESIGN_CONTRACT.md`
+6. `docs/07_AI_CONTEXT/SCREEN_REGISTRY.yaml`
+7. `docs/07_AI_CONTEXT/STATE_MATRIX.yaml`
+8. `docs/03_INFORMATION_ARCHITECTURE/TRACEABILITY_MATRIX.md`
+9. `docs/04_DESIGN_SYSTEM/DESIGN_TOKENS.md`
+10. `docs/04_DESIGN_SYSTEM/COMPONENT_ARCHITECTURE.md`
+11. `docs/04_DESIGN_SYSTEM/COMPONENT_MAP.yaml`
+12. `docs/05_FIGMA/FIGMA_GUIDELINES.md`
+13. `docs/05_FIGMA/FIGMA_REGISTRY.yaml`
+14. `docs/06_GITHUB/`
 
-Se algum dado necessário estiver ausente, descobrir primeiro no projeto GitLab canônico acima ou no Figma antes de inventar.
+Se algum dado funcional necessário estiver ausente, registrar `migration_required`. O Figma pode resolver somente dúvidas visuais, nunca lacunas de requisito.
 
 ## 3. Regra para telas e estados
 
@@ -51,17 +57,18 @@ Se algum dado necessário estiver ausente, descobrir primeiro no projeto GitLab 
 - Frames vigentes seguem preferencialmente o padrão `[RESPONSÁVEL] T## — Nome / Estado`.
 - Sempre auditar a tela visualmente e estruturalmente após alterações.
 
-## 5. Git e Pull Request
+## 5. GitHub e Pull Request
 
 Para trabalho de design automatizado:
 
-1. Criar branch específica.
-2. Fazer commits pequenos e descritivos.
-3. Atualizar os registries afetados.
-4. Abrir Pull Request.
-5. Não fazer merge automático sem validação humana.
+1. Resolver RF/RNF/US/Issue exclusivamente no GitHub.
+2. Criar branch específica.
+3. Fazer commits pequenos e descritivos.
+4. Atualizar os registries afetados.
+5. Abrir Pull Request.
+6. Não fazer merge automático sem validação humana.
 
-O PR deve informar: T##, RF/RNF/US relacionados no GitLab, nodes do Figma, estados alterados, componentes reutilizados, decisões novas e resultado da auditoria.
+O PR deve informar: T##, GitHub Issues e RF/RNF/US relacionados, nodes do Figma, estados alterados, componentes reutilizados, decisões novas, pendências `migration_required` e resultado da auditoria.
 
 ## 6. Responsáveis atuais por tela
 
@@ -70,13 +77,15 @@ O PR deve informar: T##, RF/RNF/US relacionados no GitLab, nodes do Figma, estad
 - Henrique: T05, T07, T08, T10
 - Kauã: T06, T16, T17
 
-A lista acima é contexto operacional. Se divergir do GitLab canônico, o GitLab prevalece e este arquivo deve ser atualizado.
+A lista acima é contexto operacional. Se divergir de uma Issue/requisito aprovado no próprio GitHub, a fonte aprovada prevalece e os registries devem ser atualizados.
 
 ## 7. Definition of Done para alteração visual por agente
 
 Uma alteração de design só está pronta para revisão quando:
 
-- requisitos envolvidos foram identificados;
+- requisitos envolvidos foram identificados no GitHub;
+- nenhuma dependência funcional externa permanece oculta;
+- lacunas foram marcadas como `migration_required`;
 - tela e estados aplicáveis foram mapeados;
 - componentes existentes foram priorizados;
 - estrutura entre estados foi comparada;
