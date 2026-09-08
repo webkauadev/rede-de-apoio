@@ -1,6 +1,8 @@
 # CLAUDE.md — Rede de Apoio
 
-Antes de propor requisitos, telas, fluxos ou alterações no Figma, leia os arquivos em `docs/`.
+Antes de propor requisitos, telas, fluxos ou alterações no Figma, leia primeiro `AGENTS.md` e depois os arquivos canônicos em `docs/`.
+
+`AGENTS.md` define o contrato operacional comum entre agentes. Para trabalho de design/Figma, siga também `docs/07_AI_CONTEXT/AI_DESIGN_CONTRACT.md` e os registries YAML indicados nele.
 
 ## Regras fundamentais
 
@@ -16,6 +18,8 @@ Antes de propor requisitos, telas, fluxos ou alterações no Figma, leia os arqu
 - Dados de saúde exigem controle de acesso e auditoria.
 - shadcn/ui é base de componentes; a identidade visual pertence ao Rede de Apoio.
 - Mobile first: referência 390 px.
+- Frames `LEGADO —` não são base de implementação quando houver equivalente vigente.
+- Alterações de design por agente terminam em Pull Request para revisão humana, não em auto-merge.
 
 ## Pessoa Idosa
 
@@ -23,6 +27,6 @@ Acesso próprio somente leitura está em formalização. Deve ser tratado como e
 
 ## Fontes de verdade
 
-- GitLab: requisitos e aprovação.
+- GitLab: requisitos, rastreabilidade e aprovação.
 - Figma: protótipo visual.
-- Este repositório: contexto consolidado para IA e equipe.
+- Este repositório: contexto consolidado e contratos operacionais para IA e equipe.
