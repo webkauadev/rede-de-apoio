@@ -68,6 +68,9 @@ state_semantics:
   forbidden:
     inherits: base
     rule: "Preserve enough context to orient the user while removing unauthorized actions/data."
+  view_variant:
+    inherits: shared_shell
+    rule: "Alternate presentation mode of the same screen; keep shared navigation and visual system stable."
 
 screens:
   T01:
@@ -103,9 +106,25 @@ screens:
   T03:
     owner: Rhuan
     discovery_required: true
+
   T04:
     owner: Rhuan
-    discovery_required: true
+    mapping_status: partial
+    base_state: week
+    states:
+      week:
+        figma_node: "5122:1870"
+        semantic_type: view_variant
+      day:
+        figma_node: "5122:2031"
+        semantic_type: view_variant
+        shares_shell_with: week
+    discovery_required_for:
+      - loading
+      - empty
+      - error
+      - success_if_applicable
+
   T05:
     owner: Henrique
     discovery_required: true
@@ -141,9 +160,38 @@ screens:
   T07:
     owner: Henrique
     discovery_required: true
+
   T08:
     owner: Henrique
-    discovery_required: true
+    mapping_status: partial
+    canonical_base_discovery_required: true
+    base_candidates:
+      - "5048:644"
+      - "5235:924"
+    states:
+      empty:
+        figma_node: "5118:838"
+        semantic_type: empty
+      create:
+        figma_node: "5123:1291"
+        semantic_type: default
+      create_error_name:
+        figma_node: "5130:4159"
+        inherits: create
+        semantic_type: validation_error
+      create_error_concentration:
+        figma_node: "5130:4204"
+        inherits: create
+        semantic_type: validation_error
+      create_error_form:
+        figma_node: "5130:4263"
+        inherits: create
+        semantic_type: validation_error
+      created:
+        figma_node: "5141:2758"
+        semantic_type: success
+    rule_before_edit: "Audit the two list candidates and select/register the canonical base before changing list structure."
+
   T09:
     owner: Rhuan
     discovery_required: true
