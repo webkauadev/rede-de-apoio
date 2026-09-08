@@ -1,0 +1,221 @@
+schema_version: 1
+last_updated: 2026-09-08
+canonical_system: GitHub
+repository: webkauadev/rede-de-apoio
+catalog_status: partial_migration
+
+policy:
+  - "US-001 through US-035 are the official story identifiers currently known for the project."
+  - "Every official US must ultimately have its full Como/Quero/Para text, one origin RF/RNF, acceptance criteria, actor, owner and GitHub Issue/reference."
+  - "Missing canonical content is migration_required. Agents must not query external trackers or infer missing text."
+  - "Known titles/origins below are included only when already supported by project material or GitHub traceability."
+
+owner_distribution:
+  David: 9
+  Rhuan: 9
+  Henrique: 9
+  Kauã: 8
+
+stories:
+  US-001:
+    owner: David
+    content_status: migration_required
+    origin_requirement: RF01
+    origin_status: confirmed_in_github_traceability
+    screens: [T02]
+  US-002:
+    owner: David
+    content_status: migration_required
+    origin_requirement: RF02
+    origin_status: confirmed_in_github_traceability
+    screens: [T01]
+  US-003:
+    owner: David
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-004:
+    owner: David
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-005:
+    owner: David
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-006:
+    owner: David
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-007:
+    owner: David
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+
+  US-008:
+    owner: Rhuan
+    content_status: migration_required
+    origin_requirement: RF06
+    origin_status: confirmed_in_github_traceability
+    screens: [T04]
+  US-009:
+    owner: Rhuan
+    content_status: migration_required
+    origin_requirement: RF07
+    origin_status: confirmed_in_github_traceability
+    screens: [T04, T05]
+  US-010:
+    owner: Henrique
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-011:
+    owner: Rhuan
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-012:
+    owner: Rhuan
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-013:
+    owner: Rhuan
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-014:
+    owner: Rhuan
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-015:
+    owner: Kauã
+    content_status: migration_required
+    origin_requirement: RF11
+    origin_status: confirmed_in_github_traceability
+    screens: [T06]
+
+  US-016:
+    owner: Henrique
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-017:
+    owner: Henrique
+    content_status: migration_required
+    origin_requirement: RF14
+    origin_status: confirmed_in_github_traceability
+    screens: [T08]
+  US-018:
+    owner: Henrique
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-019:
+    owner: Henrique
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-020:
+    owner: Henrique
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-021:
+    owner: Henrique
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-022:
+    owner: Henrique
+    known_title: "Consultas e recomendações"
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-023:
+    owner: Rhuan
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-024:
+    owner: Rhuan
+    known_title: "Criar/atribuir tarefa"
+    content_status: migration_required
+    origin_requirement: RF21
+    origin_status: confirmed_in_github_traceability
+    screens: [T09]
+  US-025:
+    owner: Rhuan
+    known_title: "Concluir tarefa"
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-026:
+    owner: David
+    known_title: "Contatos importantes"
+    content_status: migration_required
+    origin_requirement: RF22
+    origin_status: confirmed_in_github_traceability
+    screens: [T14]
+  US-027:
+    owner: Henrique
+    known_title: "Anexar documento/imagem"
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-028:
+    owner: David
+    known_title: "Informações de emergência"
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+
+  US-029:
+    owner: Kauã
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-030:
+    owner: Kauã
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-031:
+    owner: Kauã
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-032:
+    owner: Kauã
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-033:
+    owner: Kauã
+    content_status: migration_required
+    origin_requirement: RF29
+    origin_status: confirmed_in_github_traceability
+    screens: [T17]
+  US-034:
+    owner: Kauã
+    known_title: "Corrigir registro sem apagar original"
+    content_status: migration_required
+    origin_requirement: null
+    origin_status: migration_required
+  US-035:
+    owner: Kauã
+    content_status: migration_required
+    origin_requirement: RNF01
+    origin_status: referenced_but_requirement_definition_missing
+    screens: [T17]
+
+proposals:
+  US-036:
+    title: "Consultar o próprio cuidado"
+    status: proposal
+    origin_requirement: RF30
+    statement: "Como Pessoa Idosa, quero acessar informações relacionadas ao meu cuidado para acompanhar minha rotina sem alterar registros existentes."
