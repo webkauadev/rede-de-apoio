@@ -11,63 +11,78 @@ resolution_policy:
     - "Search before creating."
     - "Use semantic instances instead of drawing equivalent primitives."
     - "Do not detach an instance unless the design requirement cannot be expressed through its properties/variants."
-    - "When an exact Figma node is unknown, resolve it from current screens or the design system before mutation."
+    - "When an exact component node is unknown, search the mapped Obra/shadcn page or inspect approved screen instances before mutation."
 
 core_components:
   button:
     semantic_name: Button
     preferred_source: obra_shadcn
-    figma_node: null
+    design_system_page: "1953:9005"
     resolution: search_existing_first
   input:
     semantic_name: Input
     preferred_source: obra_shadcn
-    figma_node: null
+    design_system_page: "1953:9018"
     resolution: search_existing_first
   select:
     semantic_name: Select
     preferred_source: obra_shadcn
-    figma_node: null
+    design_system_page: "1953:9034"
     resolution: search_existing_first
   textarea:
     semantic_name: Textarea
     preferred_source: obra_shadcn
-    figma_node: null
+    design_system_page: "1953:9038"
     resolution: search_existing_first
   date_picker:
     semantic_name: Date Picker
     preferred_source: obra_shadcn_or_existing_local
-    figma_node: null
+    design_system_page: "1999:6574"
     resolution: search_existing_first
   dialog:
     semantic_name: Dialog
     preferred_source: obra_shadcn
-    figma_node: null
+    design_system_page: "1953:9013"
     resolution: search_existing_first
   toast:
     semantic_name: Sonner / Toast
     preferred_source: obra_shadcn
-    figma_node: null
+    design_system_page: "2047:14487"
     resolution: search_existing_first
   badge:
     semantic_name: Badge
     preferred_source: obra_shadcn
-    figma_node: null
+    design_system_page: "1953:9003"
     resolution: search_existing_first
   switch:
     semantic_name: Switch
     preferred_source: obra_shadcn
-    figma_node: null
+    design_system_page: "1953:9035"
     resolution: search_existing_first
   card:
     semantic_name: Card
     preferred_source: obra_shadcn
-    figma_node: null
+    design_system_page: "1953:9007"
+    resolution: search_existing_first
+  skeleton:
+    semantic_name: Skeleton
+    preferred_source: obra_shadcn
+    design_system_page: "1953:9031"
+    resolution: search_existing_first
+  spinner:
+    semantic_name: Spinner
+    preferred_source: obra_shadcn
+    design_system_page: "1953:9033"
+    resolution: search_existing_first
+  empty_state:
+    semantic_name: Empty
+    preferred_source: obra_shadcn
+    design_system_page: "1999:15542"
     resolution: search_existing_first
   bottom_navigation:
     semantic_name: Bottom Navigation
     preferred_source: local_approved_component
-    figma_node: null
+    design_system_page: null
     resolution: inspect_current_screen
 
 local_domain_components:
@@ -100,6 +115,11 @@ screen_component_discovery:
       - input
       - button
     discovery_status: partial
+  T04:
+    known_instances:
+      - button
+      - date_picker
+    discovery_status: partial
   T06:
     known_instances:
       - t06_header_person
@@ -110,6 +130,13 @@ screen_component_discovery:
       - date_picker
       - bottom_navigation
     discovery_status: mapped_core
+  T08:
+    known_instances:
+      - input
+      - button
+      - card
+      - empty_state
+    discovery_status: partial
   T12:
     known_instances:
       - button
