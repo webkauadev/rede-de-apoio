@@ -3,9 +3,12 @@ last_updated: 2026-09-08
 
 sources:
   requirements:
-    system: GitLab
-    project_url: https://gitlab.fslab.dev/fabrica-de-software-i-2026/projeto6
+    system: GitHub
+    repository: webkauadev/rede-de-apoio
+    docs: docs/01_REQUIREMENTS
+    issues: https://github.com/webkauadev/rede-de-apoio/issues
     role: canonical_source_of_truth
+    missing_data_policy: migration_required
   human_catalog: docs/03_INFORMATION_ARCHITECTURE/SCREENS_CATALOG.md
   traceability: docs/03_INFORMATION_ARCHITECTURE/TRACEABILITY_MATRIX.md
   figma: docs/05_FIGMA/FIGMA_REGISTRY.yaml
@@ -13,8 +16,9 @@ sources:
 selection_policy:
   next_screen_for_owner:
     - "Prefer a screen explicitly requested by the user."
-    - "Otherwise prefer screens whose Figma mapping or required states are incomplete."
-    - "Resolve RF/RNF/US in the canonical GitLab project before changing functional scope."
+    - "Otherwise prefer screens whose Figma mapping or required states are incomplete and whose functional basis exists in GitHub."
+    - "Resolve RF/RNF/US in GitHub before changing functional scope."
+    - "If required functional content is absent, mark migration_required; do not consult external trackers."
   status_values:
     - figma_mapped
     - figma_partially_mapped
@@ -27,7 +31,7 @@ screens:
     flow_group: authentication
     figma_status: figma_mapped
     figma_page: david
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
 
   T02:
     name: Cadastro de Conta
@@ -35,7 +39,7 @@ screens:
     flow_group: authentication
     figma_status: figma_mapped
     figma_page: david
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
 
   T03:
     name: Home
@@ -43,7 +47,7 @@ screens:
     flow_group: operations
     figma_status: figma_discovery_required
     figma_page: rhuan
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
 
   T04:
     name: Calendário de Cuidados
@@ -51,7 +55,7 @@ screens:
     flow_group: operations
     figma_status: figma_partially_mapped
     figma_page: rhuan
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
     known_views:
       - week
       - day
@@ -62,7 +66,7 @@ screens:
     flow_group: health_records
     figma_status: figma_discovery_required
     figma_page: henrique
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
     integrations:
       receives_from_rhuan:
         - plantões
@@ -78,7 +82,7 @@ screens:
     flow_group: governance_records
     figma_status: figma_mapped
     figma_page: kaua
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
     integrations:
       receives_from_henrique:
         - sintomas_e_intercorrencias
@@ -90,7 +94,7 @@ screens:
     flow_group: health_records
     figma_status: figma_discovery_required
     figma_page: henrique
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
     integrations:
       receives_from_kaua:
         - exportar_csv
@@ -102,7 +106,7 @@ screens:
     flow_group: health_records
     figma_status: figma_partially_mapped
     figma_page: henrique
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
     mapping_note: "Two visible list frames share the same current-style name; canonical list base requires audit."
 
   T09:
@@ -111,7 +115,7 @@ screens:
     flow_group: operations
     figma_status: figma_discovery_required
     figma_page: rhuan
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
     integrations:
       receives_from_henrique:
         - lembrete_operacional
@@ -125,7 +129,7 @@ screens:
     flow_group: health_records
     figma_status: figma_discovery_required
     figma_page: henrique
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
 
   T11:
     name: Compromissos
@@ -133,7 +137,7 @@ screens:
     flow_group: operations
     figma_status: figma_discovery_required
     figma_page: rhuan
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
 
   T12:
     name: Perfil da Pessoa Idosa
@@ -141,7 +145,7 @@ screens:
     flow_group: care_network
     figma_status: figma_mapped
     figma_page: david
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
 
   T13:
     name: Rede de Cuidado
@@ -149,7 +153,7 @@ screens:
     flow_group: care_network
     figma_status: figma_discovery_required
     figma_page: david
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
 
   T14:
     name: Contatos Importantes
@@ -157,7 +161,7 @@ screens:
     flow_group: care_network
     figma_status: figma_discovery_required
     figma_page: david
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
 
   T15:
     name: Informações de Emergência
@@ -165,7 +169,7 @@ screens:
     flow_group: care_network
     figma_status: figma_discovery_required
     figma_page: david
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
 
   T16:
     name: Preferências de Notificações
@@ -173,7 +177,7 @@ screens:
     flow_group: governance_records
     figma_status: figma_mapped
     figma_page: kaua
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
 
   T17:
     name: Auditoria
@@ -181,7 +185,7 @@ screens:
     flow_group: governance_records
     figma_status: figma_discovery_required
     figma_page: kaua
-    requirements: resolve_in_gitlab
+    requirements: resolve_in_github
 
 owner_sequences:
   David:
@@ -223,4 +227,4 @@ transversal_elements:
     name: Manutenção de contato
     owner: David
 
-agent_rule: "If this registry conflicts with the canonical GitLab project, update this registry after verifying GitLab; do not change GitLab facts from this file alone."
+agent_rule: "GitHub is canonical. If required content is missing, mark migration_required. Never resolve functional scope from an external tracker or from Figma."
