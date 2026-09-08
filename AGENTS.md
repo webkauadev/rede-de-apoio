@@ -6,7 +6,7 @@ Este repositório é o **Context Pack** do projeto Rede de Apoio a Cuidadores de
 
 Quando houver conflito, usar esta prioridade:
 
-1. **GitLab oficial**: RF/RNF, US, Issues, status, responsáveis e critérios de aceitação.
+1. **GitLab oficial do projeto**: `https://gitlab.fslab.dev/fabrica-de-software-i-2026/projeto6` — RF/RNF, US, Issues, status, responsáveis e critérios de aceitação.
 2. Documentos canônicos deste repositório.
 3. Figma atual, considerando somente frames vigentes/aprovados.
 4. Inferências do agente, apenas quando inevitáveis e sempre marcadas como `não especificado` ou `hipótese`.
@@ -30,7 +30,7 @@ Antes de criar ou alterar uma tela, ler:
 11. `docs/05_FIGMA/FIGMA_GUIDELINES.md`
 12. `docs/05_FIGMA/FIGMA_REGISTRY.yaml`
 
-Se algum dado necessário estiver ausente, descobrir no GitLab/Figma antes de inventar.
+Se algum dado necessário estiver ausente, descobrir primeiro no projeto GitLab canônico acima ou no Figma antes de inventar.
 
 ## 3. Regra para telas e estados
 
@@ -70,7 +70,7 @@ O PR deve informar: T##, RF/RNF/US relacionados no GitLab, nodes do Figma, estad
 - Henrique: T05, T07, T08, T10
 - Kauã: T06, T16, T17
 
-A lista acima é contexto operacional. Se divergir do GitLab, o GitLab prevalece e este arquivo deve ser atualizado.
+A lista acima é contexto operacional. Se divergir do GitLab canônico, o GitLab prevalece e este arquivo deve ser atualizado.
 
 ## 7. Definition of Done para alteração visual por agente
 
