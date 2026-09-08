@@ -1,58 +1,247 @@
-schema_version: 2
+schema_version: 3
 last_updated: 2026-09-08
 canonical_system: GitHub
 repository: webkauadev/rede-de-apoio
 issue_registry: docs/06_GITHUB/ISSUE_REGISTRY.yaml
+source_guide: docs/01_REQUIREMENTS/GUIA_MESTRE_GITHUB_REDE_DE_APOIO.md
 
 policy:
-  - "This index inventories requirement identifiers currently documented in GitHub and their canonical Issues."
-  - "A title/summary does not replace approved full requirement text when that text is required for implementation."
-  - "Any requirement referenced by the project but missing its canonical definition is migration_required."
-  - "Agents must not query external trackers or invent requirement content."
+  - "RF, RNF and US are canonical GitHub Issues."
+  - "Every User Story has exactly one origin requirement."
+  - "Transversal requirements may influence acceptance/DoD but never become a second origin."
+  - "RF30/US-036 remain controlled proposals until explicitly approved in GitHub."
 
 functional_requirements:
-  RF01: {issue: 5, title: "Conta de acesso", status: documented_summary}
-  RF02: {issue: 6, title: "Autenticação", status: documented_summary}
-  RF03: {issue: 7, title: "Perfil da pessoa idosa", status: documented_summary}
-  RF04: {issue: 8, title: "Vincular/desvincular membros", status: documented_summary}
-  RF05: {issue: 9, title: "Papéis e permissões", status: documented_summary}
-  RF06: {issue: 10, title: "Plantões", status: documented_summary}
-  RF07: {issue: 11, title: "Calendário e histórico diário", status: documented_summary}
-  RF08: {issue: 12, title: "Atribuição de plantonista", status: documented_summary}
-  RF09: {issue: 13, title: "Trocas de plantão", status: documented_summary}
-  RF10: {issue: 14, title: "Notificações de plantão", status: documented_summary}
-  RF11: {issue: 15, title: "Diário de cuidados", status: documented_summary}
-  RF12: {issue: 16, title: "Histórico de cuidados", status: documented_summary}
-  RF13: {issue: 17, title: "Autoria e data/hora", status: documented_summary}
-  RF14: {issue: 18, title: "Medicamentos", status: documented_summary}
-  RF15: {issue: 19, title: "Posologia", status: documented_summary}
-  RF16: {issue: 20, title: "Administração de medicamento", status: documented_summary}
-  RF17: {issue: 21, title: "Lembretes obrigatórios", status: documented_summary}
-  RF18: {issue: 22, title: "Sintomas/intercorrências", status: documented_summary}
-  RF19: {issue: 23, title: "Consultas e recomendações", status: documented_summary}
-  RF20: {issue: 24, title: "Compromissos", status: documented_summary}
-  RF21: {issue: 25, title: "Tarefas", status: documented_summary}
-  RF22: {issue: 26, title: "Contatos importantes", status: documented_summary}
-  RF23: {issue: 27, title: "Anexos", status: documented_summary}
-  RF24: {issue: 28, title: "Emergência", status: documented_summary}
-  RF25: {issue: 29, title: "Notificações de registros", status: documented_summary}
-  RF26: {issue: 30, title: "Atraso de 15 minutos", status: documented_summary}
-  RF27: {issue: 31, title: "Preferências de notificações", status: documented_summary}
-  RF28: {issue: 32, title: "Exportação CSV", status: documented_summary}
-  RF29: {issue: 33, title: "Auditoria", status: documented_summary}
-  RF30: {issue: 34, title: "Permitir acesso de consulta à Pessoa Idosa", status: proposal}
+  RF01:
+    issue: 5
+    title: "Cadastrar conta de acesso"
+    owner: David
+    status: canonical
+    stories: [US-001]
+    description: "Permitir o cadastro de uma conta de acesso ao sistema para usuários autorizados. A conta deve permitir autenticação posterior e não deve expor informações sensíveis."
+  RF02:
+    issue: 6
+    title: "Autenticar-se"
+    owner: David
+    status: canonical
+    stories: [US-002]
+    description: "Permitir que um usuário com conta válida se autentique no aplicativo. Credenciais inválidas devem gerar feedback sem revelar dados sensíveis."
+  RF03:
+    issue: 7
+    title: "Manter perfil da pessoa idosa"
+    owner: David
+    status: canonical
+    stories: [US-003, US-004]
+    description: "Permitir cadastrar e atualizar os dados do perfil da pessoa idosa vinculada à rede de cuidado."
+  RF04:
+    issue: 8
+    title: "Vincular/desvincular membros"
+    owner: David
+    status: canonical
+    stories: [US-005, US-006]
+    description: "Permitir vincular e desvincular membros da rede de cuidado sem apagar o histórico de ações já registradas."
+  RF05:
+    issue: 9
+    title: "Gerenciar papéis acumuláveis e permissões"
+    owner: David
+    status: canonical
+    stories: [US-007]
+    description: "Permitir gerenciar os papéis familiares de Principal, Apoio e Emergência, respeitando a existência de exatamente um Principal ativo."
+  RF06:
+    issue: 10
+    title: "Gerenciar plantões"
+    owner: Rhuan
+    status: canonical
+    stories: [US-008]
+    description: "Permitir criar, alterar e cancelar plantões."
+  RF07:
+    issue: 11
+    title: "Consultar calendário e histórico diário"
+    owner: Rhuan
+    status: canonical
+    stories: [US-009, US-010]
+    description: "Permitir consultar a escala por calendário e acessar os detalhes/histórico de determinado dia."
+  RF08:
+    issue: 12
+    title: "Atribuir plantonista"
+    owner: Rhuan
+    status: canonical
+    stories: [US-011]
+    description: "Permitir atribuir o responsável por um intervalo de plantão. Plantonista Atual é condição temporária, não papel permanente."
+  RF09:
+    issue: 13
+    title: "Solicitar/registrar troca de plantão"
+    owner: Rhuan
+    status: canonical
+    stories: [US-012, US-013]
+    description: "Permitir solicitar, aceitar/recusar e registrar a troca de plantões entre usuários elegíveis."
+  RF10:
+    issue: 14
+    title: "Notificar eventos de plantão"
+    owner: Rhuan
+    status: canonical
+    stories: [US-014]
+    description: "Notificar usuário afetado e Familiar Principal quando houver atribuição, alteração, cancelamento ou troca de plantão."
+  RF11:
+    issue: 15
+    title: "Registrar diário"
+    owner: David
+    status: canonical
+    stories: [US-015]
+    description: "Permitir registrar ocorrências no Diário de Cuidados, com autoria, data/hora e preservação histórica."
+  RF12:
+    issue: 16
+    title: "Consultar histórico"
+    owner: David
+    status: canonical
+    stories: [US-016]
+    description: "Permitir consultar o histórico de registros de cuidado."
+  RF13:
+    issue: 17
+    title: "Identificar autoria e data/hora"
+    owner: Henrique
+    status: canonical_transversal
+    stories: []
+    description: "Todo registro relevante deve identificar autor e data/hora. É transversal e não deve ser usado como segunda origem de uma US."
+  RF14:
+    issue: 18
+    title: "Cadastrar medicamentos"
+    owner: Henrique
+    status: canonical
+    stories: [US-017]
+    description: "Permitir cadastrar medicamentos relacionados ao cuidado."
+  RF15:
+    issue: 19
+    title: "Registrar posologia e horários"
+    owner: Henrique
+    status: canonical
+    stories: [US-018]
+    description: "Permitir registrar posologia e horários previstos de medicamentos."
+  RF16:
+    issue: 20
+    title: "Registrar administração de medicamento"
+    owner: Henrique
+    status: canonical
+    stories: [US-019]
+    description: "Permitir registrar uma administração de medicamento, incluindo executor e horário real quando aplicável."
+  RF17:
+    issue: 21
+    title: "Lembrete obrigatório de cuidado programado ao plantonista"
+    owner: Henrique
+    status: canonical
+    stories: [US-020]
+    description: "Enviar lembrete obrigatório no horário previsto ao usuário que estiver ocupando a condição de Plantonista Atual."
+  RF18:
+    issue: 22
+    title: "Registrar sintomas e intercorrências"
+    owner: Henrique
+    status: canonical
+    stories: [US-021]
+    description: "Permitir registrar sintomas e intercorrências espontâneas. Sintoma espontâneo não é classificado como atraso."
+  RF19:
+    issue: 23
+    title: "Registrar consultas e recomendações"
+    owner: Rhuan
+    status: canonical
+    stories: [US-022]
+    description: "Permitir registrar consultas realizadas e recomendações relacionadas à saúde."
+  RF20:
+    issue: 24
+    title: "Registrar compromissos"
+    owner: Rhuan
+    status: canonical
+    stories: [US-023]
+    description: "Permitir registrar compromissos planejados relacionados ao cuidado."
+  RF21:
+    issue: 25
+    title: "Gerenciar tarefas"
+    owner: Rhuan
+    status: canonical
+    stories: [US-024, US-025]
+    description: "Permitir criar, atribuir e concluir tarefas de cuidado."
+  RF22:
+    issue: 26
+    title: "Manter contatos importantes"
+    owner: David
+    status: canonical
+    stories: [US-026]
+    description: "Permitir cadastrar e manter contatos importantes relacionados ao cuidado."
+  RF23:
+    issue: 27
+    title: "Anexar documentos e imagens"
+    owner: Henrique
+    status: canonical
+    stories: [US-027]
+    description: "Permitir anexar documentos/imagens de forma contextual. Não criar área principal Documentos."
+  RF24:
+    issue: 28
+    title: "Consultar informações de emergência"
+    owner: David
+    status: canonical
+    stories: [US-028]
+    description: "Permitir consultar rapidamente informações importantes em situação de emergência."
+  RF25:
+    issue: 29
+    title: "Notificar registros/ações realizados"
+    owner: Kauã
+    status: canonical
+    stories: [US-029]
+    description: "Notificar que um cuidado/ação foi registrado. Familiar Principal obrigatório; demais elegíveis configuráveis."
+  RF26:
+    issue: 30
+    title: "Alertar atraso após 15 minutos"
+    owner: Kauã
+    status: canonical
+    stories: [US-030]
+    description: "Alertar quando ação programada permanecer sem registro por 15 minutos. Sem registro não comprova que o cuidado não ocorreu."
+  RF27:
+    issue: 31
+    title: "Preferências de notificações opcionais"
+    owner: Kauã
+    status: canonical
+    stories: [US-031]
+    description: "Permitir configurar apenas notificações opcionais. Eventos obrigatórios não podem ser desligados."
+  RF28:
+    issue: 32
+    title: "Exportar históricos em CSV"
+    owner: Kauã
+    status: canonical
+    stories: [US-032]
+    description: "Permitir exportar históricos autorizados em CSV. A exportação é contextual, não área principal."
+  RF29:
+    issue: 33
+    title: "Consultar log de auditoria"
+    owner: Kauã
+    status: canonical
+    stories: [US-033]
+    description: "Permitir consultar o log de auditoria conforme permissão, registrando usuário, categoria/papéis, pessoa idosa, data/hora, operação, recurso e resultado."
+  RF30:
+    issue: 34
+    title: "Permitir acesso de consulta à Pessoa Idosa"
+    owner: null
+    status: proposal
+    stories: [US-036]
+    description: "Permitir que a Pessoa Idosa consulte, em modo somente leitura, informações autorizadas relacionadas ao próprio cuidado."
 
 non_functional_requirements:
   RNF01:
     issue: 35
-    status: migration_required
-    note: "Referenced by traceability for access denied, but canonical definition is absent from available GitHub/project sources."
+    title: "Controle de acesso a dados pessoais e de saúde"
+    owner: Kauã
+    status: canonical
+    stories: [US-035]
+    description: "Garantir acesso a informações pessoais e de saúde somente por usuários autorizados; tentativas não autorizadas devem ser bloqueadas e registradas."
+  RNF02:
+    issue: 82
+    title: "Imutabilidade e correção versionada"
+    owner: Kauã
+    status: canonical
+    stories: [US-034]
+    description: "Registros de cuidado não são sobrescritos nem apagados; correções geram novo registro vinculado ao original, preservando autoria, data/hora e histórico."
   RNF03:
     issue: 36
-    status: migration_required
-    note: "Referenced by component architecture for AuditEntryCard, but canonical definition is absent from available GitHub/project sources."
-
-proposal_catalog:
-  source: docs/01_REQUIREMENTS/RNF_PROPOSTA.md
-  prefix: RNF-P
-  rule: "RNF-P items are controlled proposals and are not approved RNFs until approved and promoted inside GitHub."
+    title: "Trilha de auditoria rastreável e preservada"
+    owner: Kauã
+    status: canonical_transversal
+    stories: []
+    description: "Operações relevantes produzem trilha de auditoria preservada e rastreável; influencia RF29/US-033 sem se tornar segunda origem."
