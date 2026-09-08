@@ -1,0 +1,96 @@
+schema_version: 1
+last_updated: 2026-09-08
+repository: webkauadev/rede-de-apoio
+canonical_system: GitHub
+
+policy:
+  - "Every RF/RNF/US used by agents must have a canonical GitHub Issue reference here."
+  - "An Issue with migration_required records a real identifier/lacuna; it does not authorize invented requirements."
+  - "P07 is resolved; other P issues remain open until their Definition of Done is satisfied."
+
+requirements:
+  RF01: {issue: 5, status: open}
+  RF02: {issue: 6, status: open}
+  RF03: {issue: 7, status: open}
+  RF04: {issue: 8, status: open}
+  RF05: {issue: 9, status: open}
+  RF06: {issue: 10, status: open}
+  RF07: {issue: 11, status: open}
+  RF08: {issue: 12, status: open}
+  RF09: {issue: 13, status: open}
+  RF10: {issue: 14, status: open}
+  RF11: {issue: 15, status: open}
+  RF12: {issue: 16, status: open}
+  RF13: {issue: 17, status: open}
+  RF14: {issue: 18, status: open}
+  RF15: {issue: 19, status: open}
+  RF16: {issue: 20, status: open}
+  RF17: {issue: 21, status: open}
+  RF18: {issue: 22, status: open}
+  RF19: {issue: 23, status: open}
+  RF20: {issue: 24, status: open}
+  RF21: {issue: 25, status: open}
+  RF22: {issue: 26, status: open}
+  RF23: {issue: 27, status: open}
+  RF24: {issue: 28, status: open}
+  RF25: {issue: 29, status: open}
+  RF26: {issue: 30, status: open}
+  RF27: {issue: 31, status: open}
+  RF28: {issue: 32, status: open}
+  RF29: {issue: 33, status: open}
+  RF30: {issue: 34, status: proposal}
+
+non_functional_requirements:
+  RNF01: {issue: 35, status: migration_required}
+  RNF03: {issue: 36, status: migration_required}
+
+user_stories:
+  US-001: {issue: 37, owner: David, content_status: migration_required}
+  US-002: {issue: 38, owner: David, content_status: migration_required}
+  US-003: {issue: 39, owner: David, content_status: migration_required}
+  US-004: {issue: 40, owner: David, content_status: migration_required}
+  US-005: {issue: 41, owner: David, content_status: migration_required}
+  US-006: {issue: 42, owner: David, content_status: migration_required}
+  US-007: {issue: 43, owner: David, content_status: migration_required}
+  US-008: {issue: 44, owner: Rhuan, content_status: migration_required}
+  US-009: {issue: 45, owner: Rhuan, content_status: migration_required}
+  US-010: {issue: 46, owner: Henrique, content_status: migration_required}
+  US-011: {issue: 47, owner: Rhuan, content_status: migration_required}
+  US-012: {issue: 48, owner: Rhuan, content_status: migration_required}
+  US-013: {issue: 49, owner: Rhuan, content_status: migration_required}
+  US-014: {issue: 50, owner: Rhuan, content_status: migration_required}
+  US-015: {issue: 51, owner: Kauã, content_status: migration_required}
+  US-016: {issue: 52, owner: Henrique, content_status: migration_required}
+  US-017: {issue: 53, owner: Henrique, content_status: migration_required}
+  US-018: {issue: 54, owner: Henrique, content_status: migration_required}
+  US-019: {issue: 55, owner: Henrique, content_status: migration_required}
+  US-020: {issue: 56, owner: Henrique, content_status: migration_required}
+  US-021: {issue: 57, owner: Henrique, content_status: migration_required}
+  US-022: {issue: 58, owner: Henrique, content_status: migration_required}
+  US-023: {issue: 59, owner: Rhuan, content_status: migration_required}
+  US-024: {issue: 60, owner: Rhuan, content_status: migration_required}
+  US-025: {issue: 61, owner: Rhuan, content_status: migration_required}
+  US-026: {issue: 62, owner: David, content_status: migration_required}
+  US-027: {issue: 63, owner: Henrique, content_status: migration_required}
+  US-028: {issue: 64, owner: David, content_status: migration_required}
+  US-029: {issue: 65, owner: Kauã, content_status: migration_required}
+  US-030: {issue: 66, owner: Kauã, content_status: migration_required}
+  US-031: {issue: 67, owner: Kauã, content_status: migration_required}
+  US-032: {issue: 68, owner: Kauã, content_status: migration_required}
+  US-033: {issue: 69, owner: Kauã, content_status: migration_required}
+  US-034: {issue: 70, owner: Kauã, content_status: migration_required}
+  US-035: {issue: 71, owner: Kauã, content_status: migration_required}
+
+proposals:
+  US-036: {issue: 72, status: proposal, origin: RF30}
+
+pending_work:
+  P01: {issue: 73, status: open}
+  P02: {issue: 74, status: open}
+  P03: {issue: 75, status: open}
+  P04: {issue: 76, status: open}
+  P05: {issue: 77, status: open}
+  P06: {issue: 78, status: open}
+  P07: {issue: 79, status: closed, state_reason: completed}
+  P08: {issue: 80, status: open}
+  P09: {issue: 81, status: open}
