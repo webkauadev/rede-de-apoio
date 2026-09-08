@@ -17,6 +17,7 @@ PATHS = {
     "components": ROOT / "docs/04_DESIGN_SYSTEM/COMPONENT_MAP.yaml",
     "stories": ROOT / "docs/01_REQUIREMENTS/USER_STORIES_INDEX.yaml",
     "requirements": ROOT / "docs/01_REQUIREMENTS/REQUIREMENTS_INDEX.yaml",
+    "issues": ROOT / "docs/06_GITHUB/ISSUE_REGISTRY.yaml",
 }
 
 GITHUB_OPERATIONAL_FILES = [
@@ -55,6 +56,12 @@ def collect_strings(value):
             yield from collect_strings(child)
 
 
+def issue_number(entry):
+    if not isinstance(entry, dict):
+        return None
+    return entry.get("issue")
+
+
 def main() -> int:
     errors: list[str] = []
 
@@ -81,6 +88,7 @@ def main() -> int:
         load_yaml(PATHS["components"])
         stories_doc = load_yaml(PATHS["stories"])
         requirements_doc = load_yaml(PATHS["requirements"])
+        issues_doc = load_yaml(PATHS["issues"])
     except (OSError, ValueError, yaml.YAMLError) as exc:
         print(f"ERROR: {exc}")
         return 1
@@ -93,10 +101,11 @@ def main() -> int:
         errors.append("SCREEN_REGISTRY canonical repository must be webkauadev/rede-de-apoio")
     if source.get("missing_data_policy") != "migration_required":
         errors.append("SCREEN_REGISTRY missing_data_policy must be migration_required")
-    if stories_doc.get("canonical_system") != "GitHub":
-        errors.append("USER_STORIES_INDEX canonical_system must be GitHub")
-    if requirements_doc.get("canonical_system") != "GitHub":
-        errors.append("REQUIREMENTS_INDEX canonical_system must be GitHub")
+    for name, doc in (("USER_STORIES_INDEX", stories_doc), ("REQUIREMENTS_INDEX", requirements_doc), ("ISSUE_REGISTRY", issues_doc)):
+        if doc.get("canonical_system") != "GitHub":
+            errors.append(f"{name} canonical_system must be GitHub")
+        if doc.get("repository") != "webkauadev/rede-de-apoio":
+            errors.append(f"{name} repository must be webkauadev/rede-de-apoio")
 
     # Prevent operational documentation from reintroducing the legacy tracker.
     for path in GITHUB_OPERATIONAL_FILES:
@@ -123,12 +132,9 @@ def main() -> int:
             errors.append(f"{screen_id}: owner is required")
         if screen.get("requirements") != "resolve_in_github":
             errors.append(f"{screen_id}: requirements must be resolve_in_github")
-
         status = screen.get("figma_status")
         if status == "figma_mapped" and screen_id not in figma_nodes:
-            errors.append(
-                f"{screen_id}: marked figma_mapped but missing from FIGMA_REGISTRY known_current_nodes"
-            )
+            errors.append(f"{screen_id}: marked figma_mapped but missing from FIGMA_REGISTRY known_current_nodes")
 
     for screen_id, state_entry in states.items():
         if screen_id not in screens:
@@ -144,7 +150,6 @@ def main() -> int:
         if figma_entry.get("owner") != screens[screen_id].get("owner"):
             errors.append(f"{screen_id}: owner differs between SCREEN_REGISTRY and FIGMA_REGISTRY")
 
-    # Every explicit state node should exist somewhere in the same screen's Figma registry entry.
     for screen_id, state_entry in states.items():
         if "states" not in state_entry or screen_id not in figma_nodes:
             continue
@@ -152,9 +157,7 @@ def main() -> int:
         for state_name, state_data in state_entry["states"].items():
             node = state_data.get("figma_node") if isinstance(state_data, dict) else None
             if node and node not in registered_values:
-                errors.append(
-                    f"{screen_id}/{state_name}: Figma node {node} is not registered in FIGMA_REGISTRY"
-                )
+                errors.append(f"{screen_id}/{state_name}: Figma node {node} is not registered in FIGMA_REGISTRY")
 
     # User Story inventory and assignment checks.
     stories = stories_doc.get("stories", {})
@@ -173,6 +176,8 @@ def main() -> int:
         actual_by_owner.setdefault(owner, set()).add(story_id)
         if story.get("content_status") not in {"migration_required", "complete"}:
             errors.append(f"{story_id}: content_status must be migration_required or complete")
+        if not isinstance(story.get("issue"), int) or story.get("issue", 0) <= 0:
+            errors.append(f"{story_id}: canonical GitHub issue number is required")
 
     for owner, expected_ids in EXPECTED_STORY_OWNERS.items():
         actual_ids = actual_by_owner.get(owner, set())
@@ -196,11 +201,65 @@ def main() -> int:
     missing_rf = sorted(expected_rf - set(functional))
     if missing_rf:
         errors.append(f"REQUIREMENTS_INDEX missing functional requirements: {', '.join(missing_rf)}")
+    for requirement_id, entry in functional.items():
+        if not isinstance(entry.get("issue"), int) or entry.get("issue", 0) <= 0:
+            errors.append(f"{requirement_id}: canonical GitHub issue number is required")
 
     nonfunctional = requirements_doc.get("non_functional_requirements", {})
     for requirement_id in ("RNF01", "RNF03"):
         if requirement_id not in nonfunctional:
             errors.append(f"REQUIREMENTS_INDEX missing referenced {requirement_id}")
+        elif not isinstance(nonfunctional[requirement_id].get("issue"), int):
+            errors.append(f"{requirement_id}: canonical GitHub issue number is required")
+
+    # Canonical Issue Registry checks.
+    issue_rf = issues_doc.get("requirements", {})
+    issue_rnf = issues_doc.get("non_functional_requirements", {})
+    issue_us = issues_doc.get("user_stories", {})
+    issue_pending = issues_doc.get("pending_work", {})
+    expected_pending = {f"P{i:02d}" for i in range(1, 10)}
+
+    if set(issue_rf) != expected_rf:
+        errors.append("ISSUE_REGISTRY requirements must contain exactly RF01-RF30")
+    if set(issue_us) != expected_stories:
+        errors.append("ISSUE_REGISTRY user_stories must contain exactly US-001-US-035")
+    if not {"RNF01", "RNF03"}.issubset(issue_rnf):
+        errors.append("ISSUE_REGISTRY must contain RNF01 and RNF03")
+    if set(issue_pending) != expected_pending:
+        errors.append("ISSUE_REGISTRY pending_work must contain exactly P01-P09")
+
+    seen_issue_numbers: dict[int, str] = {}
+    for section_name, section in (
+        ("requirements", issue_rf),
+        ("non_functional_requirements", issue_rnf),
+        ("user_stories", issue_us),
+        ("pending_work", issue_pending),
+        ("proposals", issues_doc.get("proposals", {})),
+    ):
+        for entity_id, entry in section.items():
+            number = issue_number(entry)
+            if not isinstance(number, int) or number <= 0:
+                errors.append(f"ISSUE_REGISTRY {section_name}/{entity_id}: valid issue number required")
+                continue
+            previous = seen_issue_numbers.get(number)
+            if previous:
+                errors.append(f"ISSUE_REGISTRY duplicate issue #{number}: {previous} and {section_name}/{entity_id}")
+            seen_issue_numbers[number] = f"{section_name}/{entity_id}"
+
+    # Cross-file Issue number consistency.
+    for requirement_id, entry in functional.items():
+        if requirement_id in issue_rf and entry.get("issue") != issue_rf[requirement_id].get("issue"):
+            errors.append(f"{requirement_id}: issue differs between REQUIREMENTS_INDEX and ISSUE_REGISTRY")
+    for requirement_id in ("RNF01", "RNF03"):
+        if requirement_id in nonfunctional and requirement_id in issue_rnf:
+            if nonfunctional[requirement_id].get("issue") != issue_rnf[requirement_id].get("issue"):
+                errors.append(f"{requirement_id}: issue differs between REQUIREMENTS_INDEX and ISSUE_REGISTRY")
+    for story_id, entry in stories.items():
+        if story_id in issue_us and entry.get("issue") != issue_us[story_id].get("issue"):
+            errors.append(f"{story_id}: issue differs between USER_STORIES_INDEX and ISSUE_REGISTRY")
+
+    if issue_pending.get("P07", {}).get("status") != "closed":
+        errors.append("P07 must be recorded as closed in ISSUE_REGISTRY")
 
     if errors:
         print("Agent context validation failed:")
@@ -208,16 +267,16 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    migration_count = sum(
-        1 for story in stories.values() if story.get("content_status") == "migration_required"
-    )
+    migration_count = sum(1 for story in stories.values() if story.get("content_status") == "migration_required")
     print("Agent context validation passed.")
     print(f"- screens: {len(screens)}")
     print(f"- screens with known Figma nodes: {len(figma_nodes)}")
     print(f"- state entries: {len(states)}")
     print(f"- official user stories indexed: {len(stories)}")
+    print(f"- user stories with canonical GitHub Issues: {sum(1 for s in stories.values() if isinstance(s.get('issue'), int))}")
     print(f"- user stories awaiting content migration: {migration_count}")
     print(f"- functional requirements indexed: {len(functional)}")
+    print(f"- canonical issue references registered: {len(seen_issue_numbers)}")
     return 0
 
 
