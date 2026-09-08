@@ -9,11 +9,12 @@
 | Profissional Saúde | Sim conforme vínculo | Conforme escopo | Não |
 
 > ⚠️ A linha **Pessoa Idosa** refere-se a RF30 / US-036, que estão em
-> **proposta controlada** até formalização no GitLab (RN-009, Decisão 003).
-> Não usar como base para tela, componente ou frame no Figma.
+> **proposta controlada** até aprovação canônica no GitHub (RN-009, Decisão 003).
+> Não usar como base para tela, componente ou frame no Figma enquanto não forem aprovados.
 >
 > ⚠️ A coluna **Alterar** não é decidível no estado atual ("Conforme regra",
 > "Conforme permissão", "Limitado", "Conforme escopo"). Ver pendência P03.
+> Enquanto a decisão não existir no GitHub, tratar como `migration_required`/pendência funcional e não inferir permissões.
 
 ## Regras
 
