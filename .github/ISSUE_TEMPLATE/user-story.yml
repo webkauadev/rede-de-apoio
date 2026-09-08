@@ -1,0 +1,78 @@
+name: User Story
+description: Registrar uma User Story canônica do projeto com rastreabilidade completa.
+title: "[US-0NN] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Esta Issue faz parte da fonte única operacional do projeto. Não referencie tracker externo como fonte canônica.
+
+  - type: input
+    id: us_id
+    attributes:
+      label: Identificador da US
+      description: Use o formato US-0NN.
+      placeholder: US-015
+    validations:
+      required: true
+
+  - type: input
+    id: origin_requirement
+    attributes:
+      label: Requisito de origem
+      description: Cada US deve ter exatamente um RF ou RNF de origem.
+      placeholder: RF11
+    validations:
+      required: true
+
+  - type: input
+    id: actor
+    attributes:
+      label: Ator
+      placeholder: Familiar de Apoio
+    validations:
+      required: true
+
+  - type: textarea
+    id: story
+    attributes:
+      label: Enunciado
+      description: Escreva no formato Como / Quero / Para.
+      placeholder: |
+        Como <ator>,
+        quero <ação>,
+        para <objetivo>.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critérios de aceitação
+      description: Liste critérios verificáveis e decidíveis.
+      placeholder: |
+        - [ ] Critério 1
+        - [ ] Critério 2
+    validations:
+      required: true
+
+  - type: input
+    id: owner
+    attributes:
+      label: Responsável
+      placeholder: Kauã
+    validations:
+      required: true
+
+  - type: input
+    id: screens
+    attributes:
+      label: Telas/elementos relacionados
+      description: Informe T##/E## quando aplicável.
+      placeholder: T06, E12
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Regras/observações relacionadas
+      description: Referencie regras, decisões ou outras Issues do próprio GitHub.
