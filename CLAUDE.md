@@ -27,6 +27,6 @@ Acesso próprio somente leitura está em formalização. Deve ser tratado como e
 
 ## Fontes de verdade
 
-- GitLab: requisitos, rastreabilidade e aprovação.
+- GitLab canônico: `https://gitlab.fslab.dev/fabrica-de-software-i-2026/projeto6` — requisitos, rastreabilidade e aprovação.
 - Figma: protótipo visual.
 - Este repositório: contexto consolidado e contratos operacionais para IA e equipe.
