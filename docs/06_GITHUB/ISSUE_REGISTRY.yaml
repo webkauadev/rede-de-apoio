@@ -1,12 +1,13 @@
-schema_version: 1
+schema_version: 2
 last_updated: 2026-09-08
 repository: webkauadev/rede-de-apoio
 canonical_system: GitHub
 
 policy:
-  - "Every RF/RNF/US used by agents must have a canonical GitHub Issue reference here."
-  - "An Issue with migration_required records a real identifier/lacuna; it does not authorize invented requirements."
-  - "P07 is resolved; other P issues remain open until their Definition of Done is satisfied."
+  - "Every RF/RNF/US used by agents has a canonical GitHub Issue reference here."
+  - "US-001 through US-035 have canonical title, statement, origin, owner and screen/action traceability from the Master Guide."
+  - "RF30/US-036 remain proposals."
+  - "P01 remains open only because the Master Guide does not enumerate a story-specific acceptance checklist for every US."
 
 requirements:
   RF01: {issue: 5, status: open}
@@ -21,7 +22,7 @@ requirements:
   RF10: {issue: 14, status: open}
   RF11: {issue: 15, status: open}
   RF12: {issue: 16, status: open}
-  RF13: {issue: 17, status: open}
+  RF13: {issue: 17, status: open, kind: transversal}
   RF14: {issue: 18, status: open}
   RF15: {issue: 19, status: open}
   RF16: {issue: 20, status: open}
@@ -41,56 +42,57 @@ requirements:
   RF30: {issue: 34, status: proposal}
 
 non_functional_requirements:
-  RNF01: {issue: 35, status: migration_required}
-  RNF03: {issue: 36, status: migration_required}
+  RNF01: {issue: 35, status: open}
+  RNF02: {issue: 82, status: open}
+  RNF03: {issue: 36, status: open, kind: transversal}
 
 user_stories:
-  US-001: {issue: 37, owner: David, content_status: migration_required}
-  US-002: {issue: 38, owner: David, content_status: migration_required}
-  US-003: {issue: 39, owner: David, content_status: migration_required}
-  US-004: {issue: 40, owner: David, content_status: migration_required}
-  US-005: {issue: 41, owner: David, content_status: migration_required}
-  US-006: {issue: 42, owner: David, content_status: migration_required}
-  US-007: {issue: 43, owner: David, content_status: migration_required}
-  US-008: {issue: 44, owner: Rhuan, content_status: migration_required}
-  US-009: {issue: 45, owner: Rhuan, content_status: migration_required}
-  US-010: {issue: 46, owner: Henrique, content_status: migration_required}
-  US-011: {issue: 47, owner: Rhuan, content_status: migration_required}
-  US-012: {issue: 48, owner: Rhuan, content_status: migration_required}
-  US-013: {issue: 49, owner: Rhuan, content_status: migration_required}
-  US-014: {issue: 50, owner: Rhuan, content_status: migration_required}
-  US-015: {issue: 51, owner: Kauã, content_status: migration_required}
-  US-016: {issue: 52, owner: Henrique, content_status: migration_required}
-  US-017: {issue: 53, owner: Henrique, content_status: migration_required}
-  US-018: {issue: 54, owner: Henrique, content_status: migration_required}
-  US-019: {issue: 55, owner: Henrique, content_status: migration_required}
-  US-020: {issue: 56, owner: Henrique, content_status: migration_required}
-  US-021: {issue: 57, owner: Henrique, content_status: migration_required}
-  US-022: {issue: 58, owner: Henrique, content_status: migration_required}
-  US-023: {issue: 59, owner: Rhuan, content_status: migration_required}
-  US-024: {issue: 60, owner: Rhuan, content_status: migration_required}
-  US-025: {issue: 61, owner: Rhuan, content_status: migration_required}
-  US-026: {issue: 62, owner: David, content_status: migration_required}
-  US-027: {issue: 63, owner: Henrique, content_status: migration_required}
-  US-028: {issue: 64, owner: David, content_status: migration_required}
-  US-029: {issue: 65, owner: Kauã, content_status: migration_required}
-  US-030: {issue: 66, owner: Kauã, content_status: migration_required}
-  US-031: {issue: 67, owner: Kauã, content_status: migration_required}
-  US-032: {issue: 68, owner: Kauã, content_status: migration_required}
-  US-033: {issue: 69, owner: Kauã, content_status: migration_required}
-  US-034: {issue: 70, owner: Kauã, content_status: migration_required}
-  US-035: {issue: 71, owner: Kauã, content_status: migration_required}
+  US-001: {issue: 37, owner: David, content_status: complete, origin: RF01}
+  US-002: {issue: 38, owner: David, content_status: complete, origin: RF02}
+  US-003: {issue: 39, owner: David, content_status: complete, origin: RF03}
+  US-004: {issue: 40, owner: David, content_status: complete, origin: RF03}
+  US-005: {issue: 41, owner: David, content_status: complete, origin: RF04}
+  US-006: {issue: 42, owner: David, content_status: complete, origin: RF04}
+  US-007: {issue: 43, owner: David, content_status: complete, origin: RF05}
+  US-008: {issue: 44, owner: Rhuan, content_status: complete, origin: RF06}
+  US-009: {issue: 45, owner: Rhuan, content_status: complete, origin: RF07}
+  US-010: {issue: 46, owner: Henrique, content_status: complete, origin: RF07}
+  US-011: {issue: 47, owner: Rhuan, content_status: complete, origin: RF08}
+  US-012: {issue: 48, owner: Rhuan, content_status: complete, origin: RF09}
+  US-013: {issue: 49, owner: Rhuan, content_status: complete, origin: RF09}
+  US-014: {issue: 50, owner: Rhuan, content_status: complete, origin: RF10}
+  US-015: {issue: 51, owner: Kauã, content_status: complete, origin: RF11}
+  US-016: {issue: 52, owner: Henrique, content_status: complete, origin: RF12}
+  US-017: {issue: 53, owner: Henrique, content_status: complete, origin: RF14}
+  US-018: {issue: 54, owner: Henrique, content_status: complete, origin: RF15}
+  US-019: {issue: 55, owner: Henrique, content_status: complete, origin: RF16}
+  US-020: {issue: 56, owner: Henrique, content_status: complete, origin: RF17}
+  US-021: {issue: 57, owner: Henrique, content_status: complete, origin: RF18}
+  US-022: {issue: 58, owner: Henrique, content_status: complete, origin: RF19}
+  US-023: {issue: 59, owner: Rhuan, content_status: complete, origin: RF20}
+  US-024: {issue: 60, owner: Rhuan, content_status: complete, origin: RF21}
+  US-025: {issue: 61, owner: Rhuan, content_status: complete, origin: RF21}
+  US-026: {issue: 62, owner: David, content_status: complete, origin: RF22}
+  US-027: {issue: 63, owner: Henrique, content_status: complete, origin: RF23}
+  US-028: {issue: 64, owner: David, content_status: complete, origin: RF24}
+  US-029: {issue: 65, owner: Kauã, content_status: complete, origin: RF25}
+  US-030: {issue: 66, owner: Kauã, content_status: complete, origin: RF26}
+  US-031: {issue: 67, owner: Kauã, content_status: complete, origin: RF27}
+  US-032: {issue: 68, owner: Kauã, content_status: complete, origin: RF28}
+  US-033: {issue: 69, owner: Kauã, content_status: complete, origin: RF29}
+  US-034: {issue: 70, owner: Kauã, content_status: complete, origin: RNF02}
+  US-035: {issue: 71, owner: Kauã, content_status: complete, origin: RNF01}
 
 proposals:
   US-036: {issue: 72, status: proposal, origin: RF30}
 
 pending_work:
-  P01: {issue: 73, status: open}
-  P02: {issue: 74, status: open}
+  P01: {issue: 73, status: open, scope: acceptance_criteria_checklists}
+  P02: {issue: 74, status: closed, state_reason: completed}
   P03: {issue: 75, status: open}
   P04: {issue: 76, status: open}
   P05: {issue: 77, status: open}
   P06: {issue: 78, status: open}
   P07: {issue: 79, status: closed, state_reason: completed}
-  P08: {issue: 80, status: open}
-  P09: {issue: 81, status: open}
+  P08: {issue: 80, status: closed, state_reason: completed}
+  P09: {issue: 81, status: closed, state_reason: completed}
