@@ -2,11 +2,11 @@
 
 > **STATUS: PROPOSTA CONTROLADA.**
 > Nenhum item deste documento é requisito aprovado.
-> Prefixo `RNF-P` = proposta. Só vira `RNF` após formalização no GitLab.
+> Prefixo `RNF-P` = proposta. Só vira `RNF` após aprovação e promoção canônica no GitHub.
 > Enquanto isso, nenhum item aqui pode ser usado para justificar funcionalidade nova.
 
-Contexto: o pack referencia RNF01 e RNF03 sem que exista documento de RNF (P02).
-Este arquivo cobre as cinco categorias exigidas na Fase 2 sem substituir os originais.
+Contexto: o pack referencia RNF01 e RNF03 sem que exista definição canônica desses RNFs no GitHub (P02).
+Este arquivo cobre categorias úteis como proposta sem substituir os requisitos originais que ainda precisam ser migrados.
 
 ---
 
@@ -38,8 +38,7 @@ Consequência direta em `CareRecordCard`, que usa badge para registro corrigido.
 ## Segurança
 
 ### RNF-P05 — Controle de acesso por categoria e papel
-Origem: RN-007. Toda leitura ou escrita de dado de saúde verifica a categoria do
-usuário e o vínculo com a pessoa idosa antes de retornar conteúdo.
+Origem: RN-007. Toda leitura ou escrita de dado de saúde verifica a categoria do usuário e o vínculo com a pessoa idosa antes de retornar conteúdo.
 
 ### RNF-P06 — Negação de acesso auditada
 Origem: RN-008 e `AUDIT_RULES.md` ("access denied attempts are also recorded").
@@ -54,35 +53,34 @@ Dado de saúde só é exibido na tela em que é necessário à tarefa.
 Nenhuma tela agrega dado sensível sem origem em RF.
 
 ### RNF-P08 — Preservação de registro original
-Origem: RN-005 e RN-006. A interface não pode oferecer ação de editar ou excluir
-registro de cuidado. Correção é sempre um novo registro vinculado.
+Origem: RN-005 e RN-006. A interface não pode oferecer ação de editar ou excluir registro de cuidado. Correção é sempre um novo registro vinculado.
 
 ---
 
 ## Usabilidade
 
 ### RNF-P09 — Consistência de shell entre telas
-Origem: `SCREEN_STANDARDS.md`. Mesmo AppTopBar, mesma BottomNavigation,
-mesma escala de espaçamento em todas as telas autenticadas.
+Origem: `SCREEN_STANDARDS.md`. Mesmo AppTopBar, mesma BottomNavigation, mesma escala de espaçamento em todas as telas autenticadas.
 
 ### RNF-P10 — Estados sempre derivados da página base
 Origem: Decisão 001. Loading, empty e error alteram apenas o necessário.
 
 ### RNF-P11 — Confirmação explícita para ação irreversível
-Origem: RN-005. Como registro é imutável, a criação é o ponto de não retorno.
-A tela deve deixar isso claro antes de salvar.
+Origem: RN-005. Como registro é imutável, a criação é o ponto de não retorno. A tela deve deixar isso claro antes de salvar.
 
 ---
 
 ## Desempenho
 
 ### RNF-P12 — Feedback de carregamento
-Nenhuma tela pode ficar sem retorno visual. Skeleton para listas, estado de
-botão para ações. Origem: `STATE_MANAGEMENT.md`, que já exige estado Loading.
+Nenhuma tela pode ficar sem retorno visual. Skeleton para listas, estado de botão para ações. Origem: `STATE_MANAGEMENT.md`, que já exige estado Loading.
 
 ### RNF-P13 — Carregamento incremental de listas cronológicas
 Origem: RF11/RF12 produzem listas que crescem indefinidamente.
 Diário e Histórico carregam por período ou paginação, não a coleção inteira.
 
-> RNF-P13 tem implicação de escopo (paginação/período). **Não implementado em T06**
-> até decisão. Registrado aqui apenas como proposta.
+> RNF-P13 tem implicação de escopo (paginação/período). **Não implementado em T06** até decisão aprovada no GitHub. Registrado aqui apenas como proposta.
+
+## Regra de promoção
+
+Para promover qualquer `RNF-P##` a `RNF##`, a decisão precisa ser aprovada no GitHub, incorporada ao inventário canônico e vinculada às US/telas afetadas. Propostas nunca substituem itens `migration_required` do catálogo oficial.
