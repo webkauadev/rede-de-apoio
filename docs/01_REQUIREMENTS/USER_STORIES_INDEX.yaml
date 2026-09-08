@@ -1,14 +1,16 @@
-schema_version: 1
+schema_version: 2
 last_updated: 2026-09-08
 canonical_system: GitHub
 repository: webkauadev/rede-de-apoio
-catalog_status: partial_migration
+catalog_status: issues_complete_content_partial
+issue_registry: docs/06_GITHUB/ISSUE_REGISTRY.yaml
 
 policy:
   - "US-001 through US-035 are the official story identifiers currently known for the project."
-  - "Every official US must ultimately have its full Como/Quero/Para text, one origin RF/RNF, acceptance criteria, actor, owner and GitHub Issue/reference."
+  - "Every official US now has a canonical GitHub Issue."
+  - "Every US must ultimately have full Como/Quero/Para text, one origin RF/RNF, acceptance criteria, actor, owner and screen/element traceability when applicable."
   - "Missing canonical content is migration_required. Agents must not query external trackers or infer missing text."
-  - "Known titles/origins below are included only when already supported by project material or GitHub traceability."
+  - "candidate_origin is an explicit inference and MUST NOT be treated as confirmed_origin."
 
 owner_distribution:
   David: 9
@@ -17,204 +19,92 @@ owner_distribution:
   Kauã: 8
 
 stories:
-  US-001:
-    owner: David
-    content_status: migration_required
-    origin_requirement: RF01
-    origin_status: confirmed_in_github_traceability
-    screens: [T02]
-  US-002:
-    owner: David
-    content_status: migration_required
-    origin_requirement: RF02
-    origin_status: confirmed_in_github_traceability
-    screens: [T01]
-  US-003:
-    owner: David
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-004:
-    owner: David
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-005:
-    owner: David
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-006:
-    owner: David
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-007:
-    owner: David
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-
-  US-008:
-    owner: Rhuan
-    content_status: migration_required
-    origin_requirement: RF06
-    origin_status: confirmed_in_github_traceability
-    screens: [T04]
-  US-009:
-    owner: Rhuan
-    content_status: migration_required
-    origin_requirement: RF07
-    origin_status: confirmed_in_github_traceability
-    screens: [T04, T05]
-  US-010:
-    owner: Henrique
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-011:
-    owner: Rhuan
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-012:
-    owner: Rhuan
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-013:
-    owner: Rhuan
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-014:
-    owner: Rhuan
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-015:
-    owner: Kauã
-    content_status: migration_required
-    origin_requirement: RF11
-    origin_status: confirmed_in_github_traceability
-    screens: [T06]
-
-  US-016:
-    owner: Henrique
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-017:
-    owner: Henrique
-    content_status: migration_required
-    origin_requirement: RF14
-    origin_status: confirmed_in_github_traceability
-    screens: [T08]
-  US-018:
-    owner: Henrique
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-019:
-    owner: Henrique
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-020:
-    owner: Henrique
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-021:
-    owner: Henrique
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
+  US-001: {issue: 37, owner: David, content_status: migration_required, origin_requirement: RF01, origin_status: confirmed_in_github_traceability, screens: [T02]}
+  US-002: {issue: 38, owner: David, content_status: migration_required, origin_requirement: RF02, origin_status: confirmed_in_github_traceability, screens: [T01]}
+  US-003: {issue: 39, owner: David, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-004: {issue: 40, owner: David, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-005: {issue: 41, owner: David, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-006: {issue: 42, owner: David, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-007: {issue: 43, owner: David, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-008: {issue: 44, owner: Rhuan, content_status: migration_required, origin_requirement: RF06, origin_status: confirmed_in_github_traceability, screens: [T04]}
+  US-009: {issue: 45, owner: Rhuan, content_status: migration_required, origin_requirement: RF07, origin_status: confirmed_in_github_traceability, screens: [T04, T05]}
+  US-010: {issue: 46, owner: Henrique, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-011: {issue: 47, owner: Rhuan, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-012: {issue: 48, owner: Rhuan, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-013: {issue: 49, owner: Rhuan, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-014: {issue: 50, owner: Rhuan, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-015: {issue: 51, owner: Kauã, content_status: migration_required, origin_requirement: RF11, origin_status: confirmed_in_github_traceability, screens: [T06]}
+  US-016: {issue: 52, owner: Henrique, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-017: {issue: 53, owner: Henrique, content_status: migration_required, origin_requirement: RF14, origin_status: confirmed_in_github_traceability, screens: [T08]}
+  US-018: {issue: 54, owner: Henrique, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-019: {issue: 55, owner: Henrique, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-020: {issue: 56, owner: Henrique, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-021: {issue: 57, owner: Henrique, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
   US-022:
+    issue: 58
     owner: Henrique
     known_title: "Consultas e recomendações"
     content_status: migration_required
     origin_requirement: null
     origin_status: migration_required
-  US-023:
-    owner: Rhuan
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-024:
-    owner: Rhuan
-    known_title: "Criar/atribuir tarefa"
-    content_status: migration_required
-    origin_requirement: RF21
-    origin_status: confirmed_in_github_traceability
-    screens: [T09]
+    candidate_origin: RF19
+    candidate_reason: "Exact functional-title match; not explicit in available source."
+    screens: [T10]
+    elements: [E19]
+  US-023: {issue: 59, owner: Rhuan, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-024: {issue: 60, owner: Rhuan, known_title: "Criar/atribuir tarefa", content_status: migration_required, origin_requirement: RF21, origin_status: confirmed_in_github_traceability, screens: [T09], elements: [E17_E18]}
   US-025:
+    issue: 61
     owner: Rhuan
     known_title: "Concluir tarefa"
     content_status: migration_required
     origin_requirement: null
     origin_status: migration_required
-  US-026:
-    owner: David
-    known_title: "Contatos importantes"
-    content_status: migration_required
-    origin_requirement: RF22
-    origin_status: confirmed_in_github_traceability
-    screens: [T14]
+    candidate_origin: RF21
+    candidate_reason: "Functional match with task completion; not explicit in available source."
+    screens: [T09]
+    elements: [E17_E18]
+  US-026: {issue: 62, owner: David, known_title: "Contatos importantes", content_status: migration_required, origin_requirement: RF22, origin_status: confirmed_in_github_traceability, screens: [T14], elements: [E26]}
   US-027:
+    issue: 63
     owner: Henrique
     known_title: "Anexar documento/imagem"
     content_status: migration_required
     origin_requirement: null
     origin_status: migration_required
+    candidate_origin: RF23
+    candidate_reason: "Direct functional-title match; not explicit in available source."
+    elements: [E10]
   US-028:
+    issue: 64
     owner: David
     known_title: "Informações de emergência"
     content_status: migration_required
     origin_requirement: null
     origin_status: migration_required
-
-  US-029:
-    owner: Kauã
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-030:
-    owner: Kauã
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-031:
-    owner: Kauã
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-032:
-    owner: Kauã
-    content_status: migration_required
-    origin_requirement: null
-    origin_status: migration_required
-  US-033:
-    owner: Kauã
-    content_status: migration_required
-    origin_requirement: RF29
-    origin_status: confirmed_in_github_traceability
-    screens: [T17]
+    candidate_origin: RF24
+    candidate_reason: "Direct functional-title match; not explicit in available source."
+    screens: [T15]
+  US-029: {issue: 65, owner: Kauã, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-030: {issue: 66, owner: Kauã, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-031: {issue: 67, owner: Kauã, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-032: {issue: 68, owner: Kauã, content_status: migration_required, origin_requirement: null, origin_status: migration_required}
+  US-033: {issue: 69, owner: Kauã, content_status: migration_required, origin_requirement: RF29, origin_status: confirmed_in_github_traceability, screens: [T17]}
   US-034:
+    issue: 70
     owner: Kauã
     known_title: "Corrigir registro sem apagar original"
     content_status: migration_required
     origin_requirement: null
     origin_status: migration_required
-  US-035:
-    owner: Kauã
-    content_status: migration_required
-    origin_requirement: RNF01
-    origin_status: referenced_but_requirement_definition_missing
-    screens: [T17]
+    related_business_rules: [RN-005, RN-006]
+    screens: [T06, T07]
+    elements: [E12]
+  US-035: {issue: 71, owner: Kauã, content_status: migration_required, origin_requirement: RNF01, origin_status: referenced_but_requirement_definition_missing, screens: [T17]}
 
 proposals:
   US-036:
+    issue: 72
     title: "Consultar o próprio cuidado"
     status: proposal
     origin_requirement: RF30
