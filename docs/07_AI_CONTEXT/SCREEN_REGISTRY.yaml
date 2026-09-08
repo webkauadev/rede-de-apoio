@@ -1,0 +1,219 @@
+schema_version: 1
+last_updated: 2026-09-08
+
+sources:
+  requirements: GitLab
+  human_catalog: docs/03_INFORMATION_ARCHITECTURE/SCREENS_CATALOG.md
+  traceability: docs/03_INFORMATION_ARCHITECTURE/TRACEABILITY_MATRIX.md
+  figma: docs/05_FIGMA/FIGMA_REGISTRY.yaml
+
+selection_policy:
+  next_screen_for_owner:
+    - "Prefer a screen explicitly requested by the user."
+    - "Otherwise prefer screens whose Figma mapping or required states are incomplete."
+    - "Resolve RF/RNF/US in GitLab before changing functional scope."
+  status_values:
+    - figma_mapped
+    - figma_partially_mapped
+    - figma_discovery_required
+
+screens:
+  T01:
+    name: Login
+    owner: David
+    flow_group: authentication
+    figma_status: figma_mapped
+    figma_page: david
+    requirements: resolve_in_gitlab
+
+  T02:
+    name: Cadastro de Conta
+    owner: David
+    flow_group: authentication
+    figma_status: figma_mapped
+    figma_page: david
+    requirements: resolve_in_gitlab
+
+  T03:
+    name: Home
+    owner: Rhuan
+    flow_group: operations
+    figma_status: figma_discovery_required
+    figma_page: null
+    requirements: resolve_in_gitlab
+
+  T04:
+    name: Calendário de Cuidados
+    owner: Rhuan
+    flow_group: operations
+    figma_status: figma_discovery_required
+    figma_page: null
+    requirements: resolve_in_gitlab
+
+  T05:
+    name: Detalhamento do Dia
+    owner: Henrique
+    flow_group: health_records
+    figma_status: figma_discovery_required
+    figma_page: null
+    requirements: resolve_in_gitlab
+    integrations:
+      receives_from_rhuan:
+        - plantões
+        - compromissos
+        - tarefas
+      receives_from_kaua:
+        - atraso
+        - correção
+
+  T06:
+    name: Diário de Cuidados
+    owner: Kauã
+    flow_group: governance_records
+    figma_status: figma_mapped
+    figma_page: kaua
+    requirements: resolve_in_gitlab
+    integrations:
+      receives_from_henrique:
+        - sintomas_e_intercorrencias
+        - anexo
+
+  T07:
+    name: Histórico de Cuidados
+    owner: Henrique
+    flow_group: health_records
+    figma_status: figma_discovery_required
+    figma_page: null
+    requirements: resolve_in_gitlab
+    integrations:
+      receives_from_kaua:
+        - exportar_csv
+        - corrigir_registro
+
+  T08:
+    name: Medicamentos
+    owner: Henrique
+    flow_group: health_records
+    figma_status: figma_discovery_required
+    figma_page: null
+    requirements: resolve_in_gitlab
+
+  T09:
+    name: Tarefas
+    owner: Rhuan
+    flow_group: operations
+    figma_status: figma_discovery_required
+    figma_page: null
+    requirements: resolve_in_gitlab
+    integrations:
+      receives_from_henrique:
+        - lembrete_operacional
+      receives_from_kaua:
+        - atraso
+        - notificacao_de_conclusao
+
+  T10:
+    name: Consultas e Recomendações
+    owner: Henrique
+    flow_group: health_records
+    figma_status: figma_discovery_required
+    figma_page: null
+    requirements: resolve_in_gitlab
+
+  T11:
+    name: Compromissos
+    owner: Rhuan
+    flow_group: operations
+    figma_status: figma_discovery_required
+    figma_page: null
+    requirements: resolve_in_gitlab
+
+  T12:
+    name: Perfil da Pessoa Idosa
+    owner: David
+    flow_group: care_network
+    figma_status: figma_mapped
+    figma_page: david
+    requirements: resolve_in_gitlab
+
+  T13:
+    name: Rede de Cuidado
+    owner: David
+    flow_group: care_network
+    figma_status: figma_discovery_required
+    figma_page: null
+    requirements: resolve_in_gitlab
+
+  T14:
+    name: Contatos Importantes
+    owner: David
+    flow_group: care_network
+    figma_status: figma_discovery_required
+    figma_page: null
+    requirements: resolve_in_gitlab
+
+  T15:
+    name: Informações de Emergência
+    owner: David
+    flow_group: care_network
+    figma_status: figma_discovery_required
+    figma_page: null
+    requirements: resolve_in_gitlab
+
+  T16:
+    name: Preferências de Notificações
+    owner: Kauã
+    flow_group: governance_records
+    figma_status: figma_mapped
+    figma_page: kaua
+    requirements: resolve_in_gitlab
+
+  T17:
+    name: Auditoria
+    owner: Kauã
+    flow_group: governance_records
+    figma_status: figma_discovery_required
+    figma_page: null
+    requirements: resolve_in_gitlab
+
+owner_sequences:
+  David:
+    - T01
+    - T02
+    - T12
+    - T13
+    - T14
+    - T15
+  Rhuan:
+    - T03
+    - T04
+    - T09
+    - T11
+  Henrique:
+    - T05
+    - T07
+    - T08
+    - T10
+  Kauã:
+    - T06
+    - T16
+    - T17
+
+transversal_elements:
+  E10:
+    name: Anexo
+    owner: Henrique
+  E12:
+    name: Corrigir registro sem apagar original
+    owner: Kauã
+  E17_E18:
+    name: Criar/Concluir tarefa
+    owner: Rhuan
+  E19:
+    name: Registrar consulta/recomendação
+    owner: Henrique
+  E26:
+    name: Manutenção de contato
+    owner: David
+
+agent_rule: "If this registry conflicts with GitLab, update this registry after verifying GitLab; do not change GitLab facts from this file alone."
