@@ -2,7 +2,10 @@ schema_version: 1
 last_updated: 2026-09-08
 
 sources:
-  requirements: GitLab
+  requirements:
+    system: GitLab
+    project_url: https://gitlab.fslab.dev/fabrica-de-software-i-2026/projeto6
+    role: canonical_source_of_truth
   human_catalog: docs/03_INFORMATION_ARCHITECTURE/SCREENS_CATALOG.md
   traceability: docs/03_INFORMATION_ARCHITECTURE/TRACEABILITY_MATRIX.md
   figma: docs/05_FIGMA/FIGMA_REGISTRY.yaml
@@ -11,7 +14,7 @@ selection_policy:
   next_screen_for_owner:
     - "Prefer a screen explicitly requested by the user."
     - "Otherwise prefer screens whose Figma mapping or required states are incomplete."
-    - "Resolve RF/RNF/US in GitLab before changing functional scope."
+    - "Resolve RF/RNF/US in the canonical GitLab project before changing functional scope."
   status_values:
     - figma_mapped
     - figma_partially_mapped
@@ -220,4 +223,4 @@ transversal_elements:
     name: Manutenção de contato
     owner: David
 
-agent_rule: "If this registry conflicts with GitLab, update this registry after verifying GitLab; do not change GitLab facts from this file alone."
+agent_rule: "If this registry conflicts with the canonical GitLab project, update this registry after verifying GitLab; do not change GitLab facts from this file alone."
