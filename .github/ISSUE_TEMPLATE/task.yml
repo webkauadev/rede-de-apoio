@@ -1,0 +1,63 @@
+name: Tarefa / Entrega
+description: Registrar uma entrega de design, desenvolvimento, documentação ou correção vinculada ao escopo canônico.
+title: "[TASK] "
+body:
+  - type: input
+    id: related_scope
+    attributes:
+      label: RF/RNF/US relacionados
+      description: Referencie os identificadores canônicos do GitHub.
+      placeholder: RF11, US-015
+    validations:
+      required: true
+
+  - type: input
+    id: screen
+    attributes:
+      label: Tela/elemento
+      placeholder: T06 / E12
+
+  - type: dropdown
+    id: work_type
+    attributes:
+      label: Tipo de trabalho
+      options:
+        - Design / Figma
+        - Desenvolvimento
+        - Documentação
+        - Correção
+        - Auditoria
+        - Migração de requisito/US/RNF
+    validations:
+      required: true
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objetivo da entrega
+    validations:
+      required: true
+
+  - type: textarea
+    id: done
+    attributes:
+      label: Critério de conclusão
+      placeholder: |
+        - [ ] Entrega implementada
+        - [ ] Critérios relacionados validados
+        - [ ] Rastreabilidade atualizada
+    validations:
+      required: true
+
+  - type: input
+    id: owner
+    attributes:
+      label: Responsável
+    validations:
+      required: true
+
+  - type: textarea
+    id: migration
+    attributes:
+      label: Pendências migration_required
+      description: Se algum conteúdo funcional ainda estiver ausente do GitHub, registre aqui. Não consulte tracker externo.
