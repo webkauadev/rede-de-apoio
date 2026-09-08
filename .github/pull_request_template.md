@@ -2,8 +2,9 @@
 
 - **Tela(s) T##:**
 - **Responsável:**
-- **GitLab RF/RNF/US/Issue:**
+- **GitHub RF/RNF/US/Issue:**
 - **Figma page/node(s):**
+- **Pendências `migration_required`:**
 
 ## O que mudou
 
@@ -37,15 +38,17 @@ Descreva a alteração funcional/visual sem criar requisitos novos.
 
 ## Rastreabilidade
 
-- [ ] Escopo conferido no GitLab
+- [ ] Escopo conferido exclusivamente no GitHub
+- [ ] RF/RNF/US/Issue relacionados estão referenciados
 - [ ] Nenhum RF/RNF/US foi inventado
+- [ ] Informação ausente foi marcada `migration_required`, sem consulta a tracker externo
 - [ ] `SCREEN_REGISTRY.yaml` continua coerente
 - [ ] `FIGMA_REGISTRY.yaml` continua coerente
 - [ ] CI `Validate agent context` passou
 
 ## Evidências / observações
 
-Inclua links do GitLab/Figma e decisões relevantes.
+Inclua links das Issues/arquivos do GitHub, nodes do Figma e decisões relevantes.
 
 ---
 
