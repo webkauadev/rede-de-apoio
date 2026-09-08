@@ -25,4 +25,4 @@ Dados de saúde exigem controle de acesso e rastreabilidade.
 Operações relevantes devem registrar usuário, data/hora, recurso e resultado.
 
 ## RN-009 — Pessoa Idosa read-only
-Acesso próprio da Pessoa Idosa permanece como evolução de escopo até formalização no GitLab.
+Acesso próprio da Pessoa Idosa permanece como evolução de escopo até aprovação canônica de RF30/US-036 no GitHub.
