@@ -83,6 +83,8 @@ A página Figma `Design Foundation` materializa a base para futuras refatoraçõ
 
 - `Rede de Apoio / Foundation / BaseCard` (`5640:21509`): infraestrutura visual de superfície, padding 16, radius 12 e hierarquia vertical. Cards de domínio continuam semânticos e independentes.
 - `Rede de Apoio / Foundation / AppHeader / Back` (`5640:21512`): header de 64 px com voltar em alvo de 48 px, título e espaço para ação secundária autorizada.
+- `Rede de Apoio / Foundation / Action / Touch Target 48` (`5644:324`): composição local de acessibilidade que centraliza uma instance `Button - Nova` Obra/shadcn em 48 px de altura. A primitive continua com sua altura visual nativa (32 px em `Default`); o wrapper define somente a área interativa do produto.
+- `Rede de Apoio / Foundation / Field / Control / Touch Target 48` (`5644:330`): composição local que centraliza `Input - Nova` ou `Select - Nova` em área de 48 px. A primitive `Large` continua visualmente com 36 px; textarea já possui altura visual superior ao mínimo.
 - `AppHeader / Contextual`: usa como referência a instância local aprovada `T06 / Header / Pessoa` (`5201:13483`) até sua promoção formal.
 - `BottomNavigation`: reutiliza `compFooter` (`5116:13047`) com a única variante permitida por item ativo.
 
@@ -92,4 +94,4 @@ A página Figma `Design Foundation` materializa a base para futuras refatoraçõ
 - `AppShell / Contextual`: header de pessoa 80 px, conteúdo rolável e bottom navigation 80 px.
 - `AppShell / Back`: header de 64 px; bottom navigation somente quando a arquitetura vigente da tela exigir.
 
-O campo reutilizável é a composição `label + hint + control + error`. Validation Error é estado do controle e da página-base, nunca uma tela estruturalmente independente.
+O campo reutilizável é a composição `label + hint + control + error`. Input e Select usam `Field / Control / Touch Target 48`; textarea mantém altura visual superior a 48 px. Validation Error é estado do controle e da página-base, nunca uma tela estruturalmente independente.

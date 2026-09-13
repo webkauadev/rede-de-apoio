@@ -78,7 +78,9 @@ Consultar `COMPONENT_MAP.yaml` antes de criar qualquer primitive equivalente a B
 
 Antes de migrar uma tela, inspecionar a página Figma `Design Foundation` (`5639:21448`) e o bloco `foundation` de `COMPONENT_MAP.yaml`.
 
-Ela representa o **TARGET** para novas migrações: grid 390/16/358, tipografia Geist sem texto estrutural abaixo de 14 px, controles com alvo de 48 px, `BaseCard`, `AppHeader / Contextual`, `AppHeader / Back` e `BottomNavigation` normalizada. Os frames T01–T17 permanecem **CURRENT** até cada migração individual.
+Ela representa o **TARGET** para novas migrações: grid 390/16/358, tipografia Geist sem texto estrutural abaixo de 14 px, controles com alvo de interação de 48 px, `BaseCard`, `AppHeader / Contextual`, `AppHeader / Back` e `BottomNavigation` normalizada. Os frames T01–T17 permanecem **CURRENT** até cada migração individual.
+
+O alvo de 48 px é uma composição do produto, não uma alegação sobre a primitive: `Button - Nova / Default` mantém 32 px visuais e `Input - Nova`/`Select - Nova / Large` mantêm 36 px visuais. Usar `Action / Touch Target 48` e `Field / Control / Touch Target 48` para centralizar as instances Obra sem modificar seus component sets.
 
 Não aplicar a foundation como alteração funcional: RF30/US-036, P01, P03–P06 e os defeitos FI-001–FI-008 continuam governados pelos documentos e Issues canônicos.
 

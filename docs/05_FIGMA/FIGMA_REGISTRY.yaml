@@ -58,6 +58,13 @@ foundation:
   local_components:
     base_card: '5640:21509'
     app_header_back: '5640:21512'
+    action_touch_target_48: '5644:324'
+    field_control_touch_target_48: '5644:330'
+  corrected_examples:
+    button_touch_target_rows: ['5644:341', '5644:342', '5644:343']
+    field_example_rows: ['5644:373', '5644:374', '5644:375']
+    feedback_rows: ['5644:390', '5644:391']
+    audit: '2026-09-13: zero unintended overflow; Obra Loading spinner internal bounds are an intentional kit exception.'
   variable_collections:
     primitives: 'VariableCollectionId:5639:154'
     semantic: 'VariableCollectionId:5639:155'
