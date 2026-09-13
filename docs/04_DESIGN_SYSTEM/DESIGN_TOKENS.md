@@ -49,6 +49,51 @@ campo de formulário. Essa é a correção do achado C5 da auditoria.
 | `color-active` | `#256B4D` | `#E6F4EE` | corresponde a "verde suave para estados ativos" de `DESIGN_SYSTEM.md` |
 | `color-focus-ring` | `#00567C` | — | anel de 2px, offset 2px |
 
+## Material 3 — expansão de papéis semânticos
+
+A partir da Decisão 007 e de `MATERIAL3_VISUAL_DIRECTION.md`, o sistema de cores deve distinguir **acento** de **container tonal**.
+
+Regra obrigatória:
+
+`papel M3 → token semântico local → valor Rede de Apoio`
+
+Não copiar valores baseline do Google. Copiar a **função semântica**.
+
+Papéis TARGET a materializar na collection `Rede de Apoio / Semantic` quando usados:
+
+| Papel local TARGET | Função M3 equivalente | Uso esperado | Status |
+|---|---|---|---|
+| `Color/On Surface` | `onSurface` | texto/ícone primário sobre surfaces | mapear a `color-text-primary` |
+| `Color/On Surface Variant` | `onSurfaceVariant` | texto/ícone secundário sobre containers | mapear a `color-text-secondary` |
+| `Color/Primary Container` | `primaryContainer` | container tonal associado ao primary | pendente de calibração |
+| `Color/On Primary Container` | `onPrimaryContainer` | conteúdo sobre Primary Container | pendente de calibração |
+| `Color/Secondary Container` | `secondaryContainer` | seleção/ênfase tonal, incluindo indicador de navegação quando adequado | pendente de calibração |
+| `Color/On Secondary Container` | `onSecondaryContainer` | conteúdo sobre Secondary Container | pendente de calibração |
+| `Color/Surface Container` | `surfaceContainer` | cards/sheets/menus com hierarquia tonal | pendente de calibração |
+| `Color/Surface Container Low` | `surfaceContainerLow` | camada tonal de baixa ênfase | pendente de calibração |
+| `Color/Scrim` | `scrim` | obscurecimento atrás de modal/sheet | mapear/revisar na Foundation |
+
+### Regra de uso
+
+- `Color/Primary` e `Color/Secondary` são cores de acento/conteúdo; não são substitutos universais para containers.
+- quando um elemento é um **container tonal**, preferir o papel `* Container` correspondente.
+- conteúdo dentro de um container tonal deve usar o papel `On * Container` compatível.
+- não vincular um papel errado só para eliminar hardcode.
+- se o papel correto ainda estiver `pendente de calibração`, a Foundation deve primeiro calibrá-lo e registrar o valor/variable ID antes de propagá-lo para T##.
+
+### Navigation Bar — baseline de calibração
+
+O indicador ativo do PR #91 atualmente usa `Color/Secondary` diretamente e **não deve ser canonizado assim**.
+
+A versão anterior utilizava um indicador tonal claro aproximadamente `#EBE8FA`; esse valor é apenas **referência/candidato visual** para calibrar `Color/Secondary Container`, não hardcode autorizado.
+
+Qualquer valor final deve:
+
+- manter contraste adequado com `Color/On Secondary Container`;
+- preservar a sensação acolhedora/calma do produto;
+- evitar saturação desnecessária;
+- ser registrado como token/variable antes de propagação.
+
 ## Tipografia
 
 Família: **Geist**. Fallback: Inter.
@@ -87,7 +132,7 @@ Escala: `4 · 8 · 12 · 16 · 20 · 24 · 32`
 ## Alvo de toque
 
 `touch-target-min` = **48 × 48 px**, espaçamento mínimo de 8 px entre alvos.
-Origem: RNF-P02 (proposta).
+Origem: RNF-P02 (proposta) e alinhamento com a orientação oficial Material/Android para interação touch.
 
 Esse token descreve o **alvo de interação do produto**, não a altura visual de uma primitive. Na foundation, `Button - Nova` preserva 32 px visuais em `Size=Default` e `Input - Nova`/`Select - Nova` preservam 36 px visuais em `Size=Large`; a composição externa de 48 px centraliza a instance e garante a área interativa mobile. O component set Obra/shadcn não é redimensionado nem alterado.
 
@@ -97,7 +142,7 @@ Largura de referência 390 px · margem lateral 16 px · largura útil 358 px.
 
 ## Foundation canônica no Figma — 2026-09-13
 
-O arquivo Figma canônico agora possui a página `Design Foundation` (`5639:21448`) como contrato visual para migrações futuras. Ela não substitui nem altera os frames atuais T01–T17.
+O arquivo Figma canônico possui a página `Design Foundation` (`5639:21448`) como contrato visual para migrações futuras. Ela não substitui nem altera os frames atuais T01–T17.
 
 ### CURRENT
 
@@ -111,7 +156,8 @@ O arquivo Figma canônico agora possui a página `Design Foundation` (`5639:2144
 - aliases semânticos para cor, spacing e radius, sem efeito automático sobre telas existentes;
 - estilos `Rede de Apoio / Type / Brand`, `Page Title`, `Section Title`, `Card Title`, `Body`, `Label` e `Badge`;
 - grid obrigatório para novas refatorações: 390 px, margem 16 px e conteúdo útil 358 px;
-- `Color/Disabled` referencia `Color/Muted Foreground`; componentes aplicam a redução de opacidade quando adequada, sem introduzir nova cor não documentada.
+- `Color/Disabled` referencia `Color/Muted Foreground`; componentes aplicam a redução de opacidade quando adequada, sem introduzir nova cor não documentada;
+- novos papéis M3 de container ficam bloqueados para propagação até calibração e registro na Foundation.
 
 As primitives do Obra/shadcn preservam suas geometrias internas quando necessário. A foundation define o padrão do produto para a composição e não reescreve o kit.
 
