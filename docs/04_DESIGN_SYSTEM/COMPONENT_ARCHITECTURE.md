@@ -143,20 +143,19 @@ A página Figma `Design Foundation` materializa a base para futuras refatoraçõ
 - `Rede de Apoio / Foundation / Action / Touch Target 48` (`5644:324`): composição local de acessibilidade que centraliza uma instance `Button - Nova` Obra/shadcn em 48 px de altura. A primitive continua com sua altura visual nativa.
 - `Rede de Apoio / Foundation / Field / Control / Touch Target 48` (`5644:330`): composição local que centraliza `Input - Nova` ou `Select - Nova` em área de 48 px. A primitive continua visualmente com 36 px em Large; textarea já possui altura superior ao mínimo.
 
-### Componentes foundation que exigem revisão
+### Componentes foundation materializados — revisão Material 3
 
-- `Rede de Apoio / Foundation / AppHeader / Back` (`5640:21512`): existe, mas deve ser revisado contra a nova arquitetura Material 3 antes de propagação.
+- `Rede de Apoio / Foundation / AppHeader / Root` (`5652:350`): 390 × 80 px; título da página, contexto secundário da Pessoa Idosa, avatar contextual e Configurações em target de 48 px.
+- `Rede de Apoio / Foundation / AppHeader / Back` (`5640:21512`): revisado para 390 × 64 px; voltar, título explícito e ação secundária opcional, ambos em targets de 48 px.
+- `Rede de Apoio / Foundation / NavigationBar / Primary` (`5652:442`): component set com `Active=Home|Agenda|Diário|Saúde`; quatro itens de 89,5 × 64 px, ícone de 24 px, label de 14 px e indicador de surface para seleção.
+- `Rede de Apoio / Foundation / Settings / Management Sheet` (`5652:443`): componente local de 358 × 700 px, lateral à direita, com scrim no exemplo aberto. A Sheet Obra foi avaliada, mas seu slot de documentação não comporta as rows sem expor conteúdo do kit; por isso não é usada como superfície final.
+- `Rede de Apoio / Foundation / AppShell / Root` (`5652:528`) e `AppShell / Back` (`5652:560`): referências estruturais de 390 × 700 px. `AppShell / Root / Settings Open` (`5652:592`) demonstra apenas a sobreposição visual.
+
+### Referências deprecated
 - `AppHeader / Contextual` baseado em `T06 / Header / Pessoa` (`5201:13483`): `DEPRECATED_FOR_NEW_MIGRATIONS` como header global.
 - `BottomNavigation` baseado em `compFooter` (`5116:13047`): `DEPRECATED_FOR_NEW_MIGRATIONS` por conter `Mais` e arquitetura de cinco itens não alinhada ao TARGET atual.
 
-### Componentes pendentes de materialização na Foundation
-
-Não inventar node IDs. Criar e registrar somente na próxima mutação do Figma:
-
-- `AppHeader / Root`;
-- `AppHeader / Back` revisado;
-- `NavigationBar / Primary` com Home, Agenda, Diário, Saúde;
-- `Settings / Management Sheet` sobre Sheet local/Obra/shadcn.
+Não propagar os componentes materializados para uma T## antes da revisão humana do PR desta Foundation.
 
 ### Shells alvo revisados
 
@@ -169,4 +168,4 @@ O campo reutilizável é a composição `label + hint + control + error`. Input 
 
 ## Gate de migração
 
-Até a revisão do header/navigation da `Design Foundation`, nenhuma tela autenticada deve promover `T06 / Header / Pessoa` ou `compFooter` atual como TARGET. A próxima alteração visual global deve ocorrer primeiro na Foundation.
+Até a revisão humana do PR desta Foundation, nenhuma tela autenticada deve receber os componentes TARGET. `T06 / Header / Pessoa` e `compFooter` atual continuam `DEPRECATED_FOR_NEW_MIGRATIONS`.

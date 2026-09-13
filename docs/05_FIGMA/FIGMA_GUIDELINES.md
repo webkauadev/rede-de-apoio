@@ -122,13 +122,15 @@ Não criar funcionalidade nova nem inferir permissão a partir da presença do i
 
 ## Gate temporário de migração
 
-Até a próxima revisão da `Design Foundation`:
+Após a revisão Material 3 da `Design Foundation`, e até o PR correspondente receber revisão humana:
 
 - `T06 / Header / Pessoa` como referência global = `DEPRECATED_FOR_NEW_MIGRATIONS`;
 - `compFooter`/BottomNavigation atual de cinco itens = `DEPRECATED_FOR_NEW_MIGRATIONS`;
 - nenhuma tela autenticada deve usar esses dois padrões antigos como TARGET;
-- a próxima mutação no Figma deve ocorrer na própria Foundation;
-- T03 somente deve ser migrada depois que o novo `AppShell / Root` estiver materializado.
+- não propagar componentes TARGET para T##;
+- T03 somente pode ser migrada depois da revisão humana do PR que materializa o novo `AppShell / Root`.
+
+Os nodes TARGET são `AppHeader / Root` (`5652:350`), `AppHeader / Back` revisado (`5640:21512`), `NavigationBar / Primary` (`5652:442`) e `Settings / Management Sheet` (`5652:443`). Material 3 orienta UX e acessibilidade; a implementação usa tokens Rede de Apoio, Geist e icons Lucide locais.
 
 ## Regras permanentes
 

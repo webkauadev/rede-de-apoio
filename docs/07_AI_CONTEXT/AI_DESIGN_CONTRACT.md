@@ -144,13 +144,13 @@ Essa organização é UX/IA visual. Não concede permissões e não cria RF/RNF/
 
 ### 4.3 Gate temporário para novas migrações
 
-Até a `Design Foundation` ser revisada no Figma:
+Até o PR da revisão Material 3 da `Design Foundation` receber revisão humana:
 
 - `T06 / Header / Pessoa` como referência global = `DEPRECATED_FOR_NEW_MIGRATIONS`;
 - `compFooter`/BottomNavigation atual de cinco itens = `DEPRECATED_FOR_NEW_MIGRATIONS`;
 - nenhuma tela autenticada pode usar esses padrões antigos como TARGET;
-- a próxima mutação visual deve revisar a Foundation, não migrar T01/T03 diretamente;
-- depois da Foundation revisada, T03 deve validar o novo `AppShell / Root`;
+- nenhuma tela autenticada pode receber os componentes TARGET recém-criados;
+- depois da revisão humana, T03 deve validar o novo `AppShell / Root`;
 - T01/T02 continuam como fluxo independente de `AuthShell`.
 
 Não aplicar essa mudança como alteração funcional: RF30/US-036, P01, P03–P06 e FI-001–FI-008 continuam governados pelos documentos e Issues canônicos.

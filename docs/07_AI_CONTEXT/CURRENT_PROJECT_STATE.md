@@ -162,8 +162,8 @@ Ordem obrigatória após esta decisão:
 - [x] tokens e component map disponíveis;
 - [x] foundation base criada;
 - [x] direção Material 3 documentada;
-- [ ] Foundation de header/navigation atualizada no Figma;
-- [ ] novos nodes `AppHeader / Root`, Navigation Bar e Settings Sheet registrados;
+- [x] Foundation de header/navigation atualizada no Figma, pendente de revisão humana do PR;
+- [x] novos nodes `AppHeader / Root`, Navigation Bar e Settings Sheet registrados;
 - [ ] Issue #84 corrigida no Figma;
 - [ ] P03/P04/P05/P06 resolvidas quando forem necessárias para uma entrega específica.
 
