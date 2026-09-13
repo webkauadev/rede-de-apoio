@@ -152,9 +152,15 @@ foundation:
     settings_management_sheet:
       semantic_name: 'Settings / Management Sheet'
       figma_node: '5652:443'
-      source: new_local_foundation_component_after_obra_sheet_assessment
+      source: obra_shadcn_sheet_slot_composition
       status: created_pending_pr_review
       destinations: [T12, T13, T14, T15, T16, T17]
+    settings_destination_row:
+      semantic_name: 'Settings / Destination Row'
+      figma_node: '5662:21869'
+      source: new_local_foundation_component
+      status: created_pending_pr_review
+      product_interaction_target: '326 × 56 px'
     app_shell_root:
       semantic_name: 'AppShell / Root'
       figma_node: '5652:528'

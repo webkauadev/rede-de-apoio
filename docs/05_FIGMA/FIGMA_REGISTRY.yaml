@@ -61,6 +61,7 @@ foundation:
     app_header_back_current: '5640:21512'
     action_touch_target_48: '5644:324'
     field_control_touch_target_48: '5644:330'
+    settings_destination_row: '5662:21869'
   component_status:
     base_card: target_valid
     action_touch_target_48: target_valid

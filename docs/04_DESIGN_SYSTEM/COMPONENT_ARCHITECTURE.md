@@ -145,10 +145,11 @@ A página Figma `Design Foundation` materializa a base para futuras refatoraçõ
 
 ### Componentes foundation materializados — revisão Material 3
 
-- `Rede de Apoio / Foundation / AppHeader / Root` (`5652:350`): 390 × 80 px; título da página, contexto secundário da Pessoa Idosa, avatar contextual e Configurações em target de 48 px.
+- `Rede de Apoio / Foundation / AppHeader / Root` (`5652:350`): 390 × 80 px; `Title`, `Context`, `Show avatar`, `Show settings` e swap de Avatar. Usa Avatar Obra `1953:32196`.
 - `Rede de Apoio / Foundation / AppHeader / Back` (`5640:21512`): revisado para 390 × 64 px; voltar, título explícito e ação secundária opcional, ambos em targets de 48 px.
 - `Rede de Apoio / Foundation / NavigationBar / Primary` (`5652:442`): component set com `Active=Home|Agenda|Diário|Saúde`; quatro itens de 89,5 × 64 px, ícone de 24 px, label de 14 px e indicador de surface para seleção.
-- `Rede de Apoio / Foundation / Settings / Management Sheet` (`5652:443`): componente local de 358 × 700 px, lateral à direita, com scrim no exemplo aberto. A Sheet Obra foi avaliada, mas seu slot de documentação não comporta as rows sem expor conteúdo do kit; por isso não é usada como superfície final.
+- `Rede de Apoio / Foundation / Settings / Management Sheet` (`5652:443`): 358 × 700 px, lateral à direita, composta por instance Obra Sheet `Scrollable=True` via Slot (`5662:21924`), sem detach.
+- `Rede de Apoio / Foundation / Settings / Destination Row` (`5662:21869`): 326 × 56 px, com `Label`, swap de leading icon e `Show chevron`; as seis rows da Sheet são instances.
 - `Rede de Apoio / Foundation / AppShell / Root` (`5652:528`) e `AppShell / Back` (`5652:560`): referências estruturais de 390 × 700 px. `AppShell / Root / Settings Open` (`5652:592`) demonstra apenas a sobreposição visual.
 
 ### Referências deprecated

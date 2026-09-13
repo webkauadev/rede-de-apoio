@@ -150,6 +150,7 @@ Até o PR da revisão Material 3 da `Design Foundation` receber revisão humana:
 - `compFooter`/BottomNavigation atual de cinco itens = `DEPRECATED_FOR_NEW_MIGRATIONS`;
 - nenhuma tela autenticada pode usar esses padrões antigos como TARGET;
 - nenhuma tela autenticada pode receber os componentes TARGET recém-criados;
+- os componentes TARGET usam variables semânticas e text styles da Foundation; não substituir bindings por valores hexadecimais;
 - depois da revisão humana, T03 deve validar o novo `AppShell / Root`;
 - T01/T02 continuam como fluxo independente de `AuthShell`.
 
