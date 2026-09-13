@@ -92,3 +92,23 @@ Origem: RNF-P02 (proposta).
 ## Grid mobile
 
 Largura de referência 390 px · margem lateral 16 px · largura útil 358 px.
+
+## Foundation canônica no Figma — 2026-09-13
+
+O arquivo Figma canônico agora possui a página `Design Foundation` (`5639:21448`) como contrato visual para migrações futuras. Ela não substitui nem altera os frames atuais T01–T17.
+
+### CURRENT
+
+- telas atuais ainda contêm margens 24/342, raios e headers fragmentados;
+- há texto abaixo de 14 px em frames canônicos ainda não migrados;
+- componentes existentes não receberam bindings novos por esta criação.
+
+### TARGET FOUNDATION
+
+- coleções isoladas: `Rede de Apoio / Primitives` (`VariableCollectionId:5639:154`) e `Rede de Apoio / Semantic` (`VariableCollectionId:5639:155`);
+- aliases semânticos para cor, spacing e radius, sem efeito automático sobre telas existentes;
+- estilos `Rede de Apoio / Type / Brand`, `Page Title`, `Section Title`, `Card Title`, `Body`, `Label` e `Badge`;
+- grid obrigatório para novas refatorações: 390 px, margem 16 px e conteúdo útil 358 px;
+- `Color/Disabled` referencia `Color/Muted Foreground`; componentes aplicam a redução de opacidade quando adequada, sem introduzir nova cor não documentada.
+
+As primitives do Obra/shadcn preservam suas geometrias internas quando necessário. A foundation define o padrão do produto para a composição e não reescreve o kit.
