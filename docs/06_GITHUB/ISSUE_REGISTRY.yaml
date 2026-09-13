@@ -96,4 +96,3 @@ pending_work:
   P07: {issue: 79, status: closed, state_reason: completed}
   P08: {issue: 80, status: closed, state_reason: completed}
   P09: {issue: 81, status: closed, state_reason: completed}
-  P10: {issue: 89, status: open, scope: material3_navigation_foundation_revision, blocks: authenticated_screen_migration}
