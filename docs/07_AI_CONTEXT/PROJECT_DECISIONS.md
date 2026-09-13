@@ -51,6 +51,16 @@ Sistemas legados ou trackers externos não fazem parte do fluxo dos agentes. Se 
 
 A partir de 2026-09-13, Material Design 3 passa a orientar decisões de **UX, hierarquia, navegação, app bars, acessibilidade, estados selecionados e prevenção de acionamento acidental**.
 
+Referências oficiais:
+
+- Material Design 3: https://m3.material.io/
+- Navigation Bar: https://developer.android.com/develop/ui/compose/components/navigation-bar
+- App Bars: https://developer.android.com/develop/ui/compose/components/app-bars
+- Navigation Drawer: https://developer.android.com/develop/ui/compose/components/drawer
+- Core app quality / touch targets: https://developer.android.com/develop/adaptive-apps/quality-guidelines/core-app-quality
+
+Essas referências orientam boas práticas; não são dependências de implementação do projeto.
+
 Regra de implementação:
 
 `Material 3 UX principles → Obra/shadcn/local primitives → identidade Rede de Apoio`
