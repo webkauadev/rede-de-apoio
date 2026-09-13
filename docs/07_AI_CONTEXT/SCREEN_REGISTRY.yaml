@@ -9,13 +9,27 @@ sources:
     role: canonical_source_of_truth
     missing_data_policy: migration_required
   human_catalog: docs/03_INFORMATION_ARCHITECTURE/SCREENS_CATALOG.md
+  sitemap: docs/03_INFORMATION_ARCHITECTURE/SITEMAP.md
   traceability: docs/03_INFORMATION_ARCHITECTURE/TRACEABILITY_MATRIX.md
   figma: docs/05_FIGMA/FIGMA_REGISTRY.yaml
   figma_audit: docs/05_FIGMA/FIGMA_AUDIT_2026-09-13.md
   prototype_integrity: docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml
+global_visual_direction:
+  reference: Material Design 3
+  role: ux_principles_not_component_library
+  implementation: Obra/shadcn/local components with Rede de Apoio identity
+  foundation_gate: navigation_foundation_revision_required_before_authenticated_screen_migration
+  deprecated_for_new_migrations: [t06_header_person_as_global_header, current_five_item_compFooter]
+  target_primary_navigation: [Home, Agenda, Diário, Saúde]
+  target_secondary_surface: settings_management_sheet
+  settings_destinations: [T12, T13, T14, T15, T16, T17]
+  first_root_shell_validation_after_foundation: T03
+  auth_shell_screens: [T01, T02]
 selection_policy:
   next_screen_for_owner:
   - Prefer a screen explicitly requested by the user.
+  - Before any authenticated-screen migration, check global_visual_direction.foundation_gate and FIGMA_REGISTRY foundation status.
+  - While the gate is active, revise the Design Foundation instead of propagating the deprecated header/footer.
   - Otherwise follow owner_sequences, prioritizing open integrity debt before redesign.
   - Resolve RF/RNF/US from the GitHub registries before changing functional scope.
   - A Figma reaction is evidence of current prototype behavior, not a functional requirement.
@@ -34,6 +48,7 @@ screens:
     origin_requirements: [RF02]
     user_stories: [US-002]
     purpose: Autenticar usuário com conta válida e comunicar credenciais inválidas sem expor dado sensível.
+    target_shell: AuthShell
   T02:
     name: Cadastro de Conta
     owner: David
@@ -44,6 +59,7 @@ screens:
     origin_requirements: [RF01]
     user_stories: [US-001]
     purpose: Cadastrar conta de acesso para usuário autorizado.
+    target_shell: AuthShell
   T03:
     name: Home / Visão Geral do Cuidado
     owner: Rhuan
@@ -55,6 +71,9 @@ screens:
     user_stories: [US-009, US-020, US-029, US-030]
     purpose: Concentrar resumo operacional do cuidado e acessos rápidos para calendário, tarefas e compromissos.
     functional_gates: [P04]
+    target_navigation_role: primary_home
+    target_shell: AppShell_Root
+    migration_order_note: first_root_shell_validation_after_foundation_revision
   T04:
     name: Calendário de Cuidados
     owner: Rhuan
@@ -65,6 +84,7 @@ screens:
     origin_requirements: [RF06, RF07, RF08, RF09, RF10]
     user_stories: [US-008, US-009, US-011, US-012, US-013, US-014]
     purpose: Consultar escala e organizar plantões; o Figma atual possui visões Semana e Dia.
+    target_navigation_role: primary_agenda_section_reference
   T05:
     name: Detalhamento do Dia
     owner: Henrique
@@ -86,6 +106,7 @@ screens:
     origin_requirements: [RF11, RF18, RF23]
     user_stories: [US-015, US-021, US-027]
     purpose: Registrar e consultar ocorrências cronológicas do cuidado, preservando autoria e histórico.
+    target_navigation_role: primary_diary
   T07:
     name: Histórico de Cuidados
     owner: Henrique
@@ -108,6 +129,7 @@ screens:
     user_stories: [US-017, US-018, US-019, US-020]
     purpose: Consultar e cadastrar medicamentos e seus dados de rotina; a lista canônica atual é o node 5235:924.
     prototype_integrity_issue: 84
+    target_navigation_role: primary_health_section_reference
   T09:
     name: Tarefas
     owner: Rhuan
@@ -130,6 +152,7 @@ screens:
     user_stories: [US-022, US-027]
     purpose: Registrar consultas e recomendações de saúde e anexos contextuais.
     prototype_integrity_issue: 84
+    target_navigation_role: health_section_sibling
   T11:
     name: Compromissos
     owner: Rhuan
@@ -149,7 +172,8 @@ screens:
     requirements: resolve_in_github
     origin_requirements: [RF03]
     user_stories: [US-003, US-004]
-    purpose: Cadastrar, visualizar e editar o perfil da pessoa idosa e servir de entrada visual para a área Rede e Apoio.
+    purpose: Cadastrar, visualizar e editar o perfil da pessoa idosa; no visual atual também serve de entrada para Rede e Apoio.
+    target_entry_surface: settings_management_sheet
     proposal_visuals: [RF30, US-036]
     prototype_integrity_issue: 84
   T13:
@@ -163,6 +187,7 @@ screens:
     user_stories: [US-005, US-006, US-007]
     context_stories: [US-011]
     purpose: Vincular/desvincular membros, gerenciar papéis familiares e transferir Familiar Principal.
+    target_entry_surface: settings_management_sheet
     functional_gates: [P03, P06]
     prototype_integrity_issue: 84
   T14:
@@ -175,6 +200,7 @@ screens:
     origin_requirements: [RF22]
     user_stories: [US-026]
     purpose: Consultar, adicionar e editar contatos importantes relacionados ao cuidado.
+    target_entry_surface: settings_management_sheet
   T15:
     name: Informações de Emergência
     owner: David
@@ -185,6 +211,7 @@ screens:
     origin_requirements: [RF24]
     user_stories: [US-028]
     purpose: Exibir rapidamente informações críticas autorizadas para situações de emergência.
+    target_entry_surface: settings_management_sheet
   T16:
     name: Preferências de Notificações
     owner: Kauã
@@ -195,6 +222,7 @@ screens:
     origin_requirements: [RF27]
     user_stories: [US-031]
     purpose: Configurar somente notificações opcionais; eventos obrigatórios não podem ser desligados.
+    target_entry_surface: settings_management_sheet
     functional_gates: [P04]
     prototype_integrity_issue: 84
   T17:
@@ -208,6 +236,7 @@ screens:
     user_stories: [US-033, US-035]
     transversal_requirements: [RNF03]
     purpose: Consultar trilha de auditoria autorizada, abrir detalhe e representar acesso proibido conforme RNF01/RNF03.
+    target_entry_surface: settings_management_sheet
 owner_sequences:
   David: [T01, T02, T12, T13, T14, T15]
   Rhuan: [T04, T11, T09, T03]
@@ -248,4 +277,4 @@ non_screen_catalog:
   E25: Transferir Principal
   E26: Manter contato
   E27: Acesso negado
-agent_rule: GitHub is canonical for behavior and scope. Figma is visual evidence. Resolve integrity defects before trusting prototype links; never promote proposals or open permission decisions by inference.
+agent_rule: GitHub is canonical for behavior and scope. Figma is visual evidence. Resolve integrity defects before trusting prototype links; never promote proposals or open permission decisions by inference. Material 3 is UX guidance only; while the foundation gate is active, do not propagate deprecated header/footer patterns into authenticated-screen migrations.

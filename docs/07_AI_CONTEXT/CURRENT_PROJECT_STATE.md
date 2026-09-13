@@ -12,12 +12,49 @@ Depois da auditoria de 2026-09-13:
 - US-001–US-035 têm título, ator, enunciado, origem única, owner e rastreabilidade;
 - US-036 permanece proposta;
 - T01–T17 têm rastreabilidade funcional;
-- T01–T17 agora têm nodes Figma atuais mapeados (**17/17**);
+- T01–T17 têm nodes Figma atuais mapeados (**17/17**);
 - estados atuais foram inventariados;
 - `prototypeIA` foi classificada como histórica;
-- dívida de wiring/nomenclatura do protótipo foi isolada na Issue #84 e em `PROTOTYPE_INTEGRITY.yaml`.
+- dívida de wiring/nomenclatura do protótipo foi isolada na Issue #84 e em `PROTOTYPE_INTEGRITY.yaml`;
+- a foundation global de tokens, grid, typography, controls e states foi criada e mergeada pelo PR #88.
 
-Isso deixa o GitHub **ideal para iniciar a refatoração severa de design com Codex**, desde que os gates abertos sejam respeitados. “Ideal para começar” não significa que todas as decisões de produto estejam resolvidas.
+## Mudança de direção visual — Material Design 3
+
+Após feedback de usabilidade, o direcionamento visual foi revisado.
+
+A Decisão 007 em `PROJECT_DECISIONS.md` estabelece:
+
+`Material 3 UX principles → Obra/shadcn/local primitives → identidade Rede de Apoio`
+
+Material Design 3 passa a ser **referência de UX**, não biblioteca de implementação. O projeto não adota SDK Material, Google Sans, paleta Google ou componentes Google prontos.
+
+### TARGET de navegação/header
+
+- `AppHeader / Root`: título da página como informação primária, contexto da Pessoa Idosa como secundário quando aplicável e ação global deliberada de Configurações;
+- `AppHeader / Back`: voltar + título explícito + contexto/ação opcional quando necessário e autorizado;
+- Navigation Bar primária mobile: `Home · Agenda · Diário · Saúde`;
+- `Mais` é removido do TARGET da Navigation Bar;
+- T12–T17 passam a ser organizadas como destinos secundários acessíveis por `Settings / Management Sheet`, disparado pelo header;
+- targets de interação permanecem >= 48 × 48 px.
+
+### Gate temporário de migração
+
+A `Design Foundation` atual continua válida para:
+
+- tokens;
+- tipografia;
+- grid 390/16/358;
+- Buttons/Fields e wrappers de 48 px;
+- BaseCard;
+- feedback;
+- `STATE = PAGE BASE + DELTA MÍNIMO`.
+
+Porém, dois padrões ficam **DEPRECATED_FOR_NEW_MIGRATIONS** até revisão no Figma:
+
+- `AppHeader / Contextual` baseado em `T06 / Header / Pessoa`;
+- `BottomNavigation`/`compFooter` atual de cinco itens com `Mais`.
+
+Portanto o ambiente está **READY para revisar a Foundation**, mas a migração efetiva de telas autenticadas fica pausada até essa revisão. Não iniciar T01/T03 como próximo passo de Figma antes de materializar a nova arquitetura de navegação.
 
 ## Fontes de autoridade
 
@@ -67,11 +104,11 @@ Issue #84 acompanha erros confirmados no Figma:
 - entradas T12 → T16/T17 sem click;
 - nomes semânticos incorretos em layers T13.
 
-Esses defeitos devem ser corrigidos antes de qualquer decisão baseada em wiring do protótipo.
+Esses defeitos continuam separados da mudança Material 3 e não podem ser reinterpretados como intenção funcional.
 
 ## Design system vigente
 
-Primitives devem seguir a ordem:
+Primitives seguem a ordem:
 1. componente local aprovado;
 2. Obra/shadcn existente;
 3. library vinculada;
@@ -79,33 +116,38 @@ Primitives devem seguir a ordem:
 
 Tokens oficiais estão em `docs/04_DESIGN_SYSTEM/DESIGN_TOKENS.md`, com grid mobile 390 px, margem 16 px, Geist/Inter, touch target mínimo 48x48 e cores semânticas de estado.
 
+Material 3 governa a **decisão de UX**; Obra/shadcn e componentes locais continuam governando a **materialização visual**.
+
 ## Preflight obrigatório do Codex
 
 Antes de qualquer alteração:
 1. ler `AGENTS.md`;
 2. ler este arquivo;
-3. resolver requisitos e Issues;
-4. ler `SCREEN_REGISTRY.yaml` + `STATE_MATRIX.yaml`;
-5. ler `FIGMA_REGISTRY.yaml` + `PROTOTYPE_INTEGRITY.yaml`;
-6. consultar `SCREENS_CATALOG.md` e `TRACEABILITY_MATRIX.md`;
-7. consultar tokens/component map;
-8. inspecionar o frame atual no Figma;
-9. só então editar.
+3. ler `PROJECT_DECISIONS.md`, especialmente a Decisão 007;
+4. resolver requisitos e Issues;
+5. ler `SCREEN_REGISTRY.yaml` + `STATE_MATRIX.yaml`;
+6. ler `FIGMA_REGISTRY.yaml` + `PROTOTYPE_INTEGRITY.yaml`;
+7. consultar `SITEMAP.md`, `SCREENS_CATALOG.md` e `TRACEABILITY_MATRIX.md`;
+8. consultar tokens/component map;
+9. inspecionar a `Design Foundation`;
+10. somente então editar.
 
-## Estratégia recomendada para a grande refatoração
+## Estratégia atual de refatoração
 
-Não redesenhar T01–T17 de uma vez.
+Ordem obrigatória após esta decisão:
 
-Ordem segura:
-1. corrigir/neutralizar dívida de integridade #84;
-2. auditar shell, navegação, tokens e primitives;
-3. eleger telas-base de referência por fluxo;
-4. normalizar componentes;
-5. refatorar uma T## e seus estados irmãos por vez;
-6. validar visualmente;
-7. atualizar registries;
-8. commit pequeno + PR;
-9. revisão humana.
+1. documentar a direção Material 3 no GitHub;
+2. revisar `Design Foundation` no Figma;
+3. materializar `AppHeader / Root`;
+4. revisar `AppHeader / Back`;
+5. materializar Navigation Bar de quatro destinos, sem `Mais`;
+6. materializar `Settings / Management Sheet` usando Sheet local/Obra quando possível;
+7. validar touch targets, safe areas, seleção e prevenção de toque acidental;
+8. registrar novos node IDs e atualizar registries;
+9. abrir PR da Foundation revisada;
+10. após revisão/merge, usar T03 como primeira prova do novo `AppShell / Root`;
+11. tratar T01/T02 separadamente como `AuthShell`;
+12. refatorar uma T## e seus states irmãos por vez.
 
 ## Definition of Ready do ambiente
 
@@ -115,12 +157,14 @@ Ordem segura:
 - [x] T01–T17 mapeadas no Figma;
 - [x] estados atuais inventariados;
 - [x] frames legados distinguidos;
-- [x] ambiguidades T08 resolvidas;
 - [x] proposal-only explicitado;
 - [x] defeitos de protótipo registrados;
-- [x] design tokens e component map disponíveis;
-- [x] CI de contexto existente;
+- [x] tokens e component map disponíveis;
+- [x] foundation base criada;
+- [x] direção Material 3 documentada;
+- [ ] Foundation de header/navigation atualizada no Figma;
+- [ ] novos nodes `AppHeader / Root`, Navigation Bar e Settings Sheet registrados;
 - [ ] Issue #84 corrigida no Figma;
 - [ ] P03/P04/P05/P06 resolvidas quando forem necessárias para uma entrega específica.
 
-O ambiente está pronto para **começar** a refatoração; os itens não marcados não bloqueiam auditoria visual/estrutural, mas bloqueiam decisões funcionais específicas.
+O próximo trabalho visual correto é **revisar a Foundation**, não migrar uma T## com o header/footer antigos.
