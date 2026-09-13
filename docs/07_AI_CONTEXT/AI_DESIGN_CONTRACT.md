@@ -26,7 +26,8 @@ Antes de editar o Figma, o agente deve determinar no GitHub:
 - estados necessários;
 - página/node atual no Figma;
 - telas aprovadas que servem de referência;
-- componentes e tokens disponíveis.
+- componentes e tokens disponíveis;
+- direção Material 3 vigente registrada em `PROJECT_DECISIONS.md` e `SITEMAP.md`.
 
 Se RF/RNF/US, permissão ou critério crítico estiver ausente, registrar `migration_required` e não preencher a lacuna por inferência. Correções puramente visuais/estruturais podem continuar quando não alterarem comportamento.
 
@@ -36,10 +37,11 @@ A ordem de descoberta visual é:
 
 1. frame vigente da própria tela;
 2. estados vigentes da mesma tela;
-3. telas aprovadas do mesmo responsável/fluxo;
-4. componentes locais reutilizáveis;
-5. componentes Obra/shadcn e bibliotecas disponíveis;
-6. criação de novo componente, somente como último recurso.
+3. `Design Foundation` e direção TARGET vigente;
+4. telas aprovadas do mesmo responsável/fluxo;
+5. componentes locais reutilizáveis;
+6. componentes Obra/shadcn e bibliotecas disponíveis;
+7. criação de novo componente, somente como último recurso.
 
 Frames com `LEGADO —` não são referência principal quando houver frame vigente.
 
@@ -72,17 +74,86 @@ Regras obrigatórias:
 - manter áreas de toque e legibilidade adequadas ao contexto mobile;
 - componentes novos devem ter propósito claro, nome semântico e reutilização plausível.
 
-Consultar `COMPONENT_MAP.yaml` antes de criar qualquer primitive equivalente a Button, Input, Select, Textarea, Dialog, Sonner/Toast, Badge, Switch, Card, navigation ou componente de domínio já mapeado.
+Consultar `COMPONENT_MAP.yaml` antes de criar qualquer primitive equivalente a Button, Input, Select, Textarea, Dialog, Sonner/Toast, Badge, Switch, Card, navigation, Sheet ou componente de domínio já mapeado.
 
 ### 4.1 Foundation canônica e transição
 
 Antes de migrar uma tela, inspecionar a página Figma `Design Foundation` (`5639:21448`) e o bloco `foundation` de `COMPONENT_MAP.yaml`.
 
-Ela representa o **TARGET** para novas migrações: grid 390/16/358, tipografia Geist sem texto estrutural abaixo de 14 px, controles com alvo de interação de 48 px, `BaseCard`, `AppHeader / Contextual`, `AppHeader / Back` e `BottomNavigation` normalizada. Os frames T01–T17 permanecem **CURRENT** até cada migração individual.
+A foundation continua TARGET para:
+
+- grid 390/16/358;
+- tipografia Geist sem texto estrutural abaixo de 14 px;
+- controls com target >= 48 × 48 px;
+- `BaseCard`;
+- feedbacks;
+- state architecture.
 
 O alvo de 48 px é uma composição do produto, não uma alegação sobre a primitive: `Button - Nova / Default` mantém 32 px visuais e `Input - Nova`/`Select - Nova / Large` mantêm 36 px visuais. Usar `Action / Touch Target 48` e `Field / Control / Touch Target 48` para centralizar as instances Obra sem modificar seus component sets.
 
-Não aplicar a foundation como alteração funcional: RF30/US-036, P01, P03–P06 e os defeitos FI-001–FI-008 continuam governados pelos documentos e Issues canônicos.
+### 4.2 Material Design 3 — direção obrigatória de UX
+
+Material Design 3 é referência para **decisões de UX**, não biblioteca visual do projeto.
+
+Regra:
+
+`Material 3 UX principles → Obra/shadcn/local primitives → identidade Rede de Apoio`
+
+Não importar SDK Material, Google Sans, paleta Google ou substituir primitives locais por componentes Google apenas para imitar Material.
+
+#### Header TARGET
+
+- `AppHeader / Root`: título da página como informação primária; contexto da Pessoa Idosa como secundário quando aplicável; ação global deliberada de Configurações à direita.
+- `AppHeader / Back`: voltar + título explícito + contexto/ação opcional quando necessário e autorizado.
+- avatar pode permanecer como contexto, mas não pode ser o único conteúdo que define o header.
+- ações de app bar devem possuir target >= 48 × 48 px e padding seguro da borda.
+
+#### Navigation Bar TARGET
+
+Destinos primários:
+
+`Home · Agenda · Diário · Saúde`
+
+Regras:
+
+- `Mais` não pertence ao TARGET;
+- Configurações não substitui `Mais` na Navigation Bar;
+- cada item é um destino singular, com ícone + label;
+- item ativo usa indicador/surface + ícone/label, não apenas cor;
+- targets >= 48 × 48 px;
+- distribuição equilibrada e safe area obrigatórias.
+
+#### Configurações e gestão
+
+T12–T17 continuam funcionais e não mudam de escopo.
+
+O TARGET de acesso global é:
+
+`AppHeader / Root → Configurações → Settings / Management Sheet`
+
+O Sheet deve reutilizar `Sheet` local/Obra/shadcn quando adequado e organizar:
+
+- T12 Pessoa Idosa;
+- T13 Rede de Cuidado;
+- T14 Contatos;
+- T15 Emergência;
+- T16 Preferências;
+- T17 Auditoria.
+
+Essa organização é UX/IA visual. Não concede permissões e não cria RF/RNF/US.
+
+### 4.3 Gate temporário para novas migrações
+
+Até a `Design Foundation` ser revisada no Figma:
+
+- `T06 / Header / Pessoa` como referência global = `DEPRECATED_FOR_NEW_MIGRATIONS`;
+- `compFooter`/BottomNavigation atual de cinco itens = `DEPRECATED_FOR_NEW_MIGRATIONS`;
+- nenhuma tela autenticada pode usar esses padrões antigos como TARGET;
+- a próxima mutação visual deve revisar a Foundation, não migrar T01/T03 diretamente;
+- depois da Foundation revisada, T03 deve validar o novo `AppShell / Root`;
+- T01/T02 continuam como fluxo independente de `AuthShell`.
+
+Não aplicar essa mudança como alteração funcional: RF30/US-036, P01, P03–P06 e FI-001–FI-008 continuam governados pelos documentos e Issues canônicos.
 
 ### 5. Auditoria obrigatória
 
@@ -96,10 +167,11 @@ Após cada alteração relevante:
 - estados irmãos mantêm dimensões e hierarquia coerentes?
 - existem valores visuais fora dos tokens sem justificativa?
 - algum frame legado foi alterado por engano?
+- algum header/footer deprecated foi propagado por engano?
 
 #### Auditoria visual
 
-Gerar screenshot do frame final e verificar alinhamento, hierarquia visual, legibilidade, contraste, densidade, espaçamento, consistência com telas de referência, feedback de estados e áreas de toque.
+Gerar screenshot do frame final e verificar alinhamento, hierarquia visual, legibilidade, contraste, densidade, espaçamento, consistência com telas de referência, feedback de estados, áreas de toque, safe areas e risco de toque acidental.
 
 Encontrando problema, corrigir e auditar novamente.
 
@@ -130,11 +202,12 @@ O Pull Request deve ficar aberto para revisão humana. Não fazer merge automát
 
 Ao receber `faça a próxima tela de <responsável>`:
 
-1. consultar `SCREEN_REGISTRY.yaml`;
-2. consultar as Issues/requisitos do próprio GitHub;
-3. selecionar a próxima tela desse responsável com trabalho pendente ou estado incompleto;
-4. se houver dado funcional ausente, marcar `migration_required` e não buscar fora do GitHub;
-5. executar todo este contrato;
-6. entregar Figma + branch/commits + PR para revisão.
+1. consultar `CURRENT_PROJECT_STATE.md` e verificar se há gate global de Foundation;
+2. consultar `SCREEN_REGISTRY.yaml`;
+3. consultar as Issues/requisitos do próprio GitHub;
+4. selecionar a próxima tela desse responsável somente se a Foundation vigente autorizar migração;
+5. se houver dado funcional ausente, marcar `migration_required` e não buscar fora do GitHub;
+6. executar todo este contrato;
+7. entregar Figma + branch/commits + PR para revisão.
 
-Ao receber `execute T##`, usar exatamente a tela solicitada e não expandir escopo funcional sem requisito canônico no GitHub.
+Ao receber `execute T##`, usar exatamente a tela solicitada e não expandir escopo funcional sem requisito canônico no GitHub. Se a Foundation estiver bloqueada por revisão global, primeiro informar o bloqueio e executar somente a revisão de Foundation autorizada.
