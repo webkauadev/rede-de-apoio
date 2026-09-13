@@ -15,6 +15,7 @@ core_components:
   textarea: {semantic_name: Textarea, preferred_source: obra_shadcn, design_system_page: '1953:9038', resolution: search_existing_first}
   date_picker: {semantic_name: Date Picker, preferred_source: obra_shadcn_or_existing_local, design_system_page: '1999:6574', resolution: search_existing_first}
   dialog: {semantic_name: Dialog, preferred_source: obra_shadcn, design_system_page: '1953:9013', resolution: search_existing_first}
+  sheet: {semantic_name: Sheet, preferred_source: obra_shadcn, design_system_page: null, resolution: search_existing_first}
   toast: {semantic_name: Sonner / Toast, preferred_source: obra_shadcn, design_system_page: '2047:14487', resolution: search_existing_first}
   badge: {semantic_name: Badge, preferred_source: obra_shadcn, design_system_page: '1953:9003', resolution: search_existing_first}
   switch: {semantic_name: Switch, preferred_source: obra_shadcn, design_system_page: '1953:9035', resolution: search_existing_first}
@@ -22,14 +23,15 @@ core_components:
   skeleton: {semantic_name: Skeleton, preferred_source: obra_shadcn, design_system_page: '1953:9031', resolution: search_existing_first}
   spinner: {semantic_name: Spinner, preferred_source: obra_shadcn, design_system_page: '1953:9033', resolution: search_existing_first}
   empty_state: {semantic_name: Empty, preferred_source: obra_shadcn, design_system_page: '1999:15542', resolution: search_existing_first}
-  bottom_navigation: {semantic_name: Bottom Navigation, preferred_source: local_approved_component, design_system_page: null, resolution: inspect_current_screen}
+  bottom_navigation: {semantic_name: Bottom Navigation CURRENT, preferred_source: local_approved_component, design_system_page: null, resolution: inspect_current_screen, target_status: deprecated_for_new_migrations}
 local_domain_components:
   t06_header_person:
     semantic_name: T06 / Header / Pessoa
     owner: Kauã
     figma_page: kaua
     figma_node: '5201:13483'
-    status: verified
+    status: verified_current
+    target_status: deprecated_for_new_migrations_as_global_header
     usage: [T06]
   care_record_card:
     semantic_name: T06 / Care Record Card
@@ -70,9 +72,19 @@ new_component_gate:
   - Document purpose/usage.
   - Register the new component in this file.
 
+ux_direction:
+  reference: Material Design 3
+  role: ux_principles_not_component_library
+  implementation_stack: [local_approved_components, obra_shadcn, rede_de_apoio_identity]
+  rules:
+  - Material 3 governs hierarchy, navigation, app bars, selection, ergonomics and accessibility.
+  - Do not import Material SDK, Google Sans, Google palette or replace local primitives solely to imitate Material.
+  - Product touch targets remain at least 48 x 48 px.
+
 foundation:
-  status: target_foundation_created_not_screen_migration
+  status: requires_material3_navigation_revision_before_screen_migration
   figma_page: {name: Design Foundation, node_id: '5639:21448'}
+  migration_gate: authenticated_screen_migration_blocked_until_navigation_foundation_revision
   token_collections:
     primitives: {name: 'Rede de Apoio / Primitives', id: 'VariableCollectionId:5639:154'}
     semantic: {name: 'Rede de Apoio / Semantic', id: 'VariableCollectionId:5639:155'}
@@ -81,13 +93,13 @@ foundation:
       semantic_name: 'Rede de Apoio / Foundation / BaseCard'
       figma_node: '5640:21509'
       source: new_local_foundation_component
-      migration_status: target_only
+      migration_status: target_valid
       screens_applicable: [T03, T04, T05, T06, T07, T08, T09, T10, T11, T13, T14, T15, T17]
     app_header_back:
       semantic_name: 'Rede de Apoio / Foundation / AppHeader / Back'
       figma_node: '5640:21512'
       source: new_local_foundation_component
-      migration_status: target_only
+      migration_status: requires_material3_revision
       screens_applicable: [T12, T13, T14, T15, T16]
     action_touch_target_48:
       semantic_name: 'Rede de Apoio / Foundation / Action / Touch Target 48'
@@ -95,7 +107,7 @@ foundation:
       source: new_local_foundation_composition_with_obra_button_instance
       primitive_visual_height: '32 px (Button - Nova / Default)'
       product_interaction_target: '48 × 48 px minimum'
-      migration_status: target_only
+      migration_status: target_valid
       screens_applicable: [T01, T02, T03, T04, T05, T06, T07, T08, T09, T10, T11, T12, T13, T14, T15, T16, T17]
     field_control_touch_target_48:
       semantic_name: 'Rede de Apoio / Foundation / Field / Control / Touch Target 48'
@@ -103,17 +115,40 @@ foundation:
       source: new_local_foundation_composition_with_obra_input_or_select_instance
       primitive_visual_height: '36 px (Input - Nova / Select - Nova / Large)'
       product_interaction_target: '48 × 48 px minimum'
-      migration_status: target_only
+      migration_status: target_valid
       screens_applicable: [T01, T02, T08, T10, T11, T12, T14, T16, T17]
-    app_header_contextual:
-      semantic_name: 'AppHeader / Contextual'
+    app_header_contextual_current:
+      semantic_name: 'AppHeader / Contextual CURRENT'
       figma_node: '5201:13483'
       source: existing_local_component
-      migration_status: reference_only_pending_promotion
+      migration_status: deprecated_for_new_migrations
       screens_applicable: [T03, T05, T06, T09, T11, T17]
-    bottom_navigation:
-      semantic_name: BottomNavigation
+    bottom_navigation_current:
+      semantic_name: BottomNavigation CURRENT
       figma_node: '5116:13047'
       source: existing_local_component_set
-      migration_status: reference_only_pending_normalization
+      migration_status: deprecated_for_new_migrations
+      reason: contains Mais as a fifth mixed-priority destination
       screens_applicable: [T03, T04, T05, T06, T07, T08, T09, T10, T11, T12, T13, T14, T15, T16, T17]
+  target_components_pending_figma:
+    app_header_root:
+      semantic_name: 'AppHeader / Root'
+      figma_node: null
+      status: pending_foundation_revision
+      target_structure: page_title + person_context_when_applicable + settings_action
+    app_header_back_material3_revision:
+      semantic_name: 'AppHeader / Back'
+      figma_node: null
+      status: pending_foundation_revision
+    navigation_bar_primary:
+      semantic_name: 'NavigationBar / Primary'
+      figma_node: null
+      status: pending_foundation_revision
+      destinations: [Home, Agenda, Diário, Saúde]
+      forbidden_destination: Mais
+    settings_management_sheet:
+      semantic_name: 'Settings / Management Sheet'
+      figma_node: null
+      status: pending_foundation_revision
+      preferred_source: existing_obra_shadcn_sheet
+      destinations: [T12, T13, T14, T15, T16, T17]
