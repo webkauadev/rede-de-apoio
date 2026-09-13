@@ -69,3 +69,51 @@ new_component_gate:
   - Bind existing tokens/styles when available.
   - Document purpose/usage.
   - Register the new component in this file.
+
+foundation:
+  status: target_foundation_created_not_screen_migration
+  figma_page: {name: Design Foundation, node_id: '5639:21448'}
+  token_collections:
+    primitives: {name: 'Rede de Apoio / Primitives', id: 'VariableCollectionId:5639:154'}
+    semantic: {name: 'Rede de Apoio / Semantic', id: 'VariableCollectionId:5639:155'}
+  components:
+    base_card:
+      semantic_name: 'Rede de Apoio / Foundation / BaseCard'
+      figma_node: '5640:21509'
+      source: new_local_foundation_component
+      migration_status: target_only
+      screens_applicable: [T03, T04, T05, T06, T07, T08, T09, T10, T11, T13, T14, T15, T17]
+    app_header_back:
+      semantic_name: 'Rede de Apoio / Foundation / AppHeader / Back'
+      figma_node: '5640:21512'
+      source: new_local_foundation_component
+      migration_status: target_only
+      screens_applicable: [T12, T13, T14, T15, T16]
+    action_touch_target_48:
+      semantic_name: 'Rede de Apoio / Foundation / Action / Touch Target 48'
+      figma_node: '5644:324'
+      source: new_local_foundation_composition_with_obra_button_instance
+      primitive_visual_height: '32 px (Button - Nova / Default)'
+      product_interaction_target: '48 × 48 px minimum'
+      migration_status: target_only
+      screens_applicable: [T01, T02, T03, T04, T05, T06, T07, T08, T09, T10, T11, T12, T13, T14, T15, T16, T17]
+    field_control_touch_target_48:
+      semantic_name: 'Rede de Apoio / Foundation / Field / Control / Touch Target 48'
+      figma_node: '5644:330'
+      source: new_local_foundation_composition_with_obra_input_or_select_instance
+      primitive_visual_height: '36 px (Input - Nova / Select - Nova / Large)'
+      product_interaction_target: '48 × 48 px minimum'
+      migration_status: target_only
+      screens_applicable: [T01, T02, T08, T10, T11, T12, T14, T16, T17]
+    app_header_contextual:
+      semantic_name: 'AppHeader / Contextual'
+      figma_node: '5201:13483'
+      source: existing_local_component
+      migration_status: reference_only_pending_promotion
+      screens_applicable: [T03, T05, T06, T09, T11, T17]
+    bottom_navigation:
+      semantic_name: BottomNavigation
+      figma_node: '5116:13047'
+      source: existing_local_component_set
+      migration_status: reference_only_pending_normalization
+      screens_applicable: [T03, T04, T05, T06, T07, T08, T09, T10, T11, T12, T13, T14, T15, T16, T17]

@@ -38,6 +38,37 @@ design_system_pages:
   spinner: '1953:9033'
   switch: '1953:9035'
   textarea: '1953:9038'
+foundation:
+  page:
+    node_id: '5639:21448'
+    name: Design Foundation
+    role: target_visual_foundation
+    status: created_not_applied_to_t01_t17
+  board: {node_id: '5640:156', name: 'Rede de Apoio / Design Foundation Board'}
+  sections:
+    overview: '5640:157'
+    colors: '5640:161'
+    typography: '5640:163'
+    spacing_radius: '5640:165'
+    mobile_grid: '5640:167'
+    components: '5640:169'
+    feedback: '5640:171'
+    state_foundation: '5640:173'
+    shells: '5640:175'
+  local_components:
+    base_card: '5640:21509'
+    app_header_back: '5640:21512'
+    action_touch_target_48: '5644:324'
+    field_control_touch_target_48: '5644:330'
+  corrected_examples:
+    button_touch_target_rows: ['5644:341', '5644:342', '5644:343']
+    field_example_rows: ['5644:373', '5644:374', '5644:375']
+    feedback_rows: ['5644:390', '5644:391']
+    audit: '2026-09-13: zero unintended overflow; Obra Loading spinner internal bounds are an intentional kit exception.'
+  variable_collections:
+    primitives: 'VariableCollectionId:5639:154'
+    semantic: 'VariableCollectionId:5639:155'
+  rule: Foundation is visual infrastructure only; it must not be treated as a T##, functional source, prototype wiring, or approval of an open gate.
 sitemap:
   responsibility_labels_verified: true
   corrected_on: '2026-09-08'

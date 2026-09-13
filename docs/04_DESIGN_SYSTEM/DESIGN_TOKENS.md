@@ -89,6 +89,30 @@ Escala: `4 · 8 · 12 · 16 · 20 · 24 · 32`
 `touch-target-min` = **48 × 48 px**, espaçamento mínimo de 8 px entre alvos.
 Origem: RNF-P02 (proposta).
 
+Esse token descreve o **alvo de interação do produto**, não a altura visual de uma primitive. Na foundation, `Button - Nova` preserva 32 px visuais em `Size=Default` e `Input - Nova`/`Select - Nova` preservam 36 px visuais em `Size=Large`; a composição externa de 48 px centraliza a instance e garante a área interativa mobile. O component set Obra/shadcn não é redimensionado nem alterado.
+
 ## Grid mobile
 
 Largura de referência 390 px · margem lateral 16 px · largura útil 358 px.
+
+## Foundation canônica no Figma — 2026-09-13
+
+O arquivo Figma canônico agora possui a página `Design Foundation` (`5639:21448`) como contrato visual para migrações futuras. Ela não substitui nem altera os frames atuais T01–T17.
+
+### CURRENT
+
+- telas atuais ainda contêm margens 24/342, raios e headers fragmentados;
+- há texto abaixo de 14 px em frames canônicos ainda não migrados;
+- componentes existentes não receberam bindings novos por esta criação.
+
+### TARGET FOUNDATION
+
+- coleções isoladas: `Rede de Apoio / Primitives` (`VariableCollectionId:5639:154`) e `Rede de Apoio / Semantic` (`VariableCollectionId:5639:155`);
+- aliases semânticos para cor, spacing e radius, sem efeito automático sobre telas existentes;
+- estilos `Rede de Apoio / Type / Brand`, `Page Title`, `Section Title`, `Card Title`, `Body`, `Label` e `Badge`;
+- grid obrigatório para novas refatorações: 390 px, margem 16 px e conteúdo útil 358 px;
+- `Color/Disabled` referencia `Color/Muted Foreground`; componentes aplicam a redução de opacidade quando adequada, sem introduzir nova cor não documentada.
+
+As primitives do Obra/shadcn preservam suas geometrias internas quando necessário. A foundation define o padrão do produto para a composição e não reescreve o kit.
+
+Os componentes `Action / Touch Target 48` e `Field / Control / Touch Target 48` tornam essa diferença explícita: 48 px é o contrato de interação da Rede de Apoio; 32/36 px são dimensões visuais das instances Obra usadas internamente.
