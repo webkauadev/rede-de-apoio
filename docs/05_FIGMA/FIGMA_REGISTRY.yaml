@@ -1,164 +1,197 @@
-schema_version: 1
-last_verified: 2026-09-08
-
+schema_version: 2
+last_verified: '2026-09-13'
 figma:
   file_key: tcyj2fkTXei2CJbqaRxqCp
   file_role: canonical_design_file
-  naming_convention: "[RESPONSÁVEL] T## — Nome / Estado"
-  legacy_prefix: "LEGADO —"
-  legacy_policy: "ignore_if_current_equivalent_exists"
-
+  naming_convention: '[RESPONSÁVEL] T## — Nome / Estado'
+  legacy_prefix: LEGADO —
+  legacy_policy: ignore_if_current_equivalent_exists
+  authority: visual_only
+  functional_authority: GitHub requirements/issues
 pages:
   sitemap:
-    node_id: "5003:3"
-    name: "siteMap"
+    node_id: '5003:3'
+    name: siteMap
+    role: information_architecture_reference
     status: verified
   prototype_ia:
-    node_id: "5030:154"
-    name: "prototypeIA"
-    status: verified
-  david:
-    node_id: "5019:279"
-    name: "David"
-    status: verified
-  rhuan:
-    node_id: "5044:164"
-    name: "Rhuan"
-    status: verified
-  henrique:
-    node_id: "5048:190"
-    name: "Henrique"
-    status: verified
-  kaua:
-    node_id: "5054:211"
-    name: "Kauã"
-    status: verified
-
+    node_id: '5030:154'
+    name: prototypeIA
+    role: historical_reference
+    status: non_canonical_for_current_frames
+    rule: Do not use as source when an owner-page current frame exists.
+  david: {node_id: '5019:279', name: David, role: current_owner_page, status: verified}
+  rhuan: {node_id: '5044:164', name: Rhuan, role: current_owner_page, status: verified}
+  henrique: {node_id: '5048:190', name: Henrique, role: current_owner_page, status: verified}
+  kaua: {node_id: '5054:211', name: Kauã, role: current_owner_page, status: verified}
 design_system_pages:
-  button: "1953:9005"
-  card: "1953:9007"
-  date_picker_calendar: "1999:6574"
-  dialog: "1953:9013"
-  empty: "1999:15542"
-  input: "1953:9018"
-  select_combobox: "1953:9034"
-  skeleton: "1953:9031"
-  sonner: "2047:14487"
-  spinner: "1953:9033"
-  switch: "1953:9035"
-  textarea: "1953:9038"
-
+  badge: '1953:9003'
+  button: '1953:9005'
+  card: '1953:9007'
+  date_picker_calendar: '1999:6574'
+  dialog: '1953:9013'
+  empty: '1999:15542'
+  input: '1953:9018'
+  select_combobox: '1953:9034'
+  skeleton: '1953:9031'
+  sonner: '2047:14487'
+  spinner: '1953:9033'
+  switch: '1953:9035'
+  textarea: '1953:9038'
 sitemap:
   responsibility_labels_verified: true
-  corrected_on: 2026-09-08
+  corrected_on: '2026-09-08'
   current_assignment:
+    T01: David
+    T02: David
+    T03: Rhuan
+    T04: Rhuan
+    T05: Henrique
+    T06: Kauã
+    T07: Henrique
+    T08: Henrique
     T09: Rhuan
     T10: Henrique
     T11: Rhuan
+    T12: David
+    T13: David
     T14: David
     T15: David
-
+    T16: Kauã
+    T17: Kauã
 known_current_nodes:
   T01:
     owner: David
     page: david
     mapping_status: mapped
-    frames:
-      default: "5189:730"
-      invalid_credentials: "5189:800"
-      loading: "5189:870"
-
+    frames: {default: '5189:730', invalid_credentials: '5189:800', loading: '5189:870'}
   T02:
     owner: David
     page: david
     mapping_status: mapped
+    frames: {default: '5189:938', validation_error: '5189:1043', loading: '5189:1152'}
+  T03:
+    owner: Rhuan
+    page: rhuan
+    mapping_status: mapped
     frames:
-      default: "5189:938"
-      validation_error: "5189:1043"
-      loading: "5189:1152"
-
+      default: '5435:1222'
+      loading: '5436:1616'
+      mandatory_reminder_visual_candidate: '5436:18023'
+      care_registered_visual_candidate: '5436:18343'
+      delay_visual_candidate: '5436:18445'
   T04:
     owner: Rhuan
     page: rhuan
-    mapping_status: partial
-    frames:
-      week: "5122:1870"
-      day: "5122:2031"
-
+    mapping_status: mapped
+    frames: {week: '5122:1870', day: '5122:2031'}
+  T05:
+    owner: Henrique
+    page: henrique
+    mapping_status: mapped
+    frames: {default: '5344:1413', empty: '5346:1256', loading: '5346:1403', delay: '5346:1504', corrected: '5346:1592', detail: '5346:1686'}
   T06:
     owner: Kauã
     page: kaua
     mapping_status: mapped
     frames:
-      new_record_default: "5201:13488"
-      new_record_validation_error: "5203:300"
-      empty: "5201:13490"
-      normal: "5201:13491"
-      success: "5288:14482"
-      loading: "5288:14618"
-    reusable_components_frame: "5201:13481"
-    local_components:
-      header_person: "5201:13483"
-      care_record_card: "5204:318"
-
+      new_record_default: '5201:13488'
+      new_record_validation_error: '5203:300'
+      empty: '5201:13490'
+      normal: '5201:13491'
+      success: '5288:14482'
+      loading: '5288:14618'
+    reusable_components_frame: '5201:13481'
+    local_components: {header_person: '5201:13483', care_record_card: '5204:318'}
+  T07:
+    owner: Henrique
+    page: henrique
+    mapping_status: mapped
+    frames: {default: '5334:756', empty: '5335:831', loading: '5335:948', detail: '5336:895', correction: '5336:977', correction_complete: '5337:15296', exporting: '5337:15310', export_complete: '5337:15330'}
   T08:
     owner: Henrique
     page: henrique
-    mapping_status: partial
+    mapping_status: mapped
     frames:
-      list_candidate_a: "5048:644"
-      list_candidate_b: "5235:924"
-      empty: "5118:838"
-      create: "5123:1291"
-      create_error_name: "5130:4159"
-      create_error_concentration: "5130:4204"
-      create_error_form: "5130:4263"
-      created: "5141:2758"
-    unresolved:
-      canonical_list_frame: "Two visible frames share the same T08 list name; audit required before selecting canonical base."
-
+      list: '5235:924'
+      empty: '5118:838'
+      create: '5123:1291'
+      create_error_name: '5130:4159'
+      create_error_concentration: '5130:4204'
+      create_error_form: '5130:4263'
+      created: '5141:2758'
+    legacy_nodes: ['5048:644']
+    canonical_list_frame: '5235:924'
+  T09:
+    owner: Rhuan
+    page: rhuan
+    mapping_status: mapped
+    frames: {default: '5360:348', empty: '5361:419', loading: '5361:475', new_task: '5361:518', validation_error: '5361:601', task_created: '5361:707', task_completed: '5361:741'}
+  T10:
+    owner: Henrique
+    page: henrique
+    mapping_status: mapped
+    frames: {default: '5321:411', empty: '5323:489', loading: '5323:558', success: '5323:627', new_record: '5323:696', validation_error: '5323:855', attachment_context: '5323:885'}
+  T11:
+    owner: Rhuan
+    page: rhuan
+    mapping_status: mapped
+    frames: {default: '5416:937', empty: '5417:1037', loading: '5417:1099', new_appointment: '5418:1039', validation_error: '5419:1113', success: '5419:1226'}
   T12:
     owner: David
     page: david
     mapping_status: mapped
     frames:
-      invitation_sent: "5125:2408"
-      registration: "5125:2567"
-      edit: "5125:2649"
-      view: "5125:2719"
-      success: "5125:2799"
-      validation_error: "5125:2888"
-      access_active: "5125:2981"
-      access_not_configured: "5125:3069"
-      access_invitation: "5125:3151"
-
+      invitation_sent_proposal: '5125:2408'
+      registration: '5125:2567'
+      edit: '5125:2649'
+      view: '5125:2719'
+      success: '5125:2799'
+      validation_error: '5125:2888'
+      access_active_proposal: '5125:2981'
+      access_not_configured_proposal: '5125:3069'
+      access_invitation_proposal: '5125:3151'
+    proposal_gate: RF30/US-036
+  T13:
+    owner: David
+    page: david
+    mapping_status: mapped
+    frames: {default: '5367:1631', loading: '5369:2130', link_member: '5370:1705', validation_error: '5370:16302', link_complete: '5370:16523', manage_roles: '5371:1875', roles_updated: '5371:16499', transfer_principal: '5371:16617', transfer_complete: '5371:16756', unlink_member: '5372:2181', unlinked: '5372:16816'}
+  T14:
+    owner: David
+    page: david
+    mapping_status: mapped
+    frames: {default: '5387:2703', empty: '5387:17293', loading: '5387:17356', success: '5387:17388', add_contact: '5390:154', validation_error: '5392:276', edit_contact: '5390:253', edit_saved: '5392:418'}
+  T15:
+    owner: David
+    page: david
+    mapping_status: mapped
+    frames: {default: '5404:2664', loading: '5405:2696', empty: '5405:2752'}
   T16:
     owner: Kauã
     page: kaua
     mapping_status: mapped
-    frames:
-      default: "5211:966"
-      saved: "5212:432"
-
-partially_mapped_screens:
-  - T04
-  - T08
-
-unmapped_screens:
-  - T03
-  - T05
-  - T07
-  - T09
-  - T10
-  - T11
-  - T13
-  - T14
-  - T15
-  - T17
-
+    frames: {default: '5211:966', saved: '5212:432'}
+  T17:
+    owner: Kauã
+    page: kaua
+    mapping_status: mapped
+    frames: {default: '5445:915', loading: '5445:1033', empty: '5445:18015', detail: '5445:18109', forbidden: '5445:18234'}
+mapping_summary:
+  mapped_screens: 17
+  partially_mapped_screens: []
+  unmapped_screens: []
+  resolved_ambiguities:
+    T08: Node 5235:924 is the current list. Node 5048:644 is explicitly LEGADO and must not be used as canonical base.
+prototype_integrity:
+  registry: docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml
+  tracking_issue: 84
+  status: known_defects_open
 agent_rules:
-  - "Resolve current frame from this registry before editing."
-  - "If a screen is unmapped, discover its current page/node and update this file before mutation."
-  - "If mapping_status is partial, resolve the ambiguity before changing functional structure."
-  - "Never use a LEGADO frame as the primary source when a current [OWNER] frame exists."
-  - "After creating a new current state, register its node id here and in STATE_MATRIX.yaml."
+- Resolve current frame from this registry before editing.
+- All T01-T17 have current Figma frame mappings as of 2026-09-13; mapping does not mean functional decisions are complete.
+- Never use a LEGADO frame as primary source when a current owner frame exists.
+- prototypeIA is historical reference, not current visual authority when owner-page frames exist.
+- Check PROTOTYPE_INTEGRITY.yaml before trusting any Figma reaction as intended navigation.
+- Figma cannot resolve P03/P04/P05/P06 or approve RF30/US-036.
+- After creating or replacing a current state, update this file and STATE_MATRIX.yaml.

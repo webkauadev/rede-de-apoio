@@ -1,0 +1,102 @@
+schema_version: 1
+last_verified: '2026-09-13'
+figma_file_key: tcyj2fkTXei2CJbqaRxqCp
+tracking_issue: 84
+policy:
+- Figma reactions document current prototype wiring only; GitHub requirements/issues define intended behavior.
+- Do not copy a known defective reaction into code or a redesigned frame.
+- Do not fix a functional gate by inference. P03/P04/P05/P06 and RF30/US-036 remain governed by their canonical Issues.
+defects:
+  FI-001:
+    status: open
+    severity: high
+    screen: T08
+    kind: legacy_navigation
+    source_node: '5118:846'
+    source_state: '5118:838'
+    current_destination: '5048:644'
+    current_destination_status: legacy
+    current_equivalent: '5235:924'
+    expected_resolution: Remove or redirect the legacy navigation according to the current T08 flow.
+  FI-002:
+    status: open
+    severity: high
+    screen: T10
+    kind: wrong_cross_feature_navigation
+    source_node: '5323:494'
+    source_state: '5323:489'
+    current_destination: '5123:1291'
+    expected_candidate: '5323:696'
+    expected_resolution: Keep Novo registro in the T10 register-consultation flow; validate against RF19/US-022 before mutation.
+  FI-003:
+    status: open
+    severity: high
+    screen: T10
+    kind: wrong_cross_feature_navigation
+    source_node: '5323:563'
+    source_state: '5323:558'
+    current_destination: '5123:1291'
+    expected_candidate: '5323:696'
+    expected_resolution: Review loading-state CTA behavior without redirecting to T08.
+  FI-004:
+    status: open
+    severity: high
+    screen: T10
+    kind: wrong_cross_feature_navigation
+    source_node: '5323:632'
+    source_state: '5323:627'
+    current_destination: '5123:1291'
+    expected_candidate: '5323:696'
+    expected_resolution: Review success-state Novo registro action within T10.
+  FI-005:
+    status: open
+    severity: high
+    screen: T16
+    kind: wrong_cross_feature_navigation
+    source_node: '5510:19065'
+    source_state: '5212:432'
+    current_destination: '5201:13488'
+    expected_resolution: Remove accidental T16→T06 jump; resolve desired post-save behavior within RF27/US-031.
+  FI-006:
+    status: open
+    severity: medium
+    screen: T12
+    kind: missing_navigation
+    source_node: '5510:2806'
+    source_state: '5125:2719'
+    current_reaction: hover_only
+    destination_candidate: '5211:966'
+    expected_resolution: If the current navigation architecture authorizes the entry, wire T12 Mais→T16; do not infer new access rules.
+  FI-007:
+    status: open
+    severity: medium
+    screen: T12
+    kind: missing_navigation
+    source_node: '5510:2816'
+    source_state: '5125:2719'
+    current_reaction: hover_only
+    destination_candidate: '5445:915'
+    expected_resolution: If the current navigation architecture authorizes the entry, wire T12 Mais→T17 respecting access rules.
+  FI-008:
+    status: open
+    severity: medium
+    screen: T13
+    kind: semantic_layer_naming
+    examples:
+    - E17 — Salvar tarefa used for member/role actions
+    - E22 — Vincular membro reused in transfer/unlink contexts
+    - Ação — Desvincular reused where the semantic action differs
+    expected_resolution: Rename layers/hotspots to E22-E25 or action-specific semantic names without changing product scope.
+functional_gates_not_defects:
+  P04:
+    issue: 76
+    affects: [T03, T16]
+    rule: Notification visual candidates do not settle where N01-N04 must be surfaced.
+  P05:
+    issue: 77
+    affects: [T07]
+    rule: CSV controls in Figma do not grant export permission.
+  RF30_US036:
+    issues: [34, 72]
+    affects: [T12]
+    rule: Read-only elderly access visuals are proposal-only until explicitly approved.
