@@ -238,3 +238,20 @@ A variante só vira padrão global após aprovação humana no piloto T03.
 ## 14. Princípio resumido para agentes
 
 > **O header é estrutura com identidade: surface semântica primeiro, tint de marca depois. Use um gradiente tonal sutil e replicável, nunca vidro/blur como linguagem padrão. Settings deve ser um IconButton real, avatar pode receber ring discreto de marca e o conteúdo continua sendo o principal portador de cor semântica.**
+
+## 15. Pilot T03 implementation
+
+The following local candidates were created in the Figma collection `Rede de
+Apoio / Semantic` for the T03 `Root / Tinted` pilot. They are **TARGET
+CANDIDATE — PENDING HUMAN REVIEW**, not final `DESIGN_TOKENS.md` values.
+
+| Variable | Figma Variable ID | Value | Derivation and use |
+|---|---|---|---|
+| `Shell/Header/RootTint/Start` | `VariableID:5731:166` | `#F8F5FA` | `Surface Container Low`; first stop of the local Default/Loading header gradient. |
+| `Shell/Header/RootTint/End` | `VariableID:5731:167` | `#F2F3F9` | approximately 15% perceptual blend of `Feature/Home/Container` over `Surface Container Low`; final stop of the same gradient. |
+
+The gradient is horizontal and fully opaque: it has no blur, backdrop effect,
+translucency, glow, mesh, or shadow. The local Settings target keeps its
+48 × 48 px target with a `Surface` circular container and `On Surface` glyph.
+The contextual avatar keeps the original image and receives a 2 px
+`Feature/Home/Accent` ring as identity/context, never as a status indicator.
