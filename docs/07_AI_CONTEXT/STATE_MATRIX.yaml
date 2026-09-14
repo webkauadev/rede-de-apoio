@@ -103,14 +103,17 @@ screens:
   T08:
     owner: Henrique
     base_state: list
+    migration_status: full_state_set_migrated_pending_human_review
     states:
-      list: {kind: default, figma_node: '5235:924'}
-      empty: {kind: empty, figma_node: '5118:838'}
-      create: {kind: form, figma_node: '5123:1291', element: E14}
-      create_error_name: {kind: validation_error, figma_node: '5130:4159', element: E14, naming_status: noncanonical_frame_name}
-      create_error_concentration: {kind: validation_error, figma_node: '5130:4204', element: E14, naming_status: noncanonical_frame_name}
-      create_error_form: {kind: validation_error, figma_node: '5130:4263', element: E14, naming_status: noncanonical_frame_name}
-      created: {kind: success, figma_node: '5141:2758', element: E14}
+      list: {kind: default, figma_node: '5235:924', migrated_figma_node: '5850:2696', migration_status: migrated_pending_human_review}
+      empty: {kind: empty, figma_node: '5118:838', migrated_figma_node: '5865:1014', migration_status: migrated_pending_human_review, prototype_integrity: [FI-001]}
+      create: {kind: form, figma_node: '5123:1291', migrated_figma_node: '5866:1100', migration_status: migrated_pending_human_review, element: E14}
+      create_error_name: {kind: validation_error, figma_node: '5130:4159', migrated_figma_node: '5866:26583', migration_status: migrated_pending_human_review, element: E14, naming_status: noncanonical_frame_name}
+      create_error_concentration: {kind: validation_error, figma_node: '5130:4204', migrated_figma_node: '5866:26607', migration_status: migrated_pending_human_review, element: E14, naming_status: noncanonical_frame_name}
+      create_error_form: {kind: validation_error, figma_node: '5130:4263', migrated_figma_node: '5866:26631', migration_status: migrated_pending_human_review, element: E14, naming_status: noncanonical_frame_name}
+      created: {kind: success, figma_node: '5141:2758', migrated_figma_node: '5865:1051', migration_status: migrated_pending_human_review, element: E14}
+    local_subnav: {component_set: '5810:1005', active: Medicamentos, variant_node: '5810:968'}
+    audit: zero_defects_2026_09_14
   T09:
     owner: Rhuan
     base_state: default
@@ -125,14 +128,17 @@ screens:
   T10:
     owner: Henrique
     base_state: default
+    migration_status: full_state_set_migrated_pending_human_review
     states:
-      default: {kind: default, figma_node: '5321:411'}
-      empty: {kind: empty, figma_node: '5323:489', prototype_integrity: [FI-002]}
-      loading: {kind: loading, figma_node: '5323:558', prototype_integrity: [FI-003]}
-      success: {kind: success, figma_node: '5323:627', prototype_integrity: [FI-004]}
-      new_record: {kind: form, figma_node: '5323:696', element: E19}
-      validation_error: {kind: validation_error, figma_node: '5323:855', element: E19}
-      attachment_context: {kind: contextual_action, figma_node: '5323:885', element: E10}
+      default: {kind: default, figma_node: '5321:411', migrated_figma_node: '5857:2744', migration_status: migrated_pending_human_review}
+      empty: {kind: empty, figma_node: '5323:489', migrated_figma_node: '5866:26673', migration_status: migrated_pending_human_review, prototype_integrity: [FI-002]}
+      loading: {kind: loading, figma_node: '5323:558', migrated_figma_node: '5866:26692', migration_status: migrated_pending_human_review, prototype_integrity: [FI-003]}
+      success: {kind: success, figma_node: '5323:627', migrated_figma_node: '5866:26711', migration_status: migrated_pending_human_review, prototype_integrity: [FI-004]}
+      new_record: {kind: form, figma_node: '5323:696', migrated_figma_node: '5868:1239', migration_status: migrated_pending_human_review, element: E19}
+      validation_error: {kind: validation_error, figma_node: '5323:855', migrated_figma_node: '5868:26715', migration_status: migrated_pending_human_review, element: E19}
+      attachment_context: {kind: contextual_action, figma_node: '5323:885', migrated_figma_node: '5868:26730', migration_status: migrated_pending_human_review, element: E10}
+    local_subnav: {component_set: '5810:1005', active: Consultas, variant_node: '5810:992'}
+    audit: zero_defects_2026_09_14
   T11:
     owner: Rhuan
     base_state: default
