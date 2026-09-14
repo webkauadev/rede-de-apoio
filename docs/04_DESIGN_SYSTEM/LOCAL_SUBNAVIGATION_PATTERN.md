@@ -3,15 +3,16 @@
 Status: **CANÔNICO PARA NOVAS MIGRAÇÕES**  
 Data: **2026-09-14**
 
-Este documento define a regra de navegação local/submenu para telas que pertencem a uma seção primária do aplicativo, como Saúde.
+Este documento define a regra de navegação local/submenu para telas que pertencem a uma seção primária do aplicativo, como Saúde e Diário.
 
 ## 1. Decisão
 
 Quando uma tela possuir destinos irmãos dentro da mesma seção primária, a navegação local deve aparecer **imediatamente abaixo do App Header e acima do conteúdo rolável**.
 
-Exemplo atual em Saúde:
+Exemplos canônicos:
 
-`Medicamentos · Tarefas · Consultas · Compromissos`
+- Saúde: `Medicamentos · Tarefas · Consultas · Compromissos`;
+- Diário: `Diário · Histórico`.
 
 A Navigation Bar inferior continua sendo a navegação primária global:
 
@@ -54,25 +55,37 @@ Se futuramente uma tela tiver um segundo nível de tabs dentro desse submenu, us
 
 ## 3. Fixed vs scrollable tabs
 
-Usar `PrimaryTabRow` quando todos os destinos couberem confortavelmente sem truncar ou comprimir labels.
+Usar `PrimaryTabRow` / fixed tabs quando todos os destinos couberem confortavelmente sem truncar ou comprimir labels.
 
 Usar comportamento equivalente a `PrimaryScrollableTabRow` quando os labels não couberem com ergonomia.
 
-Para Saúde, o conjunto:
+### Saúde — scrollable
+
+O conjunto:
 
 `Medicamentos · Tarefas · Consultas · Compromissos`
 
-é considerado **scrollable local subnavigation**, porque `Medicamentos` e `Compromissos` tornam uma distribuição fixa de quatro itens excessivamente comprimida em 390 px.
+é **scrollable local subnavigation**, porque `Medicamentos` e `Compromissos` tornam uma distribuição fixa de quatro itens excessivamente comprimida em 390 px.
 
-Regras:
+### Diário — fixed
+
+O conjunto:
+
+`Diário · Histórico`
+
+é **fixed local subnavigation**, porque dois destinos cabem confortavelmente em 390 px e podem ocupar metades equivalentes sem truncar labels.
+
+### Regras comuns
 
 - uma única linha;
 - labels não devem quebrar em duas linhas;
-- scroll horizontal permitido;
+- scroll horizontal permitido apenas quando necessário;
 - item selecionado deve permanecer visível;
 - target de cada destino >= 48 px de altura;
 - não usar chips/pills independentes como padrão estrutural do submenu;
-- preferir linguagem de tabs com indicador de seleção.
+- preferir linguagem de tabs com indicador de seleção;
+- fixed/scrollable é decisão da taxonomia + ergonomia, não decisão livre por tela;
+- estados de uma mesma rota não podem trocar fixed por scrollable.
 
 ## 4. Posição canônica
 
@@ -89,7 +102,7 @@ Representação:
 ┌─────────────────────────────┐
 │ App Header                  │
 ├─────────────────────────────┤
-│ Medicamentos  Tarefas ...   │  ← LocalSubnav
+│ destinos locais            │  ← LocalSubnav
 │              ━━━━━          │  ← indicador ativo
 ├─────────────────────────────┤
 │                             │
@@ -165,7 +178,8 @@ Itens inativos:
 Item ativo:
 
 - texto/indicador usa a família semântica da seção;
-- Saúde → `Feature/Health/Foreground` / `Feature/Health/Accent` ou papel equivalente;
+- Saúde → `Feature/Health/Foreground` / `Feature/Health/Accent`;
+- Diário → `Feature/Diary/Foreground` / `Feature/Diary/Accent`;
 - Agenda → `Feature/Agenda/*` quando existir navegação local real de destinos da Agenda;
 - não usar `Status/*` para seleção de navegação.
 
@@ -207,9 +221,10 @@ Não é LocalSubnav quando:
 - é chip de categoria;
 - é ordenação.
 
-Exemplo:
+Exemplos:
 
 - Saúde `Medicamentos / Tarefas / Consultas / Compromissos` → LocalSubnav;
+- Diário `Diário / Histórico` → LocalSubnav;
 - T04 `Dia / Semana` → view-mode control, não LocalSubnav.
 
 ## 10. Acessibilidade
@@ -223,17 +238,15 @@ Exemplo:
 - respeitar preferências de redução de movimento na implementação;
 - não usar hide/reveal de forma que torne a navegação inacessível por teclado/leitor de tela.
 
-## 11. Aplicação imediata — Saúde
+## 11. Aplicação em estados
 
-Esta regra substitui o padrão experimental dos frames T09/T11 em que o submenu de Saúde aparecia no final do conteúdo.
+Todos os estados de uma mesma T## preservam a mesma posição e o mesmo tipo de LocalSubnav.
 
-A partir desta decisão:
+`STATE = PAGE BASE + DELTA MÍNIMO`
 
-- T09: `Tarefas` ativo imediatamente abaixo do header;
-- T11: `Compromissos` ativo imediatamente abaixo do header;
-- futuros T08/T10 equivalentes em Saúde devem reutilizar o mesmo componente/posição quando a taxonomia canônica confirmar esses destinos;
-- todos os estados de uma mesma T## preservam a mesma posição de LocalSubnav;
-- `STATE = PAGE BASE + DELTA MÍNIMO`: Empty/Loading/Form/Error/Success não reposicionam o submenu.
+Logo, Empty/Loading/Form/Error/Success não reposicionam nem redesenham o submenu. A LocalSubnav só muda `Active` quando a própria rota/destino muda.
+
+T09/T11 provaram a versão Saúde. T07 provou a versão Diário/Histórico em Default, Empty, Loading, Detalhe, Correção, Correção concluída, Exportando e Exportação concluída.
 
 ## 12. Shell atualizado
 
@@ -253,11 +266,11 @@ A Navigation Bar inferior não se move para acomodar o submenu.
 
 ## 13. Regra para agentes
 
-> **Se uma tela tiver destinos irmãos dentro da seção primária atual, materialize uma LocalSubnav em linguagem Material 3 Tabs imediatamente abaixo do header. Use fixed tabs apenas se os labels couberem; caso contrário use scrollable tabs. A LocalSubnav recolhe ao scroll para baixo e retorna ao scroll para cima seguindo uma adaptação `enterAlways`; não coloque esse submenu junto à Navigation Bar inferior e não confunda tabs de destino com filtros ou segmented controls.**
+> **Se uma tela tiver destinos irmãos dentro da seção primária atual, materialize uma LocalSubnav em linguagem Material 3 Tabs imediatamente abaixo do header. Use fixed tabs apenas se os labels couberem confortavelmente; caso contrário use scrollable tabs. A LocalSubnav recolhe ao scroll para baixo e retorna ao scroll para cima seguindo uma adaptação `enterAlways`; não coloque esse submenu junto à Navigation Bar inferior e não confunda tabs de destino com filtros ou segmented controls.**
 
-## 14. Foundation promovida
+## 14. Foundation promovida — Saúde
 
-O piloto T09/T11 foi aprovado humanamente e o PR #95 foi mergeado. O padrão deixa de estar apenas em gate e passa a ter implementação Figma reutilizável canônica.
+O piloto T09/T11 foi aprovado humanamente e o PR #95 foi mergeado. O padrão deixou de estar apenas em gate e passou a ter implementação Figma reutilizável canônica.
 
 ### Master Saúde
 
@@ -269,7 +282,7 @@ O piloto T09/T11 foi aprovado humanamente e o PR #95 foi mergeado. O padrão dei
 - exemplo de shell: `AppShell / Root + LocalSubnav / Saúde — Example` (`5811:986`);
 - seção Foundation: `10 — Local Subnavigation` (`5808:957`).
 
-### Regra obrigatória de reuse
+### Regra obrigatória de reuse — Saúde
 
 Para telas Saúde cuja taxonomia canônica seja `Medicamentos · Tarefas · Consultas · Compromissos`:
 
@@ -280,8 +293,50 @@ Para telas Saúde cuja taxonomia canônica seja `Medicamentos · Tarefas · Cons
 5. não detachar apenas para mudar seleção;
 6. não criar variante `Expanded/Collapsed` para representar direção do scroll.
 
-O hide-on-down / reveal-on-up continua sendo responsabilidade do shell/runtime.
+## 15. Foundation promovida — Diário
 
-Se outra seção primária futuramente precisar de LocalSubnav com taxonomia ou papéis semânticos diferentes, não reutilizar cegamente a versão Saúde: primeiro avaliar se cabe um novo component set de seção ou uma generalização real, seguindo o fluxo piloto → revisão humana → Foundation.
+A revisão estrutural de T07 aprovou a taxonomia local `Diário · Histórico`, e o piloto visual foi promovido para Foundation reutilizável.
 
-Registro técnico da promoção: `../07_AI_CONTEXT/LOCAL_SUBNAVIGATION_FOUNDATION_2026-09-14.md`.
+### Master Diário
+
+- component set: `Rede de Apoio / Foundation / LocalSubnav / Diário` (`5830:358`);
+- `Active=Diário` (`5830:357`);
+- `Active=Histórico` (`5830:348`);
+- viewport: `390 × 56`;
+- distribuição: duas tabs fixas de `195 px`;
+- seção Foundation: `10 — Local Subnavigation` (`5808:957`).
+
+### Regra obrigatória de reuse — Diário
+
+Para destinos irmãos canônicos `Diário · Histórico`:
+
+1. instanciar `5830:358`;
+2. alterar somente `Active=Diário|Histórico`;
+3. manter a instância imediatamente abaixo do AppHeader;
+4. não reconstruir a linha de duas tabs por tela ou por estado;
+5. não detachar a instância para trocar o destino ativo;
+6. não criar `Expanded/Collapsed`; hide/reveal é responsabilidade do shell/runtime;
+7. usar `Feature/Diary/Foreground` no conteúdo ativo e `Feature/Diary/Accent` no indicador; inativo usa `Color/On Surface Variant`.
+
+T07 utiliza `Active=Histórico` em todos os seus estados migrados porque a rota continua sendo Histórico. A futura migração de T06 deve usar `Active=Diário` somente se a taxonomia funcional continuar confirmada pelo GitHub; o componente visual não cria requisito.
+
+## 16. Generalização permitida e proibida
+
+Saúde e Diário são dois masters de seção porque possuem taxonomias, densidades e famílias semânticas diferentes:
+
+- Saúde: quatro destinos, scrollable;
+- Diário: dois destinos, fixed.
+
+Não criar um mega-componente abstrato só para reduzir o número de masters se isso introduzir propriedades difíceis de entender ou permitir combinações inválidas.
+
+Uma generalização futura só é válida quando houver evidência de reuse real em mais seções e quando preservar:
+
+- taxonomia válida;
+- família semântica da seção;
+- fixed/scrollable coerente;
+- seleção acessível;
+- contrato do shell.
+
+O hide-on-down / reveal-on-up continua sendo responsabilidade do shell/runtime em ambos os masters.
+
+Registro técnico da promoção original de Saúde: `../07_AI_CONTEXT/LOCAL_SUBNAVIGATION_FOUNDATION_2026-09-14.md`.

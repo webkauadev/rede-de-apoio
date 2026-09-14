@@ -1,5 +1,5 @@
 schema_version: 2
-last_updated: '2026-09-13'
+last_updated: '2026-09-14'
 resolution_policy:
   order: [local_approved_component, existing_obra_shadcn_component, linked_library_component, new_local_component]
   rules:
@@ -8,6 +8,7 @@ resolution_policy:
   - Do not detach an instance unless the design requirement cannot be expressed through its properties/variants.
   - When an exact component node is unknown, search the mapped Obra/shadcn page or inspect approved screen instances before mutation.
   - Observed semantic usage below does not prove an exact main-component ID; inspect the current frame before mutation.
+  - When a migrated state is cloned from legacy visual evidence, reapply current semantic bindings; do not preserve stale color overrides merely because they existed in the old state.
 core_components:
   button: {semantic_name: Button, preferred_source: obra_shadcn, design_system_page: '1953:9005', resolution: search_existing_first}
   input: {semantic_name: Input, preferred_source: obra_shadcn, design_system_page: '1953:9018', resolution: search_existing_first}
@@ -38,20 +39,28 @@ local_domain_components:
     owner: Kauã
     figma_page: kaua
     figma_node: '5204:318'
-    status: verified
-    usage: [T06, Candidate for reuse in T05/T07 after semantic validation]
+    status: verified_reused_in_t05_t07_migration
+    usage: [T06, T05, T07]
+    semantic_contract:
+      structure: neutral_surface
+      surface_fill: Color/Surface
+      surface_stroke: Color/Border Subtle
+      category: Category/* by care subject
+      source_feature: Feature/* only where origin/context is expressed
+      corrected_status: Status/Corrected/* when isSuperseded=true
+      rule: Same category and status bindings must remain stable across screens and states.
 screen_component_discovery:
   T01: {observed_semantics: [input, button], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
   T02: {observed_semantics: [input, button], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
   T03: {observed_semantics: [card, badge, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
   T04: {observed_semantics: [button, date_picker, card, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
-  T05: {observed_semantics: [card, badge, skeleton, empty_state, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
+  T05: {observed_semantics: [card, badge, skeleton, empty_state, care_record_card, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
   T06: {observed_semantics: [t06_header_person, care_record_card, button, select, textarea, date_picker, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
-  T07: {observed_semantics: [card, button, skeleton, empty_state, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
+  T07: {observed_semantics: [care_record_card, button, skeleton, empty_state, toast, local_subnav_diary, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
   T08: {observed_semantics: [input, button, card, empty_state], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
-  T09: {observed_semantics: [button, card, skeleton, empty_state, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
+  T09: {observed_semantics: [button, card, skeleton, empty_state, local_subnav_health, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
   T10: {observed_semantics: [button, card, input, textarea, skeleton, empty_state, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
-  T11: {observed_semantics: [button, card, input, date_picker, skeleton, empty_state, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
+  T11: {observed_semantics: [button, card, input, date_picker, skeleton, empty_state, local_subnav_health, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
   T12: {observed_semantics: [button, input, card, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
   T13: {observed_semantics: [button, card, dialog, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
   T14: {observed_semantics: [button, input, card, skeleton, empty_state, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
@@ -96,6 +105,11 @@ foundation:
     surface_container: {id: 'VariableID:5673:564', primitive: 'VariableID:5673:558', resolved: '#F3F0F7'}
     surface_container_low: {id: 'VariableID:5673:565', primitive: 'VariableID:5673:559', resolved: '#F8F5FA'}
     scrim: {id: 'VariableID:5673:566', alias_of: 'VariableID:1953:9376', resolved: '#000000', paint_opacity: 0.32}
+  domain_status_roles:
+    delayed_container: {id: 'VariableID:5835:341', alias_of: color-warning-surface, meaning: delayed_not_destructive}
+    delayed_foreground: {id: 'VariableID:5835:342', alias_of: Color/Warning, meaning: delayed_not_destructive}
+    corrected_container: {id: 'VariableID:5835:343', alias_of: Color/Surface Container, meaning: historical_corrected_neutral}
+    corrected_foreground: {id: 'VariableID:5835:344', alias_of: Color/On Surface Variant, meaning: historical_corrected_neutral}
   components:
     base_card:
       semantic_name: 'Rede de Apoio / Foundation / BaseCard'
@@ -182,3 +196,26 @@ foundation:
       semantic_name: 'AppShell / Back'
       figma_node: '5652:560'
       status: reference_created_pending_pr_review
+    local_subnav_health:
+      semantic_name: 'Rede de Apoio / Foundation / LocalSubnav / Saúde'
+      figma_node: '5810:1005'
+      source: new_local_foundation_component_set
+      status: canonical_reusable
+      behavior: scrollable_primary_tabs
+      active_variants:
+        Medicamentos: '5810:968'
+        Tarefas: '5810:980'
+        Consultas: '5810:992'
+        Compromissos: '5810:1004'
+      screens_applicable: [T08, T09, T10, T11]
+    local_subnav_diary:
+      semantic_name: 'Rede de Apoio / Foundation / LocalSubnav / Diário'
+      figma_node: '5830:358'
+      source: new_local_foundation_component_set
+      status: materialized_in_t07_pending_pr_review
+      behavior: fixed_primary_tabs
+      active_variants:
+        Diário: '5830:357'
+        Histórico: '5830:348'
+      screens_applicable: [T06, T07]
+      rule: active changes by route; state deltas do not redraw or reposition the component
