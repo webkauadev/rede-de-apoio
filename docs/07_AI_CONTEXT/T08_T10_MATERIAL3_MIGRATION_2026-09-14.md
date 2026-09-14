@@ -24,6 +24,8 @@ Functional scope preserved:
 - T10: RF19 + RF23 / US-022 + US-027, including E19 and contextual E10.
 - RF23 remains contextual. This migration does not create a top-level Documents area.
 
+The T08/T10 baseline gate was explicitly authorized in the project chat before state propagation. This authorization did not authorize final merge.
+
 ## T08 migrated states
 
 | State | Current node | Migrated node |
@@ -81,17 +83,22 @@ T10 form/validation/attachment states use the canonical `AppHeader / Back`. The 
 Final structural audit on all 14 migrated frames returned:
 
 - `0` missing target frames;
+- `0` wrong owner-page roots after final correction;
+- `0` roots with wrong `390 × 844` viewport size;
 - `0` legacy `compFooter` / old notification header residues;
 - `0` detached instances;
 - `0` structural custom text below 14 px;
 - `0` clipped child overflow violations;
-- `0` custom solid semantic fills/strokes left unbound outside linked library instances;
-- all roots are `390 × 844`.
+- `0` custom solid semantic fills/strokes left unbound outside linked library instances.
 
 Final screenshots were inspected for every materially different state. During QA, two visual regressions were found and corrected before registry update:
 
 1. T08 validation helpers were initially clipped by fixed-height field wrappers; the affected fields now auto-size and show border + helper feedback.
 2. T10 Empty initially wrapped its heading into the supporting text; the heading box was resized and revalidated.
+
+A final cross-page ownership verification also found that ten derived T08/T10 frames had accidentally been parented to the `siteMap` page while keeping owner-page coordinates. Before the final gate they were moved atomically to the canonical owner page `Henrique`, with every existing node ID preserved. The complete set of 14 migrated states was then arranged into contiguous T08/T10 review rows and re-audited. The post-correction audit returned `wrongParent=0` and did not introduce any detached instance, color-token, typography, shell, size, or LocalSubnav regression.
+
+Representative post-correction screenshots were directly reviewed for T08 `Create Error Form` / `Created` and T10 `Validation Error` / `Attachment Context`.
 
 ## Prototype-integrity protections
 
