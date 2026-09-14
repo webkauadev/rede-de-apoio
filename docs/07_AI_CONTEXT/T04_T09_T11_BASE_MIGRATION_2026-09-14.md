@@ -216,7 +216,7 @@ After state derivation and semantic normalization:
 - `0` detached instances across the remaining states;
 - `0` unexplained visible hardcoded semantic colors after normalization;
 - `0` structural text below `14 px`;
-- no click/tap reaction target below `48 px`;
+- `0` click/tap reaction targets below `48 px`;
 - intended vertical content scrolling only;
 - horizontal local-section scrolling remains intentional where the four Saúde destinations share one row;
 - Root shell remains `390 × 844`;
