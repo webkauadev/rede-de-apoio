@@ -65,8 +65,8 @@ screen_component_discovery:
   T13: {observed_semantics: [button, card, dialog, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
   T14: {observed_semantics: [button, input, card, skeleton, empty_state, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
   T15: {observed_semantics: [card, skeleton, empty_state, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
-  T16: {observed_semantics: [switch, bottom_navigation, toast], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
-  T17: {observed_semantics: [card, skeleton, empty_state, bottom_navigation], discovery_status: semantic_mapped, exact_instance_ids: inspect_current_frame}
+  T16: {observed_semantics: [switch, toast, local_subnav_control_privacy], discovery_status: migrated_semantic_mapped, exact_instance_ids: inspect_migrated_frame}
+  T17: {observed_semantics: [card, skeleton, empty_state, local_subnav_control_privacy], discovery_status: migrated_semantic_mapped, exact_instance_ids: inspect_migrated_frame}
 new_component_gate:
   required_questions:
   - Does an equivalent component already exist in current approved screens?
@@ -218,4 +218,15 @@ foundation:
         Diário: '5830:357'
         Histórico: '5830:348'
       screens_applicable: [T06, T07]
+      rule: active changes by route; state deltas do not redraw or reposition the component
+    local_subnav_control_privacy:
+      semantic_name: 'Rede de Apoio / Foundation / LocalSubnav / Controle e Privacidade'
+      figma_node: '5912:1699'
+      source: new_local_foundation_component_set
+      status: materialized_pending_t16_t17_pr_review
+      behavior: fixed_primary_tabs
+      active_variants:
+        Preferências: '5912:1677'
+        Auditoria: '5912:1698'
+      screens_applicable: [T16, T17]
       rule: active changes by route; state deltas do not redraw or reposition the component
