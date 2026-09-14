@@ -78,13 +78,17 @@ screens:
   T06:
     owner: Kauã
     base_state: normal
+    migration_status: full_state_set_migrated_pending_human_review
+    review_board: '5924:3392'
     states:
-      normal: {kind: default, figma_node: '5201:13491'}
-      empty: {kind: empty, figma_node: '5201:13490'}
-      loading: {kind: loading, figma_node: '5288:14618'}
-      new_record: {kind: form, figma_node: '5201:13488', element: E09}
-      new_record_validation_error: {kind: validation_error, figma_node: '5203:300', element: E09}
-      success: {kind: success, figma_node: '5288:14482'}
+      normal: {kind: default, figma_node: '5201:13491', migrated_figma_node: '5917:2409', migration_status: migrated_pending_human_review}
+      empty: {kind: empty, figma_node: '5201:13490', migrated_figma_node: '5922:3893', migration_status: migrated_pending_human_review}
+      loading: {kind: loading, figma_node: '5288:14618', migrated_figma_node: '5922:30572', migration_status: migrated_pending_human_review}
+      new_record: {kind: form, figma_node: '5201:13488', migrated_figma_node: '5922:30922', migration_status: migrated_pending_human_review, element: E09}
+      new_record_validation_error: {kind: validation_error, figma_node: '5203:300', migrated_figma_node: '5922:31158', migration_status: migrated_pending_human_review, element: E09}
+      success: {kind: success, figma_node: '5288:14482', migrated_figma_node: '5922:30746', migration_status: migrated_pending_human_review}
+    local_subnav: {component_set: '5830:358', active: Diário, variant_node: '5830:357'}
+    audit: zero_defects_2026_09_14
   T07:
     owner: Henrique
     base_state: default
