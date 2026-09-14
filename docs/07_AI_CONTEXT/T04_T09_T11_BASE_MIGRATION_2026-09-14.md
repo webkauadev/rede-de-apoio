@@ -1,20 +1,22 @@
-# T04 + T09 + T11 — Material 3 Base-State Migration
+# T04 + T09 + T11 — Material 3 Migration
 
-Status: **PENDING HUMAN VISUAL REVIEW — DO NOT MERGE**  
+Status: **BASE STATES HUMAN-APPROVED — REMAINING T09/T11 STATES READY FOR HUMAN REVIEW — DO NOT MERGE**  
 Date: **2026-09-14**  
 Branch: `design/t04-t09-t11-material3-migration`
 
 ## 1. Objective
 
-Apply the approved post-T03 migration pattern to the next coherent micro-batch without expanding functional scope:
+Apply the approved post-T03 migration pattern to the coherent micro-batch:
 
 - T04 — Calendário de Cuidados;
 - T09 — Tarefas;
 - T11 — Compromissos.
 
-This batch intentionally migrates only the base/reference states needed for human visual review before scaling the pattern to the remaining Empty / Loading / Form / Validation / Success states.
+The base states were reviewed and approved by the human reviewer on 2026-09-14. That approval authorized deriving the remaining registered T09/T11 states with the mandatory rule:
 
-`STATE = PAGE BASE + DELTA MÍNIMO` remains mandatory when the remaining states are migrated.
+`STATE = PAGE BASE + DELTA MÍNIMO`.
+
+No functional scope was expanded.
 
 ## 2. Functional scope preserved
 
@@ -25,7 +27,7 @@ Canonical scope remains tied to:
 - RF06, RF07, RF08, RF09, RF10;
 - US-008, US-009, US-011, US-012, US-013, US-014.
 
-The existing Week and Day views are preserved. No new scheduling behavior, permission, role, or prototype destination was invented.
+The existing Week and Day views are preserved. No new scheduling behavior, permission, role, or destination was invented.
 
 ### T09 — Tarefas
 
@@ -35,7 +37,7 @@ Canonical scope remains tied to:
 - US-024, US-025;
 - contextual continuity with US-020 and US-030 where already documented.
 
-No new task behavior was introduced.
+No new task behavior was introduced. The remaining states preserve the existing empty, loading, create, validation, created and completed deltas.
 
 ### T11 — Compromissos
 
@@ -44,33 +46,66 @@ Canonical scope remains tied to:
 - RF20;
 - US-023.
 
-No new appointment behavior was introduced.
+No new appointment behavior was introduced. The remaining states preserve the existing empty, loading, create, validation and success deltas.
 
 ## 3. Current → migrated Figma nodes
 
-| Screen/state | Current reference | Migrated candidate |
+### Base states — human approved
+
+| Screen/state | Current reference | Migrated |
 |---|---:|---:|
 | T04 / Semana | `5122:1870` | `5771:23011` |
 | T04 / Dia | `5122:2031` | `5777:2174` |
 | T09 / Default | `5360:348` | `5766:2027` |
 | T11 / Default | `5416:937` | `5772:2132` |
 
-Human A/B review board:
+Base A/B review board:
 
 - `5786:2202` — `T04 + T09 + T11 — Material 3 Migration Review (NON-CANONICAL)`.
 
-The review board is not a canonical product frame and must not be used as a functional source of truth.
+Human decision: **APPROVED**.
+
+### T09 remaining states — derived by minimum delta
+
+| State | Current reference | Migrated |
+|---|---:|---:|
+| Empty | `5361:419` | `5789:2512` |
+| Loading | `5361:475` | `5789:2618` |
+| Nova tarefa | `5361:518` | `5789:2720` |
+| Validation Error | `5361:601` | `5789:2815` |
+| Tarefa criada | `5361:707` | `5789:2913` |
+| Tarefa concluída | `5361:741` | `5789:3039` |
+
+Review board:
+
+- `5791:3087` — `T09 — Remaining States Migration Review (NON-CANONICAL)`.
+
+### T11 remaining states — derived by minimum delta
+
+| State | Current reference | Migrated |
+|---|---:|---:|
+| Empty | `5417:1037` | `5789:3157` |
+| Loading | `5417:1099` | `5789:3249` |
+| Novo compromisso | `5418:1039` | `5789:3335` |
+| Validation Error | `5419:1113` | `5789:3419` |
+| Success | `5419:1226` | `5789:3507` |
+
+Review board:
+
+- `5791:3463` — `T11 — Remaining States Migration Review (NON-CANONICAL)`.
+
+All review boards are non-canonical visual review artifacts only.
 
 ## 4. Shell and navigation
 
-All migrated candidates use the approved authenticated Root-shell direction established by the T03 pilot:
+All migrated states reuse the approved authenticated Root-shell direction established by T03 and approved again in this batch:
 
-- canonical tinted Root Header family;
+- canonical tinted Root Header;
 - explicit page/task title in the header;
 - context `Clodoaldo Oliveira`;
 - Settings action preserved;
 - exactly four primary destinations: `Home · Agenda · Diário · Saúde`;
-- no `Mais` destination in the migrated Navigation Bar.
+- no `Mais` destination in migrated Navigation Bars.
 
 Active primary navigation:
 
@@ -78,127 +113,116 @@ Active primary navigation:
 - T09 → `Saúde`;
 - T11 → `Saúde`.
 
-T09 and T11 preserve the existing Saúde section navigation and make the active local destination explicit:
+Local Saúde navigation remains:
 
-- T09 → `Tarefas`;
-- T11 → `Compromissos`.
+- T09 → `Tarefas` active;
+- T11 → `Compromissos` active.
 
-## 5. Color grammar applied
+## 5. State derivation contract
 
-The batch reuses the semantic color grammar already approved after T03. No new global token family was created for this batch.
+The remaining states were not redesigned independently.
 
-### T04 — Agenda
+Each state is the approved Default page shell plus only its registered delta:
 
-Agenda-specific structure uses the existing roles:
+### T09
+
+- Empty → empty task surface;
+- Loading → task skeletons only;
+- Nova tarefa → creation form;
+- Validation Error → same form + validation/error feedback;
+- Tarefa criada → list delta + success Sonner;
+- Tarefa concluída → completion delta + success Sonner.
+
+### T11
+
+- Empty → empty appointment surface;
+- Loading → appointment skeletons only;
+- Novo compromisso → creation form;
+- Validation Error → same form + validation/error feedback;
+- Success → list delta + success Sonner.
+
+Header, global navigation, local Saúde taxonomy, margins and semantic color grammar remain stable across states.
+
+## 6. Color grammar
+
+No new global color family was created.
+
+### T04
+
+Uses the existing Agenda roles:
 
 - `Feature/Agenda/Container`;
 - `Feature/Agenda/Accent`;
 - `Feature/Agenda/Foreground`.
 
-They are applied to selection, timeline emphasis, current-shift emphasis, date controls, and other Agenda-specific hierarchy.
+Supporting status roles include `Status/Scheduled/*` and `Status/Disabled/*`.
 
-Supporting roles use existing semantic tokens such as:
+### T09 / T11
 
-- `Color/Background`;
-- `Color/Surface`;
-- `Color/Surface Container Low`;
-- `Color/On Surface`;
-- `Color/On Surface Variant`;
-- `Color/Primary Container` / `Color/On Primary Container` for the current-state pill;
-- `Status/Scheduled/*` for `Próximo`;
-- `Status/Disabled/*` for `Encerrado`.
-
-### T09 / T11 — Saúde
-
-The Saúde local-section selection uses:
+Uses the existing Health roles for local Saúde selection:
 
 - `Feature/Health/Container`;
 - `Feature/Health/Foreground`.
 
-Global creation CTAs continue using the canonical Primary role. Task status badges use the existing semantic status families (`Pending`, `Completed`).
+Task/appointment state and validation feedback reuse existing semantic roles, including:
 
-Color is used to communicate hierarchy, domain, status and selection; it is not decorative.
+- `Status/Pending/*`;
+- `Status/Completed/*`;
+- `Color/Danger`;
+- `Color/On Surface`;
+- `Color/On Surface Variant`.
 
-## 6. Layout and ergonomics
+No decorative color was added.
 
-The migrated base states follow the current mobile contract:
+## 7. Layout and ergonomics
+
+The migrated states follow the mobile contract:
 
 - viewport: `390 × 844`;
-- canonical content margin: `16 px`;
-- useful content width: `358 px`;
+- content margin: `16 px`;
+- useful width: `358 px`;
 - Geist typography;
 - Root Header: `80 px`;
 - primary Navigation Bar: `80 px`;
-- interaction target rule: `>= 48 × 48 px`.
+- click/tap target rule: `>= 48 × 48 px`.
 
-T04 keeps the compact visible segmented/temporal controls while materializing explicit `48 px` touch-target wrappers for:
+T04 keeps explicit 48 px touch wrappers for Dia, Semana, previous date, next date and Hoje.
 
-- Dia;
-- Semana;
-- previous date;
-- next date;
-- Hoje.
+Form labels and validation messages in migrated T09/T11 states were normalized to at least `14 px` structural typography. Mini status/meta text may remain at `12 px` when it is not structural hierarchy.
 
-Weekday labels were raised to `14 px` because they are structural navigation labels, not mini metadata.
+Hover-only component variant interactions are not counted as click/tap target violations.
 
-The T09 `Concluir` actions now satisfy the `48 px` target requirement without detaching the underlying component instances.
+## 8. Visual review
 
-## 7. Human visual review performed before PR
+### Base review
 
-The following final candidates were visually inspected after migration:
+The human reviewer approved the base migration board `5786:2202` and described the result as excellent.
 
-- T04 / Semana — `5771:23011`;
-- T04 / Dia — `5777:2174`;
-- T09 / Default — `5766:2027`;
-- T11 / Default — `5772:2132`;
-- A/B review board — `5786:2202`.
+That approval covers the visual language and page-base architecture for this batch.
 
-Observed direction:
+### Remaining-state review
 
-- migrated headers are materially clearer and remove the deprecated legacy header/footer architecture;
-- T04 gains a coherent Agenda-specific lavender/blue hierarchy while preserving readability and care context;
-- T09/T11 use Health-green selection only where the local Saúde taxonomy needs it, while Primary remains the action color;
-- the four-item Navigation Bar is visibly calmer and less crowded than the current five-item footer;
-- no second redundant H1 remains in T09/T11 after the page title moves into the Root Header;
-- T04 retains the calendar date heading because it describes the selected day, not the primary navigation destination.
+The derived-state boards are ready for the next human gate:
 
-## 8. Structural audit
+- T09: `5791:3087`;
+- T11: `5791:3463`.
 
-Final base-state audit result:
+They show `CURRENT` versus `MIGRATED / PAGE BASE + DELTA MÍNIMO` for every remaining registered state.
 
-- `0` detached instances;
-- `0` unexplained visible hardcoded semantic SOLID fills/strokes;
+## 9. Structural audit
+
+After state derivation and semantic normalization:
+
+- `0` detached instances across the remaining states;
+- `0` unexplained visible hardcoded semantic colors after normalization;
 - `0` structural text below `14 px`;
-- `0` reaction targets below `48 px`;
-- T04 explicit control hit areas are `>=48 px`;
-- T09 task-completion reaction targets are `48 px` high;
-- scrolling is limited to intended content regions;
-- the Root shell remains 390×844;
-- current/proposal screens outside the batch are untouched.
+- no click/tap reaction target below `48 px`;
+- intended vertical content scrolling only;
+- horizontal local-section scrolling remains intentional where the four Saúde destinations share one row;
+- Root shell remains `390 × 844`;
+- current/reference screens remain untouched.
 
-Mini status labels and supporting role metadata may remain at `12 px` where they are not structural hierarchy, consistent with the existing semantic badge/meta treatment.
-
-## 9. Explicitly not done yet
-
-This PR must **not** be interpreted as approval to migrate all states automatically.
-
-Not yet migrated in this branch:
-
-- T09 Empty;
-- T09 Loading;
-- T09 New Task;
-- T09 Validation Error;
-- T09 Task Created;
-- T09 Task Completed;
-- T11 Empty;
-- T11 Loading;
-- T11 New Appointment;
-- T11 Validation Error;
-- T11 Success.
-
-Those states should be generated only after human approval of these base-state candidates, using `PAGE BASE + DELTA MÍNIMO`.
-
-T04 has only the registered Week and Day views in the current State Matrix, so both registered T04 base views are represented in this review.
+The 44 px `E18 — Concluir tarefa` nested reactions that remain are hover-only `CHANGE_TO` interactions of the underlying component and therefore are not tap targets.
 
 ## 10. Protected scope
 
@@ -216,18 +240,17 @@ This migration does not resolve, reinterpret, or approve:
 - any global permission question;
 - any proposal-only state.
 
-Prototype wiring is visual evidence only and is not used here as a functional acceptance criterion.
+Prototype wiring is not treated as a source of functional truth.
 
 ## 11. Review gate
 
-Required next step:
+Current gate:
 
-1. human visual review of `5786:2202` and the four migrated roots;
-2. if approved, extract the batch pattern and migrate T09/T11 remaining states by minimum delta;
-3. run screenshots and structural audit on materially different states;
-4. update the PR record;
-5. merge only after explicit human authorization.
+1. base states — **HUMAN APPROVED**;
+2. remaining T09/T11 states — **MIGRATED AND READY FOR HUMAN VISUAL REVIEW**;
+3. CI must remain green after this documentation update;
+4. merge requires explicit human authorization after the remaining-state review.
 
-Until that review is complete:
+Until that final review is complete:
 
-**PENDING HUMAN VISUAL REVIEW — DO NOT MERGE**
+**DO NOT MERGE PR #95.**
