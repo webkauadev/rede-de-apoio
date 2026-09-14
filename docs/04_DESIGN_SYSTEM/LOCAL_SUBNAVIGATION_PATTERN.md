@@ -106,8 +106,6 @@ O submenu não pertence ao conteúdo da página e não deve reaparecer no final 
 
 A navegação local deve maximizar espaço de conteúdo sem perder acesso rápido à troca de destino.
 
-Contrato de comportamento:
-
 ### No topo
 
 - App Header visível;
@@ -214,8 +212,6 @@ Exemplo:
 - Saúde `Medicamentos / Tarefas / Consultas / Compromissos` → LocalSubnav;
 - T04 `Dia / Semana` → view-mode control, não LocalSubnav.
 
-Isso evita aplicar a regra indiscriminadamente.
-
 ## 10. Acessibilidade
 
 - todos os destinos >=48 px de target vertical;
@@ -258,3 +254,9 @@ A Navigation Bar inferior não se move para acomodar o submenu.
 ## 13. Regra para agentes
 
 > **Se uma tela tiver destinos irmãos dentro da seção primária atual, materialize uma LocalSubnav em linguagem Material 3 Tabs imediatamente abaixo do header. Use fixed tabs apenas se os labels couberem; caso contrário use scrollable tabs. A LocalSubnav recolhe ao scroll para baixo e retorna ao scroll para cima seguindo uma adaptação `enterAlways`; não coloque esse submenu junto à Navigation Bar inferior e não confunda tabs de destino com filtros ou segmented controls.**
+
+## 14. Gate de componente Foundation
+
+A arquitetura, posição e comportamento desta LocalSubnav são canônicos para novas migrações.
+
+A implementação Figma reutilizável como **componente Foundation** só deve ser promovida depois de revisão humana do piloto T09/T11 no PR #95. Até essa aprovação, não criar variações concorrentes em outras telas: reutilizar a regra e aguardar a promoção do master visual.
