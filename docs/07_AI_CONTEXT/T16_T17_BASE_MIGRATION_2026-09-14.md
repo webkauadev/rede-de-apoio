@@ -12,7 +12,7 @@ The completed full-state migration is recorded in:
 
 `docs/07_AI_CONTEXT/T16_T17_FULL_STATE_MIGRATION_2026-09-14.md`
 
-The baseline approval did not resolve P04, reinterpret current prototype wiring, expand T17 permissions, or authorize the final merge of PR #101.
+The baseline approval did not resolve P04, reinterpret current prototype wiring, expand T17 behavior, or authorize the final merge of PR #101.
 
 ## Authority and method
 
@@ -91,7 +91,7 @@ Normalized:
 - `Acesso negado` uses canonical `Status/Error` container/foreground rather than the legacy destructive treatment;
 - legacy `Mais` navigation is excluded.
 
-The baseline did not add new audit permissions or resolve the behavior represented by the existing T17 Forbidden state.
+The baseline did not add new T17 product rules or resolve the existing Forbidden-state behavior.
 
 ## Baseline audit
 
@@ -130,8 +130,8 @@ Following explicit baseline approval:
 1. `LocalSubnav / Controle e Privacidade` was promoted to Foundation as `5912:1699`;
 2. T16 `Saved` was derived by minimum delta while preserving P04;
 3. T17 `Loading`, `Empty`, `Detail`, and `Forbidden` were derived by minimum delta;
-4. E27/Forbidden semantics were preserved without inferring permission rules;
+4. E27/Forbidden visual scope was preserved without adding product rules;
 5. the full-state visual and structural audit was run across all seven roots;
-6. `FIGMA_REGISTRY.yaml`, `STATE_MATRIX.yaml`, and `COMPONENT_MAP.yaml` were updated with current + migrated candidates;
+6. `FIGMA_REGISTRY.yaml`, `STATE_MATRIX.yaml`, `COMPONENT_MAP.yaml`, and the LocalSubnav Foundation record were updated with current + migrated candidates;
 7. PR #101 was prepared for final human review;
 8. final merge remains blocked until explicit authorization.
