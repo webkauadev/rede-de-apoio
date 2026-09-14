@@ -96,6 +96,8 @@ foundation:
       status: calibrated_pending_human_visual_review
       destinations: [T12, T13, T14, T15, T16, T17]
       surface_role: {variable_id: 'VariableID:5673:565', name: 'Color/Surface Container Low'}
+      destination_rows_default_surface: transparent_continuous_with_sheet
+      destination_rows_persistent_tonal_surface: reserved_for_semantically_selected_state_if_applicable
   shell_references:
     app_shell_root: {node_id: '5652:528', status: reference_created_pending_pr_review}
     app_shell_back: {node_id: '5652:560', status: reference_created_pending_pr_review}

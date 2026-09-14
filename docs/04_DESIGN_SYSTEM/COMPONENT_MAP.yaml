@@ -172,6 +172,8 @@ foundation:
       source: new_local_foundation_component
       status: created_pending_pr_review
       product_interaction_target: '326 × 56 px'
+      default_surface: transparent_inherits_settings_sheet_continuity
+      persistent_tonal_container: reserved_for_semantically_selected_state_if_applicable
     app_shell_root:
       semantic_name: 'AppShell / Root'
       figma_node: '5652:528'

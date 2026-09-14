@@ -78,6 +78,7 @@ Papéis TARGET na collection `Rede de Apoio / Semantic`:
 - `Color/Primary` e `Color/Secondary` são cores de acento/conteúdo; não são substitutos universais para containers.
 - quando um elemento é um **container tonal**, preferir o papel `* Container` correspondente.
 - conteúdo dentro de um container tonal deve usar o papel `On * Container` compatível.
+- rows de navegação em `Surface Container Low` permanecem transparentes por padrão e herdam a continuidade visual da surface; container tonal persistente é reservado a uma seleção semanticamente real.
 - não vincular um papel errado só para eliminar hardcode.
 - se o papel correto ainda estiver `pendente de calibração`, a Foundation deve primeiro calibrá-lo e registrar o valor/variable ID antes de propagá-lo para T##.
 

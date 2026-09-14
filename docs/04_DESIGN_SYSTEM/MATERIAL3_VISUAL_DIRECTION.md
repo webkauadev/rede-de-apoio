@@ -102,11 +102,13 @@ Em `Design Foundation`, a calibração ficou pronta para revisão humana, sem mi
 
 - o indicador ativo da Navigation Bar usa `Color/Secondary Container` (`VariableID:5673:562`), alias de `color/secondary-container` (`VariableID:5673:557`, `#EBE8FA`);
 - ícone e label ativos usam `Color/On Secondary Container` (`VariableID:5673:563`), alias de `Color/Primary` (`#00567C`);
-- o Settings Sheet usa `Color/Surface Container Low` (`VariableID:5673:565`, `#F8F5FA`), mantendo rows em Surface para uma camada leve;
+- o Settings Sheet usa `Color/Surface Container Low` (`VariableID:5673:565`, `#F8F5FA`); Destination Rows padrão são transparentes e preservam a continuidade da surface, sem formar uma pilha de cards;
 - o scrim usa `Color/Scrim` (`VariableID:5673:566`) com opacidade de paint de 32%, preservando o shell reconhecível e inativo;
 - `M3 Visual Calibration Review` (`5674:559`) mantém snapshots A congelados e referências B calibradas. É uma área temporária de revisão, não componente canônico.
 
 Os pares de conteúdo relevantes foram verificados: `On Secondary Container` sobre `Secondary Container` tem contraste de 6.66:1; `On Surface` e `On Surface Variant` sobre `Surface Container Low` têm, respectivamente, 15.07:1 e 6.60:1.
+
+Um container tonal persistente em Destination Row é reservado a uma seleção semanticamente real. A Foundation não inventa esse estado para destinos secundários sem destino atual definido.
 
 ### 5.4 Header
 
