@@ -66,6 +66,7 @@ foundation:
     settings_destination_row: '5662:21869'
     local_subnav_health: '5810:1005'
     local_subnav_diary: '5830:358'
+    local_subnav_control_privacy: '5912:1699'
   component_status:
     base_card: target_valid
     action_touch_target_48: target_valid
@@ -75,6 +76,7 @@ foundation:
     bottom_navigation_compfooter: deprecated_for_new_migrations
     local_subnav_health: canonical_reusable
     local_subnav_diary: materialized_pending_t05_t07_pr_review
+    local_subnav_control_privacy: materialized_pending_t16_t17_pr_review
   current_references_deprecated_for_new_migrations:
     app_header_contextual: {node_id: '5201:13483', name: 'T06 / Header / Pessoa', reason: current header does not express page title plus settings architecture}
     bottom_navigation: {node_id: '5116:13047', name: compFooter, reason: current five-item navigation mixes primary destinations with Mais}
@@ -115,6 +117,12 @@ foundation:
       status: materialized_pending_t05_t07_pr_review
       behavior: fixed_tabs
       variants: {diary: '5830:357', history: '5830:348'}
+    local_subnav_control_privacy:
+      node_id: '5912:1699'
+      name: 'Rede de Apoio / Foundation / LocalSubnav / Controle e Privacidade'
+      status: materialized_pending_t16_t17_pr_review
+      behavior: fixed_tabs
+      variants: {preferences: '5912:1677', audit: '5912:1698'}
   shell_references:
     app_shell_root: {node_id: '5652:528', status: canonical_reference}
     app_shell_back: {node_id: '5652:560', status: canonical_reference}
@@ -405,13 +413,39 @@ known_current_nodes:
   T16:
     owner: Kauã
     page: kaua
-    mapping_status: mapped
-    frames: {default: '5211:966', saved: '5212:432'}
+    mapping_status: migrated_full_state_set_pending_human_review
+    frames:
+      current_default: '5211:966'
+      current_saved: '5212:432'
+      migrated_default: '5907:1765'
+      migrated_saved: '5914:1991'
+      full_state_review: '5915:2122'
+    local_subnav:
+      component_set: '5912:1699'
+      active_variant: '5912:1677'
+      active_value: Preferências
+    migration_audit: zero_defects_2026_09_14
   T17:
     owner: Kauã
     page: kaua
-    mapping_status: mapped
-    frames: {default: '5445:915', loading: '5445:1033', empty: '5445:18015', detail: '5445:18109', forbidden: '5445:18234'}
+    mapping_status: migrated_full_state_set_pending_human_review
+    frames:
+      current_default: '5445:915'
+      current_loading: '5445:1033'
+      current_empty: '5445:18015'
+      current_detail: '5445:18109'
+      current_forbidden: '5445:18234'
+      migrated_default: '5909:28315'
+      migrated_loading: '5914:28551'
+      migrated_empty: '5914:28600'
+      migrated_detail: '5914:28689'
+      migrated_forbidden: '5914:28815'
+      full_state_review: '5915:2200'
+    local_subnav:
+      component_set: '5912:1699'
+      active_variant: '5912:1698'
+      active_value: Auditoria
+    migration_audit: zero_defects_2026_09_14
 mapping_summary:
   mapped_screens: 17
   partially_mapped_screens: []

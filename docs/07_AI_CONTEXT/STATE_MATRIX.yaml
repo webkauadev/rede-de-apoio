@@ -211,15 +211,23 @@ screens:
   T16:
     owner: Kauã
     base_state: default
+    migration_status: full_state_set_migrated_pending_human_review
+    review_board: '5915:2122'
     states:
-      default: {kind: default, figma_node: '5211:966', functional_gate: P04}
-      saved: {kind: success, figma_node: '5212:432', functional_gate: P04, prototype_integrity: [FI-005]}
+      default: {kind: default, figma_node: '5211:966', migrated_figma_node: '5907:1765', migration_status: migrated_pending_human_review, functional_gate: P04}
+      saved: {kind: success, figma_node: '5212:432', migrated_figma_node: '5914:1991', migration_status: migrated_pending_human_review, functional_gate: P04, prototype_integrity: [FI-005]}
+    local_subnav: {component_set: '5912:1699', active: Preferências, variant_node: '5912:1677'}
+    audit: zero_defects_2026_09_14
   T17:
     owner: Kauã
     base_state: default
+    migration_status: full_state_set_migrated_pending_human_review
+    review_board: '5915:2200'
     states:
-      default: {kind: default, figma_node: '5445:915'}
-      loading: {kind: loading, figma_node: '5445:1033'}
-      empty: {kind: empty, figma_node: '5445:18015'}
-      detail: {kind: detail, figma_node: '5445:18109'}
-      forbidden: {kind: forbidden, figma_node: '5445:18234', element: E27}
+      default: {kind: default, figma_node: '5445:915', migrated_figma_node: '5909:28315', migration_status: migrated_pending_human_review}
+      loading: {kind: loading, figma_node: '5445:1033', migrated_figma_node: '5914:28551', migration_status: migrated_pending_human_review}
+      empty: {kind: empty, figma_node: '5445:18015', migrated_figma_node: '5914:28600', migration_status: migrated_pending_human_review}
+      detail: {kind: detail, figma_node: '5445:18109', migrated_figma_node: '5914:28689', migration_status: migrated_pending_human_review}
+      forbidden: {kind: forbidden, figma_node: '5445:18234', migrated_figma_node: '5914:28815', migration_status: migrated_pending_human_review, element: E27}
+    local_subnav: {component_set: '5912:1699', active: Auditoria, variant_node: '5912:1698'}
+    audit: zero_defects_2026_09_14
