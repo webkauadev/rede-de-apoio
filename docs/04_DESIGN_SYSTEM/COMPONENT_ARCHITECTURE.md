@@ -51,8 +51,6 @@ Responsabilidades:
 - contexto secundário apenas quando ajuda orientação;
 - ação adicional apenas quando autorizada e necessária.
 
-O componente foundation atual deve ser revisado na próxima etapa para ficar coerente com essa arquitetura.
-
 ### NavigationBar / Primary
 
 Navegação primária mobile TARGET:
@@ -69,7 +67,31 @@ Regras:
 - targets >= 48 × 48 px;
 - distribuição equilibrada e safe area.
 
-O `compFooter` atual de cinco destinos continua CURRENT, porém está `DEPRECATED_FOR_NEW_MIGRATIONS` até ser normalizado.
+O `compFooter` atual de cinco destinos continua CURRENT, porém está `DEPRECATED_FOR_NEW_MIGRATIONS`.
+
+### LocalSubnav / Tabs
+
+Navegação local para destinos irmãos dentro da seção primária ativa.
+
+Exemplo Saúde:
+
+`Medicamentos · Tarefas · Consultas · Compromissos`
+
+Responsabilidades:
+
+- ficar imediatamente abaixo do AppHeader e acima do conteúdo rolável;
+- não competir espacialmente com a NavigationBar inferior;
+- usar linguagem de Material 3 Tabs, com indicador inferior e estado selecionado não dependente somente de cor;
+- usar `PrimaryTabRow` quando os labels couberem confortavelmente e comportamento equivalente a `PrimaryScrollableTabRow` quando não couberem;
+- preservar target vertical >=48 px;
+- recolher no scroll para baixo e retornar no scroll para cima conforme a adaptação Rede de Apoio do comportamento M3 `enterAlways`;
+- manter seleção e posição horizontal do strip quando escondido/reexibido.
+
+`LocalSubnav` não é filtro, chip, ordenação ou controle de modo de visualização. `Dia / Semana` da T04, por exemplo, continua sendo view-mode control.
+
+Contrato completo: `LOCAL_SUBNAVIGATION_PATTERN.md`.
+
+O componente Foundation reutilizável deve ser promovido somente após revisão humana do padrão materializado no lote T09/T11 do PR #95; até lá, a arquitetura e o comportamento já são canônicos, mas a implementação Figma permanece em validação visual.
 
 ### Settings / Management Sheet
 
@@ -91,43 +113,28 @@ Não cria funcionalidade, permissão ou requisito. Apenas reorganiza a superfíc
 ## Componentes de domínio
 
 ### ShiftCard
-Representa plantões.
-Origem:
-RF06-RF10.
+Representa plantões. Origem: RF06-RF10.
 
 ### CareRecordCard
-Representa registros de cuidado.
-Origem:
-RF11-RF12.
+Representa registros de cuidado. Origem: RF11-RF12.
 
 ### MedicationCard
-Representa medicamentos e administração.
-Origem:
-RF14-RF17.
+Representa medicamentos e administração. Origem: RF14-RF17.
 
 ### TaskCard
-Representa tarefas de cuidado.
-Origem:
-RF21.
+Representa tarefas de cuidado. Origem: RF21.
 
 ### AppointmentCard
-Representa consultas e compromissos.
-Origem:
-RF19-RF20.
+Representa consultas e compromissos. Origem: RF19-RF20.
 
 ### EmergencyContactCard
-Representa contatos importantes e emergência.
-Origem:
-RF22-RF24.
+Representa contatos importantes e emergência. Origem: RF22-RF24.
 
 ### AuditEntryCard
-Representa eventos de auditoria.
-Origem:
-RF29/RNF03.
+Representa eventos de auditoria. Origem: RF29/RNF03.
 
 ### AccessStatusCard
-Representa estado de acesso/permissão.
-Status: componente controlado enquanto RF30 estiver em formalização.
+Representa estado de acesso/permissão. Status: componente controlado enquanto RF30 estiver em formalização.
 
 ## Regra
 
@@ -139,34 +146,33 @@ A página Figma `Design Foundation` materializa a base para futuras refatoraçõ
 
 ### Componentes foundation válidos
 
-- `Rede de Apoio / Foundation / BaseCard` (`5640:21509`): infraestrutura visual de superfície, padding 16, radius 12 e hierarquia vertical. Cards de domínio continuam semânticos e independentes.
-- `Rede de Apoio / Foundation / Action / Touch Target 48` (`5644:324`): composição local de acessibilidade que centraliza uma instance `Button - Nova` Obra/shadcn em 48 px de altura. A primitive continua com sua altura visual nativa.
-- `Rede de Apoio / Foundation / Field / Control / Touch Target 48` (`5644:330`): composição local que centraliza `Input - Nova` ou `Select - Nova` em área de 48 px. A primitive continua visualmente com 36 px em Large; textarea já possui altura superior ao mínimo.
-
-### Componentes foundation materializados — revisão Material 3
-
-- `Rede de Apoio / Foundation / AppHeader / Root` (`5652:350`): 390 × 80 px; `Title`, `Context`, `Show avatar`, `Show settings` e swap de Avatar. Usa Avatar Obra `1953:32196`.
-- `Rede de Apoio / Foundation / AppHeader / Back` (`5640:21512`): revisado para 390 × 64 px; voltar, título explícito e ação secundária opcional, ambos em targets de 48 px.
-- `Rede de Apoio / Foundation / NavigationBar / Primary` (`5652:442`): component set com `Active=Home|Agenda|Diário|Saúde`; quatro itens de 89,5 × 64 px, ícone de 24 px, label de 14 px e indicador de surface para seleção.
-- `Rede de Apoio / Foundation / Settings / Management Sheet` (`5652:443`): 358 × 700 px, lateral à direita, composta por instance Obra Sheet `Scrollable=True` via Slot (`5662:21924`), sem detach.
-- `Rede de Apoio / Foundation / Settings / Destination Row` (`5662:21869`): 326 × 56 px, com `Label`, swap de leading icon e `Show chevron`; as seis rows da Sheet são instances.
-- `Rede de Apoio / Foundation / AppShell / Root` (`5652:528`) e `AppShell / Back` (`5652:560`): referências estruturais de 390 × 700 px. `AppShell / Root / Settings Open` (`5652:592`) demonstra apenas a sobreposição visual.
+- `Rede de Apoio / Foundation / BaseCard` (`5640:21509`).
+- `Rede de Apoio / Foundation / Action / Touch Target 48` (`5644:324`).
+- `Rede de Apoio / Foundation / Field / Control / Touch Target 48` (`5644:330`).
+- `Rede de Apoio / Foundation / AppHeader / Root / Tinted` (`5746:157`).
+- `Rede de Apoio / Foundation / AppHeader / Back` (`5640:21512`).
+- `Rede de Apoio / Foundation / NavigationBar / Primary` (`5652:442`).
+- `Rede de Apoio / Foundation / Settings / Management Sheet` (`5652:443`).
+- `Rede de Apoio / Foundation / Settings / Destination Row` (`5662:21869`).
+- `Rede de Apoio / Foundation / AppShell / Root` (`5652:528`) e `AppShell / Back` (`5652:560`).
 
 ### Referências deprecated
-- `AppHeader / Contextual` baseado em `T06 / Header / Pessoa` (`5201:13483`): `DEPRECATED_FOR_NEW_MIGRATIONS` como header global.
-- `BottomNavigation` baseado em `compFooter` (`5116:13047`): `DEPRECATED_FOR_NEW_MIGRATIONS` por conter `Mais` e arquitetura de cinco itens não alinhada ao TARGET atual.
 
-Não propagar os componentes materializados para uma T## antes da revisão humana do PR desta Foundation.
+- `AppHeader / Contextual` baseado em `T06 / Header / Pessoa` (`5201:13483`): `DEPRECATED_FOR_NEW_MIGRATIONS`.
+- `BottomNavigation` baseado em `compFooter` (`5116:13047`): `DEPRECATED_FOR_NEW_MIGRATIONS`.
 
 ### Shells alvo revisados
 
 - `AuthShell`: autenticação sem Navigation Bar.
-- `AppShell / Root`: `AppHeader / Root + scroll content + NavigationBar / Primary`.
-- `AppShell / Back`: `AppHeader / Back + scroll content + NavigationBar` somente quando a hierarquia atual justificar persistência da seção primária.
+- `AppShell / Root` sem navegação local: `AppHeader / Root → scroll content → NavigationBar / Primary`.
+- `AppShell / Root + LocalSubnav`: `AppHeader / Root → LocalSubnav / Tabs → scroll content → NavigationBar / Primary`.
+- `AppShell / Back`: `AppHeader / Back → scroll content → NavigationBar` somente quando a hierarquia justificar persistência da seção primária.
 - `Settings Overlay`: acionado pelo `AppHeader / Root` e organizado via Sheet.
+
+A NavigationBar inferior permanece fixa no contrato visual e não se move para acomodar LocalSubnav.
 
 O campo reutilizável é a composição `label + hint + control + error`. Input e Select usam `Field / Control / Touch Target 48`; textarea mantém altura visual superior a 48 px. Validation Error é estado do controle e da página-base, nunca uma tela estruturalmente independente.
 
 ## Gate de migração
 
-Até a revisão humana do PR desta Foundation, nenhuma tela autenticada deve receber os componentes TARGET. `T06 / Header / Pessoa` e `compFooter` atual continuam `DEPRECATED_FOR_NEW_MIGRATIONS`.
+Padrões já aprovados de Foundation podem ser reutilizados em micro-lotes coerentes. Novos padrões compartilhados, como `LocalSubnav / Tabs`, devem primeiro ser materializados em uma tela piloto/lote, passar por revisão humana e somente então ser promovidos para componente Foundation reutilizável.
