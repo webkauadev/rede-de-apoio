@@ -228,16 +228,29 @@ known_current_nodes:
   T06:
     owner: Kauã
     page: kaua
-    mapping_status: mapped
+    mapping_status: migrated_full_state_set_pending_human_review
     frames:
-      new_record_default: '5201:13488'
-      new_record_validation_error: '5203:300'
-      empty: '5201:13490'
-      normal: '5201:13491'
-      success: '5288:14482'
-      loading: '5288:14618'
+      current_new_record_default: '5201:13488'
+      current_new_record_validation_error: '5203:300'
+      current_empty: '5201:13490'
+      current_normal: '5201:13491'
+      current_success: '5288:14482'
+      current_loading: '5288:14618'
+      migrated_normal: '5917:2409'
+      migrated_empty: '5922:3893'
+      migrated_loading: '5922:30572'
+      migrated_new_record_default: '5922:30922'
+      migrated_new_record_validation_error: '5922:31158'
+      migrated_success: '5922:30746'
+      baseline_review: '5920:2476'
+      full_state_review: '5924:3392'
     reusable_components_frame: '5201:13481'
     local_components: {header_person: '5201:13483', care_record_card: '5204:318'}
+    local_subnav:
+      component_set: '5830:358'
+      active_variant: '5830:357'
+      active_value: Diário
+    migration_audit: zero_defects_2026_09_14
   T07:
     owner: Henrique
     page: henrique
