@@ -369,13 +369,39 @@ known_current_nodes:
   T14:
     owner: David
     page: david
-    mapping_status: mapped
-    frames: {default: '5387:2703', empty: '5387:17293', loading: '5387:17356', success: '5387:17388', add_contact: '5390:154', validation_error: '5392:276', edit_contact: '5390:253', edit_saved: '5392:418'}
+    mapping_status: migrated_full_state_set_pending_human_review
+    frames:
+      current_default: '5387:2703'
+      current_empty: '5387:17293'
+      current_loading: '5387:17356'
+      current_success: '5387:17388'
+      current_add_contact: '5390:154'
+      current_validation_error: '5392:276'
+      current_edit_contact: '5390:253'
+      current_edit_saved: '5392:418'
+      migrated_default: '5899:4780'
+      migrated_empty: '5902:4950'
+      migrated_loading: '5902:4989'
+      migrated_success: '5902:5022'
+      migrated_add_contact: '5903:5052'
+      migrated_validation_error: '5903:5128'
+      migrated_edit_contact: '5903:5207'
+      migrated_edit_saved: '5902:5063'
+      full_state_review: '5905:5195'
+    migration_audit: zero_defects_2026_09_14
   T15:
     owner: David
     page: david
-    mapping_status: mapped
-    frames: {default: '5404:2664', loading: '5405:2696', empty: '5405:2752'}
+    mapping_status: migrated_full_state_set_pending_human_review
+    frames:
+      current_default: '5404:2664'
+      current_loading: '5405:2696'
+      current_empty: '5405:2752'
+      migrated_default: '5899:4857'
+      migrated_loading: '5903:28050'
+      migrated_empty: '5903:28085'
+      full_state_review: '5905:5364'
+    migration_audit: zero_defects_2026_09_14
   T16:
     owner: Kauã
     page: kaua

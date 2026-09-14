@@ -186,22 +186,28 @@ screens:
   T14:
     owner: David
     base_state: default
+    migration_status: full_state_set_migrated_pending_human_review
+    review_board: '5905:5195'
     states:
-      default: {kind: default, figma_node: '5387:2703'}
-      empty: {kind: empty, figma_node: '5387:17293'}
-      loading: {kind: loading, figma_node: '5387:17356'}
-      success: {kind: success, figma_node: '5387:17388'}
-      add_contact: {kind: form, figma_node: '5390:154', element: E26}
-      validation_error: {kind: validation_error, figma_node: '5392:276', element: E26}
-      edit_contact: {kind: form, figma_node: '5390:253', element: E26}
-      edit_saved: {kind: success, figma_node: '5392:418', element: E26}
+      default: {kind: default, figma_node: '5387:2703', migrated_figma_node: '5899:4780', migration_status: migrated_pending_human_review}
+      empty: {kind: empty, figma_node: '5387:17293', migrated_figma_node: '5902:4950', migration_status: migrated_pending_human_review}
+      loading: {kind: loading, figma_node: '5387:17356', migrated_figma_node: '5902:4989', migration_status: migrated_pending_human_review}
+      success: {kind: success, figma_node: '5387:17388', migrated_figma_node: '5902:5022', migration_status: migrated_pending_human_review}
+      add_contact: {kind: form, figma_node: '5390:154', migrated_figma_node: '5903:5052', migration_status: migrated_pending_human_review, element: E26}
+      validation_error: {kind: validation_error, figma_node: '5392:276', migrated_figma_node: '5903:5128', migration_status: migrated_pending_human_review, element: E26}
+      edit_contact: {kind: form, figma_node: '5390:253', migrated_figma_node: '5903:5207', migration_status: migrated_pending_human_review, element: E26}
+      edit_saved: {kind: success, figma_node: '5392:418', migrated_figma_node: '5902:5063', migration_status: migrated_pending_human_review, element: E26}
+    audit: zero_defects_2026_09_14
   T15:
     owner: David
     base_state: default
+    migration_status: full_state_set_migrated_pending_human_review
+    review_board: '5905:5364'
     states:
-      default: {kind: default, figma_node: '5404:2664'}
-      loading: {kind: loading, figma_node: '5405:2696'}
-      empty: {kind: empty, figma_node: '5405:2752'}
+      default: {kind: default, figma_node: '5404:2664', migrated_figma_node: '5899:4857', migration_status: migrated_pending_human_review}
+      loading: {kind: loading, figma_node: '5405:2696', migrated_figma_node: '5903:28050', migration_status: migrated_pending_human_review}
+      empty: {kind: empty, figma_node: '5405:2752', migrated_figma_node: '5903:28085', migration_status: migrated_pending_human_review}
+    audit: zero_defects_2026_09_14
   T16:
     owner: Kauã
     base_state: default
