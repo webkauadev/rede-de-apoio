@@ -20,6 +20,8 @@ The approved fixed local navigation is now reusable:
 - Behavior: fixed primary tabs
 - Applicable screens: T16, T17
 
+The component is a migration candidate on PR #101 until final explicit approval and merge.
+
 ## T16
 
 Current → migrated:
@@ -76,6 +78,7 @@ Updated:
 - `docs/05_FIGMA/FIGMA_REGISTRY.yaml`
 - `docs/07_AI_CONTEXT/STATE_MATRIX.yaml`
 - `docs/04_DESIGN_SYSTEM/COMPONENT_MAP.yaml`
+- `docs/07_AI_CONTEXT/LOCAL_SUBNAVIGATION_FOUNDATION_2026-09-14.md`
 - `docs/07_AI_CONTEXT/T16_T17_BASE_MIGRATION_2026-09-14.md`
 - this report.
 
