@@ -2,11 +2,13 @@
 
 ## Status
 
-**BASELINE MATERIALIZED — PENDING HUMAN VISUAL REVIEW — DO NOT PROPAGATE SIBLING STATES YET**
+**BASELINE HUMAN-APPROVED — FULL-STATE PROPAGATION COMPLETED IN FOLLOW-UP REPORT**
 
 Branch: `design/t06-material3-migration`
 
-This checkpoint records only the T06 `Normal` / page-base migration. It does not approve the migration, resolve P03, redefine write permissions, promote proposal-only scope, or derive Empty/Loading/New Record/Validation Error/Success before human review.
+This file remains the historical checkpoint for the T06 `Normal` / page-base migration. The completed sibling-state propagation is recorded in:
+
+`docs/07_AI_CONTEXT/T06_FULL_STATE_MIGRATION_2026-09-14.md`
 
 ## Authority and scope
 
@@ -16,15 +18,15 @@ Migration rule remains:
 
 `STATE = PAGE BASE + DELTA MÍNIMO`
 
-## Architecture decision
+## Approved architecture
 
-The migrated T06 page base uses the already-approved Registros de Cuidado architecture:
+The human-approved T06 page base uses:
 
 `AppHeader / Root / Tinted → LocalSubnav / Diário (Active=Diário) → Scroll Content → NavigationBar / Primary (Active=Diário)`
 
 The legacy contextual `T06 / Header / Pessoa`, handmade `Diário | Histórico` row and five-destination bottom navigation containing `Mais` are not TARGET patterns.
 
-## Baseline nodes
+## Approved baseline nodes
 
 - Current T06 Normal: `5201:13491`
 - Migrated T06 Normal: `5917:2409`
@@ -33,7 +35,9 @@ The legacy contextual `T06 / Header / Pessoa`, handmade `Diário | Histórico` r
 - LocalSubnav / Diário — Active Diário: `5917:2411`
 - Scroll content: `5917:2412`
 - NavigationBar / Primary — Active Diário: `5917:2420`
-- Human review board: `5920:2476` — `T06 — Material 3 Base Migration Review (NON-CANONICAL)`
+- Baseline comparison board: `5920:2476` — `T06 — Material 3 Base Migration Review (NON-CANONICAL)`
+
+The user explicitly approved this baseline before sibling-state propagation.
 
 ## Content preservation and normalization
 
@@ -46,33 +50,16 @@ Care records continue to use the linked `T06 / Care Record Card` component. Thei
 - Hidratação → `Category/Hydration/*`;
 - Descanso → `Category/Sleep/*`.
 
-`Corrigir` remains Diary-context styling. No edit/delete action was introduced. The primary `Novo Registro` CTA is bound to canonical `Color/Primary` rather than inheriting its old local fill.
+`Corrigir` remains Diary-context styling. No edit/delete action was introduced. The primary `Novo Registro` CTA is bound to canonical `Color/Primary`.
 
 ## Baseline audit
 
-The migrated root is `390 × 844` and parented to page `Kauã`.
+At approval time the migrated root was `390 × 844`, parented to `Kauã`, with zero legacy shell residues, exactly one canonical Root header, one `LocalSubnav / Diário`, one primary NavigationBar, zero Inter typography, zero structural text below 14 px, zero unbound semantic colors, zero audited targets below 48 px and no unintended overflow.
 
-Audit result:
+The content scrolls vertically by design.
 
-- legacy T06 person header / old bottom navigation / `Mais` / handmade section nav: **0**;
-- canonical AppHeader / Root / Tinted: **1**;
-- canonical LocalSubnav / Diário: **1**, `Active=Diário`;
-- canonical NavigationBar / Primary: **1**, `Active=Diário`;
-- detached instances: **0**;
-- Inter legacy typography: **0**;
-- structural text below 14 px: **0**;
-- unbound custom semantic solid colors outside linked component internals: **0**;
-- audited interactive targets below 48 px: **0**;
-- unintended overflow: **0**.
+## Follow-up
 
-The content extends beyond the 628 px content viewport by design; this is intentional vertical scrolling, not clipping.
+The approved sibling states, final review board, state-level audit and full migration details are documented in `T06_FULL_STATE_MIGRATION_2026-09-14.md`.
 
-## Human gate
-
-Review `5920:2476` before sibling-state propagation. The board shows:
-
-`T06 CURRENT / Normal | T06 MIGRATED / Normal`
-
-If the baseline is approved, derive the registered T06 states from this page base by minimum delta. The New Record interaction must continue to respect the T06 architecture specification that treats registration as an overlay/Sheet rather than inventing a second page base. P03 remains unresolved throughout.
-
-Do not merge this branch until the final full-state set receives explicit authorization.
+Do not merge the branch until the final full-state set receives explicit user authorization.
