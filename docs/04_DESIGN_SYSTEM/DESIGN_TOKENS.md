@@ -1,7 +1,7 @@
 # Design Tokens
 
-Versão 3. Substitui a versão anterior.
-Motivo da revisão: além da correção histórica de borda/estados, esta versão registra a Foundation Material 3 já aprovada e os papéis semânticos validados no piloto T03 em 2026-09-14.
+Versão 4. Substitui a versão anterior.
+Motivo da revisão: registra os papéis `Status/Delayed/*` e `Status/Corrected/*`, a promoção do LocalSubnav Diário e a normalização de scopes/uso semântico validada no lote T05/T07 em 2026-09-14.
 
 Fonte oficial de tokens. `05_FIGMA` referencia, não redefine.
 
@@ -31,10 +31,10 @@ Contraste verificado: `primary` 8.01:1 sobre surface e 7.62:1 sobre background.
 
 | Token | Valor | Uso | Contraste |
 |---|---|---|---|
-| `color-border-subtle` | `#E5E5E5` | divisores **decorativos** apenas | 1.26:1 — fora do escopo de 1.4.11 |
-| `color-border-interactive` | `#6E8496` | inputs, cards acionáveis, controles | 3.89:1 sobre surface / 3.70:1 sobre background |
+| `color-border-subtle` | `#E5E5E5` | divisores decorativos e limites neutros de cards não dependentes de contraste | 1.26:1 — fora do escopo de 1.4.11 quando puramente decorativo |
+| `color-border-interactive` | `#6E8496` | inputs, campos e controles em que a própria borda comunica affordance | 3.89:1 sobre surface / 3.70:1 sobre background |
 
-`color-border-subtle` não pode ser usado em nenhum elemento acionável ou em campo de formulário.
+`color-border-subtle` não pode substituir `color-border-interactive` em inputs/campos cuja identificação dependa da borda.
 
 ## Cor — semântica de estado
 
@@ -72,6 +72,15 @@ Papéis na collection `Rede de Apoio / Semantic`:
 
 Os candidatos `Color/Tertiary Container` e `Color/On Tertiary Container` continuam **pendentes**. O piloto T03 não os validou; não usar `tone=context` até calibração e aprovação específica.
 
+### Scopes semânticos
+
+Os papéis Material 3 existentes foram normalizados para scopes coerentes; nenhum deles permanece em `ALL_SCOPES`:
+
+- `Color/On Surface`, `Color/On Surface Variant`, `Color/On Secondary Container` → fills de conteúdo/texto;
+- `Color/Secondary Container`, `Color/Surface Container`, `Color/Surface Container Low`, `Color/Scrim` → fills de frame/shape conforme o papel.
+
+A normalização alterou somente scope, nunca valor resolvido.
+
 ### Regra de uso
 
 - `Color/Primary` e `Color/Secondary` são cores de acento/conteúdo; não são substitutos universais para containers.
@@ -87,7 +96,7 @@ O indicador ativo usa `Color/Secondary Container` e o ícone/label ativo usam `C
 
 Destinos primários: `Home · Agenda · Diário · Saúde`. `Mais` não pertence à Navigation Bar canônica.
 
-## Component Color Grammar — aprovada no piloto T03
+## Component Color Grammar — domínio
 
 As famílias `Feature/*`, `Category/*` e `Status/*` na collection `Rede de Apoio / Semantic` são canônicas para novas migrações. A regra completa está em `COMPONENT_COLOR_GRAMMAR.md`.
 
@@ -98,15 +107,34 @@ Regra resumida:
 - Feature identifica área/origem;
 - Category identifica assunto do cuidado;
 - Status representa somente estado funcional real;
+- mesmo papel = mesmo token em qualquer tela/estado;
 - precedência: `critical real state → functional status → category → feature/source → neutral structure`.
 
-Exemplos aprovados no T03:
+Exemplos aprovados/validados:
 
 - Home: `#D0E9F3 / #2A6F97 / #003D59`;
 - Diary: `#F0E4F1 / #875985 / #563751`;
 - Hydration: `#D7EEF7 / #147A96 / #0B5268`;
+- Medication: `#EEE3F7 / #7A4D91 / #5C376E`;
 - Scheduled: `#EEEAF8 / #5B4A7D`;
 - Pending usa Warning semantics.
+
+### Status acrescentados no lote T05/T07
+
+| Token Figma | ID | Alias/valor funcional | Regra |
+|---|---|---|---|
+| `Status/Delayed/Container` | `VariableID:5835:341` | `color-warning-surface` | atraso operacional, não destructive |
+| `Status/Delayed/Foreground` | `VariableID:5835:342` | `Color/Warning` | conteúdo de atraso |
+| `Status/Corrected/Container` | `VariableID:5835:343` | `Color/Surface Container` | histórico corrigido neutro |
+| `Status/Corrected/Foreground` | `VariableID:5835:344` | `Color/On Surface Variant` | conteúdo do estado corrigido |
+
+Regras:
+
+- `Atrasado` não usa Danger/Destructive apenas para chamar atenção;
+- `Corrigido` não usa Warning, Success nem Feature/Diary como status;
+- Category permanece independente do Status: uma Medicação atrasada continua usando `Category/Medication/*` para categoria e `Status/Delayed/*` para estado.
+
+A gramática de domínio possui agora 50 variables: 12 Feature, 24 Category e 14 Status.
 
 ## Root Header Tinted — aprovado no piloto T03
 
@@ -131,6 +159,25 @@ Componentes Figma:
 - `AppShell / Root`: `5652:528`, já consumindo o Root/Tinted.
 
 Novas telas Root devem reutilizar o shell em vez de reconstruir o tratamento por tela. Ver `APP_HEADER_VISUAL_GRAMMAR.md`.
+
+## LocalSubnav — Foundation
+
+A seleção de navegação local usa a família Feature da seção, nunca Status.
+
+Masters atuais:
+
+- Saúde scrollable: `5810:1005`, `Active=Medicamentos|Tarefas|Consultas|Compromissos`;
+- Diário fixed: `5830:358`, `Active=Diário|Histórico`.
+
+Diário usa:
+
+- surface: `Color/Surface`;
+- inativo: `Color/On Surface Variant`;
+- ativo: `Feature/Diary/Foreground`;
+- indicador: `Feature/Diary/Accent`;
+- divisor: `Color/Border Subtle`.
+
+O hide-on-down / reveal-on-up é comportamento do shell/runtime e não cria token nem variante Expanded/Collapsed.
 
 ## Tipografia
 
@@ -192,8 +239,10 @@ Contratos vigentes:
 - Settings / Management Sheet;
 - `AppHeader / Root / Tinted` (`5746:157`);
 - `AppShell / Root` (`5652:528`) usando Root/Tinted;
-- Component Color Grammar aprovada no T03.
+- Component Color Grammar;
+- LocalSubnav Saúde `5810:1005`;
+- LocalSubnav Diário `5830:358`.
 
-O PR #91 da Foundation está mergeado. A T03 é a primeira prova real aprovada do AppShell Root. Essa aprovação visual autoriza reutilizar os padrões acima, mas não resolve P03/P04/P05/P06 nem aprova RF30/US-036.
+O PR #91 da Foundation está mergeado. A T03 é a primeira prova real aprovada do AppShell Root. As migrações posteriores extraem e promovem padrões reutilizáveis, mas não resolvem P03/P04/P05/P06 nem aprovam RF30/US-036.
 
 As primitives Obra/shadcn preservam suas geometrias internas quando necessário. A Foundation define o padrão do produto para composição e não reescreve o kit.
