@@ -1,25 +1,21 @@
 # Component Color Grammar
 
-Status: **TARGET CANDIDATE — PENDING HUMAN REVIEW**
+Status: **CANÔNICO — APROVADO NO PILOTO T03**  
+Data: **2026-09-14**
 
-This document defines the reusable colour grammar for product components. It
-does not promote the values below to final design tokens; that decision remains
-subject to human review of the T03 pilot.
+Este documento define a gramática de cor reutilizável dos componentes do produto. O piloto T03 foi aprovado visualmente e, a partir deste gate, as famílias `Feature/*`, `Category/*` e `Status/*` abaixo são regras canônicas para novas migrações. Elas não autorizam mudança funcional nem substituem requisitos.
 
 ## Principle
 
-Use this chain for every coloured component:
+Use esta cadeia para todo componente colorido:
 
 `component → semantic variant → token → value`
 
-Never choose a colour because of the screen where a component happens to be
-used. Structural UI remains neutral; tonal containers provide emphasis; status
-colour communicates a real state only.
+Nunca escolher cor porque um componente aparece em determinada tela. A estrutura permanece baseada em surfaces; containers tonais fornecem ênfase; status comunica somente um estado funcional real.
 
 ## Base primitive mapping
 
-The existing shadcn/Obra roles continue to implement generic component
-structure:
+Os papéis existentes de shadcn/Obra continuam implementando a estrutura genérica:
 
 | Primitive role | Purpose |
 |---|---|
@@ -31,8 +27,7 @@ structure:
 | `accent` / `accent-foreground` | generic component accent, never a category substitute |
 | `destructive`, `border`, `ring` | destructive, boundary and focus roles |
 
-`Feature/*`, `Category/*` and `Status/*` are domain extensions. They do not
-replace or overload those primitive roles.
+`Feature/*`, `Category/*` e `Status/*` são extensões de domínio. Elas não substituem nem sobrecarregam os papéis primitivos.
 
 ## Component contracts
 
@@ -41,13 +36,13 @@ replace or overload those primitive roles.
 | `SummaryCard` | `tone=neutral` | Surface / Surface Container + On Surface |
 | `SummaryCard` | `tone=primary` | Primary Container + On Primary Container |
 | `SummaryCard` | `tone=secondary` | Secondary Container + On Secondary Container |
-| `SummaryCard` | `tone=context` | Tertiary Container + On Tertiary Container |
+| `SummaryCard` | `tone=context` | **PENDENTE**: só pode usar Tertiary Container após calibração e aprovação específica do papel |
 | `CategoryIcon` | `category` | Category Container background + Category Accent icon |
 | `CategoryBadge` | `category` | Category Container background + Category Foreground text |
 | `StatusBadge` | `status` | Status Container background + Status Foreground text |
 | `CareRecordCard` | `sourceFeature`, `category` | neutral record surface; Feature identifies origin and Category identifies care subject |
 
-## Feature candidates
+## Feature — canonical palette
 
 | Feature | Container | Accent | Foreground |
 |---|---:|---:|---:|
@@ -56,7 +51,9 @@ replace or overload those primitive roles.
 | Diary | `#F0E4F1` | `#875985` | `#563751` |
 | Health | `#DFF0E9` | `#3E7B68` | `#285244` |
 
-## Category candidates
+Feature identifica a área/origem do produto. Não usar Feature como sinônimo de status.
+
+## Category — canonical palette
 
 | Category | Container | Accent | Foreground |
 |---|---:|---:|---:|
@@ -69,10 +66,11 @@ replace or overload those primitive roles.
 | Appointment | `#E5EBF6` | `#4F6F9C` | `#344E72` |
 | General | `#EEF1F3` | `#60717B` | `#3C4B54` |
 
+Category identifica o assunto do cuidado. A categoria deve ser estável entre telas; não redefinir Hidratação, Medicação etc. tela por tela.
+
 ## Status rules
 
-Status is functional, never decorative. The T03 candidate mappings expose
-existing semantic roles through `Status/*` variables:
+Status é funcional, nunca decorativo.
 
 | Status | Container role | Foreground role |
 |---|---|---|
@@ -82,24 +80,19 @@ existing semantic roles through `Status/*` variables:
 | Error | Danger Surface | Danger |
 | Disabled | Surface | Disabled |
 
-Feature and Category colour never imply a Status. For example, Mobility green
-is not success and Nutrition amber is not warning.
+Feature e Category nunca implicam Status. Por exemplo, Mobility verde não significa sucesso e Nutrition âmbar não significa warning.
 
-`Status/Scheduled/*` is a dedicated candidate family (approximately 6.53:1
-contrast), rather than an alias of Secondary Container. Secondary remains
-reserved for its Foundation role, including Navigation Bar selection.
+`Status/Scheduled/*` é uma família dedicada, em vez de alias de Secondary Container. Secondary permanece reservado ao papel da Foundation, incluindo seleção da Navigation Bar.
 
 ## Category label redundancy
 
-When `itemTitle == categoryLabel`, do not render a duplicate textual
-`CategoryBadge`. Express the Category through a `CategoryIcon`, leading
-affordance, accent, or semantic treatment of the existing title. When
-`itemTitle != categoryLabel`, `CategoryBadge` may be rendered normally.
+Quando `itemTitle == categoryLabel`, não renderizar um `CategoryBadge` textual duplicado. Expressar Category por `CategoryIcon`, leading affordance, accent ou tratamento semântico do título existente.
+
+Quando `itemTitle != categoryLabel`, `CategoryBadge` pode ser renderizado normalmente.
 
 ## Precedence
 
-When a component carries multiple meanings, apply the highest applicable
-meaning first:
+Quando um componente carrega mais de um significado, aplicar a prioridade:
 
 1. critical real state;
 2. functional status;
@@ -107,26 +100,41 @@ meaning first:
 4. feature/source;
 5. neutral structure.
 
-Feature must not hide a more useful Category. If there is room for only one
-coloured cue on a care record, show Category.
+Feature não deve esconder uma Category mais útil. Se houver espaço para apenas uma pista cromática em um registro de cuidado, mostrar Category.
 
-## T03 pilot example
+## T03 — exemplo canônico
 
-`Agora` is a `SummaryCard(tone=primary)` because it expresses the caregiver's
-current operational condition. `Próximo cuidado` remains neutral, with
-`StatusBadge(status=scheduled)` for Programado. Its title already equals the
-Hydration category, so Hidratação receives Category semantic treatment directly
-on that title rather than a duplicate badge. `Na rotina` remains neutral, with
-`StatusBadge(status=pending)` only for the real pending state.
-The recent hydration record remains neutral: Diary is its source Feature
-(plum icon) while Hydration is its Category (cyan badge). These are independent
-meanings.
+`Agora` usa `SummaryCard(tone=primary)` porque expressa a condição operacional atual do cuidador. O piloto aprovou:
 
-## Candidate materialization and approval gate
+- `Color/Primary Container` `#D0E9F3` (`VariableID:5700:269`);
+- `Color/On Primary Container` `#003D59` (`VariableID:5700:270`).
 
-The Figma collection `Rede de Apoio / Semantic` contains 46 variables created
-for this pilot: 12 `Feature/*`, 24 `Category/*`, and 10 `Status/*`. Their
-scopes are limited to relevant fill/text use, never `ALL_SCOPES`. They are
-**TARGET CANDIDATE — PENDING HUMAN REVIEW** and must not be copied to other
-T## screens or promoted into `DESIGN_TOKENS.md` until the human visual review
-approves the T03 pilot.
+`Próximo cuidado` permanece neutro e usa `StatusBadge(status=scheduled)` para `Programado`. Como o título já é `Hidratação`, a categoria aparece diretamente no título/leading treatment, sem badge textual duplicado.
+
+`Na rotina` permanece neutro, com `StatusBadge(status=pending)` somente para o estado real pendente.
+
+O registro recente de hidratação permanece estruturalmente neutro: Diary é sua Feature de origem (plum) e Hydration é sua Category (cyan). São significados independentes.
+
+## Materialization and approval
+
+A collection Figma `Rede de Apoio / Semantic` contém 46 variables da gramática:
+
+- 12 `Feature/*`;
+- 24 `Category/*`;
+- 10 `Status/*`.
+
+Os scopes permanecem limitados a fills/text relevantes, nunca `ALL_SCOPES`.
+
+**Essas famílias foram aprovadas pela revisão humana do piloto T03 em 2026-09-14 e podem ser reutilizadas nas próximas T##.**
+
+Isso não significa usar todas as cores em todas as telas. A regra é reutilizar os papéis quando o componente tiver aquele significado semântico.
+
+## Tertiary remains gated
+
+Os candidatos `Color/Tertiary Container` e `Color/On Tertiary Container` não foram validados pelo piloto T03 e continuam pendentes. Nenhum agente deve promovê-los ou usá-los para `tone=context` apenas para adicionar variedade cromática.
+
+Quando uma futura tela realmente exigir esse papel, calibrar e revisar antes de propagá-lo.
+
+## Agent rule
+
+> **Não escolha a cor na tela. Resolva primeiro o significado do componente e então aplique a família semântica canônica. Reutilize Feature, Category e Status de forma consistente; preserve surfaces neutras para estrutura; não converta cor em decoração.**
