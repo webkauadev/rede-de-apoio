@@ -2,6 +2,8 @@
 
 Status: **FULL STATE SET MATERIALIZED — AUDITED — PENDING FINAL HUMAN REVIEW**.
 
+PR: `#99` — `design/t12-t13-material3-migration`.
+
 Human baseline approval was received before propagation. Approved sibling states were derived under `STATE = PAGE BASE + DELTA MÍNIMO`.
 
 ## T12
