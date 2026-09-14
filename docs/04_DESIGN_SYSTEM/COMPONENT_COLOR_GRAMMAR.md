@@ -76,7 +76,7 @@ existing semantic roles through `Status/*` variables:
 
 | Status | Container role | Foreground role |
 |---|---|---|
-| Scheduled | Secondary Container | On Secondary Container |
+| Scheduled | Status/Scheduled Container `#EEEAF8` | Status/Scheduled Foreground `#5B4A7D` |
 | Pending | Warning Surface | Warning |
 | Completed | Success Surface | Success |
 | Error | Danger Surface | Danger |
@@ -84,6 +84,17 @@ existing semantic roles through `Status/*` variables:
 
 Feature and Category colour never imply a Status. For example, Mobility green
 is not success and Nutrition amber is not warning.
+
+`Status/Scheduled/*` is a dedicated candidate family (approximately 6.53:1
+contrast), rather than an alias of Secondary Container. Secondary remains
+reserved for its Foundation role, including Navigation Bar selection.
+
+## Category label redundancy
+
+When `itemTitle == categoryLabel`, do not render a duplicate textual
+`CategoryBadge`. Express the Category through a `CategoryIcon`, leading
+affordance, accent, or semantic treatment of the existing title. When
+`itemTitle != categoryLabel`, `CategoryBadge` may be rendered normally.
 
 ## Precedence
 
@@ -103,9 +114,10 @@ coloured cue on a care record, show Category.
 
 `Agora` is a `SummaryCard(tone=primary)` because it expresses the caregiver's
 current operational condition. `Próximo cuidado` remains neutral, with
-`StatusBadge(status=scheduled)` for Programado and
-`CategoryBadge(category=hydration)` for Hidratação. `Na rotina` remains
-neutral, with `StatusBadge(status=pending)` only for the real pending state.
+`StatusBadge(status=scheduled)` for Programado. Its title already equals the
+Hydration category, so Hidratação receives Category semantic treatment directly
+on that title rather than a duplicate badge. `Na rotina` remains neutral, with
+`StatusBadge(status=pending)` only for the real pending state.
 The recent hydration record remains neutral: Diary is its source Feature
 (plum icon) while Hydration is its Category (cyan badge). These are independent
 meanings.
