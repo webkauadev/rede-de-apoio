@@ -390,3 +390,27 @@ Princípios utilizados:
 ## 13. Princípio resumido para agentes
 
 > **Não pinte componentes; atribua papéis. Não deixe a tela monocromática por medo de cor e não use cor para compensar falta de hierarquia. Estruture com surfaces neutras, destaque o que importa com containers tonais e reserve cores de status para estados reais.**
+
+---
+
+## 14. Pilot calibration candidates — T03
+
+Os valores abaixo existem somente no Figma, na collection `Rede de Apoio /
+Semantic`, e foram usados para a comparação não canônica
+`T03 — Color & Surface Calibration Review` (`5700:1688`). Eles não são
+tokens canônicos finais e não devem ser propagados antes da revisão humana.
+
+| Papel | Figma Variable ID | Valor | Contraste do par | Status |
+|---|---|---|---:|---|
+| Primary Container — Candidate A | `VariableID:5700:269` | `#D0E9F3` | 9.18:1 com On Primary A | PENDING HUMAN REVIEW |
+| On Primary Container — Candidate A | `VariableID:5700:270` | `#003D59` | 9.18:1 sobre Primary A | PENDING HUMAN REVIEW |
+| Primary Container — Candidate B | `VariableID:5700:271` | `#C4E0EE` | 8.78:1 com On Primary B | PENDING HUMAN REVIEW |
+| On Primary Container — Candidate B | `VariableID:5700:272` | `#003A55` | 8.78:1 sobre Primary B | PENDING HUMAN REVIEW |
+| Tertiary Container — Candidate A | `VariableID:5700:273` | `#EDE4F2` | 8.77:1 com On Tertiary A | PENDING HUMAN REVIEW |
+| On Tertiary Container — Candidate A | `VariableID:5700:274` | `#4B3554` | 8.77:1 sobre Tertiary A | PENDING HUMAN REVIEW |
+| Tertiary Container — Candidate B | `VariableID:5700:275` | `#E8E2EE` | 8.92:1 com On Tertiary B | PENDING HUMAN REVIEW |
+| On Tertiary Container — Candidate B | `VariableID:5700:276` | `#47334F` | 8.92:1 sobre Tertiary B | PENDING HUMAN REVIEW |
+
+O Candidate A é a proposta aplicada localmente no piloto T03: Primary para o
+contexto operacional `Agora` e Tertiary limitado ao conteúdo contextual
+`Recentemente`. Essa aplicação continua `PENDING HUMAN REVIEW`.
