@@ -1,8 +1,8 @@
 # LocalSubnav Foundation Promotion — 2026-09-14
 
-Status: **FOUNDATION MATERIALIZED — READY FOR HUMAN REVIEW — DO NOT MERGE THIS PR WITHOUT EXPLICIT AUTHORIZATION**
+Status: **FOUNDATION PATTERN ESTABLISHED — FAMILY EXTENSIONS TRACKED BY THEIR MIGRATION PRS**
 
-Branch: `design/local-subnav-foundation`
+Historical origin branch: `design/local-subnav-foundation`
 
 ## Objective
 
