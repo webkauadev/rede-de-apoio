@@ -2,11 +2,17 @@
 
 ## Status
 
-**BASELINES MATERIALIZED — PENDING HUMAN VISUAL REVIEW — DO NOT PROPAGATE STATES YET**
+**BASELINES APPROVED — HISTORICAL CHECKPOINT — FULL-STATE PROPAGATION COMPLETED IN FOLLOW-UP**
 
 Branch: `design/t16-t17-material3-migration`
 
-This checkpoint records only the human-review baselines for T16 and T17. It does not approve the migration, derive sibling states, resolve P04, reinterpret current prototype wiring, expand T17 permissions, or promote the LocalSubnav pilot to Foundation.
+This document remains as the historical baseline gate for T16 and T17. Human approval was received after review of board `5911:1834`, authorizing promotion of the local navigation pilot and propagation of the approved sibling states by `PAGE BASE + DELTA MÍNIMO`.
+
+The completed full-state migration is recorded in:
+
+`docs/07_AI_CONTEXT/T16_T17_FULL_STATE_MIGRATION_2026-09-14.md`
+
+The baseline approval did not resolve P04, reinterpret current prototype wiring, expand T17 permissions, or authorize the final merge of PR #101.
 
 ## Authority and method
 
@@ -14,7 +20,7 @@ Migration order remains:
 
 `approved GitHub requirements → approved Material 3/Foundation pattern → Rede de Apoio semantic token → Obra/shadcn/local primitive → screen`
 
-State propagation remains blocked until the baseline gate passes:
+State propagation followed:
 
 `STATE = PAGE BASE + DELTA MÍNIMO`
 
@@ -22,20 +28,20 @@ State propagation remains blocked until the baseline gate passes:
 
 T16 and T17 remain secondary management destinations exposed through `Settings / Management Sheet`; they are not a fifth primary navigation section.
 
-They also form the local `Controle e Privacidade` pair, so both baselines use:
+They form the local `Controle e Privacidade` pair, so both baselines use:
 
 `AppHeader / Back → fixed LocalSubnav (Preferências | Auditoria) → content`
 
 They intentionally do **not** carry `NavigationBar / Primary`, legacy `Mais`, `compFooter`, the five-item bottom navigation, or the deprecated `T06 / Header / Pessoa` shell.
 
-The LocalSubnav is currently a review pilot instantiated from the already-approved fixed-tabs architecture. Its labels are `Preferências | Auditoria` and its active semantics were retokened to generic Primary / On Secondary Container roles instead of Diary feature colors. It must not be promoted as a reusable Foundation component before human approval.
+After baseline approval, the pilot was promoted to the reusable Foundation component set `5912:1699` with variants `5912:1677` (`Active=Preferências`) and `5912:1698` (`Active=Auditoria`).
 
 ## T16 — Preferências de Notificações / Default
 
 - Current: `5211:966`
 - Migrated baseline: `5907:1765`
 - Owner page: `Kauã`
-- LocalSubnav pilot: `5907:28266`
+- LocalSubnav instance: `5907:28266`
 - Functional gate preserved: `P04`
 
 Preserved:
@@ -64,7 +70,7 @@ No decision from P04 was inferred or resolved through design.
 - Current: `5445:915`
 - Migrated baseline: `5909:28315`
 - Owner page: `Kauã`
-- LocalSubnav pilot: `5909:28322`
+- LocalSubnav instance: `5909:28322`
 
 Preserved:
 
@@ -85,7 +91,7 @@ Normalized:
 - `Acesso negado` uses canonical `Status/Error` container/foreground rather than the legacy destructive treatment;
 - legacy `Mais` navigation is excluded.
 
-The baseline does not add new audit permissions or resolve the behavior represented by the existing T17 Forbidden state.
+The baseline did not add new audit permissions or resolve the behavior represented by the existing T17 Forbidden state.
 
 ## Baseline audit
 
@@ -115,17 +121,17 @@ The board shows:
 
 `T16 CURRENT | T16 MIGRATED | T17 CURRENT | T17 MIGRATED`
 
-Canonical migration candidates remain `5907:1765` and `5909:28315`; the board contains review-only snapshots.
+The baseline roots `5907:1765` and `5909:28315` were approved for state propagation. The board remains a frozen review artifact and is not itself canonical.
 
-## Next step after explicit approval
+## Follow-up completed
 
-If and only if these baselines are approved:
+Following explicit baseline approval:
 
-1. promote `LocalSubnav / Controle e Privacidade` to a reusable Foundation component with `Active=Preferências` and `Active=Auditoria` variants;
-2. derive T16 `Saved` from the approved T16 page base by minimum delta while preserving P04;
-3. derive T17 `Loading`, `Empty`, `Detail`, and `Forbidden` from the approved T17 page base by minimum delta;
-4. keep E27/Forbidden semantics within approved scope and do not infer permission rules;
-5. run the full-state visual and structural audit;
-6. update `FIGMA_REGISTRY.yaml` and `STATE_MATRIX.yaml` with current + migrated candidates;
-7. update the PR for final human review;
-8. do not merge without explicit authorization.
+1. `LocalSubnav / Controle e Privacidade` was promoted to Foundation as `5912:1699`;
+2. T16 `Saved` was derived by minimum delta while preserving P04;
+3. T17 `Loading`, `Empty`, `Detail`, and `Forbidden` were derived by minimum delta;
+4. E27/Forbidden semantics were preserved without inferring permission rules;
+5. the full-state visual and structural audit was run across all seven roots;
+6. `FIGMA_REGISTRY.yaml`, `STATE_MATRIX.yaml`, and `COMPONENT_MAP.yaml` were updated with current + migrated candidates;
+7. PR #101 was prepared for final human review;
+8. final merge remains blocked until explicit authorization.
