@@ -96,7 +96,19 @@ Portanto:
 
 A aparência suave anterior do indicador é uma referência visual melhor para a próxima calibração do que o container azul forte atual.
 
-### 5.3 Header
+### 5.3 Calibração materializada — PR #91
+
+Em `Design Foundation`, a calibração ficou pronta para revisão humana, sem migrar T##:
+
+- o indicador ativo da Navigation Bar usa `Color/Secondary Container` (`VariableID:5673:562`), alias de `color/secondary-container` (`VariableID:5673:557`, `#EBE8FA`);
+- ícone e label ativos usam `Color/On Secondary Container` (`VariableID:5673:563`), alias de `Color/Primary` (`#00567C`);
+- o Settings Sheet usa `Color/Surface Container Low` (`VariableID:5673:565`, `#F8F5FA`), mantendo rows em Surface para uma camada leve;
+- o scrim usa `Color/Scrim` (`VariableID:5673:566`) com opacidade de paint de 32%, preservando o shell reconhecível e inativo;
+- `M3 Visual Calibration Review` (`5674:559`) mantém snapshots A congelados e referências B calibradas. É uma área temporária de revisão, não componente canônico.
+
+Os pares de conteúdo relevantes foram verificados: `On Secondary Container` sobre `Secondary Container` tem contraste de 6.66:1; `On Surface` e `On Surface Variant` sobre `Surface Container Low` têm, respectivamente, 15.07:1 e 6.60:1.
+
+### 5.4 Header
 
 A hierarquia TARGET está correta:
 
@@ -106,7 +118,7 @@ O avatar é contextual e não substitui o título. A ação de Configurações d
 
 O `AppHeader / Back` deve manter voltar + título; ações secundárias são opcionais e somente aparecem quando autorizadas pelo fluxo.
 
-### 5.4 Settings / Management Sheet
+### 5.5 Settings / Management Sheet
 
 O padrão de Sheet/Drawer secundário é coerente para reunir T12–T17, mas sua superfície não precisa ser branco absoluto por regra.
 

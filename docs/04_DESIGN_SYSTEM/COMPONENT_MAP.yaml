@@ -82,12 +82,20 @@ ux_direction:
   - Product touch targets remain at least 48 x 48 px.
 
 foundation:
-  status: material3_navigation_foundation_created_pending_pr_review
+  status: material3_navigation_foundation_calibrated_pending_human_visual_review
   figma_page: {name: Design Foundation, node_id: '5639:21448'}
   migration_gate: authenticated_screen_migration_blocked_until_navigation_foundation_pr_review
   token_collections:
     primitives: {name: 'Rede de Apoio / Primitives', id: 'VariableCollectionId:5639:154'}
     semantic: {name: 'Rede de Apoio / Semantic', id: 'VariableCollectionId:5639:155'}
+  material3_color_roles:
+    on_surface: {id: 'VariableID:5673:560', alias_of: 'Color/Foreground', resolved: '#12222B'}
+    on_surface_variant: {id: 'VariableID:5673:561', alias_of: 'Color/Muted Foreground', resolved: '#4A5A66'}
+    secondary_container: {id: 'VariableID:5673:562', primitive: 'VariableID:5673:557', resolved: '#EBE8FA'}
+    on_secondary_container: {id: 'VariableID:5673:563', alias_of: 'Color/Primary', resolved: '#00567C'}
+    surface_container: {id: 'VariableID:5673:564', primitive: 'VariableID:5673:558', resolved: '#F3F0F7'}
+    surface_container_low: {id: 'VariableID:5673:565', primitive: 'VariableID:5673:559', resolved: '#F8F5FA'}
+    scrim: {id: 'VariableID:5673:566', alias_of: 'VariableID:1953:9376', resolved: '#000000', paint_opacity: 0.32}
   components:
     base_card:
       semantic_name: 'Rede de Apoio / Foundation / BaseCard'
@@ -146,15 +154,18 @@ foundation:
       semantic_name: 'NavigationBar / Primary'
       figma_node: '5652:442'
       source: new_local_foundation_component_set
-      status: created_pending_pr_review
+      status: calibrated_pending_human_visual_review
       destinations: [Home, Agenda, Diário, Saúde]
       forbidden_destination: Mais
+      active_container_role: 'Color/Secondary Container (VariableID:5673:562)'
+      active_content_role: 'Color/On Secondary Container (VariableID:5673:563)'
     settings_management_sheet:
       semantic_name: 'Settings / Management Sheet'
       figma_node: '5652:443'
       source: obra_shadcn_sheet_slot_composition
-      status: created_pending_pr_review
+      status: calibrated_pending_human_visual_review
       destinations: [T12, T13, T14, T15, T16, T17]
+      surface_role: 'Color/Surface Container Low (VariableID:5673:565)'
     settings_destination_row:
       semantic_name: 'Settings / Destination Row'
       figma_node: '5662:21869'

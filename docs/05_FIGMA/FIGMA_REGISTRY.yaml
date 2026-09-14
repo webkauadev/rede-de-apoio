@@ -43,7 +43,7 @@ foundation:
     node_id: '5639:21448'
     name: Design Foundation
     role: target_visual_foundation
-    status: material3_navigation_foundation_created_pending_pr_review
+    status: material3_navigation_foundation_calibrated_pending_human_visual_review
   migration_gate: authenticated_screen_migration_blocked_until_navigation_foundation_pr_review
   board: {node_id: '5640:156', name: 'Rede de Apoio / Design Foundation Board'}
   sections:
@@ -56,6 +56,7 @@ foundation:
     feedback: '5640:171'
     state_foundation: '5640:173'
     shells: '5640:175'
+    m3_visual_calibration_review: '5674:559'
   local_components:
     base_card: '5640:21509'
     app_header_back_current: '5640:21512'
@@ -84,19 +85,32 @@ foundation:
     navigation_bar_primary:
       node_id: '5652:442'
       name: 'NavigationBar / Primary'
-      status: created_pending_pr_review
+      status: calibrated_pending_human_visual_review
       destinations: [Home, Agenda, Diário, Saúde]
       forbidden_destination: Mais
+      active_container_role: {variable_id: 'VariableID:5673:562', name: 'Color/Secondary Container'}
+      active_content_role: {variable_id: 'VariableID:5673:563', name: 'Color/On Secondary Container'}
     settings_management_sheet:
       node_id: '5652:443'
       name: 'Settings / Management Sheet'
-      status: created_pending_pr_review
+      status: calibrated_pending_human_visual_review
       destinations: [T12, T13, T14, T15, T16, T17]
+      surface_role: {variable_id: 'VariableID:5673:565', name: 'Color/Surface Container Low'}
   shell_references:
     app_shell_root: {node_id: '5652:528', status: reference_created_pending_pr_review}
     app_shell_back: {node_id: '5652:560', status: reference_created_pending_pr_review}
     app_shell_root_settings_open: {node_id: '5652:592', status: visual_reference_only_no_t03_wiring}
   material3_navigation_section: '5652:696'
+  material3_calibration:
+    status: pending_human_visual_approval
+    review_node: '5674:559'
+    baseline: frozen_noncanonical_snapshots
+    calibrated_roles:
+      secondary_container: 'VariableID:5673:562'
+      on_secondary_container: 'VariableID:5673:563'
+      surface_container: 'VariableID:5673:564'
+      surface_container_low: 'VariableID:5673:565'
+      scrim: 'VariableID:5673:566'
   corrected_examples:
     button_touch_target_rows: ['5644:341', '5644:342', '5644:343']
     field_example_rows: ['5644:373', '5644:374', '5644:375']

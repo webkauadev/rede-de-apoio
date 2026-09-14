@@ -180,14 +180,14 @@ Essa organização é UX/IA visual. Não concede permissões e não cria RF/RNF/
 
 ### 4.3 Gate temporário para novas migrações
 
-Até o PR #91 da revisão Material 3 da `Design Foundation` receber calibração visual e revisão humana:
+Até o PR #91 da revisão Material 3 da `Design Foundation` receber revisão humana e merge:
 
 - `T06 / Header / Pessoa` como referência global = `DEPRECATED_FOR_NEW_MIGRATIONS`;
 - `compFooter`/BottomNavigation atual de cinco itens = `DEPRECATED_FOR_NEW_MIGRATIONS`;
 - nenhuma tela autenticada pode usar esses padrões antigos como TARGET;
 - nenhuma tela autenticada pode receber os componentes TARGET recém-criados;
 - os componentes TARGET devem usar variables semânticas e text styles da Foundation sem trocar papel semântico por conveniência;
-- o active indicator atual do PR #91 precisa de calibração para papel tonal de container M3/local equivalente;
+- o active indicator calibrado usa `Color/Secondary Container` e `Color/On Secondary Container`; a aprovação humana comparativa permanece obrigatória;
 - depois da revisão humana, T03 deve validar o novo `AppShell / Root`;
 - T01/T02 continuam como fluxo independente de `AuthShell`.
 

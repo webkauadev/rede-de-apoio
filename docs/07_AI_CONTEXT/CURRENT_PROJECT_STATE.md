@@ -45,17 +45,17 @@ Não adotar SDK Material, Google Sans, paleta baseline Google ou componentes Goo
 
 ### Achado do review aprofundado do PR #91
 
-A arquitetura do novo AppShell está correta, porém a calibração visual ainda não está pronta para merge.
+A arquitetura do novo AppShell e sua calibração tonal estão materializadas. O PR permanece bloqueado para revisão visual humana e merge.
 
-O problema principal é semântico/tonal: o active indicator da Navigation Bar foi vinculado diretamente a `Color/Secondary`, produzindo um container saturado. Material 3 diferencia cores de acento de papéis tonais como `Secondary Container`/`On Secondary Container`.
+O problema anterior era semântico/tonal: o active indicator da Navigation Bar estava vinculado diretamente a `Color/Secondary`, produzindo um container saturado. A Foundation agora usa `Color/Secondary Container`/`Color/On Secondary Container`; `M3 Visual Calibration Review` (`5674:559`) preserva a comparação A/B para avaliação humana.
 
 Regra nova:
 
 - não usar um token de papel diferente apenas para eliminar hardcode;
 - se o papel M3 correto não existir, criar/mapear o papel semântico adequado;
 - tokenização não pode piorar a hierarquia visual;
-- a aparência suave anterior do indicador é baseline de comparação para a próxima calibração;
-- Settings Sheet pode usar papel tonal equivalente a `Surface Container`/`Surface Container Low`; branco puro não é requisito M3.
+- a aparência suave anterior do indicador permanece como baseline A congelado;
+- o Settings Sheet usa `Color/Surface Container Low`; o scrim semântico mantém o conteúdo reconhecível e inativo.
 
 ### Gate temporário de migração
 
@@ -71,12 +71,8 @@ A `Design Foundation` atual continua válida para:
 
 Porém, a migração efetiva de telas autenticadas continua **BLOQUEADA** até:
 
-1. calibrar roles tonais M3 na Foundation;
-2. corrigir os bloqueios técnicos finais do `AppHeader / Back` e da ação secundária;
-3. atualizar a descrição do PR #91 para refletir a reutilização real da Obra Sheet;
-4. gerar screenshots comparativos;
-5. obter revisão humana do resultado visual;
-6. mergear o PR #91.
+1. obter revisão humana do resultado visual comparativo;
+2. mergear o PR #91.
 
 Não iniciar T03, T01 ou qualquer outra T## antes disso.
 
@@ -166,13 +162,12 @@ Ordem obrigatória:
 2. arquitetura estrutural Material 3 da Foundation criada;
 3. review aprofundado M3 documentado;
 4. calibrar roles tonais e surfaces do PR #91 sem desfazer melhorias estruturais;
-5. corrigir bloqueios técnicos finais do header;
-6. auditar screenshots e roles semânticos;
-7. revisão humana;
-8. merge do PR #91;
-9. usar T03 como primeira prova real do novo `AppShell / Root`;
-10. tratar T01/T02 separadamente como `AuthShell`;
-11. refatorar uma T## e seus states irmãos por vez.
+5. auditar screenshots e roles semânticos;
+6. revisão humana;
+7. merge do PR #91;
+8. usar T03 como primeira prova real do novo `AppShell / Root`;
+9. tratar T01/T02 separadamente como `AuthShell`;
+10. refatorar uma T## e seus states irmãos por vez.
 
 ## Definition of Ready do ambiente
 
@@ -195,4 +190,4 @@ Ordem obrigatória:
 - [ ] Issue #84 corrigida no Figma;
 - [ ] P03/P04/P05/P06 resolvidas quando forem necessárias para uma entrega específica.
 
-O próximo trabalho visual correto é **calibrar a Foundation do PR #91 segundo os papéis M3**, não migrar uma T##.
+O próximo trabalho visual correto é **revisar visualmente a calibração da Foundation no PR #91**, não migrar uma T##.
