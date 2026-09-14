@@ -120,7 +120,43 @@ Não escolher um atalho visual só porque consome menos chamadas ou tokens.
 
 Não trocar um papel semântico correto por primitive/token incorreto para acelerar.
 
-## 8. Reutilizar antes de criar
+## 8. Regra de não redundância em telas Root
+
+Em telas com `AppShell / Root`, Navigation Bar e App Header possuem funções distintas e não devem repetir informação sem ganho semântico.
+
+Contrato obrigatório:
+
+- Navigation Bar responde **onde** o usuário está entre os destinos primários;
+- App Header responde **qual página/visão/tarefa** está aberta naquele destino;
+- o primeiro bloco de conteúdo não repete novamente o mesmo título do App Header como H1;
+- somente uma âncora principal de título deve dominar o topo do viewport, salvo exceção documentada.
+
+Exemplo aprovado para o piloto T03:
+
+- Navigation Bar ativa: `Home`;
+- App Header title: `Visão Geral`;
+- App Header context: nome da Pessoa Idosa;
+- remover do corpo o H1 redundante `Visão Geral do Cuidado`.
+
+Para as próximas telas, não copiar mecanicamente o label do footer para o header. Resolver o título específico a partir do papel da tela no sitemap/registry/requisitos.
+
+## 9. Regra de cor e surface em Root Header
+
+O agente não deve interpretar Material 3 como obrigação de manter header branco/neutro nem como licença para usar cor saturada decorativa.
+
+Aplicar:
+
+- header normal em papel semântico de `Surface`/`Surface Container Low` ou equivalente local;
+- quando houver estado scrolled real, usar `Surface Container` ou papel local de maior separação tonal;
+- título em `On Surface`;
+- contexto em `On Surface Variant`;
+- ações em `On Surface` ou acento semanticamente justificado;
+- brand tint somente via papel semântico e contraste verificado;
+- evitar `Primary`/`Secondary` sólidos como background estrutural sem motivo funcional/semântico.
+
+O objetivo é criar hierarquia tonal, profundidade leve e resposta a estado sem transformar o app em cópia Android ou em composição colorida arbitrariamente.
+
+## 10. Reutilizar antes de criar
 
 Em cada tela:
 
@@ -133,7 +169,7 @@ Não reconstruir o que a Foundation já resolveu.
 
 Componentes descobertos durante uma migração devem ser registrados para que os próximos lotes não repitam a descoberta.
 
-## 9. Escalonamento de esforço
+## 11. Escalonamento de esforço
 
 Usar esforço alto apenas quando o problema realmente envolver:
 
@@ -148,7 +184,7 @@ Migrações já cobertas por padrão aprovado devem usar esforço normal, manten
 
 A regra é: **mais raciocínio onde há incerteza; mais reutilização onde o padrão já foi aprovado**.
 
-## 10. Sessões do agente
+## 12. Sessões do agente
 
 Para uma nova fase arquitetural, preferir sessão limpa com GitHub como contexto canônico.
 
@@ -156,7 +192,7 @@ Depois de um piloto aprovado, a mesma sessão pode continuar por um pequeno conj
 
 Quando a sessão acumular muito histórico irrelevante, iniciar nova sessão em vez de carregar centenas de milhares de tokens apenas por continuidade conversacional.
 
-## 11. Branch/PR
+## 13. Branch/PR
 
 Nunca trabalhar diretamente em `main`.
 
@@ -170,7 +206,7 @@ Primeiro piloto após a Foundation M3:
 
 `design/t03-material3-migration`
 
-## 12. Sequência de migração recomendada
+## 14. Sequência de migração recomendada
 
 A sequência pode ser ajustada após cada revisão humana, mas o plano inicial é:
 
@@ -186,7 +222,7 @@ A sequência pode ser ajustada após cada revisão humana, mas o plano inicial �
 
 Essa lista é uma estratégia de execução, não nova regra funcional nem alteração de ownership.
 
-## 13. Critério de saída de cada unidade/lote
+## 15. Critério de saída de cada unidade/lote
 
 Antes do PR ficar pronto para revisão:
 
@@ -194,6 +230,8 @@ Antes do PR ficar pronto para revisão:
 - M3 review realizado;
 - Foundation/componentes reutilizados corretamente;
 - estados irmãos consistentes;
+- header/content/navigation sem redundância desnecessária;
+- hierarchy de surface/cor semanticamente justificada;
 - zero overflow/clipping acidental;
 - targets e safe areas auditados;
 - screenshots finais inspecionados;

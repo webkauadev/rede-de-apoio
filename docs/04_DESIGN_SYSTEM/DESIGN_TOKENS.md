@@ -1,9 +1,7 @@
 # Design Tokens
 
-Versão 2. Substitui a versão anterior.
-Motivo da revisão: o token `Border #E5E5E5` reprovava em WCAG 1.4.11
-(1.26:1 sobre Surface, mínimo exigido 3:1) e não existiam tokens semânticos
-para os estados que `STATE_MANAGEMENT.md` já exigia.
+Versão 3. Substitui a versão anterior.
+Motivo da revisão: além da correção histórica de borda/estados, esta versão registra a Foundation Material 3 já aprovada e os papéis semânticos validados no piloto T03 em 2026-09-14.
 
 Fonte oficial de tokens. `05_FIGMA` referencia, não redefine.
 
@@ -36,8 +34,7 @@ Contraste verificado: `primary` 8.01:1 sobre surface e 7.62:1 sobre background.
 | `color-border-subtle` | `#E5E5E5` | divisores **decorativos** apenas | 1.26:1 — fora do escopo de 1.4.11 |
 | `color-border-interactive` | `#6E8496` | inputs, cards acionáveis, controles | 3.89:1 sobre surface / 3.70:1 sobre background |
 
-`color-border-subtle` não pode ser usado em nenhum elemento acionável ou em
-campo de formulário. Essa é a correção do achado C5 da auditoria.
+`color-border-subtle` não pode ser usado em nenhum elemento acionável ou em campo de formulário.
 
 ## Cor — semântica de estado
 
@@ -51,49 +48,89 @@ campo de formulário. Essa é a correção do achado C5 da auditoria.
 
 ## Material 3 — expansão de papéis semânticos
 
-A partir da Decisão 007 e de `MATERIAL3_VISUAL_DIRECTION.md`, o sistema de cores deve distinguir **acento** de **container tonal**.
-
 Regra obrigatória:
 
 `papel M3 → token semântico local → valor Rede de Apoio`
 
 Não copiar valores baseline do Google. Copiar a **função semântica**.
 
-Papéis TARGET na collection `Rede de Apoio / Semantic`:
+Papéis na collection `Rede de Apoio / Semantic`:
 
-| Papel local TARGET | Função M3 equivalente | Uso esperado | Status |
+| Papel local | Função M3 equivalente | Uso esperado | Status |
 |---|---|---|---|
-| `Color/On Surface` | `onSurface` | texto/ícone primário sobre surfaces | materializado: `VariableID:5673:560` → `Color/Foreground` |
-| `Color/On Surface Variant` | `onSurfaceVariant` | texto/ícone secundário sobre containers | materializado: `VariableID:5673:561` → `Color/Muted Foreground` |
-| `Color/Primary Container` | `primaryContainer` | container tonal associado ao primary | pendente de calibração |
-| `Color/On Primary Container` | `onPrimaryContainer` | conteúdo sobre Primary Container | pendente de calibração |
-| `Color/Secondary Container` | `secondaryContainer` | seleção/ênfase tonal, incluindo indicador de navegação quando adequado | materializado: `VariableID:5673:562` → `color/secondary-container` (`VariableID:5673:557`, `#EBE8FA`) |
-| `Color/On Secondary Container` | `onSecondaryContainer` | conteúdo sobre Secondary Container | materializado: `VariableID:5673:563` → `Color/Primary` (`#00567C`) |
-| `Color/Surface Container` | `surfaceContainer` | cards/sheets/menus com hierarquia tonal | materializado: `VariableID:5673:564` → `color/surface-container` (`VariableID:5673:558`, `#F3F0F7`) |
-| `Color/Surface Container Low` | `surfaceContainerLow` | camada tonal de baixa ênfase | materializado: `VariableID:5673:565` → `color/surface-container-low` (`VariableID:5673:559`, `#F8F5FA`) |
-| `Color/Scrim` | `scrim` | obscurecimento atrás de modal/sheet | materializado: `VariableID:5673:566` → primitive Obra preta (`VariableID:1953:9376`); opacidade é propriedade do paint |
+| `Color/On Surface` | `onSurface` | texto/ícone primário sobre surfaces | `VariableID:5673:560` → `Color/Foreground` |
+| `Color/On Surface Variant` | `onSurfaceVariant` | texto/ícone secundário | `VariableID:5673:561` → `Color/Muted Foreground` |
+| `Color/Primary Container` | `primaryContainer` | foco operacional dominante | **canônico**: `VariableID:5700:269` → `#D0E9F3` |
+| `Color/On Primary Container` | `onPrimaryContainer` | conteúdo sobre Primary Container | **canônico**: `VariableID:5700:270` → `#003D59` |
+| `Color/Secondary Container` | `secondaryContainer` | seleção/ênfase tonal | `VariableID:5673:562` → `#EBE8FA` |
+| `Color/On Secondary Container` | `onSecondaryContainer` | conteúdo sobre Secondary Container | `VariableID:5673:563` → `#00567C` |
+| `Color/Surface Container` | `surfaceContainer` | cards/sheets/menus com hierarquia tonal | `VariableID:5673:564` → `#F3F0F7` |
+| `Color/Surface Container Low` | `surfaceContainerLow` | camada tonal de baixa ênfase | `VariableID:5673:565` → `#F8F5FA` |
+| `Color/Scrim` | `scrim` | obscurecimento atrás de modal/sheet | `VariableID:5673:566` |
+
+`Color/On Primary Container` sobre `Color/Primary Container` tem contraste aproximado de 9.18:1.
+
+Os candidatos `Color/Tertiary Container` e `Color/On Tertiary Container` continuam **pendentes**. O piloto T03 não os validou; não usar `tone=context` até calibração e aprovação específica.
 
 ### Regra de uso
 
 - `Color/Primary` e `Color/Secondary` são cores de acento/conteúdo; não são substitutos universais para containers.
-- quando um elemento é um **container tonal**, preferir o papel `* Container` correspondente.
+- quando um elemento é um container tonal, preferir o papel `* Container` correspondente.
 - conteúdo dentro de um container tonal deve usar o papel `On * Container` compatível.
-- rows de navegação em `Surface Container Low` permanecem transparentes por padrão e herdam a continuidade visual da surface; container tonal persistente é reservado a uma seleção semanticamente real.
+- rows de navegação em `Surface Container Low` permanecem transparentes por padrão; container tonal persistente é reservado a uma seleção semanticamente real.
 - não vincular um papel errado só para eliminar hardcode.
-- se o papel correto ainda estiver `pendente de calibração`, a Foundation deve primeiro calibrá-lo e registrar o valor/variable ID antes de propagá-lo para T##.
+- se o papel correto estiver pendente, calibrar antes de propagar.
 
-### Navigation Bar — calibração materializada
+### Navigation Bar — calibração canônica
 
-O indicador ativo da Foundation usa `Color/Secondary Container` e o ícone/label ativo usam `Color/On Secondary Container`. `Color/Secondary` continua sendo acento, não fundo de container.
+O indicador ativo usa `Color/Secondary Container` e o ícone/label ativo usam `Color/On Secondary Container`.
 
-A versão anterior utilizava um indicador tonal claro aproximadamente `#EBE8FA`. A calibração confirmou este valor como primitive `color/secondary-container`, exclusivamente por meio do alias semântico `Color/Secondary Container`.
+Destinos primários: `Home · Agenda · Diário · Saúde`. `Mais` não pertence à Navigation Bar canônica.
 
-Qualquer valor final deve:
+## Component Color Grammar — aprovada no piloto T03
 
-- manter contraste adequado com `Color/On Secondary Container`;
-- preservar a sensação acolhedora/calma do produto;
-- evitar saturação desnecessária;
-- ser registrado como token/variable antes de propagação.
+As famílias `Feature/*`, `Category/*` e `Status/*` na collection `Rede de Apoio / Semantic` são canônicas para novas migrações. A regra completa está em `COMPONENT_COLOR_GRAMMAR.md`.
+
+Regra resumida:
+
+`COMPONENT → SEMANTIC VARIANT → TOKEN → VALUE`
+
+- Feature identifica área/origem;
+- Category identifica assunto do cuidado;
+- Status representa somente estado funcional real;
+- precedência: `critical real state → functional status → category → feature/source → neutral structure`.
+
+Exemplos aprovados no T03:
+
+- Home: `#D0E9F3 / #2A6F97 / #003D59`;
+- Diary: `#F0E4F1 / #875985 / #563751`;
+- Hydration: `#D7EEF7 / #147A96 / #0B5268`;
+- Scheduled: `#EEEAF8 / #5B4A7D`;
+- Pending usa Warning semantics.
+
+## Root Header Tinted — aprovado no piloto T03
+
+Tokens do shell:
+
+| Token | Figma ID | Valor |
+|---|---|---|
+| `Shell/Header/RootTint/Start` | `VariableID:5731:166` | `#EEF2F8` |
+| `Shell/Header/RootTint/End` | `VariableID:5731:167` | `#DCEBF4` |
+
+Receita canônica:
+
+- gradiente horizontal suave `#EEF2F8 → #DCEBF4`;
+- sem Liquid Glass, blur, translucência, glow ou sombra pesada;
+- Settings com target 48 × 48 e presença visual aproximada de 40 × 40;
+- avatar contextual com ring de 2 px em `Feature/Home/Accent`;
+- header menos dominante que o Primary Container operacional.
+
+Componentes Figma:
+
+- `AppHeader / Root / Tinted`: `5746:157`;
+- `AppShell / Root`: `5652:528`, já consumindo o Root/Tinted.
+
+Novas telas Root devem reutilizar o shell em vez de reconstruir o tratamento por tela. Ver `APP_HEADER_VISUAL_GRAMMAR.md`.
 
 ## Tipografia
 
@@ -107,7 +144,7 @@ Família: **Geist**. Fallback: Inter.
 | `text-body` | 16 px | 400 | 24 px |
 | `text-meta` | 14 px | 400 | 20 px |
 
-Piso de 14 px conforme RNF-P03 (proposta). Nenhum texto abaixo disso.
+Piso estrutural de 14 px. Nenhum texto estrutural abaixo disso.
 
 ## Espaçamento
 
@@ -133,33 +170,30 @@ Escala: `4 · 8 · 12 · 16 · 20 · 24 · 32`
 ## Alvo de toque
 
 `touch-target-min` = **48 × 48 px**, espaçamento mínimo de 8 px entre alvos.
-Origem: RNF-P02 (proposta) e alinhamento com a orientação oficial Material/Android para interação touch.
 
-Esse token descreve o **alvo de interação do produto**, não a altura visual de uma primitive. Na foundation, `Button - Nova` preserva 32 px visuais em `Size=Default` e `Input - Nova`/`Select - Nova` preservam 36 px visuais em `Size=Large`; a composição externa de 48 px centraliza a instance e garante a área interativa mobile. O component set Obra/shadcn não é redimensionado nem alterado.
+Esse token descreve o alvo de interação do produto, não a altura visual de uma primitive. Wrappers externos preservam as primitives Obra/shadcn e garantem a área interativa mobile.
 
 ## Grid mobile
 
 Largura de referência 390 px · margem lateral 16 px · largura útil 358 px.
 
-## Foundation canônica no Figma — 2026-09-13
+## Foundation canônica no Figma — 2026-09-14
 
-O arquivo Figma canônico possui a página `Design Foundation` (`5639:21448`) como contrato visual para migrações futuras. Ela não substitui nem altera os frames atuais T01–T17.
+Página: `Design Foundation` (`5639:21448`).
 
-### CURRENT
+Contratos vigentes:
 
-- telas atuais ainda contêm margens 24/342, raios e headers fragmentados;
-- há texto abaixo de 14 px em frames canônicos ainda não migrados;
-- componentes existentes não receberam bindings novos por esta criação.
+- collections `Rede de Apoio / Primitives` (`VariableCollectionId:5639:154`) e `Rede de Apoio / Semantic` (`VariableCollectionId:5639:155`);
+- grid 390/16/358;
+- Geist e escala tipográfica;
+- touch target mínimo 48 × 48;
+- `STATE = PAGE BASE + DELTA MÍNIMO`;
+- Navigation Bar com quatro destinos;
+- Settings / Management Sheet;
+- `AppHeader / Root / Tinted` (`5746:157`);
+- `AppShell / Root` (`5652:528`) usando Root/Tinted;
+- Component Color Grammar aprovada no T03.
 
-### TARGET FOUNDATION
+O PR #91 da Foundation está mergeado. A T03 é a primeira prova real aprovada do AppShell Root. Essa aprovação visual autoriza reutilizar os padrões acima, mas não resolve P03/P04/P05/P06 nem aprova RF30/US-036.
 
-- coleções isoladas: `Rede de Apoio / Primitives` (`VariableCollectionId:5639:154`) e `Rede de Apoio / Semantic` (`VariableCollectionId:5639:155`);
-- aliases semânticos para cor, spacing e radius, sem efeito automático sobre telas existentes;
-- estilos `Rede de Apoio / Type / Brand`, `Page Title`, `Section Title`, `Card Title`, `Body`, `Label` e `Badge`;
-- grid obrigatório para novas refatorações: 390 px, margem 16 px e conteúdo útil 358 px;
-- `Color/Disabled` referencia `Color/Muted Foreground`; componentes aplicam a redução de opacidade quando adequada, sem introduzir nova cor não documentada;
-- papéis M3 materializados permanecem limitados à Foundation até a aprovação visual humana do PR #91; nenhuma T## foi migrada.
-
-As primitives do Obra/shadcn preservam suas geometrias internas quando necessário. A foundation define o padrão do produto para a composição e não reescreve o kit.
-
-Os componentes `Action / Touch Target 48` e `Field / Control / Touch Target 48` tornam essa diferença explícita: 48 px é o contrato de interação da Rede de Apoio; 32/36 px são dimensões visuais das instances Obra usadas internamente.
+As primitives Obra/shadcn preservam suas geometrias internas quando necessário. A Foundation define o padrão do produto para composição e não reescreve o kit.

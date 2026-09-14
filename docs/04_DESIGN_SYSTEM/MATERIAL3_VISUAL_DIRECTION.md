@@ -1,7 +1,7 @@
 # Material 3 Visual Direction — Rede de Apoio
 
 Status: **CANÔNICO PARA UX E DESIGN VISUAL**  
-Data: **2026-09-13**
+Data: **2026-09-14**
 
 Este documento formaliza a leitura de Material Design 3 que deve governar o Rede de Apoio daqui em diante.
 
@@ -80,11 +80,7 @@ A revisão atual acertou estruturalmente:
 
 Essas decisões permanecem TARGET.
 
-### 5.2 Problema visual identificado
-
-A correção técnica do PR #91 vinculou o `Active indicator` da Navigation Bar diretamente a `Color/Secondary`.
-
-Isso é semanticamente mais forte do que o papel de **container tonal** recomendado pelo modelo de cores do Material 3 e tornou a barra visualmente mais pesada do que a versão anterior.
+### 5.2 Calibração de navegação
 
 Material 3 diferencia cores de acento (`primary`, `secondary`, `tertiary`) de seus papéis de container (`primaryContainer`, `secondaryContainer`, `tertiaryContainer`) e respectivos papéis `on*Container`.
 
@@ -94,11 +90,11 @@ Portanto:
 - o estado selecionado da Navigation Bar deve usar um papel tonal equivalente a `secondaryContainer`/`onSecondaryContainer` ou papel local semanticamente equivalente;
 - o resultado visual deve preservar contraste e indicação de seleção sem excesso de saturação.
 
-A aparência suave anterior do indicador é uma referência visual melhor para a próxima calibração do que o container azul forte atual.
+A calibração aprovada usa `Color/Secondary Container` (`#EBE8FA`) no indicador e `Color/On Secondary Container` no conteúdo ativo.
 
 ### 5.3 Calibração materializada — PR #91
 
-Em `Design Foundation`, a calibração ficou pronta para revisão humana, sem migrar T##:
+Em `Design Foundation`, a calibração aprovada ficou materializada assim:
 
 - o indicador ativo da Navigation Bar usa `Color/Secondary Container` (`VariableID:5673:562`), alias de `color/secondary-container` (`VariableID:5673:557`, `#EBE8FA`);
 - ícone e label ativos usam `Color/On Secondary Container` (`VariableID:5673:563`), alias de `Color/Primary` (`#00567C`);
@@ -110,21 +106,48 @@ Os pares de conteúdo relevantes foram verificados: `On Secondary Container` sob
 
 Um container tonal persistente em Destination Row é reservado a uma seleção semanticamente real. A Foundation não inventa esse estado para destinos secundários sem destino atual definido.
 
-### 5.4 Header
+### 5.4 Header — hierarquia sem redundância
 
-A hierarquia TARGET está correta:
+A hierarquia TARGET é:
 
-`Título da página → contexto da Pessoa Idosa → ação global relevante`.
+`Título específico da página/tarefa → contexto da Pessoa Idosa → ação global relevante`.
+
+**Regra canônica de não redundância:** o destino selecionado da Navigation Bar já comunica a localização primária. O `AppHeader / Root` não deve repetir mecanicamente o mesmo rótulo quando isso não acrescenta informação.
+
+Assim:
+
+- Navigation Bar comunica **onde** o usuário está no mapa primário (`Home`, `Agenda`, `Diário`, `Saúde`);
+- App Header comunica **qual página/visão/tarefa** está aberta naquele destino;
+- conteúdo não deve repetir imediatamente o mesmo título do App Header como um segundo H1;
+- deve existir uma única âncora de título de página por viewport, salvo necessidade semântica/documentada.
+
+Exemplo canônico do piloto T03:
+
+- Navigation Bar ativa: `Home`;
+- App Header title: `Visão Geral`;
+- App Header context: nome da Pessoa Idosa;
+- remover do corpo o H1 redundante `Visão Geral do Cuidado`; o corpo começa pela introdução/primeira seção (`Agora`) conforme a composição final.
 
 O avatar é contextual e não substitui o título. A ação de Configurações deve permanecer deliberada, com target >=48 × 48 px e padding seguro.
 
 O `AppHeader / Back` deve manter voltar + título; ações secundárias são opcionais e somente aparecem quando autorizadas pelo fluxo.
 
-### 5.5 Settings / Management Sheet
+### 5.5 Cor e profundidade do App Header
 
-O padrão de Sheet/Drawer secundário é coerente para reunir T12–T17, mas sua superfície não precisa ser branco absoluto por regra.
+Material 3 não exige cabeçalho branco/chapado e também não recomenda cor forte gratuita. Top App Bars possuem papéis separados para `containerColor` e `scrolledContainerColor`, permitindo que a superfície responda ao estado de rolagem e ganhe separação tonal quando conteúdo passa por trás dela.
 
-Quando a hierarquia visual se beneficiar, usar um papel tonal equivalente a `surfaceContainer`/`surfaceContainerLow` da identidade Rede de Apoio. O objetivo é comunicar camada/modalidade e profundidade sem depender de sombra pesada.
+No Rede de Apoio:
+
+- o header normal deve usar um **papel semântico de surface tonal**, preferencialmente `Surface` ou `Surface Container Low`, conforme contraste e continuidade da página;
+- quando houver estado de rolagem materializado, o estado scrolled deve evoluir para um papel de maior separação tonal, preferencialmente `Surface Container` ou equivalente local;
+- título usa `On Surface`;
+- contexto/subtítulo usa `On Surface Variant`;
+- ícones de ação usam `On Surface` ou papel de acento somente quando houver razão semântica;
+- não usar `Primary`/`Secondary` saturados como fundo do header apenas para “ter cor”;
+- uma tonalidade brand-tinted é permitida se for mapeada a um papel semântico de surface/container e mantiver contraste adequado;
+- a expressividade deve vir de **hierarquia tonal, estados, shape, tipografia e acentos controlados**, não de decoração arbitrária.
+
+Para telas Root, a meta visual é evitar um bloco neutro indiferenciado: header, conteúdo e Navigation Bar devem formar uma hierarquia de surfaces reconhecível, suave e coerente com a identidade de cuidado.
 
 ## 6. Política de papéis de cor M3
 
@@ -155,11 +178,18 @@ Usar sempre pares coerentes:
 
 Não misturar papéis apenas para obter uma cor visualmente próxima.
 
-### Calibração visual
+### Dynamic Color versus cor responsiva do produto
 
-O antigo indicador claro da Foundation, aproximadamente `#EBE8FA`, é **referência/candidato de calibração**, não hardcode autorizado.
+`Dynamic Color` automático do ecossistema Android **não é obrigação** do Rede de Apoio.
 
-Se aprovado visualmente, ele deve virar valor de um papel semântico de container tonal, nunca permanecer solto no componente.
+Entretanto, a interface deve ser semanticamente responsiva ao estado:
+
+- seleção ativa pode alterar container + conteúdo;
+- App Bar pode alterar `containerColor` no estado scrolled;
+- feedback/status usa papéis próprios quando definidos;
+- tema/brand pode recalibrar valores mantendo os mesmos papéis semânticos.
+
+“Mais cor” não significa mais saturação. O objetivo é usar cor para explicar estrutura, estado e prioridade.
 
 ## 7. Navigation Bar — contrato visual
 
@@ -184,11 +214,14 @@ TARGET Rede de Apoio:
 
 ### Root
 
-- título é a informação primária;
+- o rótulo da Navigation Bar identifica o destino primário; não repetir esse rótulo no header sem ganho de informação;
+- título do header nomeia a página/visão/tarefa específica;
 - contexto da Pessoa Idosa é secundário;
 - avatar é apoio contextual;
 - Configurações é ação global explícita;
-- evitar excesso de ícones/ações concorrentes.
+- evitar segundo H1 idêntico no corpo;
+- evitar excesso de ícones/ações concorrentes;
+- surface do header deve participar da hierarquia tonal da tela e pode responder ao scroll por papéis semânticos distintos.
 
 ### Back
 
@@ -216,7 +249,8 @@ Evitar:
 - cards para todo conteúdo;
 - sombras pesadas;
 - excesso de chips/pills;
-- componentes visualmente “Material baseline” que apaguem a identidade do produto.
+- componentes visualmente “Material baseline” que apaguem a identidade do produto;
+- telas inteiramente brancas/cinza sem hierarquia tonal quando papéis semânticos existentes podem comunicar melhor estrutura e estado.
 
 ## 10. Regra para Obra/shadcn
 
@@ -241,6 +275,8 @@ Toda alteração visual relevante precisa responder, antes de merge:
 6. targets, safe areas e prevenção de acionamento acidental foram auditados?
 7. a comparação visual com a versão anterior melhorou ou piorou legibilidade, hierarquia e sensação de cuidado?
 8. houve aprovação visual humana quando a mudança altera linguagem global?
+9. header e conteúdo evitam redundância com o destino selecionado da Navigation Bar?
+10. surfaces e cor possuem papel semântico ou foram usadas apenas como decoração?
 
 Um componente pode estar tecnicamente tokenizado e ainda **reprovar** no review M3/visual.
 
@@ -262,17 +298,13 @@ A exceção deve registrar:
 
 Nunca registrar “preferência estética” isolada como justificativa suficiente.
 
-## 13. Gate atual do PR #91
+## 13. Estado atual
 
-O PR #91 **não está pronto para merge** enquanto a Foundation não passar por calibração visual M3.
+O PR #91 foi mergeado e a Foundation Material 3 foi aprovada.
 
-Pendências de design:
+A T03 é o piloto ativo de validação do `AppShell / Root`. Durante a revisão humana do piloto foram acrescentadas duas regras globais antes de escalar para outras telas autenticadas:
 
-- trocar o uso de `Color/Secondary` como container ativo por papel tonal semanticamente correto;
-- revisar conteúdo ativo (`on*Container`/papel local equivalente);
-- revisar surface do Settings Sheet para hierarquia tonal coerente;
-- preservar todas as melhorias estruturais do Prompt 04B;
-- corrigir os bloqueios técnicos já identificados no `AppHeader / Back` e na ação secundária;
-- atualizar o body do PR para refletir a reutilização real da Obra Sheet.
+1. reduzir redundância entre Navigation Bar, App Header e primeiro H1 do conteúdo;
+2. usar hierarquia tonal/estado de surface no App Header, em vez de manter a experiência inteira neutra e chapada ou adicionar cor saturada sem função.
 
-Nenhuma T## deve ser migrada antes dessa calibração e revisão humana.
+Essas regras devem ser aplicadas primeiro à T03 e, após aprovação humana, extraídas para os próximos micro-lotes.

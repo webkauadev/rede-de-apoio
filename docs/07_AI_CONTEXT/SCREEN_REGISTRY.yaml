@@ -64,7 +64,7 @@ screens:
     name: Home / Visão Geral do Cuidado
     owner: Rhuan
     flow_group: operations
-    figma_status: figma_mapped
+    figma_status: migrated_pending_human_review
     figma_page: rhuan
     requirements: resolve_in_github
     origin_requirements: [RF07, RF17, RF25, RF26]
@@ -74,6 +74,14 @@ screens:
     target_navigation_role: primary_home
     target_shell: AppShell_Root
     migration_order_note: first_root_shell_validation_after_foundation_revision
+    migration:
+      status: migrated_pending_human_review
+      current_nodes: {default: '5435:1222', loading: '5436:1616'}
+      migrated_nodes: {default: '5684:1407', loading: '5684:22165'}
+      review_node: '5684:22217'
+      foundation_instances: ['5652:350', '5652:442', '5652:528']
+      candidate_states: [mandatory_reminder, care_registered, delay]
+      candidate_state_gate: P04
   T04:
     name: Calendário de Cuidados
     owner: Rhuan
