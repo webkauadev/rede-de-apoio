@@ -49,6 +49,52 @@ campo de formulário. Essa é a correção do achado C5 da auditoria.
 | `color-active` | `#256B4D` | `#E6F4EE` | corresponde a "verde suave para estados ativos" de `DESIGN_SYSTEM.md` |
 | `color-focus-ring` | `#00567C` | — | anel de 2px, offset 2px |
 
+## Material 3 — expansão de papéis semânticos
+
+A partir da Decisão 007 e de `MATERIAL3_VISUAL_DIRECTION.md`, o sistema de cores deve distinguir **acento** de **container tonal**.
+
+Regra obrigatória:
+
+`papel M3 → token semântico local → valor Rede de Apoio`
+
+Não copiar valores baseline do Google. Copiar a **função semântica**.
+
+Papéis TARGET na collection `Rede de Apoio / Semantic`:
+
+| Papel local TARGET | Função M3 equivalente | Uso esperado | Status |
+|---|---|---|---|
+| `Color/On Surface` | `onSurface` | texto/ícone primário sobre surfaces | materializado: `VariableID:5673:560` → `Color/Foreground` |
+| `Color/On Surface Variant` | `onSurfaceVariant` | texto/ícone secundário sobre containers | materializado: `VariableID:5673:561` → `Color/Muted Foreground` |
+| `Color/Primary Container` | `primaryContainer` | container tonal associado ao primary | pendente de calibração |
+| `Color/On Primary Container` | `onPrimaryContainer` | conteúdo sobre Primary Container | pendente de calibração |
+| `Color/Secondary Container` | `secondaryContainer` | seleção/ênfase tonal, incluindo indicador de navegação quando adequado | materializado: `VariableID:5673:562` → `color/secondary-container` (`VariableID:5673:557`, `#EBE8FA`) |
+| `Color/On Secondary Container` | `onSecondaryContainer` | conteúdo sobre Secondary Container | materializado: `VariableID:5673:563` → `Color/Primary` (`#00567C`) |
+| `Color/Surface Container` | `surfaceContainer` | cards/sheets/menus com hierarquia tonal | materializado: `VariableID:5673:564` → `color/surface-container` (`VariableID:5673:558`, `#F3F0F7`) |
+| `Color/Surface Container Low` | `surfaceContainerLow` | camada tonal de baixa ênfase | materializado: `VariableID:5673:565` → `color/surface-container-low` (`VariableID:5673:559`, `#F8F5FA`) |
+| `Color/Scrim` | `scrim` | obscurecimento atrás de modal/sheet | materializado: `VariableID:5673:566` → primitive Obra preta (`VariableID:1953:9376`); opacidade é propriedade do paint |
+
+### Regra de uso
+
+- `Color/Primary` e `Color/Secondary` são cores de acento/conteúdo; não são substitutos universais para containers.
+- quando um elemento é um **container tonal**, preferir o papel `* Container` correspondente.
+- conteúdo dentro de um container tonal deve usar o papel `On * Container` compatível.
+- rows de navegação em `Surface Container Low` permanecem transparentes por padrão e herdam a continuidade visual da surface; container tonal persistente é reservado a uma seleção semanticamente real.
+- não vincular um papel errado só para eliminar hardcode.
+- se o papel correto ainda estiver `pendente de calibração`, a Foundation deve primeiro calibrá-lo e registrar o valor/variable ID antes de propagá-lo para T##.
+
+### Navigation Bar — calibração materializada
+
+O indicador ativo da Foundation usa `Color/Secondary Container` e o ícone/label ativo usam `Color/On Secondary Container`. `Color/Secondary` continua sendo acento, não fundo de container.
+
+A versão anterior utilizava um indicador tonal claro aproximadamente `#EBE8FA`. A calibração confirmou este valor como primitive `color/secondary-container`, exclusivamente por meio do alias semântico `Color/Secondary Container`.
+
+Qualquer valor final deve:
+
+- manter contraste adequado com `Color/On Secondary Container`;
+- preservar a sensação acolhedora/calma do produto;
+- evitar saturação desnecessária;
+- ser registrado como token/variable antes de propagação.
+
 ## Tipografia
 
 Família: **Geist**. Fallback: Inter.
@@ -87,7 +133,7 @@ Escala: `4 · 8 · 12 · 16 · 20 · 24 · 32`
 ## Alvo de toque
 
 `touch-target-min` = **48 × 48 px**, espaçamento mínimo de 8 px entre alvos.
-Origem: RNF-P02 (proposta).
+Origem: RNF-P02 (proposta) e alinhamento com a orientação oficial Material/Android para interação touch.
 
 Esse token descreve o **alvo de interação do produto**, não a altura visual de uma primitive. Na foundation, `Button - Nova` preserva 32 px visuais em `Size=Default` e `Input - Nova`/`Select - Nova` preservam 36 px visuais em `Size=Large`; a composição externa de 48 px centraliza a instance e garante a área interativa mobile. O component set Obra/shadcn não é redimensionado nem alterado.
 
@@ -97,7 +143,7 @@ Largura de referência 390 px · margem lateral 16 px · largura útil 358 px.
 
 ## Foundation canônica no Figma — 2026-09-13
 
-O arquivo Figma canônico agora possui a página `Design Foundation` (`5639:21448`) como contrato visual para migrações futuras. Ela não substitui nem altera os frames atuais T01–T17.
+O arquivo Figma canônico possui a página `Design Foundation` (`5639:21448`) como contrato visual para migrações futuras. Ela não substitui nem altera os frames atuais T01–T17.
 
 ### CURRENT
 
@@ -111,7 +157,8 @@ O arquivo Figma canônico agora possui a página `Design Foundation` (`5639:2144
 - aliases semânticos para cor, spacing e radius, sem efeito automático sobre telas existentes;
 - estilos `Rede de Apoio / Type / Brand`, `Page Title`, `Section Title`, `Card Title`, `Body`, `Label` e `Badge`;
 - grid obrigatório para novas refatorações: 390 px, margem 16 px e conteúdo útil 358 px;
-- `Color/Disabled` referencia `Color/Muted Foreground`; componentes aplicam a redução de opacidade quando adequada, sem introduzir nova cor não documentada.
+- `Color/Disabled` referencia `Color/Muted Foreground`; componentes aplicam a redução de opacidade quando adequada, sem introduzir nova cor não documentada;
+- papéis M3 materializados permanecem limitados à Foundation até a aprovação visual humana do PR #91; nenhuma T## foi migrada.
 
 As primitives do Obra/shadcn preservam suas geometrias internas quando necessário. A foundation define o padrão do produto para a composição e não reescreve o kit.
 

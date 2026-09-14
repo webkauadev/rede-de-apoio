@@ -43,8 +43,8 @@ foundation:
     node_id: '5639:21448'
     name: Design Foundation
     role: target_visual_foundation
-    status: requires_material3_navigation_revision_before_screen_migration
-  migration_gate: authenticated_screen_migration_blocked_until_navigation_foundation_revision
+    status: material3_navigation_foundation_calibrated_pending_human_visual_review
+  migration_gate: authenticated_screen_migration_blocked_until_navigation_foundation_pr_review
   board: {node_id: '5640:156', name: 'Rede de Apoio / Design Foundation Board'}
   sections:
     overview: '5640:157'
@@ -56,41 +56,63 @@ foundation:
     feedback: '5640:171'
     state_foundation: '5640:173'
     shells: '5640:175'
+    m3_visual_calibration_review: '5674:559'
   local_components:
     base_card: '5640:21509'
     app_header_back_current: '5640:21512'
     action_touch_target_48: '5644:324'
     field_control_touch_target_48: '5644:330'
+    settings_destination_row: '5662:21869'
   component_status:
     base_card: target_valid
     action_touch_target_48: target_valid
     field_control_touch_target_48: target_valid
-    app_header_back_current: requires_material3_revision
+    app_header_back_current: target_material3_created_pending_pr_review
     app_header_contextual_t06: deprecated_for_new_migrations
     bottom_navigation_compfooter: deprecated_for_new_migrations
   current_references_deprecated_for_new_migrations:
     app_header_contextual: {node_id: '5201:13483', name: 'T06 / Header / Pessoa', reason: current header does not express page title plus settings architecture}
     bottom_navigation: {node_id: '5116:13047', name: compFooter, reason: current five-item navigation mixes primary destinations with Mais}
-  target_components_pending_figma:
+  target_components:
     app_header_root:
-      node_id: null
+      node_id: '5652:350'
       name: 'AppHeader / Root'
-      status: pending_foundation_revision
+      status: created_pending_pr_review
     app_header_back_material3:
-      node_id: null
+      node_id: '5640:21512'
       name: 'AppHeader / Back'
-      status: pending_foundation_revision
+      status: revised_pending_pr_review
     navigation_bar_primary:
-      node_id: null
+      node_id: '5652:442'
       name: 'NavigationBar / Primary'
-      status: pending_foundation_revision
+      status: calibrated_pending_human_visual_review
       destinations: [Home, Agenda, Diário, Saúde]
       forbidden_destination: Mais
+      active_container_role: {variable_id: 'VariableID:5673:562', name: 'Color/Secondary Container'}
+      active_content_role: {variable_id: 'VariableID:5673:563', name: 'Color/On Secondary Container'}
     settings_management_sheet:
-      node_id: null
+      node_id: '5652:443'
       name: 'Settings / Management Sheet'
-      status: pending_foundation_revision
+      status: calibrated_pending_human_visual_review
       destinations: [T12, T13, T14, T15, T16, T17]
+      surface_role: {variable_id: 'VariableID:5673:565', name: 'Color/Surface Container Low'}
+      destination_rows_default_surface: transparent_continuous_with_sheet
+      destination_rows_persistent_tonal_surface: reserved_for_semantically_selected_state_if_applicable
+  shell_references:
+    app_shell_root: {node_id: '5652:528', status: reference_created_pending_pr_review}
+    app_shell_back: {node_id: '5652:560', status: reference_created_pending_pr_review}
+    app_shell_root_settings_open: {node_id: '5652:592', status: visual_reference_only_no_t03_wiring}
+  material3_navigation_section: '5652:696'
+  material3_calibration:
+    status: pending_human_visual_approval
+    review_node: '5674:559'
+    baseline: frozen_noncanonical_snapshots
+    calibrated_roles:
+      secondary_container: 'VariableID:5673:562'
+      on_secondary_container: 'VariableID:5673:563'
+      surface_container: 'VariableID:5673:564'
+      surface_container_low: 'VariableID:5673:565'
+      scrim: 'VariableID:5673:566'
   corrected_examples:
     button_touch_target_rows: ['5644:341', '5644:342', '5644:343']
     field_example_rows: ['5644:373', '5644:374', '5644:375']

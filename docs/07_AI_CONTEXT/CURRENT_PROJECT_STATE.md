@@ -20,13 +20,19 @@ Depois da auditoria de 2026-09-13:
 
 ## Mudança de direção visual — Material Design 3
 
-Após feedback de usabilidade, o direcionamento visual foi revisado.
+Material Design 3 é agora a **autoridade máxima no domínio de UX/design visual**, subordinada somente aos requisitos funcionais e regras de negócio aprovados no GitHub.
 
-A Decisão 007 em `PROJECT_DECISIONS.md` estabelece:
+Documento canônico:
 
-`Material 3 UX principles → Obra/shadcn/local primitives → identidade Rede de Apoio`
+`docs/04_DESIGN_SYSTEM/MATERIAL3_VISUAL_DIRECTION.md`
 
-Material Design 3 passa a ser **referência de UX**, não biblioteca de implementação. O projeto não adota SDK Material, Google Sans, paleta Google ou componentes Google prontos.
+Regra vigente:
+
+`Requisito aprovado → padrão/role M3 → token semântico Rede de Apoio → Obra/shadcn/local primitive → tela`
+
+Isso significa que Material 3 não é apenas uma referência genérica de interação: ele governa hierarquia, navegação, app bars, estados, papéis de cor/surface, ergonomia, acessibilidade e adaptação. Obra/shadcn continuam sendo meios de implementação. A identidade continua Rede de Apoio.
+
+Não adotar SDK Material, Google Sans, paleta baseline Google ou componentes Google apenas para copiar aparência Android.
 
 ### TARGET de navegação/header
 
@@ -37,31 +43,46 @@ Material Design 3 passa a ser **referência de UX**, não biblioteca de implemen
 - T12–T17 passam a ser organizadas como destinos secundários acessíveis por `Settings / Management Sheet`, disparado pelo header;
 - targets de interação permanecem >= 48 × 48 px.
 
+### Achado do review aprofundado do PR #91
+
+A arquitetura do novo AppShell e sua calibração tonal estão materializadas. O PR permanece bloqueado para revisão visual humana e merge.
+
+O problema anterior era semântico/tonal: o active indicator da Navigation Bar estava vinculado diretamente a `Color/Secondary`, produzindo um container saturado. A Foundation agora usa `Color/Secondary Container`/`Color/On Secondary Container`; `M3 Visual Calibration Review` (`5674:559`) preserva a comparação A/B para avaliação humana.
+
+Regra nova:
+
+- não usar um token de papel diferente apenas para eliminar hardcode;
+- se o papel M3 correto não existir, criar/mapear o papel semântico adequado;
+- tokenização não pode piorar a hierarquia visual;
+- a aparência suave anterior do indicador permanece como baseline A congelado;
+- o Settings Sheet usa `Color/Surface Container Low`; o scrim semântico mantém o conteúdo reconhecível e inativo.
+
 ### Gate temporário de migração
 
 A `Design Foundation` atual continua válida para:
 
-- tokens;
-- tipografia;
 - grid 390/16/358;
+- Geist e escala tipográfica;
 - Buttons/Fields e wrappers de 48 px;
 - BaseCard;
 - feedback;
-- `STATE = PAGE BASE + DELTA MÍNIMO`.
+- `STATE = PAGE BASE + DELTA MÍNIMO`;
+- arquitetura estrutural de `AppHeader / Root`, `AppHeader / Back`, Navigation Bar de quatro destinos e Settings Sheet criada no PR #91.
 
-Porém, dois padrões ficam **DEPRECATED_FOR_NEW_MIGRATIONS** até revisão no Figma:
+Porém, a migração efetiva de telas autenticadas continua **BLOQUEADA** até:
 
-- `AppHeader / Contextual` baseado em `T06 / Header / Pessoa`;
-- `BottomNavigation`/`compFooter` atual de cinco itens com `Mais`.
+1. obter revisão humana do resultado visual comparativo;
+2. mergear o PR #91.
 
-Portanto o ambiente está **READY para revisar a Foundation**, mas a migração efetiva de telas autenticadas fica pausada até essa revisão. Não iniciar T01/T03 como próximo passo de Figma antes de materializar a nova arquitetura de navegação.
+Não iniciar T03, T01 ou qualquer outra T## antes disso.
 
 ## Fontes de autoridade
 
 1. Issues/requisitos aprovados e documentos canônicos do GitHub.
 2. Registries estruturados do repositório.
-3. Figma atual para decisões visuais.
-4. Inferência somente quando inevitável e marcada.
+3. `MATERIAL3_VISUAL_DIRECTION.md` + fontes oficiais Material 3 para UX/design visual.
+4. Figma atual para a implementação visual vigente, desde que não contradiga uma decisão de design mais nova já documentada.
+5. Inferência somente quando inevitável e marcada.
 
 O Figma nunca aprova requisito, permissão, papel ou critério de aceite.
 
@@ -114,9 +135,9 @@ Primitives seguem a ordem:
 3. library vinculada;
 4. componente local novo somente quando não houver equivalente.
 
-Tokens oficiais estão em `docs/04_DESIGN_SYSTEM/DESIGN_TOKENS.md`, com grid mobile 390 px, margem 16 px, Geist/Inter, touch target mínimo 48x48 e cores semânticas de estado.
+A ordem acima governa **implementação**, não a decisão de UX. Antes dela, o agente deve resolver o padrão e o papel semântico M3 aplicável.
 
-Material 3 governa a **decisão de UX**; Obra/shadcn e componentes locais continuam governando a **materialização visual**.
+Tokens oficiais estão em `docs/04_DESIGN_SYSTEM/DESIGN_TOKENS.md`, com grid mobile 390 px, margem 16 px, Geist/Inter, touch target mínimo 48x48 e cores semânticas de estado.
 
 ## Preflight obrigatório do Codex
 
@@ -124,30 +145,29 @@ Antes de qualquer alteração:
 1. ler `AGENTS.md`;
 2. ler este arquivo;
 3. ler `PROJECT_DECISIONS.md`, especialmente a Decisão 007;
-4. resolver requisitos e Issues;
-5. ler `SCREEN_REGISTRY.yaml` + `STATE_MATRIX.yaml`;
-6. ler `FIGMA_REGISTRY.yaml` + `PROTOTYPE_INTEGRITY.yaml`;
-7. consultar `SITEMAP.md`, `SCREENS_CATALOG.md` e `TRACEABILITY_MATRIX.md`;
-8. consultar tokens/component map;
-9. inspecionar a `Design Foundation`;
-10. somente então editar.
+4. ler `docs/04_DESIGN_SYSTEM/MATERIAL3_VISUAL_DIRECTION.md`;
+5. resolver requisitos e Issues;
+6. ler `SCREEN_REGISTRY.yaml` + `STATE_MATRIX.yaml`;
+7. ler `FIGMA_REGISTRY.yaml` + `PROTOTYPE_INTEGRITY.yaml`;
+8. consultar `SITEMAP.md`, `SCREENS_CATALOG.md` e `TRACEABILITY_MATRIX.md`;
+9. consultar tokens/component map;
+10. inspecionar a `Design Foundation`;
+11. somente então editar.
 
 ## Estratégia atual de refatoração
 
-Ordem obrigatória após esta decisão:
+Ordem obrigatória:
 
-1. documentar a direção Material 3 no GitHub;
-2. revisar `Design Foundation` no Figma;
-3. materializar `AppHeader / Root`;
-4. revisar `AppHeader / Back`;
-5. materializar Navigation Bar de quatro destinos, sem `Mais`;
-6. materializar `Settings / Management Sheet` usando Sheet local/Obra quando possível;
-7. validar touch targets, safe areas, seleção e prevenção de toque acidental;
-8. registrar novos node IDs e atualizar registries;
-9. abrir PR da Foundation revisada;
-10. após revisão/merge, usar T03 como primeira prova do novo `AppShell / Root`;
-11. tratar T01/T02 separadamente como `AuthShell`;
-12. refatorar uma T## e seus states irmãos por vez.
+1. direção M3 documentada no GitHub;
+2. arquitetura estrutural Material 3 da Foundation criada;
+3. review aprofundado M3 documentado;
+4. calibrar roles tonais e surfaces do PR #91 sem desfazer melhorias estruturais;
+5. auditar screenshots e roles semânticos;
+6. revisão humana;
+7. merge do PR #91;
+8. usar T03 como primeira prova real do novo `AppShell / Root`;
+9. tratar T01/T02 separadamente como `AuthShell`;
+10. refatorar uma T## e seus states irmãos por vez.
 
 ## Definition of Ready do ambiente
 
@@ -162,9 +182,12 @@ Ordem obrigatória após esta decisão:
 - [x] tokens e component map disponíveis;
 - [x] foundation base criada;
 - [x] direção Material 3 documentada;
-- [ ] Foundation de header/navigation atualizada no Figma;
-- [ ] novos nodes `AppHeader / Root`, Navigation Bar e Settings Sheet registrados;
+- [x] Material 3 elevado a autoridade máxima de UX/design visual;
+- [x] Foundation estrutural de header/navigation criada no Figma;
+- [x] novos nodes registrados;
+- [ ] calibração visual M3 do PR #91 aprovada;
+- [ ] PR #91 mergeado;
 - [ ] Issue #84 corrigida no Figma;
 - [ ] P03/P04/P05/P06 resolvidas quando forem necessárias para uma entrega específica.
 
-O próximo trabalho visual correto é **revisar a Foundation**, não migrar uma T## com o header/footer antigos.
+O próximo trabalho visual correto é **revisar visualmente a calibração da Foundation no PR #91**, não migrar uma T##.
