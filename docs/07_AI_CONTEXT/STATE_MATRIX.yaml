@@ -1,11 +1,12 @@
 schema_version: 3
-last_updated: '2026-09-13'
+last_updated: '2026-09-14'
 state_rule: STATE = PAGE BASE + DELTA MÍNIMO
 authority_rules:
 - State existence in Figma documents visual evidence, not automatic product approval.
 - proposal_only states cannot be used to expand approved scope.
 - visual_candidate_only states cannot resolve an open functional/documental gate.
 - prototype_integrity references identify current reactions/names that must not be treated as intended behavior.
+- migrated_figma_node on an open migration PR is a visual migration candidate until explicit human approval and merge.
 screens:
   T01:
     owner: David
@@ -65,13 +66,15 @@ screens:
   T05:
     owner: Henrique
     base_state: default
+    migration_status: full_state_set_migrated_pending_human_review
     states:
-      default: {kind: default, figma_node: '5344:1413'}
-      empty: {kind: empty, figma_node: '5346:1256'}
-      loading: {kind: loading, figma_node: '5346:1403'}
-      delay: {kind: domain_state, figma_node: '5346:1504', care_state: Atrasado}
-      corrected: {kind: domain_state, figma_node: '5346:1592', care_state: Corrigido}
-      detail: {kind: detail, figma_node: '5346:1686'}
+      default: {kind: default, figma_node: '5344:1413', migrated_figma_node: '5815:1652', migration_status: migrated_pending_human_review}
+      empty: {kind: empty, figma_node: '5346:1256', migrated_figma_node: '5837:341', migration_status: migrated_pending_human_review}
+      loading: {kind: loading, figma_node: '5346:1403', migrated_figma_node: '5838:438', migration_status: migrated_pending_human_review}
+      delay: {kind: domain_state, figma_node: '5346:1504', migrated_figma_node: '5839:559', migration_status: migrated_pending_human_review, care_state: Atrasado, semantic_status: Status/Delayed}
+      corrected: {kind: domain_state, figma_node: '5346:1592', migrated_figma_node: '5841:469', migration_status: migrated_pending_human_review, care_state: Corrigido, semantic_status: Status/Corrected}
+      detail: {kind: detail, figma_node: '5346:1686', migrated_figma_node: '5841:25983', migration_status: migrated_pending_human_review}
+    audit: zero_defects_2026_09_14
   T06:
     owner: Kauã
     base_state: normal
@@ -85,15 +88,18 @@ screens:
   T07:
     owner: Henrique
     base_state: default
+    migration_status: full_state_set_migrated_pending_human_review
     states:
-      default: {kind: default, figma_node: '5334:756'}
-      empty: {kind: empty, figma_node: '5335:831'}
-      loading: {kind: loading, figma_node: '5335:948'}
-      detail: {kind: detail, figma_node: '5336:895', element: E11}
-      correction: {kind: form, figma_node: '5336:977', element: E12, functional_gate: P03}
-      correction_complete: {kind: success, figma_node: '5337:15296', element: E12}
-      exporting: {kind: loading_action, figma_node: '5337:15310', element: E13, functional_gate: P05}
-      export_complete: {kind: success, figma_node: '5337:15330', element: E13, functional_gate: P05}
+      default: {kind: default, figma_node: '5334:756', migrated_figma_node: '5815:1770', migration_status: migrated_pending_human_review}
+      empty: {kind: empty, figma_node: '5335:831', migrated_figma_node: '5844:568', migration_status: migrated_pending_human_review}
+      loading: {kind: loading, figma_node: '5335:948', migrated_figma_node: '5844:26005', migration_status: migrated_pending_human_review}
+      detail: {kind: detail, figma_node: '5336:895', migrated_figma_node: '5844:26067', migration_status: migrated_pending_human_review, element: E11}
+      correction: {kind: form, figma_node: '5336:977', migrated_figma_node: '5844:26149', migration_status: migrated_pending_human_review, element: E12, functional_gate: P03}
+      correction_complete: {kind: success, figma_node: '5337:15296', migrated_figma_node: '5844:26238', migration_status: migrated_pending_human_review, element: E12}
+      exporting: {kind: loading_action, figma_node: '5337:15310', migrated_figma_node: '5844:26343', migration_status: migrated_pending_human_review, element: E13, functional_gate: P05}
+      export_complete: {kind: success, figma_node: '5337:15330', migrated_figma_node: '5844:26446', migration_status: migrated_pending_human_review, element: E13, functional_gate: P05}
+    local_subnav: {component_set: '5830:358', active: Histórico, variant_node: '5830:348'}
+    audit: zero_defects_2026_09_14
   T08:
     owner: Henrique
     base_state: list
