@@ -259,17 +259,28 @@ known_current_nodes:
   T08:
     owner: Henrique
     page: henrique
-    mapping_status: mapped
+    mapping_status: migrated_full_state_set_pending_human_review
     frames:
-      list: '5235:924'
-      empty: '5118:838'
-      create: '5123:1291'
-      create_error_name: '5130:4159'
-      create_error_concentration: '5130:4204'
-      create_error_form: '5130:4263'
-      created: '5141:2758'
+      current_list: '5235:924'
+      current_empty: '5118:838'
+      current_create: '5123:1291'
+      current_create_error_name: '5130:4159'
+      current_create_error_concentration: '5130:4204'
+      current_create_error_form: '5130:4263'
+      current_created: '5141:2758'
+      migrated_list: '5850:2696'
+      migrated_empty: '5865:1014'
+      migrated_create: '5866:1100'
+      migrated_create_error_name: '5866:26583'
+      migrated_create_error_concentration: '5866:26607'
+      migrated_create_error_form: '5866:26631'
+      migrated_created: '5865:1051'
     legacy_nodes: ['5048:644']
-    canonical_list_frame: '5235:924'
+    local_subnav:
+      component_set: '5810:1005'
+      active_variant: '5810:968'
+      active_value: Medicamentos
+    migration_audit: zero_defects_2026_09_14
   T09:
     owner: Rhuan
     page: rhuan
@@ -278,8 +289,27 @@ known_current_nodes:
   T10:
     owner: Henrique
     page: henrique
-    mapping_status: mapped
-    frames: {default: '5321:411', empty: '5323:489', loading: '5323:558', success: '5323:627', new_record: '5323:696', validation_error: '5323:855', attachment_context: '5323:885'}
+    mapping_status: migrated_full_state_set_pending_human_review
+    frames:
+      current_default: '5321:411'
+      current_empty: '5323:489'
+      current_loading: '5323:558'
+      current_success: '5323:627'
+      current_new_record: '5323:696'
+      current_validation_error: '5323:855'
+      current_attachment_context: '5323:885'
+      migrated_default: '5857:2744'
+      migrated_empty: '5866:26673'
+      migrated_loading: '5866:26692'
+      migrated_success: '5866:26711'
+      migrated_new_record: '5868:1239'
+      migrated_validation_error: '5868:26715'
+      migrated_attachment_context: '5868:26730'
+    local_subnav:
+      component_set: '5810:1005'
+      active_variant: '5810:992'
+      active_value: Consultas
+    migration_audit: zero_defects_2026_09_14
   T11:
     owner: Rhuan
     page: rhuan
