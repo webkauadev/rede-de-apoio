@@ -26,3 +26,12 @@ Rede de Apoio = identidade visual + componentes de domínio.
 - Estados devem derivar de uma tela base.
 - Auto Layout no Figma.
 - Componentes devem possuir variantes quando houver mudança de estado.
+- Telas com destinos irmãos dentro da seção primária ativa devem usar o padrão canônico `LOCAL_SUBNAVIGATION_PATTERN.md`: submenu imediatamente abaixo do header, em linguagem M3 Tabs, separado da Navigation Bar inferior.
+- A navegação local deve recolher no scroll para baixo e retornar no scroll para cima seguindo a adaptação `enterAlways` documentada; filtros, chips e controles de visualização não devem ser confundidos com LocalSubnav.
+
+## Documentos canônicos relacionados
+
+- `MATERIAL3_VISUAL_DIRECTION.md`
+- `APP_HEADER_VISUAL_GRAMMAR.md`
+- `COMPONENT_COLOR_GRAMMAR.md`
+- `LOCAL_SUBNAVIGATION_PATTERN.md`
