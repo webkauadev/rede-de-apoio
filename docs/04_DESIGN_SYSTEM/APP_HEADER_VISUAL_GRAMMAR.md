@@ -29,38 +29,42 @@ Blur/transparência podem ser usados futuramente em superfícies transitórias e
 
 ## 3. Direção aprovada para Root Header
 
-Telas Root devem usar uma variante **soft brand-tinted**.
+Telas Root devem usar a variante canônica **soft brand-tinted**.
 
 Ela é composta por:
 
-1. base neutra de `Surface Container Low` ou `Surface Container`;
-2. tint muito suave derivado da família de marca / `Feature/Home`;
+1. base tonal clara derivada da família de surface;
+2. tint suave derivado da família de marca / `Feature/Home`;
 3. título em `On Surface`;
 4. contexto em `On Surface Variant`;
 5. ação Settings como `IconButton` semântico;
 6. avatar contextual com ring sutil de marca;
-7. separação inferior discreta, sem sombra pesada.
+7. separação tonal suficiente para distinguir o shell do conteúdo, sem sombra pesada.
 
-A percepção desejada é: o usuário sente que o header pertence à Rede de Apoio, mas não identifica um “efeito de gradiente chamativo”.
+A percepção desejada é: o usuário sente que o header pertence à Rede de Apoio, mas o conteúdo operacional continua sendo o principal portador de cor e atenção.
 
 ## 4. Gradiente tonal de marca
 
-Gradiente é permitido como **receita visual semântica do Root Header**, desde que sutil e derivado de tokens existentes.
+Gradiente é permitido como **receita visual semântica do Root Header**, desde que sutil, replicável e derivado dos papéis aprovados.
 
-### Receita preferencial
+### Receita canônica aprovada no piloto T03
 
-`Surface Container Low → blend suave com Feature/Home/Container`
+`Shell/Header/RootTint/Start → Shell/Header/RootTint/End`
 
-Valores de referência do piloto:
+Valores aprovados:
 
-- base: `Surface Container Low` `#F8F5FA`;
-- tint de marca: `Feature/Home/Container` `#D0E9F3`;
-- o tint precisa ser perceptível no viewport completo sem competir com o `Primary Container` do conteúdo;
-- o piloto demonstrou que 8–15% de influência visual foi insuficiente; o candidato atual usa aproximadamente 25–30% no stop final;
-- direção preferencial: diagonal ou horizontal muito suave; evitar banding e hotspots;
-- resultado deve permanecer legível como surface clara estrutural.
+- início: `#EEF2F8`;
+- fim: `#DCEBF4`;
+- direção: horizontal suave;
+- ambos os stops são totalmente opacos;
+- a presença cromática deve ser perceptível no viewport completo, mas permanecer abaixo do destaque do `Primary Container` operacional.
 
-Não hardcodar uma segunda paleta apenas para o gradiente. Se a implementação exigir stops intermediários, derivá-los da mistura dos papéis semânticos aprovados e documentar o mapeamento.
+As variables canônicas no Figma são:
+
+- `Shell/Header/RootTint/Start` — `VariableID:5731:166` — `#EEF2F8`;
+- `Shell/Header/RootTint/End` — `VariableID:5731:167` — `#DCEBF4`.
+
+Não hardcodar uma segunda paleta por tela. Novas telas Root reutilizam a receita canônica do shell; se uma futura direção exigir outro papel semântico, isso deve ser decidido no design system antes de ser propagado.
 
 ### Proibido
 
@@ -75,25 +79,29 @@ Não hardcodar uma segunda paleta apenas para o gradiente. Se a implementação 
 
 ## 5. Variantes do AppHeader
 
-O componente deve evoluir para variantes semânticas reutilizáveis, sem decisões por tela.
+O componente usa variantes/masters semânticos reutilizáveis, sem decisões por tela.
 
-### `Root / Tinted`
+### `Root / Tinted` — CANÔNICO
 
 Uso: telas Root autenticadas.
 
-- soft brand-tinted surface;
+- master Figma: `Rede de Apoio / Foundation / AppHeader / Root / Tinted` (`5746:157`);
+- soft brand-tinted surface `#EEF2F8 → #DCEBF4`;
 - avatar contextual opcional;
 - Settings global;
 - title específico da visão;
 - context da Pessoa Idosa;
 - sem blur/glass.
 
+O `AppShell / Root` (`5652:528`) já consome esse master. Portanto novas migrações Root devem reutilizar o shell em vez de reconstruir o tratamento visual localmente.
+
 ### `Root / Default`
 
-Uso: quando a tela Root não comportar tint por motivo documentado.
+Uso: exceção documentada quando uma tela Root não comportar tint.
 
 - `Surface Container Low` ou `Surface Container`;
-- mesma estrutura e propriedades da variante Tinted.
+- mesma estrutura e propriedades da variante Tinted;
+- não é o padrão de novas migrações autenticadas.
 
 ### `Root / Scrolled`
 
@@ -137,16 +145,15 @@ Exemplo T03:
 
 A engrenagem não deve parecer um glyph preto solto nem uma bolha preenchida do tamanho integral do hit target.
 
-Contrato:
+Contrato canônico:
 
 - target mínimo: `48 × 48`;
-- container visual alvo: aproximadamente `40 × 40`, centralizado dentro do target;
+- container visual percebido: aproximadamente `40 × 40`, centralizado dentro do target;
 - glyph visual: aproximadamente 20–24 px;
-- container de repouso usa `Surface`/`Surface Container` de forma discreta;
-- quando a primitive não separar hit target e visual container, é permitido simular o container visual com borda interna semanticamente vinculada, preservando o target de 48 px;
-- hover/pressed/focus usa `Secondary Container`, `Surface Container` ou papel local equivalente conforme estado;
-- icon repouso: `On Surface`;
-- focus ring: `ring` / papel de foco shadcn equivalente;
+- no master aprovado, o tratamento visual é obtido por borda interna tonal semanticamente vinculada, preservando o hit target de 48 px;
+- icon usa acento/foreground semanticamente compatível com o shell;
+- hover/pressed/focus deve continuar usando papel de estado compatível quando esses estados forem materializados;
+- focus ring usa `ring` / papel de foco shadcn equivalente;
 - não usar bolha Primary sólida em repouso sem motivo funcional.
 
 Usar primitive shadcn/Obra de IconButton quando disponível; M3 define papel/estado, shadcn/Obra materializa.
@@ -155,7 +162,7 @@ Usar primitive shadcn/Obra de IconButton quando disponível; M3 define papel/est
 
 O avatar deve preservar a imagem real/contextual quando disponível.
 
-Tratamento recomendado para Root/Tinted:
+Tratamento canônico para Root/Tinted:
 
 - avatar existente/Obra preservado;
 - ring de aproximadamente 2 px;
@@ -166,12 +173,12 @@ Tratamento recomendado para Root/Tinted:
 
 ## 9. Borda / edge inferior
 
-O header pode usar uma separação inferior muito discreta para não se fundir ao conteúdo.
+O header pode usar separação inferior discreta quando necessário, mas o padrão aprovado do piloto resolve a separação principalmente pelo próprio tint.
 
 Preferências:
 
 1. diferença de surface/tint resolve sozinha;
-2. se necessário, linha de 1 px usando `Border` ou uma mistura de `Primary` com baixa presença;
+2. se necessário, linha de 1 px usando `Border` ou papel equivalente;
 3. evitar sombra pesada;
 4. evitar elevation decorativa quando não houver sobreposição/scroll que justifique profundidade.
 
@@ -188,7 +195,7 @@ A estrutura genérica continua baseada em papéis equivalentes a:
 - `border`;
 - `ring`.
 
-O Root/Tinted é uma composição de surface + tint semântico; não criar um componente paralelo fora do design system se `AppHeader / Root` puder receber uma variante/propriedade sem detach.
+O Root/Tinted é uma composição de surface + tint semântico dentro da Foundation; não criar um componente paralelo por tela.
 
 ## 11. Relação com Component Color Grammar
 
@@ -201,7 +208,7 @@ Header pertence à **estrutura/shell**. Ele não deve consumir `Category/*` ou `
 
 Logo, o header não deve competir com o card `Agora` da T03.
 
-## 12. T03 — target visual do piloto
+## 12. T03 — visual aprovado do piloto
 
 Preservar:
 
@@ -212,52 +219,51 @@ Preservar:
 - Diário plum como Feature de origem;
 - Navigation Bar com Secondary Container na seleção.
 
-Alterar apenas o shell superior para validar o novo padrão:
+Shell aprovado:
 
-- `AppHeader / Root` → variante `Root / Tinted`;
-- soft tonal gradient derivado de surface + Home tint;
-- Settings → IconButton semântico;
-- avatar → ring de marca sutil;
+- `AppHeader / Root / Tinted` (`5746:157`);
+- gradiente `#EEF2F8 → #DCEBF4`;
+- Settings com target 48 × 48 e visual percebido ~40 × 40;
+- avatar com ring de 2 px em `Feature/Home/Accent`;
 - sem Liquid Glass;
 - sem alterar conteúdo ou destinations.
 
-## 13. Gate de aprovação
+T03 Default (`5684:1407`) e Loading (`5684:22165`) usam esse mesmo master.
 
-Antes de propagar o header para próximas telas, revisar:
+## 13. Gate de aprovação — CONCLUÍDO
 
-1. o tint é percebido como identidade e não como decoração?
-2. o header continua estrutural e menos dominante que o conteúdo Primary?
-3. título/contexto mantêm contraste adequado?
-4. o Settings parece um controle e não um glyph perdido?
-5. o avatar mantém a identidade real da Pessoa Idosa?
-6. o ring não parece status?
-7. o efeito continua consistente no Loading?
-8. não houve blur/glassmorphism?
-9. a versão Root/Tinted pode ser reutilizada sem definir cor tela por tela?
-10. a tela ficou mais acabada sem parecer Android baseline ou iOS clone?
+A revisão humana do piloto T03 aprovou o Candidate B em 2026-09-14.
 
-A variante só vira padrão global após aprovação humana no piloto T03.
+Resultado do gate:
+
+1. tint percebido como identidade sem virar decoração — aprovado;
+2. header estrutural e menos dominante que o Primary operacional — aprovado;
+3. título/contexto legíveis — aprovado;
+4. Settings reconhecível como controle — aprovado;
+5. avatar contextual preservado — aprovado;
+6. ring não representa status — aprovado;
+7. Loading mantém exatamente o mesmo shell — aprovado;
+8. sem blur/glassmorphism — aprovado;
+9. Root/Tinted reutilizável sem definir cor tela por tela — aprovado;
+10. direção visual consistente com M3 + identidade Rede de Apoio — aprovado.
+
+A partir deste gate, `Root / Tinted` é padrão canônico das novas migrações Root autenticadas. Qualquer desvio exige justificativa documentada.
 
 ## 14. Princípio resumido para agentes
 
-> **O header é estrutura com identidade: surface semântica primeiro, tint de marca depois. Use um gradiente tonal sutil e replicável, nunca vidro/blur como linguagem padrão. Settings deve ser um IconButton real, avatar pode receber ring discreto de marca e o conteúdo continua sendo o principal portador de cor semântica.**
+> **O header é estrutura com identidade: use o `AppHeader / Root / Tinted` canônico e o `AppShell / Root`; não redesenhe o header por tela. O gradiente aprovado é `#EEF2F8 → #DCEBF4`, Settings mantém 48 × 48 de hit target com presença visual ~40 × 40, avatar contextual recebe ring discreto de marca e o conteúdo continua sendo o principal portador de cor semântica.**
 
-## 15. Pilot T03 implementation
+## 15. Implementação canônica do piloto T03
 
-The following local candidates were created in the Figma collection `Rede de
-Apoio / Semantic` for the T03 `Root / Tinted` pilot. They are **TARGET
-CANDIDATE — PENDING HUMAN REVIEW**, not final `DESIGN_TOKENS.md` values.
+As variables do header foram promovidas após aprovação humana:
 
-| Variable | Figma Variable ID | Value | Derivation and use |
+| Variable | Figma Variable ID | Valor | Uso |
 |---|---|---|---|
-| `Shell/Header/RootTint/Start` | `VariableID:5731:166` | `#F8F5FA` | `Surface Container Low`; first stop of the local Default/Loading header gradient. |
-| `Shell/Header/RootTint/End` | `VariableID:5731:167` | `#EDF2F8` | final Human Review 7 candidate; approximately 25–30% perceptual influence of `Feature/Home/Container` over `Surface Container Low`, calibrated to remain weaker than the `Agora` Primary container. |
+| `Shell/Header/RootTint/Start` | `VariableID:5731:166` | `#EEF2F8` | primeiro stop do Root/Tinted |
+| `Shell/Header/RootTint/End` | `VariableID:5731:167` | `#DCEBF4` | segundo stop do Root/Tinted |
 
-The gradient is horizontal and fully opaque: it has no blur, backdrop effect,
-translucency, glow, mesh, or shadow. The local Settings control keeps its
-48 × 48 px hit target while presenting an approximately 40 × 40 visual `Surface`
-container with an `On Surface` 24 px glyph. The T03 implementation achieves this
-without detaching the Foundation instance by using a 4 px inside stroke bound to
-`Shell/Header/RootTint/End`, preserving a 40 px perceived filled center.
-The contextual avatar keeps the original image and receives a 2 px
-`Feature/Home/Accent` ring as identity/context, never as a status indicator.
+O gradiente é horizontal e totalmente opaco: não possui blur, backdrop effect, translucência, glow, mesh ou sombra pesada.
+
+O componente canônico é `Rede de Apoio / Foundation / AppHeader / Root / Tinted` (`5746:157`). O `AppShell / Root` (`5652:528`) consome esse componente, de modo que as próximas telas Root devem herdar a mesma estrutura.
+
+O Settings preserva target 48 × 48 e aproximadamente 40 × 40 de presença visual. O avatar contextual preserva a imagem original e recebe ring de 2 px em `Feature/Home/Accent` como identidade/contexto, nunca como indicador de status.
