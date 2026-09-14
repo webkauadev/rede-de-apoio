@@ -414,3 +414,11 @@ tokens canônicos finais e não devem ser propagados antes da revisão humana.
 O Candidate A é a proposta aplicada localmente no piloto T03: Primary para o
 contexto operacional `Agora` e Tertiary limitado ao conteúdo contextual
 `Recentemente`. Essa aplicação continua `PENDING HUMAN REVIEW`.
+
+## 15. Component colour grammar
+
+The reusable component-level grammar, including Feature, Category and Status
+candidate roles, is defined in
+[COMPONENT_COLOR_GRAMMAR.md](COMPONENT_COLOR_GRAMMAR.md). That document is the
+authority for component semantic variants; this strategy remains the authority
+for structural surface hierarchy.
