@@ -55,7 +55,8 @@ Valores de referência do piloto:
 
 - base: `Surface Container Low` `#F8F5FA`;
 - tint de marca: `Feature/Home/Container` `#D0E9F3`;
-- força visual do tint: aproximadamente 8–15% na percepção final, não uma transição saturada;
+- o tint precisa ser perceptível no viewport completo sem competir com o `Primary Container` do conteúdo;
+- o piloto demonstrou que 8–15% de influência visual foi insuficiente; o candidato atual usa aproximadamente 25–30% no stop final;
 - direção preferencial: diagonal ou horizontal muito suave; evitar banding e hotspots;
 - resultado deve permanecer legível como surface clara estrutural.
 
@@ -134,13 +135,15 @@ Exemplo T03:
 
 ## 7. Settings IconButton
 
-A engrenagem não deve parecer um glyph preto solto.
+A engrenagem não deve parecer um glyph preto solto nem uma bolha preenchida do tamanho integral do hit target.
 
 Contrato:
 
 - target mínimo: `48 × 48`;
+- container visual alvo: aproximadamente `40 × 40`, centralizado dentro do target;
 - glyph visual: aproximadamente 20–24 px;
-- container visual pode permanecer transparente em repouso;
+- container de repouso usa `Surface`/`Surface Container` de forma discreta;
+- quando a primitive não separar hit target e visual container, é permitido simular o container visual com borda interna semanticamente vinculada, preservando o target de 48 px;
 - hover/pressed/focus usa `Secondary Container`, `Surface Container` ou papel local equivalente conforme estado;
 - icon repouso: `On Surface`;
 - focus ring: `ring` / papel de foco shadcn equivalente;
@@ -248,10 +251,13 @@ CANDIDATE — PENDING HUMAN REVIEW**, not final `DESIGN_TOKENS.md` values.
 | Variable | Figma Variable ID | Value | Derivation and use |
 |---|---|---|---|
 | `Shell/Header/RootTint/Start` | `VariableID:5731:166` | `#F8F5FA` | `Surface Container Low`; first stop of the local Default/Loading header gradient. |
-| `Shell/Header/RootTint/End` | `VariableID:5731:167` | `#F2F3F9` | approximately 15% perceptual blend of `Feature/Home/Container` over `Surface Container Low`; final stop of the same gradient. |
+| `Shell/Header/RootTint/End` | `VariableID:5731:167` | `#EDF2F8` | final Human Review 7 candidate; approximately 25–30% perceptual influence of `Feature/Home/Container` over `Surface Container Low`, calibrated to remain weaker than the `Agora` Primary container. |
 
 The gradient is horizontal and fully opaque: it has no blur, backdrop effect,
-translucency, glow, mesh, or shadow. The local Settings target keeps its
-48 × 48 px target with a `Surface` circular container and `On Surface` glyph.
+translucency, glow, mesh, or shadow. The local Settings control keeps its
+48 × 48 px hit target while presenting an approximately 40 × 40 visual `Surface`
+container with an `On Surface` 24 px glyph. The T03 implementation achieves this
+without detaching the Foundation instance by using a 4 px inside stroke bound to
+`Shell/Header/RootTint/End`, preserving a 40 px perceived filled center.
 The contextual avatar keeps the original image and receives a 2 px
 `Feature/Home/Accent` ring as identity/context, never as a status indicator.
