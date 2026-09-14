@@ -91,7 +91,20 @@ Responsabilidades:
 
 Contrato completo: `LOCAL_SUBNAVIGATION_PATTERN.md`.
 
-O componente Foundation reutilizável deve ser promovido somente após revisão humana do padrão materializado no lote T09/T11 do PR #95; até lá, a arquitetura e o comportamento já são canônicos, mas a implementação Figma permanece em validação visual.
+#### Foundation promovida — Saúde
+
+O padrão T09/T11 foi aprovado humanamente e o PR #95 foi mergeado. A implementação reutilizável está promovida para Foundation:
+
+- component set: `Rede de Apoio / Foundation / LocalSubnav / Saúde` (`5810:1005`);
+- `Active=Medicamentos` (`5810:968`);
+- `Active=Tarefas` (`5810:980`);
+- `Active=Consultas` (`5810:992`);
+- `Active=Compromissos` (`5810:1004`);
+- shell example: `AppShell / Root + LocalSubnav / Saúde — Example` (`5811:986`).
+
+Regra de reuse: em telas Saúde com essa taxonomia, instanciar `5810:1005` e mudar somente `Active`. Não duplicar, redesenhar ou detachar a barra apenas para trocar a seleção.
+
+O hide-on-down / reveal-on-up pertence ao shell/runtime. Não criar variante `Expanded/Collapsed` e não modelar essa condição transitória como estado da página.
 
 ### Settings / Management Sheet
 
@@ -152,9 +165,11 @@ A página Figma `Design Foundation` materializa a base para futuras refatoraçõ
 - `Rede de Apoio / Foundation / AppHeader / Root / Tinted` (`5746:157`).
 - `Rede de Apoio / Foundation / AppHeader / Back` (`5640:21512`).
 - `Rede de Apoio / Foundation / NavigationBar / Primary` (`5652:442`).
+- `Rede de Apoio / Foundation / LocalSubnav / Saúde` (`5810:1005`).
 - `Rede de Apoio / Foundation / Settings / Management Sheet` (`5652:443`).
 - `Rede de Apoio / Foundation / Settings / Destination Row` (`5662:21869`).
 - `Rede de Apoio / Foundation / AppShell / Root` (`5652:528`) e `AppShell / Back` (`5652:560`).
+- exemplo de composição `AppShell / Root + LocalSubnav / Saúde` (`5811:986`).
 
 ### Referências deprecated
 
@@ -175,4 +190,6 @@ O campo reutilizável é a composição `label + hint + control + error`. Input 
 
 ## Gate de migração
 
-Padrões já aprovados de Foundation podem ser reutilizados em micro-lotes coerentes. Novos padrões compartilhados, como `LocalSubnav / Tabs`, devem primeiro ser materializados em uma tela piloto/lote, passar por revisão humana e somente então ser promovidos para componente Foundation reutilizável.
+Padrões já aprovados de Foundation devem ser reutilizados em micro-lotes coerentes. `LocalSubnav / Saúde` já passou pelo piloto T09/T11 e está promovido: novas telas com a mesma taxonomia devem reutilizar `5810:1005` em vez de criar variações concorrentes.
+
+Novos padrões compartilhados diferentes deste continuam seguindo o fluxo: piloto → revisão humana → promoção para Foundation.

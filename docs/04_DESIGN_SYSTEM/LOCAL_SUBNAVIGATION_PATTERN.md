@@ -255,8 +255,33 @@ A Navigation Bar inferior não se move para acomodar o submenu.
 
 > **Se uma tela tiver destinos irmãos dentro da seção primária atual, materialize uma LocalSubnav em linguagem Material 3 Tabs imediatamente abaixo do header. Use fixed tabs apenas se os labels couberem; caso contrário use scrollable tabs. A LocalSubnav recolhe ao scroll para baixo e retorna ao scroll para cima seguindo uma adaptação `enterAlways`; não coloque esse submenu junto à Navigation Bar inferior e não confunda tabs de destino com filtros ou segmented controls.**
 
-## 14. Gate de componente Foundation
+## 14. Foundation promovida
 
-A arquitetura, posição e comportamento desta LocalSubnav são canônicos para novas migrações.
+O piloto T09/T11 foi aprovado humanamente e o PR #95 foi mergeado. O padrão deixa de estar apenas em gate e passa a ter implementação Figma reutilizável canônica.
 
-A implementação Figma reutilizável como **componente Foundation** só deve ser promovida depois de revisão humana do piloto T09/T11 no PR #95. Até essa aprovação, não criar variações concorrentes em outras telas: reutilizar a regra e aguardar a promoção do master visual.
+### Master Saúde
+
+- component set: `Rede de Apoio / Foundation / LocalSubnav / Saúde` (`5810:1005`);
+- `Active=Medicamentos` (`5810:968`);
+- `Active=Tarefas` (`5810:980`);
+- `Active=Consultas` (`5810:992`);
+- `Active=Compromissos` (`5810:1004`);
+- exemplo de shell: `AppShell / Root + LocalSubnav / Saúde — Example` (`5811:986`);
+- seção Foundation: `10 — Local Subnavigation` (`5808:957`).
+
+### Regra obrigatória de reuse
+
+Para telas Saúde cuja taxonomia canônica seja `Medicamentos · Tarefas · Consultas · Compromissos`:
+
+1. instanciar `5810:1005`;
+2. alterar somente a propriedade `Active` para o destino corrente;
+3. manter a instância imediatamente abaixo do AppHeader;
+4. não duplicar o componente por tela;
+5. não detachar apenas para mudar seleção;
+6. não criar variante `Expanded/Collapsed` para representar direção do scroll.
+
+O hide-on-down / reveal-on-up continua sendo responsabilidade do shell/runtime.
+
+Se outra seção primária futuramente precisar de LocalSubnav com taxonomia ou papéis semânticos diferentes, não reutilizar cegamente a versão Saúde: primeiro avaliar se cabe um novo component set de seção ou uma generalização real, seguindo o fluxo piloto → revisão humana → Foundation.
+
+Registro técnico da promoção: `../07_AI_CONTEXT/LOCAL_SUBNAVIGATION_FOUNDATION_2026-09-14.md`.
