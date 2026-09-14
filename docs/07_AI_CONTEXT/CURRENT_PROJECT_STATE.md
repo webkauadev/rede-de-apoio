@@ -69,12 +69,10 @@ A `Design Foundation` atual continua válida para:
 - `STATE = PAGE BASE + DELTA MÍNIMO`;
 - arquitetura estrutural de `AppHeader / Root`, `AppHeader / Back`, Navigation Bar de quatro destinos e Settings Sheet criada no PR #91.
 
-Porém, a migração efetiva de telas autenticadas continua **BLOQUEADA** até:
-
-1. obter revisão humana do resultado visual comparativo;
-2. mergear o PR #91.
-
-Não iniciar T03, T01 ou qualquer outra T## antes disso.
+O PR #91 foi mergeado e a Foundation Material 3 foi aprovada. A **T03** é o
+piloto autorizado do `AppShell / Root`, com status
+`MIGRATED_PENDING_HUMAN_REVIEW`. A revisão humana desse piloto é obrigatória
+antes de migrar qualquer outra tela autenticada.
 
 ## Fontes de autoridade
 
@@ -185,9 +183,10 @@ Ordem obrigatória:
 - [x] Material 3 elevado a autoridade máxima de UX/design visual;
 - [x] Foundation estrutural de header/navigation criada no Figma;
 - [x] novos nodes registrados;
-- [ ] calibração visual M3 do PR #91 aprovada;
-- [ ] PR #91 mergeado;
+- [x] calibração visual M3 do PR #91 aprovada;
+- [x] PR #91 mergeado;
 - [ ] Issue #84 corrigida no Figma;
 - [ ] P03/P04/P05/P06 resolvidas quando forem necessárias para uma entrega específica.
 
-O próximo trabalho visual correto é **revisar visualmente a calibração da Foundation no PR #91**, não migrar uma T##.
+O próximo trabalho visual correto é **a revisão humana comparativa do piloto T03**.
+Não iniciar outra T## até essa revisão.

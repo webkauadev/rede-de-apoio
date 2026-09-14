@@ -162,10 +162,13 @@ known_current_nodes:
   T03:
     owner: Rhuan
     page: rhuan
-    mapping_status: mapped
+    mapping_status: migrated_pending_human_review
     frames:
-      default: '5435:1222'
-      loading: '5436:1616'
+      current_default: '5435:1222'
+      current_loading: '5436:1616'
+      migrated_default: '5684:1407'
+      migrated_loading: '5684:22165'
+      migration_review: '5684:22217'
       mandatory_reminder_visual_candidate: '5436:18023'
       care_registered_visual_candidate: '5436:18343'
       delay_visual_candidate: '5436:18445'

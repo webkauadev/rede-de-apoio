@@ -25,26 +25,37 @@ screens:
     owner: Rhuan
     base_state: default
     states:
-      default: {kind: default, figma_node: '5435:1222'}
-      loading: {kind: loading, figma_node: '5436:1616'}
+      default:
+        kind: default
+        figma_node: '5435:1222'
+        migrated_figma_node: '5684:1407'
+        migration_status: migrated_pending_human_review
+      loading:
+        kind: loading
+        figma_node: '5436:1616'
+        migrated_figma_node: '5684:22165'
+        migration_status: migrated_pending_human_review
       mandatory_reminder:
         kind: notification_visual_candidate
         figma_node: '5436:18023'
         notification: N02
         functional_gate: P04
         authority: visual_candidate_only
+        migration_status: blocked_pending_p04
       care_registered:
         kind: notification_visual_candidate
         figma_node: '5436:18343'
         notification: N03
         functional_gate: P04
         authority: visual_candidate_only
+        migration_status: blocked_pending_p04
       delay:
         kind: notification_visual_candidate
         figma_node: '5436:18445'
         notification: N04
         functional_gate: P04
         authority: visual_candidate_only
+        migration_status: blocked_pending_p04
   T04:
     owner: Rhuan
     base_state: week
