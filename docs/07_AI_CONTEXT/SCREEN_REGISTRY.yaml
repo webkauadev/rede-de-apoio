@@ -1,5 +1,5 @@
-schema_version: 3
-last_updated: '2026-09-13'
+schema_version: 4
+last_updated: '2026-09-14'
 sources:
   requirements:
     system: GitHub
@@ -8,165 +8,148 @@ sources:
     issue_registry: docs/06_GITHUB/ISSUE_REGISTRY.yaml
     role: canonical_source_of_truth
     missing_data_policy: migration_required
-  human_catalog: docs/03_INFORMATION_ARCHITECTURE/SCREENS_CATALOG.md
+  figma: docs/05_FIGMA/FIGMA_REGISTRY.yaml
+  prototype_integrity: docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml
   sitemap: docs/03_INFORMATION_ARCHITECTURE/SITEMAP.md
   traceability: docs/03_INFORMATION_ARCHITECTURE/TRACEABILITY_MATRIX.md
-  figma: docs/05_FIGMA/FIGMA_REGISTRY.yaml
-  figma_audit: docs/05_FIGMA/FIGMA_AUDIT_2026-09-13.md
-  prototype_integrity: docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml
-global_visual_direction:
-  reference: Material Design 3
-  role: ux_principles_not_component_library
-  implementation: Obra/shadcn/local components with Rede de Apoio identity
-  foundation_gate: navigation_foundation_revision_required_before_authenticated_screen_migration
-  deprecated_for_new_migrations: [t06_header_person_as_global_header, current_five_item_compFooter]
-  target_primary_navigation: [Home, Agenda, Diário, Saúde]
-  target_secondary_surface: settings_management_sheet
+
+visual_architecture:
+  authority: Material Design 3
+  canonical_figma_page: {node_id: '5926:1014', name: Fluxo Final}
+  primary_navigation: [Home, Agenda, Diário, Saúde]
+  secondary_surface: Settings / Management Sheet
   settings_destinations: [T12, T13, T14, T15, T16, T17]
-  first_root_shell_validation_after_foundation: T03
   auth_shell_screens: [T01, T02]
+  touch_target_min_px: 48
+  state_rule: STATE = PAGE BASE + DELTA MÍNIMO
+
 selection_policy:
-  next_screen_for_owner:
   - Prefer a screen explicitly requested by the user.
-  - Before any authenticated-screen migration, check global_visual_direction.foundation_gate and FIGMA_REGISTRY foundation status.
-  - While the gate is active, revise the Design Foundation instead of propagating the deprecated header/footer.
-  - Otherwise follow owner_sequences, prioritizing open integrity debt before redesign.
-  - Resolve RF/RNF/US from the GitHub registries before changing functional scope.
-  - A Figma reaction is evidence of current prototype behavior, not a functional requirement.
-  - Known broken reactions in PROTOTYPE_INTEGRITY.yaml must never be treated as intended behavior.
-  - RF30/US-036 are proposal-only and cannot drive approved read-only scope until explicitly approved.
-  status_values:
-  - figma_mapped
+  - Resolve RF/RNF/US from GitHub before changing functional scope.
+  - Use Fluxo Final as current visual/prototype authority when an equivalent exists.
+  - Owner pages are historical/migration evidence when an equivalent Fluxo Final node exists.
+  - A Figma reaction is not a requirement.
+  - P03/P04/P05/P06 were resolved canonically on 2026-09-14.
+  - RF30/US-036 were approved canonically on 2026-09-14.
+  - P01 remains the open documentary gate for non-enumerated story-specific acceptance criteria.
+
 screens:
   T01:
     name: Login
     owner: David
     flow_group: authentication
-    figma_status: figma_mapped
-    figma_page: david
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF02]
-    user_stories: [US-002]
-    purpose: Autenticar usuário com conta válida e comunicar credenciais inválidas sem expor dado sensível.
+    user_stories: [US-002, US-036]
+    purpose: Autenticar usuário com conta válida, incluindo a Pessoa Idosa com conta própria aprovada por RF30.
     target_shell: AuthShell
   T02:
     name: Cadastro de Conta
     owner: David
     flow_group: authentication
-    figma_status: figma_mapped
-    figma_page: david
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF01]
-    user_stories: [US-001]
-    purpose: Cadastrar conta de acesso para usuário autorizado.
+    user_stories: [US-001, US-036]
+    purpose: Cadastrar conta de acesso; para Pessoa Idosa, a senha é definida pelo próprio titular e a conta é vinculada ao próprio perfil.
     target_shell: AuthShell
   T03:
     name: Home / Visão Geral do Cuidado
     owner: Rhuan
     flow_group: operations
-    figma_status: migrated_pending_human_review
-    figma_page: rhuan
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF07, RF17, RF25, RF26]
     user_stories: [US-009, US-020, US-029, US-030]
-    purpose: Concentrar resumo operacional do cuidado e acessos rápidos para calendário, tarefas e compromissos.
-    functional_gates: [P04]
+    purpose: Concentrar resumo operacional e feedback transitório N02/N03/N04 sem criar Central de Notificações.
     target_navigation_role: primary_home
     target_shell: AppShell_Root
-    migration_order_note: first_root_shell_validation_after_foundation_revision
-    migration:
-      status: migrated_pending_human_review
-      current_nodes: {default: '5435:1222', loading: '5436:1616'}
-      migrated_nodes: {default: '5684:1407', loading: '5684:22165'}
-      review_node: '5684:22217'
-      foundation_instances: ['5652:350', '5652:442', '5652:528']
-      candidate_states: [mandatory_reminder, care_registered, delay]
-      candidate_state_gate: P04
   T04:
     name: Calendário de Cuidados
     owner: Rhuan
     flow_group: operations
-    figma_status: figma_mapped
-    figma_page: rhuan
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF06, RF07, RF08, RF09, RF10]
     user_stories: [US-008, US-009, US-011, US-012, US-013, US-014]
-    purpose: Consultar escala e organizar plantões; o Figma atual possui visões Semana e Dia.
+    purpose: Consultar escala e organizar plantões; é destino contextual de N01.
     target_navigation_role: primary_agenda_section_reference
   T05:
     name: Detalhamento do Dia
     owner: Henrique
     flow_group: health_records
-    figma_status: figma_mapped
-    figma_page: henrique
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF07]
     user_stories: [US-010]
     context_stories: [US-019, US-020, US-021, US-023, US-025, US-030, US-034]
-    purpose: Consolidar o que foi planejado e registrado em um dia, incluindo estados de atraso/correção e detalhe.
+    purpose: Consolidar planejado/registrado no dia e receber destinos contextuais N02/N03/N04.
   T06:
     name: Diário de Cuidados
     owner: Kauã
     flow_group: governance_records
-    figma_status: figma_mapped
-    figma_page: kaua
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF11, RF18, RF23]
     user_stories: [US-015, US-021, US-027]
-    purpose: Registrar e consultar ocorrências cronológicas do cuidado, preservando autoria e histórico.
+    purpose: Registrar e consultar ocorrências do cuidado conforme a permissão efetiva aprovada em P03.
     target_navigation_role: primary_diary
   T07:
     name: Histórico de Cuidados
     owner: Henrique
     flow_group: health_records
-    figma_status: figma_mapped
-    figma_page: henrique
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF12, RF28, RNF02]
     user_stories: [US-016, US-032, US-034]
-    purpose: Consultar registros históricos, abrir detalhes, registrar correção versionada e oferecer exportação contextual quando autorizada.
-    functional_gates: [P03, P05]
+    purpose: Consultar histórico, registrar correção versionada conforme P03 e exportar CSV somente para Familiar Principal conforme P05.
   T08:
     name: Medicamentos
     owner: Henrique
     flow_group: health_records
-    figma_status: figma_mapped
-    figma_page: henrique
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF14, RF15, RF16, RF17]
     user_stories: [US-017, US-018, US-019, US-020]
-    purpose: Consultar e cadastrar medicamentos e seus dados de rotina; a lista canônica atual é o node 5235:924.
-    prototype_integrity_issue: 84
+    purpose: Consultar e cadastrar medicamentos e rotina de administração conforme autorização.
     target_navigation_role: primary_health_section_reference
   T09:
     name: Tarefas
     owner: Rhuan
     flow_group: operations
-    figma_status: figma_mapped
-    figma_page: rhuan
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF21]
     user_stories: [US-024, US-025]
     context_stories: [US-020, US-030]
-    purpose: Criar, atribuir e concluir tarefas de cuidado, mantendo estados de lista e formulário.
+    purpose: Criar, atribuir e concluir tarefas de cuidado conforme autorização.
   T10:
     name: Consultas e Recomendações
     owner: Henrique
     flow_group: health_records
-    figma_status: figma_mapped
-    figma_page: henrique
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF19, RF23]
     user_stories: [US-022, US-027]
-    purpose: Registrar consultas e recomendações de saúde e anexos contextuais.
-    prototype_integrity_issue: 84
+    purpose: Registrar consultas/recomendações e anexos contextuais.
     target_navigation_role: health_section_sibling
   T11:
     name: Compromissos
     owner: Rhuan
     flow_group: operations
-    figma_status: figma_mapped
-    figma_page: rhuan
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF20]
     user_stories: [US-023]
@@ -175,35 +158,32 @@ screens:
     name: Perfil da Pessoa Idosa
     owner: David
     flow_group: care_network
-    figma_status: figma_mapped
-    figma_page: david
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
-    origin_requirements: [RF03]
-    user_stories: [US-003, US-004]
-    purpose: Cadastrar, visualizar e editar o perfil da pessoa idosa; no visual atual também serve de entrada para Rede e Apoio.
+    origin_requirements: [RF03, RF30]
+    user_stories: [US-003, US-004, US-036]
+    purpose: Manter o perfil e configurar a conta própria read-only da Pessoa Idosa sem criar app separado.
     target_entry_surface: settings_management_sheet
-    proposal_visuals: [RF30, US-036]
-    prototype_integrity_issue: 84
+    elderly_access: approved_read_only
   T13:
     name: Rede de Cuidado
     owner: David
     flow_group: care_network
-    figma_status: figma_mapped
-    figma_page: david
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF04, RF05]
     user_stories: [US-005, US-006, US-007]
     context_stories: [US-011]
-    purpose: Vincular/desvincular membros, gerenciar papéis familiares e transferir Familiar Principal.
+    purpose: Vincular/desvincular membros e gerenciar papéis pela composição determinística aprovada em P06.
     target_entry_surface: settings_management_sheet
-    functional_gates: [P03, P06]
-    prototype_integrity_issue: 84
   T14:
     name: Contatos Importantes
     owner: David
     flow_group: care_network
-    figma_status: figma_mapped
-    figma_page: david
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF22]
     user_stories: [US-026]
@@ -213,8 +193,8 @@ screens:
     name: Informações de Emergência
     owner: David
     flow_group: care_network
-    figma_status: figma_mapped
-    figma_page: david
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF24]
     user_stories: [US-028]
@@ -224,32 +204,32 @@ screens:
     name: Preferências de Notificações
     owner: Kauã
     flow_group: governance_records
-    figma_status: figma_mapped
-    figma_page: kaua
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF27]
     user_stories: [US-031]
-    purpose: Configurar somente notificações opcionais; eventos obrigatórios não podem ser desligados.
+    purpose: Configurar somente notificações opcionais; obrigatórias permanecem ativas e superfícies são regidas por P04.
     target_entry_surface: settings_management_sheet
-    functional_gates: [P04]
-    prototype_integrity_issue: 84
   T17:
     name: Auditoria
     owner: Kauã
     flow_group: governance_records
-    figma_status: figma_mapped
-    figma_page: kaua
+    figma_status: canonical_fluxo_final
+    figma_page: fluxo_final
     requirements: resolve_in_github
     origin_requirements: [RF29, RNF01]
     user_stories: [US-033, US-035]
     transversal_requirements: [RNF03]
-    purpose: Consultar trilha de auditoria autorizada, abrir detalhe e representar acesso proibido conforme RNF01/RNF03.
+    purpose: Consultar trilha autorizada e representar acesso proibido; tentativas negadas e exportações são auditáveis.
     target_entry_surface: settings_management_sheet
+
 owner_sequences:
   David: [T01, T02, T12, T13, T14, T15]
   Rhuan: [T04, T11, T09, T03]
   Henrique: [T08, T10, T07, T05]
   Kauã: [T06, T16, T17]
+
 transversal_elements:
   E10: {name: Anexar documento/imagem, owner: Henrique, story: US-027}
   E12: {name: Corrigir registro sem apagar original, owner: Kauã, story: US-034}
@@ -257,32 +237,5 @@ transversal_elements:
   E18: {name: Concluir tarefa, owner: Rhuan, story: US-025}
   E19: {name: Registrar consulta/recomendação, owner: Henrique, story: US-022}
   E26: {name: Manter contato, owner: David, story: US-026}
-non_screen_catalog:
-  E01: Credenciais inválidas
-  E02: Validação do cadastro
-  E03: Novo plantão
-  E04: Editar/cancelar plantão
-  E05: Atribuir plantonista
-  E06: Solicitar troca
-  E07: Aceitar/recusar troca
-  E08: Estados do dia
-  E09: Novo registro de cuidado
-  E10: Anexar documento/imagem
-  E11: Detalhe de registro
-  E12: Correção
-  E13: Exportação CSV
-  E14: Cadastro de medicamento
-  E15: Posologia/horários
-  E16: Administração de medicamento
-  E17: Criar/atribuir tarefa
-  E18: Concluir tarefa
-  E19: Consulta/recomendação
-  E20: Compromisso
-  E21: Cadastrar/atualizar pessoa idosa
-  E22: Vincular membro
-  E23: Desvincular membro
-  E24: Gerenciar papéis
-  E25: Transferir Principal
-  E26: Manter contato
-  E27: Acesso negado
-agent_rule: GitHub is canonical for behavior and scope. Figma is visual evidence. Resolve integrity defects before trusting prototype links; never promote proposals or open permission decisions by inference. Material 3 is UX guidance only; while the foundation gate is active, do not propagate deprecated header/footer patterns into authenticated-screen migrations.
+
+agent_rule: GitHub is canonical for behavior and scope. Fluxo Final is canonical for current visual/prototype implementation. P03-P06 and RF30/US-036 are approved decisions; P01 remains the open documentary gate. Material 3 governs UX roles without replacing project requirements.
