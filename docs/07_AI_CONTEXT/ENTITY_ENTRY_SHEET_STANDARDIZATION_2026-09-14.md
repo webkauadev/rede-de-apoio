@@ -8,7 +8,11 @@ Data: 2026-09-14
 
 Padronizar fluxos de criação/cadastro de **entidades operacionais do aplicativo** sem transformar cada criação em uma nova tela de página inteira.
 
-A referência aprovada é o comportamento de `Novo Registro` em T06 — Diário de Cuidados: a página-base permanece reconhecível e a entrada de dados acontece em um **modal bottom Sheet** sobre `Color/Scrim`, com fechamento por ação explícita e comportamento de dismiss compatível com arrastar para baixo em implementação.
+A referência aprovada é o comportamento de `Novo Registro` em T06 — Diário de Cuidados: a página-base permanece reconhecível e a entrada de dados acontece em um **modal bottom Sheet ancorado na borda inferior do viewport**, sobre `Color/Scrim`.
+
+O bottom Sheet **entra de baixo para cima** e fecha no sentido inverso. Deve possuir handle/alça visível no topo e permitir dismiss ao arrastar essa região para baixo na implementação/protótipo quando tecnicamente suportado.
+
+**Não confundir este padrão com drawer/menu lateral, painel lateral, dialog central ou nova página de formulário. Nenhum destes substitui o bottom Sheet neste fluxo.**
 
 Esta regra não se aplica a cadastro/autenticação de conta nem a criação/vinculação de pessoas.
 
@@ -40,22 +44,24 @@ Esta regra não se aplica a cadastro/autenticação de conta nem a criação/vin
 
 Para criação/registro de entidade operacional contextual à tela atual:
 
-`PAGE BASE + SCRIM + MODAL BOTTOM SHEET`
+`PAGE BASE + SCRIM + BOTTOM SHEET ANCORADO EMBAIXO`
 
 Não criar novo page-base apenas para o formulário quando a tarefa é contextual e pode ser concluída sem perder o contexto da lista atual.
 
 O Sheet deve:
 
-- manter a página-base reconhecível;
+- nascer visualmente da borda inferior e ocupar apenas a altura necessária/permitida do viewport;
+- manter a página-base reconhecível atrás do scrim;
 - usar `Color/Scrim` no plano de fundo;
 - usar `Color/Surface Container Low` ou papel semântico equivalente na superfície;
-- possuir handle visual de arraste quando aplicável;
-- respeitar largura/margem e safe area do viewport;
-- permitir saída por `Cancelar`, dismiss/drag em implementação e ação de salvar;
+- possuir handle/alça visual de arraste no topo;
+- respeitar largura, margem e safe area do viewport;
+- permitir saída por `Cancelar`, gesto de arrastar para baixo e ação de salvar;
 - manter validação como **delta mínimo do mesmo Sheet**;
-- retornar para a página-base/estado de sucesso sem criar rota nova artificial.
+- retornar para a página-base/estado de sucesso sem criar rota nova artificial;
+- nunca abrir pela lateral e nunca substituir o page-base por uma tela integral de formulário.
 
-No protótipo Figma, quando o gesto de drag não for materializado, o estado visual continua representando um modal Sheet e `Cancelar`/ações devem fechar ou retornar ao page-base correto.
+No protótipo Figma, o comportamento esperado é bottom-up/down-dismiss. Se alguma limitação técnica impedir a física completa do gesto, a composição visual e os destinos de `Cancelar`/Salvar ainda devem preservar esse contrato; a limitação deve ser registrada, não reinterpretada como drawer lateral ou página cheia.
 
 ## Regra de Cards, Rows e Fields
 
@@ -113,9 +119,10 @@ O viewport de conteúdo deve:
 - terminar acima da NavigationBar;
 - ter clipping explícito;
 - conter o scroll vertical dentro dessa janela;
-- preservar a camada de Header/Subnav/Nav acima do conteúdo rolável.
+- preservar a camada de Header/Subnav/Nav acima do conteúdo rolável;
+- impedir que cards/timeline/listas sejam desenhados sobre o AppHeader durante a rolagem.
 
-T06 deve ser revisada especificamente para eliminar qualquer sobreposição percebida do timeline sobre o cabeçalho ao rolar.
+**T04 — Calendário de Cuidados e T06 — Diário de Cuidados são casos confirmados para revisão deste invariant**, pois o defeito foi observado durante a rolagem e não deve ser tratado como exceção local.
 
 ## Método de execução
 
@@ -125,11 +132,17 @@ Seguir obrigatoriamente:
 
 Não propagar o Sheet para todas as telas antes da aprovação do piloto.
 
+A correção do invariant de scroll pode ser auditada em T04/T06 durante o piloto, mas só deve ser promovida como regra global depois de validada sem regressão de Header/Subnav/NavigationBar.
+
 ## Critérios de aceite do piloto T08
 
-- cadastro de medicamento abre como Sheet sobre T08;
+- cadastro de medicamento abre como bottom Sheet ancorado na borda inferior;
+- animação/direção conceitual de abertura é de baixo para cima;
+- handle/alça no topo comunica que o Sheet pode ser arrastado para baixo para fechar;
 - T08 permanece reconhecível no fundo;
 - não existe AppHeader/Back exclusivo do formulário;
+- não existe drawer/menu lateral;
+- não existe página integral exclusiva para o formulário;
 - campos existentes e conteúdo funcional são preservados;
 - validações continuam como delta mínimo;
 - Cancelar retorna ao T08 page-base;
