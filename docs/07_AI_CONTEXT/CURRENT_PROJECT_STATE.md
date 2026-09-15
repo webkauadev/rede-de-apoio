@@ -1,26 +1,55 @@
 # Estado Atual do Projeto — Readiness para Codex
 
-Data de consolidação: **2026-09-13**.
+Data de consolidação: **2026-09-14**.
 
 ## Veredito
 
-O repositório está estruturado para ser a **fonte operacional única** do trabalho com agentes. O Figma é a fonte visual vigente.
+O repositório `webkauadev/rede-de-apoio` permanece a **fonte operacional única** para requisitos, User Stories, regras de negócio, decisões, rastreabilidade e contexto de agentes. O Figma `tcyj2fkTXei2CJbqaRxqCp` é a fonte visual canônica.
 
-Depois da auditoria de 2026-09-13:
-- RF01–RF29 estão canônicos; RF30 permanece proposta;
-- RNF01–RNF03 estão canônicos;
-- US-001–US-035 têm título, ator, enunciado, origem única, owner e rastreabilidade;
-- US-036 permanece proposta;
-- T01–T17 têm rastreabilidade funcional;
-- T01–T17 têm nodes Figma atuais mapeados (**17/17**);
-- estados atuais foram inventariados;
-- `prototypeIA` foi classificada como histórica;
-- dívida de wiring/nomenclatura do protótipo foi isolada na Issue #84 e em `PROTOTYPE_INTEGRITY.yaml`;
-- a foundation global de tokens, grid, typography, controls e states foi criada e mergeada pelo PR #88.
+O ciclo de consolidação visual/prototípica T01–T17 foi concluído. A página **`Fluxo Final`** (`5926:1014`) é agora o protótipo canônico de usuário final; owner pages permanecem como histórico/fonte de migração quando houver equivalente no `Fluxo Final`.
 
-## Mudança de direção visual — Material Design 3
+Situação confirmada:
 
-Material Design 3 é agora a **autoridade máxima no domínio de UX/design visual**, subordinada somente aos requisitos funcionais e regras de negócio aprovados no GitHub.
+- RF01–RF29 canônicos; RF30 permanece proposta controlada;
+- RNF01–RNF03 canônicos;
+- US-001–US-035 oficiais; US-036 permanece proposta;
+- T01–T17 rastreadas e mapeadas;
+- Design Foundation Material 3 aprovada e usada como base visual;
+- Navigation Bar principal: `Home · Agenda · Diário · Saúde`;
+- T12–T17 acessíveis pela arquitetura `Settings / Management Sheet`;
+- LocalSubnav reutilizável consolidada para Saúde, Diário e Controle/Privacidade;
+- Issue #84 de integridade do protótipo encerrada como concluída;
+- PR #103 consolidou documentalmente o protótipo final;
+- PR #104 resolveu a dívida semântica FI-008 em T13.
+
+## Protótipo canônico final
+
+Página Figma: `Fluxo Final` (`5926:1014`).
+
+Estrutura:
+
+- seção de baselines canônicos T01–T17: `5926:1015`;
+- seção de estados aprovados/migrados necessários ao fluxo: `5926:32075`;
+- seção de overlays canônicos: `5932:4923`;
+- `Settings / Management Sheet`: `5932:4924`.
+
+### Auditoria final do grafo — 2026-09-14
+
+Auditoria direta pelo Plugin API, usando roots semânticos `[FLUXO FINAL]`, `[PROTO STATE]` e `[OVERLAY]`:
+
+- T01–T17 alcançáveis a partir de T01: **sim**;
+- roots/estados alcançados a partir de T01: **66**;
+- reaction nodes encontrados no `Fluxo Final`: **186**;
+- destinos `NODE` quebrados: **0**;
+- `NAVIGATE`/`OVERLAY` nocivo para outra página: **0**;
+- FI-001–FI-007: superados no protótipo canônico pela consolidação/migração e pela arquitetura vigente;
+- FI-008: resolvido no `Fluxo Final` com hotspots T13 renomeados semanticamente para E22–E25, sem alterar reactions ou escopo.
+
+O Figma mantém alguns flow starting points herdados que a Plugin API atual expõe como read-only. Isso não bloqueia o protótipo: T01 é um start válido e alcança todo o fluxo canônico.
+
+## Direção visual vigente — Material Design 3
+
+Material Design 3 governa UX/design visual, subordinado aos requisitos funcionais e regras de negócio aprovados no GitHub.
 
 Documento canônico:
 
@@ -30,69 +59,41 @@ Regra vigente:
 
 `Requisito aprovado → padrão/role M3 → token semântico Rede de Apoio → Obra/shadcn/local primitive → tela`
 
-Isso significa que Material 3 não é apenas uma referência genérica de interação: ele governa hierarquia, navegação, app bars, estados, papéis de cor/surface, ergonomia, acessibilidade e adaptação. Obra/shadcn continuam sendo meios de implementação. A identidade continua Rede de Apoio.
+Material 3 é referência de UX e papéis semânticos; não significa adotar SDK Material, Google Sans ou paleta baseline Google. A implementação continua baseada em componentes locais, Obra/shadcn e identidade Rede de Apoio.
 
-Não adotar SDK Material, Google Sans, paleta baseline Google ou componentes Google apenas para copiar aparência Android.
-
-### TARGET de navegação/header
+### Arquitetura visual consolidada
 
 - `AppHeader / Root`: título da página como informação primária, contexto da Pessoa Idosa como secundário quando aplicável e ação global deliberada de Configurações;
 - `AppHeader / Back`: voltar + título explícito + contexto/ação opcional quando necessário e autorizado;
 - Navigation Bar primária mobile: `Home · Agenda · Diário · Saúde`;
-- `Mais` é removido do TARGET da Navigation Bar;
-- T12–T17 passam a ser organizadas como destinos secundários acessíveis por `Settings / Management Sheet`, disparado pelo header;
-- targets de interação permanecem >= 48 × 48 px.
-
-### Achado do review aprofundado do PR #91
-
-A arquitetura do novo AppShell e sua calibração tonal estão materializadas. O PR permanece bloqueado para revisão visual humana e merge.
-
-O problema anterior era semântico/tonal: o active indicator da Navigation Bar estava vinculado diretamente a `Color/Secondary`, produzindo um container saturado. A Foundation agora usa `Color/Secondary Container`/`Color/On Secondary Container`; `M3 Visual Calibration Review` (`5674:559`) preserva a comparação A/B para avaliação humana.
-
-Regra nova:
-
-- não usar um token de papel diferente apenas para eliminar hardcode;
-- se o papel M3 correto não existir, criar/mapear o papel semântico adequado;
-- tokenização não pode piorar a hierarquia visual;
-- a aparência suave anterior do indicador permanece como baseline A congelado;
-- o Settings Sheet usa `Color/Surface Container Low`; o scrim semântico mantém o conteúdo reconhecível e inativo.
-
-### Gate temporário de migração
-
-A `Design Foundation` atual continua válida para:
-
-- grid 390/16/358;
-- Geist e escala tipográfica;
-- Buttons/Fields e wrappers de 48 px;
-- BaseCard;
-- feedback;
-- `STATE = PAGE BASE + DELTA MÍNIMO`;
-- arquitetura estrutural de `AppHeader / Root`, `AppHeader / Back`, Navigation Bar de quatro destinos e Settings Sheet criada no PR #91.
-
-O PR #91 foi mergeado e a Foundation Material 3 foi aprovada. A **T03** é o
-piloto autorizado do `AppShell / Root`, com status
-`MIGRATED_PENDING_HUMAN_REVIEW`. A revisão humana desse piloto é obrigatória
-antes de migrar qualquer outra tela autenticada.
+- `Mais` não faz parte do TARGET da Navigation Bar;
+- T12–T17 são destinos secundários acessíveis pelo `Settings / Management Sheet`;
+- subnavegação local fica imediatamente abaixo do header nas famílias de telas que exigem troca contextual;
+- touch targets mínimos: **48 × 48 px**;
+- `STATE = PAGE BASE + DELTA MÍNIMO` permanece a regra de estados.
 
 ## Fontes de autoridade
 
 1. Issues/requisitos aprovados e documentos canônicos do GitHub.
 2. Registries estruturados do repositório.
-3. `MATERIAL3_VISUAL_DIRECTION.md` + fontes oficiais Material 3 para UX/design visual.
-4. Figma atual para a implementação visual vigente, desde que não contradiga uma decisão de design mais nova já documentada.
-5. Inferência somente quando inevitável e marcada.
+3. `MATERIAL3_VISUAL_DIRECTION.md` + princípios oficiais Material 3 para UX/design visual.
+4. `Fluxo Final` no Figma para implementação visual/prototípica vigente, desde que não contradiga decisão funcional aprovada.
+5. Owner pages somente como histórico/fonte de migração quando existir equivalente canônico no `Fluxo Final`.
+6. Inferência somente quando inevitável e explicitamente marcada.
 
-O Figma nunca aprova requisito, permissão, papel ou critério de aceite.
+O Figma nunca aprova requisito, permissão, papel, critério de aceite ou evolução de escopo.
 
 ## Escopo principal
 
 17 telas:
-- David: T01, T02, T12, T13, T14, T15.
-- Rhuan: T03, T04, T09, T11.
-- Henrique: T05, T07, T08, T10.
+
+- David: T01, T02, T12, T13, T14, T15;
+- Rhuan: T03, T04, T09, T11;
+- Henrique: T05, T07, T08, T10;
 - Kauã: T06, T16, T17.
 
 35 US aprovadas:
+
 - David 9;
 - Rhuan 9;
 - Henrique 9;
@@ -100,72 +101,84 @@ O Figma nunca aprova requisito, permissão, papel ou critério de aceite.
 
 ## Gates funcionais/documentais que continuam abertos
 
-- **P01 / #73:** checklist individual de critérios de aceite por US não existe nas fontes canônicas.
-- **P03 / #75:** permissões de escrita ainda não são completamente determinísticas.
-- **P04 / #76:** superfície formal das notificações N01–N04 ainda não está decidida.
-- **P05 / #77:** quem pode exportar CSV ainda precisa ser decidido.
-- **P06 / #78:** composição efetiva de permissões quando papéis acumulam ainda precisa ser formalizada.
+Os itens abaixo **não podem ser resolvidos por inferência do Figma**:
 
-Nenhum agente deve “resolver” esses itens pelo desenho.
+- **P01 / #73:** critérios de aceite individuais por US ainda exigem consolidação documental;
+- **P03 / #75:** permissões de escrita não são completamente determinísticas. A matriz ainda usa `Conforme regra`, `Conforme permissão`, `Limitado` e `Conforme escopo`;
+- **P04 / #76:** destinatários N01–N04 estão definidos, mas as superfícies/telas em que cada aviso aparece ainda precisam de decisão formal, sem criar Central de Notificações fora do Site Map;
+- **P05 / #77:** RF28 autoriza exportação contextual em CSV, porém quem pode exportar dados de saúde e sob quais condições ainda precisa ser decidido;
+- **P06 / #78:** papéis familiares são acumuláveis, mas a composição da permissão efetiva em capacidades diferentes/conflitantes ainda precisa de regra determinística.
+
+### Consequência operacional
+
+Agentes podem continuar trabalhando autonomamente em tarefas que não dependam desses gates. Quando uma implementação depender de P03/P04/P05/P06, deve bloquear a decisão funcional específica em vez de inventar uma regra.
 
 ## Proposta controlada
 
 RF30/#34 + US-036/#72 = acesso próprio somente leitura da Pessoa Idosa.
 
-Existem frames T12 que exploram visualmente essa proposta. Eles estão registrados como `proposal_only`. Não devem ser propagados para produto/implementação até aprovação explícita.
+Status: **proposta controlada / não aprovada**.
+
+Já existem explorações visuais T12 registradas como `proposal_only`, mas elas não integram o fluxo canônico aprovado e não autorizam implementação.
+
+Se a proposta vier a ser aprovada, as regras já registradas incluem:
+
+- mesma autenticação do aplicativo;
+- acesso somente leitura ao próprio cuidado autorizado;
+- nenhum papel familiar;
+- não pode ser Plantonista Atual;
+- nenhuma administração da rede ou alteração de registros;
+- senha definida pelo próprio titular;
+- sem app separado.
 
 ## Integridade do protótipo
 
-Issue #84 acompanha erros confirmados no Figma:
-- referência a frame LEGADO em T08;
-- três CTAs T10 ligados a T08;
-- salto T16 → T06;
-- entradas T12 → T16/T17 sem click;
-- nomes semânticos incorretos em layers T13.
+Issue #84: **CLOSED / COMPLETED**.
 
-Esses defeitos continuam separados da mudança Material 3 e não podem ser reinterpretados como intenção funcional.
+Registro canônico:
+
+`docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml`
+
+A issue histórica preserva FI-001–FI-008 e suas origens; o `Fluxo Final` registra as resoluções sem apagar evidência das owner pages antigas.
 
 ## Design system vigente
 
-Primitives seguem a ordem:
+Ordem de implementação de primitives:
+
 1. componente local aprovado;
 2. Obra/shadcn existente;
 3. library vinculada;
 4. componente local novo somente quando não houver equivalente.
 
-A ordem acima governa **implementação**, não a decisão de UX. Antes dela, o agente deve resolver o padrão e o papel semântico M3 aplicável.
+A ordem acima governa implementação, não a decisão de UX. Antes dela, o agente deve resolver o padrão e o papel semântico M3 aplicável.
 
-Tokens oficiais estão em `docs/04_DESIGN_SYSTEM/DESIGN_TOKENS.md`, com grid mobile 390 px, margem 16 px, Geist/Inter, touch target mínimo 48x48 e cores semânticas de estado.
+Tokens oficiais: `docs/04_DESIGN_SYSTEM/DESIGN_TOKENS.md`.
+
+Foundation/registries relevantes:
+
+- `docs/04_DESIGN_SYSTEM/MATERIAL3_VISUAL_DIRECTION.md`;
+- `docs/04_DESIGN_SYSTEM/LOCAL_SUBNAVIGATION_PATTERN.md`;
+- `docs/04_DESIGN_SYSTEM/APP_HEADER_VISUAL_GRAMMAR.md`;
+- `docs/04_DESIGN_SYSTEM/COLOR_SURFACE_STRATEGY.md`;
+- `docs/05_FIGMA/FIGMA_REGISTRY.yaml`;
+- `docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml`;
+- `docs/07_AI_CONTEXT/STATE_MATRIX.yaml`.
 
 ## Preflight obrigatório do Codex
 
 Antes de qualquer alteração:
+
 1. ler `AGENTS.md`;
 2. ler este arquivo;
-3. ler `PROJECT_DECISIONS.md`, especialmente a Decisão 007;
+3. ler `PROJECT_DECISIONS.md`;
 4. ler `docs/04_DESIGN_SYSTEM/MATERIAL3_VISUAL_DIRECTION.md`;
-5. resolver requisitos e Issues;
+5. resolver requisitos e Issues aplicáveis;
 6. ler `SCREEN_REGISTRY.yaml` + `STATE_MATRIX.yaml`;
 7. ler `FIGMA_REGISTRY.yaml` + `PROTOTYPE_INTEGRITY.yaml`;
 8. consultar `SITEMAP.md`, `SCREENS_CATALOG.md` e `TRACEABILITY_MATRIX.md`;
 9. consultar tokens/component map;
-10. inspecionar a `Design Foundation`;
+10. inspecionar `Design Foundation` e o `Fluxo Final`;
 11. somente então editar.
-
-## Estratégia atual de refatoração
-
-Ordem obrigatória:
-
-1. direção M3 documentada no GitHub;
-2. arquitetura estrutural Material 3 da Foundation criada;
-3. review aprofundado M3 documentado;
-4. calibrar roles tonais e surfaces do PR #91 sem desfazer melhorias estruturais;
-5. auditar screenshots e roles semânticos;
-6. revisão humana;
-7. merge do PR #91;
-8. usar T03 como primeira prova real do novo `AppShell / Root`;
-9. tratar T01/T02 separadamente como `AuthShell`;
-10. refatorar uma T## e seus states irmãos por vez.
 
 ## Definition of Ready do ambiente
 
@@ -173,20 +186,27 @@ Ordem obrigatória:
 - [x] RF/RNF/US indexados;
 - [x] owner de cada T## definido;
 - [x] T01–T17 mapeadas no Figma;
-- [x] estados atuais inventariados;
+- [x] estados inventariados;
 - [x] frames legados distinguidos;
 - [x] proposal-only explicitado;
-- [x] defeitos de protótipo registrados;
 - [x] tokens e component map disponíveis;
-- [x] foundation base criada;
-- [x] direção Material 3 documentada;
-- [x] Material 3 elevado a autoridade máxima de UX/design visual;
-- [x] Foundation estrutural de header/navigation criada no Figma;
-- [x] novos nodes registrados;
-- [x] calibração visual M3 do PR #91 aprovada;
-- [x] PR #91 mergeado;
-- [ ] Issue #84 corrigida no Figma;
-- [ ] P03/P04/P05/P06 resolvidas quando forem necessárias para uma entrega específica.
+- [x] direction Material 3 documentada e aprovada;
+- [x] Foundation estrutural de header/navigation criada;
+- [x] padrões de LocalSubnav consolidados;
+- [x] `Fluxo Final` T01–T17 consolidado e funcionalmente conectado;
+- [x] audit de integridade do protótipo concluído;
+- [x] Issue #84 encerrada;
+- [ ] P01/P03/P04/P05/P06 resolvidas quando uma entrega funcional depender delas;
+- [ ] RF30/US-036 aprovada ou rejeitada explicitamente antes de qualquer implementação definitiva.
 
-O próximo trabalho visual correto é **a revisão humana comparativa do piloto T03**.
-Não iniciar outra T## até essa revisão.
+## Próximo trabalho correto
+
+O gargalo principal deixou de ser visual. O protótipo canônico T01–T17 está consolidado.
+
+O próximo trabalho deve ser escolhido entre:
+
+1. resolver um gate funcional/documental explicitamente necessário à próxima entrega (P01/P03/P04/P05/P06);
+2. deliberar RF30/US-036, se a evolução de acesso somente leitura da Pessoa Idosa fizer parte do escopo desejado;
+3. iniciar implementação/código a partir do `Fluxo Final`, respeitando os gates ainda abertos e a rastreabilidade RF/RNF → US → Tela/Ação.
+
+Não reabrir redesign geral das telas sem um requisito, defeito ou gate concreto que justifique a alteração.
