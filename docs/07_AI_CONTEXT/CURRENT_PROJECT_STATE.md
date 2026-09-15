@@ -1,6 +1,6 @@
 # Estado Atual do Projeto — Readiness para Codex
 
-Data de consolidação: **2026-09-14**.
+Data de consolidação: **2026-09-15**.
 
 ## Veredito
 
@@ -13,6 +13,7 @@ Situação confirmada:
 - RF01–RF30 canônicos;
 - RNF01–RNF03 canônicos;
 - US-001–US-036 oficiais;
+- critérios de aceite individuais de US-001–US-036 aprovados e promovidos no fechamento de P01/#73 em 2026-09-15;
 - US-036 atribuída a David;
 - T01–T17 rastreadas e mapeadas;
 - Design Foundation Material 3 aprovada e usada como base visual;
@@ -22,7 +23,7 @@ Situação confirmada:
 - Issue #84 de integridade do protótipo encerrada como concluída;
 - PR #103 consolidou documentalmente o protótipo final;
 - PR #104 resolveu a dívida semântica FI-008 em T13;
-- P03/P04/P05/P06 foram resolvidas canonicamente em 2026-09-14;
+- P01/P03/P04/P05/P06 resolvidas canonicamente;
 - RF30/US-036 foram aprovados canonicamente em 2026-09-14;
 - whitelist read-only da Pessoa Idosa definida: T03–T15 para consulta do próprio cuidado; T16/T17 fora do modo Pessoa Idosa;
 - fluxo visual read-only da Pessoa Idosa materializado e auditado no `Fluxo Final`.
@@ -100,7 +101,7 @@ Material 3 é referência de UX e papéis semânticos; não significa adotar SDK
 ## Fontes de autoridade
 
 1. Issues/requisitos aprovados e documentos canônicos do GitHub.
-2. Registries estruturados do repositório.
+2. Registries estruturados do repositório, incluindo `ACCEPTANCE_CRITERIA.yaml` para critérios de aceite das US.
 3. `MATERIAL3_VISUAL_DIRECTION.md` + princípios oficiais Material 3 para UX/design visual.
 4. `Fluxo Final` no Figma para implementação visual/prototípica vigente, desde que não contradiga decisão funcional aprovada.
 5. Owner pages somente como histórico/fonte de migração quando existir equivalente canônico no `Fluxo Final`.
@@ -124,7 +125,18 @@ O Figma nunca aprova requisito, permissão, papel ou critério de aceite.
 - Henrique 9;
 - Kauã 8.
 
-## Decisões funcionais canônicas — 2026-09-14
+## Decisões funcionais canônicas
+
+### P01 / #73 — critérios de aceite individuais
+
+Resolvida em 2026-09-15 após aprovação humana explícita do conjunto derivado exclusivamente das fontes canônicas existentes.
+
+- US-001–US-036 possuem critérios individuais aprovados;
+- os critérios foram promovidos às Issues correspondentes;
+- o registro consolidado é `docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml`;
+- `USER_STORIES_INDEX.yaml` referencia o critério aprovado por US;
+- `ACCEPTANCE_CRITERIA_DRAFT.yaml` permanece somente como snapshot histórico do conjunto submetido à aprovação;
+- qualquer novo critério futuro fora das fontes atuais exige nova decisão explícita.
 
 ### P03 / #75 — escrita e correção
 
@@ -191,12 +203,6 @@ Documento detalhado:
 
 `docs/02_BUSINESS_RULES/ELDERLY_READ_ONLY_ACCESS.md`
 
-## Gate documental ainda aberto
-
-- **P01 / #73:** checklist individual de critérios de aceite por US ainda exige consolidação documental.
-
-Agentes não devem inventar critérios ausentes. Critérios podem ser derivados somente quando estiverem diretamente suportados pelo requisito de origem, regras de negócio e decisões canônicas.
-
 ## Integridade do protótipo
 
 Issue #84: **CLOSED / COMPLETED**.
@@ -220,6 +226,7 @@ Tokens oficiais: `docs/04_DESIGN_SYSTEM/DESIGN_TOKENS.md`.
 
 Foundation/registries relevantes:
 
+- `docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml`;
 - `docs/04_DESIGN_SYSTEM/MATERIAL3_VISUAL_DIRECTION.md`;
 - `docs/04_DESIGN_SYSTEM/LOCAL_SUBNAVIGATION_PATTERN.md`;
 - `docs/04_DESIGN_SYSTEM/APP_HEADER_VISUAL_GRAMMAR.md`;
@@ -239,19 +246,21 @@ Antes de qualquer alteração:
 3. ler `PROJECT_DECISIONS.md`;
 4. ler `docs/04_DESIGN_SYSTEM/MATERIAL3_VISUAL_DIRECTION.md`;
 5. resolver requisitos e Issues aplicáveis;
-6. ler `SCREEN_REGISTRY.yaml` + `STATE_MATRIX.yaml`;
-7. ler `FIGMA_REGISTRY.yaml` + `PROTOTYPE_INTEGRITY.yaml`;
-8. para RF30/US-036, ler também `ELDERLY_READ_ONLY_ACCESS.md` + `ELDERLY_READ_ONLY_FLOW.yaml`;
-9. consultar `SITEMAP.md`, `SCREENS_CATALOG.md` e `TRACEABILITY_MATRIX.md`;
-10. consultar tokens/component map;
-11. inspecionar `Design Foundation` e o `Fluxo Final`;
-12. somente então editar.
+6. ler `USER_STORIES_INDEX.yaml` + `ACCEPTANCE_CRITERIA.yaml` para qualquer US envolvida;
+7. ler `SCREEN_REGISTRY.yaml` + `STATE_MATRIX.yaml`;
+8. ler `FIGMA_REGISTRY.yaml` + `PROTOTYPE_INTEGRITY.yaml`;
+9. para RF30/US-036, ler também `ELDERLY_READ_ONLY_ACCESS.md` + `ELDERLY_READ_ONLY_FLOW.yaml`;
+10. consultar `SITEMAP.md`, `SCREENS_CATALOG.md` e `TRACEABILITY_MATRIX.md`;
+11. consultar tokens/component map;
+12. inspecionar `Design Foundation` e o `Fluxo Final`;
+13. somente então editar.
 
 ## Definition of Ready do ambiente
 
 - [x] fonte operacional única definida;
 - [x] RF01–RF30 indexados;
 - [x] US-001–US-036 indexadas;
+- [x] critérios de aceite individuais US-001–US-036 aprovados e indexados;
 - [x] owner de cada T## definido;
 - [x] T01–T17 mapeadas no Figma;
 - [x] estados inventariados;
@@ -263,11 +272,10 @@ Antes de qualquer alteração:
 - [x] `Fluxo Final` T01–T17 consolidado e conectado;
 - [x] audit de integridade do protótipo concluído;
 - [x] Issue #84 encerrada;
-- [x] P03/P04/P05/P06 resolvidas;
+- [x] P01/P03/P04/P05/P06 resolvidas;
 - [x] RF30/US-036 aprovados;
 - [x] whitelist de leitura da Pessoa Idosa definida;
-- [x] variantes read-only T03–T15 materializadas/auditadas no Figma;
-- [ ] P01 resolvida quando critérios individuais completos forem necessários.
+- [x] variantes read-only T03–T15 materializadas/auditadas no Figma.
 
 ## Próximo trabalho correto
 
@@ -275,7 +283,6 @@ Antes de qualquer alteração:
 2. aplicar a whitelist T03–T15 e bloquear T16/T17 em rota/autorização, não apenas por UI;
 3. garantir que componentes/CTAs de escrita/administração sejam omitidos ou desabilitados conforme a matriz no runtime;
 4. implementar teste de acesso indevido com bloqueio + evento de auditoria RNF01/RNF03;
-5. validar a US-036 ponta a ponta e somente então fechar US-036/RF30;
-6. resolver P01 quando uma entrega exigir critérios individuais não suportados diretamente pelas fontes atuais.
+5. validar a US-036 ponta a ponta e somente então fechar US-036/RF30.
 
 Não reabrir redesign geral das telas sem requisito, defeito ou decisão canônica que justifique a alteração.
