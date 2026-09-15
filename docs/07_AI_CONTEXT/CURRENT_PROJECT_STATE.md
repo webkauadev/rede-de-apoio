@@ -6,13 +6,14 @@ Data de consolidação: **2026-09-14**.
 
 O repositório `webkauadev/rede-de-apoio` permanece a **fonte operacional única** para requisitos, User Stories, regras de negócio, decisões, rastreabilidade e contexto de agentes. O Figma `tcyj2fkTXei2CJbqaRxqCp` é a fonte visual canônica.
 
-O ciclo de consolidação visual/prototípica T01–T17 foi concluído. A página **`Fluxo Final`** (`5926:1014`) é agora o protótipo canônico de usuário final; owner pages permanecem como histórico/fonte de migração quando houver equivalente no `Fluxo Final`.
+O ciclo de consolidação visual/prototípica T01–T17 foi concluído. A página **`Fluxo Final`** (`5926:1014`) é o protótipo canônico de usuário final; owner pages permanecem como histórico/fonte de migração quando houver equivalente no `Fluxo Final`.
 
 Situação confirmada:
 
-- RF01–RF29 canônicos; RF30 permanece proposta controlada;
+- RF01–RF30 canônicos;
 - RNF01–RNF03 canônicos;
-- US-001–US-035 oficiais; US-036 permanece proposta;
+- US-001–US-036 oficiais;
+- US-036 atribuída a David;
 - T01–T17 rastreadas e mapeadas;
 - Design Foundation Material 3 aprovada e usada como base visual;
 - Navigation Bar principal: `Home · Agenda · Diário · Saúde`;
@@ -20,7 +21,9 @@ Situação confirmada:
 - LocalSubnav reutilizável consolidada para Saúde, Diário e Controle/Privacidade;
 - Issue #84 de integridade do protótipo encerrada como concluída;
 - PR #103 consolidou documentalmente o protótipo final;
-- PR #104 resolveu a dívida semântica FI-008 em T13.
+- PR #104 resolveu a dívida semântica FI-008 em T13;
+- P03/P04/P05/P06 foram resolvidas canonicamente em 2026-09-14;
+- RF30/US-036 foram aprovados canonicamente em 2026-09-14.
 
 ## Protótipo canônico final
 
@@ -45,7 +48,7 @@ Auditoria direta pelo Plugin API, usando roots semânticos `[FLUXO FINAL]`, `[PR
 - FI-001–FI-007: superados no protótipo canônico pela consolidação/migração e pela arquitetura vigente;
 - FI-008: resolvido no `Fluxo Final` com hotspots T13 renomeados semanticamente para E22–E25, sem alterar reactions ou escopo.
 
-O Figma mantém alguns flow starting points herdados que a Plugin API atual expõe como read-only. Isso não bloqueia o protótipo: T01 é um start válido e alcança todo o fluxo canônico.
+A aprovação posterior de RF30/US-036 exige agora incorporar o acesso read-only da Pessoa Idosa ao protótipo canônico, usando os estados históricos já explorados apenas como fonte de design até sua migração Material 3 e auditoria.
 
 ## Direção visual vigente — Material Design 3
 
@@ -81,7 +84,7 @@ Material 3 é referência de UX e papéis semânticos; não significa adotar SDK
 5. Owner pages somente como histórico/fonte de migração quando existir equivalente canônico no `Fluxo Final`.
 6. Inferência somente quando inevitável e explicitamente marcada.
 
-O Figma nunca aprova requisito, permissão, papel, critério de aceite ou evolução de escopo.
+O Figma nunca aprova requisito, permissão, papel ou critério de aceite.
 
 ## Escopo principal
 
@@ -92,44 +95,74 @@ O Figma nunca aprova requisito, permissão, papel, critério de aceite ou evolu�
 - Henrique: T05, T07, T08, T10;
 - Kauã: T06, T16, T17.
 
-35 US aprovadas:
+36 US aprovadas:
 
-- David 9;
+- David 10;
 - Rhuan 9;
 - Henrique 9;
 - Kauã 8.
 
-## Gates funcionais/documentais que continuam abertos
+## Decisões funcionais canônicas — 2026-09-14
 
-Os itens abaixo **não podem ser resolvidos por inferência do Figma**:
+### P03 / #75 — escrita e correção
 
-- **P01 / #73:** critérios de aceite individuais por US ainda exigem consolidação documental;
-- **P03 / #75:** permissões de escrita não são completamente determinísticas. A matriz ainda usa `Conforme regra`, `Conforme permissão`, `Limitado` e `Conforme escopo`;
-- **P04 / #76:** destinatários N01–N04 estão definidos, mas as superfícies/telas em que cada aviso aparece ainda precisam de decisão formal, sem criar Central de Notificações fora do Site Map;
-- **P05 / #77:** RF28 autoriza exportação contextual em CSV, porém quem pode exportar dados de saúde e sob quais condições ainda precisa ser decidido;
-- **P06 / #78:** papéis familiares são acumuláveis, mas a composição da permissão efetiva em capacidades diferentes/conflitantes ainda precisa de regra determinística.
+- Familiar Principal pode criar registros compatíveis com o cuidado.
+- Familiar de Apoio e Familiar de Emergência podem criar registros quando forem Plantonista Atual ou possuírem responsabilidade operacional explicitamente atribuída.
+- Profissional da Saúde pode criar registros de saúde do seu domínio enquanto estiver vinculado e autorizado.
+- Correção RN-006 pode ser criada por quem possuir permissão efetiva para produzir o mesmo tipo de registro; não é restrita ao autor original.
+- Correção sempre gera nova versão vinculada e preserva o original.
 
-### Consequência operacional
+### P04 / #76 — superfície de notificações
 
-Agentes podem continuar trabalhando autonomamente em tarefas que não dependam desses gates. Quando uma implementação depender de P03/P04/P05/P06, deve bloquear a decisão funcional específica em vez de inventar uma regra.
+Não existe Central de Notificações dedicada.
 
-## Proposta controlada
+N01–N04 usam feedback transitório global no AppShell (Snackbar/Sonner) e, quando houver ação, levam a telas já existentes:
 
-RF30/#34 + US-036/#72 = acesso próprio somente leitura da Pessoa Idosa.
+- N01 → T04;
+- N02 → T05;
+- N03 → T05 ou T07 conforme o registro;
+- N04 → T05, podendo também refletir resumo operacional em T03.
 
-Status: **proposta controlada / não aprovada**.
+T16 configura somente notificações opcionais.
 
-Já existem explorações visuais T12 registradas como `proposal_only`, mas elas não integram o fluxo canônico aprovado e não autorizam implementação.
+### P05 / #77 — exportação CSV
 
-Se a proposta vier a ser aprovada, as regras já registradas incluem:
+Na primeira versão, somente o Familiar Principal pode exportar CSV.
+
+A exportação é contextual em T07, limitada ao histórico autorizado da Pessoa Idosa selecionada e auditada conforme RF29/RNF03.
+
+### P06 / #78 — papéis acumulados
+
+A permissão efetiva resulta da união das permissões positivas dos papéis familiares acumulados.
+
+Restrições explícitas de segurança, privacidade, escopo e condições contextuais prevalecem. Acumular papéis não elimina uma condição operacional exigida. Notificações não são duplicadas por acúmulo.
+
+## RF30 / US-036 — Pessoa Idosa read-only
+
+Status: **aprovado canonicamente**.
+
+Owner da US-036: **David**.
+
+Regras:
 
 - mesma autenticação do aplicativo;
-- acesso somente leitura ao próprio cuidado autorizado;
+- conta vinculada ao próprio perfil;
+- consulta somente informações autorizadas do próprio cuidado;
+- acesso somente leitura;
 - nenhum papel familiar;
 - não pode ser Plantonista Atual;
-- nenhuma administração da rede ou alteração de registros;
+- nenhuma criação, correção, conclusão ou alteração de registros;
+- nenhuma administração da rede;
+- nenhuma exportação CSV na primeira versão;
 - senha definida pelo próprio titular;
+- acessos negados sujeitos a RNF01/RNF03;
 - sem app separado.
+
+## Gate documental ainda aberto
+
+- **P01 / #73:** checklist individual de critérios de aceite por US ainda exige consolidação documental.
+
+Agentes não devem inventar critérios ausentes. Critérios podem ser derivados somente quando estiverem diretamente suportados pelo requisito de origem, regras de negócio e decisões canônicas.
 
 ## Integridade do protótipo
 
@@ -149,8 +182,6 @@ Ordem de implementação de primitives:
 2. Obra/shadcn existente;
 3. library vinculada;
 4. componente local novo somente quando não houver equivalente.
-
-A ordem acima governa implementação, não a decisão de UX. Antes dela, o agente deve resolver o padrão e o papel semântico M3 aplicável.
 
 Tokens oficiais: `docs/04_DESIGN_SYSTEM/DESIGN_TOKENS.md`.
 
@@ -183,30 +214,28 @@ Antes de qualquer alteração:
 ## Definition of Ready do ambiente
 
 - [x] fonte operacional única definida;
-- [x] RF/RNF/US indexados;
+- [x] RF01–RF30 indexados;
+- [x] US-001–US-036 indexadas;
 - [x] owner de cada T## definido;
 - [x] T01–T17 mapeadas no Figma;
 - [x] estados inventariados;
 - [x] frames legados distinguidos;
-- [x] proposal-only explicitado;
 - [x] tokens e component map disponíveis;
-- [x] direction Material 3 documentada e aprovada;
+- [x] direção Material 3 documentada e aprovada;
 - [x] Foundation estrutural de header/navigation criada;
 - [x] padrões de LocalSubnav consolidados;
-- [x] `Fluxo Final` T01–T17 consolidado e funcionalmente conectado;
+- [x] `Fluxo Final` T01–T17 consolidado e conectado;
 - [x] audit de integridade do protótipo concluído;
 - [x] Issue #84 encerrada;
-- [ ] P01/P03/P04/P05/P06 resolvidas quando uma entrega funcional depender delas;
-- [ ] RF30/US-036 aprovada ou rejeitada explicitamente antes de qualquer implementação definitiva.
+- [x] P03/P04/P05/P06 resolvidas;
+- [x] RF30/US-036 aprovados;
+- [ ] P01 resolvida quando critérios individuais completos forem necessários.
 
 ## Próximo trabalho correto
 
-O gargalo principal deixou de ser visual. O protótipo canônico T01–T17 está consolidado.
+1. migrar e auditar no Figma os estados read-only necessários à US-036, agora que RF30/US-036 foram aprovados;
+2. refletir no protótipo as superfícies de N01–N04 e as permissões decididas em P03/P05/P06 sem criar novas áreas;
+3. iniciar implementação/código a partir do `Fluxo Final` e das regras canônicas;
+4. resolver P01 quando uma entrega exigir critérios individuais não suportados diretamente pelas fontes atuais.
 
-O próximo trabalho deve ser escolhido entre:
-
-1. resolver um gate funcional/documental explicitamente necessário à próxima entrega (P01/P03/P04/P05/P06);
-2. deliberar RF30/US-036, se a evolução de acesso somente leitura da Pessoa Idosa fizer parte do escopo desejado;
-3. iniciar implementação/código a partir do `Fluxo Final`, respeitando os gates ainda abertos e a rastreabilidade RF/RNF → US → Tela/Ação.
-
-Não reabrir redesign geral das telas sem um requisito, defeito ou gate concreto que justifique a alteração.
+Não reabrir redesign geral das telas sem requisito, defeito ou decisão canônica que justifique a alteração.

@@ -8,18 +8,18 @@ Agentes não consultam tracker externo. Informação funcional ausente é marcad
 
 ## Estrutura disponível
 
-A base agente-first contém:
+A base agent-first contém:
 
 - `AGENTS.md` e `CLAUDE.md`;
 - contratos de design/autonomia;
 - `SCREEN_REGISTRY.yaml` e `STATE_MATRIX.yaml`;
 - `FIGMA_REGISTRY.yaml`;
 - `COMPONENT_MAP.yaml`;
-- `REQUIREMENTS_INDEX.yaml` com RF01–RF30, RNF01/RNF03 e Issues;
-- `USER_STORIES_INDEX.yaml` com US-001–US-035, owners, Issues e rastreabilidade conhecida;
+- `REQUIREMENTS_INDEX.yaml` com RF01–RF30 e RNF canônicos;
+- `USER_STORIES_INDEX.yaml` com US-001–US-036, owners, Issues e rastreabilidade;
 - `docs/06_GITHUB/ISSUE_REGISTRY.yaml` com todas as referências canônicas;
-- Issues individuais para RF01–RF30, RNF01/RNF03, US-001–US-035 e US-036 proposta;
-- Issues P01–P09 para as pendências; P07 encerrada como resolvida;
+- Issues individuais para RF01–RF30, RNF01–RNF03 e US-001–US-036;
+- Issues P01–P09 para pendências/decisões documentais;
 - Issue Forms para requisito, User Story e tarefa;
 - validação automática via `scripts/validate_agent_context.py`.
 
@@ -28,23 +28,27 @@ A base agente-first contém:
 **Cobertura estrutural de Issues: completa para os identificadores conhecidos.**
 
 - RF: 30/30 com Issue;
-- RNF referenciados: RNF01 e RNF03 com Issue de lacuna;
-- US oficiais: 35/35 com Issue;
-- proposta: US-036 com Issue;
+- RNF referenciados: RNF01–RNF03 registrados;
+- US oficiais: 36/36 com Issue;
 - pendências: P01–P09 com Issue.
 
-## O que ainda falta funcionalmente
+## Decisões consolidadas em 2026-09-14
 
-A migração de **conteúdo original** ainda não está completa porque as fontes atualmente disponíveis não contêm todos os textos aprovados.
+- P03 / #75 — permissões de escrita e correção versionada tornadas decidíveis;
+- P04 / #76 — superfície formal de N01–N04 definida sem criar Central de Notificações;
+- P05 / #77 — exportação CSV restrita ao Familiar Principal na primeira versão;
+- P06 / #78 — composição de papéis acumulados definida por união de permissões positivas, preservando condições contextuais e restrições explícitas;
+- RF30 / #34 — acesso read-only da Pessoa Idosa aprovado;
+- US-036 / #72 — história de acesso ao próprio cuidado aprovada e atribuída a David.
 
-Bloqueadores principais:
+## Pendência funcional/documental ainda aberta
 
-- P01 / #73 — textos Como/Quero/Para, atores, critérios e algumas origens das US;
-- P02 / #74 — definições canônicas de RNF01 e RNF03;
-- P03 / #75 — permissão de escrita por categoria;
-- P04 / #76 — superfície de notificações;
-- P05 / #77 — permissão de exportação;
-- P06 / #78 — acumulação de papéis;
-- P08 / #80 e P09 / #81 — cadeias funcionais ainda incompletas.
+- P01 / #73 — checklist individual de critérios de aceite por US ainda não está integralmente enumerado nas fontes canônicas.
 
-Essas lacunas são agora **visíveis e rastreáveis dentro do próprio GitHub**. O agente pode trabalhar autonomamente até onde a documentação permite e deve bloquear apenas decisões funcionais que dependam dessas lacunas.
+Essa lacuna permanece explícita no GitHub. Agentes não devem inventar critérios que não sejam suportados pelos requisitos, regras de negócio e decisões canônicas existentes.
+
+## Protótipo
+
+A página Figma `Fluxo Final` (`5926:1014`) é o protótipo canônico de usuário final.
+
+A aprovação de RF30/US-036 autoriza agora a migração dos estados read-only da Pessoa Idosa para o fluxo aprovado. Até que essa migração visual seja concluída e auditada, os nodes históricos anteriormente marcados como `proposal_only` devem ser tratados como fonte de design, não como implementação final por si só.

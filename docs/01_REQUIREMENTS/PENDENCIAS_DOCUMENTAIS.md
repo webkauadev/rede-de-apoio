@@ -1,14 +1,14 @@
 # Pendências Documentais
 
-Registra o que **ainda falta no GitHub** após a incorporação do Guia Mestre em 2026-09-08.
+Registra o que **ainda falta no GitHub** após as consolidações de 2026-09-08 e as decisões canônicas de 2026-09-14.
 
-RF/RNF/US, origens, responsáveis e rastreabilidade de telas agora estão canônicos no GitHub. Nada aqui autoriza inventar detalhe funcional que o Guia Mestre não fornece.
+RF/RNF/US, origens, responsáveis e rastreabilidade de telas estão canônicos no GitHub. Nada aqui autoriza inventar detalhe funcional que as fontes aprovadas não fornecem.
 
 ---
 
 ## P01 — Critérios de aceite individuais das User Stories — Issue #73 — ABERTO
 
-O Guia Mestre resolveu para US-001–US-035:
+O catálogo canônico resolve para US-001–US-036:
 
 - título;
 - ator;
@@ -17,98 +17,112 @@ O Guia Mestre resolveu para US-001–US-035:
 - responsável;
 - tela/ação relacionada.
 
-O guia **não enumera um checklist de critérios de aceite específico para cada uma das 35 US**. As Issues individuais já registram essa limitação.
+As fontes **não enumeram um checklist de critérios de aceite específico para cada uma das 36 US**.
 
-**Ação restante:** quando houver critérios individuais aprovados, incorporá-los às Issues sem extrapolar o RF/RNF de origem e as regras de negócio.
+**Ação restante:** quando houver critérios individuais aprovados, incorporá-los às Issues sem extrapolar o requisito de origem e as regras de negócio.
 
 ---
 
 ## P02 — Requisitos Não Funcionais canônicos — Issue #74 — RESOLVIDO
 
-Resolvido pelo Guia Mestre:
-
-- RNF01 — Controle de acesso a dados pessoais e de saúde — Issue #35;
-- RNF02 — Imutabilidade e correção versionada — Issue #82;
-- RNF03 — Trilha de auditoria rastreável e preservada — Issue #36.
+- RNF01 — Controle de acesso a dados pessoais e de saúde — #35;
+- RNF02 — Imutabilidade e correção versionada — #82;
+- RNF03 — Trilha de auditoria rastreável e preservada — #36.
 
 RNF02 é a origem única da US-034. RNF03 é transversal e influencia RF29/US-033 sem virar segunda origem.
 
 ---
 
-## P03 — Permissão de escrita por categoria — Issue #75 — ABERTO
+## P03 — Permissão de escrita por categoria — Issue #75 — RESOLVIDO
 
-O Guia Mestre confirma a estrutura de categorias/papéis, mas não responde de forma totalmente determinística todas as permissões de escrita.
+Decisão canônica de 2026-09-14:
 
-Decisões ainda abertas que afetam T06/E12:
-
-1. Familiar de Apoio pode criar registro a qualquer momento ou apenas em plantão ativo atribuído?
-2. Familiar de Emergência pode criar registro de cuidado?
-3. Profissional da Saúde pode criar registro de cuidado em quais contextos?
-4. Quem pode criar correção RN-006/RNF02: qualquer pessoa com escrita ou apenas o autor original?
-
----
-
-## P04 — Superfície de exibição das notificações — Issue #76 — ABERTO
-
-A origem e os destinatários agora estão definidos:
-
-- N01 → RF10 / US-014;
-- N02 → RF17 / US-020;
-- N03 → RF25 / US-029;
-- N04 → RF26 / US-030.
-
-O que ainda falta é a decisão visual/arquitetural de **onde** cada aviso é lido/apresentado nas telas existentes.
-
-**Restrição:** não criar Central de Notificações fora do Site Map nem nova área por preferência estética.
+- Familiar Principal pode criar registros compatíveis com o cuidado;
+- Apoio e Emergência podem escrever quando forem Plantonista Atual ou tiverem responsabilidade operacional explicitamente atribuída;
+- Profissional da Saúde escreve registros de saúde do seu domínio enquanto vinculado/autorizado;
+- correção RN-006 pode ser criada por quem tiver permissão efetiva para produzir o mesmo tipo de registro;
+- permissão somente de leitura não concede correção.
 
 ---
 
-## P05 — Permissão de exportação (RF28) — Issue #77 — ABERTO
+## P04 — Superfície de exibição das notificações — Issue #76 — RESOLVIDO
 
-RF28 / US-032 / T07 / E13 estão totalmente rastreados, mas o Guia Mestre diz apenas “históricos autorizados”. Ainda falta definir de forma determinística quem pode exportar dados de saúde e em quais condições.
+N01–N04 usam feedback transitório global no AppShell e telas já existentes:
+
+- N01 → T04;
+- N02 → T05;
+- N03 → T05 ou T07, conforme o registro;
+- N04 → T05, podendo também refletir resumo operacional em T03.
+
+Não criar Central de Notificações, sino dedicado ou nova área principal fora do Site Map.
 
 ---
 
-## P06 — Composição de permissões em papéis acumulados — Issue #78 — PARCIAL
+## P05 — Permissão de exportação (RF28) — Issue #77 — RESOLVIDO
 
-O Guia Mestre resolveu:
+Na primeira versão:
 
-- papéis familiares são acumuláveis;
-- Principal pode acumular Apoio;
-- Emergência pode acumular Principal ou Apoio;
-- permissões são derivadas dos papéis acumulados;
-- notificações não podem duplicar por acúmulo.
+- somente o Familiar Principal pode exportar CSV;
+- a ação permanece contextual em T07;
+- o arquivo é limitado ao histórico autorizado da Pessoa Idosa selecionada;
+- a operação é auditada conforme RF29/RNF03;
+- Apoio, Emergência, Profissional da Saúde e Pessoa Idosa não exportam.
 
-Ainda falta formalizar a regra de composição quando permissões dos papéis entrarem em conflito (união, precedência ou condição específica).
+---
+
+## P06 — Composição de permissões em papéis acumulados — Issue #78 — RESOLVIDO
+
+Regra canônica de 2026-09-14:
+
+- permissão efetiva = união das permissões positivas dos papéis acumulados;
+- restrições explícitas de segurança, privacidade, escopo e condições operacionais prevalecem;
+- acumular papéis não remove uma condição contextual exigida;
+- Principal continua único;
+- notificações não duplicam por acúmulo.
 
 ---
 
 ## P07 — Fonte operacional e Figma — Issue #79 — RESOLVIDO
 
 - GitHub = fonte única operacional;
-- Figma = fonte visual;
+- Figma = fonte visual/prototípica;
+- `Fluxo Final` é a página canônica para usuário final;
 - agentes não dependem de tracker externo.
 
 ---
 
 ## P08 — Rastreabilidade RF/RNF → US → Tela — Issue #80 — RESOLVIDO
 
-Resolvido pelo catálogo completo do Guia Mestre e registrado em:
+Registrada em:
 
 - `REQUIREMENTS_INDEX.yaml`;
 - `USER_STORIES_INDEX.yaml`;
 - `../03_INFORMATION_ARCHITECTURE/TRACEABILITY_MATRIX.md`;
 - `../07_AI_CONTEXT/SCREEN_REGISTRY.yaml`.
 
-RF13 e RNF03 permanecem transversais; RF30/US-036 permanecem proposta.
+RF13 e RNF03 permanecem transversais. RF30/US-036 estão aprovados e rastreados.
 
 ---
 
 ## P09 — Telas sem origem funcional completa — Issue #81 — RESOLVIDO
 
-T01–T17 agora possuem mapeamento de User Stories/origens no `SCREEN_REGISTRY.yaml` e na matriz de rastreabilidade.
+T01–T17 possuem mapeamento de User Stories/origens no `SCREEN_REGISTRY.yaml` e na matriz de rastreabilidade.
 
-T03 Home está explicitamente ligada a US-009, US-020, US-029 e US-030 e continua sendo recomendada como última tela de Rhuan na ordem de prototipação.
+---
+
+## RF30 / US-036 — APROVADOS
+
+O acesso próprio da Pessoa Idosa deixou de ser proposta controlada em 2026-09-14.
+
+Regras principais:
+
+- mesma autenticação do aplicativo;
+- próprio perfil/cuidado autorizado;
+- somente leitura;
+- sem papéis familiares e sem Plantonista Atual;
+- sem escrita, correção, administração ou CSV;
+- sem app separado;
+- acessos negados sujeitos a RNF01/RNF03.
 
 ---
 
@@ -116,7 +130,7 @@ T03 Home está explicitamente ligada a US-009, US-020, US-029 e US-030 e continu
 
 - resolver RF/RNF/US pelo `ISSUE_REGISTRY.yaml`;
 - respeitar exatamente uma origem por US;
-- não promover RF30/US-036 enquanto proposta;
-- não inventar critérios individuais ausentes;
-- registrar P03/P04/P05/P06 no PR quando afetarem uma entrega;
-- Figma resolve somente design visual, nunca lacuna funcional.
+- tratar RF30/US-036 como escopo aprovado read-only;
+- tratar P03/P04/P05/P06 como decisões fechadas e usar as regras canônicas correspondentes;
+- não inventar critérios individuais ausentes em P01;
+- Figma resolve design visual/prototípico, nunca lacuna funcional não aprovada.

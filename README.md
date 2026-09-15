@@ -6,43 +6,41 @@ Este repositório GitHub (`webkauadev/rede-de-apoio`) é a **fonte única de ver
 
 Informação funcional ausente no GitHub é marcada como `migration_required`; inferências úteis podem ser registradas como `candidate_origin`, nunca como requisito confirmado.
 
-## Estado consolidado — 2026-09-13
+## Estado consolidado — 2026-09-14
 
-- RF01–RF29: canônicos.
-- RF30: proposta controlada.
+- RF01–RF30: canônicos.
 - RNF01–RNF03: canônicos.
-- US-001–US-035: conteúdo canônico de história, origem, owner e rastreabilidade.
-- US-036: proposta controlada.
-- T01–T17: rastreabilidade funcional **e nodes Figma atuais mapeados (17/17)**.
-- T08: ambiguidade resolvida; `5235:924` é lista atual e `5048:644` é LEGADO.
-- `prototypeIA`: referência histórica, não base atual quando houver frame nas páginas dos responsáveis.
-- Integridade do protótipo: Issue #84 + `docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml`.
+- US-001–US-036: conteúdo canônico de história, origem, owner e rastreabilidade.
+- US-036 / RF30: acesso próprio read-only da Pessoa Idosa aprovado; owner US-036 = David.
+- T01–T17: protótipo canônico consolidado no Figma `Fluxo Final` (`5926:1014`).
+- Material Design 3: autoridade de UX/design visual sob os requisitos aprovados.
+- Navigation Bar: `Home · Agenda · Diário · Saúde`.
+- T12–T17: destinos secundários por `Settings / Management Sheet`.
+- Integridade do protótipo: Issue #84 encerrada; FI-001–FI-008 resolvidos/superados no `Fluxo Final`.
+- Auditoria final: T01 alcança T01–T17, 0 destinos quebrados e 0 navegação/overlay nocivo para outra página.
+- P03/#75, P04/#76, P05/#77 e P06/#78: resolvidos canonicamente.
+- P01/#73: único gate documental ainda aberto para checklists individuais de critérios de aceite não enumerados nas fontes.
 
 Leia primeiro `docs/07_AI_CONTEXT/CURRENT_PROJECT_STATE.md`.
 
-## Catálogo operacional
+## Decisões funcionais recentes
 
-O mapeamento de RF/RNF/US/P## está em `docs/06_GITHUB/ISSUE_REGISTRY.yaml`.
-
-Pendências ainda reais:
-- P01/#73 — critérios individuais de aceite;
-- P03/#75 — permissões de escrita;
-- P04/#76 — superfície das notificações;
-- P05/#77 — permissão de exportação CSV;
-- P06/#78 — composição de permissões.
-
-Essas pendências são gates explícitos e nunca devem ser resolvidas por inferência do Figma.
+- **P03:** escrita e correção são decidíveis por categoria, vínculo e condição operacional; correção exige permissão efetiva para produzir o mesmo tipo de registro.
+- **P04:** N01–N04 usam feedback transitório global e telas já existentes; não há Central de Notificações dedicada.
+- **P05:** CSV na primeira versão é exclusivo do Familiar Principal, contextual em T07 e auditado.
+- **P06:** papéis acumulados compõem permissão pela união das permissões positivas, preservando restrições/contextos explícitos.
+- **RF30/US-036:** Pessoa Idosa usa a mesma autenticação em modo somente leitura do próprio cuidado, sem papéis, Plantonista Atual, escrita, administração ou CSV.
 
 ## O pack contém
 
 - `docs/01_REQUIREMENTS/` — requisitos, US e pendências;
 - `docs/02_BUSINESS_RULES/` — regras e permissões;
-- `docs/03_INFORMATION_ARCHITECTURE/` — Site Map, catálogo detalhado de T01–T17 e rastreabilidade;
+- `docs/03_INFORMATION_ARCHITECTURE/` — Site Map, catálogo T01–T17 e rastreabilidade;
 - `docs/04_DESIGN_SYSTEM/` — tokens, arquitetura e component map;
 - `docs/05_FIGMA/` — registry de nodes, auditoria e integridade do protótipo;
 - `docs/06_GITHUB/` — workflow, estrutura e registry de Issues;
-- `docs/07_AI_CONTEXT/` — estado atual, contratos operacionais, screens/states e setup Codex;
-- `AGENTS.md` / `CLAUDE.md` — contratos de execução para agentes;
+- `docs/07_AI_CONTEXT/` — estado atual, contratos, screens/states e setup Codex;
+- `AGENTS.md` / `CLAUDE.md` — contratos de execução;
 - `scripts/validate_agent_context.py` — validação de consistência.
 
 ## Ordem de leitura para agentes
@@ -63,13 +61,11 @@ Essas pendências são gates explícitos e nunca devem ser resolvidas por infer�
 14. `docs/04_DESIGN_SYSTEM/`
 15. `docs/05_FIGMA/FIGMA_REGISTRY.yaml`
 16. `docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml`
-17. `docs/05_FIGMA/FIGMA_AUDIT_2026-09-13.md`
-18. `docs/06_GITHUB/`
-19. `docs/CHANGELOG.md`
+17. `docs/06_GITHUB/`
 
 ## Fluxo de design por agente
 
-`GitHub Issue → RF/RNF/US → Context Pack → Figma atual → Integridade do protótipo → Componentes/tokens → Construção → Auditoria → Registry → Commit → Pull Request → Revisão humana`
+`GitHub Issue → RF/RNF/US → Context Pack → Fluxo Final → Componentes/tokens → Construção → Auditoria → Registry → Commit → Pull Request → Revisão humana`
 
 ## Codex
 
@@ -77,11 +73,11 @@ Use `docs/07_AI_CONTEXT/CODEX_SETUP.md`.
 
 O Codex deve:
 - resolver comportamento no GitHub;
-- usar o Figma para estrutura/visual;
-- ignorar wiring registrado como FI-###;
-- não usar `LEGADO —`;
-- não promover RF30/US-036;
-- não fechar P03/P04/P05/P06 por inferência;
+- usar o `Fluxo Final` para estrutura/visual vigente;
+- ignorar frames `LEGADO —` quando houver equivalente final;
+- tratar P03/P04/P05/P06 como decisões fechadas;
+- tratar RF30/US-036 como escopo aprovado read-only;
+- não inventar critérios ausentes de P01;
 - rodar `python scripts/validate_agent_context.py`;
 - trabalhar em branch e deixar PR para revisão humana.
 

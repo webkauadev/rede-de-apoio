@@ -44,25 +44,38 @@ RF26 Atraso de 15 minutos
 RF27 Preferências de notificações
 RF28 Exportação CSV
 RF29 Auditoria
+RF30 Acesso de consulta à Pessoa Idosa
 
 > Os títulos acima estão documentados no GitHub, mas não equivalem automaticamente ao texto detalhado/critério de aceite de cada requisito. Quando a implementação depender de detalhe ausente, tratar como `migration_required`.
 
-## Extensão em formalização
+## RF30 — acesso read-only da Pessoa Idosa
 
-RF30 — Permitir acesso de consulta à Pessoa Idosa.
+RF30 foi aprovado canonicamente em 2026-09-14.
 
-Status: proposta de evolução até aprovação no GitHub.
+Diretrizes principais:
+
+- mesma autenticação do aplicativo;
+- conta vinculada ao próprio perfil;
+- somente leitura de informações autorizadas do próprio cuidado;
+- sem papéis familiares;
+- sem condição de Plantonista Atual;
+- sem escrita, correção, conclusão ou administração;
+- sem exportação CSV na primeira versão;
+- acessos negados sujeitos a RNF01/RNF03;
+- não criar aplicativo separado.
 
 ## User Stories
 
-US-001 a US-035 são os identificadores oficiais atualmente conhecidos. A distribuição por responsável, relações já confirmadas e lacunas de conteúdo estão em `USER_STORIES_INDEX.yaml`.
+US-001 a US-036 são os identificadores oficiais atualmente aprovados.
 
-O texto completo de US-001 a US-035 ainda não está presente no repositório; portanto, o catálogo está em **migração** e não deve ser inventado pelo agente.
+A distribuição por responsável, relações confirmadas e rastreabilidade estão em `USER_STORIES_INDEX.yaml`.
 
-### Proposta
+O texto Como/Quero/Para, origem, owner e rastreabilidade conhecidos estão consolidados no índice. A ausência de checklist individual de critérios de aceite para todas as US continua acompanhada por P01/#73 e não deve ser preenchida por inferência.
 
-US-036 — Consultar o próprio cuidado.
+### US-036 — Consultar o próprio cuidado
 
 Como Pessoa Idosa, quero acessar informações relacionadas ao meu cuidado para acompanhar minha rotina sem alterar registros existentes.
 
-Status: proposta vinculada ao RF30, ainda não aprovada como escopo canônico.
+Origem: RF30.
+Owner: David.
+Status: aprovado canonicamente.

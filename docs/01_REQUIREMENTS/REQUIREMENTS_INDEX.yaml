@@ -1,5 +1,5 @@
 schema_version: 3
-last_updated: 2026-09-08
+last_updated: 2026-09-14
 canonical_system: GitHub
 repository: webkauadev/rede-de-apoio
 issue_registry: docs/06_GITHUB/ISSUE_REGISTRY.yaml
@@ -9,7 +9,7 @@ policy:
   - "RF, RNF and US are canonical GitHub Issues."
   - "Every User Story has exactly one origin requirement."
   - "Transversal requirements may influence acceptance/DoD but never become a second origin."
-  - "RF30/US-036 remain controlled proposals until explicitly approved in GitHub."
+  - "RF30/US-036 were approved canonically on 2026-09-14."
 
 functional_requirements:
   RF01:
@@ -46,7 +46,7 @@ functional_requirements:
     owner: David
     status: canonical
     stories: [US-007]
-    description: "Permitir gerenciar os papéis familiares de Principal, Apoio e Emergência, respeitando a existência de exatamente um Principal ativo."
+    description: "Permitir gerenciar os papéis familiares de Principal, Apoio e Emergência, respeitando a existência de exatamente um Principal ativo. A permissão efetiva resulta da união das permissões positivas dos papéis acumulados, preservadas condições contextuais e restrições explícitas."
   RF06:
     issue: 10
     title: "Gerenciar plantões"
@@ -81,7 +81,7 @@ functional_requirements:
     owner: Rhuan
     status: canonical
     stories: [US-014]
-    description: "Notificar usuário afetado e Familiar Principal quando houver atribuição, alteração, cancelamento ou troca de plantão."
+    description: "Notificar usuário afetado e Familiar Principal quando houver atribuição, alteração, cancelamento ou troca de plantão. A superfície é feedback transitório global com destino contextual em T04."
   RF11:
     issue: 15
     title: "Registrar diário"
@@ -130,7 +130,7 @@ functional_requirements:
     owner: Henrique
     status: canonical
     stories: [US-020]
-    description: "Enviar lembrete obrigatório no horário previsto ao usuário que estiver ocupando a condição de Plantonista Atual."
+    description: "Enviar lembrete obrigatório no horário previsto ao usuário que estiver ocupando a condição de Plantonista Atual. A superfície é feedback transitório global com destino contextual em T05."
   RF18:
     issue: 22
     title: "Registrar sintomas e intercorrências"
@@ -186,14 +186,14 @@ functional_requirements:
     owner: Kauã
     status: canonical
     stories: [US-029]
-    description: "Notificar que um cuidado/ação foi registrado. Familiar Principal obrigatório; demais elegíveis configuráveis."
+    description: "Notificar que um cuidado/ação foi registrado. Familiar Principal obrigatório; demais elegíveis configuráveis. A superfície é feedback transitório global com destino contextual em T05 ou T07."
   RF26:
     issue: 30
     title: "Alertar atraso após 15 minutos"
     owner: Kauã
     status: canonical
     stories: [US-030]
-    description: "Alertar quando ação programada permanecer sem registro por 15 minutos. Sem registro não comprova que o cuidado não ocorreu."
+    description: "Alertar quando ação programada permanecer sem registro por 15 minutos. Sem registro não comprova que o cuidado não ocorreu. A superfície é feedback transitório global com destino contextual em T05 e pode refletir resumo operacional em T03."
   RF27:
     issue: 31
     title: "Preferências de notificações opcionais"
@@ -207,7 +207,7 @@ functional_requirements:
     owner: Kauã
     status: canonical
     stories: [US-032]
-    description: "Permitir exportar históricos autorizados em CSV. A exportação é contextual, não área principal."
+    description: "Permitir ao Familiar Principal exportar, de forma contextual em T07, o histórico autorizado da Pessoa Idosa selecionada em CSV. A exportação deve ser auditada."
   RF29:
     issue: 33
     title: "Consultar log de auditoria"
@@ -218,10 +218,10 @@ functional_requirements:
   RF30:
     issue: 34
     title: "Permitir acesso de consulta à Pessoa Idosa"
-    owner: null
-    status: proposal
+    owner: David
+    status: canonical
     stories: [US-036]
-    description: "Permitir que a Pessoa Idosa consulte, em modo somente leitura, informações autorizadas relacionadas ao próprio cuidado."
+    description: "Permitir que a Pessoa Idosa use a mesma autenticação do aplicativo e consulte, em modo somente leitura, informações autorizadas relacionadas ao próprio cuidado, sem papéis familiares, sem Plantonista Atual, sem escrita/administração e sem exportação CSV na primeira versão."
 
 non_functional_requirements:
   RNF01:
