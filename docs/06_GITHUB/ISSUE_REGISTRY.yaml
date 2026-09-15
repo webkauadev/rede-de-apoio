@@ -1,12 +1,12 @@
-schema_version: 2
-last_updated: 2026-09-13
+schema_version: 3
+last_updated: 2026-09-14
 repository: webkauadev/rede-de-apoio
 canonical_system: GitHub
 
 policy:
   - "Every RF/RNF/US used by agents has a canonical GitHub Issue reference here."
-  - "US-001 through US-035 have canonical title, statement, origin, owner and screen/action traceability from the Master Guide."
-  - "RF30/US-036 remain proposals."
+  - "US-001 through US-036 have canonical title, statement, origin, owner and screen/action traceability."
+  - "RF30/US-036 were approved canonically on 2026-09-14."
   - "P01 remains open only because the Master Guide does not enumerate a story-specific acceptance checklist for every US."
 
 requirements:
@@ -39,7 +39,7 @@ requirements:
   RF27: {issue: 31, status: open}
   RF28: {issue: 32, status: open}
   RF29: {issue: 33, status: open}
-  RF30: {issue: 34, status: proposal}
+  RF30: {issue: 34, status: open}
 
 non_functional_requirements:
   RNF01: {issue: 35, status: open}
@@ -82,17 +82,15 @@ user_stories:
   US-033: {issue: 69, owner: Kauã, content_status: complete, origin: RF29}
   US-034: {issue: 70, owner: Kauã, content_status: complete, origin: RNF02}
   US-035: {issue: 71, owner: Kauã, content_status: complete, origin: RNF01}
-
-proposals:
-  US-036: {issue: 72, status: proposal, origin: RF30}
+  US-036: {issue: 72, owner: David, content_status: complete, origin: RF30}
 
 pending_work:
   P01: {issue: 73, status: open, scope: acceptance_criteria_checklists}
   P02: {issue: 74, status: closed, state_reason: completed}
-  P03: {issue: 75, status: open}
-  P04: {issue: 76, status: open}
-  P05: {issue: 77, status: open}
-  P06: {issue: 78, status: open}
+  P03: {issue: 75, status: closed, state_reason: completed}
+  P04: {issue: 76, status: closed, state_reason: completed}
+  P05: {issue: 77, status: closed, state_reason: completed}
+  P06: {issue: 78, status: closed, state_reason: completed}
   P07: {issue: 79, status: closed, state_reason: completed}
   P08: {issue: 80, status: closed, state_reason: completed}
   P09: {issue: 81, status: closed, state_reason: completed}
