@@ -11,6 +11,11 @@ Recebem obrigatoriamente:
 
 Origem funcional: RF10 / US-014.
 
+Superfície canônica:
+
+- feedback transitório global no AppShell (Snackbar/Sonner);
+- quando houver ação de navegação, abrir **T04 — Calendário de Cuidados** no contexto correspondente.
+
 ## N02 — Lembrete de cuidado programado
 
 Dispara no horário previsto.
@@ -25,6 +30,11 @@ A condição “Plantonista Atual” não é destinatária; o destinatário é o
 
 Origem funcional: RF17 / US-020.
 
+Superfície canônica:
+
+- feedback transitório global obrigatório no AppShell;
+- quando houver ação de navegação, abrir **T05 — Detalhamento do Dia** no cuidado programado correspondente.
+
 ## N03 — Cuidado registrado como realizado
 
 Recebimento:
@@ -33,6 +43,11 @@ Recebimento:
 - demais usuários elegíveis: configurável.
 
 Origem funcional: RF25 / US-029.
+
+Superfície canônica:
+
+- feedback transitório global no AppShell;
+- quando houver ação de navegação, abrir **T05 — Detalhamento do Dia** ou **T07 — Histórico de Cuidados**, conforme o registro apresentado.
 
 ## N04 — Atraso após 15 minutos
 
@@ -49,9 +64,18 @@ Sintomas/intercorrências espontâneas não são classificados como atraso.
 
 Origem funcional: RF26 / US-030.
 
+Superfície canônica:
+
+- feedback transitório global no AppShell;
+- quando houver ação de navegação, abrir **T05 — Detalhamento do Dia**;
+- o atraso também pode ser refletido em **T03 — Home** como resumo operacional, sem criar uma nova área de notificações.
+
 ## Regras gerais
 
 - não duplicar notificações por acúmulo de papéis;
 - notificações obrigatórias não podem ser desligadas por RF27/US-031;
-- não criar Central de Notificações dedicada fora do Site Map sem nova decisão formal;
-- a superfície visual onde cada aviso é apresentado ainda deve respeitar o Site Map e as telas aprovadas.
+- T16 configura somente notificações opcionais permitidas;
+- não criar Central de Notificações, sino dedicado ou área principal nova fora do Site Map;
+- a superfície transitória não cria histórico próprio de notificações;
+- uma ação de notificação deve navegar somente para telas já existentes no Site Map;
+- permissões e destinatários continuam sujeitos a RNF01 e às regras efetivas de papéis/categoria.
