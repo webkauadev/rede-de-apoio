@@ -1,12 +1,16 @@
-schema_version: 2
+schema_version: 3
 last_verified: '2026-09-14'
 figma_file_key: tcyj2fkTXei2CJbqaRxqCp
 tracking_issue: 84
+
 policy:
-- Figma reactions document current prototype wiring only; GitHub requirements/issues define intended behavior.
-- Do not copy a known defective reaction into code or a redesigned frame.
-- Do not fix a functional gate by inference. P03/P04/P05/P06 and RF30/US-036 remain governed by their canonical Issues.
-- The canonical end-user prototype is the page Fluxo Final. Legacy owner-page reactions remain historical evidence only when a Fluxo Final equivalent exists.
+  - Figma reactions document current prototype wiring; GitHub requirements/issues define intended behavior.
+  - The canonical end-user prototype is the page Fluxo Final.
+  - Legacy owner-page reactions remain historical evidence only when a Fluxo Final equivalent exists.
+  - P03, P04, P05 and P06 were resolved canonically on 2026-09-14.
+  - RF30/US-036 were approved canonically on 2026-09-14.
+  - P01 remains the only open documentary gate for story-specific acceptance criteria not enumerated in source material.
+
 canonical_prototype:
   page: {node_id: '5926:1014', name: Fluxo Final}
   legacy_page_name: LEGADO — Fluxo Final pre-M3
@@ -35,131 +39,143 @@ canonical_prototype:
   audit_2026_09_14:
     start_node: '5926:1016'
     start_screen: T01
-    reachable_root_count: 66
+    reachable_root_count_before_approved_extensions: 66
     all_T01_T17_reachable_from_T01: true
     broken_node_destinations: 0
     harmful_cross_page_navigate_or_overlay: 0
-    scope_exclusions:
-    - RF30/US-036 proposal_only elderly-access visuals
-    - P04 blocked notification-placement candidates
     notes:
-    - CHANGE_TO interactions belonging to interactive component variants are not classified as cross-page user-flow defects.
-    - Alternate empty/forbidden states remain visual evidence when no approved runtime condition exists to trigger them.
-    - Figma exposes inherited flow starting points as read-only through the current Plugin API; extra markers are non-blocking because T01 is a valid start and reaches every canonical T##.
-  flow_starting_points_observed:
-  - {node_id: '5926:1886', name: Flow 1}
-  - {node_id: '5926:34452', name: Flow 1}
-  - {node_id: '5926:34512', name: Flow 1}
-  - {node_id: '5926:34568', name: Flow 1}
-  - {node_id: '5926:34646', name: Flow 1}
-  - {node_id: '5926:34727', name: Flow 1}
-  - {node_id: '5926:34858', name: Flow 1}
-  - {node_id: '5926:1542', name: Flow 2}
-  - {node_id: '5932:4924', name: Flow 3}
-  - {node_id: '5926:1016', name: Flow 4}
-defects:
+      - CHANGE_TO interactions belonging to interactive component variants are not classified as cross-page user-flow defects.
+      - Figma exposes inherited flow starting points as read-only through the current Plugin API; extra markers are non-blocking because T01 is a valid start and reaches every canonical T##.
+
+approved_notification_states:
+  N02:
+    screen: T03
+    node: '5941:5280'
+    surface: transient_global_feedback
+    destination: T05
+    issue: 76
+  N03:
+    screen: T03
+    node: '5941:5316'
+    surface: transient_global_feedback
+    destination: T07
+    issue: 76
+  N04:
+    screen: T03
+    node: '5941:5352'
+    surface: transient_global_feedback
+    destination: T05
+    operational_reflection: T03
+    issue: 76
+  N01:
+    surface: transient_global_feedback
+    destination: T04
+    issue: 76
+    note: No separate notification center is created.
+
+approved_elderly_access_states:
+  requirement: RF30
+  story: US-036
+  owner: David
+  access_mode: read_only
+  baseline_entry: {screen: T12, node: '5926:2126', destination_row: '5944:1227'}
+  access_not_configured: '5944:1014'
+  access_invitation: '5944:1171'
+  invitation_sent: '5944:1068'
+  access_active: '5944:1122'
+  rules:
+    - same application authentication
+    - own authorized care only
+    - no family roles
+    - never Plantonista Atual
+    - no create/correct/complete/edit operations
+    - no network administration
+    - no CSV export in first version
+    - access denial is blocked and audited
+
+resolved_functional_decisions:
+  P03:
+    issue: 75
+    status: closed_completed
+    affects: [T06, T07]
+    rule: Correction is allowed to a user with current effective permission to produce the same record type; original record remains immutable.
+  P04:
+    issue: 76
+    status: closed_completed
+    affects: [T03, T04, T05, T07, T16]
+    rule: N01-N04 use transient global AppShell feedback and existing contextual destinations; no notification center.
+  P05:
+    issue: 77
+    status: closed_completed
+    affects: [T07]
+    rule: CSV export is restricted to Familiar Principal in the first version and is audited.
+  P06:
+    issue: 78
+    status: closed_completed
+    affects: [T13]
+    rule: Effective accumulated-family-role permission is the union of positive permissions, preserving explicit contextual/security/privacy restrictions.
+  RF30_US036:
+    issues: [34, 72]
+    status: approved
+    affects: [T01, T02, T12]
+    rule: Elderly own access is same-app read-only access with no write/admin/export capability.
+
+historical_defects:
   FI-001:
     status: superseded_in_fluxo_final
-    severity: high
     screen: T08
     kind: legacy_navigation
     source_node: '5118:846'
-    source_state: '5118:838'
-    current_destination: '5048:644'
-    current_destination_status: legacy
-    current_equivalent: '5235:924'
-    resolution: Fluxo Final uses the migrated T08 baseline/states and contains no navigation to the legacy destination.
+    resolution: Fluxo Final contains no navigation to the legacy T08 destination.
   FI-002:
     status: superseded_in_fluxo_final
-    severity: high
     screen: T10
     kind: wrong_cross_feature_navigation
     source_node: '5323:494'
-    source_state: '5323:489'
-    current_destination: '5123:1291'
-    expected_candidate: '5323:696'
-    resolution: Fluxo Final keeps T10 registration inside the approved migrated T10 state set.
+    resolution: Fluxo Final keeps T10 Empty within the approved T10 flow.
   FI-003:
     status: superseded_in_fluxo_final
-    severity: high
     screen: T10
     kind: wrong_cross_feature_navigation
     source_node: '5323:563'
-    source_state: '5323:558'
-    current_destination: '5123:1291'
-    expected_candidate: '5323:696'
-    resolution: Fluxo Final does not reuse the defective owner-page loading CTA reaction.
+    resolution: Fluxo Final does not reuse the defective owner-page Loading CTA reaction.
   FI-004:
     status: superseded_in_fluxo_final
-    severity: high
     screen: T10
     kind: wrong_cross_feature_navigation
     source_node: '5323:632'
-    source_state: '5323:627'
-    current_destination: '5123:1291'
-    expected_candidate: '5323:696'
     resolution: Fluxo Final keeps T10 actions inside T10 and its approved states.
   FI-005:
     status: superseded_in_fluxo_final
-    severity: high
     screen: T16
     kind: wrong_cross_feature_navigation
     source_node: '5510:19065'
-    source_state: '5212:432'
-    current_destination: '5201:13488'
-    resolution: Fluxo Final Save preferences navigates to the migrated T16 saved state and does not jump to T06.
+    resolution: Fluxo Final Save preferences stays inside T16.
   FI-006:
     status: superseded_by_navigation_architecture
-    severity: medium
     screen: T12
     kind: missing_navigation
     source_node: '5510:2806'
-    source_state: '5125:2719'
-    current_reaction: hover_only
-    destination_candidate: '5211:966'
-    resolution: Fluxo Final uses the canonical Settings Management Sheet for T12-T17 destinations; the old Mais affordance is not part of the final architecture.
+    resolution: Fluxo Final uses Settings / Management Sheet instead of the historical Mais area.
   FI-007:
     status: superseded_by_navigation_architecture
-    severity: medium
     screen: T12
     kind: missing_navigation
     source_node: '5510:2816'
-    source_state: '5125:2719'
-    current_reaction: hover_only
-    destination_candidate: '5445:915'
-    resolution: Fluxo Final uses the canonical Settings Management Sheet for T12-T17 destinations and preserves audit access rules.
+    resolution: Fluxo Final uses Settings / Management Sheet and preserves audit access rules.
   FI-008:
     status: resolved_in_fluxo_final
-    severity: medium
     screen: T13
     kind: semantic_layer_naming
-    historical_examples:
-    - E17 — Salvar tarefa used for member/role actions
-    - E22 — Vincular membro reused in transfer/unlink contexts
-    - Ação — Desvincular reused where the semantic action differs
     resolved_nodes:
-    - {node_id: '5926:35799', name: 'E22 — Vincular membro'}
-    - {node_id: '5926:35845', name: 'E22 — Vincular membro'}
-    - {node_id: '5926:35968', name: 'E24 — Salvar papéis'}
-    - {node_id: '5926:36130', name: 'E25 — Transferir principal'}
-    - {node_id: '5926:36301', name: 'E23 — Desvincular membro'}
-    resolution: Fluxo Final semantic hotspot names now match E22-E25 responsibilities without changing visuals, product scope, or reactions. Owner-page historical names remain source evidence only.
-functional_gates_not_defects:
-  P03:
-    affects: [T06, T07]
-    rule: Correction affordances in the prototype do not grant write permission; permission remains governed by the canonical requirement/issue.
-  P04:
-    issue: 76
-    affects: [T03, T16]
-    rule: Notification visual candidates do not settle where N01-N04 must be surfaced.
-  P05:
-    issue: 77
-    affects: [T07]
-    rule: CSV controls in Figma do not grant export permission.
-  P06:
-    affects: [T13]
-    rule: Role-management visuals do not settle authorization policy.
-  RF30_US036:
-    issues: [34, 72]
-    affects: [T12]
-    rule: Read-only elderly access visuals are proposal-only until explicitly approved.
+      - {node_id: '5926:35799', name: 'E22 — Vincular membro'}
+      - {node_id: '5926:35845', name: 'E22 — Vincular membro'}
+      - {node_id: '5926:35968', name: 'E24 — Salvar papéis'}
+      - {node_id: '5926:36130', name: 'E25 — Transferir principal'}
+      - {node_id: '5926:36301', name: 'E23 — Desvincular membro'}
+
+open_documentary_gates:
+  P01:
+    issue: 73
+    status: open
+    rule: Do not fabricate story-specific acceptance checklists that are not directly supported by canonical sources.
