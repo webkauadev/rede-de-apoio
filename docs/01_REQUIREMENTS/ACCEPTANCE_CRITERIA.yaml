@@ -1,0 +1,60 @@
+schema_version: 1
+last_updated: '2026-09-15'
+status: canonical_approved
+canonical_system: GitHub
+tracking_issue: 73
+approved_on: '2026-09-15'
+approval: explicit_human_project_approval
+criteria_source_snapshot:
+  path: docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA_DRAFT.yaml
+  source_commit: 8cdb03f10f69e1578010451a501381a935219c1b
+  rule: "Os critérios aprovados são exatamente os critérios de US-001–US-036 presentes neste snapshot, sem expansão implícita."
+
+policy:
+  - "Os critérios de aceite individuais de US-001–US-036 foram aprovados explicitamente em 2026-09-15 para resolver P01/#73."
+  - "As cópias promovidas nas Issues correspondentes são canônicas e preservam a rastreabilidade com RF/RNF e regras já aprovadas."
+  - "Novos critérios ou alterações futuras exigem nova decisão explícita; este registro não autoriza inferência de escopo adicional."
+  - "O arquivo ACCEPTANCE_CRITERIA_DRAFT.yaml permanece como snapshot histórico do conjunto submetido à aprovação humana."
+
+issue_promotion:
+  US-001: {issue: 37, comment_id: 5673832998, status: approved}
+  US-002: {issue: 38, comment_id: 5673834103, status: approved}
+  US-003: {issue: 39, comment_id: 5673834995, status: approved}
+  US-004: {issue: 40, comment_id: 5673835827, status: approved}
+  US-005: {issue: 41, comment_id: 5673836678, status: approved}
+  US-006: {issue: 42, comment_id: 5673837538, status: approved}
+  US-007: {issue: 43, comment_id: 5673838448, status: approved}
+  US-008: {issue: 44, comment_id: 5673839281, status: approved}
+  US-009: {issue: 45, comment_id: 5673840437, status: approved}
+  US-010: {issue: 46, comment_id: 5673841344, status: approved}
+  US-011: {issue: 47, comment_id: 5673842203, status: approved}
+  US-012: {issue: 48, comment_id: 5673843194, status: approved}
+  US-013: {issue: 49, comment_id: 5673844056, status: approved}
+  US-014: {issue: 50, comment_id: 5673845199, status: approved}
+  US-015: {issue: 51, comment_id: 5673846045, status: approved}
+  US-016: {issue: 52, comment_id: 5673846979, status: approved}
+  US-017: {issue: 53, comment_id: 5673847956, status: approved}
+  US-018: {issue: 54, comment_id: 5673848744, status: approved}
+  US-019: {issue: 55, comment_id: 5673849778, status: approved}
+  US-020: {issue: 56, comment_id: 5673850618, status: approved}
+  US-021: {issue: 57, comment_id: 5673851452, status: approved}
+  US-022: {issue: 58, comment_id: 5673852414, status: approved}
+  US-023: {issue: 59, comment_id: 5673853886, status: approved}
+  US-024: {issue: 60, comment_id: 5673855243, status: approved}
+  US-025: {issue: 61, comment_id: 5673856095, status: approved}
+  US-026: {issue: 62, comment_id: 5673857040, status: approved}
+  US-027: {issue: 63, comment_id: 5673857910, status: approved}
+  US-028: {issue: 64, comment_id: 5673860524, status: approved}
+  US-029: {issue: 65, comment_id: 5673861716, status: approved}
+  US-030: {issue: 66, comment_id: 5673862887, status: approved}
+  US-031: {issue: 67, comment_id: 5673863925, status: approved}
+  US-032: {issue: 68, comment_id: 5673865061, status: approved}
+  US-033: {issue: 69, comment_id: 5673865942, status: approved}
+  US-034: {issue: 70, comment_id: 5673866733, status: approved}
+  US-035: {issue: 71, comment_id: 5673867585, status: approved}
+  US-036: {issue: 72, comment_id: 5673868957, status: approved}
+
+coverage:
+  approved_stories: 36
+  expected_stories: 36
+  missing: []
