@@ -129,15 +129,21 @@ defects:
     destination_candidate: '5445:915'
     resolution: Fluxo Final uses the canonical Settings Management Sheet for T12-T17 destinations and preserves audit access rules.
   FI-008:
-    status: open
+    status: resolved_in_fluxo_final
     severity: medium
     screen: T13
     kind: semantic_layer_naming
-    examples:
+    historical_examples:
     - E17 — Salvar tarefa used for member/role actions
     - E22 — Vincular membro reused in transfer/unlink contexts
     - Ação — Desvincular reused where the semantic action differs
-    expected_resolution: Rename layers/hotspots to E22-E25 or action-specific semantic names without changing product scope.
+    resolved_nodes:
+    - {node_id: '5926:35799', name: 'E22 — Vincular membro'}
+    - {node_id: '5926:35845', name: 'E22 — Vincular membro'}
+    - {node_id: '5926:35968', name: 'E24 — Salvar papéis'}
+    - {node_id: '5926:36130', name: 'E25 — Transferir principal'}
+    - {node_id: '5926:36301', name: 'E23 — Desvincular membro'}
+    resolution: Fluxo Final semantic hotspot names now match E22-E25 responsibilities without changing visuals, product scope, or reactions. Owner-page historical names remain source evidence only.
 functional_gates_not_defects:
   P03:
     affects: [T06, T07]
