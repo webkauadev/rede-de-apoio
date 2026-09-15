@@ -1,5 +1,5 @@
-schema_version: 3
-last_updated: 2026-09-08
+schema_version: 4
+last_updated: 2026-09-14
 canonical_system: GitHub
 repository: webkauadev/rede-de-apoio
 catalog_status: canonical_content_complete_except_story_specific_acceptance_checklists
@@ -7,14 +7,14 @@ issue_registry: docs/06_GITHUB/ISSUE_REGISTRY.yaml
 source_guide: docs/01_REQUIREMENTS/GUIA_MESTRE_GITHUB_REDE_DE_APOIO.md
 
 policy:
-  - "US-001 through US-035 are the official approved story identifiers represented as GitHub Issues."
+  - "US-001 through US-036 are the official approved story identifiers represented as GitHub Issues."
   - "Every official US has exactly one confirmed origin RF/RNF."
-  - "Titles, actors, statements, origins, owners and screen/action traceability below are canonical from the Master Guide."
+  - "Titles, actors, statements, origins, owners and screen/action traceability below are canonical."
   - "The Master Guide does not enumerate a story-specific acceptance checklist for every US; agents must not fabricate one."
-  - "RF30/US-036 remain a controlled proposal until explicitly approved."
+  - "RF30/US-036 were approved canonically on 2026-09-14."
 
 owner_distribution:
-  David: 9
+  David: 10
   Rhuan: 9
   Henrique: 9
   Kauã: 8
@@ -345,8 +345,8 @@ stories:
     issue: 68
     title: "Exportar históricos CSV"
     owner: Kauã
-    actor: "usuário autorizado"
-    statement: "Como usuário autorizado, quero exportar um histórico em CSV para utilizar dados permitidos fora do aplicativo."
+    actor: "Familiar Principal"
+    statement: "Como Familiar Principal, quero exportar um histórico autorizado em CSV para utilizar os dados permitidos fora do aplicativo."
     origin_requirement: RF28
     origin_status: confirmed
     screens: [T07]
@@ -367,8 +367,8 @@ stories:
     issue: 70
     title: "Corrigir registro sem apagar original"
     owner: Kauã
-    actor: "usuário com permissão para correção"
-    statement: "Como usuário com permissão para correção, quero registrar uma correção vinculada para corrigir informação sem apagar o original."
+    actor: "usuário com permissão efetiva para o tipo de registro"
+    statement: "Como usuário com permissão efetiva para o tipo de registro, quero registrar uma correção vinculada para corrigir informação sem apagar o original."
     origin_requirement: RNF02
     origin_status: confirmed
     screens: [T06, T07]
@@ -386,16 +386,19 @@ stories:
     elements: [E27]
     related_requirements: [RNF03]
     content_status: complete
-
-acceptance_criteria_policy:
-  status: "not_individually_enumerated_in_master_guide"
-  rule: "Use only criteria directly supported by the origin requirement, business rules and the Master Guide; do not invent new functional scope."
-
-proposals:
   US-036:
     issue: 72
     title: "Acessar informações do próprio cuidado"
-    status: proposal
+    owner: David
     actor: "Pessoa Idosa"
-    origin_requirement: RF30
     statement: "Como Pessoa Idosa, quero acessar as informações relacionadas ao meu cuidado para acompanhar minha rotina e a rede responsável por mim sem alterar os registros existentes."
+    origin_requirement: RF30
+    origin_status: confirmed
+    screens: [T01, T02, T12]
+    related_requirements: [RNF01, RNF03]
+    access_mode: read_only
+    content_status: complete
+
+acceptance_criteria_policy:
+  status: "not_individually_enumerated_in_master_guide"
+  rule: "Use only criteria directly supported by the origin requirement, business rules, approved GitHub decisions and the Master Guide; do not invent new functional scope."
