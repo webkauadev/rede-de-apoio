@@ -1,288 +1,248 @@
-schema_version: 4
+schema_version: 5
 last_updated: '2026-09-14'
 state_rule: STATE = PAGE BASE + DELTA MÍNIMO
+canonical_page: {node_id: '5926:1014', name: Fluxo Final}
 authority_rules:
-- State existence in Figma documents visual evidence, not automatic product approval.
-- proposal_only states cannot be used to expand approved scope.
-- visual_candidate_only states cannot resolve an open functional/documental gate.
-- prototype_integrity references identify owner-page reactions/names that must not be treated as intended behavior.
-- migrated_figma_node on an open migration PR is visual migration evidence until explicit human approval and merge.
-- final_prototype_node references are canonical copies for end-user prototype validation and do not change requirement authority.
+  - GitHub requirements/issues and business rules define functional authority.
+  - Nodes listed here are the canonical visual/prototype states in Fluxo Final.
+  - Owner pages remain historical/migration evidence when a Fluxo Final equivalent exists.
+  - P03, P04, P05 and P06 were resolved canonically on 2026-09-14.
+  - RF30/US-036 were approved canonically on 2026-09-14.
+  - P01 remains the only open documentary gate for non-enumerated story-specific acceptance checklists.
+
 screens:
   T01:
     owner: David
     base_state: default
     states:
-      default: {kind: default, figma_node: '5189:730'}
-      invalid_credentials: {kind: error, figma_node: '5189:800', element: E01}
-      loading: {kind: loading, figma_node: '5189:870'}
+      default: {kind: default, figma_node: '5926:1016'}
+      invalid_credentials: {kind: error, figma_node: '5926:32076', element: E01}
+      loading: {kind: loading, figma_node: '5926:32132'}
+
   T02:
     owner: David
     base_state: default
     states:
-      default: {kind: default, figma_node: '5189:938'}
-      validation_error: {kind: validation_error, figma_node: '5189:1043', element: E02}
-      loading: {kind: loading, figma_node: '5189:1152'}
+      default: {kind: default, figma_node: '5926:1070'}
+      validation_error: {kind: validation_error, figma_node: '5926:32187', element: E02}
+      loading: {kind: loading, figma_node: '5926:32269'}
+
   T03:
     owner: Rhuan
     base_state: default
     states:
-      default:
-        kind: default
-        figma_node: '5435:1222'
-        migrated_figma_node: '5684:1407'
-        migration_status: migrated_pending_human_review
-      loading:
-        kind: loading
-        figma_node: '5436:1616'
-        migrated_figma_node: '5684:22165'
-        migration_status: migrated_pending_human_review
+      default: {kind: default, figma_node: '5926:1151'}
+      loading: {kind: loading, figma_node: '5926:32351'}
       mandatory_reminder:
-        kind: notification_visual_candidate
-        figma_node: '5436:18023'
+        kind: notification
+        figma_node: '5941:5280'
         notification: N02
-        functional_gate: P04
-        authority: visual_candidate_only
-        migration_status: blocked_pending_p04
+        surface: transient_global_feedback
+        destination: T05
+        status: canonical
       care_registered:
-        kind: notification_visual_candidate
-        figma_node: '5436:18343'
+        kind: notification
+        figma_node: '5941:5316'
         notification: N03
-        functional_gate: P04
-        authority: visual_candidate_only
-        migration_status: blocked_pending_p04
+        surface: transient_global_feedback
+        destination: T07
+        status: canonical
       delay:
-        kind: notification_visual_candidate
-        figma_node: '5436:18445'
+        kind: notification_domain_state
+        figma_node: '5941:5352'
         notification: N04
-        functional_gate: P04
-        authority: visual_candidate_only
-        migration_status: blocked_pending_p04
+        surface: transient_global_feedback
+        destination: T05
+        care_state: Atrasado
+        status: canonical
+
   T04:
     owner: Rhuan
     base_state: week
     states:
-      week: {kind: view, figma_node: '5122:1870'}
-      day: {kind: view, figma_node: '5122:2031'}
+      week: {kind: view, figma_node: '5926:1261'}
+      day: {kind: view, figma_node: '5926:32402'}
+
   T05:
     owner: Henrique
     base_state: default
-    migration_status: full_state_set_migrated_pending_human_review
     states:
-      default: {kind: default, figma_node: '5344:1413', migrated_figma_node: '5815:1652', migration_status: migrated_pending_human_review}
-      empty: {kind: empty, figma_node: '5346:1256', migrated_figma_node: '5837:341', migration_status: migrated_pending_human_review}
-      loading: {kind: loading, figma_node: '5346:1403', migrated_figma_node: '5838:438', migration_status: migrated_pending_human_review}
-      delay: {kind: domain_state, figma_node: '5346:1504', migrated_figma_node: '5839:559', migration_status: migrated_pending_human_review, care_state: Atrasado, semantic_status: Status/Delayed}
-      corrected: {kind: domain_state, figma_node: '5346:1592', migrated_figma_node: '5841:469', migration_status: migrated_pending_human_review, care_state: Corrigido, semantic_status: Status/Corrected}
-      detail: {kind: detail, figma_node: '5346:1686', migrated_figma_node: '5841:25983', migration_status: migrated_pending_human_review}
-    audit: zero_defects_2026_09_14
+      default: {kind: default, figma_node: '5926:1420'}
+      empty: {kind: empty, figma_node: '5926:32525'}
+      loading: {kind: loading, figma_node: '5926:32574'}
+      delay: {kind: domain_state, figma_node: '5926:32630', care_state: Atrasado}
+      corrected: {kind: domain_state, figma_node: '5926:32752', care_state: Corrigido}
+      detail: {kind: detail, figma_node: '5926:32875'}
+
   T06:
     owner: Kauã
     base_state: normal
-    migration_status: full_state_set_migrated_pending_human_review
-    review_board: '5924:3392'
     states:
-      normal: {kind: default, figma_node: '5201:13491', migrated_figma_node: '5917:2409', migration_status: migrated_pending_human_review}
-      empty: {kind: empty, figma_node: '5201:13490', migrated_figma_node: '5922:3893', migration_status: migrated_pending_human_review}
-      loading: {kind: loading, figma_node: '5288:14618', migrated_figma_node: '5922:30572', migration_status: migrated_pending_human_review}
-      new_record: {kind: form, figma_node: '5201:13488', migrated_figma_node: '5922:30922', migration_status: migrated_pending_human_review, element: E09}
-      new_record_validation_error: {kind: validation_error, figma_node: '5203:300', migrated_figma_node: '5922:31158', migration_status: migrated_pending_human_review, element: E09}
-      success: {kind: success, figma_node: '5288:14482', migrated_figma_node: '5922:30746', migration_status: migrated_pending_human_review}
-    local_subnav: {component_set: '5830:358', active: Diário, variant_node: '5830:357'}
-    audit: zero_defects_2026_09_14
+      normal: {kind: default, figma_node: '5926:1542'}
+      empty: {kind: empty, figma_node: '5926:32938'}
+      loading: {kind: loading, figma_node: '5926:32989'}
+      new_record: {kind: form, figma_node: '5926:33036', element: E09}
+      new_record_validation_error: {kind: validation_error, figma_node: '5926:33272', element: E09}
+      success: {kind: success, figma_node: '5926:33509'}
+    correction_permission:
+      rule: effective_write_permission_for_same_record_type
+      source: P03
+
   T07:
     owner: Henrique
     base_state: default
-    migration_status: full_state_set_migrated_pending_human_review
     states:
-      default: {kind: default, figma_node: '5334:756', migrated_figma_node: '5815:1770', migration_status: migrated_pending_human_review}
-      empty: {kind: empty, figma_node: '5335:831', migrated_figma_node: '5844:568', migration_status: migrated_pending_human_review}
-      loading: {kind: loading, figma_node: '5335:948', migrated_figma_node: '5844:26005', migration_status: migrated_pending_human_review}
-      detail: {kind: detail, figma_node: '5336:895', migrated_figma_node: '5844:26067', migration_status: migrated_pending_human_review, element: E11}
-      correction: {kind: form, figma_node: '5336:977', migrated_figma_node: '5844:26149', migration_status: migrated_pending_human_review, element: E12, functional_gate: P03}
-      correction_complete: {kind: success, figma_node: '5337:15296', migrated_figma_node: '5844:26238', migration_status: migrated_pending_human_review, element: E12}
-      exporting: {kind: loading_action, figma_node: '5337:15310', migrated_figma_node: '5844:26343', migration_status: migrated_pending_human_review, element: E13, functional_gate: P05}
-      export_complete: {kind: success, figma_node: '5337:15330', migrated_figma_node: '5844:26446', migration_status: migrated_pending_human_review, element: E13, functional_gate: P05}
-    local_subnav: {component_set: '5830:358', active: Histórico, variant_node: '5830:348'}
-    audit: zero_defects_2026_09_14
+      default: {kind: default, figma_node: '5926:1712'}
+      empty: {kind: empty, figma_node: '5926:33682'}
+      loading: {kind: loading, figma_node: '5926:33734'}
+      detail: {kind: detail, figma_node: '5926:33783', element: E11}
+      correction: {kind: form, figma_node: '5926:33852', element: E12, permission: effective_write_permission_for_same_record_type}
+      correction_complete: {kind: success, figma_node: '5926:33928', element: E12}
+      exporting: {kind: loading_action, figma_node: '5926:34020', element: E13, permission: Familiar_Principal}
+      export_complete: {kind: success, figma_node: '5926:34110', element: E13, permission: Familiar_Principal}
+
   T08:
     owner: Henrique
     base_state: list
-    migration_status: full_state_set_migrated_pending_human_review
     states:
-      list: {kind: default, figma_node: '5235:924', migrated_figma_node: '5850:2696', migration_status: migrated_pending_human_review}
-      empty: {kind: empty, figma_node: '5118:838', migrated_figma_node: '5865:1014', migration_status: migrated_pending_human_review, prototype_integrity: [FI-001]}
-      create: {kind: form, figma_node: '5123:1291', migrated_figma_node: '5866:1100', migration_status: migrated_pending_human_review, element: E14}
-      create_error_name: {kind: validation_error, figma_node: '5130:4159', migrated_figma_node: '5866:26583', migration_status: migrated_pending_human_review, element: E14, naming_status: noncanonical_frame_name}
-      create_error_concentration: {kind: validation_error, figma_node: '5130:4204', migrated_figma_node: '5866:26607', migration_status: migrated_pending_human_review, element: E14, naming_status: noncanonical_frame_name}
-      create_error_form: {kind: validation_error, figma_node: '5130:4263', migrated_figma_node: '5866:26631', migration_status: migrated_pending_human_review, element: E14, naming_status: noncanonical_frame_name}
-      created: {kind: success, figma_node: '5141:2758', migrated_figma_node: '5865:1051', migration_status: migrated_pending_human_review, element: E14}
-    local_subnav: {component_set: '5810:1005', active: Medicamentos, variant_node: '5810:968'}
-    audit: zero_defects_2026_09_14
+      list: {kind: default, figma_node: '5926:1801'}
+      empty: {kind: empty, figma_node: '5926:34202'}
+      create: {kind: form, figma_node: '5926:34250', element: E14}
+      create_error_name: {kind: validation_error, figma_node: '5926:34279', element: E14}
+      create_error_concentration: {kind: validation_error, figma_node: '5926:34309', element: E14}
+      create_error_form: {kind: validation_error, figma_node: '5926:34339', element: E14}
+      created: {kind: success, figma_node: '5926:34369', element: E14}
+
   T09:
     owner: Rhuan
     base_state: default
     states:
-      default: {kind: default, figma_node: '5360:348'}
-      empty: {kind: empty, figma_node: '5361:419'}
-      loading: {kind: loading, figma_node: '5361:475'}
-      new_task: {kind: form, figma_node: '5361:518', element: E17}
-      validation_error: {kind: validation_error, figma_node: '5361:601', element: E17}
-      task_created: {kind: success, figma_node: '5361:707', element: E17}
-      task_completed: {kind: success, figma_node: '5361:741', element: E18}
+      default: {kind: default, figma_node: '5926:1886'}
+      empty: {kind: empty, figma_node: '5926:34452'}
+      loading: {kind: loading, figma_node: '5926:34512'}
+      new_task: {kind: form, figma_node: '5926:34568', element: E17}
+      validation_error: {kind: validation_error, figma_node: '5926:34646', element: E17}
+      task_created: {kind: success, figma_node: '5926:34727', element: E17}
+      task_completed: {kind: success, figma_node: '5926:34858', element: E18}
+
   T10:
     owner: Henrique
     base_state: default
-    migration_status: full_state_set_migrated_pending_human_review
     states:
-      default: {kind: default, figma_node: '5321:411', migrated_figma_node: '5857:2744', migration_status: migrated_pending_human_review}
-      empty: {kind: empty, figma_node: '5323:489', migrated_figma_node: '5866:26673', migration_status: migrated_pending_human_review, prototype_integrity: [FI-002]}
-      loading: {kind: loading, figma_node: '5323:558', migrated_figma_node: '5866:26692', migration_status: migrated_pending_human_review, prototype_integrity: [FI-003]}
-      success: {kind: success, figma_node: '5323:627', migrated_figma_node: '5866:26711', migration_status: migrated_pending_human_review, prototype_integrity: [FI-004]}
-      new_record: {kind: form, figma_node: '5323:696', migrated_figma_node: '5868:1239', migration_status: migrated_pending_human_review, element: E19}
-      validation_error: {kind: validation_error, figma_node: '5323:855', migrated_figma_node: '5868:26715', migration_status: migrated_pending_human_review, element: E19}
-      attachment_context: {kind: contextual_action, figma_node: '5323:885', migrated_figma_node: '5868:26730', migration_status: migrated_pending_human_review, element: E10}
-    local_subnav: {component_set: '5810:1005', active: Consultas, variant_node: '5810:992'}
-    audit: zero_defects_2026_09_14
+      default: {kind: default, figma_node: '5926:1993'}
+      empty: {kind: empty, figma_node: '5926:34962'}
+      loading: {kind: loading, figma_node: '5926:35011'}
+      success: {kind: success, figma_node: '5926:35059'}
+      new_record: {kind: form, figma_node: '5926:35125', element: E19}
+      validation_error: {kind: validation_error, figma_node: '5926:35145', element: E19}
+      attachment_context: {kind: contextual_action, figma_node: '5926:35166', element: E10}
+
   T11:
     owner: Rhuan
     base_state: default
     states:
-      default: {kind: default, figma_node: '5416:937'}
-      empty: {kind: empty, figma_node: '5417:1037'}
-      loading: {kind: loading, figma_node: '5417:1099'}
-      new_appointment: {kind: form, figma_node: '5418:1039', element: E20}
-      validation_error: {kind: validation_error, figma_node: '5419:1113', element: E20}
-      success: {kind: success, figma_node: '5419:1226', element: E20}
+      default: {kind: default, figma_node: '5926:2060'}
+      empty: {kind: empty, figma_node: '5926:35192'}
+      loading: {kind: loading, figma_node: '5926:35252'}
+      new_appointment: {kind: form, figma_node: '5926:35306', element: E20}
+      validation_error: {kind: validation_error, figma_node: '5926:35398', element: E20}
+      success: {kind: success, figma_node: '5926:35494', element: E20}
+
   T12:
     owner: David
     base_state: view
-    migration_status: full_state_set_migrated_pending_human_review
-    review_board: '5895:27129'
     states:
-      registration: {kind: form, figma_node: '5125:2567', migrated_figma_node: '5887:3998', migration_status: migrated_pending_human_review, element: E21}
-      edit: {kind: form, figma_node: '5125:2649', migrated_figma_node: '5886:3993', migration_status: migrated_pending_human_review, element: E21}
-      view: {kind: default, figma_node: '5125:2719', migrated_figma_node: '5876:3950', migration_status: migrated_pending_human_review, prototype_integrity: [FI-006, FI-007]}
-      success: {kind: success, figma_node: '5125:2799', migrated_figma_node: '5887:4190', migration_status: migrated_pending_human_review, element: E21}
-      validation_error: {kind: validation_error, figma_node: '5125:2888', migrated_figma_node: '5892:4365', migration_status: migrated_pending_human_review, element: E21}
-      invitation_sent: {kind: proposal_visual, figma_node: '5125:2408', proposal: RF30/US-036, authority: proposal_only}
-      access_active: {kind: proposal_visual, figma_node: '5125:2981', proposal: RF30/US-036, authority: proposal_only}
-      access_not_configured: {kind: proposal_visual, figma_node: '5125:3069', proposal: RF30/US-036, authority: proposal_only}
-      access_invitation: {kind: proposal_visual, figma_node: '5125:3151', proposal: RF30/US-036, authority: proposal_only}
-    audit: zero_defects_2026_09_14
+      view: {kind: default, figma_node: '5926:2126'}
+      registration: {kind: form, figma_node: '5926:35570', element: E21}
+      edit: {kind: form, figma_node: '5926:35621', element: E21}
+      success: {kind: success, figma_node: '5926:35664', element: E21}
+      validation_error: {kind: validation_error, figma_node: '5926:35701', element: E21}
+      access_not_configured:
+        kind: access_management
+        figma_node: '5944:1014'
+        requirement: RF30
+        story: US-036
+        status: canonical
+      access_invitation:
+        kind: form
+        figma_node: '5944:1171'
+        requirement: RF30
+        story: US-036
+        access_mode: read_only
+        status: canonical
+      invitation_sent:
+        kind: success
+        figma_node: '5944:1068'
+        requirement: RF30
+        story: US-036
+        status: canonical
+      access_active:
+        kind: access_management
+        figma_node: '5944:1122'
+        requirement: RF30
+        story: US-036
+        access_mode: read_only
+        status: canonical
+    elderly_access_rules:
+      authentication: same_app
+      own_profile_only: true
+      write: false
+      administration: false
+      export_csv: false
+      family_roles: false
+      plantonista_atual: false
+
   T13:
     owner: David
     base_state: default
-    migration_status: full_state_set_migrated_pending_human_review
-    review_board: '5898:4400'
     states:
-      default: {kind: default, figma_node: '5367:1631', migrated_figma_node: '5876:3951', migration_status: migrated_pending_human_review}
-      loading: {kind: loading, figma_node: '5369:2130', migrated_figma_node: '5887:4227', migration_status: migrated_pending_human_review}
-      link_member: {kind: form, figma_node: '5370:1705', migrated_figma_node: '5889:4068', migration_status: migrated_pending_human_review, element: E22}
-      validation_error: {kind: validation_error, figma_node: '5370:16302', migrated_figma_node: '5889:26908', migration_status: migrated_pending_human_review, element: E22}
-      link_complete: {kind: success, figma_node: '5370:16523', migrated_figma_node: '5888:4032', migration_status: migrated_pending_human_review, element: E22}
-      manage_roles: {kind: form, figma_node: '5371:1875', migrated_figma_node: '5889:26976', migration_status: migrated_pending_human_review, element: E24, functional_gate: P06}
-      roles_updated: {kind: success, figma_node: '5371:16499', migrated_figma_node: '5890:4162', migration_status: migrated_pending_human_review, element: E24}
-      transfer_principal: {kind: confirmation, figma_node: '5371:16617', migrated_figma_node: '5890:4234', migration_status: migrated_pending_human_review, element: E25}
-      transfer_complete: {kind: success, figma_node: '5371:16756', migrated_figma_node: '5890:4334', migration_status: migrated_pending_human_review, element: E25}
-      unlink_member: {kind: confirmation, figma_node: '5372:2181', migrated_figma_node: '5891:4287', migration_status: migrated_pending_human_review, element: E23}
-      unlinked: {kind: success, figma_node: '5372:16816', migrated_figma_node: '5891:4379', migration_status: migrated_pending_human_review, element: E23}
-    audit: zero_defects_2026_09_14
+      default: {kind: default, figma_node: '5926:2160'}
+      loading: {kind: loading, figma_node: '5926:35752'}
+      link_member: {kind: form, figma_node: '5926:35780', element: E22}
+      validation_error: {kind: validation_error, figma_node: '5926:35824', element: E22}
+      link_complete: {kind: success, figma_node: '5926:35876', element: E22}
+      manage_roles: {kind: form, figma_node: '5926:35948', element: E24, permission_composition: union_positive_with_context_constraints}
+      roles_updated: {kind: success, figma_node: '5926:36009', element: E24}
+      transfer_principal: {kind: confirmation, figma_node: '5926:36086', element: E25}
+      transfer_complete: {kind: success, figma_node: '5926:36186', element: E25}
+      unlink_member: {kind: confirmation, figma_node: '5926:36258', element: E23}
+      unlinked: {kind: success, figma_node: '5926:36350', element: E23}
+
   T14:
     owner: David
     base_state: default
-    migration_status: full_state_set_migrated_pending_human_review
-    review_board: '5905:5195'
     states:
-      default: {kind: default, figma_node: '5387:2703', migrated_figma_node: '5899:4780', migration_status: migrated_pending_human_review}
-      empty: {kind: empty, figma_node: '5387:17293', migrated_figma_node: '5902:4950', migration_status: migrated_pending_human_review}
-      loading: {kind: loading, figma_node: '5387:17356', migrated_figma_node: '5902:4989', migration_status: migrated_pending_human_review}
-      success: {kind: success, figma_node: '5387:17388', migrated_figma_node: '5902:5022', migration_status: migrated_pending_human_review}
-      add_contact: {kind: form, figma_node: '5390:154', migrated_figma_node: '5903:5052', migration_status: migrated_pending_human_review, element: E26}
-      validation_error: {kind: validation_error, figma_node: '5392:276', migrated_figma_node: '5903:5128', migration_status: migrated_pending_human_review, element: E26}
-      edit_contact: {kind: form, figma_node: '5390:253', migrated_figma_node: '5903:5207', migration_status: migrated_pending_human_review, element: E26}
-      edit_saved: {kind: success, figma_node: '5392:418', migrated_figma_node: '5902:5063', migration_status: migrated_pending_human_review, element: E26}
-    audit: zero_defects_2026_09_14
+      default: {kind: default, figma_node: '5926:2229'}
+      empty: {kind: empty, figma_node: '5926:36406'}
+      loading: {kind: loading, figma_node: '5926:36437'}
+      success: {kind: success, figma_node: '5926:36462'}
+      add_contact: {kind: form, figma_node: '5926:36528', element: E26}
+      validation_error: {kind: validation_error, figma_node: '5926:36591', element: E26}
+      edit_contact: {kind: form, figma_node: '5926:36657', element: E26}
+      edit_saved: {kind: success, figma_node: '5926:36720', element: E26}
+
   T15:
     owner: David
     base_state: default
-    migration_status: full_state_set_migrated_pending_human_review
-    review_board: '5905:5364'
     states:
-      default: {kind: default, figma_node: '5404:2664', migrated_figma_node: '5899:4857', migration_status: migrated_pending_human_review}
-      loading: {kind: loading, figma_node: '5405:2696', migrated_figma_node: '5903:28050', migration_status: migrated_pending_human_review}
-      empty: {kind: empty, figma_node: '5405:2752', migrated_figma_node: '5903:28085', migration_status: migrated_pending_human_review}
-    audit: zero_defects_2026_09_14
+      default: {kind: default, figma_node: '5926:2278'}
+      loading: {kind: loading, figma_node: '5926:36772'}
+      empty: {kind: empty, figma_node: '5926:36792'}
+
   T16:
     owner: Kauã
     base_state: default
-    migration_status: full_state_set_migrated_pending_human_review
-    review_board: '5915:2122'
     states:
-      default: {kind: default, figma_node: '5211:966', migrated_figma_node: '5907:1765', migration_status: migrated_pending_human_review, functional_gate: P04}
-      saved: {kind: success, figma_node: '5212:432', migrated_figma_node: '5914:1991', migration_status: migrated_pending_human_review, functional_gate: P04, prototype_integrity: [FI-005]}
-    local_subnav: {component_set: '5912:1699', active: Preferências, variant_node: '5912:1677'}
-    audit: zero_defects_2026_09_14
+      default: {kind: default, figma_node: '5926:2310'}
+      saved: {kind: success, figma_node: '5926:36818'}
+    rule: configure_optional_notifications_only
+
   T17:
     owner: Kauã
     base_state: default
-    migration_status: full_state_set_migrated_pending_human_review
-    review_board: '5915:2200'
     states:
-      default: {kind: default, figma_node: '5445:915', migrated_figma_node: '5909:28315', migration_status: migrated_pending_human_review}
-      loading: {kind: loading, figma_node: '5445:1033', migrated_figma_node: '5914:28551', migration_status: migrated_pending_human_review}
-      empty: {kind: empty, figma_node: '5445:18015', migrated_figma_node: '5914:28600', migration_status: migrated_pending_human_review}
-      detail: {kind: detail, figma_node: '5445:18109', migrated_figma_node: '5914:28689', migration_status: migrated_pending_human_review}
-      forbidden: {kind: forbidden, figma_node: '5445:18234', migrated_figma_node: '5914:28815', migration_status: migrated_pending_human_review, element: E27}
-    local_subnav: {component_set: '5912:1699', active: Auditoria, variant_node: '5912:1698'}
-    audit: zero_defects_2026_09_14
-final_prototype:
-  page: {node_id: '5926:1014', name: Fluxo Final}
-  status: functional_wiring_audited_2026_09_14
-  baseline_nodes:
-    T01: '5926:1016'
-    T02: '5926:1070'
-    T03: '5926:1151'
-    T04: '5926:1261'
-    T05: '5926:1420'
-    T06: '5926:1542'
-    T07: '5926:1712'
-    T08: '5926:1801'
-    T09: '5926:1886'
-    T10: '5926:1993'
-    T11: '5926:2060'
-    T12: '5926:2126'
-    T13: '5926:2160'
-    T14: '5926:2229'
-    T15: '5926:2278'
-    T16: '5926:2310'
-    T17: '5926:2379'
-  state_nodes:
-    T01: {invalid_credentials: '5926:32076', loading: '5926:32132'}
-    T02: {validation_error: '5926:32187', loading: '5926:32269'}
-    T03: {loading: '5926:32351'}
-    T04: {day: '5926:32402'}
-    T05: {empty: '5926:32525', loading: '5926:32574', delay: '5926:32630', corrected: '5926:32752', detail: '5926:32875'}
-    T06: {empty: '5926:32938', loading: '5926:32989', new_record: '5926:33036', new_record_validation_error: '5926:33272', success: '5926:33509'}
-    T07: {empty: '5926:33682', loading: '5926:33734', detail: '5926:33783', correction: '5926:33852', correction_complete: '5926:33928', exporting: '5926:34020', export_complete: '5926:34110'}
-    T08: {empty: '5926:34202', create: '5926:34250', create_error_name: '5926:34279', create_error_concentration: '5926:34309', create_error_form: '5926:34339', created: '5926:34369'}
-    T09: {empty: '5926:34452', loading: '5926:34512', new_task: '5926:34568', validation_error: '5926:34646', task_created: '5926:34727', task_completed: '5926:34858'}
-    T10: {empty: '5926:34962', loading: '5926:35011', success: '5926:35059', new_record: '5926:35125', validation_error: '5926:35145', attachment_context: '5926:35166'}
-    T11: {empty: '5926:35192', loading: '5926:35252', new_appointment: '5926:35306', validation_error: '5926:35398', success: '5926:35494'}
-    T12: {registration: '5926:35570', edit: '5926:35621', success: '5926:35664', validation_error: '5926:35701'}
-    T13: {loading: '5926:35752', link_member: '5926:35780', validation_error: '5926:35824', link_complete: '5926:35876', manage_roles: '5926:35948', roles_updated: '5926:36009', transfer_principal: '5926:36086', transfer_complete: '5926:36186', unlink_member: '5926:36258', unlinked: '5926:36350'}
-    T14: {empty: '5926:36406', loading: '5926:36437', success: '5926:36462', add_contact: '5926:36528', validation_error: '5926:36591', edit_contact: '5926:36657', edit_saved: '5926:36720'}
-    T15: {loading: '5926:36772', empty: '5926:36792'}
-    T16: {saved: '5926:36818'}
-    T17: {loading: '5926:36889', empty: '5926:36917', detail: '5926:36946', forbidden: '5926:37017'}
-  included_state_policy:
-  - Only migrated/approved state frames needed for prototype evidence were copied to Fluxo Final.
-  - RF30/US-036 proposal_only states are excluded.
-  - P04 blocked notification visual candidates are excluded.
-  - Empty/forbidden states without an approved runtime trigger remain visual evidence and are not given invented conditions.
-  audit:
-    start_node: '5926:1016'
-    reachable_root_count: 66
-    all_T01_T17_reachable_from_T01: true
-    broken_node_destinations: 0
-    harmful_cross_page_navigate_or_overlay: 0
+      default: {kind: default, figma_node: '5926:2379'}
+      loading: {kind: loading, figma_node: '5926:36889'}
+      empty: {kind: empty, figma_node: '5926:36917'}
+      detail: {kind: detail, figma_node: '5926:36946'}
+      forbidden: {kind: access_denied, figma_node: '5926:37017', element: E27}
