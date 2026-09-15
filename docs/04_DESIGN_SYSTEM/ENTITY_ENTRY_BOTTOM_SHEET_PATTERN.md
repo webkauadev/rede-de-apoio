@@ -1,7 +1,7 @@
 # Padrão Canônico — Cadastro Operacional em Bottom Sheet
 
-Status: **CANÔNICO / APROVADO**  
-Aprovado por decisão humana em 2026-09-15.
+Status: **CANÔNICO / APROVADO / PROPAGADO**  
+Aprovado por decisão humana em 2026-09-15. Propagação T06/T08/T09/T10/T11 aprovada e auditada em 2026-09-15.
 
 ## Objetivo
 
@@ -124,14 +124,23 @@ Mudança profunda de padrão deve seguir:
 
 `PILOTO → REVISÃO → PROPAGAÇÃO EM MICRO-LOTE → AUDITORIA FINAL`
 
-Piloto vigente: **T08 — Medicamentos**.
+Execução concluída em 2026-09-15:
 
-Depois de validado visual e prototipicamente, propagar para T09/T10/T11 sem alterar conteúdo funcional ou regras de negócio.
+- piloto: **T08 — Medicamentos**;
+- revisão humana: aprovada;
+- propagação: **T06, T09, T10 e T11**, mantendo T08 como piloto já aprovado;
+- auditoria final: concluída sem overflow de Sheet e sem caminhos canônicos para formulários full-page superseded;
+- review board: `5976:7063`;
+- mapeamento estruturado: `docs/05_FIGMA/ENTITY_ENTRY_BOTTOM_SHEET_FLOW.yaml`;
+- relatório de propagação: `docs/07_AI_CONTEXT/ENTITY_ENTRY_BOTTOM_SHEET_PROPAGATION_2026-09-15.md`.
+
+Os formulários full-page anteriores permanecem somente como evidência histórica e devem ser tratados como `LEGACY PROTO STATE`.
 
 ## Critérios mínimos do Bottom Sheet
 
 - abre de baixo para cima;
 - handle visível no topo;
+- a área interativa do handle possui no mínimo 48 px de altura, mesmo quando a barra visual permanece 40 × 4;
 - Sheet ancorado na borda inferior;
 - fundo reconhecível sob scrim;
 - largura respeita viewport/margens/safe area;

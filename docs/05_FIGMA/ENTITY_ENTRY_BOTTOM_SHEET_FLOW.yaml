@@ -1,0 +1,122 @@
+schema_version: 1
+last_updated: '2026-09-15'
+status: canonical_approved
+figma_file: tcyj2fkTXei2CJbqaRxqCp
+canonical_page: {name: Fluxo Final, node_id: '5926:1014'}
+pattern_source: docs/04_DESIGN_SYSTEM/ENTITY_ENTRY_BOTTOM_SHEET_PATTERN.md
+review_board: '5976:7063'
+
+contract:
+  architecture: PAGE_BASE + SCRIM + BOTTOM_SHEET
+  open_navigation: OVERLAY
+  open_transition: {type: MOVE_IN, direction: BOTTOM}
+  dismiss_transition: {type: MOVE_OUT, direction: BOTTOM}
+  explicit_cancel: CLOSE
+  drag_trigger: ON_DRAG
+  sheet_geometry: {x: 16, y: 124, width: 358, height: 704}
+  handle_hit_target_height: 48
+  visual_handle: {width: 40, height: 4}
+  validation_rule: SAME_SHEET_MINIMUM_DELTA
+  forbidden_patterns: [drawer_lateral, side_sheet, full_page_create_form, modal_central_generico]
+
+flows:
+  T06:
+    feature: Diário de Cuidados
+    element: E09
+    base: '5926:1542'
+    entry_ctas: ['5926:1549', '5926:32943', '5926:33516']
+    create_overlay: '5977:7182'
+    create_sheet: '5977:7184'
+    create_handle_target: '5977:7185'
+    validation_overlay: '5977:7249'
+    validation_sheet: '5977:7251'
+    validation_handle_target: '5977:7252'
+    success: '5926:33509'
+    superseded_full_page_states: ['5926:33036', '5926:33272']
+  T08:
+    feature: Medicamentos
+    element: E14
+    base: '5926:1801'
+    empty: '5926:34202'
+    entry_ctas: ['5926:1806', '5926:34209', '5926:34375']
+    create_overlay: '5967:6307'
+    create_sheet: '5967:6309'
+    create_handle_target: '5967:6310'
+    validation_overlay: '5967:6333'
+    validation_sheet: '5967:6335'
+    validation_handle_target: '5967:6336'
+    success: '5926:34369'
+    superseded_full_page_states: ['5926:34250', '5926:34279', '5926:34309', '5926:34339']
+  T09:
+    feature: Tarefas
+    element: E17
+    base: '5926:1886'
+    empty: '5926:34452'
+    entry_ctas: ['5926:1901', '5926:34467', '5926:34742']
+    create_overlay: '5974:6252'
+    create_sheet: '5974:6254'
+    create_handle_target: '5974:6255'
+    validation_overlay: '5974:6312'
+    validation_sheet: '5974:6314'
+    validation_handle_target: '5974:6315'
+    success: '5926:34727'
+    superseded_full_page_states: ['5926:34568', '5926:34646']
+  T10:
+    feature: Consultas e Recomendações
+    element: E19
+    base: '5926:1993'
+    empty: '5926:34962'
+    entry_ctas: ['5926:1998', '5926:34967', '5926:35064']
+    create_overlay: '5974:35902'
+    create_sheet: '5974:35904'
+    create_handle_target: '5974:35905'
+    validation_overlay: '5974:35948'
+    validation_sheet: '5974:35950'
+    validation_handle_target: '5974:35951'
+    attachment_overlay: '5974:35996'
+    attachment_sheet: '5974:35998'
+    attachment_handle_target: '5974:35999'
+    success: '5926:35059'
+    superseded_full_page_states: ['5926:35125', '5926:35145', '5926:35166']
+  T11:
+    feature: Compromissos
+    element: E20
+    base: '5926:2060'
+    empty: '5926:35192'
+    entry_ctas: ['5926:2065', '5926:35197', '5926:35499']
+    create_overlay: '5974:36062'
+    create_sheet: '5974:36064'
+    create_handle_target: '5974:36065'
+    validation_overlay: '5974:36136'
+    validation_sheet: '5974:36138'
+    validation_handle_target: '5974:36139'
+    success: '5926:35494'
+    superseded_full_page_states: ['5926:35306', '5926:35398']
+
+shell_scroll_fixes:
+  T04:
+    root: '5926:1261'
+    content_viewport: '5926:1263'
+    clips_content: true
+    overflow_direction: VERTICAL
+  T06:
+    root: '5926:1542'
+    content_viewport: '5962:6236'
+    scroll_content: '5926:1545'
+    scroll_content_height: 1169
+    clips_content: true
+    overflow_direction: VERTICAL
+
+audits:
+  canonical_ctas_use_overlay: true
+  canonical_paths_to_superseded_full_page_states: 0
+  overlay_roots_size: 390x844
+  sheet_overflow_defects: 0
+  handle_hit_targets_below_48: 0
+  person_idosa_stale_write_reactions_removed: true
+  visual_review: approved_by_human_2026_09_15
+
+notes:
+  - Superseded full-page states are retained only as historical evidence and are named LEGACY PROTO STATE in Figma.
+  - The Figma Plugin API cannot express ON_DRAG plus CLOSE directly; the prototype uses ON_DRAG plus MOVE_OUT/BOTTOM to the page base as the faithful visual equivalent. Runtime implementations should perform a true dismiss.
+  - This registry is the canonical narrow mapping for operational entity-entry overlays. Functional requirements remain governed by GitHub requirements and business rules.
