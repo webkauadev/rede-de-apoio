@@ -2,28 +2,25 @@
 
 Este repositório GitHub (`webkauadev/rede-de-apoio`) é a **fonte única de verdade operacional** do projeto Rede de Apoio a Cuidadores de Idosos para requisitos, RF/RNF, User Stories, Issues, tarefas, status, critérios de aceitação, contexto de IA e versionamento.
 
-O Figma é a fonte canônica **somente do design visual vigente**. Nenhum agente deve depender de tracker externo para executar o projeto.
+O Figma é a fonte canônica **somente do design visual/prototípico vigente**. A página `Fluxo Final` (`5926:1014`) é o protótipo canônico de usuário final quando houver equivalente às owner pages.
 
 ## 1. Ordem de autoridade
 
-Quando houver conflito, usar esta prioridade:
-
 1. **GitHub deste repositório**: Issues aprovadas + documentos canônicos versionados na branch principal.
 2. Registries estruturados deste repositório, que devem espelhar o item 1.
-3. Figma atual, considerando somente frames vigentes/aprovados, para decisões visuais.
-4. Inferências do agente, apenas quando inevitáveis e sempre marcadas como `não especificado`, `hipótese`, `candidate_origin` ou `migration_required`.
+3. `Fluxo Final` no Figma para decisões visuais/prototípicas vigentes.
+4. Owner pages do Figma como histórico/fonte de migração quando houver equivalente no `Fluxo Final`.
+5. Inferências do agente apenas quando inevitáveis e sempre marcadas como `não especificado`, `hipótese`, `candidate_origin` ou `migration_required`.
 
 Nunca criar RF, RNF, US, regra de negócio, permissão ou critério de aceitação que não esteja documentado no GitHub.
 
-**Regra de migração:** se um dado funcional necessário não existir no GitHub, marcar `migration_required`. Não procurar em tracker externo, não reconstruir de memória e não inventar conteúdo.
+**Regra de migração:** se um dado funcional necessário não existir no GitHub, marcar `migration_required`.
 
-**Regra de inferência:** `candidate_origin` pode registrar uma correspondência provável para investigação, mas nunca equivale a `confirmed_in_github_traceability`.
-
-**Regra de protótipo:** uma reação do Figma documenta o wiring atual, mas não é autoridade funcional. Se estiver registrada em `docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml`, deve ser tratada como defeito conhecido e nunca copiada para implementação/refatoração como comportamento pretendido.
+**Regra de protótipo:** uma reaction do Figma documenta o wiring atual, mas não é autoridade funcional.
 
 ## 2. Leitura mínima antes de atuar
 
-Antes de criar ou alterar uma tela, ler:
+Antes de criar ou alterar tela/fluxo:
 
 1. `docs/07_AI_CONTEXT/CURRENT_PROJECT_STATE.md`
 2. `CLAUDE.md` quando aplicável
@@ -44,92 +41,103 @@ Antes de criar ou alterar uma tela, ler:
 17. `docs/05_FIGMA/FIGMA_GUIDELINES.md`
 18. `docs/05_FIGMA/FIGMA_REGISTRY.yaml`
 19. `docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml`
-20. `docs/05_FIGMA/FIGMA_AUDIT_2026-09-13.md`
-21. `docs/06_GITHUB/`
+20. `docs/06_GITHUB/`
 
-Se algum dado funcional necessário estiver ausente, registrar `migration_required`. O Figma pode resolver somente dúvidas visuais, nunca lacunas de requisito.
+## 3. Regras de telas e estados
 
-## 3. Regra para telas e estados
-
-- Toda tela deve manter o identificador `T##`.
-- Todo elemento transversal deve manter o identificador `E##` quando existir.
-- Criar todos os estados aplicáveis como variações da **mesma estrutura-base**, não como telas independentes.
-- `Loading`, `Error`, `Validation Error`, `Empty`, `Success` e `Forbidden` devem preservar shell, navegação, largura, hierarquia e componentes que não mudam semanticamente.
-- Um estado só pode alterar o necessário para comunicar a mudança de comportamento.
-- `proposal_only` significa que o frame existe visualmente, mas depende de proposta não aprovada e não pode ser propagado para escopo atual.
-- `visual_candidate_only` significa que o frame é evidência visual, mas uma pendência funcional/documental ainda decide seu uso.
-- Se o estado ainda não estiver mapeado em `STATE_MATRIX.yaml`, primeiro inspecionar a tela-base e registrar a decisão.
+- Toda tela mantém identificador `T##`.
+- Todo elemento transversal mantém `E##` quando existir.
+- Estados aplicáveis são variações da mesma estrutura-base: **STATE = PAGE BASE + DELTA MÍNIMO**.
+- Loading, Error, Validation Error, Empty, Success e Forbidden preservam shell, navegação, largura, hierarquia e componentes que não mudam semanticamente.
+- Estados canônicos estão em `STATE_MATRIX.yaml` e, visualmente, no `Fluxo Final`.
+- `proposal_only` e `visual_candidate_only` só podem existir para novas decisões ainda não aprovadas; não usar esses marcadores para P03/P04/P05/P06 ou RF30/US-036, que já foram resolvidos/aprovados em 2026-09-14.
 
 ## 4. Figma
 
 - Arquivo canônico: `tcyj2fkTXei2CJbqaRxqCp`.
-- T01–T17 possuem nodes atuais mapeados em `FIGMA_REGISTRY.yaml` desde a auditoria de 2026-09-13.
-- Usar componentes/instances existentes antes de criar qualquer componente novo.
-- Prioridade: componentes locais aprovados → Obra/shadcn disponível → novo componente local apenas quando não existir equivalente.
-- Preferir Auto Layout para relações estruturais; evitar posicionamento absoluto interno sem necessidade.
-- Reutilizar tokens e estilos existentes; não hardcodar valores quando houver token equivalente.
-- Frames com prefixo `LEGADO —` são somente referência histórica e não devem ser alterados ou usados como base se existir equivalente vigente.
-- A página `prototypeIA` é referência histórica/experimental e não é fonte primária quando existir frame atual na página do responsável.
-- Frames vigentes seguem preferencialmente o padrão `[RESPONSÁVEL] T## — Nome / Estado`.
-- Consultar `PROTOTYPE_INTEGRITY.yaml` antes de confiar em qualquer reação de protótipo.
-- Estados T12 relacionados a RF30/US-036 permanecem `proposal_only` enquanto a proposta não for aprovada.
-- Estados T03 ligados à superfície N02/N03/N04 permanecem `visual_candidate_only` enquanto P04 estiver aberta.
-- Sempre auditar a tela visualmente e estruturalmente após alterações.
+- Protótipo canônico de usuário final: `Fluxo Final` (`5926:1014`).
+- T01–T17 possuem baselines canônicos e states aprovados em `FIGMA_REGISTRY.yaml`.
+- Usar componentes/instances existentes antes de criar componente novo.
+- Prioridade: componente local aprovado → Obra/shadcn → library vinculada → novo componente local apenas sem equivalente.
+- Material Design 3 governa UX/papéis semânticos; a identidade visual continua Rede de Apoio.
+- Targets de interação >= 48×48 px.
+- Frames `LEGADO —` são referência histórica.
+- `prototypeIA` é referência histórica/experimental.
+- Estados de RF30/US-036 estão aprovados e devem ser implementados em modo read-only, sem app separado.
+- Estados T03 de N02/N03/N04 estão aprovados como feedback transitório global conforme P04.
+- Sempre auditar visual e estruturalmente após alterações.
 
 ## 5. GitHub e Pull Request
 
-Para trabalho de design automatizado:
-
-1. Resolver RF/RNF/US/P## através de `ISSUE_REGISTRY.yaml` e das Issues correspondentes.
-2. Verificar Issue #84 / `PROTOTYPE_INTEGRITY.yaml` quando a tela possuir dívida de protótipo.
+1. Resolver RF/RNF/US/P## através do registry e Issues correspondentes.
+2. Consultar `PROTOTYPE_INTEGRITY.yaml`.
 3. Criar branch específica.
-4. Fazer commits pequenos e descritivos.
+4. Fazer commits pequenos/descritivos.
 5. Atualizar registries afetados.
 6. Rodar `python scripts/validate_agent_context.py`.
 7. Abrir Pull Request.
-8. Não fazer merge automático sem validação humana.
+8. Merge apenas após revisão/validação humana explícita.
 
-O PR deve informar: T##, GitHub Issues e RF/RNF/US relacionados, nodes do Figma, estados alterados, componentes reutilizados, decisões novas, pendências `migration_required`, FI-### afetados e resultado da auditoria.
+## 6. Responsáveis atuais
 
-## 6. Responsáveis atuais por tela
-
+Telas:
 - David: T01, T02, T12, T13, T14, T15
 - Rhuan: T03, T04, T09, T11
 - Henrique: T05, T07, T08, T10
 - Kauã: T06, T16, T17
 
-Distribuição das US aprovadas: David 9, Rhuan 9, Henrique 9, Kauã 8.
+User Stories aprovadas:
+- David: 10 — inclui US-036
+- Rhuan: 9
+- Henrique: 9
+- Kauã: 8
 
-A lista acima é contexto operacional. Se divergir de uma Issue/requisito aprovado no próprio GitHub, a fonte aprovada prevalece e os registries devem ser atualizados.
+## 7. Decisões funcionais canônicas relevantes
 
-## 7. Gates que agentes não podem fechar por inferência
+### P03 / #75 — escrita e correção
+- Principal pode criar registros compatíveis com o cuidado.
+- Apoio/Emergência escrevem quando forem Plantonista Atual ou tiverem responsabilidade operacional explicitamente atribuída.
+- Profissional da Saúde escreve registros de saúde do seu domínio enquanto vinculado/autorizado.
+- RN-006 pode ser corrigida por quem tiver permissão efetiva para produzir o mesmo tipo de registro.
 
-- P01/#73 — critérios individuais de aceite ausentes nas fontes.
-- P03/#75 — permissões de escrita ainda não totalmente determinísticas.
-- P04/#76 — superfície formal das notificações N01–N04.
-- P05/#77 — permissão de exportação CSV.
-- P06/#78 — composição de permissões para papéis acumulados.
-- RF30/#34 + US-036/#72 — proposta de acesso read-only da Pessoa Idosa.
+### P04 / #76 — notificações
+- Não existe Central de Notificações dedicada.
+- N01–N04 usam feedback transitório global e destinos existentes: N01→T04; N02→T05; N03→T05/T07; N04→T05, com resumo possível em T03.
 
-A presença de um frame, CTA, estado ou reação no Figma não fecha nenhum desses gates.
+### P05 / #77 — CSV
+- Primeira versão: somente Familiar Principal.
+- Contextual em T07, limitado ao histórico autorizado e auditado.
 
-## 8. Definition of Done para alteração visual por agente
+### P06 / #78 — papéis acumulados
+- União das permissões positivas, preservando restrições explícitas e condições contextuais.
+- Não duplicar notificações por acúmulo.
 
-Uma alteração de design só está pronta para revisão quando:
+### RF30/#34 + US-036/#72 — Pessoa Idosa
+- Aprovados canonicamente em 2026-09-14.
+- Owner US-036: David.
+- Mesma autenticação do app; somente leitura do próprio cuidado autorizado.
+- Sem papéis familiares, Plantonista Atual, escrita, correção, administração ou CSV.
+- Sem aplicativo separado.
 
-- requisitos envolvidos foram identificados no GitHub;
-- Issues canônicas foram resolvidas pelo registry;
+## 8. Gate que agentes não podem fechar por inferência
+
+- **P01/#73** — checklist individual de critérios de aceite não está integralmente enumerado nas fontes.
+
+Não inventar critérios ausentes. Usar somente o que for diretamente suportado pelo requisito de origem, regras de negócio e decisões canônicas.
+
+## 9. Definition of Done para alteração por agente
+
+Uma alteração está pronta para revisão quando:
+
+- requisitos/Issues envolvidos foram identificados;
 - nenhuma dependência funcional externa permanece oculta;
-- lacunas foram marcadas como `migration_required`;
-- tela e estados aplicáveis foram mapeados;
+- lacunas reais foram marcadas como `migration_required`;
+- estados aplicáveis foram mapeados;
 - `PROTOTYPE_INTEGRITY.yaml` foi consultado;
 - componentes existentes foram priorizados;
-- estrutura entre estados foi comparada;
-- layout, overflow, tipografia, espaçamento e tokens foram auditados;
-- nenhuma reação conhecida como defeituosa foi propagada;
-- proposals/candidates não foram promovidos indevidamente;
-- Figma ficou sem regressões evidentes;
-- registries/documentação afetados foram atualizados;
+- layout, overflow, tipografia, espaçamento, tokens e targets foram auditados;
+- reactions funcionais foram verificadas quando aplicável;
+- registries/documentação foram atualizados;
 - validação de contexto passou;
-- branch e PR foram criados;
-- o merge ficou pendente de revisão humana.
+- branch/PR foram criados;
+- merge depende de revisão humana explícita.
