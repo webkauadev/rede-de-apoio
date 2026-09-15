@@ -1,201 +1,474 @@
 schema_version: 4
 last_verified: '2026-09-14'
+
 figma:
   file_key: tcyj2fkTXei2CJbqaRxqCp
   file_role: canonical_design_file
-  authority: visual_only
-  functional_authority: GitHub requirements/issues
+  naming_convention: '[RESPONSÁVEL] T## — Nome / Estado'
   legacy_prefix: LEGADO —
   legacy_policy: ignore_if_fluxo_final_equivalent_exists
+  authority: visual_only
+  functional_authority: GitHub requirements/issues
 
 pages:
-  sitemap: {node_id: '5003:3', name: siteMap, role: information_architecture_reference}
-  prototype_ia: {node_id: '5030:154', name: prototypeIA, role: historical_reference, status: non_canonical}
-  fluxo_final: {node_id: '5926:1014', name: Fluxo Final, role: canonical_end_user_prototype, status: audited}
-  fluxo_final_legacy: {name: LEGADO — Fluxo Final pre-M3, role: historical_reference, status: non_canonical}
-  david: {node_id: '5019:279', name: David, role: owner_page_historical_source}
-  rhuan: {node_id: '5044:164', name: Rhuan, role: owner_page_historical_source}
-  henrique: {node_id: '5048:190', name: Henrique, role: owner_page_historical_source}
-  kaua: {node_id: '5054:211', name: Kauã, role: owner_page_historical_source}
+  sitemap:
+    node_id: '5003:3'
+    name: siteMap
+    role: information_architecture_reference
+    status: verified
+  prototype_ia:
+    node_id: '5030:154'
+    name: prototypeIA
+    role: historical_reference
+    status: non_canonical_for_current_frames
+    rule: Do not use as source when a Fluxo Final equivalent exists.
+  fluxo_final:
+    node_id: '5926:1014'
+    name: Fluxo Final
+    role: canonical_end_user_prototype
+    status: functional_wiring_audited_and_extended_2026_09_14
+  fluxo_final_legacy:
+    name: LEGADO — Fluxo Final pre-M3
+    role: historical_reference
+    status: non_canonical
+  david: {node_id: '5019:279', name: David, role: owner_page_historical_source, status: verified}
+  rhuan: {node_id: '5044:164', name: Rhuan, role: owner_page_historical_source, status: verified}
+  henrique: {node_id: '5048:190', name: Henrique, role: owner_page_historical_source, status: verified}
+  kaua: {node_id: '5054:211', name: Kauã, role: owner_page_historical_source, status: verified}
 
-canonical_sections:
-  main_flow: '5926:1015'
-  approved_states: '5926:32075'
-  overlays: '5932:4923'
-  settings_overlay: '5932:4924'
+design_system_pages:
+  badge: '1953:9003'
+  button: '1953:9005'
+  card: '1953:9007'
+  date_picker_calendar: '1999:6574'
+  dialog: '1953:9013'
+  empty: '1999:15542'
+  input: '1953:9018'
+  select_combobox: '1953:9034'
+  skeleton: '1953:9031'
+  sonner: '2047:14487'
+  spinner: '1953:9033'
+  switch: '1953:9035'
+  textarea: '1953:9038'
+
+foundation:
+  page:
+    node_id: '5639:21448'
+    name: Design Foundation
+    role: target_visual_foundation
+    status: material3_navigation_foundation_approved_merged
+  migration_gate: authenticated_screen_migration_unblocked
+  board: {node_id: '5640:156', name: 'Rede de Apoio / Design Foundation Board'}
+  sections:
+    overview: '5640:157'
+    colors: '5640:161'
+    typography: '5640:163'
+    spacing_radius: '5640:165'
+    mobile_grid: '5640:167'
+    components: '5640:169'
+    feedback: '5640:171'
+    state_foundation: '5640:173'
+    shells: '5640:175'
+    m3_visual_calibration_review: '5674:559'
+    local_subnavigation: '5808:957'
+  local_components:
+    base_card: '5640:21509'
+    app_header_back_current: '5640:21512'
+    action_touch_target_48: '5644:324'
+    field_control_touch_target_48: '5644:330'
+    settings_destination_row: '5662:21869'
+    local_subnav_health: '5810:1005'
+    local_subnav_diary: '5830:358'
+    local_subnav_control_privacy: '5912:1699'
+  component_status:
+    base_card: target_valid
+    action_touch_target_48: target_valid
+    field_control_touch_target_48: target_valid
+    app_header_back_current: canonical_after_pr91
+    app_header_contextual_t06: deprecated_for_new_migrations
+    bottom_navigation_compfooter: deprecated_for_new_migrations
+    local_subnav_health: canonical_reusable
+    local_subnav_diary: canonical_reusable
+    local_subnav_control_privacy: canonical_reusable
+  current_references_deprecated_for_new_migrations:
+    app_header_contextual: {node_id: '5201:13483', name: 'T06 / Header / Pessoa', reason: current header does not express page title plus settings architecture}
+    bottom_navigation: {node_id: '5116:13047', name: compFooter, reason: current five-item navigation mixes primary destinations with Mais}
+  target_components:
+    app_header_root:
+      node_id: '5652:350'
+      name: 'AppHeader / Root'
+      status: canonical_after_pr91
+    app_header_back_material3:
+      node_id: '5640:21512'
+      name: 'AppHeader / Back'
+      status: canonical_after_pr91
+    navigation_bar_primary:
+      node_id: '5652:442'
+      name: 'NavigationBar / Primary'
+      status: canonical_after_pr91
+      destinations: [Home, Agenda, Diário, Saúde]
+      forbidden_destination: Mais
+      active_container_role: {variable_id: 'VariableID:5673:562', name: 'Color/Secondary Container'}
+      active_content_role: {variable_id: 'VariableID:5673:563', name: 'Color/On Secondary Container'}
+    settings_management_sheet:
+      node_id: '5652:443'
+      name: 'Settings / Management Sheet'
+      status: canonical_after_pr91
+      destinations: [T12, T13, T14, T15, T16, T17]
+      surface_role: {variable_id: 'VariableID:5673:565', name: 'Color/Surface Container Low'}
+      destination_rows_default_surface: transparent_continuous_with_sheet
+      destination_rows_persistent_tonal_surface: reserved_for_semantically_selected_state_if_applicable
+    local_subnav_health:
+      node_id: '5810:1005'
+      name: 'Rede de Apoio / Foundation / LocalSubnav / Saúde'
+      status: canonical_reusable
+      behavior: scrollable_tabs
+      variants: {medications: '5810:968', tasks: '5810:980', consultations: '5810:992', appointments: '5810:1004'}
+    local_subnav_diary:
+      node_id: '5830:358'
+      name: 'Rede de Apoio / Foundation / LocalSubnav / Diário'
+      status: canonical_reusable
+      behavior: fixed_tabs
+      variants: {diary: '5830:357', history: '5830:348'}
+    local_subnav_control_privacy:
+      node_id: '5912:1699'
+      name: 'Rede de Apoio / Foundation / LocalSubnav / Controle e Privacidade'
+      status: canonical_reusable
+      behavior: fixed_tabs
+      variants: {preferences: '5912:1677', audit: '5912:1698'}
+  shell_references:
+    app_shell_root: {node_id: '5652:528', status: canonical_reference}
+    app_shell_back: {node_id: '5652:560', status: canonical_reference}
+    app_shell_root_settings_open: {node_id: '5652:592', status: visual_reference_only_no_screen_wiring}
+  material3_navigation_section: '5652:696'
+  material3_calibration:
+    status: human_approved_merged_pr91
+    review_node: '5674:559'
+    baseline: frozen_noncanonical_snapshots
+    calibrated_roles:
+      secondary_container: 'VariableID:5673:562'
+      on_secondary_container: 'VariableID:5673:563'
+      surface_container: 'VariableID:5673:564'
+      surface_container_low: 'VariableID:5673:565'
+      scrim: 'VariableID:5673:566'
+  domain_status_roles:
+    delayed_container: 'VariableID:5835:341'
+    delayed_foreground: 'VariableID:5835:342'
+    corrected_container: 'VariableID:5835:343'
+    corrected_foreground: 'VariableID:5835:344'
+  corrected_examples:
+    button_touch_target_rows: ['5644:341', '5644:342', '5644:343']
+    field_example_rows: ['5644:373', '5644:374', '5644:375']
+    feedback_rows: ['5644:390', '5644:391']
+    audit: '2026-09-14: T05/T07 final migration audit returned zero missing, legacy, unbound semantic colors, structural text below 14, shell violations and LocalSubnav violations.'
+  variable_collections:
+    primitives: 'VariableCollectionId:5639:154'
+    semantic: 'VariableCollectionId:5639:155'
+  ux_direction:
+    reference: Material Design 3
+    role: ux_principles_not_component_library
+    implementation: Obra/shadcn/local components with Rede de Apoio identity
+    touch_target_min: '48 x 48 px'
+  rule: Foundation is visual infrastructure only; it must not be treated as a T## or functional authority.
+
+sitemap:
+  responsibility_labels_verified: true
+  corrected_on: '2026-09-08'
+  current_assignment:
+    T01: David
+    T02: David
+    T03: Rhuan
+    T04: Rhuan
+    T05: Henrique
+    T06: Kauã
+    T07: Henrique
+    T08: Henrique
+    T09: Rhuan
+    T10: Henrique
+    T11: Rhuan
+    T12: David
+    T13: David
+    T14: David
+    T15: David
+    T16: Kauã
+    T17: Kauã
 
 known_current_nodes:
   T01:
     owner: David
     page: Fluxo Final
-    default: '5926:1016'
-    invalid_credentials: '5926:32076'
-    loading: '5926:32132'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {default: '5926:1016', invalid_credentials: '5926:32076', loading: '5926:32132'}
+    source_history:
+      page: david
+      frames: {default: '5189:730', invalid_credentials: '5189:800', loading: '5189:870'}
   T02:
     owner: David
     page: Fluxo Final
-    default: '5926:1070'
-    validation_error: '5926:32187'
-    loading: '5926:32269'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {default: '5926:1070', validation_error: '5926:32187', loading: '5926:32269'}
+    source_history:
+      page: david
+      frames: {default: '5189:938', validation_error: '5189:1043', loading: '5189:1152'}
   T03:
     owner: Rhuan
     page: Fluxo Final
-    default: '5926:1151'
-    loading: '5926:32351'
-    notification_n02_reminder: '5941:5280'
-    notification_n03_registered: '5941:5316'
-    notification_n04_delayed: '5941:5352'
+    mapping_status: canonical_in_fluxo_final
+    canonical:
+      default: '5926:1151'
+      loading: '5926:32351'
+      notification_n02_reminder: '5941:5280'
+      notification_n03_registered: '5941:5316'
+      notification_n04_delayed: '5941:5352'
+    source_history:
+      page: rhuan
+      current_default: '5435:1222'
+      current_loading: '5436:1616'
+      migrated_default: '5684:1407'
+      migrated_loading: '5684:22165'
+      migration_review: '5684:22217'
+      prior_candidates: ['5436:18023', '5436:18343', '5436:18445']
   T04:
     owner: Rhuan
     page: Fluxo Final
-    week: '5926:1261'
-    day: '5926:32402'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {week: '5926:1261', day: '5926:32402'}
+    source_history:
+      page: rhuan
+      frames: {week: '5122:1870', day: '5122:2031'}
   T05:
     owner: Henrique
     page: Fluxo Final
-    default: '5926:1420'
-    empty: '5926:32525'
-    loading: '5926:32574'
-    delay: '5926:32630'
-    corrected: '5926:32752'
-    detail: '5926:32875'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {default: '5926:1420', empty: '5926:32525', loading: '5926:32574', delay: '5926:32630', corrected: '5926:32752', detail: '5926:32875'}
+    source_history:
+      page: henrique
+      current: {default: '5344:1413', empty: '5346:1256', loading: '5346:1403', delay: '5346:1504', corrected: '5346:1592', detail: '5346:1686'}
+      migrated: {default: '5815:1652', empty: '5837:341', loading: '5838:438', delay: '5839:559', corrected: '5841:469', detail: '5841:25983'}
+      migration_audit: zero_defects_2026_09_14
   T06:
     owner: Kauã
     page: Fluxo Final
-    normal: '5926:1542'
-    empty: '5926:32938'
-    loading: '5926:32989'
-    new_record: '5926:33036'
-    new_record_validation_error: '5926:33272'
-    success: '5926:33509'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {normal: '5926:1542', empty: '5926:32938', loading: '5926:32989', new_record: '5926:33036', new_record_validation_error: '5926:33272', success: '5926:33509'}
+    source_history:
+      page: kaua
+      current: {normal: '5201:13491', empty: '5201:13490', loading: '5288:14618', new_record: '5201:13488', new_record_validation_error: '5203:300', success: '5288:14482'}
+      migrated: {normal: '5917:2409', empty: '5922:3893', loading: '5922:30572', new_record: '5922:30922', new_record_validation_error: '5922:31158', success: '5922:30746'}
+      full_state_review: '5924:3392'
+      local_components: {header_person: '5201:13483', care_record_card: '5204:318'}
+      local_subnav: {component_set: '5830:358', active_variant: '5830:357', active_value: Diário}
+      migration_audit: zero_defects_2026_09_14
   T07:
     owner: Henrique
     page: Fluxo Final
-    default: '5926:1712'
-    empty: '5926:33682'
-    loading: '5926:33734'
-    detail: '5926:33783'
-    correction: '5926:33852'
-    correction_complete: '5926:33928'
-    exporting: '5926:34020'
-    export_complete: '5926:34110'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {default: '5926:1712', empty: '5926:33682', loading: '5926:33734', detail: '5926:33783', correction: '5926:33852', correction_complete: '5926:33928', exporting: '5926:34020', export_complete: '5926:34110'}
+    source_history:
+      page: henrique
+      current: {default: '5334:756', empty: '5335:831', loading: '5335:948', detail: '5336:895', correction: '5336:977', correction_complete: '5337:15296', exporting: '5337:15310', export_complete: '5337:15330'}
+      migrated: {default: '5815:1770', empty: '5844:568', loading: '5844:26005', detail: '5844:26067', correction: '5844:26149', correction_complete: '5844:26238', exporting: '5844:26343', export_complete: '5844:26446'}
+      local_subnav: {component_set: '5830:358', active_variant: '5830:348', active_value: Histórico}
+      migration_audit: zero_defects_2026_09_14
   T08:
     owner: Henrique
     page: Fluxo Final
-    list: '5926:1801'
-    empty: '5926:34202'
-    create: '5926:34250'
-    create_error_name: '5926:34279'
-    create_error_concentration: '5926:34309'
-    create_error_form: '5926:34339'
-    created: '5926:34369'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {list: '5926:1801', empty: '5926:34202', create: '5926:34250', create_error_name: '5926:34279', create_error_concentration: '5926:34309', create_error_form: '5926:34339', created: '5926:34369'}
+    source_history:
+      page: henrique
+      current: {list: '5235:924', empty: '5118:838', create: '5123:1291', create_error_name: '5130:4159', create_error_concentration: '5130:4204', create_error_form: '5130:4263', created: '5141:2758'}
+      migrated: {list: '5850:2696', empty: '5865:1014', create: '5866:1100', create_error_name: '5866:26583', create_error_concentration: '5866:26607', create_error_form: '5866:26631', created: '5865:1051'}
+      legacy_nodes: ['5048:644']
+      local_subnav: {component_set: '5810:1005', active_variant: '5810:968', active_value: Medicamentos}
+      migration_audit: zero_defects_2026_09_14
   T09:
     owner: Rhuan
     page: Fluxo Final
-    default: '5926:1886'
-    empty: '5926:34452'
-    loading: '5926:34512'
-    new_task: '5926:34568'
-    validation_error: '5926:34646'
-    task_created: '5926:34727'
-    task_completed: '5926:34858'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {default: '5926:1886', empty: '5926:34452', loading: '5926:34512', new_task: '5926:34568', validation_error: '5926:34646', task_created: '5926:34727', task_completed: '5926:34858'}
+    source_history:
+      page: rhuan
+      frames: {default: '5360:348', empty: '5361:419', loading: '5361:475', new_task: '5361:518', validation_error: '5361:601', task_created: '5361:707', task_completed: '5361:741'}
   T10:
     owner: Henrique
     page: Fluxo Final
-    default: '5926:1993'
-    empty: '5926:34962'
-    loading: '5926:35011'
-    success: '5926:35059'
-    new_record: '5926:35125'
-    validation_error: '5926:35145'
-    attachment_context: '5926:35166'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {default: '5926:1993', empty: '5926:34962', loading: '5926:35011', success: '5926:35059', new_record: '5926:35125', validation_error: '5926:35145', attachment_context: '5926:35166'}
+    source_history:
+      page: henrique
+      current: {default: '5321:411', empty: '5323:489', loading: '5323:558', success: '5323:627', new_record: '5323:696', validation_error: '5323:855', attachment_context: '5323:885'}
+      migrated: {default: '5857:2744', empty: '5866:26673', loading: '5866:26692', success: '5866:26711', new_record: '5868:1239', validation_error: '5868:26715', attachment_context: '5868:26730'}
+      local_subnav: {component_set: '5810:1005', active_variant: '5810:992', active_value: Consultas}
+      migration_audit: zero_defects_2026_09_14
   T11:
     owner: Rhuan
     page: Fluxo Final
-    default: '5926:2060'
-    empty: '5926:35192'
-    loading: '5926:35252'
-    new_appointment: '5926:35306'
-    validation_error: '5926:35398'
-    success: '5926:35494'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {default: '5926:2060', empty: '5926:35192', loading: '5926:35252', new_appointment: '5926:35306', validation_error: '5926:35398', success: '5926:35494'}
+    source_history:
+      page: rhuan
+      frames: {default: '5416:937', empty: '5417:1037', loading: '5417:1099', new_appointment: '5418:1039', validation_error: '5419:1113', success: '5419:1226'}
   T12:
     owner: David
     page: Fluxo Final
-    view: '5926:2126'
-    registration: '5926:35570'
-    edit: '5926:35621'
-    success: '5926:35664'
-    validation_error: '5926:35701'
-    access_not_configured: '5944:1014'
-    access_invitation: '5944:1171'
-    invitation_sent: '5944:1068'
-    access_active: '5944:1122'
+    mapping_status: canonical_in_fluxo_final
+    canonical:
+      view: '5926:2126'
+      registration: '5926:35570'
+      edit: '5926:35621'
+      success: '5926:35664'
+      validation_error: '5926:35701'
+      access_not_configured: '5944:1014'
+      access_invitation: '5944:1171'
+      invitation_sent: '5944:1068'
+      access_active: '5944:1122'
+      access_destination_row: '5944:1227'
+    source_history:
+      page: david
+      current: {registration: '5125:2567', edit: '5125:2649', view: '5125:2719', success: '5125:2799', validation_error: '5125:2888'}
+      migrated: {registration: '5887:3998', edit: '5886:3993', view: '5876:3950', success: '5887:4190', validation_error: '5892:4365'}
+      prior_rf30_explorations: {invitation_sent: '5125:2408', access_active: '5125:2981', access_not_configured: '5125:3069', access_invitation: '5125:3151'}
+      full_state_review: '5895:27129'
+      migration_audit: zero_defects_2026_09_14
   T13:
     owner: David
     page: Fluxo Final
-    default: '5926:2160'
-    loading: '5926:35752'
-    link_member: '5926:35780'
-    validation_error: '5926:35824'
-    link_complete: '5926:35876'
-    manage_roles: '5926:35948'
-    roles_updated: '5926:36009'
-    transfer_principal: '5926:36086'
-    transfer_complete: '5926:36186'
-    unlink_member: '5926:36258'
-    unlinked: '5926:36350'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {default: '5926:2160', loading: '5926:35752', link_member: '5926:35780', validation_error: '5926:35824', link_complete: '5926:35876', manage_roles: '5926:35948', roles_updated: '5926:36009', transfer_principal: '5926:36086', transfer_complete: '5926:36186', unlink_member: '5926:36258', unlinked: '5926:36350'}
+    source_history:
+      page: david
+      current: {default: '5367:1631', loading: '5369:2130', link_member: '5370:1705', validation_error: '5370:16302', link_complete: '5370:16523', manage_roles: '5371:1875', roles_updated: '5371:16499', transfer_principal: '5371:16617', transfer_complete: '5371:16756', unlink_member: '5372:2181', unlinked: '5372:16816'}
+      migrated: {default: '5876:3951', loading: '5887:4227', link_member: '5889:4068', validation_error: '5889:26908', link_complete: '5888:4032', manage_roles: '5889:26976', roles_updated: '5890:4162', transfer_principal: '5890:4234', transfer_complete: '5890:4334', unlink_member: '5891:4287', unlinked: '5891:4379'}
+      full_state_review: '5898:4400'
+      migration_audit: zero_defects_2026_09_14
   T14:
     owner: David
     page: Fluxo Final
-    default: '5926:2229'
-    empty: '5926:36406'
-    loading: '5926:36437'
-    success: '5926:36462'
-    add_contact: '5926:36528'
-    validation_error: '5926:36591'
-    edit_contact: '5926:36657'
-    edit_saved: '5926:36720'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {default: '5926:2229', empty: '5926:36406', loading: '5926:36437', success: '5926:36462', add_contact: '5926:36528', validation_error: '5926:36591', edit_contact: '5926:36657', edit_saved: '5926:36720'}
+    source_history:
+      page: david
+      current: {default: '5387:2703', empty: '5387:17293', loading: '5387:17356', success: '5387:17388', add_contact: '5390:154', validation_error: '5392:276', edit_contact: '5390:253', edit_saved: '5392:418'}
+      migrated: {default: '5899:4780', empty: '5902:4950', loading: '5902:4989', success: '5902:5022', add_contact: '5903:5052', validation_error: '5903:5128', edit_contact: '5903:5207', edit_saved: '5902:5063'}
+      full_state_review: '5905:5195'
+      migration_audit: zero_defects_2026_09_14
   T15:
     owner: David
     page: Fluxo Final
-    default: '5926:2278'
-    loading: '5926:36772'
-    empty: '5926:36792'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {default: '5926:2278', loading: '5926:36772', empty: '5926:36792'}
+    source_history:
+      page: david
+      current: {default: '5404:2664', loading: '5405:2696', empty: '5405:2752'}
+      migrated: {default: '5899:4857', loading: '5903:28050', empty: '5903:28085'}
+      full_state_review: '5905:5364'
+      migration_audit: zero_defects_2026_09_14
   T16:
     owner: Kauã
     page: Fluxo Final
-    default: '5926:2310'
-    saved: '5926:36818'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {default: '5926:2310', saved: '5926:36818'}
+    source_history:
+      page: kaua
+      current: {default: '5211:966', saved: '5212:432'}
+      migrated: {default: '5907:1765', saved: '5914:1991'}
+      full_state_review: '5915:2122'
+      local_subnav: {component_set: '5912:1699', active_variant: '5912:1677', active_value: Preferências}
+      migration_audit: zero_defects_2026_09_14
   T17:
     owner: Kauã
     page: Fluxo Final
-    default: '5926:2379'
-    loading: '5926:36889'
-    empty: '5926:36917'
-    detail: '5926:36946'
-    forbidden: '5926:37017'
+    mapping_status: canonical_in_fluxo_final
+    canonical: {default: '5926:2379', loading: '5926:36889', empty: '5926:36917', detail: '5926:36946', forbidden: '5926:37017'}
+    source_history:
+      page: kaua
+      current: {default: '5445:915', loading: '5445:1033', empty: '5445:18015', detail: '5445:18109', forbidden: '5445:18234'}
+      migrated: {default: '5909:28315', loading: '5914:28551', empty: '5914:28600', detail: '5914:28689', forbidden: '5914:28815'}
+      full_state_review: '5915:2200'
+      local_subnav: {component_set: '5912:1699', active_variant: '5912:1698', active_value: Auditoria}
+      migration_audit: zero_defects_2026_09_14
 
-foundation_components:
-  local_subnav_diario:
-    component_set: '5830:358'
-    active_diario: '5830:357'
-    active_historico: '5830:348'
-  local_subnav_controle_privacidade:
-    component_set: '5912:1699'
-    active_preferencias: '5912:1677'
-    active_auditoria: '5912:1698'
+final_prototype:
+  page: {node_id: '5926:1014', name: Fluxo Final}
+  canonical_section: '5926:1015'
+  approved_states_section: '5926:32075'
+  overlay_section: '5932:4923'
+  settings_overlay: '5932:4924'
+  status: functional_wiring_audited_and_extended_2026_09_14
+  baseline_nodes:
+    T01: '5926:1016'
+    T02: '5926:1070'
+    T03: '5926:1151'
+    T04: '5926:1261'
+    T05: '5926:1420'
+    T06: '5926:1542'
+    T07: '5926:1712'
+    T08: '5926:1801'
+    T09: '5926:1886'
+    T10: '5926:1993'
+    T11: '5926:2060'
+    T12: '5926:2126'
+    T13: '5926:2160'
+    T14: '5926:2229'
+    T15: '5926:2278'
+    T16: '5926:2310'
+    T17: '5926:2379'
+  state_nodes:
+    T01: {invalid_credentials: '5926:32076', loading: '5926:32132'}
+    T02: {validation_error: '5926:32187', loading: '5926:32269'}
+    T03: {loading: '5926:32351', notification_n02_reminder: '5941:5280', notification_n03_registered: '5941:5316', notification_n04_delayed: '5941:5352'}
+    T04: {day: '5926:32402'}
+    T05: {empty: '5926:32525', loading: '5926:32574', delay: '5926:32630', corrected: '5926:32752', detail: '5926:32875'}
+    T06: {empty: '5926:32938', loading: '5926:32989', new_record: '5926:33036', new_record_validation_error: '5926:33272', success: '5926:33509'}
+    T07: {empty: '5926:33682', loading: '5926:33734', detail: '5926:33783', correction: '5926:33852', correction_complete: '5926:33928', exporting: '5926:34020', export_complete: '5926:34110'}
+    T08: {empty: '5926:34202', create: '5926:34250', create_error_name: '5926:34279', create_error_concentration: '5926:34309', create_error_form: '5926:34339', created: '5926:34369'}
+    T09: {empty: '5926:34452', loading: '5926:34512', new_task: '5926:34568', validation_error: '5926:34646', task_created: '5926:34727', task_completed: '5926:34858'}
+    T10: {empty: '5926:34962', loading: '5926:35011', success: '5926:35059', new_record: '5926:35125', validation_error: '5926:35145', attachment_context: '5926:35166'}
+    T11: {empty: '5926:35192', loading: '5926:35252', new_appointment: '5926:35306', validation_error: '5926:35398', success: '5926:35494'}
+    T12: {registration: '5926:35570', edit: '5926:35621', success: '5926:35664', validation_error: '5926:35701', access_not_configured: '5944:1014', access_invitation: '5944:1171', invitation_sent: '5944:1068', access_active: '5944:1122'}
+    T13: {loading: '5926:35752', link_member: '5926:35780', validation_error: '5926:35824', link_complete: '5926:35876', manage_roles: '5926:35948', roles_updated: '5926:36009', transfer_principal: '5926:36086', transfer_complete: '5926:36186', unlink_member: '5926:36258', unlinked: '5926:36350'}
+    T14: {empty: '5926:36406', loading: '5926:36437', success: '5926:36462', add_contact: '5926:36528', validation_error: '5926:36591', edit_contact: '5926:36657', edit_saved: '5926:36720'}
+    T15: {loading: '5926:36772', empty: '5926:36792'}
+    T16: {saved: '5926:36818'}
+    T17: {loading: '5926:36889', empty: '5926:36917', detail: '5926:36946', forbidden: '5926:37017'}
+  audit_2026_09_14:
+    start_node: '5926:1016'
+    reachable_root_count_before_approved_extensions: 66
+    all_T01_T17_reachable_from_T01: true
+    broken_node_destinations: 0
+    harmful_cross_page_navigate_or_overlay: 0
+    extra_flow_starting_points: non_blocking_inherited_metadata
+  approved_extensions:
+    P03: permissions_deterministic
+    P04: notification_surfaces_canonical
+    P05: csv_familiar_principal_only
+    P06: accumulated_roles_union_positive_with_context_constraints
+    RF30_US036: elderly_read_only_approved
+  rule: Use Fluxo Final for end-user prototype validation; owner-page nodes remain source/migration history only.
 
-prototype_audit:
-  start_node: '5926:1016'
-  all_T01_T17_reachable_from_T01: true
-  reachable_root_count_before_rf30_extension: 66
-  broken_node_destinations: 0
-  harmful_cross_page_navigate_or_overlay: 0
-  issue_84: closed_completed
+mapping_summary:
+  mapped_screens: 17
+  partially_mapped_screens: []
+  unmapped_screens: []
+  resolved_ambiguities:
+    T08: Node 5235:924 is the owner-page current list; 5048:644 is explicitly LEGADO; Fluxo Final 5926:1801 is canonical for end-user prototype validation.
 
-approved_extensions_2026_09_14:
-  P03: permissions_deterministic
-  P04: notification_surfaces_canonical
-  P05: csv_familiar_principal_only
-  P06: accumulated_roles_union_positive_with_context_constraints
-  RF30_US036: elderly_read_only_approved
+prototype_integrity:
+  registry: docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml
+  tracking_issue: 84
+  status: final_fluxo_audited_legacy_defects_preserved_as_history
+
+agent_rules:
+  - Resolve canonical screen/state from Fluxo Final first.
+  - Preserve owner-page source/migration references for historical traceability.
+  - All T01-T17 have canonical Figma mappings; mapping does not override functional authority.
+  - Never use a LEGADO frame as primary source when a canonical equivalent exists.
+  - prototypeIA is historical reference, not current visual authority.
+  - Check PROTOTYPE_INTEGRITY.yaml before trusting any historical owner-page reaction.
+  - P03/P04/P05/P06 are resolved decisions; apply their canonical rules instead of treating them as open gates.
+  - RF30/US-036 is approved read-only scope for the Pessoa Idosa.
+  - P01 remains open for story-specific acceptance checklists not present in canonical sources.
+  - Material 3 is UX guidance only; implementation remains local/Obra/shadcn with Rede de Apoio identity.
+  - Do not use T06 Header Pessoa or the five-item compFooter as TARGET for new migrations.
+  - After creating or replacing a canonical state, update this file and STATE_MATRIX.yaml.
