@@ -38,10 +38,11 @@ Antes de criar ou alterar tela/fluxo:
 14. `docs/04_DESIGN_SYSTEM/DESIGN_TOKENS.md`
 15. `docs/04_DESIGN_SYSTEM/COMPONENT_ARCHITECTURE.md`
 16. `docs/04_DESIGN_SYSTEM/COMPONENT_MAP.yaml`
-17. `docs/05_FIGMA/FIGMA_GUIDELINES.md`
-18. `docs/05_FIGMA/FIGMA_REGISTRY.yaml`
-19. `docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml`
-20. `docs/06_GITHUB/`
+17. `docs/04_DESIGN_SYSTEM/ENTITY_ENTRY_BOTTOM_SHEET_PATTERN.md`
+18. `docs/05_FIGMA/FIGMA_GUIDELINES.md`
+19. `docs/05_FIGMA/FIGMA_REGISTRY.yaml`
+20. `docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml`
+21. `docs/06_GITHUB/`
 
 ## 3. Regras de telas e estados
 
@@ -66,6 +67,32 @@ Antes de criar ou alterar tela/fluxo:
 - Estados de RF30/US-036 estão aprovados e devem ser implementados em modo read-only, sem app separado.
 - Estados T03 de N02/N03/N04 estão aprovados como feedback transitório global conforme P04.
 - Sempre auditar visual e estruturalmente após alterações.
+
+### 4.1 Cadastro operacional contextual — regra canônica
+
+- Documento obrigatório: `docs/04_DESIGN_SYSTEM/ENTITY_ENTRY_BOTTOM_SHEET_PATTERN.md`.
+- T06 / Novo Registro é a referência comportamental aprovada.
+- Cadastro de entidade operacional contextual usa **Bottom Sheet ancorado na borda inferior**, nunca drawer/menu lateral.
+- Abertura: **bottom → up**.
+- Fechamento/dismiss: **down → bottom**, por gesto quando suportado e sempre por ação `Cancelar` equivalente.
+- Arquitetura: `PAGE BASE + SCRIM + BOTTOM SHEET`.
+- Não criar página inteira com `AppHeader / Back` apenas para cadastro operacional contextual.
+- Escopo aprovado: T06, T08, T09, T10 e T11; novas ocorrências equivalentes seguem o mesmo padrão.
+- Não aplicar a cadastro de conta, criação/vinculação de pessoas ou configurações sem equivalência semântica.
+
+### 4.2 Cards, Rows e Fields — regra canônica
+
+- `ENTIDADE/CONTEÚDO → CARD`.
+- `DESTINO/AÇÃO DE MENU → ROW`.
+- `ENTRADA DE DADO → FIELD / SELECT`.
+- Não envolver Rows ou Fields em Cards decorativos sem justificativa semântica.
+
+### 4.3 Scroll e stacking — regra canônica
+
+- Conteúdo rolável não pode atravessar `AppHeader`, `LocalSubnav` ou `NavigationBar`.
+- Estrutura: `AppHeader → LocalSubnav (quando houver) → CLIPPED CONTENT VIEWPORT → NavigationBar`.
+- O scroll vertical fica contido no viewport central com clipping explícito.
+- T04 e T06 têm bugs confirmados de invasão visual do conteúdo sobre o cabeçalho e devem ser corrigidos; o mesmo defeito, se encontrado em outra Root, recebe a mesma correção estrutural.
 
 ## 5. GitHub e Pull Request
 
