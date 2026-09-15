@@ -1,14 +1,65 @@
-schema_version: 1
-last_verified: '2026-09-13'
+schema_version: 2
+last_verified: '2026-09-14'
 figma_file_key: tcyj2fkTXei2CJbqaRxqCp
 tracking_issue: 84
 policy:
 - Figma reactions document current prototype wiring only; GitHub requirements/issues define intended behavior.
 - Do not copy a known defective reaction into code or a redesigned frame.
 - Do not fix a functional gate by inference. P03/P04/P05/P06 and RF30/US-036 remain governed by their canonical Issues.
+- The canonical end-user prototype is the page Fluxo Final. Legacy owner-page reactions remain historical evidence only when a Fluxo Final equivalent exists.
+canonical_prototype:
+  page: {node_id: '5926:1014', name: Fluxo Final}
+  legacy_page_name: LEGADO — Fluxo Final pre-M3
+  main_flow_section: '5926:1015'
+  approved_state_section: '5926:32075'
+  overlay_section: '5932:4923'
+  settings_overlay: '5932:4924'
+  baseline_nodes:
+    T01: '5926:1016'
+    T02: '5926:1070'
+    T03: '5926:1151'
+    T04: '5926:1261'
+    T05: '5926:1420'
+    T06: '5926:1542'
+    T07: '5926:1712'
+    T08: '5926:1801'
+    T09: '5926:1886'
+    T10: '5926:1993'
+    T11: '5926:2060'
+    T12: '5926:2126'
+    T13: '5926:2160'
+    T14: '5926:2229'
+    T15: '5926:2278'
+    T16: '5926:2310'
+    T17: '5926:2379'
+  audit_2026_09_14:
+    start_node: '5926:1016'
+    start_screen: T01
+    reachable_root_count: 66
+    all_T01_T17_reachable_from_T01: true
+    broken_node_destinations: 0
+    harmful_cross_page_navigate_or_overlay: 0
+    scope_exclusions:
+    - RF30/US-036 proposal_only elderly-access visuals
+    - P04 blocked notification-placement candidates
+    notes:
+    - CHANGE_TO interactions belonging to interactive component variants are not classified as cross-page user-flow defects.
+    - Alternate empty/forbidden states remain visual evidence when no approved runtime condition exists to trigger them.
+    - Figma exposes inherited flow starting points as read-only through the current Plugin API; extra markers are non-blocking because T01 is a valid start and reaches every canonical T##.
+  flow_starting_points_observed:
+  - {node_id: '5926:1886', name: Flow 1}
+  - {node_id: '5926:34452', name: Flow 1}
+  - {node_id: '5926:34512', name: Flow 1}
+  - {node_id: '5926:34568', name: Flow 1}
+  - {node_id: '5926:34646', name: Flow 1}
+  - {node_id: '5926:34727', name: Flow 1}
+  - {node_id: '5926:34858', name: Flow 1}
+  - {node_id: '5926:1542', name: Flow 2}
+  - {node_id: '5932:4924', name: Flow 3}
+  - {node_id: '5926:1016', name: Flow 4}
 defects:
   FI-001:
-    status: open
+    status: superseded_in_fluxo_final
     severity: high
     screen: T08
     kind: legacy_navigation
@@ -17,9 +68,9 @@ defects:
     current_destination: '5048:644'
     current_destination_status: legacy
     current_equivalent: '5235:924'
-    expected_resolution: Remove or redirect the legacy navigation according to the current T08 flow.
+    resolution: Fluxo Final uses the migrated T08 baseline/states and contains no navigation to the legacy destination.
   FI-002:
-    status: open
+    status: superseded_in_fluxo_final
     severity: high
     screen: T10
     kind: wrong_cross_feature_navigation
@@ -27,9 +78,9 @@ defects:
     source_state: '5323:489'
     current_destination: '5123:1291'
     expected_candidate: '5323:696'
-    expected_resolution: Keep Novo registro in the T10 register-consultation flow; validate against RF19/US-022 before mutation.
+    resolution: Fluxo Final keeps T10 registration inside the approved migrated T10 state set.
   FI-003:
-    status: open
+    status: superseded_in_fluxo_final
     severity: high
     screen: T10
     kind: wrong_cross_feature_navigation
@@ -37,9 +88,9 @@ defects:
     source_state: '5323:558'
     current_destination: '5123:1291'
     expected_candidate: '5323:696'
-    expected_resolution: Review loading-state CTA behavior without redirecting to T08.
+    resolution: Fluxo Final does not reuse the defective owner-page loading CTA reaction.
   FI-004:
-    status: open
+    status: superseded_in_fluxo_final
     severity: high
     screen: T10
     kind: wrong_cross_feature_navigation
@@ -47,18 +98,18 @@ defects:
     source_state: '5323:627'
     current_destination: '5123:1291'
     expected_candidate: '5323:696'
-    expected_resolution: Review success-state Novo registro action within T10.
+    resolution: Fluxo Final keeps T10 actions inside T10 and its approved states.
   FI-005:
-    status: open
+    status: superseded_in_fluxo_final
     severity: high
     screen: T16
     kind: wrong_cross_feature_navigation
     source_node: '5510:19065'
     source_state: '5212:432'
     current_destination: '5201:13488'
-    expected_resolution: Remove accidental T16→T06 jump; resolve desired post-save behavior within RF27/US-031.
+    resolution: Fluxo Final Save preferences navigates to the migrated T16 saved state and does not jump to T06.
   FI-006:
-    status: open
+    status: superseded_by_navigation_architecture
     severity: medium
     screen: T12
     kind: missing_navigation
@@ -66,9 +117,9 @@ defects:
     source_state: '5125:2719'
     current_reaction: hover_only
     destination_candidate: '5211:966'
-    expected_resolution: If the current navigation architecture authorizes the entry, wire T12 Mais→T16; do not infer new access rules.
+    resolution: Fluxo Final uses the canonical Settings Management Sheet for T12-T17 destinations; the old Mais affordance is not part of the final architecture.
   FI-007:
-    status: open
+    status: superseded_by_navigation_architecture
     severity: medium
     screen: T12
     kind: missing_navigation
@@ -76,7 +127,7 @@ defects:
     source_state: '5125:2719'
     current_reaction: hover_only
     destination_candidate: '5445:915'
-    expected_resolution: If the current navigation architecture authorizes the entry, wire T12 Mais→T17 respecting access rules.
+    resolution: Fluxo Final uses the canonical Settings Management Sheet for T12-T17 destinations and preserves audit access rules.
   FI-008:
     status: open
     severity: medium
@@ -88,6 +139,9 @@ defects:
     - Ação — Desvincular reused where the semantic action differs
     expected_resolution: Rename layers/hotspots to E22-E25 or action-specific semantic names without changing product scope.
 functional_gates_not_defects:
+  P03:
+    affects: [T06, T07]
+    rule: Correction affordances in the prototype do not grant write permission; permission remains governed by the canonical requirement/issue.
   P04:
     issue: 76
     affects: [T03, T16]
@@ -96,6 +150,9 @@ functional_gates_not_defects:
     issue: 77
     affects: [T07]
     rule: CSV controls in Figma do not grant export permission.
+  P06:
+    affects: [T13]
+    rule: Role-management visuals do not settle authorization policy.
   RF30_US036:
     issues: [34, 72]
     affects: [T12]

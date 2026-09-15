@@ -1,4 +1,4 @@
-schema_version: 2
+schema_version: 3
 last_verified: '2026-09-14'
 figma:
   file_key: tcyj2fkTXei2CJbqaRxqCp
@@ -20,6 +20,15 @@ pages:
     role: historical_reference
     status: non_canonical_for_current_frames
     rule: Do not use as source when an owner-page current frame exists.
+  fluxo_final:
+    node_id: '5926:1014'
+    name: Fluxo Final
+    role: canonical_end_user_prototype
+    status: functional_wiring_audited_2026_09_14
+  fluxo_final_legacy:
+    name: LEGADO — Fluxo Final pre-M3
+    role: historical_reference
+    status: non_canonical
   david: {node_id: '5019:279', name: David, role: current_owner_page, status: verified}
   rhuan: {node_id: '5044:164', name: Rhuan, role: current_owner_page, status: verified}
   henrique: {node_id: '5048:190', name: Henrique, role: current_owner_page, status: verified}
@@ -459,6 +468,42 @@ known_current_nodes:
       active_variant: '5912:1698'
       active_value: Auditoria
     migration_audit: zero_defects_2026_09_14
+final_prototype:
+  page: {node_id: '5926:1014', name: Fluxo Final}
+  canonical_section: '5926:1015'
+  approved_states_section: '5926:32075'
+  overlay_section: '5932:4923'
+  settings_overlay: '5932:4924'
+  status: functional_wiring_audited_2026_09_14
+  baseline_nodes:
+    T01: '5926:1016'
+    T02: '5926:1070'
+    T03: '5926:1151'
+    T04: '5926:1261'
+    T05: '5926:1420'
+    T06: '5926:1542'
+    T07: '5926:1712'
+    T08: '5926:1801'
+    T09: '5926:1886'
+    T10: '5926:1993'
+    T11: '5926:2060'
+    T12: '5926:2126'
+    T13: '5926:2160'
+    T14: '5926:2229'
+    T15: '5926:2278'
+    T16: '5926:2310'
+    T17: '5926:2379'
+  audit:
+    start_node: '5926:1016'
+    reachable_root_count: 66
+    all_T01_T17_reachable_from_T01: true
+    broken_node_destinations: 0
+    harmful_cross_page_navigate_or_overlay: 0
+    extra_flow_starting_points: non_blocking_inherited_metadata
+  exclusions:
+    proposal_only: [RF30/US-036]
+    blocked_visual_candidates: [P04]
+  rule: Use these nodes for end-user prototype validation; owner-page nodes above remain source/migration history and design evidence.
 mapping_summary:
   mapped_screens: 17
   partially_mapped_screens: []
@@ -468,14 +513,15 @@ mapping_summary:
 prototype_integrity:
   registry: docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml
   tracking_issue: 84
-  status: known_defects_open
+  status: final_fluxo_audited_legacy_defects_preserved_as_history
 agent_rules:
 - Resolve current/migrated frame from this registry before editing.
+- Use final_prototype.baseline_nodes for validation of the canonical end-user prototype.
 - All T01-T17 have Figma frame mappings; mapping does not mean functional decisions are complete.
 - For a migration branch marked pending_human_review, preserve both source/current and migrated nodes until the PR is explicitly approved/merged.
 - Never use a LEGADO frame as primary source when a current owner frame exists.
 - prototypeIA is historical reference, not current visual authority when owner-page frames exist.
-- Check PROTOTYPE_INTEGRITY.yaml before trusting any Figma reaction as intended navigation.
+- Check PROTOTYPE_INTEGRITY.yaml before trusting any owner-page Figma reaction as intended navigation.
 - Figma cannot resolve P03/P04/P05/P06 or approve RF30/US-036.
 - Material 3 is UX guidance only; implementation remains local/Obra/shadcn with Rede de Apoio identity.
 - Do not use T06 Header Pessoa or the current five-item compFooter as TARGET for new migrations.

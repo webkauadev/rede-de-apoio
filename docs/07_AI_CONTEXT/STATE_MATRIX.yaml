@@ -1,12 +1,13 @@
-schema_version: 3
+schema_version: 4
 last_updated: '2026-09-14'
 state_rule: STATE = PAGE BASE + DELTA MÍNIMO
 authority_rules:
 - State existence in Figma documents visual evidence, not automatic product approval.
 - proposal_only states cannot be used to expand approved scope.
 - visual_candidate_only states cannot resolve an open functional/documental gate.
-- prototype_integrity references identify current reactions/names that must not be treated as intended behavior.
-- migrated_figma_node on an open migration PR is a visual migration candidate until explicit human approval and merge.
+- prototype_integrity references identify owner-page reactions/names that must not be treated as intended behavior.
+- migrated_figma_node on an open migration PR is visual migration evidence until explicit human approval and merge.
+- final_prototype_node references are canonical copies for end-user prototype validation and do not change requirement authority.
 screens:
   T01:
     owner: David
@@ -235,3 +236,53 @@ screens:
       forbidden: {kind: forbidden, figma_node: '5445:18234', migrated_figma_node: '5914:28815', migration_status: migrated_pending_human_review, element: E27}
     local_subnav: {component_set: '5912:1699', active: Auditoria, variant_node: '5912:1698'}
     audit: zero_defects_2026_09_14
+final_prototype:
+  page: {node_id: '5926:1014', name: Fluxo Final}
+  status: functional_wiring_audited_2026_09_14
+  baseline_nodes:
+    T01: '5926:1016'
+    T02: '5926:1070'
+    T03: '5926:1151'
+    T04: '5926:1261'
+    T05: '5926:1420'
+    T06: '5926:1542'
+    T07: '5926:1712'
+    T08: '5926:1801'
+    T09: '5926:1886'
+    T10: '5926:1993'
+    T11: '5926:2060'
+    T12: '5926:2126'
+    T13: '5926:2160'
+    T14: '5926:2229'
+    T15: '5926:2278'
+    T16: '5926:2310'
+    T17: '5926:2379'
+  state_nodes:
+    T01: {invalid_credentials: '5926:32076', loading: '5926:32132'}
+    T02: {validation_error: '5926:32187', loading: '5926:32269'}
+    T03: {loading: '5926:32351'}
+    T04: {day: '5926:32402'}
+    T05: {empty: '5926:32525', loading: '5926:32574', delay: '5926:32630', corrected: '5926:32752', detail: '5926:32875'}
+    T06: {empty: '5926:32938', loading: '5926:32989', new_record: '5926:33036', new_record_validation_error: '5926:33272', success: '5926:33509'}
+    T07: {empty: '5926:33682', loading: '5926:33734', detail: '5926:33783', correction: '5926:33852', correction_complete: '5926:33928', exporting: '5926:34020', export_complete: '5926:34110'}
+    T08: {empty: '5926:34202', create: '5926:34250', create_error_name: '5926:34279', create_error_concentration: '5926:34309', create_error_form: '5926:34339', created: '5926:34369'}
+    T09: {empty: '5926:34452', loading: '5926:34512', new_task: '5926:34568', validation_error: '5926:34646', task_created: '5926:34727', task_completed: '5926:34858'}
+    T10: {empty: '5926:34962', loading: '5926:35011', success: '5926:35059', new_record: '5926:35125', validation_error: '5926:35145', attachment_context: '5926:35166'}
+    T11: {empty: '5926:35192', loading: '5926:35252', new_appointment: '5926:35306', validation_error: '5926:35398', success: '5926:35494'}
+    T12: {registration: '5926:35570', edit: '5926:35621', success: '5926:35664', validation_error: '5926:35701'}
+    T13: {loading: '5926:35752', link_member: '5926:35780', validation_error: '5926:35824', link_complete: '5926:35876', manage_roles: '5926:35948', roles_updated: '5926:36009', transfer_principal: '5926:36086', transfer_complete: '5926:36186', unlink_member: '5926:36258', unlinked: '5926:36350'}
+    T14: {empty: '5926:36406', loading: '5926:36437', success: '5926:36462', add_contact: '5926:36528', validation_error: '5926:36591', edit_contact: '5926:36657', edit_saved: '5926:36720'}
+    T15: {loading: '5926:36772', empty: '5926:36792'}
+    T16: {saved: '5926:36818'}
+    T17: {loading: '5926:36889', empty: '5926:36917', detail: '5926:36946', forbidden: '5926:37017'}
+  included_state_policy:
+  - Only migrated/approved state frames needed for prototype evidence were copied to Fluxo Final.
+  - RF30/US-036 proposal_only states are excluded.
+  - P04 blocked notification visual candidates are excluded.
+  - Empty/forbidden states without an approved runtime trigger remain visual evidence and are not given invented conditions.
+  audit:
+    start_node: '5926:1016'
+    reachable_root_count: 66
+    all_T01_T17_reachable_from_T01: true
+    broken_node_destinations: 0
+    harmful_cross_page_navigate_or_overlay: 0
