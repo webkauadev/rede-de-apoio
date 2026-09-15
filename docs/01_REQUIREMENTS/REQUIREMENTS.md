@@ -4,7 +4,8 @@ Este diretório no GitHub é a fonte operacional dos requisitos do projeto. Cons
 
 - `REQUIREMENTS_INDEX.yaml` — inventário estruturado de RF/RNF;
 - `USER_STORIES_INDEX.yaml` — inventário estruturado das US e estado de migração;
-- `PENDENCIAS_DOCUMENTAIS.md` — lacunas que ainda impedem afirmar cobertura completa.
+- `ACCEPTANCE_CRITERIA.yaml` — registro canônico dos critérios de aceite aprovados de US-001–US-036;
+- `PENDENCIAS_DOCUMENTAIS.md` — histórico e estado das pendências documentais.
 
 ## Regra de rastreabilidade
 
@@ -46,7 +47,7 @@ RF28 Exportação CSV
 RF29 Auditoria
 RF30 Acesso de consulta à Pessoa Idosa
 
-> Os títulos acima estão documentados no GitHub, mas não equivalem automaticamente ao texto detalhado/critério de aceite de cada requisito. Quando a implementação depender de detalhe ausente, tratar como `migration_required`.
+> Os títulos acima estão documentados no GitHub, mas não equivalem automaticamente ao texto detalhado de cada requisito. Quando a implementação depender de detalhe ausente e não coberto pelas regras/critério aprovado, tratar como `migration_required`.
 
 ## RF30 — acesso read-only da Pessoa Idosa
 
@@ -68,9 +69,11 @@ Diretrizes principais:
 
 US-001 a US-036 são os identificadores oficiais atualmente aprovados.
 
-A distribuição por responsável, relações confirmadas e rastreabilidade estão em `USER_STORIES_INDEX.yaml`.
+A distribuição por responsável, relações confirmadas, rastreabilidade e o status dos critérios de aceite estão em `USER_STORIES_INDEX.yaml`.
 
-O texto Como/Quero/Para, origem, owner e rastreabilidade conhecidos estão consolidados no índice. A ausência de checklist individual de critérios de aceite para todas as US continua acompanhada por P01/#73 e não deve ser preenchida por inferência.
+Os critérios individuais de aceite de US-001–US-036 foram aprovados explicitamente em 2026-09-15 no fechamento de P01/#73 e promovidos às Issues correspondentes. O registro consolidado canônico é `ACCEPTANCE_CRITERIA.yaml`; o antigo `ACCEPTANCE_CRITERIA_DRAFT.yaml` permanece apenas como snapshot histórico do conjunto submetido à aprovação.
+
+Novos critérios ou alterações futuras não devem ser inferidos automaticamente: exigem nova decisão explícita quando não estiverem diretamente suportados pelas fontes canônicas existentes.
 
 ### US-036 — Consultar o próprio cuidado
 

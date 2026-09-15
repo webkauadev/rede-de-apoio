@@ -1,0 +1,325 @@
+schema_version: 1
+last_updated: '2026-09-14'
+status: pending_human_review
+tracking_issue: 73
+canonical_system: GitHub
+
+policy:
+  - "Este arquivo é um DRAFT deliberado para resolver P01; não é requisito aprovado até revisão humana explícita."
+  - "Cada critério abaixo foi derivado somente do enunciado canônico da US, do RF/RNF de origem e de regras de negócio/notificação já aprovadas."
+  - "Nenhum critério pode introduzir validação de campo, formato, fluxo, destinatário, papel ou permissão que não esteja suportado pelas fontes citadas."
+  - "Após aprovação humana, os critérios devem ser copiados para as Issues US-001-US-036 e este draft pode ser promovido a registro canônico."
+
+sources:
+  stories: docs/01_REQUIREMENTS/USER_STORIES_INDEX.yaml
+  requirements: docs/01_REQUIREMENTS/REQUIREMENTS.md
+  business_rules: docs/02_BUSINESS_RULES/BUSINESS_RULES.md
+  permissions: docs/02_BUSINESS_RULES/PERMISSIONS_MATRIX.md
+  notifications: docs/02_BUSINESS_RULES/NOTIFICATIONS_RULES.md
+  elderly_read_only: docs/02_BUSINESS_RULES/ELDERLY_READ_ONLY_ACCESS.md
+
+stories:
+  US-001:
+    issue: 37
+    source: [RF01, RNF01]
+    criteria:
+      - "Um usuário autorizado consegue cadastrar uma conta de acesso por T02."
+      - "A conta criada passa a utilizar a autenticação comum do aplicativo e não recebe acesso além das permissões atribuídas ao usuário."
+      - "O cadastro da conta não pode, por si só, conceder papel ou permissão não autorizada."
+
+  US-002:
+    issue: 38
+    source: [RF02, RNF01]
+    criteria:
+      - "Um usuário cadastrado consegue autenticar-se por T01."
+      - "Após autenticação válida, o usuário acessa somente os recursos permitidos para sua categoria, papéis e contexto."
+      - "Uma autenticação inválida ou sem autorização não concede acesso aos recursos protegidos."
+
+  US-003:
+    issue: 39
+    source: [RF03, RN-001]
+    criteria:
+      - "O Familiar Principal consegue cadastrar a Pessoa Idosa em T12."
+      - "O perfil cadastrado passa a representar o contexto de cuidado ao qual a rede será vinculada."
+      - "A operação respeita a regra de existir exatamente um Familiar Principal ativo por rede."
+
+  US-004:
+    issue: 40
+    source: [RF03, RNF01]
+    criteria:
+      - "O Familiar Principal consegue atualizar os dados do perfil da Pessoa Idosa em T12."
+      - "Após a atualização, as consultas ao perfil refletem os dados atuais autorizados."
+      - "A atualização permanece sujeita ao controle de acesso do perfil correspondente."
+
+  US-005:
+    issue: 41
+    source: [RF04, RN-001, RN-002, RN-004]
+    criteria:
+      - "O Familiar Principal consegue vincular um membro à rede em T13."
+      - "O membro vinculado passa a integrar a rede com as permissões decorrentes de sua categoria/papéis e das restrições aplicáveis."
+      - "A vinculação não pode violar a existência de exatamente um Familiar Principal ativo nem misturar Profissional da Saúde com papéis familiares."
+
+  US-006:
+    issue: 42
+    source: [RF04, RNF01, RN-008]
+    criteria:
+      - "O Familiar Principal consegue desvincular um membro da rede em T13."
+      - "Após o desvínculo, o membro deixa de possuir acesso futuro derivado daquele vínculo."
+      - "O desvínculo não apaga o histórico anterior de operações/registros associados ao membro."
+
+  US-007:
+    issue: 43
+    source: [RF05, RN-001, RN-002]
+    criteria:
+      - "O Familiar Principal consegue gerenciar os papéis familiares acumuláveis em T13."
+      - "A permissão efetiva de papéis acumulados corresponde à união das permissões positivas, preservadas as restrições explícitas e condições contextuais."
+      - "Deve permanecer exatamente um Familiar Principal ativo; transferência de Principal é atômica."
+      - "Papéis acumulados não geram notificações duplicadas para a mesma pessoa pelo mesmo evento."
+
+  US-008:
+    issue: 44
+    source: [RF06]
+    criteria:
+      - "Um usuário autorizado consegue criar um plantão em T04."
+      - "Um usuário autorizado consegue alterar um plantão existente em T04."
+      - "Um usuário autorizado consegue cancelar um plantão em T04."
+      - "A escala consultada passa a refletir a operação realizada."
+
+  US-009:
+    issue: 45
+    source: [RF07]
+    criteria:
+      - "Um usuário autorizado consegue consultar a escala em visualização de calendário."
+      - "A consulta permite identificar os responsáveis pelos períodos apresentados."
+      - "A visualização respeita somente os dados de cuidado aos quais o usuário possui acesso."
+
+  US-010:
+    issue: 46
+    source: [RF07]
+    criteria:
+      - "Um usuário autorizado consegue abrir o detalhamento de um dia em T05."
+      - "O dia consultado apresenta os plantões, cuidados planejados e execuções correspondentes que estejam autorizados ao usuário."
+      - "A consulta não concede permissão de escrita além daquela definida pelas regras de negócio."
+
+  US-011:
+    issue: 47
+    source: [RF08, RN-003, RN-004]
+    criteria:
+      - "Um usuário autorizado consegue atribuir um responsável a um plantão."
+      - "A atribuição fica associada ao intervalo do plantão correspondente."
+      - "Quando o intervalo estiver ativo, o responsável elegível ocupa temporariamente a condição de Plantonista Atual; a condição termina com o intervalo."
+      - "Profissional da Saúde permanece categoria independente de papéis familiares mesmo quando ocupa a condição de Plantonista Atual."
+
+  US-012:
+    issue: 48
+    source: [RF09]
+    criteria:
+      - "Um usuário vinculado consegue solicitar troca de uma responsabilidade de plantão."
+      - "A solicitação permanece vinculada ao plantão/responsabilidade que se pretende reorganizar."
+      - "A solicitação pode ser posteriormente respondida pelo fluxo da US-013."
+
+  US-013:
+    issue: 49
+    source: [RF09]
+    criteria:
+      - "Um usuário envolvido consegue aceitar uma solicitação de troca."
+      - "Um usuário envolvido consegue recusar uma solicitação de troca."
+      - "Quando aceita, a organização do plantão passa a refletir a troca; quando recusada, a troca solicitada não é aplicada."
+
+  US-014:
+    issue: 50
+    source: [RF10, N01]
+    criteria:
+      - "Atribuição, alteração, cancelamento ou troca de plantão dispara N01."
+      - "O usuário afetado e o Familiar Principal recebem N01 obrigatoriamente."
+      - "A notificação usa feedback transitório global no AppShell, sem criar Central de Notificações."
+      - "Quando houver ação de navegação, ela abre T04 no contexto correspondente."
+
+  US-015:
+    issue: 51
+    source: [RF11, RF13, RN-005, RN-010]
+    criteria:
+      - "Um usuário com permissão efetiva de escrita consegue registrar uma ocorrência em T06."
+      - "O registro preserva autoria e data/hora."
+      - "Após criado, o registro não é apagado, sobrescrito nem alterado diretamente para correção."
+      - "Correções posteriores, quando permitidas, seguem RN-006/US-034."
+
+  US-016:
+    issue: 52
+    source: [RF12, RN-005, RN-006]
+    criteria:
+      - "Um usuário autorizado consegue consultar o histórico de cuidados em T07."
+      - "A consulta apresenta registros autorizados ao longo do tempo sem alterar o conteúdo histórico."
+      - "Quando houver correção versionada, o original permanece preservado e a correção vinculada pode ser identificada no histórico."
+
+  US-017:
+    issue: 53
+    source: [RF14, RN-010]
+    criteria:
+      - "Um usuário com permissão efetiva consegue cadastrar um medicamento em T08."
+      - "O medicamento cadastrado passa a integrar a informação de medicação do cuidado correspondente."
+      - "A operação permanece sujeita ao escopo de escrita autorizado para o usuário."
+
+  US-018:
+    issue: 54
+    source: [RF15, RN-010]
+    criteria:
+      - "Um usuário com permissão efetiva consegue registrar posologia de um medicamento."
+      - "Um usuário com permissão efetiva consegue registrar os horários associados ao medicamento."
+      - "Posologia e horários permanecem associados ao contexto do medicamento correspondente."
+
+  US-019:
+    issue: 55
+    source: [RF16, RF13, RN-005, RN-010]
+    criteria:
+      - "Um usuário com permissão efetiva consegue registrar uma administração de medicamento."
+      - "O registro preserva autoria e data/hora."
+      - "A administração registrada passa a compor o histórico autorizado do cuidado."
+      - "O registro criado permanece imutável, admitindo somente correção versionada quando aplicável."
+
+  US-020:
+    issue: 56
+    source: [RF17, N02, RN-003]
+    criteria:
+      - "N02 dispara no horário previsto do cuidado programado."
+      - "Somente o usuário que estiver ocupando a condição de Plantonista Atual naquele momento recebe N02."
+      - "N02 é obrigatória e não pode ser desativada."
+      - "Quando houver ação de navegação, ela abre T05 no cuidado programado correspondente."
+
+  US-021:
+    issue: 57
+    source: [RF18, RF13, RN-005]
+    criteria:
+      - "Um usuário com permissão efetiva consegue registrar sintoma/intercorrência."
+      - "O registro preserva autoria e data/hora e passa a integrar o histórico autorizado do cuidado."
+      - "Sintomas/intercorrências espontâneas não são classificados como atrasados apenas por não possuírem registro em horário programado."
+      - "O registro permanece imutável após criação, sujeito a correção versionada quando aplicável."
+
+  US-022:
+    issue: 58
+    source: [RF19, RF13, RN-005]
+    criteria:
+      - "Um usuário com permissão efetiva consegue registrar consulta ou recomendação em T10."
+      - "O registro preserva autoria e data/hora."
+      - "A consulta/recomendação registrada permanece disponível no histórico/contexto autorizado sem sobrescrita direta."
+
+  US-023:
+    issue: 59
+    source: [RF20]
+    criteria:
+      - "Um usuário autorizado consegue registrar um compromisso."
+      - "O compromisso registrado passa a ficar visível na rotina autorizada em T11 e nos contextos de dia aplicáveis."
+      - "A operação não concede ao usuário permissões além das previstas para seu contexto."
+
+  US-024:
+    issue: 60
+    source: [RF21]
+    criteria:
+      - "Um usuário autorizado consegue criar uma tarefa em T09."
+      - "Um usuário autorizado consegue atribuir a tarefa a um responsável elegível."
+      - "A tarefa criada passa a ficar visível na organização de cuidados com o responsável atribuído."
+      - "A conclusão da tarefa é tratada separadamente pela US-025."
+
+  US-025:
+    issue: 61
+    source: [RF21]
+    criteria:
+      - "O usuário responsável consegue registrar uma tarefa como concluída."
+      - "Após a conclusão, o estado da tarefa reflete que ela foi concluída."
+      - "A conclusão passa a compor o histórico/contexto de cuidado correspondente."
+
+  US-026:
+    issue: 62
+    source: [RF22, RNF01]
+    criteria:
+      - "Um usuário autorizado consegue consultar contatos importantes em T14."
+      - "Um usuário com permissão de manutenção consegue incluir/alterar contatos importantes conforme seu contexto autorizado."
+      - "A consulta e manutenção permanecem restritas aos contatos da Pessoa Idosa/rede à qual o usuário possui acesso."
+
+  US-027:
+    issue: 63
+    source: [RF23, RNF01]
+    criteria:
+      - "Um usuário com permissão efetiva consegue anexar documento ou imagem a um registro compatível."
+      - "O anexo permanece associado ao registro ao qual foi incluído."
+      - "O acesso ao anexo segue as mesmas restrições de autorização do registro/contexto correspondente."
+
+  US-028:
+    issue: 64
+    source: [RF24, RNF01]
+    criteria:
+      - "Um usuário autorizado consegue consultar as informações de emergência em T15."
+      - "A consulta apresenta somente as informações de emergência autorizadas para a Pessoa Idosa correspondente."
+      - "A consulta não amplia permissões de alteração ou administração."
+
+  US-029:
+    issue: 65
+    source: [RF25, N03]
+    criteria:
+      - "Quando um cuidado é registrado como realizado, N03 é disparada."
+      - "O Familiar Principal recebe N03 obrigatoriamente; demais usuários elegíveis recebem conforme configuração permitida."
+      - "N03 usa feedback transitório global no AppShell, sem criar Central de Notificações."
+      - "Quando houver ação de navegação, ela abre T05 ou T07 conforme o registro apresentado."
+
+  US-030:
+    issue: 66
+    source: [RF26, N04]
+    criteria:
+      - "N04 dispara quando uma ação programada com horário permanece sem registro após 15 minutos."
+      - "O Familiar Principal recebe N04 obrigatoriamente; demais usuários elegíveis recebem conforme configuração permitida."
+      - "Ausência de registro não é tratada como prova de que o cuidado não ocorreu e sintomas/intercorrências espontâneas não são classificados como atraso."
+      - "N04 usa feedback transitório global e, quando acionável, abre T05; o atraso pode também aparecer como resumo operacional em T03."
+
+  US-031:
+    issue: 67
+    source: [RF27, N01, N02, N03, N04]
+    criteria:
+      - "Um usuário autorizado consegue configurar em T16 apenas as notificações definidas como opcionais para seu contexto."
+      - "A configuração não permite desativar entregas obrigatórias de N01-N04 aplicáveis ao usuário."
+      - "Alterar uma preferência opcional não cria nova área de notificações nem histórico próprio de notificações."
+
+  US-032:
+    issue: 68
+    source: [RF28, RN-008, RN-011]
+    criteria:
+      - "Somente o Familiar Principal consegue iniciar exportação CSV na primeira versão."
+      - "A exportação ocorre em T07 e contém somente o histórico autorizado da Pessoa Idosa selecionada."
+      - "A operação de exportação é registrada na trilha de auditoria."
+      - "Apoio, Emergência, Profissional da Saúde e Pessoa Idosa não recebem permissão de exportação CSV na primeira versão."
+
+  US-033:
+    issue: 69
+    source: [RF29, RNF03, RN-008]
+    criteria:
+      - "Um Familiar Principal autorizado consegue consultar o log de auditoria em T17."
+      - "A consulta respeita o escopo de dados autorizado ao usuário."
+      - "Eventos auditáveis registram, quando aplicável, usuário, categoria/papéis, Pessoa Idosa, data/hora, operação, recurso e resultado."
+      - "Exportações CSV e tentativas de acesso negadas podem ser verificadas na trilha quando registradas conforme as regras canônicas."
+
+  US-034:
+    issue: 70
+    source: [RNF02, RN-005, RN-006]
+    criteria:
+      - "Somente usuário com permissão efetiva atual para produzir o mesmo tipo de registro consegue criar uma correção."
+      - "A correção cria novo registro vinculado ao original e não apaga, sobrescreve ou altera diretamente o original."
+      - "A correção preserva autoria, data/hora e histórico das versões."
+      - "Permissão apenas de leitura não concede permissão de correção."
+
+  US-035:
+    issue: 71
+    source: [RNF01, RNF03, RN-007, RN-008]
+    criteria:
+      - "Uma tentativa de acesso não autorizada é bloqueada antes de conceder acesso ao recurso protegido."
+      - "A tentativa negada é registrada na trilha de auditoria."
+      - "O evento de auditoria registra os campos aplicáveis definidos por RN-008, incluindo o resultado da operação."
+      - "O bloqueio não expõe ao usuário não autorizado dados sensíveis do recurso protegido."
+
+  US-036:
+    issue: 72
+    source: [RF30, RNF01, RNF03, RN-009]
+    criteria:
+      - "A Pessoa Idosa utiliza a mesma autenticação do aplicativo com conta vinculada ao próprio perfil."
+      - "Após autenticada, consegue consultar somente o próprio cuidado nas superfícies T03-T15 autorizadas; T16 e T17 não ficam disponíveis nesse modo."
+      - "Ações de criação, correção, conclusão, edição, administração da rede/plantões/tarefas e exportação CSV permanecem indisponíveis."
+      - "Tentativas diretas de atingir recurso/rota não autorizada são bloqueadas e registradas conforme RNF01/RNF03."
+      - "A Pessoa Idosa não recebe papéis familiares, não é Plantonista Atual e não obtém acesso a dados de outra Pessoa Idosa por meio da própria conta."

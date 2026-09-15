@@ -1,12 +1,12 @@
 # Pendências Documentais
 
-Registra o que **ainda falta no GitHub** após as consolidações de 2026-09-08 e as decisões canônicas de 2026-09-14.
+Registra o histórico das lacunas documentais após as consolidações de 2026-09-08, as decisões canônicas de 2026-09-14 e o fechamento de P01 em 2026-09-15.
 
-RF/RNF/US, origens, responsáveis e rastreabilidade de telas estão canônicos no GitHub. Nada aqui autoriza inventar detalhe funcional que as fontes aprovadas não fornecem.
+RF/RNF/US, origens, responsáveis, rastreabilidade de telas e critérios de aceite individuais de US-001–US-036 estão canônicos no GitHub. Nada aqui autoriza inventar detalhe funcional que as fontes aprovadas não fornecem.
 
 ---
 
-## P01 — Critérios de aceite individuais das User Stories — Issue #73 — ABERTO
+## P01 — Critérios de aceite individuais das User Stories — Issue #73 — RESOLVIDO
 
 O catálogo canônico resolve para US-001–US-036:
 
@@ -15,11 +15,16 @@ O catálogo canônico resolve para US-001–US-036:
 - enunciado Como/Quero/Para;
 - exatamente um RF/RNF de origem;
 - responsável;
-- tela/ação relacionada.
+- tela/ação relacionada;
+- critérios individuais de aceite aprovados.
 
-As fontes **não enumeram um checklist de critérios de aceite específico para cada uma das 36 US**.
+Em 2026-09-15, o conjunto preparado em `ACCEPTANCE_CRITERIA_DRAFT.yaml` foi aprovado explicitamente pelo responsável do projeto e promovido para:
 
-**Ação restante:** quando houver critérios individuais aprovados, incorporá-los às Issues sem extrapolar o requisito de origem e as regras de negócio.
+- as Issues US-001–US-036, por comentários canônicos individuais;
+- `ACCEPTANCE_CRITERIA.yaml`, como registro consolidado aprovado;
+- `USER_STORIES_INDEX.yaml`, com `acceptance_criteria_status: approved` e referência por US.
+
+O snapshot `ACCEPTANCE_CRITERIA_DRAFT.yaml` permanece histórico e não deve ser usado para criar novos critérios além dos aprovados.
 
 ---
 
@@ -130,7 +135,8 @@ Regras principais:
 
 - resolver RF/RNF/US pelo `ISSUE_REGISTRY.yaml`;
 - respeitar exatamente uma origem por US;
+- consultar `ACCEPTANCE_CRITERIA.yaml` para os critérios aprovados de US-001–US-036;
 - tratar RF30/US-036 como escopo aprovado read-only;
-- tratar P03/P04/P05/P06 como decisões fechadas e usar as regras canônicas correspondentes;
-- não inventar critérios individuais ausentes em P01;
+- tratar P01/P03/P04/P05/P06 como decisões fechadas e usar as regras canônicas correspondentes;
+- não inventar novos critérios além dos aprovados sem decisão explícita;
 - Figma resolve design visual/prototípico, nunca lacuna funcional não aprovada.
