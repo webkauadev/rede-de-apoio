@@ -30,7 +30,7 @@ GITHUB_OPERATIONAL_FILES = [
 ]
 
 EXPECTED_STORY_OWNERS = {
-    "David": {"US-001", "US-002", "US-003", "US-004", "US-005", "US-006", "US-007", "US-026", "US-028"},
+    "David": {"US-001", "US-002", "US-003", "US-004", "US-005", "US-006", "US-007", "US-026", "US-028", "US-036"},
     "Rhuan": {"US-008", "US-009", "US-011", "US-012", "US-013", "US-014", "US-023", "US-024", "US-025"},
     "Henrique": {"US-010", "US-016", "US-017", "US-018", "US-019", "US-020", "US-021", "US-022", "US-027"},
     "Kauã": {"US-015", "US-029", "US-030", "US-031", "US-032", "US-033", "US-034", "US-035"},
@@ -161,7 +161,7 @@ def main() -> int:
 
     # User Story inventory and assignment checks.
     stories = stories_doc.get("stories", {})
-    expected_stories = {f"US-{i:03d}" for i in range(1, 36)}
+    expected_stories = {f"US-{i:03d}" for i in range(1, 37)}
     actual_stories = set(stories)
     missing_stories = sorted(expected_stories - actual_stories)
     extra_stories = sorted(actual_stories - expected_stories)
@@ -222,7 +222,7 @@ def main() -> int:
     if set(issue_rf) != expected_rf:
         errors.append("ISSUE_REGISTRY requirements must contain exactly RF01-RF30")
     if set(issue_us) != expected_stories:
-        errors.append("ISSUE_REGISTRY user_stories must contain exactly US-001-US-035")
+        errors.append("ISSUE_REGISTRY user_stories must contain exactly US-001-US-036")
     if not {"RNF01", "RNF03"}.issubset(issue_rnf):
         errors.append("ISSUE_REGISTRY must contain RNF01 and RNF03")
     if set(issue_pending) != expected_pending:
@@ -258,8 +258,9 @@ def main() -> int:
         if story_id in issue_us and entry.get("issue") != issue_us[story_id].get("issue"):
             errors.append(f"{story_id}: issue differs between USER_STORIES_INDEX and ISSUE_REGISTRY")
 
-    if issue_pending.get("P07", {}).get("status") != "closed":
-        errors.append("P07 must be recorded as closed in ISSUE_REGISTRY")
+    for pending_id in ("P02", "P03", "P04", "P05", "P06", "P07", "P08", "P09"):
+        if issue_pending.get(pending_id, {}).get("status") != "closed":
+            errors.append(f"{pending_id} must be recorded as closed in ISSUE_REGISTRY")
 
     if errors:
         print("Agent context validation failed:")
