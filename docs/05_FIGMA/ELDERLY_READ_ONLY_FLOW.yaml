@@ -1,0 +1,68 @@
+schema_version: 1
+last_verified: '2026-09-14'
+figma_file_key: tcyj2fkTXei2CJbqaRxqCp
+canonical_page: {node_id: '5926:1014', name: Fluxo Final}
+section: {node_id: '5948:5316', name: 'PESSOA IDOSA — READ ONLY'}
+requirement: RF30
+story: US-036
+owner: David
+mode: read_only
+
+policy:
+  - Reutiliza o mesmo aplicativo e a mesma autenticação.
+  - Acesso vinculado ao próprio perfil da Pessoa Idosa.
+  - Conteúdo limitado ao próprio cuidado autorizado por RNF01.
+  - Nenhuma ação de criação, correção, conclusão, edição, administração ou exportação CSV.
+  - Navigation Bar permanece Home, Agenda, Diário e Saúde.
+  - Settings no contexto Pessoa Idosa expõe somente T12-T15.
+  - T16 e T17 não são destinos disponíveis para a Pessoa Idosa.
+
+screens:
+  T03: {default: '5948:5317'}
+  T04: {week: '5948:5423', day: '5948:5582'}
+  T05: {default: '5948:5705'}
+  T06: {normal: '5948:5827'}
+  T07: {default: '5948:5997', detail: '5948:6086'}
+  T08: {list: '5948:6155'}
+  T09: {default: '5948:6236'}
+  T10: {default: '5948:6343'}
+  T11: {default: '5948:6407'}
+  T12: {view: '5948:6473'}
+  T13: {default: '5948:6516'}
+  T14: {default: '5948:6585'}
+  T15: {default: '5948:6634'}
+
+overlays:
+  settings_read_only: '5948:36255'
+  settings_visible_destinations: [T12, T13, T14, T15]
+  settings_forbidden_destinations: [T16, T17]
+
+hidden_or_disabled_actions:
+  T04: [plantao_create_or_admin]
+  T06: [new_record, correct_record]
+  T07: [correct_record, export_csv]
+  T08: [create_or_edit_medication]
+  T09: [create_task, assign_task, complete_task]
+  T10: [new_record, write_attachment]
+  T11: [new_appointment, edit_appointment]
+  T12: [edit_profile, manage_app_access]
+  T13: [link_member, unlink_member, manage_roles, transfer_principal]
+  T14: [add_contact, edit_contact]
+
+prototype_audit_2026_09_14:
+  roots_audited: 15
+  expected_root_size: '390x844'
+  roots_with_wrong_size: 0
+  visible_write_or_admin_actions: 0
+  visible_node_edges: 15
+  node_edges_outside_read_only_graph: 0
+  forbidden_settings_rows_visible: 0
+  settings_visible_rows:
+    - Pessoa Idosa
+    - Rede de Cuidado
+    - Contatos Importantes
+    - Informações de Emergência
+  notes:
+    - T07 detail remains available as read-only consultation.
+    - Internal component action slots were disabled through component properties where available; no detach was required.
+    - Existing canonical visual tokens/components were preserved by cloning the approved Fluxo Final baselines and applying only permission deltas.

@@ -17,13 +17,15 @@ Situação confirmada:
 - T01–T17 rastreadas e mapeadas;
 - Design Foundation Material 3 aprovada e usada como base visual;
 - Navigation Bar principal: `Home · Agenda · Diário · Saúde`;
-- T12–T17 acessíveis pela arquitetura `Settings / Management Sheet`;
+- T12–T17 acessíveis pela arquitetura `Settings / Management Sheet` no fluxo familiar/profissional;
 - LocalSubnav reutilizável consolidada para Saúde, Diário e Controle/Privacidade;
 - Issue #84 de integridade do protótipo encerrada como concluída;
 - PR #103 consolidou documentalmente o protótipo final;
 - PR #104 resolveu a dívida semântica FI-008 em T13;
 - P03/P04/P05/P06 foram resolvidas canonicamente em 2026-09-14;
-- RF30/US-036 foram aprovados canonicamente em 2026-09-14.
+- RF30/US-036 foram aprovados canonicamente em 2026-09-14;
+- whitelist read-only da Pessoa Idosa definida: T03–T15 para consulta do próprio cuidado; T16/T17 fora do modo Pessoa Idosa;
+- fluxo visual read-only da Pessoa Idosa materializado e auditado no `Fluxo Final`.
 
 ## Protótipo canônico final
 
@@ -34,21 +36,40 @@ Estrutura:
 - seção de baselines canônicos T01–T17: `5926:1015`;
 - seção de estados aprovados/migrados necessários ao fluxo: `5926:32075`;
 - seção de overlays canônicos: `5932:4923`;
-- `Settings / Management Sheet`: `5932:4924`.
+- `Settings / Management Sheet`: `5932:4924`;
+- seção Pessoa Idosa read-only: `5948:5316`;
+- `Settings / Management Sheet` filtrado para Pessoa Idosa: `5948:36255`.
 
 ### Auditoria final do grafo — 2026-09-14
 
 Auditoria direta pelo Plugin API, usando roots semânticos `[FLUXO FINAL]`, `[PROTO STATE]` e `[OVERLAY]`:
 
 - T01–T17 alcançáveis a partir de T01: **sim**;
-- roots/estados alcançados a partir de T01: **66**;
-- reaction nodes encontrados no `Fluxo Final`: **186**;
+- roots/estados alcançados a partir de T01: **66** antes da extensão RF30;
+- reaction nodes encontrados no `Fluxo Final`: **186** na auditoria de consolidação principal;
 - destinos `NODE` quebrados: **0**;
 - `NAVIGATE`/`OVERLAY` nocivo para outra página: **0**;
 - FI-001–FI-007: superados no protótipo canônico pela consolidação/migração e pela arquitetura vigente;
 - FI-008: resolvido no `Fluxo Final` com hotspots T13 renomeados semanticamente para E22–E25, sem alterar reactions ou escopo.
 
-A aprovação posterior de RF30/US-036 exige agora incorporar o acesso read-only da Pessoa Idosa ao protótipo canônico, usando os estados históricos já explorados apenas como fonte de design até sua migração Material 3 e auditoria.
+### Extensão RF30/US-036 — Pessoa Idosa read-only
+
+Registro visual detalhado:
+
+`docs/05_FIGMA/ELDERLY_READ_ONLY_FLOW.yaml`
+
+A implementação visual usa os baselines aprovados do `Fluxo Final` e aplica apenas deltas de permissão:
+
+- T03–T15 disponíveis para consulta do próprio cuidado;
+- T04 possui week/day read-only;
+- T07 mantém detalhe read-only;
+- ações de escrita/administração/exportação foram removidas ou desativadas por componente, sem detach quando havia propriedade apropriada;
+- Settings read-only exibe somente T12, T13, T14 e T15;
+- T16 e T17 ficam ausentes/inacessíveis no contexto Pessoa Idosa;
+- 15 roots auditados em 390×844;
+- ações de escrita/administração efetivamente visíveis: **0**;
+- destinos `NODE` visíveis fora do grafo read-only: **0**;
+- linhas proibidas T16/T17 visíveis no Settings read-only: **0**.
 
 ## Direção visual vigente — Material Design 3
 
@@ -70,7 +91,8 @@ Material 3 é referência de UX e papéis semânticos; não significa adotar SDK
 - `AppHeader / Back`: voltar + título explícito + contexto/ação opcional quando necessário e autorizado;
 - Navigation Bar primária mobile: `Home · Agenda · Diário · Saúde`;
 - `Mais` não faz parte do TARGET da Navigation Bar;
-- T12–T17 são destinos secundários acessíveis pelo `Settings / Management Sheet`;
+- T12–T17 são destinos secundários acessíveis pelo `Settings / Management Sheet` no contexto autorizado;
+- no contexto Pessoa Idosa, o Settings é filtrado para T12–T15;
 - subnavegação local fica imediatamente abaixo do header nas famílias de telas que exigem troca contextual;
 - touch targets mínimos: **48 × 48 px**;
 - `STATE = PAGE BASE + DELTA MÍNIMO` permanece a regra de estados.
@@ -158,6 +180,17 @@ Regras:
 - acessos negados sujeitos a RNF01/RNF03;
 - sem app separado.
 
+Whitelist canônica:
+
+- autenticação: T01/T02;
+- leitura do próprio cuidado: T03–T15;
+- T13 somente consulta da composição da própria rede;
+- T16 e T17 indisponíveis no modo Pessoa Idosa.
+
+Documento detalhado:
+
+`docs/02_BUSINESS_RULES/ELDERLY_READ_ONLY_ACCESS.md`
+
 ## Gate documental ainda aberto
 
 - **P01 / #73:** checklist individual de critérios de aceite por US ainda exige consolidação documental.
@@ -191,8 +224,10 @@ Foundation/registries relevantes:
 - `docs/04_DESIGN_SYSTEM/LOCAL_SUBNAVIGATION_PATTERN.md`;
 - `docs/04_DESIGN_SYSTEM/APP_HEADER_VISUAL_GRAMMAR.md`;
 - `docs/04_DESIGN_SYSTEM/COLOR_SURFACE_STRATEGY.md`;
+- `docs/02_BUSINESS_RULES/ELDERLY_READ_ONLY_ACCESS.md`;
 - `docs/05_FIGMA/FIGMA_REGISTRY.yaml`;
 - `docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml`;
+- `docs/05_FIGMA/ELDERLY_READ_ONLY_FLOW.yaml`;
 - `docs/07_AI_CONTEXT/STATE_MATRIX.yaml`.
 
 ## Preflight obrigatório do Codex
@@ -206,10 +241,11 @@ Antes de qualquer alteração:
 5. resolver requisitos e Issues aplicáveis;
 6. ler `SCREEN_REGISTRY.yaml` + `STATE_MATRIX.yaml`;
 7. ler `FIGMA_REGISTRY.yaml` + `PROTOTYPE_INTEGRITY.yaml`;
-8. consultar `SITEMAP.md`, `SCREENS_CATALOG.md` e `TRACEABILITY_MATRIX.md`;
-9. consultar tokens/component map;
-10. inspecionar `Design Foundation` e o `Fluxo Final`;
-11. somente então editar.
+8. para RF30/US-036, ler também `ELDERLY_READ_ONLY_ACCESS.md` + `ELDERLY_READ_ONLY_FLOW.yaml`;
+9. consultar `SITEMAP.md`, `SCREENS_CATALOG.md` e `TRACEABILITY_MATRIX.md`;
+10. consultar tokens/component map;
+11. inspecionar `Design Foundation` e o `Fluxo Final`;
+12. somente então editar.
 
 ## Definition of Ready do ambiente
 
@@ -229,13 +265,17 @@ Antes de qualquer alteração:
 - [x] Issue #84 encerrada;
 - [x] P03/P04/P05/P06 resolvidas;
 - [x] RF30/US-036 aprovados;
+- [x] whitelist de leitura da Pessoa Idosa definida;
+- [x] variantes read-only T03–T15 materializadas/auditadas no Figma;
 - [ ] P01 resolvida quando critérios individuais completos forem necessários.
 
 ## Próximo trabalho correto
 
-1. migrar e auditar no Figma os estados read-only necessários à US-036, agora que RF30/US-036 foram aprovados;
-2. refletir no protótipo as superfícies de N01–N04 e as permissões decididas em P03/P05/P06 sem criar novas áreas;
-3. iniciar implementação/código a partir do `Fluxo Final` e das regras canônicas;
-4. resolver P01 quando uma entrega exigir critérios individuais não suportados diretamente pelas fontes atuais.
+1. implementar em código a resolução de sessão/categoria Pessoa Idosa e o vínculo obrigatório com o próprio perfil;
+2. aplicar a whitelist T03–T15 e bloquear T16/T17 em rota/autorização, não apenas por UI;
+3. garantir que componentes/CTAs de escrita/administração sejam omitidos ou desabilitados conforme a matriz no runtime;
+4. implementar teste de acesso indevido com bloqueio + evento de auditoria RNF01/RNF03;
+5. validar a US-036 ponta a ponta e somente então fechar US-036/RF30;
+6. resolver P01 quando uma entrega exigir critérios individuais não suportados diretamente pelas fontes atuais.
 
 Não reabrir redesign geral das telas sem requisito, defeito ou decisão canônica que justifique a alteração.

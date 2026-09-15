@@ -58,3 +58,17 @@ Regras:
 - não exporta CSV na primeira versão;
 - a senha é definida pelo próprio titular; familiar não visualiza nem define essa senha em texto aberto;
 - tentativas não autorizadas devem ser bloqueadas e registradas conforme RNF01/RNF03.
+
+### Superfícies permitidas
+
+- Autenticação: T01/T02.
+- Leitura do próprio cuidado: T03–T15.
+- T13 é permitido apenas para consultar quem compõe a própria rede; todas as ações administrativas ficam indisponíveis.
+- T16 e T17 não fazem parte do modo Pessoa Idosa.
+
+### Navegação
+
+- a Navigation Bar permanece `Home · Agenda · Diário · Saúde`;
+- Configurações, quando aberta pela Pessoa Idosa, mostra somente `Pessoa Idosa · Rede de Cuidado · Contatos · Emergência` (T12–T15);
+- Preferências e Auditoria (T16/T17) ficam ausentes/inacessíveis;
+- a indisponibilidade de uma ação deve ser representada por omissão ou estado desabilitado coerente com o padrão visual, sem criar uma nova função.
