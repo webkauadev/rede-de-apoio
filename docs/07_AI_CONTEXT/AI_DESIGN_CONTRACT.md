@@ -1,271 +1,221 @@
 # AI Design Contract
 
-Contrato operacional para agentes que criam, corrigem ou auditam telas do projeto.
+Contrato operacional para agentes que criam, corrigem ou auditam telas do projeto Rede de Apoio.
 
 ## Objetivo
 
-Permitir comandos de alto nível como `execute a T14` ou `faça a próxima tela do David` sem depender de mega-prompts e sem perder consistência entre telas, estados, requisitos e Figma.
+Permitir comandos de alto nível como `execute T14` ou `faça a próxima tela do David` sem depender de mega-prompts e sem perder consistência entre requisitos, estados, design system, Figma e GitHub.
 
 ## Fonte única e pipeline obrigatório
 
-O GitHub `webkauadev/rede-de-apoio` é a fonte única operacional para RF, RNF, US, Issues, tarefas e critérios de aceitação. O Figma é a fonte visual.
+O GitHub `webkauadev/rede-de-apoio` é a fonte única operacional para RF, RNF, US, Issues, tarefas e critérios de aceitação. O Figma é a fonte visual/prototípica.
 
-`GitHub → Context Pack → Figma existente → Componentes/tokens → Construção → Auditoria → Registry → Commit → Pull Request`
+`GitHub → Context Pack → Fluxo Final → Componentes/tokens → Construção → Auditoria → Registry → Commit → Pull Request`
 
-Se um requisito necessário não estiver no GitHub, marcar `migration_required`. O agente **não consulta tracker externo** e **não inventa** o conteúdo ausente.
+Se um requisito necessário não estiver no GitHub, marcar `migration_required`. O agente não consulta tracker externo e não inventa conteúdo ausente.
 
-### 1. Resolver a entrega
+## 1. Resolver a entrega antes de editar
 
-Antes de editar o Figma, o agente deve determinar no GitHub:
+Determinar no GitHub:
 
-- identificador da tela (`T##`);
-- responsável atual;
-- RF/RNF/US e GitHub Issues relacionados;
-- critérios de aceitação disponíveis;
-- regras de negócio aplicáveis;
+- tela `T##` e owner;
+- RF/RNF/US e Issues relacionados;
+- critérios de aceite realmente disponíveis;
+- regras de negócio/permissões aplicáveis;
 - estados necessários;
-- página/node atual no Figma;
-- telas aprovadas que servem de referência;
-- componentes e tokens disponíveis;
-- direção Material 3 vigente registrada em `PROJECT_DECISIONS.md`, `MATERIAL3_VISUAL_DIRECTION.md` e `SITEMAP.md`.
+- node canônico no `Fluxo Final`;
+- componentes/tokens disponíveis;
+- direção Material 3 vigente.
 
-Se RF/RNF/US, permissão ou critério crítico estiver ausente, registrar `migration_required` e não preencher a lacuna por inferência. Correções puramente visuais/estruturais podem continuar quando não alterarem comportamento.
+P03/P04/P05/P06 foram resolvidos canonicamente em 2026-09-14. RF30/US-036 foram aprovados canonicamente na mesma data. P01/#73 permanece como gate documental para checklists individuais de critérios não enumerados.
 
-### 2. Inspecionar antes de desenhar
+## 2. Inspecionar antes de desenhar
 
-A ordem de descoberta visual é:
+Ordem visual:
 
-1. frame vigente da própria tela;
-2. estados vigentes da mesma tela;
-3. `Design Foundation` e direção TARGET vigente;
-4. `docs/04_DESIGN_SYSTEM/MATERIAL3_VISUAL_DIRECTION.md` e fontes oficiais M3 relevantes;
-5. telas aprovadas do mesmo responsável/fluxo;
-6. componentes locais reutilizáveis;
-7. componentes Obra/shadcn e bibliotecas disponíveis;
-8. criação de novo componente, somente como último recurso.
+1. node canônico no `Fluxo Final` (`5926:1014`);
+2. estados canônicos da mesma T##;
+3. `Design Foundation` e componentes Foundation;
+4. `MATERIAL3_VISUAL_DIRECTION.md`;
+5. componentes locais reutilizáveis;
+6. Obra/shadcn e libraries disponíveis;
+7. owner pages apenas como histórico/fonte de migração;
+8. novo componente apenas como último recurso.
 
-Frames com `LEGADO —` não são referência principal quando houver frame vigente.
+Frames `LEGADO —` e `prototypeIA` não são referência primária quando existir equivalente canônico.
 
-### 3. Regra de consistência entre estados
+## 3. Regra de consistência entre estados
 
-Um estado **não é uma nova tela**.
+Um estado não é uma nova tela.
 
-Sempre definir um estado-base e herdar dele. O agente deve comparar estados irmãos antes e depois da alteração.
+**STATE = PAGE BASE + DELTA MÍNIMO**
 
-- **Default/Normal**: estrutura canônica.
-- **Loading**: preservar shell e geometria; substituir apenas conteúdo dependente de carregamento por skeleton/progress apropriado.
-- **Empty**: preservar navegação, cabeçalho, largura e contexto; trocar apenas a região de dados por empty state e CTA aplicável.
-- **Validation Error/Error**: preservar formulário e valores válidos; alterar somente controles/feedback relacionados ao erro.
-- **Success**: preservar a tela após a ação e adicionar/alterar somente feedback e conteúdo realmente afetado.
-- **Forbidden/Access denied**: preservar contexto suficiente para orientação sem expor ações/dados não autorizados.
+- Default/Normal: estrutura canônica.
+- Loading: preserva shell/geometria e troca só conteúdo dependente de carregamento.
+- Empty: preserva contexto e substitui região de dados por empty state/CTA aplicável.
+- Validation Error/Error: preserva formulário e altera apenas controles/feedback envolvidos.
+- Success: preserva tela e adiciona somente resultado/feedback necessário.
+- Forbidden/Access denied: preserva orientação sem expor conteúdo protegido.
+- Notificação transitória: usa feedback do AppShell sem criar tela/central dedicada.
+- Estado de configuração RF30: permanece estado de T12, não nova tela.
 
-Quando um novo estado for necessário, registrá-lo em `STATE_MATRIX.yaml` junto do node do Figma.
+Todo estado canônico deve estar em `STATE_MATRIX.yaml` e `FIGMA_REGISTRY.yaml`.
 
-### 4. Componentes e Design System
-
-Regras obrigatórias:
+## 4. Componentes e Design System
 
 - reutilizar instance existente sempre que possível;
-- não redesenhar um componente que já possui equivalente semântico;
-- usar shadcn/Obra quando houver equivalente adequado;
-- componentes próprios do domínio devem ser locais e reutilizáveis;
+- não redesenhar componente com equivalente semântico;
+- usar Obra/shadcn quando adequado;
+- componentes próprios do domínio devem ser locais/reutilizáveis;
 - não detachar instances sem necessidade documentada;
 - usar Auto Layout para relações estruturais;
-- usar tokens existentes para cor, espaçamento, raio e tipografia;
-- manter áreas de toque e legibilidade adequadas ao contexto mobile;
-- componentes novos devem ter propósito claro, nome semântico e reutilização plausível.
+- usar tokens semânticos existentes;
+- touch targets >=48 × 48 px;
+- tipografia estrutural >=14 px salvo exceção explicitamente aprovada;
+- novo componente exige propósito semântico e reutilização plausível.
 
-Consultar `COMPONENT_MAP.yaml` antes de criar qualquer primitive equivalente a Button, Input, Select, Textarea, Dialog, Sonner/Toast, Badge, Switch, Card, navigation, Sheet ou componente de domínio já mapeado.
+Consultar `COMPONENT_MAP.yaml` antes de criar primitive equivalente a Button, Input, Select, Textarea, Dialog, Sonner/Toast, Badge, Switch, Card, Navigation, Sheet ou componente de domínio já mapeado.
 
-### 4.1 Foundation canônica e transição
+## 5. Material Design 3 — autoridade UX/design
 
-Antes de migrar uma tela, inspecionar a página Figma `Design Foundation` (`5639:21448`) e o bloco `foundation` de `COMPONENT_MAP.yaml`.
-
-A foundation continua TARGET para:
-
-- grid 390/16/358;
-- tipografia Geist sem texto estrutural abaixo de 14 px;
-- controls com target >= 48 × 48 px;
-- `BaseCard`;
-- feedbacks;
-- state architecture.
-
-O alvo de 48 px é uma composição do produto, não uma alegação sobre a primitive: `Button - Nova / Default` mantém 32 px visuais e `Input - Nova`/`Select - Nova / Large` mantêm 36 px visuais. Usar `Action / Touch Target 48` e `Field / Control / Touch Target 48` para centralizar as instances Obra sem modificar seus component sets.
-
-### 4.2 Material Design 3 — autoridade máxima no domínio de UX/design
-
-Material Design 3 é a referência de maior prioridade para **decisões de UX e design visual**, subordinada somente à verdade funcional aprovada no GitHub.
-
-Documento detalhado obrigatório:
-
-`docs/04_DESIGN_SYSTEM/MATERIAL3_VISUAL_DIRECTION.md`
+Material Design 3 é a referência de maior prioridade para UX/design visual, subordinada à verdade funcional aprovada no GitHub.
 
 Regra:
 
-`Requisito aprovado → padrão/role M3 → token semântico Rede de Apoio → Obra/shadcn/local primitives → tela`
+`Requisito aprovado → padrão/role M3 → token semântico Rede de Apoio → Obra/shadcn/local primitive → tela`
 
-Não importar SDK Material, Google Sans, paleta Google ou substituir primitives locais por componentes Google apenas para imitar Material.
+Não importar SDK Material, Google Sans ou paleta baseline Google apenas para imitar Android.
 
-#### Procedimento obrigatório M3-first
+Antes de escolher cor/surface/container/navegação:
 
-Antes de escolher cor, surface, container, navegação, app bar ou estado selecionado, o agente deve:
+1. identificar padrão/papel M3;
+2. escolher papel semântico correto;
+3. mapear para token Rede de Apoio;
+4. escolher primitive existente.
 
-1. identificar o padrão/papel M3 aplicável;
-2. escolher o papel semântico correto (`surface`, `surfaceContainer`, `secondaryContainer`, `onSecondaryContainer` etc. quando aplicável);
-3. mapear esse papel para token Rede de Apoio;
-4. somente então escolher/compor a primitive Obra/shadcn/local.
+Não usar token de função diferente apenas para eliminar hardcode.
 
-É proibido escolher primeiro um token/primitiva e justificar depois como “M3”.
+### Header canônico
 
-#### Regra de tokenização semântica
+- `AppHeader / Root`: título primário + contexto da Pessoa Idosa quando aplicável + ação global deliberada de Configurações.
+- `AppHeader / Back`: voltar + título explícito + contexto/ação opcional quando necessário.
+- ações de app bar >=48×48 px.
 
-Não usar um token existente de função diferente apenas para eliminar hardcode.
-
-Exemplo proibido:
-
-`Active indicator container → Color/Secondary`
-
-quando o papel correto é um container tonal equivalente a `Secondary Container`.
-
-Se o papel semântico correto ainda não existir:
-
-- registrar a lacuna;
-- criar/mapear o token semanticamente correto;
-- preservar o resultado visual aprovado enquanto a migração é feita;
-- nunca piorar a hierarquia visual apenas para conseguir `boundVariables`.
-
-#### Header TARGET
-
-- `AppHeader / Root`: título da página como informação primária; contexto da Pessoa Idosa como secundário quando aplicável; ação global deliberada de Configurações à direita.
-- `AppHeader / Back`: voltar + título explícito + contexto/ação opcional quando necessário e autorizado.
-- avatar pode permanecer como contexto, mas não pode ser o único conteúdo que define o header.
-- ações de app bar devem possuir target >= 48 × 48 px e padding seguro da borda.
-
-#### Navigation Bar TARGET
-
-Destinos primários:
+### Navigation Bar canônica
 
 `Home · Agenda · Diário · Saúde`
 
-Regras:
-
 - `Mais` não pertence ao TARGET;
-- Configurações não substitui `Mais` na Navigation Bar;
-- cada item é um destino singular, com ícone + label;
-- item ativo usa indicador/surface + conteúdo de maior ênfase, não apenas cor;
-- o indicador deve usar papel tonal de container semanticamente adequado, evitando acento saturado usado como fundo por conveniência;
-- targets >= 48 × 48 px;
-- distribuição equilibrada e safe area obrigatórias.
+- Configurações vive no header, não como quinta aba;
+- item ativo usa container/ênfase semântica apropriada;
+- targets >=48×48 px;
+- safe area obrigatória.
 
-#### Configurações e gestão
-
-T12–T17 continuam funcionais e não mudam de escopo.
-
-O TARGET de acesso global é:
+### Configurações e gestão
 
 `AppHeader / Root → Configurações → Settings / Management Sheet`
 
-O Sheet deve reutilizar `Sheet` local/Obra/shadcn quando adequado e organizar:
+Destinos: T12, T13, T14, T15, T16, T17.
 
-- T12 Pessoa Idosa;
-- T13 Rede de Cuidado;
-- T14 Contatos;
-- T15 Emergência;
-- T16 Preferências;
-- T17 Auditoria.
+A organização não concede permissão; comportamento segue GitHub.
 
-A surface do Sheet pode usar papel tonal equivalente a `Surface Container`/`Surface Container Low` quando isso melhorar hierarquia/modalidade. Branco puro não é requisito M3.
+## 6. Decisões funcionais que afetam design
 
-Essa organização é UX/IA visual. Não concede permissões e não cria RF/RNF/US.
+### P03 — escrita/correção
 
-### 4.3 Gate temporário para novas migrações
+- Principal pode criar registros compatíveis.
+- Apoio/Emergência escrevem quando Plantonista Atual ou quando possuírem responsabilidade operacional explicitamente atribuída.
+- Profissional da Saúde escreve registros do próprio domínio enquanto vinculado/autorizado.
+- correção RN-006 exige permissão efetiva para produzir o mesmo tipo de registro e sempre cria nova versão vinculada.
 
-Até o PR #91 da revisão Material 3 da `Design Foundation` receber revisão humana e merge:
+O design pode ocultar/desabilitar ações conforme a permissão decidida; não pode ampliar acesso.
 
-- `T06 / Header / Pessoa` como referência global = `DEPRECATED_FOR_NEW_MIGRATIONS`;
-- `compFooter`/BottomNavigation atual de cinco itens = `DEPRECATED_FOR_NEW_MIGRATIONS`;
-- nenhuma tela autenticada pode usar esses padrões antigos como TARGET;
-- nenhuma tela autenticada pode receber os componentes TARGET recém-criados;
-- os componentes TARGET devem usar variables semânticas e text styles da Foundation sem trocar papel semântico por conveniência;
-- o active indicator calibrado usa `Color/Secondary Container` e `Color/On Secondary Container`; a aprovação humana comparativa permanece obrigatória;
-- depois da revisão humana, T03 deve validar o novo `AppShell / Root`;
-- T01/T02 continuam como fluxo independente de `AuthShell`.
+### P04 — notificações
 
-Não aplicar essa mudança como alteração funcional: RF30/US-036, P01, P03–P06 e FI-001–FI-008 continuam governados pelos documentos e Issues canônicos.
+Não criar Central de Notificações/sino dedicado.
 
-### 4.4 Review M3 obrigatório antes de merge
+- N01 → feedback transitório global → T04;
+- N02 → feedback transitório global obrigatório → T05;
+- N03 → feedback transitório global → T05/T07;
+- N04 → feedback transitório global → T05, com resumo possível em T03.
 
-Toda alteração visual relevante deve incluir uma auditoria M3 explícita.
+T16 configura somente notificações opcionais.
 
-Responder no relatório:
+### P05 — exportação CSV
 
-- qual padrão/princípio M3 foi aplicado?
-- qual papel semântico corresponde a cada surface/cor crítica?
-- qual adaptação preserva a identidade Rede de Apoio?
-- Obra/shadcn foi usado como implementação ou acabou ditando a UX?
-- houve perda de qualidade visual em relação à versão anterior?
-- seleção/feedback usa mais de um sinal quando necessário?
-- targets >=48, safe areas e prevenção de toque acidental foram verificados?
-- existe exceção M3? Se sim, qual justificativa documentada?
+Na primeira versão, E13/T07 é exclusivo do Familiar Principal e a operação é auditada.
 
-**Critério importante:** um componente tecnicamente componentizado, tokenizado e sem overflow pode continuar bloqueado se reprovar em hierarquia, papel tonal, clareza ou qualidade visual M3.
+### P06 — papéis acumulados
 
-Mudanças globais de linguagem visual exigem screenshot comparativo e aprovação humana antes do merge.
+Permissão efetiva = união das permissões positivas, preservando restrições explícitas de segurança/privacidade/escopo e condições contextuais. Não duplicar notificações por acúmulo.
 
-### 5. Auditoria obrigatória
+### RF30 / US-036 — Pessoa Idosa
 
-Após cada alteração relevante:
+Escopo aprovado:
 
-#### Auditoria estrutural
+- mesma autenticação do aplicativo;
+- conta vinculada ao próprio perfil;
+- consulta somente do próprio cuidado autorizado;
+- somente leitura;
+- sem papéis familiares;
+- nunca Plantonista Atual;
+- sem criar/corrigir/concluir/alterar;
+- sem administrar rede;
+- sem CSV;
+- senha definida pelo titular;
+- acesso negado bloqueado/auditado;
+- sem aplicativo separado.
 
-- componentes corretos são instances?
-- Auto Layout está sendo usado onde há relação estrutural?
-- há overflow ou clipping acidental?
-- estados irmãos mantêm dimensões e hierarquia coerentes?
-- existem valores visuais fora dos tokens sem justificativa?
-- algum frame legado foi alterado por engano?
-- algum header/footer deprecated foi propagado por engano?
-- algum token está semanticamente incorreto para o papel M3 que representa?
+Na interface, ações de escrita/administração devem ser omitidas ou desabilitadas no contexto Pessoa Idosa, conforme o padrão visual aplicável, sem criar função nova.
 
-#### Auditoria visual
+## 7. Auditoria obrigatória
 
-Gerar screenshot do frame final e verificar alinhamento, hierarquia visual, legibilidade, contraste, densidade, espaçamento, consistência com telas de referência, feedback de estados, áreas de toque, safe areas, risco de toque acidental e coerência com `MATERIAL3_VISUAL_DIRECTION.md`.
+Após alteração:
+
+### Estrutural
+- instances corretas?
+- Auto Layout adequado?
+- overflow/clipping acidental?
+- estados irmãos coerentes?
+- tokens corretos semanticamente?
+- algum legado alterado por engano?
+- targets <48 px?
+- reaction aponta para node canônico?
+
+### Visual
+Gerar screenshot e verificar hierarquia, legibilidade, contraste, densidade, espaçamento, feedback, áreas de toque, safe areas e coerência M3/Rede de Apoio.
 
 Encontrando problema, corrigir e auditar novamente.
 
-### 6. Registro da alteração
+## 8. Registro da alteração
 
-Toda tela criada/corrigida deve deixar contexto suficiente para o próximo agente:
+Atualizar quando aplicável:
 
-- `SCREEN_REGISTRY.yaml`: identidade, owner, estado de mapeamento e referências;
-- `STATE_MATRIX.yaml`: estados e nodes vigentes;
-- `FIGMA_REGISTRY.yaml`: arquivo/página/nodes e convenções;
-- `COMPONENT_MAP.yaml`: novos componentes reutilizáveis ou mapeamentos descobertos;
-- documentação de requisitos/Issues no GitHub quando houver mudança funcional aprovada;
-- `migration_required` explícito para qualquer lacuna funcional ainda não migrada.
+- `SCREEN_REGISTRY.yaml`;
+- `STATE_MATRIX.yaml`;
+- `FIGMA_REGISTRY.yaml`;
+- `PROTOTYPE_INTEGRITY.yaml`;
+- `COMPONENT_MAP.yaml`;
+- Issues/requisitos afetados;
+- `CURRENT_PROJECT_STATE.md` quando a mudança alterar o preflight.
 
-### 7. GitHub workflow
+## 9. GitHub workflow
 
-Branch sugerida: `design/t##-slug` ou `chore/ai-design-*` para infraestrutura.
+- branch específica (`design/t##-*`, `feat/*`, `docs/*` ou `chore/*`);
+- commits lógicos pequenos;
+- `python scripts/validate_agent_context.py`;
+- Pull Request para revisão humana;
+- merge somente após gate acordado/revisão explícita.
 
-Commits devem representar mudanças lógicas pequenas, por exemplo:
-
-- `design(t06): normalize diary loading state`
-- `docs(figma): register t06 state nodes`
-- `docs(design): map care record card`
-
-O Pull Request deve ficar aberto para revisão humana. Não fazer merge automático por padrão.
-
-## Critério para comando autônomo
+## 10. Comando autônomo
 
 Ao receber `faça a próxima tela de <responsável>`:
 
-1. consultar `CURRENT_PROJECT_STATE.md` e verificar se há gate global de Foundation;
-2. consultar `SCREEN_REGISTRY.yaml`;
-3. consultar as Issues/requisitos do próprio GitHub;
-4. selecionar a próxima tela desse responsável somente se a Foundation vigente autorizar migração;
-5. se houver dado funcional ausente, marcar `migration_required` e não buscar fora do GitHub;
-6. executar todo este contrato, incluindo o review M3-first;
-7. entregar Figma + branch/commits + PR para revisão.
+1. ler `CURRENT_PROJECT_STATE.md`;
+2. consultar `SCREEN_REGISTRY.yaml`/`STATE_MATRIX.yaml`;
+3. resolver Issues/requisitos;
+4. inspecionar `Fluxo Final`;
+5. executar este contrato;
+6. entregar Figma + registries + PR.
 
-Ao receber `execute T##`, usar exatamente a tela solicitada e não expandir escopo funcional sem requisito canônico no GitHub. Se a Foundation estiver bloqueada por revisão global, primeiro informar o bloqueio e executar somente a revisão de Foundation autorizada.
+Ao receber `execute T##`, usar exatamente a tela solicitada e não expandir escopo funcional sem requisito canônico.
