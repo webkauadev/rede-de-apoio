@@ -466,9 +466,9 @@ agent_rules:
   - Never use a LEGADO frame as primary source when a canonical equivalent exists.
   - prototypeIA is historical reference, not current visual authority.
   - Check PROTOTYPE_INTEGRITY.yaml before trusting any historical owner-page reaction.
-  - P03/P04/P05/P06 are resolved decisions; apply their canonical rules instead of treating them as open gates.
+  - P01/P03/P04/P05/P06 are resolved decisions; apply their canonical rules instead of treating them as open gates.
   - RF30/US-036 is approved read-only scope for the Pessoa Idosa.
-  - P01 remains open for story-specific acceptance checklists not present in canonical sources.
+  - P01/#73 was resolved on 2026-09-15; acceptance criteria for US-001-US-036 are in docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml.
   - Material 3 is UX guidance only; implementation remains local/Obra/shadcn with Rede de Apoio identity.
   - Do not use T06 Header Pessoa or the five-item compFooter as TARGET for new migrations.
   - After creating or replacing a canonical state, update this file and STATE_MATRIX.yaml.

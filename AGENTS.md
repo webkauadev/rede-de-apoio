@@ -146,11 +146,12 @@ User Stories aprovadas:
 - Sem papéis familiares, Plantonista Atual, escrita, correção, administração ou CSV.
 - Sem aplicativo separado.
 
-## 8. Gate que agentes não podem fechar por inferência
+## 8. Gates documentais — status
 
-- **P01/#73** — checklist individual de critérios de aceite não está integralmente enumerado nas fontes.
+- **P01/#73** — RESOLVIDO em 2026-09-15 (aprovação humana explícita, Issue fechada). Critérios individuais de aceite de US-001–US-036 estão em `docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml`; `ACCEPTANCE_CRITERIA_DRAFT.yaml` é snapshot histórico do conjunto submetido à aprovação.
+- P02–P09 (#74–#81) também estão fechados. Não há gate documental aberto no momento.
 
-Não inventar critérios ausentes. Usar somente o que for diretamente suportado pelo requisito de origem, regras de negócio e decisões canônicas.
+Isso não autoriza inventar novo critério além do aprovado. Qualquer critério, RF, RNF, US, regra ou permissão fora do que já está aprovado nas fontes exige nova decisão explícita no GitHub antes de virar base de trabalho de um agente.
 
 ## 9. Definition of Done para alteração por agente
 

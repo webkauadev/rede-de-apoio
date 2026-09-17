@@ -41,11 +41,11 @@ A base agent-first contém:
 - RF30 / #34 — acesso read-only da Pessoa Idosa aprovado;
 - US-036 / #72 — história de acesso ao próprio cuidado aprovada e atribuída a David.
 
-## Pendência funcional/documental ainda aberta
+## Decisão consolidada em 2026-09-15
 
-- P01 / #73 — checklist individual de critérios de aceite por US ainda não está integralmente enumerado nas fontes canônicas.
+- P01 / #73 — RESOLVIDO. Critérios individuais de aceite de US-001–US-036 aprovados explicitamente e promovidos para `docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml` e para as Issues correspondentes.
 
-Essa lacuna permanece explícita no GitHub. Agentes não devem inventar critérios que não sejam suportados pelos requisitos, regras de negócio e decisões canônicas existentes.
+Nenhum gate documental P01–P09 permanece aberto no GitHub. Agentes não devem inventar critérios além dos já aprovados sem nova decisão explícita.
 
 ## Protótipo
 
