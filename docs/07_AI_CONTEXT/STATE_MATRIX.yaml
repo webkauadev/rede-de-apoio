@@ -1,5 +1,5 @@
-schema_version: 5
-last_updated: '2026-09-14'
+schema_version: 6
+last_updated: '2026-09-16'
 state_rule: STATE = PAGE BASE + DELTA MÍNIMO
 canonical_page: {node_id: '5926:1014', name: Fluxo Final}
 authority_rules:
@@ -81,9 +81,15 @@ screens:
       normal: {kind: default, figma_node: '5926:1542'}
       empty: {kind: empty, figma_node: '5926:32938'}
       loading: {kind: loading, figma_node: '5926:32989'}
-      new_record: {kind: form, figma_node: '5926:33036', element: E09}
-      new_record_validation_error: {kind: validation_error, figma_node: '5926:33272', element: E09}
+      new_record_overlay: {kind: overlay_form, figma_node: '5977:7182', element: E09, entry_pattern: bottom_sheet, status: canonical}
+      new_record_validation_error_overlay: {kind: overlay_validation_error, figma_node: '5977:7249', element: E09, entry_pattern: bottom_sheet, status: canonical}
+      new_record_legacy_full_page: {kind: legacy_full_page_form, figma_node: '5926:33036', element: E09, status: superseded_by_bottom_sheet, superseded_on: '2026-09-15'}
+      new_record_validation_error_legacy_full_page: {kind: legacy_full_page_validation_error, figma_node: '5926:33272', element: E09, status: superseded_by_bottom_sheet, superseded_on: '2026-09-15'}
       success: {kind: success, figma_node: '5926:33509'}
+    entity_entry_pattern:
+      status: canonical_approved_2026_09_15
+      registry: docs/05_FIGMA/ENTITY_ENTRY_BOTTOM_SHEET_FLOW.yaml
+      pattern_doc: docs/04_DESIGN_SYSTEM/ENTITY_ENTRY_BOTTOM_SHEET_PATTERN.md
     correction_permission:
       rule: effective_write_permission_for_same_record_type
       source: P03
@@ -107,11 +113,17 @@ screens:
     states:
       list: {kind: default, figma_node: '5926:1801'}
       empty: {kind: empty, figma_node: '5926:34202'}
-      create: {kind: form, figma_node: '5926:34250', element: E14}
-      create_error_name: {kind: validation_error, figma_node: '5926:34279', element: E14}
-      create_error_concentration: {kind: validation_error, figma_node: '5926:34309', element: E14}
-      create_error_form: {kind: validation_error, figma_node: '5926:34339', element: E14}
+      create_overlay: {kind: overlay_form, figma_node: '5967:6307', element: E14, entry_pattern: bottom_sheet, status: canonical}
+      create_validation_overlay: {kind: overlay_validation_error, figma_node: '5967:6333', element: E14, entry_pattern: bottom_sheet, status: canonical}
+      create_legacy_full_page: {kind: legacy_full_page_form, figma_node: '5926:34250', element: E14, status: superseded_by_bottom_sheet, superseded_on: '2026-09-15'}
+      create_error_name_legacy_full_page: {kind: legacy_full_page_validation_error, figma_node: '5926:34279', element: E14, status: superseded_by_bottom_sheet, superseded_on: '2026-09-15'}
+      create_error_concentration_legacy_full_page: {kind: legacy_full_page_validation_error, figma_node: '5926:34309', element: E14, status: superseded_by_bottom_sheet, superseded_on: '2026-09-15'}
+      create_error_form_legacy_full_page: {kind: legacy_full_page_validation_error, figma_node: '5926:34339', element: E14, status: superseded_by_bottom_sheet, superseded_on: '2026-09-15'}
       created: {kind: success, figma_node: '5926:34369', element: E14}
+    entity_entry_pattern:
+      status: canonical_approved_2026_09_15
+      registry: docs/05_FIGMA/ENTITY_ENTRY_BOTTOM_SHEET_FLOW.yaml
+      pattern_doc: docs/04_DESIGN_SYSTEM/ENTITY_ENTRY_BOTTOM_SHEET_PATTERN.md
 
   T09:
     owner: Rhuan
@@ -120,10 +132,16 @@ screens:
       default: {kind: default, figma_node: '5926:1886'}
       empty: {kind: empty, figma_node: '5926:34452'}
       loading: {kind: loading, figma_node: '5926:34512'}
-      new_task: {kind: form, figma_node: '5926:34568', element: E17}
-      validation_error: {kind: validation_error, figma_node: '5926:34646', element: E17}
+      new_task_overlay: {kind: overlay_form, figma_node: '5974:6252', element: E17, entry_pattern: bottom_sheet, status: canonical}
+      new_task_validation_overlay: {kind: overlay_validation_error, figma_node: '5974:6312', element: E17, entry_pattern: bottom_sheet, status: canonical}
+      new_task_legacy_full_page: {kind: legacy_full_page_form, figma_node: '5926:34568', element: E17, status: superseded_by_bottom_sheet, superseded_on: '2026-09-15'}
+      validation_error_legacy_full_page: {kind: legacy_full_page_validation_error, figma_node: '5926:34646', element: E17, status: superseded_by_bottom_sheet, superseded_on: '2026-09-15'}
       task_created: {kind: success, figma_node: '5926:34727', element: E17}
       task_completed: {kind: success, figma_node: '5926:34858', element: E18}
+    entity_entry_pattern:
+      status: canonical_approved_2026_09_15
+      registry: docs/05_FIGMA/ENTITY_ENTRY_BOTTOM_SHEET_FLOW.yaml
+      pattern_doc: docs/04_DESIGN_SYSTEM/ENTITY_ENTRY_BOTTOM_SHEET_PATTERN.md
 
   T10:
     owner: Henrique
@@ -133,9 +151,16 @@ screens:
       empty: {kind: empty, figma_node: '5926:34962'}
       loading: {kind: loading, figma_node: '5926:35011'}
       success: {kind: success, figma_node: '5926:35059'}
-      new_record: {kind: form, figma_node: '5926:35125', element: E19}
-      validation_error: {kind: validation_error, figma_node: '5926:35145', element: E19}
-      attachment_context: {kind: contextual_action, figma_node: '5926:35166', element: E10}
+      new_record_overlay: {kind: overlay_form, figma_node: '5974:35902', element: E19, entry_pattern: bottom_sheet, status: canonical}
+      new_record_validation_overlay: {kind: overlay_validation_error, figma_node: '5974:35948', element: E19, entry_pattern: bottom_sheet, status: canonical}
+      attachment_context_overlay: {kind: overlay_contextual_action, figma_node: '5974:35996', element: E10, entry_pattern: bottom_sheet, status: canonical}
+      new_record_legacy_full_page: {kind: legacy_full_page_form, figma_node: '5926:35125', element: E19, status: superseded_by_bottom_sheet, superseded_on: '2026-09-15'}
+      validation_error_legacy_full_page: {kind: legacy_full_page_validation_error, figma_node: '5926:35145', element: E19, status: superseded_by_bottom_sheet, superseded_on: '2026-09-15'}
+      attachment_context_legacy_full_page: {kind: legacy_full_page_contextual_action, figma_node: '5926:35166', element: E10, status: superseded_by_bottom_sheet, superseded_on: '2026-09-15'}
+    entity_entry_pattern:
+      status: canonical_approved_2026_09_15
+      registry: docs/05_FIGMA/ENTITY_ENTRY_BOTTOM_SHEET_FLOW.yaml
+      pattern_doc: docs/04_DESIGN_SYSTEM/ENTITY_ENTRY_BOTTOM_SHEET_PATTERN.md
 
   T11:
     owner: Rhuan
@@ -144,9 +169,15 @@ screens:
       default: {kind: default, figma_node: '5926:2060'}
       empty: {kind: empty, figma_node: '5926:35192'}
       loading: {kind: loading, figma_node: '5926:35252'}
-      new_appointment: {kind: form, figma_node: '5926:35306', element: E20}
-      validation_error: {kind: validation_error, figma_node: '5926:35398', element: E20}
+      new_appointment_overlay: {kind: overlay_form, figma_node: '5974:36062', element: E20, entry_pattern: bottom_sheet, status: canonical}
+      new_appointment_validation_overlay: {kind: overlay_validation_error, figma_node: '5974:36136', element: E20, entry_pattern: bottom_sheet, status: canonical}
+      new_appointment_legacy_full_page: {kind: legacy_full_page_form, figma_node: '5926:35306', element: E20, status: superseded_by_bottom_sheet, superseded_on: '2026-09-15'}
+      validation_error_legacy_full_page: {kind: legacy_full_page_validation_error, figma_node: '5926:35398', element: E20, status: superseded_by_bottom_sheet, superseded_on: '2026-09-15'}
       success: {kind: success, figma_node: '5926:35494', element: E20}
+    entity_entry_pattern:
+      status: canonical_approved_2026_09_15
+      registry: docs/05_FIGMA/ENTITY_ENTRY_BOTTOM_SHEET_FLOW.yaml
+      pattern_doc: docs/04_DESIGN_SYSTEM/ENTITY_ENTRY_BOTTOM_SHEET_PATTERN.md
 
   T12:
     owner: David
