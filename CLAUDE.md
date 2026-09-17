@@ -47,9 +47,9 @@ Regras:
 
 US-036 pertence a David.
 
-## Gate ainda aberto
+## Gates documentais — histórico
 
-P01/#73 permanece aberto para checklist individual de critérios de aceite não integralmente enumerado nas fontes. Não inventar critérios ausentes.
+P01/#73 foi resolvido em 2026-09-15 (aprovação humana explícita); critérios individuais de aceite de US-001–US-036 estão em `docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml`. P02–P09 também estão fechados. Nenhum gate documental permanece aberto no momento. Não inventar critério novo além do aprovado sem decisão explícita registrada no GitHub.
 
 ## Fontes de verdade
 

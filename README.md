@@ -19,7 +19,7 @@ Informação funcional ausente no GitHub é marcada como `migration_required`; i
 - Integridade do protótipo: Issue #84 encerrada; FI-001–FI-008 resolvidos/superados no `Fluxo Final`.
 - Auditoria final: T01 alcança T01–T17, 0 destinos quebrados e 0 navegação/overlay nocivo para outra página.
 - P03/#75, P04/#76, P05/#77 e P06/#78: resolvidos canonicamente.
-- P01/#73: único gate documental ainda aberto para checklists individuais de critérios de aceite não enumerados nas fontes.
+- P01/#73: resolvido em 2026-09-15 (aprovação humana explícita); critérios individuais de aceite de US-001–US-036 aprovados e promovidos. Nenhum gate P01–P09 permanece aberto.
 
 Leia primeiro `docs/07_AI_CONTEXT/CURRENT_PROJECT_STATE.md`.
 
@@ -40,6 +40,7 @@ Leia primeiro `docs/07_AI_CONTEXT/CURRENT_PROJECT_STATE.md`.
 - `docs/05_FIGMA/` — registry de nodes, auditoria e integridade do protótipo;
 - `docs/06_GITHUB/` — workflow, estrutura e registry de Issues;
 - `docs/07_AI_CONTEXT/` — estado atual, contratos, screens/states e setup Codex;
+- `docs/08_MILESTONE/` — status consolidado, métricas com fonte e evidências da entrega;
 - `AGENTS.md` / `CLAUDE.md` — contratos de execução;
 - `scripts/validate_agent_context.py` — validação de consistência.
 
@@ -75,9 +76,9 @@ O Codex deve:
 - resolver comportamento no GitHub;
 - usar o `Fluxo Final` para estrutura/visual vigente;
 - ignorar frames `LEGADO —` quando houver equivalente final;
-- tratar P03/P04/P05/P06 como decisões fechadas;
+- tratar P01/P03/P04/P05/P06 como decisões fechadas;
 - tratar RF30/US-036 como escopo aprovado read-only;
-- não inventar critérios ausentes de P01;
+- não inventar critérios além dos aprovados em `ACCEPTANCE_CRITERIA.yaml`;
 - rodar `python scripts/validate_agent_context.py`;
 - trabalhar em branch e deixar PR para revisão humana.
 

@@ -1,5 +1,5 @@
-schema_version: 4
-last_verified: '2026-09-14'
+schema_version: 5
+last_verified: '2026-09-16'
 
 figma:
   file_key: tcyj2fkTXei2CJbqaRxqCp
@@ -250,7 +250,8 @@ known_current_nodes:
     owner: Kauã
     page: Fluxo Final
     mapping_status: canonical_in_fluxo_final
-    canonical: {normal: '5926:1542', empty: '5926:32938', loading: '5926:32989', new_record: '5926:33036', new_record_validation_error: '5926:33272', success: '5926:33509'}
+    canonical: {normal: '5926:1542', empty: '5926:32938', loading: '5926:32989', new_record_overlay: '5977:7182', new_record_validation_error_overlay: '5977:7249', success: '5926:33509'}
+    legacy_full_page_states: {new_record: '5926:33036', new_record_validation_error: '5926:33272', superseded_on: '2026-09-15', superseded_by: entity_entry_bottom_sheet_pattern, figma_name_prefix: '[LEGACY PROTO STATE] ... SUPERSEDED BY BOTTOM SHEET'}
     source_history:
       page: kaua
       current: {normal: '5201:13491', empty: '5201:13490', loading: '5288:14618', new_record: '5201:13488', new_record_validation_error: '5203:300', success: '5288:14482'}
@@ -274,7 +275,8 @@ known_current_nodes:
     owner: Henrique
     page: Fluxo Final
     mapping_status: canonical_in_fluxo_final
-    canonical: {list: '5926:1801', empty: '5926:34202', create: '5926:34250', create_error_name: '5926:34279', create_error_concentration: '5926:34309', create_error_form: '5926:34339', created: '5926:34369'}
+    canonical: {list: '5926:1801', empty: '5926:34202', create_overlay: '5967:6307', create_validation_overlay: '5967:6333', created: '5926:34369'}
+    legacy_full_page_states: {create: '5926:34250', create_error_name: '5926:34279', create_error_concentration: '5926:34309', create_error_form: '5926:34339', superseded_on: '2026-09-15', superseded_by: entity_entry_bottom_sheet_pattern, figma_name_prefix: '[LEGACY PROTO STATE] ... SUPERSEDED BY BOTTOM SHEET'}
     source_history:
       page: henrique
       current: {list: '5235:924', empty: '5118:838', create: '5123:1291', create_error_name: '5130:4159', create_error_concentration: '5130:4204', create_error_form: '5130:4263', created: '5141:2758'}
@@ -286,7 +288,8 @@ known_current_nodes:
     owner: Rhuan
     page: Fluxo Final
     mapping_status: canonical_in_fluxo_final
-    canonical: {default: '5926:1886', empty: '5926:34452', loading: '5926:34512', new_task: '5926:34568', validation_error: '5926:34646', task_created: '5926:34727', task_completed: '5926:34858'}
+    canonical: {default: '5926:1886', empty: '5926:34452', loading: '5926:34512', new_task_overlay: '5974:6252', new_task_validation_overlay: '5974:6312', task_created: '5926:34727', task_completed: '5926:34858'}
+    legacy_full_page_states: {new_task: '5926:34568', validation_error: '5926:34646', superseded_on: '2026-09-15', superseded_by: entity_entry_bottom_sheet_pattern, figma_name_prefix: '[LEGACY PROTO STATE] ... SUPERSEDED BY BOTTOM SHEET'}
     source_history:
       page: rhuan
       frames: {default: '5360:348', empty: '5361:419', loading: '5361:475', new_task: '5361:518', validation_error: '5361:601', task_created: '5361:707', task_completed: '5361:741'}
@@ -294,7 +297,8 @@ known_current_nodes:
     owner: Henrique
     page: Fluxo Final
     mapping_status: canonical_in_fluxo_final
-    canonical: {default: '5926:1993', empty: '5926:34962', loading: '5926:35011', success: '5926:35059', new_record: '5926:35125', validation_error: '5926:35145', attachment_context: '5926:35166'}
+    canonical: {default: '5926:1993', empty: '5926:34962', loading: '5926:35011', success: '5926:35059', new_record_overlay: '5974:35902', new_record_validation_overlay: '5974:35948', attachment_context_overlay: '5974:35996'}
+    legacy_full_page_states: {new_record: '5926:35125', validation_error: '5926:35145', attachment_context: '5926:35166', superseded_on: '2026-09-15', superseded_by: entity_entry_bottom_sheet_pattern, figma_name_prefix: '[LEGACY PROTO STATE] ... SUPERSEDED BY BOTTOM SHEET'}
     source_history:
       page: henrique
       current: {default: '5321:411', empty: '5323:489', loading: '5323:558', success: '5323:627', new_record: '5323:696', validation_error: '5323:855', attachment_context: '5323:885'}
@@ -305,7 +309,8 @@ known_current_nodes:
     owner: Rhuan
     page: Fluxo Final
     mapping_status: canonical_in_fluxo_final
-    canonical: {default: '5926:2060', empty: '5926:35192', loading: '5926:35252', new_appointment: '5926:35306', validation_error: '5926:35398', success: '5926:35494'}
+    canonical: {default: '5926:2060', empty: '5926:35192', loading: '5926:35252', new_appointment_overlay: '5974:36062', new_appointment_validation_overlay: '5974:36136', success: '5926:35494'}
+    legacy_full_page_states: {new_appointment: '5926:35306', validation_error: '5926:35398', superseded_on: '2026-09-15', superseded_by: entity_entry_bottom_sheet_pattern, figma_name_prefix: '[LEGACY PROTO STATE] ... SUPERSEDED BY BOTTOM SHEET'}
     source_history:
       page: rhuan
       frames: {default: '5416:937', empty: '5417:1037', loading: '5417:1099', new_appointment: '5418:1039', validation_error: '5419:1113', success: '5419:1226'}
@@ -420,12 +425,12 @@ final_prototype:
     T03: {loading: '5926:32351', notification_n02_reminder: '5941:5280', notification_n03_registered: '5941:5316', notification_n04_delayed: '5941:5352'}
     T04: {day: '5926:32402'}
     T05: {empty: '5926:32525', loading: '5926:32574', delay: '5926:32630', corrected: '5926:32752', detail: '5926:32875'}
-    T06: {empty: '5926:32938', loading: '5926:32989', new_record: '5926:33036', new_record_validation_error: '5926:33272', success: '5926:33509'}
+    T06: {empty: '5926:32938', loading: '5926:32989', new_record_overlay: '5977:7182', new_record_validation_error_overlay: '5977:7249', success: '5926:33509'}
     T07: {empty: '5926:33682', loading: '5926:33734', detail: '5926:33783', correction: '5926:33852', correction_complete: '5926:33928', exporting: '5926:34020', export_complete: '5926:34110'}
-    T08: {empty: '5926:34202', create: '5926:34250', create_error_name: '5926:34279', create_error_concentration: '5926:34309', create_error_form: '5926:34339', created: '5926:34369'}
-    T09: {empty: '5926:34452', loading: '5926:34512', new_task: '5926:34568', validation_error: '5926:34646', task_created: '5926:34727', task_completed: '5926:34858'}
-    T10: {empty: '5926:34962', loading: '5926:35011', success: '5926:35059', new_record: '5926:35125', validation_error: '5926:35145', attachment_context: '5926:35166'}
-    T11: {empty: '5926:35192', loading: '5926:35252', new_appointment: '5926:35306', validation_error: '5926:35398', success: '5926:35494'}
+    T08: {empty: '5926:34202', create_overlay: '5967:6307', create_validation_overlay: '5967:6333', created: '5926:34369'}
+    T09: {empty: '5926:34452', loading: '5926:34512', new_task_overlay: '5974:6252', new_task_validation_overlay: '5974:6312', task_created: '5926:34727', task_completed: '5926:34858'}
+    T10: {empty: '5926:34962', loading: '5926:35011', success: '5926:35059', new_record_overlay: '5974:35902', new_record_validation_overlay: '5974:35948', attachment_context_overlay: '5974:35996'}
+    T11: {empty: '5926:35192', loading: '5926:35252', new_appointment_overlay: '5974:36062', new_appointment_validation_overlay: '5974:36136', success: '5926:35494'}
     T12: {registration: '5926:35570', edit: '5926:35621', success: '5926:35664', validation_error: '5926:35701', access_not_configured: '5944:1014', access_invitation: '5944:1171', invitation_sent: '5944:1068', access_active: '5944:1122'}
     T13: {loading: '5926:35752', link_member: '5926:35780', validation_error: '5926:35824', link_complete: '5926:35876', manage_roles: '5926:35948', roles_updated: '5926:36009', transfer_principal: '5926:36086', transfer_complete: '5926:36186', unlink_member: '5926:36258', unlinked: '5926:36350'}
     T14: {empty: '5926:36406', loading: '5926:36437', success: '5926:36462', add_contact: '5926:36528', validation_error: '5926:36591', edit_contact: '5926:36657', edit_saved: '5926:36720'}
@@ -446,6 +451,16 @@ final_prototype:
     P06: accumulated_roles_union_positive_with_context_constraints
     RF30_US036: elderly_read_only_approved
   rule: Use Fluxo Final for end-user prototype validation; owner-page nodes remain source/migration history only.
+  entity_entry_note: T06/T08/T09/T10/T11 create/validation states above are the Bottom Sheet overlay nodes approved 2026-09-15; the corresponding legacy full-page nodes are preserved under each screen's legacy_full_page_states in known_current_nodes and are never a canonical destination. See entity_entry_bottom_sheet_pattern below.
+
+entity_entry_bottom_sheet_pattern:
+  status: canonical_approved_2026_09_15
+  pattern_doc: docs/04_DESIGN_SYSTEM/ENTITY_ENTRY_BOTTOM_SHEET_PATTERN.md
+  registry: docs/05_FIGMA/ENTITY_ENTRY_BOTTOM_SHEET_FLOW.yaml
+  propagation_report: docs/07_AI_CONTEXT/ENTITY_ENTRY_BOTTOM_SHEET_PROPAGATION_2026-09-15.md
+  scope: [T06, T08, T09, T10, T11]
+  rule: PAGE BASE + SCRIM + BOTTOM SHEET replaces the full-page create/validation forms previously listed as canonical for these screens; full-page nodes are renamed "[LEGACY PROTO STATE] ... SUPERSEDED BY BOTTOM SHEET" in Figma and kept only as migration_source/legacy evidence.
+  live_verification: Confirmed against the live Figma file on 2026-09-16 via Figma MCP get_metadata; all 13 legacy nodes carry the SUPERSEDED BY BOTTOM SHEET name and all 10 overlay nodes exist as documented.
 
 mapping_summary:
   mapped_screens: 17
@@ -466,9 +481,9 @@ agent_rules:
   - Never use a LEGADO frame as primary source when a canonical equivalent exists.
   - prototypeIA is historical reference, not current visual authority.
   - Check PROTOTYPE_INTEGRITY.yaml before trusting any historical owner-page reaction.
-  - P03/P04/P05/P06 are resolved decisions; apply their canonical rules instead of treating them as open gates.
+  - P01/P03/P04/P05/P06 are resolved decisions; apply their canonical rules instead of treating them as open gates.
   - RF30/US-036 is approved read-only scope for the Pessoa Idosa.
-  - P01 remains open for story-specific acceptance checklists not present in canonical sources.
+  - P01/#73 was resolved on 2026-09-15; acceptance criteria for US-001-US-036 are in docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml.
   - Material 3 is UX guidance only; implementation remains local/Obra/shadcn with Rede de Apoio identity.
   - Do not use T06 Header Pessoa or the five-item compFooter as TARGET for new migrations.
   - After creating or replacing a canonical state, update this file and STATE_MATRIX.yaml.

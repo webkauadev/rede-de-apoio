@@ -1,5 +1,5 @@
-schema_version: 2
-last_updated: '2026-09-14'
+schema_version: 3
+last_updated: '2026-09-16'
 resolution_policy:
   order: [local_approved_component, existing_obra_shadcn_component, linked_library_component, new_local_component]
   rules:
@@ -91,9 +91,9 @@ ux_direction:
   - Product touch targets remain at least 48 x 48 px.
 
 foundation:
-  status: material3_navigation_foundation_calibrated_pending_human_visual_review
+  status: material3_navigation_foundation_approved_merged_pr91
   figma_page: {name: Design Foundation, node_id: '5639:21448'}
-  migration_gate: authenticated_screen_migration_blocked_until_navigation_foundation_pr_review
+  migration_gate: authenticated_screen_migration_unblocked_all_t01_t17_migrated
   token_collections:
     primitives: {name: 'Rede de Apoio / Primitives', id: 'VariableCollectionId:5639:154'}
     semantic: {name: 'Rede de Apoio / Semantic', id: 'VariableCollectionId:5639:155'}
@@ -121,7 +121,7 @@ foundation:
       semantic_name: 'Rede de Apoio / Foundation / AppHeader / Back'
       figma_node: '5640:21512'
       source: new_local_foundation_component
-      migration_status: target_material3_created_pending_pr_review
+      migration_status: canonical_after_pr91
       screens_applicable: [T12, T13, T14, T15, T16]
     action_touch_target_48:
       semantic_name: 'Rede de Apoio / Foundation / Action / Touch Target 48'
@@ -157,18 +157,18 @@ foundation:
       semantic_name: 'AppHeader / Root'
       figma_node: '5652:350'
       source: new_local_foundation_component
-      status: created_pending_pr_review
+      status: canonical_after_pr91
       target_structure: page_title + person_context_when_applicable + settings_action
     app_header_back_material3_revision:
       semantic_name: 'AppHeader / Back'
       figma_node: '5640:21512'
       source: revised_local_foundation_component
-      status: created_pending_pr_review
+      status: canonical_after_pr91
     navigation_bar_primary:
       semantic_name: 'NavigationBar / Primary'
       figma_node: '5652:442'
       source: new_local_foundation_component_set
-      status: calibrated_pending_human_visual_review
+      status: canonical_after_pr91
       destinations: [Home, Agenda, Diário, Saúde]
       forbidden_destination: Mais
       active_container_role: 'Color/Secondary Container (VariableID:5673:562)'
@@ -177,25 +177,25 @@ foundation:
       semantic_name: 'Settings / Management Sheet'
       figma_node: '5652:443'
       source: obra_shadcn_sheet_slot_composition
-      status: calibrated_pending_human_visual_review
+      status: canonical_after_pr91
       destinations: [T12, T13, T14, T15, T16, T17]
       surface_role: 'Color/Surface Container Low (VariableID:5673:565)'
     settings_destination_row:
       semantic_name: 'Settings / Destination Row'
       figma_node: '5662:21869'
       source: new_local_foundation_component
-      status: created_pending_pr_review
+      status: canonical_after_pr91
       product_interaction_target: '326 × 56 px'
       default_surface: transparent_inherits_settings_sheet_continuity
       persistent_tonal_container: reserved_for_semantically_selected_state_if_applicable
     app_shell_root:
       semantic_name: 'AppShell / Root'
       figma_node: '5652:528'
-      status: reference_created_pending_pr_review
+      status: canonical_reference
     app_shell_back:
       semantic_name: 'AppShell / Back'
       figma_node: '5652:560'
-      status: reference_created_pending_pr_review
+      status: canonical_reference
     local_subnav_health:
       semantic_name: 'Rede de Apoio / Foundation / LocalSubnav / Saúde'
       figma_node: '5810:1005'
@@ -212,7 +212,7 @@ foundation:
       semantic_name: 'Rede de Apoio / Foundation / LocalSubnav / Diário'
       figma_node: '5830:358'
       source: new_local_foundation_component_set
-      status: materialized_in_t07_pending_pr_review
+      status: canonical_reusable
       behavior: fixed_primary_tabs
       active_variants:
         Diário: '5830:357'
@@ -223,7 +223,7 @@ foundation:
       semantic_name: 'Rede de Apoio / Foundation / LocalSubnav / Controle e Privacidade'
       figma_node: '5912:1699'
       source: new_local_foundation_component_set
-      status: materialized_pending_t16_t17_pr_review
+      status: canonical_reusable
       behavior: fixed_primary_tabs
       active_variants:
         Preferências: '5912:1677'

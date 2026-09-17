@@ -31,7 +31,7 @@ selection_policy:
   - A Figma reaction is not a requirement.
   - P03/P04/P05/P06 were resolved canonically on 2026-09-14.
   - RF30/US-036 were approved canonically on 2026-09-14.
-  - P01 remains the open documentary gate for non-enumerated story-specific acceptance criteria.
+  - P01/#73 was resolved on 2026-09-15; acceptance criteria for US-001-US-036 are in docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml.
 
 screens:
   T01:
@@ -238,4 +238,4 @@ transversal_elements:
   E19: {name: Registrar consulta/recomendação, owner: Henrique, story: US-022}
   E26: {name: Manter contato, owner: David, story: US-026}
 
-agent_rule: GitHub is canonical for behavior and scope. Fluxo Final is canonical for current visual/prototype implementation. P03-P06 and RF30/US-036 are approved decisions; P01 remains the open documentary gate. Material 3 governs UX roles without replacing project requirements.
+agent_rule: GitHub is canonical for behavior and scope. Fluxo Final is canonical for current visual/prototype implementation. P01-P06 and RF30/US-036 are approved/closed decisions; no documentary gate remains open. Material 3 governs UX roles without replacing project requirements.

@@ -31,11 +31,10 @@ Antes de procurar por texto livre, um agente deve consultar:
 
 Cobertura atual:
 
-- RF01–RF30: Issues #5–#34;
-- RNF01/RNF03: Issues #35/#36;
-- US-001–US-035: Issues #37–#71;
-- US-036 proposta: #72;
-- P01–P09: Issues #73–#81, com P07/#79 fechada.
+- RF01–RF30: Issues #5–#34 (RF30/#34 aprovado em 2026-09-14 para acesso da Pessoa Idosa);
+- RNF01/RNF02/RNF03: Issues #35/#82/#36;
+- US-001–US-036: Issues #37–#72 (US-036/#72 aprovada em 2026-09-14, owner David);
+- P01–P09: Issues #73–#81, todas fechadas (P01/#73 resolvido em 2026-09-15; P02–P09 resolvidas em 2026-09-08/2026-09-15).
 
 ## Cadeia de rastreabilidade
 

@@ -48,9 +48,9 @@ Peça ao Codex para, sem modificar nada:
 A leitura está incorreta se o agente:
 
 - tratar RF30/US-036 como proposta;
-- tratar P03/P04/P05/P06 como ainda abertos;
+- tratar P01/P03/P04/P05/P06 como ainda abertos;
 - usar frame `LEGADO —` como base apesar de existir equivalente final;
-- inventar critérios individuais ausentes em P01.
+- inventar critério de aceite além do que está aprovado em `ACCEPTANCE_CRITERIA.yaml`.
 
 ## Decisões atuais que Codex deve conhecer
 
@@ -59,7 +59,7 @@ A leitura está incorreta se o agente:
 - P05/#77: CSV exclusivo do Familiar Principal na primeira versão.
 - P06/#78: união de permissões positivas em papéis acumulados, preservando restrições/contextos.
 - RF30/#34 + US-036/#72: acesso próprio da Pessoa Idosa aprovado em modo read-only, owner David.
-- P01/#73: único gate documental ainda aberto para critérios individuais não enumerados.
+- P01/#73: resolvido em 2026-09-15; critérios individuais de US-001–US-036 em `docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml`. Nenhum gate P01–P09 permanece aberto.
 
 ## Regra para alterações severas de design
 

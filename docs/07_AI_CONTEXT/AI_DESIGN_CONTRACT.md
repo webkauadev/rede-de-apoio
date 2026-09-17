@@ -27,7 +27,7 @@ Determinar no GitHub:
 - componentes/tokens disponíveis;
 - direção Material 3 vigente.
 
-P03/P04/P05/P06 foram resolvidos canonicamente em 2026-09-14. RF30/US-036 foram aprovados canonicamente na mesma data. P01/#73 permanece como gate documental para checklists individuais de critérios não enumerados.
+P03/P04/P05/P06 foram resolvidos canonicamente em 2026-09-14. RF30/US-036 foram aprovados canonicamente na mesma data. P01/#73 foi resolvido em 2026-09-15; critérios individuais de aceite de US-001–US-036 estão em `docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml`.
 
 ## 2. Inspecionar antes de desenhar
 

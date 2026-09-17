@@ -1,195 +1,211 @@
 # Catálogo de Telas T01–T17 — Estado Atual
 
-Última auditoria conjunta GitHub + Figma: **2026-09-13**.
+Última auditoria conjunta GitHub + Figma: **2026-09-16** (reauditoria completa; a versão anterior deste arquivo, de 2026-09-13, ficou defasada em relação à consolidação do `Fluxo Final`, ao padrão de Bottom Sheet e às decisões P01–P06/RF30/US-036 aprovadas em 2026-09-14/15).
 
-Este catálogo explica **o que cada T## significa, como a tela se comporta hoje, quais estados existem no Figma e quais limites funcionais ainda estão abertos**. A fonte de comportamento funcional continua sendo RF/RNF/US e regras do GitHub. O Figma documenta o visual vigente e o wiring atual; reações conhecidamente incorretas estão em `docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml`.
+Este catálogo explica **o que cada T## significa, como a tela se comporta hoje, quais estados existem no Figma canônico e o que já foi resolvido**. A fonte de comportamento funcional é RF/RNF/US e as regras de negócio do GitHub. O Figma documenta o visual/wiring vigente na página `Fluxo Final` (`5926:1014`, file `tcyj2fkTXei2CJbqaRxqCp`); owner pages (`david`, `rhuan`, `henrique`, `kaua`) permanecem como histórico/fonte de migração e não são mais base de implementação.
 
 ## Regras de leitura
 
-- `T##` = tela principal do Site Map.
-- `E##` = ação/elemento transversal; não é uma nova tela.
-- `N##` = evento/notificação.
-- Estados como Loading, Empty, Success, Validation Error e Forbidden são variações da mesma tela.
-- `STATE = PAGE BASE + DELTA MÍNIMO`.
-- Frame `LEGADO —` nunca é base quando existe frame atual.
-- Um estado existente no Figma pode estar marcado como `proposal_only` ou `visual_candidate_only`; isso impede o Codex de promovê-lo a requisito aprovado.
+- `T##` = tela principal do Site Map. `E##` = ação/elemento transversal, não é uma nova tela. `N##` = evento/notificação.
+- Estados (Loading, Empty, Success, Validation Error, Forbidden) são variações da mesma tela: `STATE = PAGE BASE + DELTA MÍNIMO`.
+- Frame `LEGADO —` e owner pages nunca são base quando existe equivalente no `Fluxo Final`.
+- Cadastro operacional contextual (T06/T08/T09/T10/T11) usa **Bottom Sheet** (`PAGE BASE + SCRIM + BOTTOM SHEET`), não página inteira. Os antigos formulários full-page existem apenas como `[LEGACY PROTO STATE] ... SUPERSEDED BY BOTTOM SHEET` — confirmado ao vivo no Figma em 2026-09-16. Ver `docs/04_DESIGN_SYSTEM/ENTITY_ENTRY_BOTTOM_SHEET_PATTERN.md` e `docs/05_FIGMA/ENTITY_ENTRY_BOTTOM_SHEET_FLOW.yaml`.
+- P01–P06 (#73–#78) estão todos **resolvidos/fechados** no GitHub (P01 em 2026-09-15, P02–P06 em 2026-09-08/2026-09-14). RF30/#34 e US-036/#72 estão **aprovados**, não são mais proposta.
+- FI-001–FI-008 (Issue #84) estão **resolvidos/superados** no `Fluxo Final`; preservados apenas como histórico em `docs/05_FIGMA/PROTOTYPE_INTEGRITY.yaml`.
 
 ## T01 — Login
-**Responsável:** David · **US:** US-002 · **Origem:** RF02
+**Responsável:** David · **US:** US-002 (+ autenticação compartilhada com US-036) · **Origem:** RF02
 
-Autentica uma conta válida. O estado padrão permite entrar e também alcançar T02. Credenciais inválidas permanecem na mesma estrutura com feedback de erro; Loading representa o envio da autenticação.
+Autentica uma conta válida, incluindo a Pessoa Idosa com conta própria (RF30/US-036).
 
-**Figma atual:** Default `5189:730`; Credenciais inválidas `5189:800`; Loading `5189:870`.
+**Figma canônico (Fluxo Final):** Default `5926:1016`; Credenciais inválidas `5926:32076`; Loading `5926:32132`.
 
-**Wiring observado:** Entrar leva ao Loading; Criar conta leva a T02. O Figma não deve ser usado para inventar o destino pós-autenticação quando esse destino não estiver explicitamente decidido pelo requisito/fluxo.
+**Wiring:** Entrar → Loading → T03; Criar conta → T02.
 
 ## T02 — Cadastro de Conta
-**Responsável:** David · **US:** US-001 · **Origem:** RF01
+**Responsável:** David · **US:** US-001 (+ ativação compartilhada com US-036) · **Origem:** RF01
 
-Cria a conta de acesso de um usuário autorizado. Possui Default, Validation Error e Loading.
+Cria a conta de acesso. Para a Pessoa Idosa, a senha é definida pelo próprio titular e a conta é vinculada ao próprio perfil (RF30).
 
-**Figma atual:** Default `5189:938`; Validation Error `5189:1043`; Loading `5189:1152`.
+**Figma canônico:** Default `5926:1070`; Validation Error `5926:32187`; Loading `5926:32269`.
 
-**Wiring observado:** ação primária leva ao Loading; “Entrar” retorna para T01.
+**Wiring:** ação primária → Loading; "Entrar" retorna a T01.
 
 ## T03 — Home / Visão Geral do Cuidado
-**Responsável:** Rhuan · **US:** US-009, US-020, US-029, US-030 · **Origens relacionadas:** RF07, RF17, RF25, RF26
+**Responsável:** Rhuan · **US:** US-009, US-020, US-029, US-030 · **Origens:** RF07, RF17, RF25, RF26
 
-É o resumo operacional pós-autenticação. Mostra atalhos para o que importa no momento: plantonista/agenda, tarefa pendente e próximo compromisso.
+Resumo operacional pós-autenticação.
 
-**Figma atual:** Default `5435:1222`; Loading `5436:1616`; Lembrete obrigatório `5436:18023`; Cuidado registrado `5436:18343`; Atraso `5436:18445`.
+**Figma canônico:** Default `5926:1151`; Loading `5926:32351`; N02 (lembrete obrigatório) `5941:5280`; N03 (cuidado registrado) `5941:5316`; N04 (atraso) `5941:5352`.
 
-**Wiring observado no Default:** Plantonista atual → T04; Tarefa pendente → T09; Próximo compromisso → T11.
+**Wiring:** Plantonista atual → T04; Tarefa pendente → T09; Próximo compromisso → T11.
 
-**Gate importante:** os três estados de aviso são **evidência visual/candidatos** para N02/N03/N04. P04/#76 ainda decide formalmente em que superfície N01–N04 devem aparecer. O Codex não pode fechar P04 apenas porque esses frames existem.
+**P04/#76 (resolvido):** N02/N03/N04 usam feedback transitório global (Snackbar/Sonner) no AppShell, não uma Central de Notificações. N02 → T05; N03 → T05/T07; N04 → T05, com resumo possível em T03; N01 → T04.
 
 ## T04 — Calendário de Cuidados
-**Responsável:** Rhuan · **US:** US-008, US-009, US-011, US-012, US-013, US-014 · **RF:** RF06–RF10 conforme rastreabilidade
+**Responsável:** Rhuan · **US:** US-008, US-009, US-011, US-012, US-013, US-014 · **RF:** RF06–RF10
 
-Organiza e consulta a escala de cuidado/plantões. “Plantonista Atual” é condição temporária, nunca perfil de usuário.
+Organiza e consulta a escala de cuidado/plantões. "Plantonista Atual" é condição temporária, nunca perfil.
 
-**Figma atual:** Semana `5122:1870`; Dia `5122:2031`.
+**Figma canônico:** Semana `5926:1261`; Dia `5926:32402`.
 
-**Wiring observado:** a visão Semana alterna para Dia e Dia retorna para Semana. E03–E07 representam operações de plantão/troca e permanecem ações da T04, não novas telas do Site Map.
+**Wiring:** Semana ↔ Dia. E03–E07 (plantão/troca) são ações da T04, não telas novas.
+
+**Correção estrutural aplicada (2026-09-15):** viewport `5926:1263` com `clipsContent=true` e `overflowDirection=VERTICAL` — o bug de conteúdo invadindo o header foi corrigido.
 
 ## T05 — Detalhamento do Dia
 **Responsável:** Henrique · **US principal:** US-010 · **Contexto:** US-019, US-020, US-021, US-023, US-025, US-030, US-034
 
-Consolida o que estava planejado e o que foi registrado em um dia: plantões, medicações, tarefas, compromissos, sintomas/intercorrências e estados relevantes do cuidado.
+Consolida o planejado e o registrado em um dia.
 
-**Figma atual:** Default `5344:1413`; Empty `5346:1256`; Loading `5346:1403`; Atraso `5346:1504`; Corrigido `5346:1592`; Detalhe `5346:1686`.
+**Figma canônico:** Default `5926:1420`; Empty `5926:32525`; Loading `5926:32574`; Atraso `5926:32630`; Corrigido `5926:32752`; Detalhe `5926:32875`.
 
-“Atrasado” só se aplica a ação com horário programado após 15 minutos sem registro. Sintoma/intercorrência espontânea não fica atrasado. “Corrigido” preserva o original.
+"Atrasado" só se aplica a ação programada após 15 min sem registro. "Corrigido" preserva o original (RN-006/P03).
 
 ## T06 — Diário de Cuidados
 **Responsável:** Kauã · **US:** US-015, US-021, US-027 · **RF:** RF11, RF18, RF23
 
-É a linha cronológica de ocorrências/registros de cuidado. Um novo registro preserva autoria e data/hora; correções não sobrescrevem o original.
+Linha cronológica de ocorrências/registros de cuidado. Novo registro preserva autoria e data/hora; correções não sobrescrevem o original.
 
-**Figma atual:** Normal `5201:13491`; Empty `5201:13490`; Loading `5288:14618`; Novo Registro `5201:13488`; Validation Error `5203:300`; Success `5288:14482`.
+**Figma canônico:** Normal `5926:1542`; Empty `5926:32938`; Loading `5926:32989`; Success `5926:33509`.
 
-**Componentes locais verificados:** `T06 / Header / Pessoa` `5201:13483`; `T06 / Care Record Card` `5204:318`.
+**Cadastro operacional contextual — Bottom Sheet (canônico desde 2026-09-15):**
+- Overlay de novo registro: `5977:7182` (sheet `5977:7184`, handle `5977:7185`);
+- Overlay de validação: `5977:7249` (sheet `5977:7251`);
+- CTAs canônicos: `5926:1549`, `5926:32943`, `5926:33516`, todos abrindo o overlay.
 
-**Wiring observado:** Normal/Empty abrem Novo Registro; salvar leva a Success; cancelar volta para Normal.
+**Legado preservado (não canônico):** `5926:33036` (novo registro full-page) e `5926:33272` (validação full-page), renomeados no Figma `[LEGACY PROTO STATE] ... SUPERSEDED BY BOTTOM SHEET`.
+
+**Correção estrutural aplicada (2026-09-15):** viewport `5962:6236` com `clipsContent=true`, conteúdo `5926:1545` redimensionado para 1169 px — timeline não invade mais o header.
+
+**Correção permitida (P03):** pode corrigir quem possuir permissão efetiva para produzir o mesmo tipo de registro.
 
 ## T07 — Histórico de Cuidados
 **Responsável:** Henrique · **US:** US-016, US-032, US-034 · **Origem:** RF12, RF28, RNF02
 
-Consulta o histórico preservado, abre detalhes, permite registrar uma correção vinculada e oferece exportação CSV contextual quando houver autorização.
+Consulta o histórico preservado, abre detalhes, permite correção vinculada e exportação CSV contextual.
 
-**Figma atual:** Default `5334:756`; Empty `5335:831`; Loading `5335:948`; Detalhe `5336:895`; Correção `5336:977`; Correção concluída `5337:15296`; Exportando `5337:15310`; Exportação concluída `5337:15330`.
+**Figma canônico:** Default `5926:1712`; Empty `5926:33682`; Loading `5926:33734`; Detalhe `5926:33783` (E11); Correção `5926:33852` (E12); Correção concluída `5926:33928`; Exportando `5926:34020` (E13, Familiar Principal); Exportação concluída `5926:34110`.
 
-**Wiring observado:** cards → Detalhe; Corrigir → formulário de Correção; registrar correção → Correção concluída; Exportar → Exportando.
-
-**Gates:** P03/#75 afeta quem pode corrigir; P05/#77 decide quem pode exportar. A presença do botão no Figma não concede permissão.
+**P03/#75 (resolvido):** correção exige permissão efetiva para produzir o mesmo tipo de registro. **P05/#77 (resolvido):** exportação CSV é exclusiva do Familiar Principal na primeira versão, contextual em T07 e auditada.
 
 ## T08 — Medicamentos
 **Responsável:** Henrique · **US:** US-017–US-020 · **RF:** RF14–RF17
 
-Consulta medicamentos e cadastra dados de medicamento/rotina conforme requisitos.
+Consulta e cadastra medicamentos/rotina.
 
-**Frame de lista canônico:** `5235:924`. **Outros estados:** Empty `5118:838`; Cadastrar `5123:1291`; erros `5130:4159`, `5130:4204`, `5130:4263`; Cadastrado `5141:2758`.
+**Figma canônico:** Lista `5926:1801`; Empty `5926:34202`; Cadastrado `5926:34369`.
 
-**Importante:** `5048:644` está explicitamente nomeado `LEGADO — [Henrique] T08 — Medicamentos (Lista)` e nunca deve ser base.
+**Cadastro operacional contextual — Bottom Sheet (piloto do padrão, 2026-09-15):**
+- Overlay de cadastro: `5967:6307` (sheet `5967:6309`, handle `5967:6310`);
+- Overlay de validação: `5967:6333` (sheet `5967:6335`);
+- CTAs canônicos: `5926:1806`, `5926:34209` (empty), `5926:34375` (a partir do success).
 
-**Wiring observado:** lista/empty → Cadastrar; salvar → Cadastrado; voltar → Lista; tab Consultas → T10.
+**Legado preservado:** `5926:34250`, `5926:34279`, `5926:34309`, `5926:34339` (cadastro e três variações de erro full-page), renomeados `[LEGACY PROTO STATE] ... SUPERSEDED BY BOTTOM SHEET`.
 
-**Dívida:** FI-001/#84 — um hotspot do Empty ainda aponta para o frame legado.
+**FI-001 (histórico, #84 — resolvido):** o antigo hotspot do Empty que apontava para o frame `LEGADO — [Henrique] T08 — Medicamentos (Lista)` (`5048:644`) não existe mais como destino no `Fluxo Final`.
 
 ## T09 — Tarefas
 **Responsável:** Rhuan · **US:** US-024, US-025 · **Contexto:** US-020, US-030 · **RF:** RF21
 
 Organiza tarefas de cuidado, criação/atribuição e conclusão.
 
-**Figma atual:** Default `5360:348`; Empty `5361:419`; Loading `5361:475`; Nova tarefa `5361:518`; Validation Error `5361:601`; Tarefa criada `5361:707`; Tarefa concluída `5361:741`.
+**Figma canônico:** Default `5926:1886`; Empty `5926:34452`; Loading `5926:34512`; Tarefa criada `5926:34727`; Tarefa concluída `5926:34858` (E18).
 
-**Wiring observado:** Nova tarefa → formulário; salvar → Tarefa criada; concluir → Tarefa concluída; tab Compromissos → T11.
+**Bottom Sheet:** overlay de nova tarefa `5974:6252` (sheet `5974:6254`); validação `5974:6312` (sheet `5974:6314`); CTAs `5926:1901`, `5926:34467`, `5926:34742`.
+
+**Legado preservado:** `5926:34568` (nova tarefa full-page), `5926:34646` (validação full-page).
 
 ## T10 — Consultas e Recomendações
 **Responsável:** Henrique · **US:** US-022, US-027 · **RF:** RF19, RF23
 
-Registra consultas realizadas, recomendações de saúde e anexos contextuais E10.
+Registra consultas realizadas, recomendações de saúde e anexos contextuais (E10).
 
-**Figma atual:** Default `5321:411`; Empty `5323:489`; Loading `5323:558`; Success `5323:627`; Novo registro `5323:696`; Validation Error `5323:855`; Anexo contextual `5323:885`.
+**Figma canônico:** Default `5926:1993`; Empty `5926:34962`; Loading `5926:35011`; Success `5926:35059`.
 
-**Fluxo correto já existente:** Default → Novo registro; anexar → E10; salvar → Success; cancelar → Default; tab Medicamentos → T08.
+**Bottom Sheet:** overlay de novo registro `5974:35902` (sheet `5974:35904`); validação `5974:35948` (sheet `5974:35950`); anexo `5974:35996` (sheet `5974:35998`); CTAs `5926:1998`, `5926:34967`, `5926:35064`.
 
-**Dívida crítica:** FI-002/FI-003/FI-004 (#84). Em Empty, Loading e Success, “Novo registro” está ligado por engano a **T08/Cadastrar medicamento**. O Codex deve ignorar esse wiring como intenção funcional.
+**Legado preservado:** `5926:35125` (novo registro), `5926:35145` (validação), `5926:35166` (anexo) — todos full-page.
+
+**FI-002/FI-003/FI-004 (histórico, #84 — resolvido):** os antigos hotspots de Empty/Loading/Success que abriam por engano T08/Cadastrar medicamento não existem no `Fluxo Final`; T10 permanece dentro do próprio fluxo.
 
 ## T11 — Compromissos
 **Responsável:** Rhuan · **US:** US-023 · **RF:** RF20
 
 Consulta e registra compromissos planejados relacionados ao cuidado.
 
-**Figma atual:** Default `5416:937`; Empty `5417:1037`; Loading `5417:1099`; Novo compromisso `5418:1039`; Validation Error `5419:1113`; Success `5419:1226`.
+**Figma canônico:** Default `5926:2060`; Empty `5926:35192`; Loading `5926:35252`; Success `5926:35494`.
 
-**Wiring observado:** Novo compromisso → formulário; salvar → Success; cancelar → Default; tab Tarefas → T09.
+**Bottom Sheet:** overlay de novo compromisso `5974:36062` (sheet `5974:36064`); validação `5974:36136` (sheet `5974:36138`); CTAs `5926:2065`, `5926:35197`, `5926:35499`.
+
+**Legado preservado:** `5926:35306` (novo compromisso), `5926:35398` (validação) — full-page.
 
 ## T12 — Perfil da Pessoa Idosa
-**Responsável:** David · **US aprovadas:** US-003, US-004 · **RF aprovado:** RF03
+**Responsável:** David · **US:** US-003, US-004, US-036 · **RF:** RF03, RF30
 
-Cadastra, visualiza e edita o perfil da pessoa idosa. A Visualização também é a entrada atual da área “Mais” para Rede de Cuidado, Contatos e Emergência.
+Cadastra, visualiza e edita o perfil da pessoa idosa; entrada do `Settings / Management Sheet` para Rede de Cuidado, Contatos e Emergência; e ponto de configuração do acesso próprio da Pessoa Idosa (RF30/US-036).
 
-**Estados aprovados visualmente ligados a RF03:** Cadastro `5125:2567`; Edição `5125:2649`; Visualização `5125:2719`; Success `5125:2799`; Validation Error `5125:2888`.
+**Figma canônico:** Visualização `5926:2126`; Cadastro `5926:35570`; Edição `5926:35621`; Success `5926:35664`; Validation Error `5926:35701`.
 
-**Estados visuais condicionados à proposta RF30/US-036:** Convite enviado `5125:2408`; Acesso ativo `5125:2981`; Acesso não configurado `5125:3069`; Convite de acesso `5125:3151`. Enquanto RF30/#34 e US-036/#72 não forem aprovados, esses frames são **proposal_only**.
+**RF30/US-036 (aprovado 2026-09-14):** Acesso não configurado `5944:1014`; Convite de acesso `5944:1171`; Convite enviado `5944:1068`; Acesso ativo `5944:1122`; linha de destino `5944:1227`. Esses estados deixaram de ser `proposal_only`.
 
-**Wiring observado na área Mais:** Rede de Cuidado → T13; Contatos → T14; Emergência → T15. Preferências e Auditoria hoje têm apenas hover, sem navegação de clique (FI-006/FI-007, #84).
+**Wiring no Settings:** Rede de Cuidado → T13; Contatos → T14; Emergência → T15.
+
+**FI-006/FI-007 (histórico, #84 — resolvido):** a navegação de Preferências/Auditoria por `Mais` foi substituída pela arquitetura `Settings / Management Sheet`, que já resolve o problema original.
 
 ## T13 — Rede de Cuidado
 **Responsável:** David · **US:** US-005, US-006, US-007 · **Contexto:** US-011 · **RF:** RF04, RF05
 
-Gerencia membros da rede, papéis familiares acumuláveis e transferência do Familiar Principal. Deve existir exatamente um Principal ativo; transferência é atômica. Profissional da Saúde não recebe papel familiar.
+Gerencia membros, papéis familiares acumuláveis (P06) e transferência do Familiar Principal (único ativo por rede).
 
-**Figma atual:** Default `5367:1631`; Loading `5369:2130`; Vincular `5370:1705`; Validation Error `5370:16302`; Vínculo concluído `5370:16523`; Gerenciar papéis `5371:1875`; Papéis atualizados `5371:16499`; Transferir Principal `5371:16617`; Transferência concluída `5371:16756`; Desvincular `5372:2181`; Desvinculado `5372:16816`.
+**Figma canônico:** Default `5926:2160`; Loading `5926:35752`; Vincular `5926:35780` (E22); Validation Error `5926:35824`; Vínculo concluído `5926:35876`; Gerenciar papéis `5926:35948` (E24); Papéis atualizados `5926:36009`; Transferir Principal `5926:36086` (E25); Transferência concluída `5926:36186`; Desvincular `5926:36258` (E23); Desvinculado `5926:36350`.
 
-**Wiring observado:** Default abre Vincular/Gerenciar/Desvincular e retorna para T12. Os subfluxos voltam/cancelam para Default e possuem estados de conclusão.
-
-**Gates:** P03/#75 e P06/#78 ainda limitam decisões de permissão. **Dívida semântica:** FI-008/#84 — alguns layers reutilizam nomes E17/E22 ou “Desvincular” em contextos errados. O nome do layer não altera a rastreabilidade correta E22–E25.
+**FI-008 (histórico, #84 — resolvido):** os layers foram renomeados semanticamente para E22–E25 no `Fluxo Final` (`5926:35799`, `5926:35845`, `5926:35968`, `5926:36130`, `5926:36301`), sem alterar reactions ou escopo.
 
 ## T14 — Contatos Importantes
 **Responsável:** David · **US:** US-026 · **RF:** RF22
 
-Consulta e mantém contatos importantes relacionados ao cuidado.
-
-**Figma atual:** Default `5387:2703`; Empty `5387:17293`; Loading `5387:17356`; Success `5387:17388`; Adicionar `5390:154`; Validation Error `5392:276`; Editar `5390:253`; Alteração salva `5392:418`.
-
-**Wiring observado:** adicionar/editar abrem formulários; salvar leva ao respectivo estado de sucesso; cancelar volta ao Default; voltar retorna para T12.
+**Figma canônico:** Default `5926:2229`; Empty `5926:36406`; Loading `5926:36437`; Success `5926:36462`; Adicionar `5926:36528`; Validation Error `5926:36591`; Editar `5926:36657`; Alteração salva `5926:36720`.
 
 ## T15 — Informações de Emergência
 **Responsável:** David · **US:** US-028 · **RF:** RF24
 
-Mostra rapidamente informações importantes autorizadas para agir em emergência. Não é uma área de edição livre.
+Consulta rápida, não é área de edição livre.
 
-**Figma atual:** Default `5404:2664`; Loading `5405:2696`; Empty `5405:2752`.
-
-**Wiring observado:** Default possui retorno para T12.
+**Figma canônico:** Default `5926:2278`; Loading `5926:36772`; Empty `5926:36792`.
 
 ## T16 — Preferências de Notificações
 **Responsável:** Kauã · **US:** US-031 · **RF:** RF27
 
-Configura **somente notificações opcionais**. Eventos obrigatórios não podem ser desligados e papéis acumulados não devem duplicar notificações.
+Configura **somente notificações opcionais**; eventos obrigatórios não podem ser desligados; papéis acumulados não duplicam notificações (P06).
 
-**Figma atual:** Default `5211:966`; Alteração salva `5212:432`.
+**Figma canônico:** Default `5926:2310`; Alteração salva `5926:36818`.
 
-**Wiring observado:** Default → Alteração salva; tab Auditoria → T17.
-
-**Dívida crítica:** FI-005/#84 — no estado Alteração salva, a ação “Salvar preferências” salta por engano para T06/Novo Registro. **Gate:** P04/#76 continua aberto sobre superfícies de notificação.
+**FI-005 (histórico, #84 — resolvido):** o salto indevido de "Salvar preferências" para T06/Novo Registro não existe no `Fluxo Final`; o fluxo permanece dentro de T16.
 
 ## T17 — Auditoria
 **Responsável:** Kauã · **US:** US-033, US-035 · **RF/RNF:** RF29, RNF01; RNF03 transversal
 
-Exibe trilha de auditoria autorizada, com usuário, categoria/papéis quando aplicável, pessoa idosa, data/hora, operação, recurso e resultado. Também representa bloqueio de acesso não autorizado.
+Exibe trilha de auditoria autorizada e representa bloqueio de acesso não autorizado.
 
-**Figma atual:** Default `5445:915`; Loading `5445:1033`; Empty `5445:18015`; Detalhe `5445:18109`; Forbidden `5445:18234`.
+**Figma canônico:** Default `5926:2379`; Loading `5926:36889`; Empty `5926:36917`; Detalhe `5926:36946`; Forbidden `5926:37017` (E27).
 
-**Wiring observado:** eventos de auditoria → Detalhe; Voltar → Default; tab Preferências → T16.
+## Pessoa Idosa — leitura somente (RF30/US-036)
+
+T03–T15 compõem a experiência read-only autorizada da Pessoa Idosa (whitelist completa em `docs/02_BUSINESS_RULES/PERMISSIONS_MATRIX.md` e `docs/05_FIGMA/ELDERLY_READ_ONLY_FLOW.yaml`, section `5948:5316`). T16 e T17 **não** são destinos disponíveis nesse modo. Nenhuma ação de escrita, correção, conclusão, administração ou exportação é exposta; auditado ao vivo no Figma em 2026-09-16 (Settings read-only `5948:36255`).
 
 ## Fluxos conceituais por responsável
 
-- **David:** autenticação e Rede/Apoio — `T01/T02 → T12 → T13/T14/T15`.
-- **Rhuan:** organização operacional — `T03 ↔ T04/T09/T11`.
-- **Henrique:** registros e saúde — `T05/T07/T08/T10`, com integração de E10.
-- **Kauã:** diário, notificações e governança — `T06/T16/T17`, com E12, exportação e acesso negado como temas transversais.
+- **David:** T01, T02, T12, T13, T14, T15 — autenticação e Rede/Apoio, incluindo RF30/US-036 (T12).
+- **Rhuan:** T03, T04, T09, T11 — organização operacional.
+- **Henrique:** T05, T07, T08, T10 — registros e saúde, com E10.
+- **Kauã:** T06, T16, T17 — diário, notificações e governança, com E12/E13 e auditoria.
 
-A distribuição atual de trabalho é 9 US David / 9 Rhuan / 9 Henrique / 8 Kauã e preserva a coerência funcional definida no projeto.
+## Distribuição de User Stories (36 US oficiais — `docs/06_GITHUB/ISSUE_REGISTRY.yaml`)
+
+- **David: 10** — US-001–US-007, US-026, US-028, **US-036**.
+- **Rhuan: 9** — US-008, US-009, US-011–US-014, US-023–US-025.
+- **Henrique: 9** — US-010, US-016–US-022, US-027.
+- **Kauã: 8** — US-015, US-029–US-035.
+
+A distribuição anterior deste arquivo (9/9/9/8 = 35) não incluía US-036, aprovada em 2026-09-14 e atribuída a David.

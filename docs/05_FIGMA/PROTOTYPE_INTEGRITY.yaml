@@ -9,7 +9,7 @@ policy:
   - Legacy owner-page reactions remain historical evidence only when a Fluxo Final equivalent exists.
   - P03, P04, P05 and P06 were resolved canonically on 2026-09-14.
   - RF30/US-036 were approved canonically on 2026-09-14.
-  - P01 remains the only open documentary gate for story-specific acceptance criteria not enumerated in source material.
+  - P01/#73 was resolved on 2026-09-15 (explicit human approval); story-specific acceptance criteria for US-001-US-036 are in docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml. No P01-P09 documentary gate remains open.
 
 canonical_prototype:
   page: {node_id: '5926:1014', name: Fluxo Final}
@@ -174,8 +174,10 @@ historical_defects:
       - {node_id: '5926:36130', name: 'E25 — Transferir principal'}
       - {node_id: '5926:36301', name: 'E23 — Desvincular membro'}
 
-open_documentary_gates:
+resolved_documentary_gates:
   P01:
     issue: 73
-    status: open
-    rule: Do not fabricate story-specific acceptance checklists that are not directly supported by canonical sources.
+    status: closed_completed
+    resolved_on: '2026-09-15'
+    resolution: docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml
+    rule: Do not fabricate acceptance criteria beyond what is approved there without a new explicit GitHub decision.

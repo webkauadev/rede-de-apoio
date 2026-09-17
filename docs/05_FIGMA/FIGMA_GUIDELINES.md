@@ -97,16 +97,11 @@ Antes de promover Foundation ou T##:
 
 Um node com Auto Layout, tokens e zero overflow ainda pode reprovar visualmente.
 
-## Gate temporário
+## Gate — histórico (resolvido)
 
-Até o PR #91 passar pela calibração M3 e revisão humana:
+O PR #91 passou pela calibração M3 e revisão humana em 2026-09-14 (`docs/07_AI_CONTEXT/T03_HUMAN_APPROVAL_2026-09-14.md`) e T01–T17 foram totalmente migrados para os componentes TARGET (PRs #93–#102). O header T06 (`5201:13483`) e o footer de cinco itens (`5116:13047`) continuam `DEPRECATED_FOR_NEW_MIGRATIONS` apenas como referência histórica — não usar em nova tela.
 
-- header T06 e footer de cinco itens continuam `DEPRECATED_FOR_NEW_MIGRATIONS`;
-- não propagar os componentes TARGET para T##;
-- não iniciar T03;
-- preservar a arquitetura do PR #91 e corrigir apenas calibração tonal/pendências aprovadas.
-
-Nodes TARGET: `5652:350`, `5640:21512`, `5652:442`, `5652:443`.
+Nodes TARGET canônicos: `5652:350`, `5640:21512`, `5652:442`, `5652:443`.
 
 ## Regras permanentes
 

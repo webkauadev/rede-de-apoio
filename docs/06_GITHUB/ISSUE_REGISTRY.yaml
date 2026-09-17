@@ -7,7 +7,7 @@ policy:
   - "Every RF/RNF/US used by agents has a canonical GitHub Issue reference here."
   - "US-001 through US-036 have canonical title, statement, origin, owner and screen/action traceability."
   - "RF30/US-036 were approved canonically on 2026-09-14."
-  - "P01 remains open only because the Master Guide does not enumerate a story-specific acceptance checklist for every US."
+  - "P01/#73 was resolved on 2026-09-15: acceptance criteria for US-001-US-036 were approved explicitly and are in docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml."
 
 requirements:
   RF01: {issue: 5, status: open}
@@ -85,7 +85,7 @@ user_stories:
   US-036: {issue: 72, owner: David, content_status: complete, origin: RF30}
 
 pending_work:
-  P01: {issue: 73, status: open, scope: acceptance_criteria_checklists}
+  P01: {issue: 73, status: closed, state_reason: completed, scope: acceptance_criteria_checklists, resolved_on: '2026-09-15'}
   P02: {issue: 74, status: closed, state_reason: completed}
   P03: {issue: 75, status: closed, state_reason: completed}
   P04: {issue: 76, status: closed, state_reason: completed}
