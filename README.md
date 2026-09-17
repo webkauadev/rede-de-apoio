@@ -40,6 +40,7 @@ Leia primeiro `docs/07_AI_CONTEXT/CURRENT_PROJECT_STATE.md`.
 - `docs/05_FIGMA/` — registry de nodes, auditoria e integridade do protótipo;
 - `docs/06_GITHUB/` — workflow, estrutura e registry de Issues;
 - `docs/07_AI_CONTEXT/` — estado atual, contratos, screens/states e setup Codex;
+- `docs/08_MILESTONE/` — status consolidado, métricas com fonte e evidências da entrega;
 - `AGENTS.md` / `CLAUDE.md` — contratos de execução;
 - `scripts/validate_agent_context.py` — validação de consistência.
 
