@@ -1,0 +1,31 @@
+Site Map corrigido — Sistema de Reserva de Laboratórios
+Representação textual equivalente à Figura 1 (sitemap-corrigido.svg)
+Elaboração própria (2026), a partir da correção dos seis problemas identificados em A1.
+
+Login [público] — ação de sistema (transversal, acessível a partir de Home;
+                   não integra a hierarquia de áreas de conteúdo)
+
+Home [público]
+├── Reservas [professor]
+│   ├── Minhas reservas [professor]
+│   │   └── Cancelar reserva [professor]
+│   └── Criar nova reserva [professor]
+└── Administração [coordenação]
+    └── Relatório de ocupação [coordenação]
+
+Legenda de acesso: público | professor | coordenação
+Convenção de linha: sólida = relação hierárquica (pai-filho); tracejada = navegação
+transversal, não hierárquica (Login a partir de Home).
+
+Correspondência com as correções de A1:
+- A1.1 → "Login" deixou de ser nó de Nível 1 par de "Reservas"/"Administração" e passou
+  a ser representado fora da hierarquia de áreas de conteúdo, como ação de sistema.
+- A1.2 → "Cancelar reserva" deixou de ser página órfã e passou a ser filha de
+  "Minhas reservas".
+- A1.3 → "Escolher laboratório" foi eliminado como página independente; a seleção de
+  laboratório passou a ser conteúdo da própria página "Criar nova reserva".
+- A1.4 → "Home" recebeu, de forma explícita, o perfil de acesso "público".
+- A1.5 → "Relatórios" foi eliminado por agrupar um único item; "Relatório de ocupação"
+  passou a ser filho direto de "Administração".
+- A1.6 → "Confirmar horário" foi eliminado por duplicar a ação "Salvar" já prevista no
+  wireframe "Criar nova reserva" (Parte B).

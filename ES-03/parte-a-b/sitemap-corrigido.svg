@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" font-family="Liberation Sans, Arial, sans-serif">
+  <rect x="0" y="0" width="960" height="470" fill="#FFFFFF"/>
+
+  <!-- level labels -->
+  <text x="15" y="47" font-size="11" fill="#64748B">NÍVEL 0</text>
+  <text x="15" y="137" font-size="11" fill="#64748B">NÍVEL 1</text>
+  <text x="15" y="237" font-size="11" fill="#64748B">NÍVEL 2</text>
+  <text x="15" y="337" font-size="11" fill="#64748B">NÍVEL 3</text>
+
+  <!-- hierarchical connector lines (solid) -->
+  <g stroke="#64748B" stroke-width="1.5" fill="none">
+    <!-- Home -> Reservas / Administracao -->
+    <path d="M540,66 V90 M330,90 H740 M330,90 V110 M740,90 V110"/>
+    <!-- Reservas -> Minhas reservas / Criar nova reserva -->
+    <path d="M330,186 V200 M220,200 H440 M220,200 V210 M440,200 V210"/>
+    <!-- Administracao -> Relatorio de ocupacao (unico filho) -->
+    <path d="M740,186 V210"/>
+    <!-- Minhas reservas -> Cancelar reserva (unico filho) -->
+    <path d="M220,286 V310"/>
+  </g>
+
+  <!-- transversal (non-hierarchical) dashed connector: Login - Home -->
+  <line x1="620" y1="43" x2="710" y2="43" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="5,4"/>
+
+  <!-- Login (acao de sistema, fora da hierarquia de areas de conteudo) -->
+  <rect x="710" y="20" width="160" height="46" rx="4" fill="#FFFFFF" stroke="#17365D" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="790" y="48" font-size="14" font-weight="bold" fill="#17365D" text-anchor="middle">Login</text>
+  <rect x="745" y="74" width="90" height="22" rx="11" fill="#E4E7EE"/>
+  <text x="790" y="89" font-size="10" fill="#40495A" text-anchor="middle">público</text>
+  <text x="790" y="110" font-size="9.5" fill="#64748B" text-anchor="middle">ação de sistema</text>
+  <text x="790" y="122" font-size="9.5" fill="#64748B" text-anchor="middle">(transversal)</text>
+
+  <!-- Home -->
+  <rect x="460" y="20" width="160" height="46" rx="4" fill="#17365D"/>
+  <text x="540" y="48" font-size="15" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Home</text>
+  <rect x="355" y="32" width="90" height="22" rx="11" fill="#E4E7EE"/>
+  <text x="400" y="47" font-size="10" fill="#40495A" text-anchor="middle">público</text>
+
+  <!-- Reservas -->
+  <rect x="250" y="110" width="160" height="46" rx="4" fill="#17365D"/>
+  <text x="330" y="138" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Reservas</text>
+  <rect x="285" y="164" width="90" height="22" rx="11" fill="#DCFCE7"/>
+  <text x="330" y="179" font-size="10" fill="#15803D" text-anchor="middle">professor</text>
+
+  <!-- Administracao -->
+  <rect x="660" y="110" width="160" height="46" rx="4" fill="#17365D"/>
+  <text x="740" y="138" font-size="14" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Administração</text>
+  <rect x="695" y="164" width="90" height="22" rx="11" fill="#FEE2E2"/>
+  <text x="740" y="179" font-size="10" fill="#B91C1C" text-anchor="middle">coordenação</text>
+
+  <!-- Minhas reservas -->
+  <rect x="145" y="210" width="150" height="46" rx="4" fill="#FFFFFF" stroke="#17365D" stroke-width="1.5"/>
+  <text x="220" y="233" font-size="12.5" fill="#1F2937" text-anchor="middle">Minhas</text>
+  <text x="220" y="248" font-size="12.5" fill="#1F2937" text-anchor="middle">reservas</text>
+  <rect x="175" y="264" width="90" height="22" rx="11" fill="#DCFCE7"/>
+  <text x="220" y="279" font-size="10" fill="#15803D" text-anchor="middle">professor</text>
+
+  <!-- Criar nova reserva -->
+  <rect x="365" y="210" width="150" height="46" rx="4" fill="#FFFFFF" stroke="#17365D" stroke-width="1.5"/>
+  <text x="440" y="233" font-size="12.5" fill="#1F2937" text-anchor="middle">Criar nova</text>
+  <text x="440" y="248" font-size="12.5" fill="#1F2937" text-anchor="middle">reserva</text>
+  <rect x="395" y="264" width="90" height="22" rx="11" fill="#DCFCE7"/>
+  <text x="440" y="279" font-size="10" fill="#15803D" text-anchor="middle">professor</text>
+
+  <!-- Relatorio de ocupacao -->
+  <rect x="665" y="210" width="150" height="46" rx="4" fill="#FFFFFF" stroke="#17365D" stroke-width="1.5"/>
+  <text x="740" y="233" font-size="12.5" fill="#1F2937" text-anchor="middle">Relatório de</text>
+  <text x="740" y="248" font-size="12.5" fill="#1F2937" text-anchor="middle">ocupação</text>
+  <rect x="695" y="264" width="90" height="22" rx="11" fill="#FEE2E2"/>
+  <text x="740" y="279" font-size="10" fill="#B91C1C" text-anchor="middle">coordenação</text>
+
+  <!-- Cancelar reserva -->
+  <rect x="145" y="310" width="150" height="46" rx="4" fill="#FFFFFF" stroke="#17365D" stroke-width="1.5"/>
+  <text x="220" y="333" font-size="12.5" fill="#1F2937" text-anchor="middle">Cancelar</text>
+  <text x="220" y="348" font-size="12.5" fill="#1F2937" text-anchor="middle">reserva</text>
+  <rect x="175" y="364" width="90" height="22" rx="11" fill="#DCFCE7"/>
+  <text x="220" y="379" font-size="10" fill="#15803D" text-anchor="middle">professor</text>
+
+  <!-- legend -->
+  <line x1="15" y1="410" x2="945" y2="410" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="15" y="432" font-size="11" font-weight="bold" fill="#334155">ACESSO</text>
+  <rect x="80" y="421" width="80" height="20" rx="10" fill="#E4E7EE"/>
+  <text x="120" y="435" font-size="10" fill="#40495A" text-anchor="middle">público</text>
+  <rect x="175" y="421" width="80" height="20" rx="10" fill="#DCFCE7"/>
+  <text x="215" y="435" font-size="10" fill="#15803D" text-anchor="middle">professor</text>
+  <rect x="270" y="421" width="100" height="20" rx="10" fill="#FEE2E2"/>
+  <text x="320" y="435" font-size="10" fill="#B91C1C" text-anchor="middle">coordenação</text>
+
+  <line x1="420" y1="431" x2="450" y2="431" stroke="#64748B" stroke-width="1.5"/>
+  <text x="458" y="435" font-size="10" fill="#334155">relação hierárquica</text>
+
+  <line x1="600" y1="431" x2="630" y2="431" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="638" y="435" font-size="10" fill="#334155">navegação transversal (não hierárquica)</text>
+
+  <text x="15" y="458" font-size="9.5" fill="#94A3B8">Site Map corrigido — Sistema de Reserva de Laboratórios. Elaboração própria (2026).</text>
+</svg>
