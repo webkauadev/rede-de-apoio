@@ -230,3 +230,12 @@ foundation:
         Auditoria: '5912:1698'
       screens_applicable: [T16, T17]
       rule: active changes by route; state deltas do not redraw or reposition the component
+
+# Correspondência de código inicial, sem alteração de baselines T01–T17.
+implementation_scaffold:
+  issue: 117
+  app_shell: src/components/layout/app-shell.tsx
+  base_card: src/components/ui/card.tsx
+  tokens: src/app/globals.css
+  scope: technical_demonstration_only
+  evidence: docs/10_IMPLEMENTACAO/evidencias/issue-117/

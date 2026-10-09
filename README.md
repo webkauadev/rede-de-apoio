@@ -106,3 +106,8 @@ O **[índice de implementação](docs/10_IMPLEMENTACAO/README.md)** reúne: [pla
 Por aprovação explícita do solicitante, as 38 ADRs de modelagem têm escolha V1 em [DECISOES_V1_HOMOLOGADAS.md](docs/10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md); a plataforma de desenvolvimento foi definida em [STACK_V1_HOMOLOGADA.md](docs/10_IMPLEMENTACAO/STACK_V1_HOMOLOGADA.md). O [SQL MySQL V1](database/mysql/001_rede_de_apoio_schema.sql) para Workbench inclui **30 tabelas** e o [guia de importação/EER](database/mysql/README.md).
 
 Para Codex, iniciar por [AGENTS.md](AGENTS.md) → [hubs de implementação](docs/10_IMPLEMENTACAO/README.md) → [36 US e capturas Figma no GitHub](docs/10_IMPLEMENTACAO/FIGMA_SNAPSHOT/README.md). O banco físico **não foi criado/executado**. A homologação não dispensa teste real MySQL e controle LGPD antes da produção. As menções V0.1/PENDENTE abaixo pertencem ao histórico de preparação.
+
+## Aplicação V1 — infraestrutura da Issue #117
+
+Base Next.js executável: `npm ci` e `npm run dev` (Node 24; sem MySQL).
+Consulte [runbook local](docs/10_IMPLEMENTACAO/RUNBOOK_LOCAL_V1.md) para arquitetura, checks, evidências e limites; [continuidade](docs/10_IMPLEMENTACAO/CONTINUIDADE_V1.md) para os próximos PRs por US. A página inicial é demonstração técnica provisória; autenticação e cuidados ainda não foram implementados.
