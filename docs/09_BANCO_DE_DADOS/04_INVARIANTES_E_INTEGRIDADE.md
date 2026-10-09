@@ -71,3 +71,19 @@
 - **I32:** diferenças entre instantes UTC e hora civil no fuso são explicitadas; regras de DST inexistente/duplicado dependem DB-033.
 
 **Leitura complementar:** [22](22_REGRAS_TEMPORAIS_E_RECURRENCIA.md) e [25](25_N02_N04_EVENTOS_IDEMPOTENCIA.md); simuladores em [27](27_EVIDENCIAS_SIMULACAO_TEMPORAL.md).
+
+
+## Extensão de invariantes de versões e privacidade
+
+- **I33:** original e versões confirmadas permanecem imutáveis no fluxo operacional, preservando autor e tempos (RNF02).
+- **I34:** uma correção refere o mesmo registro original e mesmo tipo/titular; nenhuma FK polimórfica textual é considerada garantia referencial suficiente.
+- **I35:** versão única por (registro original, número) e checagem de versão esperada sob transação; duas correções concorrentes não produzem V2 duplicada.
+- **I36:** ator de correção possui permissão de criar o mesmo tipo **agora**, independentemente de autoria original (P03).
+- **I37:** anexos pertencem a um recurso existente e são servidos conforme autorização atual do recurso pai; url pública/metadata isolado não bastam.
+- **I38:** falha entre arquivo no storage e metadado DB não publica conteúdo órfão; reconciliação é mecanismo técnico a validar.
+- **I39:** trilha de auditoria contém ator/contexto/ação/resultado mas não senha, token ou cópia clínica desnecessária.
+- **I40:** CSV é autorizado somente ao Principal vigente e limitado ao histórico da Pessoa Idosa selecionada, com registro da operação; conta idosa não exporta.
+- **I41:** acesso negado é registrado de forma mínima inclusive quando gravação de cuidado foi revertida, via arquitetura DB-038 a escolher.
+- **I42:** o perfil de leitura do idoso e os direitos de retenção/eliminação não são alterados por hipótese técnica sem RF/RNF/decisão formal.
+
+A garantia integral destes invariantes requer combinar FKs, privilégios, transações, backend e eventualmente storage privado; nenhuma asserção em memória substitui essa validação real.

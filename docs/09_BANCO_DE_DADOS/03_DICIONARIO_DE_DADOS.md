@@ -87,3 +87,16 @@ Os campos D06–D16 e a extensão C04 precisam ser homologados contra [22](22_RE
 - **C04 ocorrencia_programada:** permanece condicional; não duplicar todos os cuidados do sistema por conveniência, nem apontar fonte por texto sem integridade.
 
 Chaves lógicas de ocorrência diária, versionamento e unicidade de administração ainda dependem DB-021/DB-029/DB-032. A documentação atual não aprova novas entidades obrigatórias.
+
+
+## Reavaliação do dicionário — imutabilidade, anexos e auditoria
+
+Em [28](28_ARQUITETURAS_CORRECAO_VERSIONADA.md)–[29](29_ANEXOS_AUDITORIA_EXPORTACAO.md), as candidatas D17/D18/D19/D23 são refinadas. **Não adicionar tabela extra só porque o capítulo descreve um subtipo**: o dicionário de 23+4 continua inventário preliminar, e escolher envelope universal ou versões por domínio pode alterar quantidade e desenho.
+
+- D17: se registro_cuidado representar apenas diário, não criar FK universal de correção apontando para ele quando quiser corrigir administração/consulta.
+- D18: versão deve ter ligação íntegra com **o original e o tipo correto**, número sequencial sem duplicação, autoria e data/hora; payload completo versus delta ainda DB-035.
+- D19: FK de anexo para recurso concreto, possivelmente versão; não usar apenas polimorfismo textual tipo+id sem integridade SQL; status de verificação de upload é hipótese técnica, não tela.
+- D23: log registra ações e resultados, não substitui correção nem contém cópia integral de saúde; preservar autoria histórica após desvinculação e eventos negados quando aplicável.
+- CSV não precisa tabela própria; exige consulta contextual, autorização de Principal e auditoria, mesmo que seja assíncrono.
+
+O mecanismo de preservação de negações após rollback é DB-038. O escopo exato de RNF02 sobre administração, consulta e outros subtipos continua DB-008/DB-034.

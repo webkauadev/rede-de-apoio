@@ -77,4 +77,18 @@ Foram acrescentadas as decisões DB-025–DB-028 para análise humana (total na 
 | [26 — Testes temporais de mesa](26_TESTES_MESA_DOMINIO_TEMPORAL.md) | 42 cenários L-T, sem MySQL |
 | [27 — Evidências da simulação temporal](27_EVIDENCIAS_SIMULACAO_TEMPORAL.md) | 17.774 verificações em memória, limitações expressas |
 
-**Estado agregado após estas revisões:** 29 documentos no diretório; 33 ADRs DB-001–DB-033 ainda abertas; 42 cenários gerais T, 36 de identidade K-T e 42 temporais L-T, todos como planejamento sem execução de banco. Total de simulações registrado separadamente em 21 e 27, sem falsa equivalência a testes independentes de integração.
+**Estado após revisão temporal (histórico):** 29 documentos no diretório; 33 ADRs DB-001–DB-033 ainda abertas; 42 cenários gerais T, 36 de identidade K-T e 42 temporais L-T, todos como planejamento sem execução de banco. Total de simulações registrado separadamente em 21 e 27, sem falsa equivalência a testes independentes de integração.
+
+
+## Terceira revisão — imutabilidade, anexos, auditoria e CSV
+
+| Arquivo | Novo aprofundamento |
+|---|---|
+| [28 — Correções versionadas](28_ARQUITETURAS_CORRECAO_VERSIONADA.md) | Envelope comum vs. entidades específicas; versões, transações e autorização P03 |
+| [29 — Anexos, auditoria e CSV](29_ANEXOS_AUDITORIA_EXPORTACAO.md) | Associação íntegra ao recurso, uploads privados, trilhas e exportação contextual |
+| [30 — Testes V-T](30_CASOS_DE_MESA_HISTORICO_PRIVACIDADE.md) | 36 cenários de versões, anexos, auditoria e CSV |
+| [31 — Evidências de simulação](31_EVIDENCIAS_SIMULACAO_CORRECOES.md) | 20.300 verificações simples em memória, limites explicitados |
+
+**Estado após três revisões:** 33 documentos no diretório; **38 ADRs abertas** (DB-001–DB-038); 42 testes gerais T, 36 de núcleo K-T, 42 temporais L-T e 36 de histórico V-T, todos ainda de mesa. Nenhum esquema SQL, migrations ou banco criados.
+
+**Bloqueio central:** escolha de envelope universal versus entidades especializadas, política para correção e relação de anexos, e auditoria de negações após rollback. Sem essas decisões, não produzir DDL com falsas garantias de integridade.

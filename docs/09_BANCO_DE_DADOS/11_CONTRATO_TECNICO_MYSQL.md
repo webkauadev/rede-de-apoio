@@ -70,3 +70,15 @@ Referências: https://dev.mysql.com/doc/refman/8.4/en/create-table-check-constra
 - **Mínimo de prova antes do DDL:** cenário L-T01–L-T42, DB-005/010/011/015/021/029–033 e FKs compostas de escopo.
 
 Fontes: https://dev.mysql.com/doc/refman/8.4/en/innodb-locks-set.html ; https://dev.mysql.com/doc/refman/8.4/en/innodb-transaction-model.html ; https://dev.mysql.com/doc/refman/8.4/en/events-overview.html ; https://dev.mysql.com/doc/refman/8.4/en/time-zone-support.html .
+
+
+## Revisão de versionamento/anexo/auditoria
+
+- FK de versão para original deve existir, e a associação de subtipo deve ser testada; uma FK subtipo→base não prova existência/exclusividade de subtipo sozinho.
+- UNIQUE(registro_id,numero_versao) impede número duplicado, **não assegura** autorização atual, ordem de versão sob disputa ou preservação do original sem privilégios/serviço.
+- Triggers MySQL possuem restrições e **não** devem ser assumidos como solução mágica para auditoria/correção; verificar limitação de operar na própria tabela acionadora.
+- Storage de anexos e commit MySQL não compartilham transação ACID nativa: precisar protocolo de upload/compensação/reconciliação se bytes não estiverem no próprio banco.
+- Log de acesso negado por transação revertida não pode ser simplesmente gravado na mesma transação e esperar sobreviver ao rollback; DB-038.
+- DDL futuro exige prova de UPDATE/DELETE indevido, duas correções concorrentes, FK de recurso/titular, acesso cross-rede e serialização de eventos.
+
+Referências: https://dev.mysql.com/doc/refman/8.4/en/stored-program-restrictions.html ; https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-reads.html ; https://dev.mysql.com/doc/refman/8.4/en/create-table-foreign-keys.html .

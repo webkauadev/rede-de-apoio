@@ -79,3 +79,16 @@
 Estas ADRs refinam DB-005/007/010/011/014/015/021, sem substituí-las. Não se pode escolher destinatário alternativo, impor proibição de plantão simultâneo, prescrever intervalo clínico ou reprocessar execução “omitida” sem decisão funcional documentada. **Total atual: 33 ADRs, todas pendentes.**
 
 Documentação: [22](22_REGRAS_TEMPORAIS_E_RECURRENCIA.md), [23](23_PLANTOES_TROCAS_TAREFAS_REVIEW.md), [24](24_MEDICAMENTOS_OCORRENCIAS_VERSIONAMENTO.md), [25](25_N02_N04_EVENTOS_IDEMPOTENCIA.md) e [27](27_EVIDENCIAS_SIMULACAO_TEMPORAL.md).
+
+
+## ADRs de correção e anexos adicionadas na terceira revisão — 2026-10-09
+
+| ADR | Pergunta que precisa de resposta | Consequência | Status |
+|---|---|---|---|
+| DB-034 | Correções de quais tipos de cuidado usam envelope universal com subtipo versus versões separadas por domínio? | integridade de FKs, consulta de histórico e abrangência RNF02; detalha DB-008 | PENDENTE |
+| DB-035 | Cada correção guarda snapshot completo tipado ou delta de alterações? Como reconstruir e validar versão atual? | tamanho, migração, controle de conflito e consulta | PENDENTE |
+| DB-036 | Pode corrigir data/hora de ocorrência, justificativa, referência clínica ou somente conteúdo? Há versão revogada/retificada? | domínio de campos editáveis, histórico e regras de autorização | PENDENTE |
+| DB-037 | Anexo pertence ao registro original ou versão? Quais tipos, limite, storage e reconciliação? | estrutura de FKs, vida útil e privacidade; detalha DB-013 | PENDENTE |
+| DB-038 | Como persistir auditoria de acesso negado quando transação de cuidado dá rollback, e validar permissão/CSV assíncrono? | arquitetura de log, transação/outbox, falha parcial, revalidação contextual | PENDENTE |
+
+Nenhuma opção técnica foi aprovada pela escrita destes documentos. **Total atual 38 ADRs DB-001–DB-038.** Ler [28](28_ARQUITETURAS_CORRECAO_VERSIONADA.md), [29](29_ANEXOS_AUDITORIA_EXPORTACAO.md) e [30](30_CASOS_DE_MESA_HISTORICO_PRIVACIDADE.md).

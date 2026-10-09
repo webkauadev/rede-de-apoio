@@ -55,3 +55,14 @@ Auditoria é distinta do histórico clínico/cuidado:
 - Desvinculação posterior: histórico anterior continua acessível a usuários autorizados, não ao desvinculado.
 - Arquivo pertencente a idoso B nunca servido a sessão autorizada apenas para idoso A.
 - Exportação por Apoio mesmo com papel acumulado Apoio/Emergência mas sem Principal: negada.
+
+
+## Auditoria arquitetural posterior — 2026-10-09
+
+Este capítulo inicial descreve os objetivos; os contratos detalhados foram separados em:
+- [28 — Duas arquiteturas de correção e versões](28_ARQUITETURAS_CORRECAO_VERSIONADA.md);
+- [29 — Anexo, auditoria e CSV](29_ANEXOS_AUDITORIA_EXPORTACAO.md);
+- [30 — 36 cenários V-T](30_CASOS_DE_MESA_HISTORICO_PRIVACIDADE.md);
+- [31 — 20.300 simulações em memória](31_EVIDENCIAS_SIMULACAO_CORRECOES.md).
+
+**Atenção:** o termo “registro de cuidado” de RNF02 não define sozinho todos os subtipos clínicos; o DDL precisa aguardar DB-008/DB-034. A estratégia de append-only exige proibir atualizações corretivas diretas, preservar o original, garantir versão íntegra e resolver o caso de auditoria da negação após rollback (DB-038).

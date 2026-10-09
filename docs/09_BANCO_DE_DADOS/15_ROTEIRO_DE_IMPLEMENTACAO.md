@@ -66,3 +66,8 @@ Essa ordem reduz o retrabalho porque outras relações dependem de identidades, 
 Antes do modelo lógico/DDL, resolver em conjunto com identidade DB-001–DB-004 as dependências temporais **DB-005/007/010/011/014/015/021/029/030/031/032/033**, sem contrariar RF17/26. Exigir plano de idempotência, identidade de ocorrência, autorização por vínculo vigente e formato de timezone.
 
 Casos L-T01–L-T42 (documento 26) precisam de execução física posteriormente. Casos de borda de DST exigem dados de zona nomeada; trocas/conclusões concorrentes e o worker de alerta exigem pelo menos duas conexões SQL reais. Nenhum destes testes foi executado no banco nesta fase.
+
+
+## Gate de modelagem imutável e armazenamento (2026-10-09)
+
+Antes de desenhar DDL de D17/D18/D19/D23, resolver DB-008/013/018 e DB-034–038; homologar tipo de correção, vínculo de anexo ao original/versão e arquitetura de trilha negada após rollback. Revisar os 36 casos V-T01–V-T36, incluindo falhas entre armazenamento de objetos e banco. A etapa futura deve demonstrar bloqueio de UPDATE/DELETE destrutivos com privilégio real, JOINs com FK, duas conexões concorrentes, auditoria e CSV contextual.

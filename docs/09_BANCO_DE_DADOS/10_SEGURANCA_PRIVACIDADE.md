@@ -41,3 +41,10 @@ Dados de saúde e da vida de uma pessoa são especialmente sensíveis. **Orienta
 ## Fontes externas estudadas
 
 OWASP Authorization Cheat Sheet (verificação a cada requisição), Password Storage Cheat Sheet, Logging Cheat Sheet; documentação MySQL sobre integridade/locks; orientação ANPD para segurança da informação e identificação de dados de saúde como sensíveis. Links em [16_REFERENCIAS_TECNICAS.md](16_REFERENCIAS_TECNICAS.md).
+
+
+## Complemento — modelo de acesso a anexos e logs
+
+No estágio de desenho do banco, revisar [29](29_ANEXOS_AUDITORIA_EXPORTACAO.md): anexo somente por FK real e autorização herdada do recurso pai em toda leitura, armazenamento privado, validação de tipo real/tamanho e reconciliação de falhas upload↔metadado; auditoria sem payload clínico, senha ou token. Referências OWASP de File Upload, Logging e Authorization registradas em [16](16_REFERENCIAS_TECNICAS.md).
+
+**Ponto não encerrado:** RNF02 preserva fatos históricos na operação comum, mas política LGPD de retenção/acesso/eliminação precisa de avaliação jurídica e decisão DB-018. Não afirmar dados guardados para sempre.

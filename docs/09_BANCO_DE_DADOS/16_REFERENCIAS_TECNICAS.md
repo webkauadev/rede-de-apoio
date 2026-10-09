@@ -46,3 +46,13 @@ Pesquisadas para orientar as **decisões técnicas**, não para inventar RF/US n
 - https://dev.mysql.com/doc/refman/8.4/en/events-overview.html — Event Scheduler, eventos recorrentes e possibilidade de instâncias sobrepostas.
 
 Estas fontes dão sustentação técnica à análise 22–27; não redefinem o produto.
+
+
+## Complemento sobre imutabilidade, upload e auditoria — 2026-10-09
+
+- https://dev.mysql.com/doc/refman/8.4/en/stored-program-restrictions.html — restrições de triggers, incluindo não modificar livremente tabela que disparou trigger.
+- https://dev.mysql.com/doc/refman/8.4/en/innodb-consistent-read.html — snapshots não substituem locking reads para decisão de escrita.
+- https://dev.mysql.com/doc/refman/8.4/en/create-table-foreign-keys.html — FK real, ações referenciais e índices.
+- https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html — allowlist de tipos, validação de conteúdo, arquivo privado e limites.
+- https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html — minimizar e proteger eventos de log.
+- https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html — decisão de autorização por recurso e requisição.
