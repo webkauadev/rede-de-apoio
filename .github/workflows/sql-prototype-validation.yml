@@ -1,0 +1,27 @@
+name: Validate MySQL prototype (static)
+
+on:
+  pull_request:
+    paths:
+      - 'database/mysql/**'
+      - 'scripts/validate_sql_prototype.py'
+      - '.github/workflows/sql-prototype-validation.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'database/mysql/**'
+      - 'scripts/validate_sql_prototype.py'
+
+jobs:
+  validate-sql-prototype-static:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate offline SQL structure (no MySQL server)
+        run: python scripts/validate_sql_prototype.py

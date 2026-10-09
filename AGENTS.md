@@ -173,4 +173,17 @@ Uma alteração está pronta para revisão quando:
 
 ## 10. Planejamento de Banco de Dados — leitura obrigatória para agentes de dados
 
-Antes de propor schema, DDL, migrações, dados de teste, autenticação/autorizações persistidas ou engenharia reversa, ler [docs/09_BANCO_DE_DADOS/README.md](docs/09_BANCO_DE_DADOS/README.md) e seus documentos de domínio, [docs/02_BUSINESS_RULES/BUSINESS_RULES.md](docs/02_BUSINESS_RULES/BUSINESS_RULES.md), a matriz de permissões e RF/RNF/US canônicos. O dicionário e o diagrama em 09 são **propostas**, não requisitos aprovados. ADRs bloqueantes devem ser resolvidas antes da construção; não executar SQL nem inferir novas permissões a partir dos rascunhos. A publicação de modelos físicos futuros exige branch, testes e PR com revisão humana, seguindo a seção 5.
+Antes de propor schema, DDL, migrações, dados de teste, autenticação/autorizações persistidas ou engenharia reversa, ler [docs/09_BANCO_DE_DADOS/README.md](docs/09_BANCO_DE_DADOS/README.md) e seus documentos de domínio, [docs/02_BUSINESS_RULES/BUSINESS_RULES.md](docs/02_BUSINESS_RULES/BUSINESS_RULES.md), a matriz de permissões e RF/RNF/US canônicos. O dicionário e o diagrama em 09 são **propostas**, não requisitos aprovados. ADRs bloqueantes devem ser resolvidas antes da implementação operacional. A partir da autorização expressa do solicitante para a prototipação MySQL, é PERMITIDO criar **arquivo SQL de desenho V0.1**, para importação posterior no Workbench; continua PROIBIDO executar ou provisionar banco nesta entrega, usar dados pessoais reais ou inferir novas permissões/regras a partir de DDL candidato. A publicação de modelos físicos futuros exige branch, testes e PR com revisão humana, seguindo a seção 5.
+
+
+## 11. Handoff para Codex e protótipo MySQL — 2026-10-09
+
+**Primeiro documento de execução para Codex:** [docs/10_IMPLEMENTACAO/CODEX_PLAYBOOK.md](docs/10_IMPLEMENTACAO/CODEX_PLAYBOOK.md). Esse contrato orienta ordem de leitura, fontes canônicas de critérios, `BLOCKED_BY_DECISION`, commits, testes e PR. O agente deve conseguir trabalhar a partir de **arquivos do GitHub**, sem depender do histórico de conversa.
+
+**SQL autorizado para desenho:** [database/mysql/001_rede_de_apoio_schema.sql](database/mysql/001_rede_de_apoio_schema.sql). O arquivo é **protótipo físico experimental**, não schema canônico homologado para backend ou produção; está separado das ADRs e das regras já aprovadas na `main`. Consultar [database/mysql/DECISOES_E_LIMITES.md](database/mysql/DECISOES_E_LIMITES.md) antes de criar qualquer serviço. Algumas escolhas foram necessárias só para materializar um EER e estão marcadas como hipóteses técnicas.
+
+**Não antecipar decisões funcionais:** DB-001 (uma/várias redes), DB-002 (bootstrap), DB-003 (reingresso), DB-030 (N02 vários plantonistas), entre outras, permanecem `PENDENTE` até confirmação de opção específica e eventual `migration_required` nos RF/US. A autorização de prototipar SQL **não aprova por si só** todos os ramos do Gate G1.
+
+**Validação estática sem MySQL:** `python scripts/validate_sql_prototype.py`. O resultado deste script não certifica sintaxe/semântica no MySQL nem substitui testes de integração/concorrência reais. Importar o SQL e gerar EER é ação manual posterior de quem controla o Workbench. Codex deve registrar evidências quando houver execução real autorizada.
+
+**Regra de publicação:** PR de SQL é dependente do PR documental #115. Não mesclar o PR SQL na `main` antes do PR base e da revisão humana. Não iniciar frontend/backend por suposição de stack.

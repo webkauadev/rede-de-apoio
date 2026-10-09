@@ -1,5 +1,7 @@
 # Banco de Dados — Cérebro de Modelagem | Rede de Apoio
 
+**NOVIDADE POSTERIOR ÀS 7 REVISÕES DOCUMENTAIS:** foi autorizado um protótipo SQL V0.1 separado, disponível em [`database/mysql/001_rede_de_apoio_schema.sql`](../../database/mysql/001_rede_de_apoio_schema.sql), com [guia Workbench/EER](../../database/mysql/README.md) e [hipóteses explícitas](../../database/mysql/DECISOES_E_LIMITES.md). O SQL **não foi executado**, não altera RF/US canônicos nem resolve automaticamente DB-001/002/030. As notas anteriores de “nenhum SQL criado” descrevem o estado histórico de cada revisão e não o estado atual desta branch experimental.
+
 **Estado:** `PROPOSTA DE MODELAGEM / DOCUMENTACAO` • **Data:** 2026-10-09 • **Nenhuma tabela, migração, procedure ou banco foi criado.**
 
 Este diretório é o contrato de análise para a futura modelagem conceitual, lógica e física MySQL da aplicação. Integra-se à fonte única operacional `webkauadev/rede-de-apoio`, mas não altera nem reinterpreta unilateralmente RF/RNF/US aprovados.
