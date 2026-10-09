@@ -1,4 +1,4 @@
-# 14 — Registro de decisões de modelagem (ADRs pendentes)
+# 14 — Registro de decisões de modelagem (pendências, resoluções parciais e histórico)
 
 **Estes itens são dúvidas de projeto de dados, não reabertura automática de decisões funcionais aprovadas.** Quando a decisão alterar RN/RF/US, encaminhar revisão humana formal em fonte canônica antes de adotá-la. Toda decisão deve ter autor, data, alternativas, evidência, consequência no DDL e casos de teste.
 
@@ -110,3 +110,16 @@ Nenhuma opção técnica foi aprovada pela escrita destes documentos. **Inventá
 | DB-031 | **PENDENTE** | Alerta por ausência de registro é distinto de realização; regra de borda H+15 e corrida entre N04 e registro ainda pendentes. |
 
 **Demais ADRs DB-001–DB-038 continuam com o status anterior.** Não se criou decisão de destinatário N02, dose extra, reabertura de tarefa, execução paralela real de MySQL ou alteração dos RF/RNF/US na `main`.
+
+
+## Painel de prioridades da quinta revisão — sem criar novas ADRs
+
+O detalhamento por entidade e a ordem recomendada constam em [39_GATES_E_PLANO_DE_PROVA_LOGICA.md](39_GATES_E_PLANO_DE_PROVA_LOGICA.md). **Decisões de maior efeito no desenho físico:** DB-001 (uma/várias redes), DB-002 (bootstrap), DB-003/027 (vigência), DB-004/026 (Principal/categoria), DB-008/034/035 (correção e envelope), e **DB-030 (destinatário N02 com plantões simultâneos)**.
+
+**DB-005:** sobreposição entre plantões distintos PERMITIDA por decisão direta DEC-S01; essa parte não deve ser reaberta como PENDENTE por causa das tabelas históricas do início deste arquivo.
+
+**DB-030:** permanece **PENDENTE**. [38](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md) documenta três alternativas e 18 cenários de mesa. A alternativa A é recomendada, não homologada. Não escolher destinatário aleatório, ampliar aviso para todos ou criar fallback ao Principal sem decisão de origem RF17/US-020/N02.
+
+**DB-032/007:** apenas uma conclusão para cada tarefa/ciclo na operação normal foi confirmada; reabertura e ciclo novo continuam questões distintas.
+
+**Controle de escopo:** [37](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md) especifica PK/FK candidatas, não cria novas entidades obrigatórias. [40](40_DIAGRAMAS_ALTERNATIVOS_REDE.md) expõe as duas cardinalidades DB-001 sem fechá-la.

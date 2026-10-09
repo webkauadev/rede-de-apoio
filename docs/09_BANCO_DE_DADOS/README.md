@@ -4,6 +4,8 @@
 
 Este diretório é o contrato de análise para a futura modelagem conceitual, lógica e física MySQL da aplicação. Integra-se à fonte única operacional `webkauadev/rede-de-apoio`, mas não altera nem reinterpreta unilateralmente RF/RNF/US aprovados.
 
+**Painel atual:** 42 arquivos de modelagem/documentação; 38 ADRs cadastradas (DB-005 já resolvida quanto à sobreposição); sem DDL ou MySQL executado. Comece pelos documentos [37](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md), [38](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md), [39](39_GATES_E_PLANO_DE_PROVA_LOGICA.md) e [40](40_DIAGRAMAS_ALTERNATIVOS_REDE.md).
+
 ## Como navegar
 
 | Leitura | Conteúdo |
@@ -104,3 +106,17 @@ Foram acrescentadas as decisões DB-025–DB-028 para análise humana (total na 
 **Contagem verificada na branch após estas alterações:** **38 arquivos** no diretório (antes 33; novos 32–36). A última revisão contabiliza **188 cenários de mesa**: 42 T + 36 K-T + 42 L-T + 36 V-T + 32 C-T. **Os 6.020 predicados em memória não são testes físicos.**
 
 **Status:** DEC-S01 e DEC-S02 foram confirmadas expressamente pelo solicitante; DEC-S03 detalha a regra de impedir duplo efeito concorrente. DB-005 foi resolvida quanto à SOBREPOSIÇÃO, DB-007/032 parcialmente; **DB-030 permanece aberta** sobre destinatário N02 com vários plantonistas. O termo "aprovado" refere-se à decisão do solicitante neste PR, não ao merge ou às Issues da `main`.
+
+
+## Quinta revisão — modelo lógico candidato e decisões estruturais
+
+| Documento | Conteúdo e situação |
+|---|---|
+| [37 — Relações, chaves e garantias](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md) | Cobertura D01–D23/C01–C04 com FK/UNIQUE propostos, escopo, autorização e bloqueios |
+| [38 — DB-030: N02 com vários plantonistas](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md) | Alternativas A/B/C, recomendação A apenas para avaliação, **18 cenários condicionais** e estratégia de exceção ainda não aprovada |
+| [39 — Priorização e provas](39_GATES_E_PLANO_DE_PROVA_LOGICA.md) | G1/G2/G3/G4 e matriz de **20 provas SQL futuras, não executadas** |
+| [40 — Diagramas alternativos](40_DIAGRAMAS_ALTERNATIVOS_REDE.md) | Variante 1 rede por idoso vs. várias redes — **DB-001 ainda em aberto**, nenhum desenho homologado |
+
+**Estado atual da pasta:** **42 arquivos**, **38 ADRs catalogadas** (não são todas pendentes: DB-005 tem decisão do solicitante; outras estão parcialmente resolvidas), **188 cenários anteriores de mesa** e mais 18 cenários condicionais N02 para futura decisão. **Nenhuma tabela, script de criação, migration ou banco MySQL executado**.
+
+**Não confundir:** a alternativa A do N02 (responsável explícito por ocorrência) é **minha recomendação para revisão**, e **não** foi aprovada pelo solicitante. Mantêm-se os RF/RNF/US canônicos da `main` até sua atualização formal. O modo Pessoa Idosa permanece estritamente read-only; nenhuma Central de Notificações é criada.

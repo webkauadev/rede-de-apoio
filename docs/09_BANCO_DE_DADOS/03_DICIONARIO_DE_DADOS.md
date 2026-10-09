@@ -111,3 +111,10 @@ O mecanismo de preservação de negações após rollback é DB-038. O escopo ex
 - **C03 infra de notificações:** N01/N03 de comandos confirmados; replay/conflict não gera nova origem; N02 múltiplos plantonistas segue DB-030.
 
 Fonte: [32](32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md). A numeração D01–D23 é de entidades candidatas, não de tabelas homologadas.
+
+
+## Vínculos e chaves por candidata — revisão estrutural
+
+O mapeamento exaustivo de **D01–D23 e C01–C04** com PK, FKs, invariantes e bloqueadores de homologação passou para [37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md). **Nenhuma tabela adicional aprovada.** Em especial: FKs compostas com colunas obrigatórias podem impedir membro de rede diferente, mas **não** provam vínculo ativo; `regime_id/horario_id` também exigem compatibilidade; DB-001 impede escolher cardinalidade única ou múltipla de `rede_cuidado` ainda.
+
+Os dois diagramas [40](40_DIAGRAMAS_ALTERNATIVOS_REDE.md) representam caminhos mutuamente alternativos e não devem ser reunidos num mesmo esquema físico por conveniência. O destinatário N02 em multilateralidade [38](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md) permanece questão funcional, não um campo de tabela aprovado.

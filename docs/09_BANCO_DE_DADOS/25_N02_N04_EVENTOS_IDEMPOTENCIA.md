@@ -94,3 +94,13 @@ https://dev.mysql.com/doc/refman/8.4/en/events-overview.html ; https://dev.mysql
 **DB-030 ainda necessita decisão funcional**: a fonte canônica RF17/US-020/N02 especifica destinatário singular (somente usuário na condição de Plantonista Atual no instante), mas não define seleção com 2 ou mais plantonistas. **Proposta para avaliação:** registrar responsável específico por ocorrência programada, enviar N02 exclusivamente a esse membro se estiver em plantão ativo e autorizado; sem responsabilidade específica, resolver por decisão explícita antes da ativação da agenda. Sem aprovação, não escolher um plantonista aleatoriamente, não enviar ao Principal por fallback, e não afirmar conformidade N02 nesse caso; tratar lacuna em validação da agenda e não ocultar falha de lembrete obrigatório.
 
 **DEC-S02 mantém N02/N04 distintos de execução real**. Confirmação da mesma tarefa por comando concorrente gera no máximo uma execução e um evento N03 de origem, sujeito à deduplicação de destinatários. Ver [32](32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md)–[34](34_CASOS_PLANTOES_SIMULTANEOS_CONFLITOS.md).
+
+
+## Pacote de decisão N02 — alternativas documentadas, nenhuma aprovada
+
+A avaliação formal está em [38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md), com opções:
+- A — responsável **designado para a ocorrência**, que deve estar Plantonista Atual e autorizado no momento de disparo (**recomendada para avaliação**, não aprovada);
+- B — todos os Plantonistas Atuais, alterando destinatário singular da fonte atual;
+- C — alocação por prioridade/rodízio, introduzindo regra ainda não existente.
+
+**Não** materializar uma FK para "responsável escolhido" nem criar fluxo de contingência antes da decisão. Se o destinatário não puder ser determinado, o processamento deve registrar exceção técnica para análise, não afirmar que o lembrete obrigatório foi entregue. Nenhum desses mecanismos concede escrita além de RN-010.

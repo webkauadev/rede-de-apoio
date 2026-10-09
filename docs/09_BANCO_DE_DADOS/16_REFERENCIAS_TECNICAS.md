@@ -65,3 +65,13 @@ Estas fontes dão sustentação técnica à análise 22–27; não redefinem o p
 - https://dev.mysql.com/doc/refman/8.4/en/innodb-error-handling.html — deadlock reverte transação inteira e orienta retry; timeout pode reverter apenas statement.
 - https://dev.mysql.com/doc/refman/8.4/en/innodb-deadlocks-handling.html — ordenar locks, diminuir janela e reexecutar transação abortada.
 - [Contrato interno de concorrência](33_CONTRATO_CONCORRENCIA_ATOMICA.md) e [casos C-T](34_CASOS_PLANTOES_SIMULTANEOS_CONFLITOS.md).
+
+
+## Referências verificadas na revisão de chaves e bloqueios — 2026-10-09
+
+- [MySQL 8.4 — FOREIGN KEY Constraints](https://dev.mysql.com/doc/refman/8.4/en/create-table-foreign-keys.html): FKs compostas, requisitos de índice/tipos e limites de referência. FK não comprova vigência de membro.
+- [MySQL 8.4 — Diferenças de FOREIGN KEY](https://dev.mysql.com/doc/refman/8.4/en/constraint-foreign-key.html): `NO ACTION` não é avaliação deferida na InnoDB.
+- [MySQL 8.4 — Locking Reads](https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-reads.html): `SELECT FOR UPDATE` dentro de transação e proteção de read-modify-write.
+- [MySQL 8.4 — Locks por índice e predicado](https://dev.mysql.com/doc/refman/8.4/en/innodb-locks-set.html): índices, busca única e faixa afetam extensão e conflito de locks.
+
+Aplicação ao desenho [37](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md): níveis estrutural/transacional/funcional não são substituíveis entre si. Esses links são fontes de comportamento do MySQL, não da política do produto.

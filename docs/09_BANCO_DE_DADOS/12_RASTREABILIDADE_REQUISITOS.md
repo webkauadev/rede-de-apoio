@@ -67,3 +67,13 @@ Durante implementação, cada tabela/coluna, constraint e rotina deverá possuir
 | LACUNA N02 em múltiplos plantonistas | RF17/US-020, regra N02 | DB-030 aberta; C-T08 e C-T31 não podem ser marcados como aprovados |
 
 Estas linhas **não substituem nem criam origem de US**; são itens propostos para revisão das Issues e critério de aceite. Detalhe em [36](36_PLANO_MIGRACAO_REQUISITOS_DECISOES.md).
+
+
+## Índice cruzado de garantias e decisão N02
+
+- [37 — Chaves e relações D01–D23/C01–C04](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md): documenta para cada entidade a origem e nível de garantia; não substitui RF/RNF/US.
+- [38 — DB-030](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md): o N02 em vários plantonistas está **sem decisão**. As 18 linhas N2 são testes de opções, não novos critérios de aceite. Qualquer opção que mude destinatários precisa ser aprovada em RF17/US-020 e NOTIFICATIONS_RULES.md.
+- [39 — Gates e provas](39_GATES_E_PLANO_DE_PROVA_LOGICA.md): 20 provas físicas futuras baseadas no presente conjunto de RF/RN/US.
+- [40 — Diagramas A/B](40_DIAGRAMAS_ALTERNATIVOS_REDE.md): DB-001 segue sem regra funcional decidida.
+
+**Rastreabilidade aprovada do projeto:** US-020 originada RF17; US-025 originada RF21; US-036 originada RF30. As especificações de modelagem não atribuem outra origem a nenhuma US.

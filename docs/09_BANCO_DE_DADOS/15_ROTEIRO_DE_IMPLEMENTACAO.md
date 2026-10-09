@@ -80,3 +80,10 @@ Antes de desenhar DDL de D17/D18/D19/D23, resolver DB-008/013/018 e DB-034–038
 - **DB-030 bloqueio remanescente importante:** N02 em plantões simultâneos. Necessita decisão de destinatário e alteração canônica RF17/US-020/NOTIFICATIONS_RULES.md antes do SQL/alertas; proposta de destinatário por ação em documento 25.
 - Reabertura da tarefa, troca envolvendo dois plantões, administração adicional, recorrência, estado de rede e outras ADRs continuam com seus bloqueios.
 - Não produzir DDL até resolver as dependências de cardinalidade/permite acesso e revisão humana do PR.
+
+
+## Gate priorizado após revisão lógica — sem antecipar SQL
+
+**G1 Funcional:** DB-001/002/030 e tratamentos de desvinculação, tarefa reaberta e dose programada. Consolidar migração `migration_required` nas Issues quando aprovada. **G2 Lógico:** revisar [37](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md) e escolher entre os diagramas de [40](40_DIAGRAMAS_ALTERNATIVOS_REDE.md), FKs reais, vínculos históricos e versão de registro. **G3 Físico (somente após autorização):** executar as 20 provas planejadas em [39](39_GATES_E_PLANO_DE_PROVA_LOGICA.md), incluindo 2 conexões concorrentes, isolamentos, locks, FKs compostas e auditoria. **G4:** segurança/privacidade, política de retenção, backup e operação.
+
+**Ponto impeditivo explícito:** o N02 é obrigatório; não implementar "primeiro plantonista encontrado" como solução técnica. Ver [38](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md). A migração formal das decisões DEC-S01–S03 tem plano em [36](36_PLANO_MIGRACAO_REQUISITOS_DECISOES.md), não executada.
