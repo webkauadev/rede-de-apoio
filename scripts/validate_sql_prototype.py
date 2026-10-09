@@ -53,11 +53,12 @@ def main() -> int:
     order: dict[str, int] = {}
     for i, m in enumerate(found):
         name = m.group(1).lower()
-        end = no_line_comments.find(";", m.end())
-        if end < 0:
-            fail(f"CREATE TABLE sem ; final: {name}")
-            continue
-        block = no_line_comments[m.start():end + 1]
+        # Nao encerrar no primeiro ;: um COMMENT SQL pode conter ; dentro de aspas.
+        # Cada CREATE foi delimitado pelo inicio do seguinte e pelo bloco ENGINE.
+        end = found[i + 1].start() if i + 1 < len(found) else len(no_line_comments)
+        block = no_line_comments[m.start():end]
+        if not re.search(r"\)\s*ENGINE=InnoDB[\s\S]*?;", block, re.I):
+            fail(f"CREATE TABLE sem encerramento ENGINE=InnoDB e ;: {name}")
         if name in tables:
             fail(f"Tabela repetida: {name}")
         tables[name] = block
