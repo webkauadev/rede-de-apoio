@@ -81,3 +81,7 @@ A whitelist abaixo é a superfície máxima de UI que pode ser apresentada à Pe
 - Plantonista Atual é condição operacional temporária, não categoria de usuário.
 - Profissional da Saúde é categoria independente dos familiares.
 - Acesso negado deve ser bloqueado e auditado.
+
+## Restrição V1 complementar homologada
+
+Para **T15 — Informações de Emergência**, a ação de editar é exclusiva do **Familiar Principal vigente** da rede na V1. Familiares Apoio/Emergência, Profissional e Pessoa Idosa consultam somente conforme direito efetivo de leitura, sem inferir edição por terem permissão de criar outros tipos de registro. Demais regras P03/P05/P06 e RN-010 permanecem intactas. Fonte: [ratificação V1](../10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md).

@@ -1,0 +1,31 @@
+name: Validate GitHub-only Codex handoff (offline)
+
+on:
+  pull_request:
+    paths:
+      - 'docs/10_IMPLEMENTACAO/**'
+      - 'scripts/validate_visual_snapshot.py'
+      - 'scripts/validate_implementation_backlog.py'
+      - '.github/workflows/visual-snapshot-validation.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/10_IMPLEMENTACAO/**'
+      - 'scripts/validate_visual_snapshot.py'
+      - 'scripts/validate_implementation_backlog.py'
+
+jobs:
+  validate-github-only-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate 26 PNGs against canonical Figma registries
+        run: python scripts/validate_visual_snapshot.py
+      - name: Validate backlog of 36 US against canonical registries
+        run: python scripts/validate_implementation_backlog.py

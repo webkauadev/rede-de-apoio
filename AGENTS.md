@@ -173,4 +173,36 @@ Uma alteração está pronta para revisão quando:
 
 ## 10. Planejamento de Banco de Dados — leitura obrigatória para agentes de dados
 
-Antes de propor schema, DDL, migrações, dados de teste, autenticação/autorizações persistidas ou engenharia reversa, ler [docs/09_BANCO_DE_DADOS/README.md](docs/09_BANCO_DE_DADOS/README.md) e seus documentos de domínio, [docs/02_BUSINESS_RULES/BUSINESS_RULES.md](docs/02_BUSINESS_RULES/BUSINESS_RULES.md), a matriz de permissões e RF/RNF/US canônicos. O dicionário e o diagrama em 09 são **propostas**, não requisitos aprovados. ADRs bloqueantes devem ser resolvidas antes da construção; não executar SQL nem inferir novas permissões a partir dos rascunhos. A publicação de modelos físicos futuros exige branch, testes e PR com revisão humana, seguindo a seção 5.
+Antes de propor schema, DDL, migrações, dados de teste, autenticação/autorizações persistidas ou engenharia reversa, ler [docs/09_BANCO_DE_DADOS/README.md](docs/09_BANCO_DE_DADOS/README.md) e seus documentos de domínio, [docs/02_BUSINESS_RULES/BUSINESS_RULES.md](docs/02_BUSINESS_RULES/BUSINESS_RULES.md), a matriz de permissões e RF/RNF/US canônicos. O dicionário e o diagrama em 09 são **propostas**, não requisitos aprovados. ADRs bloqueantes devem ser resolvidas antes da implementação operacional. A partir da autorização expressa do solicitante para a prototipação MySQL, é PERMITIDO criar **arquivo SQL de desenho V0.1**, para importação posterior no Workbench; continua PROIBIDO executar ou provisionar banco nesta entrega, usar dados pessoais reais ou inferir novas permissões/regras a partir de DDL candidato. A publicação de modelos físicos futuros exige branch, testes e PR com revisão humana, seguindo a seção 5.
+
+
+## 11. Handoff para Codex e protótipo MySQL — 2026-10-09
+
+**Primeiro documento de execução para Codex:** [docs/10_IMPLEMENTACAO/CODEX_PLAYBOOK.md](docs/10_IMPLEMENTACAO/CODEX_PLAYBOOK.md). Esse contrato orienta ordem de leitura, fontes canônicas de critérios, `BLOCKED_BY_DECISION`, commits, testes e PR. O agente deve conseguir trabalhar a partir de **arquivos do GitHub**, sem depender do histórico de conversa.
+
+**SQL autorizado para desenho:** [database/mysql/001_rede_de_apoio_schema.sql](database/mysql/001_rede_de_apoio_schema.sql). O arquivo é **protótipo físico experimental**, não schema canônico homologado para backend ou produção; está separado das ADRs e das regras já aprovadas na `main`. Consultar [database/mysql/DECISOES_E_LIMITES.md](database/mysql/DECISOES_E_LIMITES.md) antes de criar qualquer serviço. Algumas escolhas foram necessárias só para materializar um EER e estão marcadas como hipóteses técnicas.
+
+**Não antecipar decisões funcionais:** DB-001 (uma/várias redes), DB-002 (bootstrap), DB-003 (reingresso), DB-030 (N02 vários plantonistas), entre outras, permanecem `PENDENTE` até confirmação de opção específica e eventual `migration_required` nos RF/US. A autorização de prototipar SQL **não aprova por si só** todos os ramos do Gate G1.
+
+**Validação estática sem MySQL:** `python scripts/validate_sql_prototype.py`. O resultado deste script não certifica sintaxe/semântica no MySQL nem substitui testes de integração/concorrência reais. Importar o SQL e gerar EER é ação manual posterior de quem controla o Workbench. Codex deve registrar evidências quando houver execução real autorizada.
+
+**Regra de publicação:** PR de SQL é dependente do PR documental #115. Não mesclar o PR SQL na `main` antes do PR base e da revisão humana. Não iniciar frontend/backend por suposição de stack.
+
+
+## 12. Codex GitHub-only — referência visual congelada e backlog operacional
+
+**Modo sem Figma:** o pacote `docs/10_IMPLEMENTACAO/FIGMA_SNAPSHOT/` contém **17 PNGs dos baselines T01–T17 e 9 estados críticos exportados diretamente do `Fluxo Final`**, mais `SCREENSHOTS_INDEX.json`, todos versionados no GitHub. É **snapshot estático** de 2026-10-09. Para estados não capturados, consultar `docs/07_AI_CONTEXT/STATE_MATRIX.yaml`, `docs/05_FIGMA/FIGMA_REGISTRY.yaml`, componentes/tokens e as regras `STATE = PAGE BASE + DELTA MÍNIMO`. O Figma continua origem visual para revisões futuras; **não é necessário acessá-lo para ler o estado visual congelado de V1**.
+
+**Backlog:** `docs/10_IMPLEMENTACAO/IMPLEMENTATION_BACKLOG.json` é projeção verificável das 36 US com Issue, origem única, owner, tela e dependências a consultar, não um segundo tracker. Protocolo: `docs/10_IMPLEMENTACAO/PROTOCOLO_PR_CODEX.md`. Stack candidata: `STACK_CANDIDATA.md` (**não homologada**). Bloqueios reais: `PORTOES_PENDENTES.md`.
+
+**Fluxo verificável offline:** `python scripts/validate_agent_context.py` (requer PyYAML), `python scripts/validate_sql_prototype.py`, `python scripts/validate_visual_snapshot.py` e `python scripts/validate_implementation_backlog.py`. Checks do GitHub Actions não provam execução MySQL, backend, segurança em produção ou equivalência pixel-perfect com Figma.
+
+**Não tratar `screenshots`, `DDL V0.1` ou `decision_dependencies` como novas permissões ou critérios aprovados.** Caso exista conflito com RF/US/RN/aceite, prevalece o texto canônico e registra-se `BLOCKED_BY_DECISION` no PR. O usuário não pediu código de frontend/backend nesta fase; **não iniciar aplicação automaticamente por uma stack suposta**.
+
+## 13. Diretriz mais recente: V1 ratificada e pronta para codificação — 2026-10-09
+
+**SUPERSEDE o status "PENDENTE" das alternativas resolvidas nos capítulos históricos de modelagem.** O solicitante delegou explicitamente as escolhas e homologou a V1. A fonte única de deliberações DB-001–DB-038 é [docs/10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md](docs/10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md). P01–P09, RF/RNF/US e os critérios aprovados permanecem preservados, com adendo operacional em `docs/02_BUSINESS_RULES/`.
+
+Stack homologada: [STACK_V1_HOMOLOGADA.md](docs/10_IMPLEMENTACAO/STACK_V1_HOMOLOGADA.md). Banco físico protótipo consolidado: [SQL MySQL V1](database/mysql/001_rede_de_apoio_schema.sql) — **arquivo para importar, NÃO executado nem implantado**. O Codex tem autorização para iniciar scaffold e desenvolvimento por US dentro da V1, depois de consultar o handoff GitHub-only. O GitHub continua sendo a fonte da implementação; Figma é referência visual para alterações futuras, e 26 snapshots versionados bastam para consultar baselines congeladas.
+
+**Não deduzir liberação de produção:** dados pessoais reais, política de retenção, segurança em produção, sessão/autenticação testada, MySQL real, backups, controle clínico e DST ambíguo **ainda requerem testes e revisão de implantação**. Não criar doses extra, botões de reabertura, segunda rede ou fallback N02. Nenhum PR futuro de app tem merge automático liberado por esta aprovação.

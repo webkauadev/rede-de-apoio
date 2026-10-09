@@ -286,3 +286,17 @@ Antes de qualquer alteração:
 5. validar a US-036 ponta a ponta e somente então fechar US-036/RF30.
 
 Não reabrir redesign geral das telas sem requisito, defeito ou decisão canônica que justifique a alteração.
+
+## Atualização posterior — V1 homologada para Codex GitHub-only (2026-10-09)
+
+Este documento originalmente consolida setembro/2026. **A decisão posterior** `docs/10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md` ratifica DB-001–DB-038 para a V1 no limite de implementação e escolhe a stack `STACK_V1_HOMOLOGADA.md`. Não reler textos históricos de `PENDENTE` como se estivessem atuais após o merge.
+
+- **Uma rede por Pessoa Idosa**, constituída completa por transação com Principal+Profissional.
+- Plantões distintos simultâneos permitidos; N02 apenas para responsável da ocorrência elegível naquele horário, sem fallback automático.
+- Tarefa sem reabertura na V1; uma conclusão por tarefa. Registros clínicos originais imutáveis e correções tipadas/versionadas.
+- SQL MySQL V1 é arquivo para Workbench/EER, **não executado**; 30 tabelas no script homologado para prototipação física.
+- Documentação, imagens de 17 telas + 9 estados, backlog US-001–US-036 e CI estão em `docs/10_IMPLEMENTACAO/`, disponíveis somente pelo GitHub.
+- Codex pode iniciar scaffold Next.js/TypeScript/React/Tailwind/shadcn com MySQL conforme [stack](../10_IMPLEMENTACAO/STACK_V1_HOMOLOGADA.md) e PR pequenos.
+- Implantação real com dados sensíveis exige prova de integração, controles LGPD/retention e revisão adicional.
+
+Esta atualização não afirma que aplicativo, banco físico ou deploy já existem.

@@ -79,3 +79,16 @@ Superfície canônica:
 - a superfície transitória não cria histórico próprio de notificações;
 - uma ação de notificação deve navegar somente para telas já existentes no Site Map;
 - permissões e destinatários continuam sujeitos a RNF01 e às regras efetivas de papéis/categoria.
+
+## Deliberação homologada V1 — N02 com plantões simultâneos (DB-030)
+
+A regra singular de RF17/US-020 é preservada por **designação explícita de uma conta responsável para cada ocorrência de cuidado programado**. É possível haver vários Plantonistas Atuais por sobreposição de plantões; isso **não** torna todos destinatários de N02.
+
+No momento previsto:
+1. resolver a ocorrência/contexto e o `responsavel_membro_id` designado;
+2. confirmar identidade de usuário única, vínculo vigente, acesso autorizado e **plantão ativo** naquele instante;
+3. enviar N02 **somente** a esse usuário (feedback transitório global, destino T05), com deduplicação;
+4. se não houver responsável designado ou se deixou de ser elegível, **não enviar N02 para qualquer outro usuário**, **não fazer fallback ao Principal** e registrar pendência operacional sanitizada/auditável para correção da escala/agendamento no fluxo existente. Não criar tela/inbox;
+5. após mudança de responsável/plantão, recalcular elegibilidade no disparo, não confiar em cache antigo.
+
+**N04** permanece obrigatório ao Principal após H+15 inclusivo quando não há execução registrada confirmada no instante de verificação; registro posterior não significa omissão clínica, nem apaga o alerta passado. Serializar verificação e execução por ocorrência, evitando duplicação. Fonte: [decisões V1](../10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md). Não expandir destinatários sem outra decisão.

@@ -144,3 +144,9 @@ O detalhamento por entidade e a ordem recomendada constam em [39_GATES_E_PLANO_D
 **Após essa leitura, continuam sem escolha funcional:** DB-001 A1/A2/B, DB-002 B1/B2/B3, DB-003/027 reingresso, DB-028 desvínculo com tarefas/plantões futuros, DB-030 destinatário N02 com vários plantonistas. O que foi aprovado no PR sobre plantões simultâneos (DEC-S01) e concorrência (DEC-S03) não responde às decisões acima.
 
 Para revisão humana concentrada, utilizar [48_GATE_G1_DECISOES_PARA_REVISAO_HUMANA.md](48_GATE_G1_DECISOES_PARA_REVISAO_HUMANA.md) e seguir [49_PLANO_REVISAO_REGISTROS_E_CI.md](49_PLANO_REVISAO_REGISTROS_E_CI.md) depois de cada deliberação.
+
+## STATUS MAIS RECENTE (2026-10-09) — ratificação V1
+
+**A tabela inicial e as revisões deste documento são o REGISTRO HISTÓRICO das questões levantadas.** Posteriormente, o solicitante delegou e autorizou homologar as escolhas: [DECISOES_V1_HOMOLOGADAS.md](../10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md) resolve **DB-001 a DB-038 para o comportamento dentro da V1**. O Codex deve aplicar aquele arquivo, não reapresentar opções superadas como bloqueios funcionais.
+
+**Não confundir escolha V1 com testes físicos nem licenciamento clínico/regulatório.** A política de retenção legal (DB-018/023), regras clínicas excepcionais/PRN/DST (DB-010/011/033) e validação MySQL real continuam condições de implantação/operações especiais, não escolhas de alternativa abertas para a V1. P01 e aprovações RF/US anteriores foram preservados.

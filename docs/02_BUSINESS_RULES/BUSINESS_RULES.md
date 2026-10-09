@@ -113,3 +113,23 @@ Regras:
 - “Sem registro” significa somente ausência de registro no sistema e não prova que o cuidado não aconteceu;
 - sintomas/intercorrências espontâneas não são classificados como atrasados;
 - “Corrigido” deve preservar o original conforme RN-005/RN-006/RNF02.
+
+## Ratificação operacional da V1 — 2026-10-09
+
+**Autorização explícita do solicitante para decidir e homologar as alternativas pendentes.** Registro completo com 38 ADRs: [DECISOES_V1_HOMOLOGADAS.md](../10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md). Este adendo não remove nem altera os critérios aprovados P01/#73.
+
+- **Pessoa Idosa ↔ Rede:** uma rede por perfil na V1; perfil pode existir antes da rede. A constituição da rede com **um Familiar Principal e ao menos um Profissional** ocorre de modo **atômico**, sem estado operacional incompleto; se falhar, rollback.
+- **Participação:** desvínculo revoga futuro acesso e papéis; reingresso exige novo episódio/concessão, preservando histórico. Não desvincular último Principal/Profissional sem substituição atômica. Pendências futuras de plantões/tarefas são resolvidas expressamente antes da saída; sem atribuição silenciosa.
+- **Escalas:** plantões distintos podem se sobrepor; cada plantão tem um responsável. Trocas V1 são de responsável de um plantão com controle de versão; não permuta bilateral.
+- **Tarefa:** uma conclusão por tarefa; não reabrir na V1. Reenvio de comando idêntico não duplica resultado.
+- **Saúde:** cuidado programado, fato de execução e alerta são distintos. Por ocorrência programada, no máximo uma administração registrada na V1; administração avulsa exige autorização e evento distinto. Não interpretar ausência de registro como não realização; PRN e agendamento DST ambíguo não são automatizados.
+- **Correções/anexos:** original imutável, correções por domínio com snapshot completo/justificativa e autoria atual; anexo vinculado ao original e controle de leitura na API.
+- **Segurança/retention:** nenhuma exclusão automática de dado de saúde; prazo legal/retention depende de revisão específica antes de produção. Acessos negados auditados mesmo em rollback de negócio, sem conteúdo clínico em logs.
+- **Pessoa Idosa:** conta própria do tipo somente leitura, com senha definida pelo próprio titular via convite temporário de uso único, sem papel familiar. Categoria de conta não mistura Pessoa Idosa e Cuidador.
+- **Emergência T15:** edição somente pelo Principal vigente na V1; leitura conforme as restrições da matriz. Essa decisão restringe edição e não amplifica outros privilégios.
+
+**Limite da homologação:** é autorização para implementação técnica V1, não prova de conformidade LGPD nem de funcionamento MySQL/integração. Para decisões posteriores fora da V1, criar nova ADR.
+
+## Exceção controlada de constituição inicial — US-003/RN-001
+
+O cadastro T12 no **bootstrap** pode ser iniciado por cuidador autenticado que será o primeiro Principal, mesmo antes do vínculo operacional existir. Esse cadastro não concede papel nem leitura de cuidado; o Principal efetivo só surge na transação que cria a rede juntamente com ao menos um Profissional. Perfil sem rede não é rede operacional. Ver [decisão B3](../10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md).

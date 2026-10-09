@@ -1,0 +1,180 @@
+{
+  "version": "2026-10-09",
+  "source_file_key": "tcyj2fkTXei2CJbqaRxqCp",
+  "source_page": "Fluxo Final",
+  "source_page_id": "5926:1014",
+  "capture_purpose": "frozen_canonical_reference_for_github_only_codex",
+  "expected_baselines": 17,
+  "expected_critical_states": 9,
+  "reference_width_px": 390,
+  "reference_height_px": 844,
+  "baselines": [
+    {
+      "screen": "T01",
+      "title": "Login",
+      "node_id": "5926:1016",
+      "png": "assets/T01.png"
+    },
+    {
+      "screen": "T02",
+      "title": "Cadastro de conta",
+      "node_id": "5926:1070",
+      "png": "assets/T02.png"
+    },
+    {
+      "screen": "T03",
+      "title": "Home",
+      "node_id": "5926:1151",
+      "png": "assets/T03.png"
+    },
+    {
+      "screen": "T04",
+      "title": "Calendário de Cuidados",
+      "node_id": "5926:1261",
+      "png": "assets/T04.png"
+    },
+    {
+      "screen": "T05",
+      "title": "Detalhamento do Dia",
+      "node_id": "5926:1420",
+      "png": "assets/T05.png"
+    },
+    {
+      "screen": "T06",
+      "title": "Diário de Cuidados",
+      "node_id": "5926:1542",
+      "png": "assets/T06.png"
+    },
+    {
+      "screen": "T07",
+      "title": "Histórico de Cuidados",
+      "node_id": "5926:1712",
+      "png": "assets/T07.png"
+    },
+    {
+      "screen": "T08",
+      "title": "Medicamentos",
+      "node_id": "5926:1801",
+      "png": "assets/T08.png"
+    },
+    {
+      "screen": "T09",
+      "title": "Tarefas",
+      "node_id": "5926:1886",
+      "png": "assets/T09.png"
+    },
+    {
+      "screen": "T10",
+      "title": "Consultas e Recomendações",
+      "node_id": "5926:1993",
+      "png": "assets/T10.png"
+    },
+    {
+      "screen": "T11",
+      "title": "Compromissos",
+      "node_id": "5926:2060",
+      "png": "assets/T11.png"
+    },
+    {
+      "screen": "T12",
+      "title": "Perfil da Pessoa Idosa",
+      "node_id": "5926:2126",
+      "png": "assets/T12.png"
+    },
+    {
+      "screen": "T13",
+      "title": "Rede de Cuidado",
+      "node_id": "5926:2160",
+      "png": "assets/T13.png"
+    },
+    {
+      "screen": "T14",
+      "title": "Contatos Importantes",
+      "node_id": "5926:2229",
+      "png": "assets/T14.png"
+    },
+    {
+      "screen": "T15",
+      "title": "Informações de Emergência",
+      "node_id": "5926:2278",
+      "png": "assets/T15.png"
+    },
+    {
+      "screen": "T16",
+      "title": "Preferências de Notificações",
+      "node_id": "5926:2310",
+      "png": "assets/T16.png"
+    },
+    {
+      "screen": "T17",
+      "title": "Auditoria",
+      "node_id": "5926:2379",
+      "png": "assets/T17.png"
+    }
+  ],
+  "critical_states": [
+    {
+      "id": "T06-NOVO-REGISTRO",
+      "screen": "T06",
+      "title": "Novo registro em Bottom Sheet",
+      "node_id": "5977:7182",
+      "png": "assets/T06-NOVO-REGISTRO.png"
+    },
+    {
+      "id": "T08-CADASTRAR-MEDICAMENTO",
+      "screen": "T08",
+      "title": "Cadastrar medicamento em Bottom Sheet",
+      "node_id": "5967:6307",
+      "png": "assets/T08-CADASTRAR-MEDICAMENTO.png"
+    },
+    {
+      "id": "T09-NOVA-TAREFA",
+      "screen": "T09",
+      "title": "Nova tarefa em Bottom Sheet",
+      "node_id": "5974:6252",
+      "png": "assets/T09-NOVA-TAREFA.png"
+    },
+    {
+      "id": "T10-NOVO-REGISTRO",
+      "screen": "T10",
+      "title": "Nova consulta em Bottom Sheet",
+      "node_id": "5974:35902",
+      "png": "assets/T10-NOVO-REGISTRO.png"
+    },
+    {
+      "id": "T11-NOVO-COMPROMISSO",
+      "screen": "T11",
+      "title": "Novo compromisso em Bottom Sheet",
+      "node_id": "5974:36062",
+      "png": "assets/T11-NOVO-COMPROMISSO.png"
+    },
+    {
+      "id": "T03-PESSOA-IDOSA",
+      "screen": "T03",
+      "title": "Home da Pessoa Idosa (somente leitura)",
+      "node_id": "5948:5317",
+      "png": "assets/T03-PESSOA-IDOSA.png"
+    },
+    {
+      "id": "T13-PESSOA-IDOSA",
+      "screen": "T13",
+      "title": "Rede de Cuidado da Pessoa Idosa (somente leitura)",
+      "node_id": "5948:6516",
+      "png": "assets/T13-PESSOA-IDOSA.png"
+    },
+    {
+      "id": "T01-CREDENCIAIS-INVALIDAS",
+      "screen": "T01",
+      "title": "Credenciais inválidas",
+      "node_id": "5926:32076",
+      "png": "assets/T01-CREDENCIAIS-INVALIDAS.png"
+    },
+    {
+      "id": "T17-ACESSO-NEGADO",
+      "screen": "T17",
+      "title": "Acesso negado à auditoria",
+      "node_id": "5926:37017",
+      "png": "assets/T17-ACESSO-NEGADO.png"
+    }
+  ]
+}

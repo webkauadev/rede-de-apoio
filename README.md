@@ -1,5 +1,7 @@
 # Rede de Apoio — Context Pack
 
+**Protótipo SQL MySQL V0.1:** [script de criação](database/mysql/001_rede_de_apoio_schema.sql) · [passo a passo Workbench/EER](database/mysql/README.md) · [limites e decisões abertas](database/mysql/DECISOES_E_LIMITES.md) · [Playbook Codex](docs/10_IMPLEMENTACAO/CODEX_PLAYBOOK.md).
+
 Documentação central do projeto **Rede de Apoio a Cuidadores de Idosos**.
 
 Este repositório GitHub (`webkauadev/rede-de-apoio`) é a **fonte única de verdade operacional** para RF/RNF, User Stories, Issues/tarefas, critérios, rastreabilidade, decisões e contexto de IA. O Figma é a fonte do protótipo e do design visual vigente.
@@ -70,6 +72,9 @@ Leia primeiro `docs/07_AI_CONTEXT/CURRENT_PROJECT_STATE.md`.
 
 ## Codex
 
+**Handoff autossuficiente:** [docs/10_IMPLEMENTACAO/CODEX_PLAYBOOK.md](docs/10_IMPLEMENTACAO/CODEX_PLAYBOOK.md) e [database/mysql/README.md](database/mysql/README.md) explicam como executar tarefas usando apenas o repositório, respeitando decisões ainda pendentes.
+
+
 Use `docs/07_AI_CONTEXT/CODEX_SETUP.md`.
 
 O Codex deve:
@@ -85,6 +90,19 @@ O Codex deve:
 O workflow **Validate agent context** valida os registries em Pull Requests.
 
 
-## Modelagem de Banco de Dados — fase de planejamento
+## Modelagem de Banco de Dados — conhecimento + protótipo SQL
 
-A base de conhecimento da modelagem está em [docs/09_BANCO_DE_DADOS/](docs/09_BANCO_DE_DADOS/README.md). Reúne modelo conceitual, dicionário de dados candidato, cardinalidades, regras de acesso e integridade, 36 US rastreadas, exercícios de mesa, ADRs pendentes e roteiro da futura implementação MySQL. **É documentação em revisão, não DDL nem banco implantado.** As regras funcionais canônicas deste repositório continuam prevalecendo sobre propostas técnicas.
+A base de conhecimento da modelagem está em [docs/09_BANCO_DE_DADOS/](docs/09_BANCO_DE_DADOS/README.md). Reúne modelo conceitual, dicionário de dados candidato, cardinalidades, regras de acesso e integridade, 36 US rastreadas, exercícios de mesa, ADRs pendentes e roteiro da futura implementação MySQL. **A documentação de análise segue em revisão; o protótipo SQL V0.1 fica em `database/mysql/` e não foi executado/implantado.** As regras funcionais canônicas deste repositório continuam prevalecendo sobre propostas técnicas.
+
+
+## Autonomia do Codex somente com GitHub — snapshot de 2026-10-09
+
+O **[índice de implementação](docs/10_IMPLEMENTACAO/README.md)** reúne: [playbook](docs/10_IMPLEMENTACAO/CODEX_PLAYBOOK.md), [26 capturas canônicas](docs/10_IMPLEMENTACAO/FIGMA_SNAPSHOT/README.md), [backlog das 36 US](docs/10_IMPLEMENTACAO/BACKLOG_CODEX.md), [protocolo de PR](docs/10_IMPLEMENTACAO/PROTOCOLO_PR_CODEX.md), [stack candidata](docs/10_IMPLEMENTACAO/STACK_CANDIDATA.md) e [decisões pendentes](docs/10_IMPLEMENTACAO/PORTOES_PENDENTES.md). O Codex pode ler esses arquivos no GitHub sem depender de conversa nem de acesso live ao Figma.
+
+**Limites:** as imagens são fotografia estática (17 bases + 9 estados), não todos os protótipos; as ADRs que permanecem abertas e a stack de app não devem ser inventadas. A V0.1 SQL do [Workbench](database/mysql/README.md) **ainda não foi executada** em MySQL. O código da aplicação será uma etapa separada.
+
+## V1 homologada — SQL consolidado e Codex autossuficiente (2026-10-09)
+
+Por aprovação explícita do solicitante, as 38 ADRs de modelagem têm escolha V1 em [DECISOES_V1_HOMOLOGADAS.md](docs/10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md); a plataforma de desenvolvimento foi definida em [STACK_V1_HOMOLOGADA.md](docs/10_IMPLEMENTACAO/STACK_V1_HOMOLOGADA.md). O [SQL MySQL V1](database/mysql/001_rede_de_apoio_schema.sql) para Workbench inclui **30 tabelas** e o [guia de importação/EER](database/mysql/README.md).
+
+Para Codex, iniciar por [AGENTS.md](AGENTS.md) → [hubs de implementação](docs/10_IMPLEMENTACAO/README.md) → [36 US e capturas Figma no GitHub](docs/10_IMPLEMENTACAO/FIGMA_SNAPSHOT/README.md). O banco físico **não foi criado/executado**. A homologação não dispensa teste real MySQL e controle LGPD antes da produção. As menções V0.1/PENDENTE abaixo pertencem ao histórico de preparação.

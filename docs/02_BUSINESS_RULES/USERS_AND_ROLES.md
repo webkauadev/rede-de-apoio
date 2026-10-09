@@ -72,3 +72,7 @@ Regras:
 - Configurações, quando aberta pela Pessoa Idosa, mostra somente `Pessoa Idosa · Rede de Cuidado · Contatos · Emergência` (T12–T15);
 - Preferências e Auditoria (T16/T17) ficam ausentes/inacessíveis;
 - a indisponibilidade de uma ação deve ser representada por omissão ou estado desabilitado coerente com o padrão visual, sem criar uma nova função.
+
+## Complemento V1 homologado — participação e contas
+
+Ver [decisões V1](../10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md): o perfil da Pessoa Idosa pode preceder a constituição de **uma única rede**. Uma rede operacional confirmada possui um Principal Familiar e pelo menos um Profissional. O reingresso é novo episódio; papéis do episódio anterior não se reativam. Cada plantão tem um responsável, mas há vários Plantonistas Atuais quando plantões distintos coincidem. A conta de titular Pessoa Idosa não é reutilizada como conta de Cuidador. Nada disso autoriza o login a obter permissões sem vínculo vigente.
