@@ -70,3 +70,15 @@
 ## 5. Referências internas
 
 [03_DICIONARIO_DE_DADOS.md](03_DICIONARIO_DE_DADOS.md), [14_DECISOES_PENDENTES.md](14_DECISOES_PENDENTES.md), [32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md](32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md), [36_PLANO_MIGRACAO_REQUISITOS_DECISOES.md](36_PLANO_MIGRACAO_REQUISITOS_DECISOES.md), [37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md), [38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md).
+
+
+## Prioridade funcional G1 aprofundada — 2026-10-09
+
+A G1 precisa de resolução explícita e rastreável sobre:
+1. **DB-001:** A1 versus A2 versus B: uma rede histórica, uma operacional por vez, ou várias operacionais ([41](41_DB001_CARDINALIDADE_E_ESCOPO_REDES.md)).
+2. **DB-002:** B1/B2/B3: rede em configuração, transação completa ou perfil sem rede ([42](42_DB002_CONSTITUICAO_E_ATIVACAO_REDE.md)).
+3. **DB-003/004/027:** episódios e autorização atual sem perder autoria anterior, Principal único com transação ([43](43_DB003_004_EPISODIOS_PRINCIPAL_AUDITORIA.md)).
+4. **DB-028:** plantões/tarefas futuros após desligamento, sem deixar autorização residual ou excluir histórico ([43](43_DB003_004_EPISODIOS_PRINCIPAL_AUDITORIA.md)).
+5. **DB-030:** remetente N02 com vários Plantonistas Atuais continua em aberto ([38](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md)).
+
+**Provas complementares**: B-T01–B-T36 planejados em [44](44_CASOS_BOOTSTRAP_E_VINCULOS.md). Não incluí-los retroativamente no grupo P-S01–P-S20 como se tivessem sido executados. A evidência em [46](46_EVIDENCIAS_SIMULACAO_REDES_VINCULOS.md) é apenas lógica em memória.

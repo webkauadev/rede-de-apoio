@@ -123,3 +123,15 @@ O detalhamento por entidade e a ordem recomendada constam em [39_GATES_E_PLANO_D
 **DB-032/007:** apenas uma conclusão para cada tarefa/ciclo na operação normal foi confirmada; reabertura e ciclo novo continuam questões distintas.
 
 **Controle de escopo:** [37](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md) especifica PK/FK candidatas, não cria novas entidades obrigatórias. [40](40_DIAGRAMAS_ALTERNATIVOS_REDE.md) expõe as duas cardinalidades DB-001 sem fechá-la.
+
+
+## Revisão de alternativas priorizadas — DB-001/002/003/004/027/028 (2026-10-09)
+
+**Status preservado: PENDENTE**. Esta seção é um guia de deliberação, **não substitui** os registros de decisão das ADRs. O solicitante autorizou continuar estudando, não escolheu A1/A2/B, B1/B2/B3 ou E1/E2.
+
+- **DB-001:** [41](41_DB001_CARDINALIDADE_E_ESCOPO_REDES.md) explicita diferença entre uma rede por toda a vida do perfil (A1), uma operacional por vez (A2) e várias simultâneas (B), com impacto em isolamento de medicamento, cuidador, registro e auditoria. A variante A2 aprofunda a análise dos diagramas A/B anteriores, não representa decisão.
+- **DB-002:** [42](42_DB002_CONSTITUICAO_E_ATIVACAO_REDE.md) contrasta estado não-operacional (B1), criação completa em transação (B2) e cadastro de perfil antes da rede (B3). **Qualquer interpretação que admita rede incompleta precisa enfrentar explicitamente a redação RN-001/RN-004**, não criar exceção oculta.
+- **DB-003/004/027/028:** [43](43_DB003_004_EPISODIOS_PRINCIPAL_AUDITORIA.md) aprofunda a escolha episódios de membro vs. membro estável com períodos, fonte única de verdade do Principal, unicidade por rede e desvínculo com tarefas/plantões futuros.
+- **Casos/testes:** [44](44_CASOS_BOOTSTRAP_E_VINCULOS.md) apresenta B-T01–B-T36; [46](46_EVIDENCIAS_SIMULACAO_REDES_VINCULOS.md) registra 700 asserções ilustrativas, sem SQL. [45](45_ROTEIRO_DELIBERACAO_PRIORIDADES.md) lista perguntas para revisão humana.
+
+**Nenhum dos itens acima foi resolvido por inferência.** DB-005 permanece a resolução direta de sobreposição registrada em DEC-S01. A decisão N02 (DB-030) continua pendente com múltiplos plantonistas válidos.

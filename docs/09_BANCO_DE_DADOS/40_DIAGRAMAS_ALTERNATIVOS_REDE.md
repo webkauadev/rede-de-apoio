@@ -69,3 +69,10 @@ erDiagram
 Confrontar A/B com T12/T13 e RF03–RF05; verificar caso de mesmo Profissional em duas redes; validar que o mesmo usuário nunca ganha acesso cruzado por participar de outra rede; homologar uma variante no registro DB-001 com autor/data e testes de cardinalidade. Não executar SQL a partir deste arquivo.
 
 Veja [37](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md), [38](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md) e [39](39_GATES_E_PLANO_DE_PROVA_LOGICA.md).
+
+
+## Refinamento da cardinalidade: existe também A2 (2026-10-09)
+
+A figura "Variante A" acima representa a interpretação **A1**: uma única rede histórica por pessoa. Há, porém, a alternativa intermediária **A2**, que admite várias redes históricas mas **no máximo uma operacional em qualquer momento**. Ela se pareceria visualmente com a cardinalidade 1:N da "Variante B", porém com uma **restrição temporal de exclusividade operacional adicional**. Assim, nem o tipo de seta 1:N nem a existência de UNIQUE permanente comprovam A2.
+
+**Nenhuma A1/A2/B foi aprovada**. O pacote [41](41_DB001_CARDINALIDADE_E_ESCOPO_REDES.md) especifica consequências para escopo/medicamento e o [42](42_DB002_CONSTITUICAO_E_ATIVACAO_REDE.md) confronta como cada escolha afeta o cadastro inicial. Não reaproveitar o DER ilustrativo como implementação.

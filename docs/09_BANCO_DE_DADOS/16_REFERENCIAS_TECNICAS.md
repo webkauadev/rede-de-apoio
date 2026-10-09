@@ -75,3 +75,13 @@ Estas fontes dão sustentação técnica à análise 22–27; não redefinem o p
 - [MySQL 8.4 — Locks por índice e predicado](https://dev.mysql.com/doc/refman/8.4/en/innodb-locks-set.html): índices, busca única e faixa afetam extensão e conflito de locks.
 
 Aplicação ao desenho [37](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md): níveis estrutural/transacional/funcional não são substituíveis entre si. Esses links são fontes de comportamento do MySQL, não da política do produto.
+
+
+## Fundamentos da revisão de bootstrap e relacionamentos
+
+- MySQL 8.4 Foreign Keys: https://dev.mysql.com/doc/refman/8.4/en/create-table-foreign-keys.html — não impõem mínimo de profissionais em tabela distinta; checar tipos/índices e FKs compostas.
+- MySQL 8.4 CHECK: https://dev.mysql.com/doc/refman/8.4/en/create-table-check-constraints.html — regra local à linha, não verificação de contagens de outra tabela.
+- MySQL 8.4 InnoDB locking reads: https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-reads.html — bloqueio por linha/consulta no mesmo contexto transacional.
+- MySQL 8.4 Deadlock handling: https://dev.mysql.com/doc/refman/8.4/en/innodb-deadlocks-handling.html — rollback/retry e ordem estável de locks em operações de Principal/ativação.
+
+Essas fontes sustentam limitações técnicas, não aprovam B1/B2/B3, A1/A2/B nem E1/E2. O produto é definido pelos RF/US/RN da `main` e pelas decisões aprovadas formalmente.

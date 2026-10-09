@@ -120,3 +120,17 @@ Foram acrescentadas as decisões DB-025–DB-028 para análise humana (total na 
 **Estado atual da pasta:** **42 arquivos**, **38 ADRs catalogadas** (não são todas pendentes: DB-005 tem decisão do solicitante; outras estão parcialmente resolvidas), **188 cenários anteriores de mesa** e mais 18 cenários condicionais N02 para futura decisão. **Nenhuma tabela, script de criação, migration ou banco MySQL executado**.
 
 **Não confundir:** a alternativa A do N02 (responsável explícito por ocorrência) é **minha recomendação para revisão**, e **não** foi aprovada pelo solicitante. Mantêm-se os RF/RNF/US canônicos da `main` até sua atualização formal. O modo Pessoa Idosa permanece estritamente read-only; nenhuma Central de Notificações é criada.
+
+
+## Sexta revisão — decisão da rede, constituição inicial e vínculos (2026-10-09)
+
+| Documento | Objetivo |
+|---|---|
+| [41 — DB-001: cardinalidade e escopo](41_DB001_CARDINALIDADE_E_ESCOPO_REDES.md) | **A1** uma rede histórica, **A2** uma rede operacional por vez com históricos, **B** várias redes simultâneas; nenhuma aprovada |
+| [42 — DB-002: constituir a rede](42_DB002_CONSTITUICAO_E_ATIVACAO_REDE.md) | **B1** estado de configuração, **B2** transação completa, **B3** perfil antes da rede; conflito RN-001/RN-004 explicado |
+| [43 — DB-003/004: vínculos e Principal](43_DB003_004_EPISODIOS_PRINCIPAL_AUDITORIA.md) | episódios de vínculo, histórico, transferência atômica e saída de membro sem perder autoria |
+| [44 — Cenários de mesa B-T](44_CASOS_BOOTSTRAP_E_VINCULOS.md) | 36 cenários de cardinalidade, bootstrap, Principal, histórico e concorrência; alguns condicionais |
+| [45 — Agenda de deliberação](45_ROTEIRO_DELIBERACAO_PRIORIDADES.md) | ordem e critérios para decidir DB-001/002/003/004/027/028/030 com a equipe |
+| [46 — Evidência ilustrativa](46_EVIDENCIAS_SIMULACAO_REDES_VINCULOS.md) | 700 predicados em memória, 700 conforme referência; não são testes MySQL |
+
+**Inventário atual:** 48 arquivos nesta pasta; 38 ADRs DB-001–DB-038 catalogadas, DB-005 confirmada pelo solicitante quanto à sobreposição, várias outras parcialmente especificadas. **224 cenários de mesa T/K-T/L-T/V-T/C-T/B-T** e 18 cenários condicionais N02, que aguardam DB-030. Nenhuma ADR adicional homologada nesta rodada. **Zero SQL, zero banco criado e nenhum merge.**

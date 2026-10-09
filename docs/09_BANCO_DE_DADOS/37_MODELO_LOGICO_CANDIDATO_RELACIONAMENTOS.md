@@ -81,3 +81,13 @@
 Todas as linhas D/C são **candidatas**, mesmo quando o comportamento é canônico. DEC-S01–S03 estão aprovadas diretamente pelo solicitante para a modelagem, mas ainda `migration_required` nas fontes oficiais (docs 32/36). Conferir [38](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md) e [39](39_GATES_E_PLANO_DE_PROVA_LOGICA.md).
 
 MySQL 8.4: https://dev.mysql.com/doc/refman/8.4/en/create-table-foreign-keys.html ; https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-reads.html ; https://dev.mysql.com/doc/refman/8.4/en/innodb-locks-set.html ; https://dev.mysql.com/doc/refman/8.4/en/constraint-foreign-key.html .
+
+
+## Complemento DB-001/002/003 após estudo de variantes (2026-10-09)
+
+O item D03 da seção 2 precisa discriminar três hipóteses, não apenas 1:N vs. 1:1:
+- **A1:** 0..1 rede por Pessoa Idosa **durante toda sua história**, com UNIQUE permanente candidata.
+- **A2:** 0..1 rede **operacional em qualquer instante** e 0..N redes históricas; não colocar UNIQUE permanente sobre pessoa_idosa_id.
+- **B:** 0..N redes simultaneamente operacionais; escopo e visibilidade por rede obrigatórios, sem compartilhamento implícito.
+
+Estudo completo: [41](41_DB001_CARDINALIDADE_E_ESCOPO_REDES.md). **Nenhuma hipótese foi homologada.** Para D03/D04/D05, [42](42_DB002_CONSTITUICAO_E_ATIVACAO_REDE.md) detalha o bootstrap sem pressupor que o criador da Pessoa Idosa já é membro Principal confirmado; [43](43_DB003_004_EPISODIOS_PRINCIPAL_AUDITORIA.md) examina reingresso, vigência e transferência. Esses pontos afetam FKs `rede_id`, chaves de participação, correções, herança de dados de medicamentos e auditoria. Antes de DDL, revisar B-T01–B-T36 em [44](44_CASOS_BOOTSTRAP_E_VINCULOS.md).

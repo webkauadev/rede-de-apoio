@@ -87,3 +87,12 @@ Antes de desenhar DDL de D17/D18/D19/D23, resolver DB-008/013/018 e DB-034–038
 **G1 Funcional:** DB-001/002/030 e tratamentos de desvinculação, tarefa reaberta e dose programada. Consolidar migração `migration_required` nas Issues quando aprovada. **G2 Lógico:** revisar [37](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md) e escolher entre os diagramas de [40](40_DIAGRAMAS_ALTERNATIVOS_REDE.md), FKs reais, vínculos históricos e versão de registro. **G3 Físico (somente após autorização):** executar as 20 provas planejadas em [39](39_GATES_E_PLANO_DE_PROVA_LOGICA.md), incluindo 2 conexões concorrentes, isolamentos, locks, FKs compostas e auditoria. **G4:** segurança/privacidade, política de retenção, backup e operação.
 
 **Ponto impeditivo explícito:** o N02 é obrigatório; não implementar "primeiro plantonista encontrado" como solução técnica. Ver [38](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md). A migração formal das decisões DEC-S01–S03 tem plano em [36](36_PLANO_MIGRACAO_REQUISITOS_DECISOES.md), não executada.
+
+
+## Roteiro de revisão humana da constituição e participação (2026-10-09)
+
+**Antes de congelar D01–D05/D06–D09:** rever [41](41_DB001_CARDINALIDADE_E_ESCOPO_REDES.md) e escolher A1/A2/B (DB-001); revisar [42](42_DB002_CONSTITUICAO_E_ATIVACAO_REDE.md) e escolher B1/B2/B3 ou solução expressa (DB-002); validar se reingresso é admitido e escolher E1/E2 (DB-003/027); selecionar a fonte única de verdade do Principal e integridade Familiar (DB-004/026); decidir tarefas/plantões futuros após desvinculação (DB-028).
+
+**Evidências para futura fase autorizada:** executar [44](44_CASOS_BOOTSTRAP_E_VINCULOS.md) em banco MySQL descartável com dados fictícios, inclusive duas sessões para ativação/Principal/desvínculo, logs e rollback. A revisão em memória [46](46_EVIDENCIAS_SIMULACAO_REDES_VINCULOS.md) **não** cumpre esse gate. A agenda de revisão [45](45_ROTEIRO_DELIBERACAO_PRIORIDADES.md) delimita quais escolhas exigem migração de texto funcional às Issues.
+
+**Controle de escopo:** PR #115 permanece documentação, sem SQL/migrations/merge.

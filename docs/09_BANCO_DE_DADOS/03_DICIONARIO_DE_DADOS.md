@@ -118,3 +118,12 @@ Fonte: [32](32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md). A numeração D01
 O mapeamento exaustivo de **D01–D23 e C01–C04** com PK, FKs, invariantes e bloqueadores de homologação passou para [37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md). **Nenhuma tabela adicional aprovada.** Em especial: FKs compostas com colunas obrigatórias podem impedir membro de rede diferente, mas **não** provam vínculo ativo; `regime_id/horario_id` também exigem compatibilidade; DB-001 impede escolher cardinalidade única ou múltipla de `rede_cuidado` ainda.
 
 Os dois diagramas [40](40_DIAGRAMAS_ALTERNATIVOS_REDE.md) representam caminhos mutuamente alternativos e não devem ser reunidos num mesmo esquema físico por conveniência. O destinatário N02 em multilateralidade [38](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md) permanece questão funcional, não um campo de tabela aprovado.
+
+
+## D03/D04/D05: cardinalidade, constituição e episódios ainda abertos
+
+O detalhamento agora compara [41](41_DB001_CARDINALIDADE_E_ESCOPO_REDES.md) (A1/A2/B), [42](42_DB002_CONSTITUICAO_E_ATIVACAO_REDE.md) (B1/B2/B3) e [43](43_DB003_004_EPISODIOS_PRINCIPAL_AUDITORIA.md) (membro episódico E1 vs. vínculo estável/episódios E2, Principal e integridade). **Não definir UNIQUE `rede_cuidado.pessoa_idosa_id` enquanto DB-001 estiver aberta**, pois A2 requer várias redes históricas mesmo permitindo apenas uma operacional.
+
+Também não derivar automaticamente a permissão Principal do autor que criou D02: na US-003 a categoria do ator é declarada funcionalmente, mas a autorização para constituir a primeira rede e os vínculos iniciais não são especificados transacionalmente. Uma eventual rede em configuração sem Principal precisa de revisão funcional expressa para RN-001/RN-004; não é licença implícita para operar incompleta.
+
+O dicionário D01–D23/C01–C04 continua preliminar, sem cardinalidades físicas fixadas.

@@ -77,3 +77,16 @@ Estas linhas **não substituem nem criam origem de US**; são itens propostos pa
 - [40 — Diagramas A/B](40_DIAGRAMAS_ALTERNATIVOS_REDE.md): DB-001 segue sem regra funcional decidida.
 
 **Rastreabilidade aprovada do projeto:** US-020 originada RF17; US-025 originada RF21; US-036 originada RF30. As especificações de modelagem não atribuem outra origem a nenhuma US.
+
+
+## Novos pacotes de decisão vinculados às origens existentes
+
+| Pacote de estudo | Origem canônica já existente | Conflito/lacuna de arquitetura |
+|---|---|---|
+| [41](41_DB001_CARDINALIDADE_E_ESCOPO_REDES.md) — DB-001 | RF03/US-003–004; RF04/US-005–006; RF30/US-036; RN-001/RN-004 | uma/várias redes por idoso; medicamentos e registros entre redes |
+| [42](42_DB002_CONSTITUICAO_E_ATIVACAO_REDE.md) — DB-002 | US-003/005/007; RN-001/RN-004 | quem constitui a primeira rede e em qual transação |
+| [43](43_DB003_004_EPISODIOS_PRINCIPAL_AUDITORIA.md) — DB-003/004/027/028 | US-005–007; RN-001/002/004/008; RNF01/03 | reingresso e histórico, Principal único, último Profissional, responsabilidades futuras |
+| [44](44_CASOS_BOOTSTRAP_E_VINCULOS.md) — B-T01–B-T36 | mesmos RF/US/RN acima | matriz de resultados esperados com ramos condicionais |
+| [45](45_ROTEIRO_DELIBERACAO_PRIORIDADES.md) | todas as origens acima + RF17/US-020 DB-030 | checklist de decisão, não nova US/RF |
+
+**O estado de aceite das origens canônicas na `main` não foi alterado.** Novas regras de comportamento, se escolhidas, exigem `migration_required` e eventual decisão explícita de critérios, conforme AGENTS.md.
