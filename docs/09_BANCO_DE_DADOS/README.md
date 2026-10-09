@@ -49,3 +49,7 @@ O pacote local `PLANO_MESTRE_MODELAGEM_BANCO_REDE_APOIO_v0_1.md` foi um levantam
 - [ ] casos críticos de [13](13_CENARIOS_TESTE_DE_MESA.md) têm resultados esperados revisados;
 - [ ] privacidade, retenção e estratégia de autorização definidas;
 - [ ] plano de execução e rollback aprovado. 
+
+## Validação documental desta proposta
+
+Consulte [17_VALIDACAO_DOCUMENTAL.md](17_VALIDACAO_DOCUMENTAL.md) para as verificações de cobertura de RF/US, inventário, exercícios e simulações ilustrativas executadas sem banco.
