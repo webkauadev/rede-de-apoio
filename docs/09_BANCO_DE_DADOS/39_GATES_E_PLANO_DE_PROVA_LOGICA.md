@@ -82,3 +82,10 @@ A G1 precisa de resolução explícita e rastreável sobre:
 5. **DB-030:** remetente N02 com vários Plantonistas Atuais continua em aberto ([38](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md)).
 
 **Provas complementares**: B-T01–B-T36 planejados em [44](44_CASOS_BOOTSTRAP_E_VINCULOS.md). Não incluí-los retroativamente no grupo P-S01–P-S20 como se tivessem sido executados. A evidência em [46](46_EVIDENCIAS_SIMULACAO_REDES_VINCULOS.md) é apenas lógica em memória.
+
+
+## Novo critério de Gate G1: critérios de aceite são fonte protegida
+
+A auditoria [47](47_AUDITORIA_FONTES_APROVACOES.md) confirmou que os comentários de aprovação posteriores às Issues integram a autoridade canônica de P01/#73. Assim, **não declarar G1 concluído pela existência de documentação técnica**, nem rebaixar P01 a pendente porque o corpo antigo de uma US fala em checklist indisponível.
+
+Para fechar G1, registrar alternativas A1/A2/B, B1/B2/B3 e destinatário N02 conforme perguntas do [48](48_GATE_G1_DECISOES_PARA_REVISAO_HUMANA.md). As futuras alterações funcionais devem ser refletidas nas origens RF/US, considerando os critérios já aprovados, pelo plano [49](49_PLANO_REVISAO_REGISTROS_E_CI.md). `migration_required` permanece até revisão humana.

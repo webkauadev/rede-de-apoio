@@ -4,7 +4,7 @@
 
 Este diretório é o contrato de análise para a futura modelagem conceitual, lógica e física MySQL da aplicação. Integra-se à fonte única operacional `webkauadev/rede-de-apoio`, mas não altera nem reinterpreta unilateralmente RF/RNF/US aprovados.
 
-**Painel atual:** 42 arquivos de modelagem/documentação; 38 ADRs cadastradas (DB-005 já resolvida quanto à sobreposição); sem DDL ou MySQL executado. Comece pelos documentos [37](37_MODELO_LOGICO_CANDIDATO_RELACIONAMENTOS.md), [38](38_DECISAO_N02_MULTIPLOS_PLANTONISTAS.md), [39](39_GATES_E_PLANO_DE_PROVA_LOGICA.md) e [40](40_DIAGRAMAS_ALTERNATIVOS_REDE.md).
+**Painel atual:** 51 arquivos de modelagem/documentação; 38 ADRs cadastradas (DB-005 já resolvida quanto à sobreposição); sem DDL ou MySQL executado. Para decisões pendentes, comece pelo [Gate G1](48_GATE_G1_DECISOES_PARA_REVISAO_HUMANA.md), conferindo primeiro a [auditoria de fontes](47_AUDITORIA_FONTES_APROVACOES.md).
 
 ## Como navegar
 
@@ -134,3 +134,16 @@ Foram acrescentadas as decisões DB-025–DB-028 para análise humana (total na 
 | [46 — Evidência ilustrativa](46_EVIDENCIAS_SIMULACAO_REDES_VINCULOS.md) | 700 predicados em memória, 700 conforme referência; não são testes MySQL |
 
 **Inventário atual:** 48 arquivos nesta pasta; 38 ADRs DB-001–DB-038 catalogadas, DB-005 confirmada pelo solicitante quanto à sobreposição, várias outras parcialmente especificadas. **224 cenários de mesa T/K-T/L-T/V-T/C-T/B-T** e 18 cenários condicionais N02, que aguardam DB-030. Nenhuma ADR adicional homologada nesta rodada. **Zero SQL, zero banco criado e nenhum merge.**
+
+
+## Sétima revisão — auditoria da origem dos critérios e Gate G1
+
+| Documento | Resultado |
+|---|---|
+| [47 — Auditoria de fontes aprovadas](47_AUDITORIA_FONTES_APROVACOES.md) | Verificação direta de 9 comentários canônicos de US e 7 Issues RF, P01/#73, mais fonte indexada; **corpos antigos de algumas Issues não refletem a promoção dos critérios em comentários** |
+| [48 — Decisões do Gate G1](48_GATE_G1_DECISOES_PARA_REVISAO_HUMANA.md) | Roteiro objetivo de A1/A2/B, B1/B2/B3, reingresso, Principal, saída e N02; **todas essas escolhas permanecem pendentes** |
+| [49 — Reconciliação e verificação](49_PLANO_REVISAO_REGISTROS_E_CI.md) | Procedimento para atualizar fontes após aprovação e conferir integridade documental, sem mexer nas Issues ou refazer P01 |
+
+**Estado atual após publicação:** 51 arquivos de documentação/diagrama, inventário DB-001–DB-038 com status de decisão/resolução parcial, 224 cenários de mesa T/K-T/L-T/V-T/C-T/B-T mais 18 cenários condicionais N02. A análise não criou novos casos numerados nem fechou novas ADRs. **Nenhum SQL, banco, migration, alteração na `main` ou merge.**
+
+**Regra de precedência para critérios de aceite:** `ACCEPTANCE_CRITERIA.yaml` registra a aprovação de P01/#73 e os `comment_id` por US; os textos aprovados foram promovidos como comentários nas Issues; `ACCEPTANCE_CRITERIA_DRAFT.yaml` é o snapshot histórico aprovado e contém a antiga etiqueta `pending_human_review`. Não interpretar corpo de Issue ou status legado do snapshot como ausência de aprovação.

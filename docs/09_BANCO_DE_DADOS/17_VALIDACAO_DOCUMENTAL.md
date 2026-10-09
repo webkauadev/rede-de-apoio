@@ -47,3 +47,14 @@ Foram avaliadas **17 asserções simples** (17 resultados conforme esperado) par
 - Backup e restauração, compatibilidade de timezone e performance.
 
 **Veredito:** organização documental e exemplos de invariantes verificados em nível inicial; **não homologado** para implementação de banco até ADRs e revisão humana.
+
+
+## Auditoria posterior de fontes — 2026-10-09
+
+O relatório acima apresenta resultados de sua **primeira etapa** e os números 18 arquivos/17 predicados são históricos e não devem ser confundidos com o inventário atual do PR.
+
+Nova conferência em [47](47_AUDITORIA_FONTES_APROVACOES.md): Issues RF03/#7, RF04/#8, RF05/#9, RF08/#12, RF09/#13, RF17/#21 e RF21/#25; US-003/#39, US-005/#41, US-006/#42, US-007/#43, US-011/#47, US-013/#49, US-020/#56, US-025/#61 e US-036/#72; comentário de aceite aprovado em todas as nove US; P01/#73 encerrada como RESOLVIDA. **Nenhuma alteração nas fontes canônicas**, e a avaliação de status não equivale a execução do validador.
+
+**Critérios de aceite:** o índice `ACCEPTANCE_CRITERIA.yaml` registra `comment_id` de 36/36 US, mas **não reproduz no próprio arquivo o texto completo**; os comentários das Issues e o snapshot aprovado `ACCEPTANCE_CRITERIA_DRAFT.yaml` fornecem o conteúdo. A antiga etiqueta `pending_human_review` do snapshot é dado histórico. Não tratar os corpos prévios que dizem “sem checklist” como critérios ausentes.
+
+**Estado da documentação:** o README mantém painel atual, com 51 arquivos após a auditoria. Testes físicos de MySQL, `validate_agent_context.py` e integração de APIs **não foram executados nesta rodada**.

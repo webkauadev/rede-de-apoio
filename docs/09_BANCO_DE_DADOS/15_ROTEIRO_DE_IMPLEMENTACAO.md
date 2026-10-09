@@ -96,3 +96,10 @@ Antes de desenhar DDL de D17/D18/D19/D23, resolver DB-008/013/018 e DB-034–038
 **Evidências para futura fase autorizada:** executar [44](44_CASOS_BOOTSTRAP_E_VINCULOS.md) em banco MySQL descartável com dados fictícios, inclusive duas sessões para ativação/Principal/desvínculo, logs e rollback. A revisão em memória [46](46_EVIDENCIAS_SIMULACAO_REDES_VINCULOS.md) **não** cumpre esse gate. A agenda de revisão [45](45_ROTEIRO_DELIBERACAO_PRIORIDADES.md) delimita quais escolhas exigem migração de texto funcional às Issues.
 
 **Controle de escopo:** PR #115 permanece documentação, sem SQL/migrations/merge.
+
+
+## Checklist adicional de aceitação documental (2026-10-09)
+
+A revisão [47](47_AUDITORIA_FONTES_APROVACOES.md) encontrou comentário de critério aprovado em 9 US conferidas e reforçou a precedência P01/#73. Antes de alterar qualquer regra, consultar **comentário de aceitação e snapshot aprovado**, não apenas texto do corpo antigo. Debater [48](48_GATE_G1_DECISOES_PARA_REVISAO_HUMANA.md), documentar escolha funcional e seguir [49](49_PLANO_REVISAO_REGISTROS_E_CI.md).
+
+**Nenhum novo bloqueio técnico foi artificialmente resolvido por esta auditoria**; gates de autorização de SQL e de merge permanecem intactos. Validadores CI/agent context ainda precisam execução no ambiente completo após as decisões.

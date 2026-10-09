@@ -135,3 +135,12 @@ O detalhamento por entidade e a ordem recomendada constam em [39_GATES_E_PLANO_D
 - **Casos/testes:** [44](44_CASOS_BOOTSTRAP_E_VINCULOS.md) apresenta B-T01–B-T36; [46](46_EVIDENCIAS_SIMULACAO_REDES_VINCULOS.md) registra 700 asserções ilustrativas, sem SQL. [45](45_ROTEIRO_DELIBERACAO_PRIORIDADES.md) lista perguntas para revisão humana.
 
 **Nenhum dos itens acima foi resolvido por inferência.** DB-005 permanece a resolução direta de sobreposição registrada em DEC-S01. A decisão N02 (DB-030) continua pendente com múltiplos plantonistas válidos.
+
+
+## Auditoria das pendências contra critérios aprovados (2026-10-09)
+
+[47 — Fontes canônicas](47_AUDITORIA_FONTES_APROVACOES.md) verificou em comentários de US-003, US-005, US-006, US-007, US-011, US-013, US-020, US-025 e US-036 que os critérios de P01/#73 já foram aprovados. Por isso, nenhum texto desta lista deve tratá-los como inexistentes apenas pelo corpo desatualizado de Issue.
+
+**Após essa leitura, continuam sem escolha funcional:** DB-001 A1/A2/B, DB-002 B1/B2/B3, DB-003/027 reingresso, DB-028 desvínculo com tarefas/plantões futuros, DB-030 destinatário N02 com vários plantonistas. O que foi aprovado no PR sobre plantões simultâneos (DEC-S01) e concorrência (DEC-S03) não responde às decisões acima.
+
+Para revisão humana concentrada, utilizar [48_GATE_G1_DECISOES_PARA_REVISAO_HUMANA.md](48_GATE_G1_DECISOES_PARA_REVISAO_HUMANA.md) e seguir [49_PLANO_REVISAO_REGISTROS_E_CI.md](49_PLANO_REVISAO_REGISTROS_E_CI.md) depois de cada deliberação.

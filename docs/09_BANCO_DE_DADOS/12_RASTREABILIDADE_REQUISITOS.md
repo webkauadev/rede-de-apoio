@@ -90,3 +90,10 @@ Estas linhas **não substituem nem criam origem de US**; são itens propostos pa
 | [45](45_ROTEIRO_DELIBERACAO_PRIORIDADES.md) | todas as origens acima + RF17/US-020 DB-030 | checklist de decisão, não nova US/RF |
 
 **O estado de aceite das origens canônicas na `main` não foi alterado.** Novas regras de comportamento, se escolhidas, exigem `migration_required` e eventual decisão explícita de critérios, conforme AGENTS.md.
+
+
+## Correção de método: rastreabilidade até critério individual aprovado
+
+A origem canônica de cada US permanece em `USER_STORIES_INDEX.yaml`. Para obter o critério aprovado correspondente, usar `ACCEPTANCE_CRITERIA.yaml.issue_promotion[US]`, o comentário aprovado da Issue e o snapshot `ACCEPTANCE_CRITERIA_DRAFT.yaml` identificado na aprovação P01/#73. Alguns corpos da Issue ainda exibem instrução anterior sem checklist; o comentário vigente é posterior e aprovado. Auditoria detalhada: [47](47_AUDITORIA_FONTES_APROVACOES.md).
+
+**Sem novo requisito:** esta observação corrige a forma de consulta da fonte, não acrescenta US/RF, não altera matriz de permissões e não libera SQL.

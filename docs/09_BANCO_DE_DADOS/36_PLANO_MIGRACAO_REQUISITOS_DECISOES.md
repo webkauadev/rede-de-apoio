@@ -30,3 +30,14 @@
 - Quais limitações adicionais de privacidade, direitos e retenção recaem sobre os registros.
 
 **Nota:** os números de issue exibidos são os conhecidos dos índices consultados nesta fase; antes de editar Issues conferir identificador e estado atual no registry do GitHub.
+
+
+## Proveniência confirmada das fontes de aceite — revisão 2026-10-09
+
+Antes de alterar a origem aprovada após uma nova decisão:
+- conferir `docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml`, que relaciona comentário canônico por US; ler o comentário nas Issues e o snapshot do commit `8cdb03f10f69e1578010451a501381a935219c1b`;
+- US-003/#39 tem comentário de aprovação `5673834995`, US-011/#47 `5673842203`, US-013/#49 `5673844056`, US-020/#56 `5673850618`, US-025/#61 `5673856095`; o corpo de algumas Issues permanece legado;
+- P01/#73 está encerrada e não deve ser reaberta ao modificar regra específica; qualquer novo critério exige deliberação nova conforme a política do arquivo canônico;
+- [47](47_AUDITORIA_FONTES_APROVACOES.md) registra a verificação; [48](48_GATE_G1_DECISOES_PARA_REVISAO_HUMANA.md) prepara a deliberação ainda necessária; [49](49_PLANO_REVISAO_REGISTROS_E_CI.md) define verificação de consistência depois de aprovação.
+
+**Nenhuma Issue, comentário ou requisito foi editado nesta revisão de banco.**

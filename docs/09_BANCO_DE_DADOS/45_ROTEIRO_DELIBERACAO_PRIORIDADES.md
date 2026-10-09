@@ -45,3 +45,10 @@ Com G1 funcional resolvido:
 5. Somente então decidir scripts de migração/produção, plano de rollback e segurança de dados.
 
 **Nenhum aceite é inferido deste roteiro.** O PR não transforma recomendações em regras canônicas automaticamente.
+
+
+## Anexo para a reunião: origem e critério aprovado (2026-10-09)
+
+Use [48 — Gate G1](48_GATE_G1_DECISOES_PARA_REVISAO_HUMANA.md) como pauta de decisões e [47 — Auditoria](47_AUDITORIA_FONTES_APROVACOES.md) para comprovar que as US já têm critério individual aprovado em comentários no GitHub. Não julgar P01 pendente por texto legado na Issue. Confirmar na reunião **qual opção foi escolhida, por quem, quando e qual mudança deve ser migrada**; não escrever `aprovado` antes disso.
+
+O plano de atualização após aceite encontra-se em [49](49_PLANO_REVISAO_REGISTROS_E_CI.md).

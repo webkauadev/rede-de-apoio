@@ -47,3 +47,12 @@
 - Não afirmar uma rede por pessoa idosa, cardinalidade de consulta/compromisso ou reabertura de tarefa como definitivas.
 - O escopo exato de “registro de cuidado imutável” em cada domínio precisa de ADR.
 - A fase corrente é **conhecimento e contrato**, não construção de schema.
+
+
+## Confirmação direta de fontes canônicas em Issues — auditoria 2026-10-09
+
+A análise inicial de fontes foi validada diretamente nas Issues e comentários aprovados. [47_AUDITORIA_FONTES_APROVACOES.md](47_AUDITORIA_FONTES_APROVACOES.md) lista amostra de 9 US (US-003/005/006/007/011/013/020/025/036), 7 RF e P01/#73, com `comment_id` efetivos.
+
+**Importante para agentes:** em algumas US o **corpo antigo** diz que não há checklist individual, mas **comentário posterior aprovado** apresenta os critérios. O arquivo `ACCEPTANCE_CRITERIA.yaml` indexa cada comentário; o texto do snapshot aprovado em `ACCEPTANCE_CRITERIA_DRAFT.yaml` tem `status: pending_human_review` apenas por ser histórico. P01/#73 está RESOLVIDA; não reabrir nem gerar critérios novos por conta própria. Evitar usar apenas o corpo antigo da Issue como verdade.
+
+Nenhuma fonte examinada nesta rodada determinou A1/A2/B (redes por Pessoa Idosa), B1/B2/B3 (bootstrap) nem a regra N02 para diversos Plantonistas Atuais. Esses itens permanecem formalmente `PENDENTE/migration_required`. As decisões DEC-S01–S03 continuam no PR sob controle de revisão humana, não migradas automaticamente à `main`.
