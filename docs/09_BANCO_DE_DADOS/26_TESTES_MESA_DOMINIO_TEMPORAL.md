@@ -11,7 +11,7 @@ R1 com Pessoa Idosa E1, Ana Principal, Bruno Apoio e Carla Profissional; R2/E2 c
 | ID | Exercício | Resultado esperado/status |
 |---|---|---|
 | L-T01 | P1 termina 12:00; P2 inicia 12:00 | contiguidade sem sobreposição **se** [inicio,fim) aprovado |
-| L-T02 | P1 [10,12), P2 [11,13) | detectar sobreposição; aceitar/rejeitar depende DB-005 |
+| L-T02 | P1 [10,12), P2 [11,13) | **PERMITIR** plantões simultâneos (DEC-S01); detectar sobreposição sem rejeitar |
 | L-T03 | P1 com fim igual a início | rejeitar por intervalo vazio (proposta de validação) |
 | L-T04 | P1 cancelado às 11:00, consulta 11:30 | não considerar Bruno Plantonista pelo P1 após cancelamento |
 | L-T05 | Bruno é membro somente R2 e plantão está em R1 | rejeitar por escopo de rede |
@@ -21,7 +21,7 @@ R1 com Pessoa Idosa E1, Ana Principal, Bruno Apoio e Carla Profissional; R2/E2 c
 | L-T09 | Reprocessar aceite de mesmo pedido e chave | não aplicar duas vezes |
 | L-T10 | Dois pedidos para versão 3 de P1; um confirmado e ele vira versão 4 | segundo conflito/reavaliação; não sobrescrever |
 | L-T11 | Cancelamento e aceite de troca concorrem no P1 | um resultado coerente, rollback de perdedor |
-| L-T12 | Duas pessoas ativas em plantões sobrepostos 11:30 | não escolher destinatário N02 por ordem aleatória; DB-005/030 |
+| L-T12 | Duas pessoas ativas em plantões sobrepostos 11:30 | **ESTADO VÁLIDO**; destino N02 ainda DB-030; não escolher destinatário aleatório |
 
 ## Série L-T13 a L-T22 — Tarefa, histórico e recorrência
 
@@ -31,7 +31,7 @@ R1 com Pessoa Idosa E1, Ana Principal, Bruno Apoio e Carla Profissional; R2/E2 c
 | L-T14 | TX 10:00 sem conclusão às 10:15:00 | atrasada sob convenção >= H+15 proposta; borda DB-031 |
 | L-T15 | TX não tem horário de execução programado | não marcar N04 apenas pelo prazo inespecífico |
 | L-T16 | TX concluída por pessoa sem ser responsável nem autorizada | negar, auditar |
-| L-T17 | Duas conclusões concorrentes de TX | cardinalidade e comportamento dependem DB-007/032; sem duplicação silenciosa |
+| L-T17 | Duas conclusões concorrentes de TX no mesmo ciclo | **UMA conclusão confirmada**; outra conflito/replay, sem segundo N03 (DEC-S03) |
 | L-T18 | Conclusão às 10:05 registrada às 10:40 | preservar ambas as horas; efeito retrospectivo N04 depende DB-031 |
 | L-T19 | Consulta realizada sem compromisso anterior | não exigir FK compromisso sem DB-009 |
 | L-T20 | Novo regime começa no dia seguinte | preservar ocorrências/execuções anteriores no regime original |
@@ -74,3 +74,15 @@ R1 com Pessoa Idosa E1, Ana Principal, Bruno Apoio e Carla Profissional; R2/E2 c
 - Concorrência L-T10/L-T11/L-T17/L-T28/L-T36 exige pelo menos duas sessões reais e barreiras de sincronização, não apenas teste unitário.
 - Timezone L-T31/32 requer zonas IANA e tzdata atualizadas; testes não podem assumir sempre UTC-3.
 - L-T03, L-T01, L-T14 e respostas de sobreposição são hipóteses técnicas claramente identificadas.
+
+
+## Retificação posterior dos resultados esperados — DEC-S01/DEC-S03
+
+- **L-T02:** a detecção de sobreposição permanece; **a coexistência dos plantões está agora APROVADA pelo solicitante**. Não rejeitar P1/P2 apenas por horários cruzados.
+- **L-T12:** dois plantonistas simultâneos são válidos; destinatário N02 ainda **DB-030 PENDENTE**; não escolher o primeiro do banco.
+- **L-T10/L-T11:** colisões de alteração do **mesmo plantão+versão**: somente uma transação efetiva; conflito para comando obsoleto.
+- **L-T17:** duas conclusões do **mesmo ciclo de tarefa** não são permitidas: um registro confirmado e outro conflito/replay, sem segunda conclusão.
+- **L-T23–L-T30:** ocorrência programada, administração registrada e N04 são fatos distintos; um replay idêntico não cria nova execução. Política de dose clínica adicional distinta continua DB-011/021.
+- Casos [C-T01–C-T32](34_CASOS_PLANTOES_SIMULTANEOS_CONFLITOS.md) consolidam os resultados confirmados e os aspectos ainda não aprovados.
+
+O cabeçalho original é histórico; não ler `DB-005 PENDENTE` nos quadros acima como decisão atual.

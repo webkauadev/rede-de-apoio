@@ -85,3 +85,12 @@ A documentação do MySQL Event Scheduler mostra que eventos recorrentes podem s
 ## Fontes
 
 https://dev.mysql.com/doc/refman/8.4/en/events-overview.html ; https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-reads.html ; https://dev.mysql.com/doc/refman/8.4/en/innodb-deadlocks-handling.html ; docs/02_BUSINESS_RULES/NOTIFICATIONS_RULES.md.
+
+
+## Atualização: múltiplos plantonistas são válidos — impacto em N02
+
+**DEC-S01 permite sobreposição entre plantões**. Portanto, a etapa E3 acima que trata "vários candidatos" **não pode ser interpretada como erro de cadastro da escala**. Vários Plantonistas Atuais são um estado de negócio válido.
+
+**DB-030 ainda necessita decisão funcional**: a fonte canônica RF17/US-020/N02 especifica destinatário singular (somente usuário na condição de Plantonista Atual no instante), mas não define seleção com 2 ou mais plantonistas. **Proposta para avaliação:** registrar responsável específico por ocorrência programada, enviar N02 exclusivamente a esse membro se estiver em plantão ativo e autorizado; sem responsabilidade específica, resolver por decisão explícita antes da ativação da agenda. Sem aprovação, não escolher um plantonista aleatoriamente, não enviar ao Principal por fallback, e não afirmar conformidade N02 nesse caso; tratar lacuna em validação da agenda e não ocultar falha de lembrete obrigatório.
+
+**DEC-S02 mantém N02/N04 distintos de execução real**. Confirmação da mesma tarefa por comando concorrente gera no máximo uma execução e um evento N03 de origem, sujeito à deduplicação de destinatários. Ver [32](32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md)–[34](34_CASOS_PLANTOES_SIMULTANEOS_CONFLITOS.md).

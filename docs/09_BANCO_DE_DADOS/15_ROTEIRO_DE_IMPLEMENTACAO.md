@@ -71,3 +71,12 @@ Casos L-T01–L-T42 (documento 26) precisam de execução física posteriormente
 ## Gate de modelagem imutável e armazenamento (2026-10-09)
 
 Antes de desenhar DDL de D17/D18/D19/D23, resolver DB-008/013/018 e DB-034–038; homologar tipo de correção, vínculo de anexo ao original/versão e arquitetura de trilha negada após rollback. Revisar os 36 casos V-T01–V-T36, incluindo falhas entre armazenamento de objetos e banco. A etapa futura deve demonstrar bloqueio de UPDATE/DELETE destrutivos com privilégio real, JOINs com FK, duas conexões concorrentes, auditoria e CSV contextual.
+
+
+## Desbloqueio de regras e gate atualizado em 2026-10-09
+
+- **DB-005 resolvida parcialmente pelo solicitante:** sobreposição de plantões distintos é permitida, sem UNIQUE de período ou rejeição por interseção; registrar `migration_required` nos RF06/RF08 e US correspondentes.
+- **Concorrência elaborada e acordada no escopo pedido:** troca/alteração de **mesmo** plantão+versão e conclusão de **mesma** tarefa+ciclo são operações de efeito único; mecanismos [33](33_CONTRATO_CONCORRENCIA_ATOMICA.md) e teste físico [34](34_CASOS_PLANTOES_SIMULTANEOS_CONFLITOS.md). Não simular garantia com botão desabilitado.
+- **DB-030 bloqueio remanescente importante:** N02 em plantões simultâneos. Necessita decisão de destinatário e alteração canônica RF17/US-020/NOTIFICATIONS_RULES.md antes do SQL/alertas; proposta de destinatário por ação em documento 25.
+- Reabertura da tarefa, troca envolvendo dois plantões, administração adicional, recorrência, estado de rede e outras ADRs continuam com seus bloqueios.
+- Não produzir DDL até resolver as dependências de cardinalidade/permite acesso e revisão humana do PR.

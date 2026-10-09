@@ -87,3 +87,15 @@
 - **I42:** o perfil de leitura do idoso e os direitos de retenção/eliminação não são alterados por hipótese técnica sem RF/RNF/decisão formal.
 
 A garantia integral destes invariantes requer combinar FKs, privilégios, transações, backend e eventualmente storage privado; nenhuma asserção em memória substitui essa validação real.
+
+
+## Invariantes de decisão posterior DEC-S01–S03
+
+- **I43 — plantões simultâneos permitidos:** nenhuma regra de integridade rejeita `plantao P1` e `plantao P2` somente porque seus horários se sobrepõem; no instante t pode haver conjunto de 0..N Plantonistas Atuais em uma rede.
+- **I44 — escopo de concorrência por recurso:** dois plantões diferentes, ainda que sobrepostos, não geram conflito apenas pelo relógio; duas alterações do **mesmo P+versão** devem produzir no máximo uma confirmação.
+- **I45 — conclusão única por ciclo:** para a mesma tarefa e ciclo ativo, no máximo uma conclusão confirmada. Reabertura requer novo ciclo e decisão DB-007, sem apagar original.
+- **I46 — replay de comando:** idempotência não é a mesma coisa que versão otimista. Reenvio idêntico retorna mesmo efeito; comando diferente sobre estado obsoleto retorna conflito e não grava.
+- **I47 — plano versus execução versus alerta:** ocorrência programada ≠ execução registrada ≠ notificação de falta de registro no instante da avaliação, mantendo rastreabilidade distinta.
+- **I48 — lacuna N02:** a coexistência de plantonistas é válida, mas RF17 exige destinatário estritamente Plantonista Atual. Se houver múltiplos, a escolha permanece DB-030, sem fallback arbitrário.
+
+**Fonte de decisão:** [32](32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md), mecanismo [33](33_CONTRATO_CONCORRENCIA_ATOMICA.md), cenários [34](34_CASOS_PLANTOES_SIMULTANEOS_CONFLITOS.md); `migration_required` em RF/US/NOTIFICATIONS_RULES conforme AGENTS.md.

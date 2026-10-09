@@ -49,3 +49,10 @@ Chave candidata (evento_origem_id, tipo N##, usuario_destinatario_id, ocorrencia
 Ver [25 — Eventos e idempotência](25_N02_N04_EVENTOS_IDEMPOTENCIA.md), [22 — Tempo/recorrência](22_REGRAS_TEMPORAIS_E_RECURRENCIA.md) e [26 — Casos de aviso L-T33–L-T42](26_TESTES_MESA_DOMINIO_TEMPORAL.md).
 
 **Nuance importante:** emitir feedback transitório no AppShell não equivale a prometer entrega offline ou exactly-once. O processamento N02 sem Plantonista Atual, com múltiplos plantonistas, e a interpretação de registro retroativo são questões de modelo/negócio pendentes DB-030/031. Nunca criar destinatário substituto nem caixa de entrada sem mudança aprovada.
+
+
+## DEC-S01/S03: escala simultânea e deduplicação de comando
+
+Plantões sobrepostos são permitidos, então N02 não pode depender de consulta `LIMIT 1` ou de um "Plantonista Atual" global único. RF17/US-020 exige Plantonista Atual e não autoriza envio ao Principal como substituto. A escolha com vários plantonistas requer **DB-030** e atualização canônica antes de definir código.
+
+Concluir a mesma tarefa/ciclo tem no máximo um efeito confirmado; o evento de origem N03 e eventuais entregas por destinatário devem ser idempotentes. Um comando de troca rejeitado por conflito não gera N01 de troca efetiva. Mais em [33](33_CONTRATO_CONCORRENCIA_ATOMICA.md).

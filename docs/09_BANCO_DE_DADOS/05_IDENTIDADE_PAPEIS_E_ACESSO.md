@@ -41,3 +41,12 @@ Usuário (identidade) → Participação na Rede (contexto, categoria e vigênci
 - Expor logs de auditoria em T17 para a Pessoa Idosa.
 
 **Fontes:** docs/02_BUSINESS_RULES/{BUSINESS_RULES,USERS_AND_ROLES,PERMISSIONS_MATRIX,ELDERLY_READ_ONLY_ACCESS}.md; RF04/05/08/28/30 e US-005/006/007/011/032/034/035/036.
+
+
+## Atualização solicitante: vários plantonistas simultâneos
+
+DEC-S01 aprova que a mesma rede tenha vários Plantonistas Atuais no mesmo instante por meio de plantões distintos sobrepostos. A condição é avaliada **por membro, plantão e instante**, sem converter a pessoa em papel permanente. RN-010 continua condicionando escrita à operação e ao escopo. Ser um dos plantonistas simultâneos não concede concluir a tarefa explicitamente atribuída a outra pessoa.
+
+DEC-S03 estabelece integridade de comandos: mesma versão do plantão não admite duas alterações conflitantes confirmadas; mesma tarefa/ciclo não admite duas conclusões confirmadas. Não bloquear operações em plantões distintos apenas por sobreposição. Ver [33](33_CONTRATO_CONCORRENCIA_ATOMICA.md).
+
+O destinatário N02 em múltiplos plantonistas **não** foi aprovado: DB-030 permanece aberta. Qualquer nova política deve ser refletida na origem RF17/US-020/N02 conforme `migration_required`.

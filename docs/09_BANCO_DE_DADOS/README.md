@@ -92,3 +92,15 @@ Foram acrescentadas as decisões DB-025–DB-028 para análise humana (total na 
 **Estado após três revisões:** 33 documentos no diretório; **38 ADRs abertas** (DB-001–DB-038); 42 testes gerais T, 36 de núcleo K-T, 42 temporais L-T e 36 de histórico V-T, todos ainda de mesa. Nenhum esquema SQL, migrations ou banco criados.
 
 **Bloqueio central:** escolha de envelope universal versus entidades especializadas, política para correção e relação de anexos, e auditoria de negações após rollback. Sem essas decisões, não produzir DDL com falsas garantias de integridade.
+
+
+## Evidências e migração formal após as decisões do solicitante
+
+| Documento | Uso |
+|---|---|
+| [35 — Evidências da simulação de concorrência](35_EVIDENCIAS_SIMULACAO_DECISOES.md) | 6.020 asserções ilustrativas em memória; não prova concorrência real |
+| [36 — Plano de migração às Issues RF/US](36_PLANO_MIGRACAO_REQUISITOS_DECISOES.md) | proposta de atualização das fontes oficiais, incluindo RF06/RF08/RF09/RF21; DB-030 aguardando decisão |
+
+**Contagem verificada na branch após estas alterações:** **38 arquivos** no diretório (antes 33; novos 32–36). A última revisão contabiliza **188 cenários de mesa**: 42 T + 36 K-T + 42 L-T + 36 V-T + 32 C-T. **Os 6.020 predicados em memória não são testes físicos.**
+
+**Status:** DEC-S01 e DEC-S02 foram confirmadas expressamente pelo solicitante; DEC-S03 detalha a regra de impedir duplo efeito concorrente. DB-005 foi resolvida quanto à SOBREPOSIÇÃO, DB-007/032 parcialmente; **DB-030 permanece aberta** sobre destinatário N02 com vários plantonistas. O termo "aprovado" refere-se à decisão do solicitante neste PR, não ao merge ou às Issues da `main`.

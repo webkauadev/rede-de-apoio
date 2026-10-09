@@ -86,3 +86,10 @@ Não considerar C04 ocorrencia_programada uma tabela aprovada: DB-021/DB-029. Ca
 - Limites de CHECK (NOW() não determinístico): https://dev.mysql.com/doc/refman/8.4/en/create-table-check-constraints.html
 
 Os links explicam capacidades técnicas; o GitHub do produto continua sendo a autoridade funcional.
+
+
+## Decisão DEC-S01 posterior: sobreposição é permitida
+
+Em 2026-10-09, o solicitante aprovou que plantões possam se sobrepor, portanto a DB-005 está fechada nesse aspecto e a cardinalidade do conjunto de Plantonistas Atuais por rede/instante pode ser 0..N, **não** 0..1. O predicado matemático do item T2 identifica intervalos coincidentes, não é regra de exclusão. **Sobreposição não equivale a comando concorrente conflitante.**
+
+A conta read-only da Pessoa Idosa ainda não pode ser Plantonista Atual. O vínculo e categoria devem ser válidos para cada plantonista. A decisão **não** homologou o que fazer quando N02 encontra vários plantonistas (DB-030). Ver [32](32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md)–[34](34_CASOS_PLANTOES_SIMULTANEOS_CONFLITOS.md).

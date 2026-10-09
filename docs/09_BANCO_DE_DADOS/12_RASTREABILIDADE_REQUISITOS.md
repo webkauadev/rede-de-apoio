@@ -54,3 +54,16 @@ O vínculo abaixo é de **responsabilidade de persistência proposta**, não de 
 ## Rastreabilidade futura bidirecional
 
 Durante implementação, cada tabela/coluna, constraint e rotina deverá possuir: justificativa/US/RF/RN, regra de integridade, cenário positivo/negativo que valida e evidência da execução. Se um campo não possui justificativa nem necessidade técnica documentada, classificá-lo como proposta e remover/adiar.
+
+
+## Rastreabilidade da revisão DEC-S01–S03 (`migration_required`)
+
+| Decisão | RF/US de origem a reconciliar | Resultado de modelagem / teste |
+|---|---|---|
+| DEC-S01: plantões simultâneos | RF06/US-008 e RF08/US-011 | `plantao` aceita intervalos sobrepostos; `Plantonistas Atuais` conjunto 0..N por rede/instante; C-T01–C-T07 |
+| DEC-S03: alteração do mesmo plantão | RF09/US-012 e US-013; RF06/US-008 | travamento/versão por P, primeira confirmação válida, outra conflito; C-T09–C-T18 |
+| DEC-S03: mesma tarefa/ciclo | RF21/US-025 | único registro de `conclusao_tarefa` por ciclo, idempotência e conflito; C-T19–C-T27 |
+| DEC-S02: plano/execução/alerta distintos | RF15/US-018, RF16/US-019 e RF26/US-030 | `horario_regime`/ocorrência (candidata) ≠ `administracao_medicamento` ≠ evento N04; C-T28–C-T30 |
+| LACUNA N02 em múltiplos plantonistas | RF17/US-020, regra N02 | DB-030 aberta; C-T08 e C-T31 não podem ser marcados como aprovados |
+
+Estas linhas **não substituem nem criam origem de US**; são itens propostos para revisão das Issues e critério de aceite. Detalhe em [36](36_PLANO_MIGRACAO_REQUISITOS_DECISOES.md).

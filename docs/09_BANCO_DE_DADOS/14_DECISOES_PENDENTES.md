@@ -8,7 +8,7 @@
 | DB-002 | Como se cria uma rede que exige Principal e ao menos um Profissional, se nasce vazia? Setup transacional ou estado de ativação | garantir invariantes sem bloquear bootstrap nem liberar rede incompleta | PENDENTE |
 | DB-003 | Um usuário desvinculado pode reingressar na mesma rede? Novo vínculo temporal ou reativação? | UNIQUE composta, autoria e vigência | PENDENTE |
 | DB-004 | Principal ativo: índice/flag derivado, travamento de rede, operação de transferência? | concorrência, histórico, inexistência de 0/2 Principais observáveis | PENDENTE |
-| DB-005 | Podem existir plantões sobrepostos com responsáveis distintos? | cardinalidade de Plantonista Atual, N02 e regras de escrita | PENDENTE |
+| DB-005 | Plantões de intervalos sobrepostos são permitidos por decisão do solicitante (DEC-S01). | por rede/instante há 0..N Plantonistas Atuais; N02 permanece DB-030 | APROVADO PELO SOLICITANTE; migration_required |
 | DB-006 | Troca de plantão é transferência unilateral ou permuta entre duas escalas? | solicitações, referência a plantões e transação | PENDENTE |
 | DB-007 | Tarefa reabre? Pode ter múltiplos responsáveis/execuções? | 1:N responsáveis/conclusões ou 1:1, histórico | PENDENTE |
 | DB-008 | Escopo de RNF02: quais tipos de registros recebem correção? Envelope comum tipado ou revisões específicas? | topologia das tabelas e FKs de revisão/anexo | PENDENTE |
@@ -73,7 +73,7 @@
 | DB-029 | Ocorrências programadas (tarefa/dose/outro cuidado) serão geradas sob consulta, persistidas ou híbridas? Qual sua identidade estável por data/versão? | C04, calendário, N02/N04, registro de execução e deduplicação | PENDENTE |
 | DB-030 | O que fazer quando no horário de N02 não houver Plantonista Atual, ou houver mais de um? | cardinalidade, sobreposição e eventual protocolo de exceção sem criar destinatário não aprovado | PENDENTE |
 | DB-031 | Como tratar igualdade em H+15, concorrência entre execução e N04, e registro posterior alegando execução anterior? | estado observado, auditabilidade, temporalidade de alertas | PENDENTE |
-| DB-032 | Repetições de conclusão de tarefa/administração são idempotência, reabertura ou execuções distintas? | cardinalidades D09/D16, chaves de ocorrência e operação | PENDENTE |
+| DB-032 | Mesma tarefa+ciclo: apenas uma conclusão confirmada; replay do mesmo comando sem duplicação. Administração extra/reabertura ainda em discussão. | cardinalidades D09/D16, chaves de ocorrência e operação | PARCIAL: decisão DEC-S03; complementos pendentes |
 | DB-033 | Em recorrência local, qual política para hora inexistente/duplicada na mudança de fuso ou DST? | geração de ocorrência, DATE/TIME/DATETIME, data histórica | PENDENTE |
 
 Estas ADRs refinam DB-005/007/010/011/014/015/021, sem substituí-las. Não se pode escolher destinatário alternativo, impor proibição de plantão simultâneo, prescrever intervalo clínico ou reprocessar execução “omitida” sem decisão funcional documentada. **Total atual: 33 ADRs, todas pendentes.**
@@ -91,4 +91,22 @@ Documentação: [22](22_REGRAS_TEMPORAIS_E_RECURRENCIA.md), [23](23_PLANTOES_TRO
 | DB-037 | Anexo pertence ao registro original ou versão? Quais tipos, limite, storage e reconciliação? | estrutura de FKs, vida útil e privacidade; detalha DB-013 | PENDENTE |
 | DB-038 | Como persistir auditoria de acesso negado quando transação de cuidado dá rollback, e validar permissão/CSV assíncrono? | arquitetura de log, transação/outbox, falha parcial, revalidação contextual | PENDENTE |
 
-Nenhuma opção técnica foi aprovada pela escrita destes documentos. **Total atual 38 ADRs DB-001–DB-038.** Ler [28](28_ARQUITETURAS_CORRECAO_VERSIONADA.md), [29](29_ANEXOS_AUDITORIA_EXPORTACAO.md) e [30](30_CASOS_DE_MESA_HISTORICO_PRIVACIDADE.md).
+Nenhuma opção técnica foi aprovada pela escrita destes documentos. **Inventário de 38 ADRs DB-001–DB-038 na terceira revisão; status posterior atualizado por DEC-S01–S03 abaixo.** Ler [28](28_ARQUITETURAS_CORRECAO_VERSIONADA.md), [29](29_ANEXOS_AUDITORIA_EXPORTACAO.md) e [30](30_CASOS_DE_MESA_HISTORICO_PRIVACIDADE.md).
+
+
+## Registro de resolução orientada pelo solicitante — 2026-10-09 (DEC-S01–S03)
+
+> **Esta seção modifica o status de itens acima:** os quadros anteriores representam histórico de levantamento; não interpretar a expressão "todas pendentes" como status atualizado. A decisão do solicitante é registrada nesta branch/PR e requer `migration_required` nas fontes oficiais antes de entrar em `main`. Ver [32](32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md) e [33](33_CONTRATO_CONCORRENCIA_ATOMICA.md).
+
+| ADR | Status atualizado | Diretriz ou lacuna restante |
+|---|---|---|
+| DB-005 | **RESOLVIDA quanto à sobreposição; aprovado pelo solicitante** | Plantões com sobreposição são permitidos. Não bloquear dois plantões distintos com horas coincidentes. Cardinalidade dentro de *um* plantão não foi decidida. |
+| DB-030 | **PENDENTE** | Multiplos Plantonistas Atuais coexistirão; RF17/US-020/N02 singular exige resolver destinatário por ação, ou aprovar regra de múltiplos, sem escolher arbitrariamente. |
+| DB-007 | **PARCIAL** | A mesma tarefa, no mesmo ciclo/ocorrência, só pode ser concluída uma vez. Reabertura/ciclo novo e múltiplos responsáveis permanecem pendentes. |
+| DB-032 | **PARCIALMENTE RESOLVIDA** | Reenvio do mesmo comando não duplica efeito; dois comandos distintos concorrentes para mesma tarefa/ciclo produzem um sucesso e outro conflito. Administração extra/distinta e reabertura permanecem abertos. |
+| DB-006 | **PARCIAL** | Conflitos sobre o mesmo plantão+versão: no máximo um efeito válido. Troca unilateral vs permuta de dois plantões ainda pendente. |
+| DB-021 | **PARCIAL** | Plano de medicação, fato de administração e alerta distintos; duplicidade de administração verdadeira continua pendente. |
+| DB-029 | **PARCIAL conceitual** | Identidade da ocorrência programada distinta de execução/alerta; representação virtual/materializada/híbrida pendente. |
+| DB-031 | **PENDENTE** | Alerta por ausência de registro é distinto de realização; regra de borda H+15 e corrida entre N04 e registro ainda pendentes. |
+
+**Demais ADRs DB-001–DB-038 continuam com o status anterior.** Não se criou decisão de destinatário N02, dose extra, reabertura de tarefa, execução paralela real de MySQL ou alteração dos RF/RNF/US na `main`.

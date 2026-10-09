@@ -60,3 +60,10 @@ T05/T07 integram informações autorizadas de diário, administração, compromi
 Ver [22 — tempo e recorrência](22_REGRAS_TEMPORAIS_E_RECURRENCIA.md), [24 — medicamento/posologia/execução](24_MEDICAMENTOS_OCORRENCIAS_VERSIONAMENTO.md), [25 — notificações N02/N04](25_N02_N04_EVENTOS_IDEMPOTENCIA.md) e [26 — cenários L-T23–L-T32](26_TESTES_MESA_DOMINIO_TEMPORAL.md).
 
 **Distinção mandatória para a futura arquitetura:** uma linha de medicamento, a versão do regime, um horário de repetição, uma ocorrência **datada** e o fato de administração NÃO são o mesmo registro. Não inferir número de doses, recomendação médica, status clínico ou regra de horário de verão do RF15/16. Alterações preservam fatos históricos e exigem decisões DB-010/011/021/029/033.
+
+
+## Confirmação do solicitante — fatos distintos
+
+A decisão DEC-S02 confirma a separação dos modelos: medicação agendada/regime e ocorrência prevista, administração informada por ator autorizado com tempo real/registro, e N04 emitido apenas por ausência de **registro no sistema** após 15 min (não prova que a medicação não ocorreu). Retificação versionada segue RNF02.
+
+Uma execução adicional genuinamente distinta e duas gravações/retry da **mesma** dose não têm a mesma semântica; mecanismos de unicidade e casos de dose extra continuam DB-011/021. Consultar [32](32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md) e [34](34_CASOS_PLANTOES_SIMULTANEOS_CONFLITOS.md).

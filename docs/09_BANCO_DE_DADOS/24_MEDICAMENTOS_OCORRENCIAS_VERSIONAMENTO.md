@@ -82,3 +82,10 @@ RF17 fala em **cuidado programado**, não exclusivamente medicação. N02 pode r
 ## Fontes
 
 Docs canônicos RF14–RF17/RF26, ACCEPTANCE_CRITERIA.yaml e snapshots aprovados US-017–020/US-030, RNF02; MySQL https://dev.mysql.com/doc/refman/8.4/en/date-and-time-types.html e https://dev.mysql.com/doc/refman/8.4/en/time-zone-support.html . 
+
+
+## Confirmação DEC-S02 e limite sobre administração duplicada
+
+O solicitante confirmou que plano/ocorrência de medicação, administração/execução e aviso de atraso são **fatos separados**. A distinção dos itens M1–M5 permanece válida. Um registro de execução exige autoria/instantes e associação íntegra à pessoa, sem transformar N04 em fato clínico.
+
+O solicitante **não aprovou** automaticamente múltiplas administrações da mesma dose, tampouco dose adicional clinicamente adequada. Não inferir que a regra de uma conclusão por ciclo de tarefa cria proibição genérica de administrações legitimamente distintas: DB-011/021 continuam pendentes nesse ponto. Replay do mesmo comando deve ser idempotente.

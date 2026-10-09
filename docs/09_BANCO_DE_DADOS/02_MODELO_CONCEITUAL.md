@@ -22,7 +22,7 @@
 | Participação ↔ Plantão | 1 : 0..N | pertencem à mesma rede; tempo de vigência determina atual |
 | Plantão ↔ Pedido de Troca | 1 : 0..N | múltiplas solicitações históricas, resultado por solicitação |
 | Rede ↔ Tarefa | 1 : 0..N | responsável pode ser membro elegível, mesmo escopo |
-| Tarefa ↔ Conclusão | 1 : 0..1 **ou** 1 : 0..N | **PENDENTE** reabertura e retentativa |
+| Tarefa (por ciclo) ↔ Conclusão | 1 : 0..1 por ciclo | **DEC-S03:** no máximo uma conclusão válida em um ciclo; reabertura em outro ciclo permanece DB-007 |
 | Pessoa Idosa ↔ Compromisso | 1 : 0..N | datas relacionadas ao cuidado |
 | Compromisso ↔ Consulta | 1 : 0..1 ou relacionamento independente | **PENDENTE**; não pressupor que toda consulta foi compromisso |
 | Consulta ↔ Recomendação | 1 : 0..N quando origem em consulta | recomendações independentes dependem de definição |
@@ -58,3 +58,14 @@
 **Temporalidade:** usar intervalos semiabertos `[inicio, fim)` como **proposta**, permitindo troca de responsável às 12:00 sem ambiguidade. Definir timezone antes do DDL.
 
 Veja [03](03_DICIONARIO_DE_DADOS.md), [04](04_INVARIANTES_E_INTEGRIDADE.md) e [14](14_DECISOES_PENDENTES.md).
+
+
+## Cardinalidade temporal homologada pelo solicitante para revisão — 2026-10-09
+
+**DEC-S01:** plantões `P1` e `P2` na mesma rede podem ter intervalos sobrepostos. A associação Rede→Plantões continua 1:N, e em um instante `t` a relação `Rede→Plantonistas Atuais` é um **conjunto de 0..N membros elegíveis**, calculado a partir de cada plantão, sem entidade/perfil permanente. Um membro pode participar de vários plantões; não misturar os IDs das escalas com papéis familiares.
+
+**DEC-S03:** múltiplos comandos concorrentes sobre a **mesma versão de P1** não podem efetivar duas transições incompatíveis; múltiplos comandos sobre a mesma tarefa/ciclo não criam duas conclusões. Uma troca unilateral vs. permuta ainda depende DB-006. Mais detalhes: [32](32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md)–[34](34_CASOS_PLANTOES_SIMULTANEOS_CONFLITOS.md).
+
+**DEC-S02:** ocorrência programada, administração registrada e alerta de ausência de registro são fatos com identidades diferentes, não uma única entidade com `status` multiuso. Representação física de ocorrência continua DB-029 e deduplicação de dose extra DB-021.
+
+**Atenção N02:** o fato de existirem vários Plantonistas Atuais é válido, mas qual deles atende o lembrete de **uma ação determinada** ainda depende de DB-030 e de migração à fonte canônica. Não acrescentar envio a todos ou regra de prioridade sem aprovação.

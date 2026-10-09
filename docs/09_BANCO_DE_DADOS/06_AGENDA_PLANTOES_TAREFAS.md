@@ -65,3 +65,10 @@ O detalhamento de primeira rodada permanece base de contexto. A segunda revisão
 - [26 — Cenários de mesa L-T01–L-T22](26_TESTES_MESA_DOMINIO_TEMPORAL.md).
 
 **Observação de escopo:** o cálculo “Atrasado se T>=H+15 minutos” presente acima é uma convenção de implementação CANDIDATA. O requisito aprovado diz “após 15 minutos”; tratamento da igualdade e da corrida entre registro/worker precisa de DB-031. Sobreposição de plantões e múltiplos responsáveis também não foi decidida no RF.
+
+
+## Orientação aprovada pelo solicitante — plantões simultâneos/concorrência
+
+DB-005 foi resolvida para permitir **plantões distintos sobrepostos**. O calendário T04/T05 deve representar mais de um Plantonista Atual no mesmo intervalo, sem fundi-los ou rejeitar os plantões. A regra de destinatário N02 quando há múltiplos plantonistas é **DB-030 pendente** e não autoriza seleção aleatória ou envio obrigatório ao Principal.
+
+Alterações conflitantes no mesmo plantão/versão e dupla conclusão da mesma tarefa/ciclo seguem o contrato proposto de primeiro COMMIT válido, versão esperada, lock e idempotência, conforme [33](33_CONTRATO_CONCORRENCIA_ATOMICA.md). Não confundir duas atividades simultâneas legítimas com dois comandos concorrentes sobre a mesma entidade. Ver [32](32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md).

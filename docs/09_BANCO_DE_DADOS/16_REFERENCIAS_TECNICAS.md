@@ -56,3 +56,12 @@ Estas fontes dão sustentação técnica à análise 22–27; não redefinem o p
 - https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html — allowlist de tipos, validação de conteúdo, arquivo privado e limites.
 - https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html — minimizar e proteger eventos de log.
 - https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html — decisão de autorização por recurso e requisição.
+
+
+## Complemento para decisão de concorrência por recurso
+
+- https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-reads.html — leitura com lock na mesma transação para estado/versão atual.
+- https://dev.mysql.com/doc/refman/8.4/en/innodb-locks-set.html — indexação/predicado alteram locks efetivos.
+- https://dev.mysql.com/doc/refman/8.4/en/innodb-error-handling.html — deadlock reverte transação inteira e orienta retry; timeout pode reverter apenas statement.
+- https://dev.mysql.com/doc/refman/8.4/en/innodb-deadlocks-handling.html — ordenar locks, diminuir janela e reexecutar transação abortada.
+- [Contrato interno de concorrência](33_CONTRATO_CONCORRENCIA_ATOMICA.md) e [casos C-T](34_CASOS_PLANTOES_SIMULTANEOS_CONFLITOS.md).

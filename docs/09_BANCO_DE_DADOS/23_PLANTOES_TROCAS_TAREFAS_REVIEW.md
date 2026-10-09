@@ -10,7 +10,7 @@ Objeto candidato: identificador, rede, membro atribuído, instante previsto de i
 - plantão está ativo e intervalo [início,fim) contém t;
 - autorização da ação ainda depende da matriz de permissões.
 
-**PENDENTE DB-005:** zero, um ou vários plantonistas simultâneos, permissões se houver sobreposição, ordem de prioridade e solução de falha de escala. NÃO proibir sobreposições arbitrariamente nem selecionar primeiro membro do banco. Uma UNIQUE(rede_id,inicio) não proíbe sobreposição de intervalos de comprimentos diferentes.
+**HISTÓRICO anterior a DEC-S01:** DB-005 estava pendente. Em 2026-10-09 foi APROVADO pelo solicitante que podem existir vários plantonistas em plantões distintos sobrepostos; a seleção de destinatário N02 permanece DB-030. NÃO proibir sobreposições arbitrariamente nem selecionar primeiro membro do banco. Uma UNIQUE(rede_id,inicio) não proíbe sobreposição de intervalos de comprimentos diferentes.
 
 ### História de alteração
 
@@ -91,3 +91,12 @@ RF20 corresponde a compromisso planejado em T11 e RF19 a consulta/recomendação
 https://dev.mysql.com/doc/refman/8.4/en/innodb-locks-set.html ; https://dev.mysql.com/doc/refman/8.4/en/innodb-deadlocks-handling.html ; https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-reads.html
 
 O lock em faixa depende do índice/predicado percorrido: serializar em linha estável da rede/plantão pode ser necessário. MySQL/InnoDB não tem constraint declarativa de exclusão genérica de sobreposição equivalente a tipos range de outros bancos; não afirmar que uma UNIQUE simples faz esse serviço.
+
+
+## Atualização posterior do solicitante — 2026-10-09
+
+**Esta seção substitui a dúvida de DB-005 sobre SOBREPOSIÇÃO escrita nas seções P1/P7 acima.** DEC-S01 aprova mais de um plantão simultâneo na mesma rede: sobreposição entre P1/P2 não impede criação, alteração ou coexistência de Plantonistas Atuais. Cada plantão mantém o próprio ID/responsável/versão; não criar validação temporal de exclusão. Veja [32](32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md).
+
+**DEC-S03:** uma versão de **um mesmo plantão** não pode ter duas alterações conflitantes efetivas. Um aceite de troca, cancelamento ou alteração vence por confirmação transacional válida; outro comando baseado na versão anterior retorna conflito/refresh. Tarefas: uma conclusão por `tarefa+ciclo`; duas solicitações concorrentes não geram duas conclusões. Ver [33](33_CONTRATO_CONCORRENCIA_ATOMICA.md) e [34](34_CASOS_PLANTOES_SIMULTANEOS_CONFLITOS.md).
+
+**Separação:** não confundir (a) duas equipes trabalhando em plantões diferentes mas simultâneos, situação permitida, com (b) duas pessoas alterando o mesmo P1, situação de conflito. A reabertura da mesma tarefa em novo ciclo e a escolha de destinatário N02 em multilateralidade continuam pendentes DB-007/030.

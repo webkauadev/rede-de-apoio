@@ -82,3 +82,14 @@ Fontes: https://dev.mysql.com/doc/refman/8.4/en/innodb-locks-set.html ; https://
 - DDL futuro exige prova de UPDATE/DELETE indevido, duas correções concorrentes, FK de recurso/titular, acesso cross-rede e serialização de eventos.
 
 Referências: https://dev.mysql.com/doc/refman/8.4/en/stored-program-restrictions.html ; https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-reads.html ; https://dev.mysql.com/doc/refman/8.4/en/create-table-foreign-keys.html .
+
+
+## Decisão de concorrência e sobreposição — revisão específica
+
+**Proibido na futura arquitetura:** constraint/índice ou checagem que exclua plantões de mesma rede com intervalos coincidentes apenas porque se sobrepõem. DB-005 foi resolvida nesse ponto pelo solicitante.
+
+**Obrigatório ao implementar:** transações curtas InnoDB com serialização por registro/versão do plantão, comparação de `versao_esperada`, idempotência por pedido (chave+payload) e validação atual da autorização. Conclusão: unicidade lógica por (tarefa,ciclo) e lock/transação para impedir dupla criação. Chave de idempotência **não substitui** proteção de múltiplos pedidos diferentes; `SELECT` comum não substitui locking read. Deadlocks requerem retry de transação completa quando for seguro, relendo versões.
+
+**Sem implementação:** não foi executado MySQL nem prova de índices/locks reais. [33](33_CONTRATO_CONCORRENCIA_ATOMICA.md) descreve mecanismo e [34](34_CASOS_PLANTOES_SIMULTANEOS_CONFLITOS.md) casos de teste.
+
+MySQL: https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-reads.html ; https://dev.mysql.com/doc/refman/8.4/en/innodb-deadlocks-handling.html ; https://dev.mysql.com/doc/refman/8.4/en/innodb-error-handling.html .

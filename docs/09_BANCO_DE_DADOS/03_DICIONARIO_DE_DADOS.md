@@ -100,3 +100,14 @@ Em [28](28_ARQUITETURAS_CORRECAO_VERSIONADA.md)–[29](29_ANEXOS_AUDITORIA_EXPOR
 - CSV não precisa tabela própria; exige consulta contextual, autorização de Principal e auditoria, mesmo que seja assíncrono.
 
 O mecanismo de preservação de negações após rollback é DB-038. O escopo exato de RNF02 sobre administração, consulta e outros subtipos continua DB-008/DB-034.
+
+
+## Revisão solicitante: cardinalidade temporal, versões de recurso e efeito único
+
+- **D06 plantao:** dois registros P1/P2 na mesma rede podem ter intervalos sobrepostos. `responsavel_membro_id` continua candidato por registro; múltiplos responsáveis **no mesmo P** não foram definidos. Incluir `versao_atual` candidata para controle de atualização otimista; integridade de rede/vínculo segue obrigatória.
+- **D07 solicitacao_troca:** referencia plantão+versão alvo, autor da decisão, status e identidade de pedido; aceitar duas solicitações da mesma versão P não confirma duas mudanças.
+- **D08 tarefa / D09 conclusao:** um fato de conclusão por `tarefa+ciclo` no fluxo normal, com chave de pedido idempotente; reabertura geraria ciclo distinto se homologada DB-007, não duplicaria o mesmo fato.
+- **D13–D16 medicação:** ocorrência programada, registro de administração e aviso N04 são identidades distintas. Não impor UNIQUE geral de (medicamento,dia) sem decidir horários, recorrência e legitimidade de administrações diferentes.
+- **C03 infra de notificações:** N01/N03 de comandos confirmados; replay/conflict não gera nova origem; N02 múltiplos plantonistas segue DB-030.
+
+Fonte: [32](32_DECISOES_SOLICITANTE_PLANTOES_CONCORRENCIA.md). A numeração D01–D23 é de entidades candidatas, não de tabelas homologadas.
