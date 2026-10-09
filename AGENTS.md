@@ -169,3 +169,8 @@ Uma alteração está pronta para revisão quando:
 - validação de contexto passou;
 - branch/PR foram criados;
 - merge depende de revisão humana explícita.
+
+
+## 10. Planejamento de Banco de Dados — leitura obrigatória para agentes de dados
+
+Antes de propor schema, DDL, migrações, dados de teste, autenticação/autorizações persistidas ou engenharia reversa, ler [docs/09_BANCO_DE_DADOS/README.md](docs/09_BANCO_DE_DADOS/README.md) e seus documentos de domínio, [docs/02_BUSINESS_RULES/BUSINESS_RULES.md](docs/02_BUSINESS_RULES/BUSINESS_RULES.md), a matriz de permissões e RF/RNF/US canônicos. O dicionário e o diagrama em 09 são **propostas**, não requisitos aprovados. ADRs bloqueantes devem ser resolvidas antes da construção; não executar SQL nem inferir novas permissões a partir dos rascunhos. A publicação de modelos físicos futuros exige branch, testes e PR com revisão humana, seguindo a seção 5.

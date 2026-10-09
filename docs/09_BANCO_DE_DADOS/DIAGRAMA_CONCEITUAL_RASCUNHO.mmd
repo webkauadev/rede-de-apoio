@@ -1,0 +1,26 @@
+erDiagram
+    USUARIO ||--o{ MEMBRO_REDE : participa
+    USUARIO o|--o| PESSOA_IDOSA : conta_propria
+    PESSOA_IDOSA ||--o{ REDE_CUIDADO : recebe_apoio
+    REDE_CUIDADO ||--o{ MEMBRO_REDE : possui
+    MEMBRO_REDE ||--o{ PAPEL_FAMILIAR_ATRIBUICAO : acumula
+    MEMBRO_REDE ||--o{ PLANTAO : ocupa
+    PLANTAO ||--o{ SOLICITACAO_TROCA : recebe
+    REDE_CUIDADO ||--o{ TAREFA : organiza
+    TAREFA ||--o{ CONCLUSAO_TAREFA : registra
+    PESSOA_IDOSA ||--o{ COMPROMISSO : agenda
+    PESSOA_IDOSA ||--o{ CONSULTA : realiza
+    CONSULTA ||--o{ RECOMENDACAO : gera
+    PESSOA_IDOSA ||--o{ MEDICAMENTO : possui
+    MEDICAMENTO ||--o{ REGIME_MEDICAMENTO : orienta
+    REGIME_MEDICAMENTO ||--o{ HORARIO_REGIME : programa
+    REGIME_MEDICAMENTO ||--o{ ADMINISTRACAO_MEDICAMENTO : registra
+    PESSOA_IDOSA ||--o{ REGISTRO_CUIDADO : recebe
+    REGISTRO_CUIDADO ||--o{ CORRECAO_REGISTRO : revisado_por
+    REGISTRO_CUIDADO ||--o{ ANEXO : suporta
+    PESSOA_IDOSA ||--o{ CONTATO_IMPORTANTE : tem
+    PESSOA_IDOSA ||--o| INFORMACAO_EMERGENCIA : tem
+    USUARIO ||--o{ AUDITORIA : realiza
+%% ATENCAO: GRAFO CONCEITUAL ILUSTRATIVO, NAO ESQUEMA IMPLEMENTADO.
+%% RELACOES PENDENTES: rede/idoso, consulta/compromisso,
+%% revisao transversal, anexos de consulta, reabertura de tarefa.
