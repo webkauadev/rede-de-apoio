@@ -93,3 +93,10 @@ O workflow **Validate agent context** valida os registries em Pull Requests.
 ## Modelagem de Banco de Dados — conhecimento + protótipo SQL
 
 A base de conhecimento da modelagem está em [docs/09_BANCO_DE_DADOS/](docs/09_BANCO_DE_DADOS/README.md). Reúne modelo conceitual, dicionário de dados candidato, cardinalidades, regras de acesso e integridade, 36 US rastreadas, exercícios de mesa, ADRs pendentes e roteiro da futura implementação MySQL. **A documentação de análise segue em revisão; o protótipo SQL V0.1 fica em `database/mysql/` e não foi executado/implantado.** As regras funcionais canônicas deste repositório continuam prevalecendo sobre propostas técnicas.
+
+
+## Autonomia do Codex somente com GitHub — snapshot de 2026-10-09
+
+O **[índice de implementação](docs/10_IMPLEMENTACAO/README.md)** reúne: [playbook](docs/10_IMPLEMENTACAO/CODEX_PLAYBOOK.md), [26 capturas canônicas](docs/10_IMPLEMENTACAO/FIGMA_SNAPSHOT/README.md), [backlog das 36 US](docs/10_IMPLEMENTACAO/BACKLOG_CODEX.md), [protocolo de PR](docs/10_IMPLEMENTACAO/PROTOCOLO_PR_CODEX.md), [stack candidata](docs/10_IMPLEMENTACAO/STACK_CANDIDATA.md) e [decisões pendentes](docs/10_IMPLEMENTACAO/PORTOES_PENDENTES.md). O Codex pode ler esses arquivos no GitHub sem depender de conversa nem de acesso live ao Figma.
+
+**Limites:** as imagens são fotografia estática (17 bases + 9 estados), não todos os protótipos; as ADRs que permanecem abertas e a stack de app não devem ser inventadas. A V0.1 SQL do [Workbench](database/mysql/README.md) **ainda não foi executada** em MySQL. O código da aplicação será uma etapa separada.

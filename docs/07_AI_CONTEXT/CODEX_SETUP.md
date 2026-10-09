@@ -105,3 +105,19 @@ Issue #84 está encerrada. FI-001–FI-008 permanecem como histórico em `PROTOT
 - registries atualizados;
 - commits;
 - PR para revisão humana.
+
+
+## Atualização GitHub-only — 2026-10-09 (complemento, sem reescrever a história)
+
+O método original de Codex + Figma acima **permanece válido quando o agente tiver acesso live ao Figma**. Para **implementação a partir somente do GitHub**, existe um novo pacote versionado:
+
+- `docs/10_IMPLEMENTACAO/README.md` e `CODEX_PLAYBOOK.md`;
+- `docs/10_IMPLEMENTACAO/FIGMA_SNAPSHOT/` — **17 baselines T01–T17 + 9 estados**, capturados da página `Fluxo Final` e disponibilizados localmente no GitHub;
+- `docs/10_IMPLEMENTACAO/IMPLEMENTATION_BACKLOG.json` — as 36 US com origem única, issue, owner, telas e dependências do ADR;
+- `docs/10_IMPLEMENTACAO/PROTOCOLO_PR_CODEX.md` — execução por PR sem depender da memória do chat;
+- `docs/10_IMPLEMENTACAO/PORTOES_PENDENTES.md` — o que ainda precisa de decisão funcional explícita;
+- `database/mysql/` — SQL protótipo MySQL 8.4 para gerar EER, **sem execução**.
+
+**Adaptação do preflight nº 7:** o Codex pode **inspecionar o PNG versionado e os registries de estado** ao implementar o design congelado do GitHub; acesso live ao node do Figma passa a ser exigido **somente para alterar/refresh da fonte visual**, não para entender a baseline já exportada.
+
+**Não elevar escopo da V1 por imagem:** capturas não alteram os critérios de aceite nem tornam canônicas as opções DB-001/002/030. Uma atualização posterior no Figma requer reexportação explícita e commit dos PNGs. T04/T06 possuem alerta de clipping/scroll; implementar conforme norma, não replicar bug visual.

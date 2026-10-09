@@ -63,3 +63,22 @@ A aprovação geral da documentação/banco pelo solicitante **autoriza construi
 - [ ] Nenhum merge sem aprovação humana explícita.
 
 **Próximo objetivo quando a equipe quiser iniciar código:** aprovar stack e protocolo de autenticação; resolver as decisões G1 que bloqueiam o primeiro módulo, depois criar PR incremental de scaffold. O SQL V0.1 pode ser usado imediatamente para EER como **modelo de trabalho**, não como contrato de produção.
+
+
+## Modo GitHub-only — pacote fechado de contexto (2026-10-09)
+
+Quando o Codex não tiver conexão com Figma, usar esta ordem complementar:
+1. [FIGMA_SNAPSHOT/SCREENSHOTS_INDEX.json](FIGMA_SNAPSHOT/SCREENSHOTS_INDEX.json) — 17 capturas dos T01–T17 canônicos e 9 estados escolhidos, com `node_id` e PNG relativo versionado.
+2. [FIGMA_SNAPSHOT/README.md](FIGMA_SNAPSHOT/README.md) — galeria visual base e limites da captura; os outros estados vêm da matriz oficial `STATE_MATRIX.yaml`.
+3. [IMPLEMENTATION_BACKLOG.json](IMPLEMENTATION_BACKLOG.json) — 36 US, Issues, RF/RNF e telas projetados do registry canônico (não substituir a Issue).
+4. [PROTOCOLO_PR_CODEX.md](PROTOCOLO_PR_CODEX.md) — fluxo operacional, testes e protocolo de bloqueio/PR.
+5. [PORTOES_PENDENTES.md](PORTOES_PENDENTES.md) — decisões de negócio que não devem ser tomadas silenciosamente.
+6. [STACK_CANDIDATA.md](STACK_CANDIDATA.md) — recomendação **não aprovada** para iniciar app futuramente.
+
+**Comandos de preflight offline:** `python scripts/validate_agent_context.py` (dependência PyYAML), `python scripts/validate_sql_prototype.py`, `python scripts/validate_visual_snapshot.py` e `python scripts/validate_implementation_backlog.py`. Os três últimos não precisam de MySQL/Figma/rede.
+
+**Importante:** `CODEX_SETUP.md` legado falava em "inspecionar node do Fluxo Final antes de escrita"; isso continua necessário apenas para **novas alterações ao Figma**. Para implementar a tela já congelada no GitHub, consultar seu PNG e registries é suficiente como referência de primeira versão; ainda são necessários testes de UI.
+
+**Risco conhecido de UI:** o contrato de agentes registra problemas de clipping/scroll no T04/T06. Ao implementar, **seguir o padrão de viewport contido**, não copiar eventual sobreposição visual do screenshot. Não criar páginas independentes para forms já migrados para Bottom Sheet.
+
+**Mecanismo de autonomia:** executar tarefas independentes aprovadas, abrir PR, publicar evidências e parar apenas na função afetada por `BLOCKED_BY_DECISION` ou por falta de escolha de stack. Autonomia não autoriza o agente a homologar política clínica, privacidade ou N02 para vários plantonistas.

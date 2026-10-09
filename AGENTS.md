@@ -187,3 +187,14 @@ Antes de propor schema, DDL, migrações, dados de teste, autenticação/autoriz
 **Validação estática sem MySQL:** `python scripts/validate_sql_prototype.py`. O resultado deste script não certifica sintaxe/semântica no MySQL nem substitui testes de integração/concorrência reais. Importar o SQL e gerar EER é ação manual posterior de quem controla o Workbench. Codex deve registrar evidências quando houver execução real autorizada.
 
 **Regra de publicação:** PR de SQL é dependente do PR documental #115. Não mesclar o PR SQL na `main` antes do PR base e da revisão humana. Não iniciar frontend/backend por suposição de stack.
+
+
+## 12. Codex GitHub-only — referência visual congelada e backlog operacional
+
+**Modo sem Figma:** o pacote `docs/10_IMPLEMENTACAO/FIGMA_SNAPSHOT/` contém **17 PNGs dos baselines T01–T17 e 9 estados críticos exportados diretamente do `Fluxo Final`**, mais `SCREENSHOTS_INDEX.json`, todos versionados no GitHub. É **snapshot estático** de 2026-10-09. Para estados não capturados, consultar `docs/07_AI_CONTEXT/STATE_MATRIX.yaml`, `docs/05_FIGMA/FIGMA_REGISTRY.yaml`, componentes/tokens e as regras `STATE = PAGE BASE + DELTA MÍNIMO`. O Figma continua origem visual para revisões futuras; **não é necessário acessá-lo para ler o estado visual congelado de V1**.
+
+**Backlog:** `docs/10_IMPLEMENTACAO/IMPLEMENTATION_BACKLOG.json` é projeção verificável das 36 US com Issue, origem única, owner, tela e dependências a consultar, não um segundo tracker. Protocolo: `docs/10_IMPLEMENTACAO/PROTOCOLO_PR_CODEX.md`. Stack candidata: `STACK_CANDIDATA.md` (**não homologada**). Bloqueios reais: `PORTOES_PENDENTES.md`.
+
+**Fluxo verificável offline:** `python scripts/validate_agent_context.py` (requer PyYAML), `python scripts/validate_sql_prototype.py`, `python scripts/validate_visual_snapshot.py` e `python scripts/validate_implementation_backlog.py`. Checks do GitHub Actions não provam execução MySQL, backend, segurança em produção ou equivalência pixel-perfect com Figma.
+
+**Não tratar `screenshots`, `DDL V0.1` ou `decision_dependencies` como novas permissões ou critérios aprovados.** Caso exista conflito com RF/US/RN/aceite, prevalece o texto canônico e registra-se `BLOCKED_BY_DECISION` no PR. O usuário não pediu código de frontend/backend nesta fase; **não iniciar aplicação automaticamente por uma stack suposta**.
