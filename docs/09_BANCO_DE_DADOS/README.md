@@ -53,3 +53,14 @@ O pacote local `PLANO_MESTRE_MODELAGEM_BANCO_REDE_APOIO_v0_1.md` foi um levantam
 ## Validação documental desta proposta
 
 Consulte [17_VALIDACAO_DOCUMENTAL.md](17_VALIDACAO_DOCUMENTAL.md) para as verificações de cobertura de RF/US, inventário, exercícios e simulações ilustrativas executadas sem banco.
+
+## Revisão aprofundada do núcleo — 2026-10-09
+
+| Arquivo | Finalidade |
+|---|---|
+| [18 — Auditoria crítica](18_REVISAO_CRITICA_NUCLEO_IDENTIDADE.md) | Achados A01–A14, fontes, entidades e cardinalidades |
+| [19 — Alternativas e transações](19_ALTERNATIVAS_E_TRANSACOES_NUCLEO.md) | Duas estratégias de categoria, duas de Principal, bootstrap e OP-01–OP-06 |
+| [20 — Provas conceituais](20_CENARIOS_RIGOROSOS_NUCLEO.md) | 36 casos K-T e 6 roteiros de concorrência para execução futura |
+| [21 — Evidências do review](21_EVIDENCIAS_REVIEW_NUCLEO.md) | 560 asserções de modelos em memória, limites metodológicos e gates |
+
+Foram acrescentadas as decisões DB-025–DB-028 para análise humana (total atual: **28 ADRs abertas**). As simulações não são execução MySQL e as preferências técnicas não são decisões aprovadas.

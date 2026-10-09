@@ -52,3 +52,15 @@
 - cenários de teste alterados; migração necessária; riscos e plano de reversão.
 
 **Regra de bloqueio:** não congelar DDL de entidade cujas FKs/cardinalidades dependem de uma ADR pendente.
+
+
+## ADRs adicionais abertas pela revisão aprofundada — 2026-10-09
+
+| ADR | Pergunta/alternativas a fechar | Impacto técnico | Status |
+|---|---|---|---|
+| DB-025 | Uma mesma conta pode acumular a condição de Pessoa Idosa titular e vínculo familiar/profissional em outro contexto? Um titular pode vincular múltiplos perfis? | unicidade do titular, autorização contextual e prevenção de escalada | PENDENTE, requer decisão funcional |
+| DB-026 | Garantia estrutural de que papéis familiares só apontam para participação Familiar: subtipo ou FK composta com categoria? Pode mudar categoria do membro? | integridade de categoria mesmo por escrita SQL direta | PENDENTE, decisão técnica sujeita à prova no MySQL |
+| DB-027 | Semântica exata de vigente: revogação instantânea, início futuro, expiração e múltiplos episódios de vínculo/papel | índice de unicidade ativa, busca temporal e histórico | PENDENTE, decisão técnica/funcional |
+| DB-028 | O que acontece com plantões/tarefas futuros de membro desvinculado e com desvínculo do último profissional/principal? | transações de saída e reatribuição; sem excluir histórico | PENDENTE, exige regra de comportamento |
+
+**Consulta obrigatória:** [18_REVISAO_CRITICA_NUCLEO_IDENTIDADE.md](18_REVISAO_CRITICA_NUCLEO_IDENTIDADE.md) e [19_ALTERNATIVAS_E_TRANSACOES_NUCLEO.md](19_ALTERNATIVAS_E_TRANSACOES_NUCLEO.md). Não há ADR adotada automaticamente nesta revisão.

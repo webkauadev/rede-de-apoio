@@ -44,3 +44,14 @@
 5. Escopo de rede/idoso obrigatório em consulta, inclusive em subqueries, anexos, CSV e auditoria.
 6. Criar índice somente baseado em consulta de verdade; transações de transferência/correção não podem varrer tabelas grandes desnecessariamente.
 7. Dependências cruzadas que não podem ser garantidas por DDL devem virar contrato de operação transacional com testes de concorrência obrigatórios.
+
+
+## Revisão técnica complementar — garantias que exigem atenção
+
+1. Em MySQL, uma expressão CHECK que avalia UNKNOWN por causa de NULL não falha. Portanto CHECK(inicio < fim) **não substitui** NOT NULL quando ambas as datas forem obrigatórias. Cf. https://dev.mysql.com/doc/refman/8.4/en/create-table-check-constraints.html.
+2. Uma FK atribuicao_papel_familiar(membro_id)→membro_rede(id) **não impede** atribuir papel a Profissional: a categoria precisa de integridade própria (subtipo familiar ou chave composta com validação de constante de categoria). DB-026.
+3. UNIQUE condicional por rede em concessão Principal pode impor **no máximo um** Principal, não o mínimo de um. Precisa chave de escopo rede com FK verdadeira, sem valor calculado a partir de NOW(), e transação de bootstrap/transferência. DB-002/DB-004/DB-027.
+4. FK composta (rede_id,membro_id) impede referências de um membro de outra rede, mas não garante vínculo **vigente**, responsabilidade operacional ou domínio profissional; checagem contextual atual permanece necessária.
+5. A revogação de vínculo/categoria não deve produzir mudança retroativa de autoria ou permitir reaproveitamento de identidade histórica. DB-003/DB-026.
+6. Em REPEATABLE READ, SELECT comum pode ler snapshot antigo; operações que tomam decisão de permissão e escrevem exigem travamento/checagem na transação, não leitura prévia isolada. Cf. https://dev.mysql.com/doc/refman/8.4/en/innodb-consistent-read.html.
+7. A documentação em [18](18_REVISAO_CRITICA_NUCLEO_IDENTIDADE.md), [19](19_ALTERNATIVAS_E_TRANSACOES_NUCLEO.md) e [20](20_CENARIOS_RIGOROSOS_NUCLEO.md) substitui quaisquer suposições implícitas sobre categorias e Principal em exemplos anteriores deste diretório.
