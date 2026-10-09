@@ -1,0 +1,51 @@
+# Banco de Dados — Cérebro de Modelagem | Rede de Apoio
+
+**Estado:** `PROPOSTA DE MODELAGEM / DOCUMENTACAO` • **Data:** 2026-10-09 • **Nenhuma tabela, migração, procedure ou banco foi criado.**
+
+Este diretório é o contrato de análise para a futura modelagem conceitual, lógica e física MySQL da aplicação. Integra-se à fonte única operacional `webkauadev/rede-de-apoio`, mas não altera nem reinterpreta unilateralmente RF/RNF/US aprovados.
+
+## Como navegar
+
+| Leitura | Conteúdo |
+|---|---|
+| [01 — Fontes e status](01_FONTES_E_ESCOPO.md) | Hierarquia de autoridade; confirmado vs. hipótese; correção de rascunhos |
+| [02 — Domínio e modelo conceitual](02_MODELO_CONCEITUAL.md) | Entidades de negócio; relacionamentos e cardinalidades; decisões em aberto |
+| [03 — Dicionário de dados](03_DICIONARIO_DE_DADOS.md) | Candidatas a tabelas, atributos, PK/FK, restrições e ciclo de vida |
+| [04 — Regras e invariantes](04_INVARIANTES_E_INTEGRIDADE.md) | Invariantes formais, unicidade contextual, coerência referencial |
+| [05 — Acesso e identidades](05_IDENTIDADE_PAPEIS_E_ACESSO.md) | Papéis acumulados, Principal único, Profissional, Pessoa Idosa |
+| [06 — Planejamento temporal](06_AGENDA_PLANTOES_TAREFAS.md) | Intervalos, trocas, tarefas, calendário, atrasos |
+| [07 — Medicamentos e saúde](07_MEDICAMENTOS_E_REGISTROS.md) | Posologia, administração, consultas, sintomas, histórico |
+| [08 — Correções e auditoria](08_IMUTABILIDADE_ANEXOS_AUDITORIA.md) | Imutabilidade, revisões, anexos e exportação |
+| [09 — Notificações](09_NOTIFICACOES.md) | N01–N04, destinatários, deduplicação, ausência de central |
+| [10 — Segurança e LGPD](10_SEGURANCA_PRIVACIDADE.md) | Proteção de dados sensíveis e ameaça entre redes |
+| [11 — Contrato MySQL](11_CONTRATO_TECNICO_MYSQL.md) | Tipos e mecanismos avaliados; ainda **sem** SQL de criação |
+| [12 — Rastreabilidade](12_RASTREABILIDADE_REQUISITOS.md) | 36 US e RF/RNF → responsabilidades de persistência |
+| [13 — Exercícios e testes](13_CENARIOS_TESTE_DE_MESA.md) | Cenários positivos/negativos, concorrência e verificações |
+| [14 — ADRs/decisões pendentes](14_DECISOES_PENDENTES.md) | Alternativas, bloqueios e critérios de decisão |
+| [15 — Roteiro de construção](15_ROTEIRO_DE_IMPLEMENTACAO.md) | Ordem de trabalho, gates e entregáveis futuros |
+| [16 — Referências técnicas](16_REFERENCIAS_TECNICAS.md) | Fontes externas oficiais e motivo da consulta |
+| [Rascunho conceitual Mermaid](DIAGRAMA_CONCEITUAL_RASCUNHO.mmd) | Grafo ilustrativo, deliberadamente não físico |
+
+## Regras de leitura e alteração
+
+- **CANONICO:** fatos explicitados no GitHub existente, com arquivo e RF/US quando pertinente.
+- **PROPOSTA:** desenho técnico inferido para satisfazer o canônico; sujeito a revisão.
+- **PENDENTE:** não inferir decisão funcional, cardinalidade, formato de dados ou permissão ausente.
+- **NAO IMPLEMENTADO:** nenhuma evidência de funcionamento real em MySQL; exercícios neste pacote são testes de mesa, não execuções em banco.
+- Não duplicar os requisitos aqui: links para fontes canônicas; se divergirem, prevalecem documentos/Issues aprovados.
+- Não gerar migrations/DDL sem fechar decisões bloqueantes e obter revisão. Mudanças em permissões/RF/US exigem aprovação em sua origem.
+- Testes incluem **resultado esperado proposto**, não alegação de execução real.
+- Repositório público: nunca inserir dados reais de saúde, credenciais, tokens ou dumps pessoais.
+
+## Artefatos anteriores
+
+O pacote local `PLANO_MESTRE_MODELAGEM_BANCO_REDE_APOIO_v0_1.md` foi um levantamento inicial parcial; **não é fonte canônica** e não corresponde ao estado completo atual (o GitHub possui US-001–US-036). Este diretório substitui suas suposições como base de planejamento e corrige o modelo inadequado de um único campo para papéis familiares acumuláveis.
+
+## Definition of Ready — liberar implementação apenas quando
+
+- [ ] Dicionário e modelo conceitual revisados por integrantes da equipe;
+- [ ] decisões bloqueantes de [14](14_DECISOES_PENDENTES.md) deliberadas, com origem registrada;
+- [ ] invariantes e cardinalidades aprovados sem violar RN-001–RN-011;
+- [ ] casos críticos de [13](13_CENARIOS_TESTE_DE_MESA.md) têm resultados esperados revisados;
+- [ ] privacidade, retenção e estratégia de autorização definidas;
+- [ ] plano de execução e rollback aprovado. 
