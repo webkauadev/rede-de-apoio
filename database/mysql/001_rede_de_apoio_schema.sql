@@ -1,24 +1,26 @@
 -- Rede de Apoio a Cuidadores de Idosos
--- MySQL 8.4 / InnoDB / utf8mb4 - PROTOTIPO FISICO V0.1
+-- MySQL 8.4 / InnoDB / utf8mb4 - PROTOTIPO V1 CONSOLIDADO (homologacao delegada 2026-10-09)
 -- Fonte: docs/09_BANCO_DE_DADOS/ (PR #115), RF01-RF30, US-001-US-036, RN-001..011
 -- INSTRUCAO: executar SOMENTE em banco NOVO e descartavel pelo MySQL Workbench.
 -- NUNCA executar contra producao. Nenhum dado pessoal real e inserido por este arquivo.
 -- CONTRATO: SQL e desenho estrutural CANDIDATOS; nao substituem regras RN/US.
--- ESCOLHAS DE MODELAGEM PARA DESENHAR, NAO DECISOES DE PRODUTO:
---  * DB-001: NAO limitar a uma rede por pessoa no DDL (nao proibir cenarios
---    ainda nao deliberados). O backend deve bloquear uso de varias redes
---    operacionais ate politica explicita aprovada.
---  * DB-002: rede inicia EM_CONFIGURACAO, SEM acesso operacional; transicao
---    para OPERACIONAL exige transacao garantindo 1 Principal e >=1 Profissional.
---    A possibilidade funcional de EM_CONFIGURACAO depende de homologacao.
+-- V1 DELEGADA / FONTE: docs/10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md
+--  * DB-001: uma unica rede historica por pessoa idosa (UNIQUE).
+--  * DB-002: perfil primeiro; rede criada OPERACIONAL com Principal=1
+--    e Profissional>=1 NA MESMA TRANSACAO. DDL nao consegue assegurar minimo.
 --  * DB-003: membro_rede representa episodio historico de vinculacao.
---  * DB-004: unicidade do Principal vigente em concessao gerada/indexada;
---    existencia minima e serializacao dependem de transacao do backend.
---  * DB-005/DEC-S01: plantões distintos PODEM se sobrepor.
---  * DB-030: responsavel da ocorrencia e OPCIONAL, sem politica de N02;
---    N02 multirresponsavel e EXCECAO PENDENTE, nao entregue automaticamente.
---  * DB-008/034: versoes por dominio; DB-021: nao impor unicidade clinica
---    da administracao ate decisao (diferente de idempotencia de comando).
+--  * DB-004: unicidade maxima de Principal indexada; existencia minima
+--    e serializacao dependem da transacao do backend.
+--  * DB-005: plantoes distintos PODEM se sobrepor.
+--  * DB-007/032: sem reabertura de tarefa na V1; uma conclusao por tarefa.
+--  * DB-021: no maximo uma administracao por ocorrencia programada,
+--    mas administracao avulsa explicitamente autorizada e evento distinto.
+--  * DB-030: N02 enviado somente ao membro responsavel designado na
+--    ocorrencia quando estiver realmente de plantao; caso contrario,
+--    NAO usar fallback e registrar anomalIa operacional.
+--  * DB-008/034/035: correcoes tipadas por dominio, snapshots completos.
+--  * DB-018/033/038: cuidados LGPD, DST e auditabilidade precisam
+--    validacao em ambiente real antes de dados pessoais reais.
 --  * No grants, triggers, stored procedures, data fixtures ou seed.
 --  * Esquema nao substitui autorizacao atual e auditabilidade na API.
 --
@@ -38,9 +40,7 @@ CREATE TABLE IF NOT EXISTS usuario (
   usuario_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   nome VARCHAR(160) NOT NULL,
   email_normalizado VARCHAR(254) NOT NULL,
-  senha_hash VARCHAR(255) NULL COMMENT 'Somente hash forte; NULL para autenticacao federada',
-  provedor_externo VARCHAR(80) NULL,
-  subject_externo VARCHAR(255) NULL,
+  senha_hash VARCHAR(255) NULL COMMENT 'Argon2id; NULL enquanto conta por convite nao for ativada',
   tipo_acesso VARCHAR(16) NOT NULL DEFAULT 'CUIDADOR',
   telefone VARCHAR(32) NULL,
   ativo BOOLEAN NOT NULL DEFAULT TRUE,
@@ -48,12 +48,7 @@ CREATE TABLE IF NOT EXISTS usuario (
   PRIMARY KEY (usuario_id),
   UNIQUE KEY uq_usuario_email (email_normalizado),
   UNIQUE KEY uq_usuario_tipo (usuario_id, tipo_acesso),
-  UNIQUE KEY uq_usuario_externo (provedor_externo, subject_externo),
-  CONSTRAINT ck_usuario_tipo CHECK (tipo_acesso IN ('CUIDADOR','PESSOA_IDOSA')),
-  CONSTRAINT ck_usuario_externo CHECK (
-    (provedor_externo IS NULL AND subject_externo IS NULL)
-    OR (provedor_externo IS NOT NULL AND subject_externo IS NOT NULL)
-  )
+  CONSTRAINT ck_usuario_tipo CHECK (tipo_acesso IN ('CUIDADOR','PESSOA_IDOSA'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
   COMMENT='Identidade de autenticacao; nao substitui o membro contextual da rede';
 
@@ -68,6 +63,7 @@ CREATE TABLE IF NOT EXISTS pessoa_idosa (
   criado_em DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   PRIMARY KEY (pessoa_idosa_id),
   UNIQUE KEY uq_pessoa_titular (usuario_titular_id),
+  UNIQUE KEY uq_pessoa_titular_par (pessoa_idosa_id, usuario_titular_id),
   KEY ix_pessoa_cadastrante (cadastrado_por_usuario_id),
   CONSTRAINT ck_pessoa_titular_tipo CHECK (tipo_titular_exigido = 'PESSOA_IDOSA'),
   CONSTRAINT fk_pessoa_conta_tipo FOREIGN KEY (usuario_titular_id, tipo_titular_exigido)
@@ -81,23 +77,24 @@ CREATE TABLE IF NOT EXISTS rede_cuidado (
   rede_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   pessoa_idosa_id BIGINT UNSIGNED NOT NULL,
   nome VARCHAR(160) NOT NULL,
-  situacao VARCHAR(20) NOT NULL DEFAULT 'EM_CONFIGURACAO',
+  situacao VARCHAR(20) NOT NULL DEFAULT 'OPERACIONAL',
   versao INT UNSIGNED NOT NULL DEFAULT 1,
   criada_por_usuario_id BIGINT UNSIGNED NOT NULL,
   criada_em DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   ativada_em DATETIME(6) NULL,
   PRIMARY KEY (rede_id),
   UNIQUE KEY uq_rede_pessoa (rede_id, pessoa_idosa_id),
+  UNIQUE KEY uq_rede_idoso_v1 (pessoa_idosa_id),
   KEY ix_rede_pessoa_situacao (pessoa_idosa_id, situacao),
   KEY ix_rede_criador (criada_por_usuario_id),
-  CONSTRAINT ck_rede_situacao CHECK (situacao IN ('EM_CONFIGURACAO','OPERACIONAL','ENCERRADA')),
+  CONSTRAINT ck_rede_situacao CHECK (situacao IN ('OPERACIONAL','ENCERRADA')),
   CONSTRAINT ck_rede_versao CHECK (versao >= 1),
   CONSTRAINT fk_rede_pessoa FOREIGN KEY (pessoa_idosa_id)
     REFERENCES pessoa_idosa (pessoa_idosa_id),
   CONSTRAINT fk_rede_criador FOREIGN KEY (criada_por_usuario_id)
     REFERENCES usuario (usuario_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-  COMMENT='Sem UNIQUE(pessoa_idosa_id): politica A1/A2/B de redes ainda pendente';
+  COMMENT='V1: no maximo uma rede por pessoa. Bootstrap completo na transacao (Principal+Profissional)';
 
 CREATE TABLE IF NOT EXISTS membro_rede (
   membro_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -221,7 +218,7 @@ CREATE TABLE IF NOT EXISTS solicitacao_troca_plantao (
   CONSTRAINT fk_troca_respondente FOREIGN KEY (rede_id, respondido_por_membro_id)
     REFERENCES membro_rede (rede_id, membro_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-  COMMENT='Troca unilateral x permuta dupla ainda e DB-006';
+  COMMENT='V1: troca de responsavel de um unico plantao, sem permuta bilateral';
 
 CREATE TABLE IF NOT EXISTS tarefa (
   tarefa_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -242,14 +239,14 @@ CREATE TABLE IF NOT EXISTS tarefa (
   KEY ix_tarefa_responsavel (rede_id, responsavel_membro_id),
   KEY ix_tarefa_criador (criado_por_usuario_id),
   CONSTRAINT ck_tarefa_status CHECK (status IN ('PENDENTE','CONCLUIDA','CANCELADA')),
-  CONSTRAINT ck_tarefa_ciclo CHECK (ciclo_atual >= 1 AND versao >= 1),
+  CONSTRAINT ck_tarefa_ciclo CHECK (ciclo_atual = 1 AND versao >= 1),
   CONSTRAINT fk_tarefa_rede FOREIGN KEY (rede_id) REFERENCES rede_cuidado (rede_id),
   CONSTRAINT fk_tarefa_responsavel FOREIGN KEY (rede_id, responsavel_membro_id)
     REFERENCES membro_rede (rede_id, membro_id),
   CONSTRAINT fk_tarefa_criador FOREIGN KEY (criado_por_usuario_id)
     REFERENCES usuario (usuario_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-  COMMENT='Reabertura para novo ciclo ainda e DB-007; unica conclusao por ciclo';
+  COMMENT='V1 nao reabre: ciclo unico=1; unica conclusao por tarefa';
 
 CREATE TABLE IF NOT EXISTS conclusao_tarefa (
   conclusao_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -267,7 +264,7 @@ CREATE TABLE IF NOT EXISTS conclusao_tarefa (
   UNIQUE KEY uq_conclusao_comando (rede_id, autor_usuario_id, chave_idempotencia),
   KEY ix_conclusao_executor (rede_id, executor_membro_id),
   KEY ix_conclusao_autor (autor_usuario_id),
-  CONSTRAINT ck_conclusao_ciclo CHECK (ciclo_numero >= 1),
+  CONSTRAINT ck_conclusao_ciclo CHECK (ciclo_numero = 1),
   CONSTRAINT fk_conclusao_tarefa FOREIGN KEY (rede_id, tarefa_id)
     REFERENCES tarefa (rede_id, tarefa_id),
   CONSTRAINT fk_conclusao_executor FOREIGN KEY (rede_id, executor_membro_id)
@@ -324,7 +321,7 @@ CREATE TABLE IF NOT EXISTS consulta (
   CONSTRAINT fk_consulta_autor FOREIGN KEY (autor_usuario_id)
     REFERENCES usuario (usuario_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-  COMMENT='Consulta independente de compromisso; DB-009 pendente';
+  COMMENT='V1: consulta pode ser independente de compromisso';
 
 CREATE TABLE IF NOT EXISTS recomendacao (
   recomendacao_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -414,14 +411,14 @@ CREATE TABLE IF NOT EXISTS horario_regime (
   CONSTRAINT fk_horario_regime FOREIGN KEY (rede_id, regime_id)
     REFERENCES regime_medicamento (rede_id, regime_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-  COMMENT='Recorrencia e DST ainda DB-010/015/029/033; nao presumir PRN';
+  COMMENT='V1: horario local e fuso IANA; DST ambiguo exige resolucao manual; sem PRN automatico';
 
 CREATE TABLE IF NOT EXISTS ocorrencia_programada (
   ocorrencia_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   rede_id BIGINT UNSIGNED NOT NULL,
   tarefa_id BIGINT UNSIGNED NULL,
   horario_regime_id BIGINT UNSIGNED NULL,
-  responsavel_membro_id BIGINT UNSIGNED NULL COMMENT 'Nao define politica N02; DB-030 pendente',
+  responsavel_membro_id BIGINT UNSIGNED NULL COMMENT 'N02 V1 somente ao designado elegivel; NULL exige auditoria e nenhum envio',
   previsto_em DATETIME(6) NOT NULL COMMENT 'Instante absoluto UTC; converter a partir da agenda civil',
   geracao_origem INT UNSIGNED NOT NULL DEFAULT 1,
   cancelada_em DATETIME(6) NULL,
@@ -447,7 +444,7 @@ CREATE TABLE IF NOT EXISTS ocorrencia_programada (
   CONSTRAINT fk_ocorrencia_designado FOREIGN KEY (rede_id, responsavel_membro_id)
     REFERENCES membro_rede (rede_id, membro_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-  COMMENT='C04 candidata: ocorrencia prevista de tarefa OU horario medicamento, sem presumir N02';
+  COMMENT='V1: ocorrencia prevista de tarefa OU horario; N02 exige responsavel designado elegivel';
 
 CREATE TABLE IF NOT EXISTS administracao_medicamento (
   administracao_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -463,6 +460,7 @@ CREATE TABLE IF NOT EXISTS administracao_medicamento (
   chave_idempotencia VARCHAR(100) NULL,
   PRIMARY KEY (administracao_id),
   UNIQUE KEY uq_administracao_escopo (rede_id, administracao_id),
+  UNIQUE KEY uq_administracao_ocorrencia_v1 (rede_id, ocorrencia_id),
   UNIQUE KEY uq_administracao_comando (rede_id, autor_usuario_id, chave_idempotencia),
   KEY ix_administracao_regime (rede_id, regime_id, realizada_em),
   KEY ix_administracao_horario_fk (rede_id, regime_id, horario_regime_id),
@@ -483,7 +481,7 @@ CREATE TABLE IF NOT EXISTS administracao_medicamento (
   CONSTRAINT fk_administracao_autor FOREIGN KEY (autor_usuario_id)
     REFERENCES usuario (usuario_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-  COMMENT='Administracao original imutavel; nao impor UNIQUE clinico por ocorrencia sem DB-021';
+  COMMENT='V1: maximo 1 administracao por ocorrencia (NULL permite avulsa autorizada); original imutavel';
 
 -- =========================================================
 -- 04 DIARIO, CORRECOES IMUTAVEIS E ANEXOS
@@ -604,7 +602,7 @@ CREATE TABLE IF NOT EXISTS anexo (
   CONSTRAINT fk_anexo_autor FOREIGN KEY (enviado_por_usuario_id)
     REFERENCES usuario (usuario_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-  COMMENT='Anexo aponta para EXATAMENTE UM registro original com FK real; revisoes DB-037 pendentes';
+  COMMENT='V1: anexo aponta para exatamente um registro original, nunca para correcao';
 
 -- =========================================================
 -- 05 APOIO, PREFERENCIAS, AUDITORIA E INFRAESTRUTURA
@@ -647,7 +645,7 @@ CREATE TABLE IF NOT EXISTS informacao_emergencia (
   CONSTRAINT fk_emergencia_autor FOREIGN KEY (atualizado_por_usuario_id)
     REFERENCES usuario (usuario_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-  COMMENT='Hipotese uma ficha atual por rede; DB-012/019/retencao ainda pendentes';
+  COMMENT='V1: uma ficha atual por rede; edicao Familiar Principal e acesso conforme permissoes';
 
 CREATE TABLE IF NOT EXISTS preferencia_notificacao (
   preferencia_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -744,20 +742,102 @@ CREATE TABLE IF NOT EXISTS idempotencia_comando (
 -- =========================================================
 -- 06 AVISOS DE INTEGRIDADE QUE O SQL NAO GARANTE SOZINHO
 -- =========================================================
--- [GATE DB-001] A1/A2/B e compartilhamento cross-rede dependem de negocio;
--- permitir varias redes na DDL NAO autoriza liberar multiplas redes em API.
--- [GATE DB-002] situacao OPERACIONAL somente com Principal=1 e Profissional>=1.
+-- [V1 DB-001] UNIQUE pessoa_idosa_id garante uma rede por perfil.
+-- [V1 DB-002] situacao OPERACIONAL somente com Principal=1 e Profissional>=1.
 -- Impor na transacao com lock no agregado rede_cuidado; UNIQUE resolve apenas <=1.
--- [GATE DB-003] reingresso somente se autorizado; indice gerado impede dois
--- episodios correntes, mas nao detecta vigencia de papel erroneamente encerrado.
--- [GATE DB-004] transferir Principal com ordem de travas e UNIQUE imediata.
--- [GATE DB-028] revogar membro com plantao/tarefa futura requer regra aprovada.
--- [GATE DB-030] nenhum SELECT arbitrario nem fallback em N02.
--- [GATE DB-021] repeticao de mesmo comando nao equivale a 2a administracao.
+-- [V1 DB-003] reingresso e novo episodio autorizado; indice gerado impede
+-- 2 episodios nao encerrados; revogar papeis antigos em transacao.
+-- [V1 DB-004] transferir Principal com ordem de travas e UNIQUE imediata.
+-- [V1 DB-028] revogar membro apenas depois da reatribuicao/cancelamento
+-- explicito dos recursos futuros, mantendo historico e auditoria.
+-- [V1 DB-030] N02 somente para responsavel explicito se plantonista atual;
+-- sem elegivel, falha auditada e nenhum fallback/destinatario inventado.
+-- [V1 DB-021] UNIQUE por ocorrencia; replay igual nao e segundo fato;
+-- evento avulso precisa comando novo e permissao expressa.
 -- [GATE RNF02] negar UPDATE/DELETE destrutivo de originais via service privileges
 -- e rotinas transacionais; sem GRANT/TRIGGER automatico neste arquivo.
 -- [GATE SEGURANCA] todas as consultas devem escopar rede+ator+permissao vigente.
 -- [GATE RECORRENCIA] converter instante UTC e fuso IANA de modo deterministico.
 -- [GATE WORKBENCH] script CREATE-only, sem DROP; importar por Reverse Engineer
 -- MySQL Create Script para montar EER sem executar numa instancia.
--- FIM DO PROTOTIPO FISICO V0.1.
+
+-- =========================================================
+-- 07 EPISODIO DE ATIVACAO DA PESSOA IDOSA / HISTORICO ESCALA
+-- =========================================================
+-- Definidos apos entidades principais para evitar dependencias circulares.
+CREATE TABLE IF NOT EXISTS habilitacao_acesso_idoso (
+  habilitacao_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  pessoa_idosa_id BIGINT UNSIGNED NOT NULL,
+  usuario_titular_id BIGINT UNSIGNED NOT NULL,
+  solicitada_por_usuario_id BIGINT UNSIGNED NOT NULL,
+  token_hash CHAR(64) NOT NULL COMMENT 'Somente SHA-256 do token de alta entropia; nunca texto em claro',
+  criada_em DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  expira_em DATETIME(6) NOT NULL,
+  usada_em DATETIME(6) NULL,
+  revogada_em DATETIME(6) NULL,
+  convite_corrente_pessoa_id BIGINT UNSIGNED GENERATED ALWAYS AS (
+    CASE WHEN usada_em IS NULL AND revogada_em IS NULL
+      THEN pessoa_idosa_id ELSE NULL END
+  ) STORED,
+  PRIMARY KEY (habilitacao_id),
+  UNIQUE KEY uq_habilitacao_token_hash (token_hash),
+  UNIQUE KEY uq_convite_aberto_pessoa (convite_corrente_pessoa_id),
+  KEY ix_habilitacao_titular (usuario_titular_id),
+  KEY ix_habilitacao_autor (solicitada_por_usuario_id),
+  CONSTRAINT ck_habilitacao_prazo CHECK (expira_em > criada_em),
+  CONSTRAINT ck_habilitacao_usada CHECK (usada_em IS NULL OR usada_em >= criada_em),
+  CONSTRAINT ck_habilitacao_revogada CHECK (revogada_em IS NULL OR revogada_em >= criada_em),
+  CONSTRAINT ck_habilitacao_nao_ambos CHECK (usada_em IS NULL OR revogada_em IS NULL),
+  CONSTRAINT fk_habilitacao_pessoa_titular FOREIGN KEY (pessoa_idosa_id, usuario_titular_id)
+    REFERENCES pessoa_idosa (pessoa_idosa_id, usuario_titular_id),
+  CONSTRAINT fk_habilitacao_titular FOREIGN KEY (usuario_titular_id)
+    REFERENCES usuario (usuario_id),
+  CONSTRAINT fk_habilitacao_solicitante FOREIGN KEY (solicitada_por_usuario_id)
+    REFERENCES usuario (usuario_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+  COMMENT='Convite de uso unico ao titular; app verifica titular da pessoa e expira_em sob lock';
+
+CREATE TABLE IF NOT EXISTS historico_plantao (
+  evento_plantao_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  rede_id BIGINT UNSIGNED NOT NULL,
+  plantao_id BIGINT UNSIGNED NOT NULL,
+  membro_anterior_id BIGINT UNSIGNED NULL,
+  membro_novo_id BIGINT UNSIGNED NULL,
+  versao_anterior INT UNSIGNED NOT NULL,
+  versao_nova INT UNSIGNED NOT NULL,
+  tipo_evento VARCHAR(22) NOT NULL,
+  operado_por_usuario_id BIGINT UNSIGNED NOT NULL,
+  ocorrido_em DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  operacao_correlacao_id CHAR(36) NULL,
+  PRIMARY KEY (evento_plantao_id),
+  UNIQUE KEY uq_historico_plantao_versao (rede_id, plantao_id, versao_nova),
+  KEY ix_historico_plantao (rede_id, plantao_id, ocorrido_em),
+  KEY ix_historico_membro_antes (rede_id, membro_anterior_id),
+  KEY ix_historico_membro_depois (rede_id, membro_novo_id),
+  KEY ix_historico_ator (operado_por_usuario_id),
+  CONSTRAINT ck_historico_plantao_evento CHECK (
+    tipo_evento IN ('CRIADO','ATRIBUIDO','ALTERADO','CANCELADO','TROCA_ACEITA')
+  ),
+  CONSTRAINT ck_historico_plantao_versao CHECK (
+    versao_anterior >= 0 AND versao_nova = versao_anterior + 1
+  ),
+  CONSTRAINT fk_historico_plantao FOREIGN KEY (rede_id, plantao_id)
+    REFERENCES plantao (rede_id, plantao_id),
+  CONSTRAINT fk_historico_membro_antes FOREIGN KEY (rede_id, membro_anterior_id)
+    REFERENCES membro_rede (rede_id, membro_id),
+  CONSTRAINT fk_historico_membro_depois FOREIGN KEY (rede_id, membro_novo_id)
+    REFERENCES membro_rede (rede_id, membro_id),
+  CONSTRAINT fk_historico_ator FOREIGN KEY (operado_por_usuario_id)
+    REFERENCES usuario (usuario_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+  COMMENT='Historico append only de escala distinto da auditoria de seguranca';
+
+-- V1 NOTAS DE CONTRATO:
+-- 1. habilitacao: exigir pessoa.usuario_titular_id = usuario_titular_id
+--    no app transacional; FK a usuario valida existencia, nao equivalencia.
+-- 2. historico: evento CRIADO deve usar versao_anterior=0, nova=1.
+--    Mudancas efetivas do plantao devem registrar historico na mesma transacao.
+-- 3. Políticas RN/US de autorizacao, token, LGPD e horario nao sao
+--    asseguradas apenas por CHECK/FK/UNIQUE.
+
+-- FIM DO PROTOTIPO FISICO V1 CONSOLIDADO. NAO EXECUTADO EM MYSQL.

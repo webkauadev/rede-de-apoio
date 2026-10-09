@@ -49,3 +49,7 @@ Status: draft / pronto para revisão humana
 ```
 
 **Handoff entre chats/agentes:** basta ler GitHub; não presumir memória da conversa. O status de cada tarefa e os logs reais precisam estar em commit/PR/Issue, não só em resposta de chat.
+
+## Atualização V1 homologada
+
+Ações antes marcadas como `BLOCKED_BY_DECISION` só permanecem bloqueadas se **ultrapassarem** a V1 de [DECISOES_V1_HOMOLOGADAS.md](DECISOES_V1_HOMOLOGADAS.md) ou dependerem dos [gates de produção/execução](GATES_DE_IMPLANTACAO_V1.md). Dentro da V1, executar segundo [stack aprovada](STACK_V1_HOMOLOGADA.md) e resultados reais de teste. Não reabrir escolhas A1/B3/E1/N02 A durante um PR comum. Merge ainda exige revisão humana.

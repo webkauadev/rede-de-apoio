@@ -121,3 +121,7 @@ O método original de Codex + Figma acima **permanece válido quando o agente ti
 **Adaptação do preflight nº 7:** o Codex pode **inspecionar o PNG versionado e os registries de estado** ao implementar o design congelado do GitHub; acesso live ao node do Figma passa a ser exigido **somente para alterar/refresh da fonte visual**, não para entender a baseline já exportada.
 
 **Não elevar escopo da V1 por imagem:** capturas não alteram os critérios de aceite nem tornam canônicas as opções DB-001/002/030. Uma atualização posterior no Figma requer reexportação explícita e commit dos PNGs. T04/T06 possuem alerta de clipping/scroll; implementar conforme norma, não replicar bug visual.
+
+## Stack V1 homologada e autonomia do Codex — adendo 2026-10-09
+
+Veja [decisões V1](../10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md), [stack V1](../10_IMPLEMENTACAO/STACK_V1_HOMOLOGADA.md), [Gates operacionais](../10_IMPLEMENTACAO/GATES_DE_IMPLANTACAO_V1.md) e [SQL](../../database/mysql/README.md). Menções antigas a escolhas bloqueantes neste setup são histórico anterior ao aceite delegado. O Codex pode implementar em PRs pequenos com a stack aprovada e snapshots GitHub, sem precisar reconectar ao Figma. Não executar MySQL real/produção automaticamente.

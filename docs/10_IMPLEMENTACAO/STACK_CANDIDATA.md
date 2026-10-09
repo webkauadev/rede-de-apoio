@@ -38,3 +38,7 @@
 - Registros de cuidados não se sobrescrevem; correções são encadeadas com autoria.
 - N01–N04 são feedback contextual nas telas existentes; não existe Central de Notificações.
 - SQL V0.1 é **hipótese física**, sem execução MySQL, sem autenticação real e sem promessas de exactly-once.
+
+## Atualização posterior (2026-10-09)
+
+**Esta proposta já foi ratificada e detalhada** em [STACK_V1_HOMOLOGADA.md](STACK_V1_HOMOLOGADA.md). As frases abaixo dizendo "ainda não homologada" descrevem o estágio histórico da primeira avaliação e não são o status V1 vigente.

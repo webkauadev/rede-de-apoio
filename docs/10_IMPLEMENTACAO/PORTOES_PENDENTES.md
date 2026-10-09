@@ -34,3 +34,9 @@
 - Codex pode executar tarefas com escopo resolvido, mas deve registrar `BLOCKED_BY_DECISION` na parte que depender de escolha pendente.
 
 **Risco explícito:** “fazer tudo” significa concluir as atividades técnicas possíveis, **não transformar A1/B3/E1/N02-A em decisões do usuário sem que ele escolha**. A equipe pode homologá-las em uma única deliberação clara, registrada no GitHub.
+
+## Atualização: opções de arquitetura ratificadas para V1 (2026-10-09)
+
+As alternativas deste arquivo foram discutidas **antes** da delegação posterior de aprovação. A decisão mais recente está em [DECISOES_V1_HOMOLOGADAS.md](DECISOES_V1_HOMOLOGADAS.md), que seleciona DB-001 A1, DB-002 B3, DB-003 E1, DB-030 destinatário explícito A e as demais escolhas. A stack também foi homologada em [STACK_V1_HOMOLOGADA.md](STACK_V1_HOMOLOGADA.md). **Este documento é histórico e não bloqueia iniciar código V1.**
+
+Os riscos de implantação que permanecem são físicos/regulatórios: ver [GATES_DE_IMPLANTACAO_V1.md](GATES_DE_IMPLANTACAO_V1.md). Não alegar que aprovação documental já executou MySQL ou resolveu exigências de retenção legal.

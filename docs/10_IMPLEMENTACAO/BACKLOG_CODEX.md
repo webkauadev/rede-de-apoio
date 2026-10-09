@@ -24,3 +24,7 @@ Este backlog é uma **projeção operacional de US-001–US-036** do catálogo c
 Os 26 PNGs do [snapshot visual](FIGMA_SNAPSHOT/README.md) permitem consulta da UI apenas no GitHub. Consulte os registries para todos os demais estados.
 
 **Não confundir**: a aprovação do protótipo SQL e do planejamento documental não é prova de execução MySQL nem liberação da política de destinatário N02 com dois plantonistas.
+
+## Atualização após ratificação (2026-10-09)
+
+As dependências de ADR descritas nos quadros históricos foram selecionadas para a V1 pelo solicitante e estão em [DECISOES_V1_HOMOLOGADAS.md](DECISOES_V1_HOMOLOGADAS.md). Esse backlog continua apontando **36 US canônicas**; as dependências `decision_dependencies` passam a ser **referências de decisão já registrada**, não bloqueios funcionais por falta de escolha V1. As provas de execução e implantação constam em [GATES_DE_IMPLANTACAO_V1.md](GATES_DE_IMPLANTACAO_V1.md).

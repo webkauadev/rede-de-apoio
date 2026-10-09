@@ -198,3 +198,11 @@ Antes de propor schema, DDL, migrações, dados de teste, autenticação/autoriz
 **Fluxo verificável offline:** `python scripts/validate_agent_context.py` (requer PyYAML), `python scripts/validate_sql_prototype.py`, `python scripts/validate_visual_snapshot.py` e `python scripts/validate_implementation_backlog.py`. Checks do GitHub Actions não provam execução MySQL, backend, segurança em produção ou equivalência pixel-perfect com Figma.
 
 **Não tratar `screenshots`, `DDL V0.1` ou `decision_dependencies` como novas permissões ou critérios aprovados.** Caso exista conflito com RF/US/RN/aceite, prevalece o texto canônico e registra-se `BLOCKED_BY_DECISION` no PR. O usuário não pediu código de frontend/backend nesta fase; **não iniciar aplicação automaticamente por uma stack suposta**.
+
+## 13. Diretriz mais recente: V1 ratificada e pronta para codificação — 2026-10-09
+
+**SUPERSEDE o status "PENDENTE" das alternativas resolvidas nos capítulos históricos de modelagem.** O solicitante delegou explicitamente as escolhas e homologou a V1. A fonte única de deliberações DB-001–DB-038 é [docs/10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md](docs/10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md). P01–P09, RF/RNF/US e os critérios aprovados permanecem preservados, com adendo operacional em `docs/02_BUSINESS_RULES/`.
+
+Stack homologada: [STACK_V1_HOMOLOGADA.md](docs/10_IMPLEMENTACAO/STACK_V1_HOMOLOGADA.md). Banco físico protótipo consolidado: [SQL MySQL V1](database/mysql/001_rede_de_apoio_schema.sql) — **arquivo para importar, NÃO executado nem implantado**. O Codex tem autorização para iniciar scaffold e desenvolvimento por US dentro da V1, depois de consultar o handoff GitHub-only. O GitHub continua sendo a fonte da implementação; Figma é referência visual para alterações futuras, e 26 snapshots versionados bastam para consultar baselines congeladas.
+
+**Não deduzir liberação de produção:** dados pessoais reais, política de retenção, segurança em produção, sessão/autenticação testada, MySQL real, backups, controle clínico e DST ambíguo **ainda requerem testes e revisão de implantação**. Não criar doses extra, botões de reabertura, segunda rede ou fallback N02. Nenhum PR futuro de app tem merge automático liberado por esta aprovação.

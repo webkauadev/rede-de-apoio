@@ -100,3 +100,9 @@ A base de conhecimento da modelagem está em [docs/09_BANCO_DE_DADOS/](docs/09_B
 O **[índice de implementação](docs/10_IMPLEMENTACAO/README.md)** reúne: [playbook](docs/10_IMPLEMENTACAO/CODEX_PLAYBOOK.md), [26 capturas canônicas](docs/10_IMPLEMENTACAO/FIGMA_SNAPSHOT/README.md), [backlog das 36 US](docs/10_IMPLEMENTACAO/BACKLOG_CODEX.md), [protocolo de PR](docs/10_IMPLEMENTACAO/PROTOCOLO_PR_CODEX.md), [stack candidata](docs/10_IMPLEMENTACAO/STACK_CANDIDATA.md) e [decisões pendentes](docs/10_IMPLEMENTACAO/PORTOES_PENDENTES.md). O Codex pode ler esses arquivos no GitHub sem depender de conversa nem de acesso live ao Figma.
 
 **Limites:** as imagens são fotografia estática (17 bases + 9 estados), não todos os protótipos; as ADRs que permanecem abertas e a stack de app não devem ser inventadas. A V0.1 SQL do [Workbench](database/mysql/README.md) **ainda não foi executada** em MySQL. O código da aplicação será uma etapa separada.
+
+## V1 homologada — SQL consolidado e Codex autossuficiente (2026-10-09)
+
+Por aprovação explícita do solicitante, as 38 ADRs de modelagem têm escolha V1 em [DECISOES_V1_HOMOLOGADAS.md](docs/10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md); a plataforma de desenvolvimento foi definida em [STACK_V1_HOMOLOGADA.md](docs/10_IMPLEMENTACAO/STACK_V1_HOMOLOGADA.md). O [SQL MySQL V1](database/mysql/001_rede_de_apoio_schema.sql) para Workbench inclui **30 tabelas** e o [guia de importação/EER](database/mysql/README.md).
+
+Para Codex, iniciar por [AGENTS.md](AGENTS.md) → [hubs de implementação](docs/10_IMPLEMENTACAO/README.md) → [36 US e capturas Figma no GitHub](docs/10_IMPLEMENTACAO/FIGMA_SNAPSHOT/README.md). O banco físico **não foi criado/executado**. A homologação não dispensa teste real MySQL e controle LGPD antes da produção. As menções V0.1/PENDENTE abaixo pertencem ao histórico de preparação.

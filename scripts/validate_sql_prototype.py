@@ -18,6 +18,7 @@ EXPECTED = {
     "correcao_administracao_medicamento", "anexo", "contato_importante",
     "informacao_emergencia", "preferencia_notificacao", "auditoria",
     "entrega_tecnica_notificacao", "idempotencia_comando",
+    "habilitacao_acesso_idoso", "historico_plantao",
 }
 errors: list[str] = []
 
@@ -112,13 +113,16 @@ def main() -> int:
         "uq_papel_principal_rede", "uq_conclusao_ciclo",
         "uq_membro_usuario_ativo", "ck_ocorrencia_origem", "ck_anexo_pai",
         "fk_papel_membro_familiar", "fk_administracao_ocorrencia",
+        "uq_rede_idoso_v1", "uq_administracao_ocorrencia_v1",
+        "fk_habilitacao_pessoa_titular", "uq_convite_aberto_pessoa",
+        "uq_historico_plantao_versao",
     }
     for token in sorted(mandatory):
         if token not in no_line_comments:
             fail(f"Guarda obrigatoria ausente: {token}")
 
-    if re.search(r"UNIQUE\s+KEY\s+\w+\s*\(\s*pessoa_idosa_id\s*\)", tables.get("rede_cuidado", ""), re.I):
-        fail("DB-001 nao aprovada: nao impor UNIQUE permanente da pessoa idosa na rede")
+    if not re.search(r"UNIQUE\s+KEY\s+uq_rede_idoso_v1\s*\(\s*pessoa_idosa_id\s*\)", tables.get("rede_cuidado", ""), re.I):
+        fail("DB-001 V1: UNIQUE obrigatoria para uma rede por pessoa idosa")
     if not re.search(r"\bCREATE DATABASE IF NOT EXISTS\s+rede_de_apoio\b", no_line_comments, re.I):
         fail("Nome do banco inicial divergente")
 

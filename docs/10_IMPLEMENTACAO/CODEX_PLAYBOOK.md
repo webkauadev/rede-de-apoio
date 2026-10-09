@@ -82,3 +82,11 @@ Quando o Codex não tiver conexão com Figma, usar esta ordem complementar:
 **Risco conhecido de UI:** o contrato de agentes registra problemas de clipping/scroll no T04/T06. Ao implementar, **seguir o padrão de viewport contido**, não copiar eventual sobreposição visual do screenshot. Não criar páginas independentes para forms já migrados para Bottom Sheet.
 
 **Mecanismo de autonomia:** executar tarefas independentes aprovadas, abrir PR, publicar evidências e parar apenas na função afetada por `BLOCKED_BY_DECISION` ou por falta de escolha de stack. Autonomia não autoriza o agente a homologar política clínica, privacidade ou N02 para vários plantonistas.
+
+## V1 ratificada posteriormente — precedência obrigatória (2026-10-09)
+
+**Leia primeiro** [DECISOES_V1_HOMOLOGADAS.md](DECISOES_V1_HOMOLOGADAS.md) e [STACK_V1_HOMOLOGADA.md](STACK_V1_HOMOLOGADA.md), além de `AGENTS.md`. A pauta antiga `PORTOES_PENDENTES.md` e a stack candidata de V0.1 são arquivos históricos, **não bloqueiam o scaffold V1**.
+
+Você pode iniciar **implementação de aplicação** em branch/PR por US após consultar `IMPLEMENTATION_BACKLOG.json` (36 US), `FIGMA_SNAPSHOT` (17 baselines + 9 estados), `BUSINESS_RULES.md`/permissões/avisos e aceites da Issue. Não precisa Figma live para os PNGs da V1. Você **não** pode executar em produção, provisionar banco real sem ambiente autorizado, inferir novas regras clínicas, liberar segunda rede, reabrir tarefa, enviar N02 para todos os plantonistas ou criar inbox.
+
+A orientação antiga "stack ainda não aprovada" anterior a este complemento foi **superada por homologação explícita do solicitante**. Merge de futuros PRs de implementação continua a exigir revisão humana.

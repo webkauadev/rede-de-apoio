@@ -3,7 +3,7 @@
 SELECT VERSION() AS mysql_version;
 SELECT
   COUNT(*) AS total_tabelas,
-  (COUNT(*) = 28) AS corresponde_a_v01
+  (COUNT(*) = 30) AS corresponde_a_v1
 FROM information_schema.tables
 WHERE table_schema = 'rede_de_apoio' AND table_type = 'BASE TABLE';
 
@@ -41,3 +41,9 @@ SHOW CREATE TABLE rede_de_apoio.plantao;
 SHOW CREATE TABLE rede_de_apoio.conclusao_tarefa;
 SHOW CREATE TABLE rede_de_apoio.ocorrencia_programada;
 SHOW CREATE TABLE rede_de_apoio.administracao_medicamento;
+
+-- Novas estruturas do prototipo V1:
+SHOW CREATE TABLE rede_de_apoio.habilitacao_acesso_idoso;
+SHOW CREATE TABLE rede_de_apoio.historico_plantao;
+-- Conferir rede UNIQUE(pessoa_idosa_id) e administracao UNIQUE(rede_id,ocorrencia_id):
+SHOW CREATE TABLE rede_de_apoio.rede_cuidado;

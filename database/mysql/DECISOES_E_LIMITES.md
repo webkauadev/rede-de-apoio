@@ -1,37 +1,39 @@
-# Contrato de hipóteses do DDL MySQL V0.1
+# Limites do SQL físico V1 homologado
 
-**O solicitante autorizou construir SQL para prototipação e diagrama. Não houve aprovação explícita, alternativa por alternativa, das decisões DB-001/002/003/004/008/014/021/028/029/030/034/035/037.** A partir deste arquivo, o Codex deve distinguir **DDL experimental** de **regra funcional liberada**.
+**Registro vigente:** [DECISOES_V1_HOMOLOGADAS.md](../../docs/10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md) (38 ADRs decididas por delegação explícita do solicitante, 2026-10-09), [STACK_V1_HOMOLOGADA.md](../../docs/10_IMPLEMENTACAO/STACK_V1_HOMOLOGADA.md). Esta página substitui o painel histórico de opções abertas da V0.1. A homologação é **do desenho V1 para Codex e importação Workbench**, não uma certificação de produção.
 
-| ADR ou fonte | Estado da origem | Decisão de desenho **apenas para permitir o EER V0.1** | O que fica BLOQUEADO até revisão |
-|---|---|---|---|
-| DB-001 (redes por idoso) | PENDENTE A1/A2/B | não criar UNIQUE permanente no idoso; cada registro é contextual `rede_id` | permitir mais de uma rede operacional na API; compartilhar dados de R1 para R2 |
-| DB-002 (bootstrap) | PENDENTE B1/B2/B3 | usar `rede_cuidado.situacao=EM_CONFIGURACAO` para representar construção | liberar `OPERACIONAL` com 0 Principal/Profissional; criar UX B1 como canônica |
-| DB-003/027 (reingresso/vigência) | PENDENTE | membro por episódio; UNIQUE calculada apenas para vínculo não encerrado | reingresso automático, restaurar antigos papéis |
-| DB-004/026 (Principal/categoria) | regra RN-001 CONFIRMADA, mecanismo PENDENTE | FK composta de categoria e UNIQUE gerada para Principal ativo | marcar rede operacional sem Principal ou transferir sem transação |
-| DB-005 (plantões) | DEC-S01 explícita do solicitante, migration_required na main | aceitar sobreposição entre **diferentes** plantões | selecionar um único Plantonista Atual global |
-| DB-006 (troca) | PENDENTE | tabela registra pedido de **um** plantão | permuta entre dois plantões sem nova modelagem |
-| DB-007/032 (tarefas) | DEC-S03 parcial, reabertura pendente | tarefa+ciclo com uma única conclusão e `versao` | reabertura/salto de ciclo automático |
-| DB-008/034/035 (correções) | versão original imutável CONFIRMADA, desenho PENDENTE | revisões tipadas para Diário, Consulta, Administração, snapshot completo dos campos editáveis | afirmar RNF02 inteiramente coberto para todos os recursos do app |
-| DB-009 (consulta) | PENDENTE | compromisso opcional em consulta e consulta opcional em recomendação | obrigatoriedade de compromisso/consulta sem decisão |
-| DB-010/015/029/033 (recorrência) | PENDENTE | hora local + zona IANA e ocorrência datada, com origem por FK real | executar regra automática de recorrência, DST e PRN sem definição |
-| DB-011/021 (administração) | DEC-S02 plano/fato/alerta confirmado, regra clínica adicional PENDENTE | não impor UNIQUE clínica por ocorrência; retry por chave opcional | permitir segunda dose clínica por simples repetição de requisição |
-| DB-012/019 (emergência) | PENDENTE | uma ficha atual por rede (UNIQUE rede+pessoa) | garantir política definitiva de versões/edição |
-| DB-013/037 (anexo) | PENDENTE | um recurso original por FK: Diário/Consulta/Administração | anexar revisão corrigida sem regra de herança |
-| DB-014/023 (notificação) | P04 canônico; transporte PENDENTE | `entrega_tecnica_notificacao` opcional, sem inbox | afirmar entrega online/offline/exactly-once |
-| DB-016/017 (auth/titular) | acesso idoso RF30 aprovado; provedor/convite PENDENTE | usuários com tipos `CUIDADOR`/`PESSOA_IDOSA`; senha hash ou provedor | implementar fluxo definitivo de convite, recuperação ou auth |
-| DB-018/038 (retenção/auditoria) | RNF03 auditável confirmado, mecanismo PENDENTE | auditoria sem dados de saúde; status e snapshots mínimos | alegar compliance LGPD, retenção ou auditoria de rollback provadas |
-| DB-028 (saída de membro) | PENDENTE | histórico não deletável por FK | reatribuir ou cancelar tarefas/plantões por suposição |
-| **DB-030 (N02 simultâneo)** | **PENDENTE** | ocorrência tem responsável **nullable**, sem regras de seleção no DDL | enviar N02 a todos, ao Principal ou ao primeiro sem homologação |
+## Resoluções que o SQL protege diretamente
 
-## Critérios de handoff ao Codex
+| Invariante V1 | Implementação MySQL |
+|---|---|
+| Uma rede por pessoa idosa | `uq_rede_idoso_v1(pessoa_idosa_id)` |
+| Pessoa Idosa não recebe papel Familiar | `usuario.tipo_acesso` com FK composta no `membro_rede`, e FK de categoria no papel |
+| No máximo um Principal não revogado por rede | coluna gerada `principal_ativo_rede` + índice único |
+| Reingresso histórico sem 2 episódios abertos simultâneos | `membro_rede.usuario_vinculado_ativo` gerada e UNIQUE por rede |
+| Plantões simultâneos | ausência deliberada de `UNIQUE` temporal global |
+| Uma conclusão por tarefa na V1, sem reabrir | `ciclo_atual=1`, `ciclo_numero=1`, UNIQUE `(rede_id,tarefa_id,ciclo_numero)` |
+| Uma administração por ocorrência programada na V1 | UNIQUE `(rede_id,ocorrencia_id)`; `NULL` permite registro avulso autorizado explicitamente |
+| Fato previsto e fato registrado distintos | `ocorrencia_programada` e `administracao_medicamento` com FK |
+| Correção imutável por versão | tabelas por domínio, `numero_versao`, autor e FK original; serviço/credenciais SQL impedem UPDATE/DELETE indevidos |
+| Convite de titular único | `habilitacao_acesso_idoso` com token só em hash, convite aberto único, FK composta perfil–titular |
+| Histórico de escala | `historico_plantao` separado de `auditoria` |
+| Outbox sem inbox | `entrega_tecnica_notificacao` é infraestrutura, sem histórico consultável |
 
-1. Ler `AGENTS.md`, `docs/10_IMPLEMENTACAO/CODEX_PLAYBOOK.md` e fontes RF/US aprovadas.
-2. Para gerar **EER**, usar `001_rede_de_apoio_schema.sql` como **hipótese de diagrama**, podendo apontar inconsistências.
-3. Para implementar caso de uso, resolver a Issue originadora; só utilizar uma alternativa de ADR marcada aprovada expressamente na fonte. Sem decisão, apresentar proposta e marcar `BLOCKED_BY_DECISION`; **não inferir aprovação pelo fato de a coluna existir em SQL**.
-4. Nunca alterar a estrutura aprovada pela fonte em `main` ou criar role extra; `Plantonista Atual` é condição temporal.
-5. Ao aprovar uma ADR, registrar autor, data, opção, RF/US afetados, evidências/aceite e então atualizar DDL e documentação juntos.
-6. Não rodar este arquivo em produção; não criar seeds com dados pessoais/saúde.
+## Regras que exigem código e teste
 
-**Nota de segurança**: uma FK entre `usuario` e `membro_rede` não autoriza leitura de todos os dados de uma rede. O backend deve verificar cada operação, tempo e escopo; o banco é a defesa estrutural complementar.
+- Criar rede + Principal e primeiro Profissional na mesma transação: UNIQUE **não** garante existência mínima.
+- Autorização por ator/vínculo/rede/recurso em toda operação; Pessoa Idosa apenas read-only.
+- Troca de Principal com locks, revogação+concessão atômicas.
+- Desvínculo com responsabilizações futuras explicitamente resolvidas, histórico preservado.
+- N02 só ao responsável designado efetivamente em plantão; sem elegível, registrar pendência e **não** inventar destinatário.
+- N04 em H+15 se não há registro confirmado, sem interpretar como omissão clínica.
+- DST/fuso: bloquear horário ambíguo/inexistente sem resolução expressa; sem PRN automático.
+- Convite único expira, hash de token, titular se autentica com Argon2id, não familiar.
+- Append-only e auditar acesso negado fora do rollback do domínio.
+- LGPD, retenção e segurança antes de operar dados reais.
 
-V0.1 é uma **prototipação de desenho**, não certificação de integridade clínica ou conformidade regulatória.
+## Não executado
+
+**SQL ainda não importado num servidor MySQL ou Workbench pelo assistente.** CI GitHub valida estaticamente, não substitui execução MySQL 8.4 nem concorrência de duas sessões. Para EER usar [guia Workbench](README.md) e [validação após importar](002_validar_estrutura.sql). Segunda rede, reabertura de tarefa, permuta bilateral, múltiplas administrações clínicas, PRN e correção de anexo estão fora da V1.
+
+Codex tem autonomia **dentro** da ratificação V1, sem autorização para ampliar comportamento ou executar banco de produção.

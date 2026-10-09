@@ -1,18 +1,12 @@
 {
   "kind": "CODEX_IMPLEMENTATION_BACKLOG",
-  "version": "2026-10-09",
+  "version": "2026-10-09-v1-ratificada",
   "source": "docs/01_REQUIREMENTS/USER_STORIES_INDEX.yaml at main:566dfc311ba4e7874269a637f3daceb2c31e4511",
   "acceptance_index": "docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml",
   "acceptance_text_source": "approved comments on GitHub Issues; historical approved snapshot ACCEPTANCE_CRITERIA_DRAFT.yaml",
-  "comment": "Projection for Codex task routing; issue numbers, owners, US and RF/RNF copied from canonical registry. Dependencies are candidate design-review triggers, not status of the User Stories. Do NOT create new RF/US from this file.",
+  "comment": "36 US from canonical registry. decision_dependencies reference ratified V1 ADRs, not unresolved options. MySQL physical/regulatory operational gates still require real validation.",
   "application_code_status": "NOT_PRESENT_AT_SNAPSHOT_CREATION",
-  "global_required_decisions": [
-    "STACK_SELECTION",
-    "AUTH_PROVIDER_DB-016",
-    "DB-001",
-    "DB-002",
-    "DB-030"
-  ],
+  "global_required_decisions": [],
   "stories": [
     {
       "us": "US-001",
@@ -615,5 +609,8 @@
       "implementation_pr": null,
       "test_evidence": null
     }
-  ]
+  ],
+  "decision_register": "docs/10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md",
+  "stack_register": "docs/10_IMPLEMENTACAO/STACK_V1_HOMOLOGADA.md",
+  "product_gate_status": "RATIFIED_FOR_V1_IMPLEMENTATION"
 }

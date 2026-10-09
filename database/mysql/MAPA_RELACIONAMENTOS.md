@@ -83,3 +83,7 @@ Outbox é **infraestrutura técnica**, não Central de Notificações. N01–N04
 5. Registrar eventuais erros reais do Workbench/MySQL em Issue/PR; não afirmar que só a validação estática prova a importação.
 
 Os diagramas Mermaid aqui são referências para orientação rápida **GitHub-only**; o modelo EER físico só é provado quando importado na ferramenta.
+
+## Complemento V1 (2026-10-09)
+
+O script SQL consolidado inclui também **habilitacao_acesso_idoso** (convite temporário/senha do titular), **historico_plantao** (eventos de escala) e duas guardas novas: uma única rede histórica por pessoa idosa via UNIQUE, e no máximo uma administração vinculada à mesma ocorrência via UNIQUE `(rede_id,ocorrencia_id)`. O diagrama Mermaid acima é histórico simplificado; obter relações exatas a partir de [SQL V1](001_rede_de_apoio_schema.sql) no Workbench. [Decisões ratificadas](../../docs/10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md).

@@ -27,3 +27,9 @@ O app ainda nao tem stack, backend/frontend, migrations ou auth definidos/implem
 **Preflight testável:** scripts `validate_agent_context.py` (com PyYAML), `validate_sql_prototype.py`, `validate_visual_snapshot.py` e `validate_implementation_backlog.py`; workflow GitHub Actions em `.github/workflows/`.
 
 **Iniciar novo Codex sem conversar sobre o histórico:** "Leia AGENTS.md e docs/10_IMPLEMENTACAO/README.md. Escolha uma US do backlog com requisitos e decisões suficientes. Implemente em PR pequeno com testes, sem aprovar ADR não resolvida e sem merge automático." A escolha final da stack deve ocorrer antes de gerar aplicação.
+
+## V1 homologada: início recomendado
+
+**Primeira leitura:** [DECISOES_V1_HOMOLOGADAS.md](DECISOES_V1_HOMOLOGADAS.md) → [STACK_V1_HOMOLOGADA.md](STACK_V1_HOMOLOGADA.md) → [CODEX_PLAYBOOK.md](CODEX_PLAYBOOK.md) → [IMPLEMENTATION_BACKLOG.json](IMPLEMENTATION_BACKLOG.json) → [FIGMA_SNAPSHOT](FIGMA_SNAPSHOT/README.md) → [SQL MySQL V1](../../database/mysql/README.md).
+
+**Arquivos históricos:** [STACK_CANDIDATA.md](STACK_CANDIDATA.md) e [PORTOES_PENDENTES.md](PORTOES_PENDENTES.md) foram preparados antes da ratificação. Ver [GATES_DE_IMPLANTACAO_V1.md](GATES_DE_IMPLANTACAO_V1.md) para pendências de execução física/produção que permanecem reais. Não criar o aplicativo nesta revisão do SQL; o Codex já tem especificação para iniciar o código como tarefa posterior.

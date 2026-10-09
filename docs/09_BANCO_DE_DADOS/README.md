@@ -149,3 +149,9 @@ Foram acrescentadas as decisões DB-025–DB-028 para análise humana (total na 
 **Estado atual após publicação:** 51 arquivos de documentação/diagrama, inventário DB-001–DB-038 com status de decisão/resolução parcial, 224 cenários de mesa T/K-T/L-T/V-T/C-T/B-T mais 18 cenários condicionais N02. A análise não criou novos casos numerados nem fechou novas ADRs. **Nenhum SQL, banco, migration, alteração na `main` ou merge.**
 
 **Regra de precedência para critérios de aceite:** `ACCEPTANCE_CRITERIA.yaml` registra a aprovação de P01/#73 e os `comment_id` por US; os textos aprovados foram promovidos como comentários nas Issues; `ACCEPTANCE_CRITERIA_DRAFT.yaml` é o snapshot histórico aprovado e contém a antiga etiqueta `pending_human_review`. Não interpretar corpo de Issue ou status legado do snapshot como ausência de aprovação.
+
+## Homologação V1 posterior à auditoria documental — 2026-10-09
+
+**Decisões DB-001–DB-038 agora possuem alternativas selecionadas para a V1** em [DECISOES_V1_HOMOLOGADAS.md](../10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md), por delegação expressa do solicitante. Itens das revisões anteriores com a palavra PENDENTE são **histórico de alternativas**, não status V1 atual. A V1 não equivale a prova MySQL nem liberação de produção clínica/LGPD.
+
+Consolidação física: [SQL MySQL 8.4 V1](../../database/mysql/001_rede_de_apoio_schema.sql), [README Workbench](../../database/mysql/README.md), [validação SQL](../../scripts/validate_sql_prototype.py). O script V1 contém **30 CREATE TABLE** incluindo convite de acesso do idoso e histórico de alteração de plantão; não foi executado em MySQL.
