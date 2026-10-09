@@ -1,0 +1,61 @@
+# 15 — Plano de execução futuro, sem executar
+
+## Estado atual: ESTUDO + DOCUMENTAÇÃO
+
+**Não há implementação de banco neste PR.** Não criar serviço de produção, instância, usuário real, script de criação ou migração até revisão.
+
+### Fase A — Leitura e consolidação (esta entrega)
+- [x] Localizar repositório operacional canônico e priorizar seus requisitos.
+- [x] Levantar RN-001–RN-011, N01–N04, RF01–RF30, RNF01–RNF03 e US-001–US-036.
+- [x] Produzir modelo conceitual e dicionário preliminar com proveniência.
+- [x] Documentar decisões não resolvidas sem inventar novas regras.
+- [x] Produzir cenários positivos, negativos e de concorrência para revisão.
+- [x] Consultar referências externas de MySQL, OWASP e ANPD.
+- [ ] Revisar em PR com a equipe; resolver inconsistências do levantamento.
+
+### Fase B — Fechar modelo conceitual (DEPOIS)
+1. Resolver DB-001–DB-024 conforme impacto; registrar ADRs revisadas, com veto às que conflitam com regras canônicas.
+2. Homologar entidades, atributos, relacionamentos com 0/1/N e participação obrigatória/opcional.
+3. Homologar ciclos de vida de vínculo, papel, plantão, troca, tarefa, medicina e correção.
+4. Homologar diagramas conceituais e narrativas de integridade.
+5. Revisar cenários T01–T42: cada um precisa do invariante protetor.
+
+### Fase C — Modelo lógico (DEPOIS)
+1. Relacionamentos N:M viram tabelas associativas sem perda de histórico.
+2. Chaves alternativas, PKs e FKs reais (incluindo as compostas de escopo).
+3. Tipos lógicos, nulidade, domínios de status, estados e versões.
+4. Normalização 1FN/2FN/3FN; revisão de redundância nas views.
+5. Testes de consistência de dependências, conflitos de exclusividade/temporalidade e modelo de permissão.
+
+### Fase D — Script físico MySQL (DEPOIS, somente após aprovação)
+1. Fixar MySQL patch, charset, collation e UTC/timezone.
+2. Escrever DDL com InnoDB, PKs, FKs, UNIQUE, CHECK e índices justificados.
+3. Especificar transações críticas (transferência Principal, troca, correção, auditoria) e mecanismo de autorização.
+4. Criar migrations versionadas, seeds **sintéticos** e rollback explícito.
+5. Diferenciar testes automatizados de unitário, integração MySQL, segurança, concorrência e regressão.
+
+### Fase E — Execução, diagramas e evidências (DEPOIS)
+1. Provisionar instância descartável de teste, nunca conectada a dados reais.
+2. Executar migrations e seeds; verificar SHOW CREATE TABLE e INFORMATION_SCHEMA.
+3. Rodar testes T01–T42 adaptados para SQL/serviço e validar duas transações concorrentes de verdade.
+4. Validar recorrências com relógio/fuso explícitos, notificações N01–N04 e CSV restrito.
+5. Usar MySQL Workbench para engenharia reversa; comparar DER físico com modelo conceitual, descrever diferenças.
+6. Executar EXPLAIN, backup/restore, privacidade e desempenho em dados sintéticos.
+7. Registrar evidências de versão, comandos, saídas, status e PR de homologação.
+
+## Critérios de aceitação do pacote de conhecimento (não do produto)
+
+- Cada uma das 36 US aparece no mapa de rastreabilidade.
+- Invariantes de Principal, Profissional, categorias, permissão temporal e correção possuem cenário contrário.
+- Cada entidade candidata possui justificativa e PK/FKs candidatas ou dúvida formal.
+- O diagrama não introduz tabela para tela T03/T04/T05/T07.
+- Nenhuma regra oficial é substituída por hipótese silenciosa.
+- Documento de segurança não contém dados reais de saúde.
+- Não afirmar “passou no MySQL” antes de testes executados.
+- Alterações são revisadas por PR; merge requer aprovação humana segundo AGENTS.md.
+
+## Ordem de review sugerida
+
+**Primeiro:** modelo de identidade/rede/papéis/Principal/profissional. **Segundo:** plantões e autorização temporal. **Terceiro:** definição do envelope de registros imutáveis. **Quarto:** medicamentos/recorrência/atraso. **Quinto:** anexos/auditoria/CSV/notificações. **Por fim:** fixação de chaves/tipos e DDL.
+
+Essa ordem reduz o retrabalho porque outras relações dependem de identidades, contexto e restrições temporais.

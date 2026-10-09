@@ -83,3 +83,8 @@ O Codex deve:
 - trabalhar em branch e deixar PR para revisão humana.
 
 O workflow **Validate agent context** valida os registries em Pull Requests.
+
+
+## Modelagem de Banco de Dados — fase de planejamento
+
+A base de conhecimento da modelagem está em [docs/09_BANCO_DE_DADOS/](docs/09_BANCO_DE_DADOS/README.md). Reúne modelo conceitual, dicionário de dados candidato, cardinalidades, regras de acesso e integridade, 36 US rastreadas, exercícios de mesa, ADRs pendentes e roteiro da futura implementação MySQL. **É documentação em revisão, não DDL nem banco implantado.** As regras funcionais canônicas deste repositório continuam prevalecendo sobre propostas técnicas.
