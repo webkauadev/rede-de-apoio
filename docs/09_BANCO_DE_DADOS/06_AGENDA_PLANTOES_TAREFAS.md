@@ -55,3 +55,13 @@ No instante T, um evento programado de horário H está atrasado se T >= H+15 mi
 - Troca aceita durante a execução de lembrete N02: destinatário deve ser resolvido no instante do disparo, após ler estado confirmado.
 - Responsável desvinculado: preserva histórico mas perde autorização futura; reatribuição pendente.
 - Dois pedidos de troca sobre o mesmo plantão: só se aplica um efeito consistente, sem resposta duplicada.
+
+
+## Revisão aprofundada — máquinas de estado e concorrência
+
+O detalhamento de primeira rodada permanece base de contexto. A segunda revisão formalizou os **contratos propostos** de intervalo, responsável e versionamento e está em:
+- [22 — Regras temporais](22_REGRAS_TEMPORAIS_E_RECURRENCIA.md);
+- [23 — Plantões, trocas e tarefas](23_PLANTOES_TROCAS_TAREFAS_REVIEW.md);
+- [26 — Cenários de mesa L-T01–L-T22](26_TESTES_MESA_DOMINIO_TEMPORAL.md).
+
+**Observação de escopo:** o cálculo “Atrasado se T>=H+15 minutos” presente acima é uma convenção de implementação CANDIDATA. O requisito aprovado diz “após 15 minutos”; tratamento da igualdade e da corrida entre registro/worker precisa de DB-031. Sobreposição de plantões e múltiplos responsáveis também não foi decidida no RF.

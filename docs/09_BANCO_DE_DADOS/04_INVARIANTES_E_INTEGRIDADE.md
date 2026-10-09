@@ -55,3 +55,19 @@
 5. A revogação de vínculo/categoria não deve produzir mudança retroativa de autoria ou permitir reaproveitamento de identidade histórica. DB-003/DB-026.
 6. Em REPEATABLE READ, SELECT comum pode ler snapshot antigo; operações que tomam decisão de permissão e escrevem exigem travamento/checagem na transação, não leitura prévia isolada. Cf. https://dev.mysql.com/doc/refman/8.4/en/innodb-consistent-read.html.
 7. A documentação em [18](18_REVISAO_CRITICA_NUCLEO_IDENTIDADE.md), [19](19_ALTERNATIVAS_E_TRANSACOES_NUCLEO.md) e [20](20_CENARIOS_RIGOROSOS_NUCLEO.md) substitui quaisquer suposições implícitas sobre categorias e Principal em exemplos anteriores deste diretório.
+
+
+## Extensão de invariantes temporais — 2026-10-09
+
+- **I23 (proposta técnica):** para intervalos adotados como [início,fim), início<fim e a sobreposição A∩B ≠ ∅ ocorre quando A.início<B.fim e B.início<A.fim; a política para sobreposições continua DB-005.
+- **I24:** um pedido de troca já decidido não produz uma segunda alteração da mesma versão do plantão quando reprocessado; conflitos/concorrência devem ser serializados no serviço.
+- **I25:** execução registrada se associa à pessoa, regime e horário pertinentes, evitando vínculos cruzados por FKs compostas quando possível.
+- **I26:** mudança no horário/regime não reinterpreta administrações já confirmadas; correções seguem RNF02.
+- **I27:** identidade de ocorrência datada precisa distinguir datas repetidas e revisões da regra; materialização é DB-029.
+- **I28:** N02 resolve Plantonista Atual verdadeiro no instante do evento; se houver zero ou múltiplos, o comportamento é DB-030, nunca escolher arbitrariamente.
+- **I29:** N04 depende de horário programado + ausência de registro; não inferir omissão e não criar atraso em sintoma espontâneo.
+- **I30:** apenas uma entrega técnica por evento/ocorrência/tipo/destinatário efetivo em processamento idempotente; existência de outbox permanece DB-014.
+- **I31:** registro tardio preserva a história de “sem registro no instante do aviso”, sem apagar fato já auditado; a política do status corrente e da borda é DB-031.
+- **I32:** diferenças entre instantes UTC e hora civil no fuso são explicitadas; regras de DST inexistente/duplicado dependem DB-033.
+
+**Leitura complementar:** [22](22_REGRAS_TEMPORAIS_E_RECURRENCIA.md) e [25](25_N02_N04_EVENTOS_IDEMPOTENCIA.md); simuladores em [27](27_EVIDENCIAS_SIMULACAO_TEMPORAL.md).

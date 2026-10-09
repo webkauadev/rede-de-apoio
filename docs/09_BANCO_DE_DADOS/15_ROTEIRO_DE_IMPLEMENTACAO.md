@@ -59,3 +59,10 @@
 **Primeiro:** modelo de identidade/rede/papéis/Principal/profissional. **Segundo:** plantões e autorização temporal. **Terceiro:** definição do envelope de registros imutáveis. **Quarto:** medicamentos/recorrência/atraso. **Quinto:** anexos/auditoria/CSV/notificações. **Por fim:** fixação de chaves/tipos e DDL.
 
 Essa ordem reduz o retrabalho porque outras relações dependem de identidades, contexto e restrições temporais.
+
+
+## Gate adicional aberto pela revisão temporal (2026-10-09)
+
+Antes do modelo lógico/DDL, resolver em conjunto com identidade DB-001–DB-004 as dependências temporais **DB-005/007/010/011/014/015/021/029/030/031/032/033**, sem contrariar RF17/26. Exigir plano de idempotência, identidade de ocorrência, autorização por vínculo vigente e formato de timezone.
+
+Casos L-T01–L-T42 (documento 26) precisam de execução física posteriormente. Casos de borda de DST exigem dados de zona nomeada; trocas/conclusões concorrentes e o worker de alerta exigem pelo menos duas conexões SQL reais. Nenhum destes testes foi executado no banco nesta fase.

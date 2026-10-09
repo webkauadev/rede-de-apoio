@@ -64,3 +64,18 @@
 | DB-028 | O que acontece com plantões/tarefas futuros de membro desvinculado e com desvínculo do último profissional/principal? | transações de saída e reatribuição; sem excluir histórico | PENDENTE, exige regra de comportamento |
 
 **Consulta obrigatória:** [18_REVISAO_CRITICA_NUCLEO_IDENTIDADE.md](18_REVISAO_CRITICA_NUCLEO_IDENTIDADE.md) e [19_ALTERNATIVAS_E_TRANSACOES_NUCLEO.md](19_ALTERNATIVAS_E_TRANSACOES_NUCLEO.md). Não há ADR adotada automaticamente nesta revisão.
+
+
+## ADRs temporais adicionadas na segunda revisão — 2026-10-09
+
+| ADR | Pergunta que precisa de resposta | Efeito na modelagem | Status |
+|---|---|---|---|
+| DB-029 | Ocorrências programadas (tarefa/dose/outro cuidado) serão geradas sob consulta, persistidas ou híbridas? Qual sua identidade estável por data/versão? | C04, calendário, N02/N04, registro de execução e deduplicação | PENDENTE |
+| DB-030 | O que fazer quando no horário de N02 não houver Plantonista Atual, ou houver mais de um? | cardinalidade, sobreposição e eventual protocolo de exceção sem criar destinatário não aprovado | PENDENTE |
+| DB-031 | Como tratar igualdade em H+15, concorrência entre execução e N04, e registro posterior alegando execução anterior? | estado observado, auditabilidade, temporalidade de alertas | PENDENTE |
+| DB-032 | Repetições de conclusão de tarefa/administração são idempotência, reabertura ou execuções distintas? | cardinalidades D09/D16, chaves de ocorrência e operação | PENDENTE |
+| DB-033 | Em recorrência local, qual política para hora inexistente/duplicada na mudança de fuso ou DST? | geração de ocorrência, DATE/TIME/DATETIME, data histórica | PENDENTE |
+
+Estas ADRs refinam DB-005/007/010/011/014/015/021, sem substituí-las. Não se pode escolher destinatário alternativo, impor proibição de plantão simultâneo, prescrever intervalo clínico ou reprocessar execução “omitida” sem decisão funcional documentada. **Total atual: 33 ADRs, todas pendentes.**
+
+Documentação: [22](22_REGRAS_TEMPORAIS_E_RECURRENCIA.md), [23](23_PLANTOES_TROCAS_TAREFAS_REVIEW.md), [24](24_MEDICAMENTOS_OCORRENCIAS_VERSIONAMENTO.md), [25](25_N02_N04_EVENTOS_IDEMPOTENCIA.md) e [27](27_EVIDENCIAS_SIMULACAO_TEMPORAL.md).

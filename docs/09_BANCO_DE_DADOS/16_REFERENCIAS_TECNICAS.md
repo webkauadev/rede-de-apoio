@@ -33,3 +33,16 @@ Pesquisadas para orientar as **decisões técnicas**, não para inventar RF/US n
 ## Autoridade
 
 **GitHub rede-de-apoio** define o que o produto faz. **MySQL** define capacidades/limites técnicos. **OWASP/ANPD** ajudam a proteger dados e informar decisões. **Professor** fornece padrões didáticos úteis. Divergências funcionais permanecem em ADR pendente até decisão humana; não devem ser “resolvidas” com conhecimento externo sem autorização.
+
+
+## Complemento consultado — temporalidade e concorrência
+
+- https://dev.mysql.com/doc/refman/8.4/en/innodb-locks-set.html — bloqueios para range scans e efeito de índices.
+- https://dev.mysql.com/doc/refman/8.4/en/innodb-transaction-model.html — modelo transacional, snapshots e locking reads.
+- https://dev.mysql.com/doc/refman/8.4/en/innodb-deadlocks-handling.html — ordem de lock, EXPLAIN e retry.
+- https://dev.mysql.com/doc/refman/8.4/en/date-and-time-types.html — distinção DATE/TIME/DATETIME/TIMESTAMP.
+- https://dev.mysql.com/doc/refman/8.4/en/time-zone-support.html — fuso servidor/sessão e tabelas para timezones nomeadas.
+- https://dev.mysql.com/doc/refman/8.4/en/create-event.html — CREATE EVENT, agendamento e fuso.
+- https://dev.mysql.com/doc/refman/8.4/en/events-overview.html — Event Scheduler, eventos recorrentes e possibilidade de instâncias sobrepostas.
+
+Estas fontes dão sustentação técnica à análise 22–27; não redefinem o produto.

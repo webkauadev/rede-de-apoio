@@ -42,3 +42,10 @@ Chave candidata (evento_origem_id, tipo N##, usuario_destinatario_id, ocorrencia
 6. Sintoma espontâneo às 10:00 não cria N04.
 7. Preferência desligada para N03 de Apoio não remove N03 obrigatório do Principal.
 8. Mensagem persistida tecnicamente no outbox não é acessível por tela de histórico inexistente.
+
+
+## Revisão de garantia de entrega e atraso
+
+Ver [25 — Eventos e idempotência](25_N02_N04_EVENTOS_IDEMPOTENCIA.md), [22 — Tempo/recorrência](22_REGRAS_TEMPORAIS_E_RECURRENCIA.md) e [26 — Casos de aviso L-T33–L-T42](26_TESTES_MESA_DOMINIO_TEMPORAL.md).
+
+**Nuance importante:** emitir feedback transitório no AppShell não equivale a prometer entrega offline ou exactly-once. O processamento N02 sem Plantonista Atual, com múltiplos plantonistas, e a interpretação de registro retroativo são questões de modelo/negócio pendentes DB-030/031. Nunca criar destinatário substituto nem caixa de entrada sem mudança aprovada.

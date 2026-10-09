@@ -73,3 +73,17 @@
 - Desvinculação/desativação não deve apagar linhas históricas.
 - Política DELETE/UPDATE, NULL, índices e tipos serão decididos por entidade na fase física, nunca copiados sem avaliação.
 - Não armazenar na base entidades artificiais apenas porque há tela Home/Calendário/Histórico ou status visual Loading/Empty.
+
+
+## Atualização de criticidade dos dados temporais — revisão 2026-10-09
+
+Os campos D06–D16 e a extensão C04 precisam ser homologados contra [22](22_REGRAS_TEMPORAIS_E_RECURRENCIA.md)–[25](25_N02_N04_EVENTOS_IDEMPOTENCIA.md) antes de definir NULL/UNIQUE e criar DDL:
+- **D06 plantao:** data de início e fim, status, responsável da mesma rede, alteração/versionamento; não existe coluna Plantonista Atual. Não impor ausência de sobreposição sem DB-005/DB-030.
+- **D07 solicitacao_troca:** guardar versão do plantão a que se refere o pedido, resultado e referência transacional. Troca aceita precisa refletir estado e histórico, mas não implica dupla permuta sem DB-006.
+- **D08/D09 tarefa/conclusao:** separar plano de fato ocorrido e hora real de registro; cardinalidade 1:1 vs. 1:N depende DB-007/DB-032.
+- **D13/D14/D15 medicamento/regime/horario:** identificar a *versão de regime* e a regra de recorrência com vigência; não usar hora local como instante UTC sem data/zona.
+- **D16 administracao:** referencia mesmo regime/horário/pessoa e, se houver agendamento datado, a ocorrência correta; preserva execuções históricas ao alterar o plano.
+- **C03 outbox técnico:** não é tabela de histórico do usuário nem fonte de verdade sobre cuidado prestado; pode necessitar chave de evento/ocorrência/destinatário e política de retenção.
+- **C04 ocorrencia_programada:** permanece condicional; não duplicar todos os cuidados do sistema por conveniência, nem apontar fonte por texto sem integridade.
+
+Chaves lógicas de ocorrência diária, versionamento e unicidade de administração ainda dependem DB-021/DB-029/DB-032. A documentação atual não aprova novas entidades obrigatórias.

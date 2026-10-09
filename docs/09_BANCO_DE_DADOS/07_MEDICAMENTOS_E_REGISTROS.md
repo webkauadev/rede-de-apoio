@@ -53,3 +53,10 @@ T05/T07 integram informações autorizadas de diário, administração, compromi
 - [ ] Histórico original/correções podem ser reconstituídos em ordem.
 - [ ] Acesso somente-leitura da pessoa idosa não permite registrar administração.
 - [ ] Não inferir recomendações médicas, diagnósticos nem alteração de dose por algoritmo.
+
+
+## Revisão aprofundada — versão de posologia e ocorrência datada
+
+Ver [22 — tempo e recorrência](22_REGRAS_TEMPORAIS_E_RECURRENCIA.md), [24 — medicamento/posologia/execução](24_MEDICAMENTOS_OCORRENCIAS_VERSIONAMENTO.md), [25 — notificações N02/N04](25_N02_N04_EVENTOS_IDEMPOTENCIA.md) e [26 — cenários L-T23–L-T32](26_TESTES_MESA_DOMINIO_TEMPORAL.md).
+
+**Distinção mandatória para a futura arquitetura:** uma linha de medicamento, a versão do regime, um horário de repetição, uma ocorrência **datada** e o fato de administração NÃO são o mesmo registro. Não inferir número de doses, recomendação médica, status clínico ou regra de horário de verão do RF15/16. Alterações preservam fatos históricos e exigem decisões DB-010/011/021/029/033.

@@ -63,4 +63,18 @@ Consulte [17_VALIDACAO_DOCUMENTAL.md](17_VALIDACAO_DOCUMENTAL.md) para as verifi
 | [20 — Provas conceituais](20_CENARIOS_RIGOROSOS_NUCLEO.md) | 36 casos K-T e 6 roteiros de concorrência para execução futura |
 | [21 — Evidências do review](21_EVIDENCIAS_REVIEW_NUCLEO.md) | 560 asserções de modelos em memória, limites metodológicos e gates |
 
-Foram acrescentadas as decisões DB-025–DB-028 para análise humana (total atual: **28 ADRs abertas**). As simulações não são execução MySQL e as preferências técnicas não são decisões aprovadas.
+Foram acrescentadas as decisões DB-025–DB-028 para análise humana (total na revisão anterior: **28 ADRs abertas**, ampliadas para **33** no refinamento temporal). As simulações não são execução MySQL e as preferências técnicas não são decisões aprovadas.
+
+
+## Segunda revisão — domínio temporal, 2026-10-09
+
+| Documento | Conteúdo novo |
+|---|---|
+| [22 — Regras de tempo e recorrência](22_REGRAS_TEMPORAIS_E_RECURRENCIA.md) | instante vs. horário local, intervalos, ocorrências e zonas |
+| [23 — Plantões/trocas/tarefas](23_PLANTOES_TROCAS_TAREFAS_REVIEW.md) | máquinas de estados, transações, escopo e conflitos |
+| [24 — Medicamentos e versões](24_MEDICAMENTOS_OCORRENCIAS_VERSIONAMENTO.md) | regime, dose prevista x administração, recorrência e histórico |
+| [25 — Lembretes e alertas N02/N04](25_N02_N04_EVENTOS_IDEMPOTENCIA.md) | destinatários efetivos, deduplicação, atraso e outbox |
+| [26 — Testes temporais de mesa](26_TESTES_MESA_DOMINIO_TEMPORAL.md) | 42 cenários L-T, sem MySQL |
+| [27 — Evidências da simulação temporal](27_EVIDENCIAS_SIMULACAO_TEMPORAL.md) | 17.774 verificações em memória, limitações expressas |
+
+**Estado agregado após estas revisões:** 29 documentos no diretório; 33 ADRs DB-001–DB-033 ainda abertas; 42 cenários gerais T, 36 de identidade K-T e 42 temporais L-T, todos como planejamento sem execução de banco. Total de simulações registrado separadamente em 21 e 27, sem falsa equivalência a testes independentes de integração.

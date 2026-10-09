@@ -57,3 +57,16 @@ Somente orientações para futura modelagem física. **Não há CREATE TABLE, mi
 Executou em MySQL? Versão, script/commit, base descartável, comandos e saídas, dados sintéticos, pass/fail, diagnósticos. Até então, todos os testes deste diretório são **exercícios de mesa**, não SQL comprovado.
 
 Referências: https://dev.mysql.com/doc/refman/8.4/en/create-table-check-constraints.html ; https://dev.mysql.com/doc/refman/8.4/en/create-table-foreign-keys.html ; https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-reads.html .
+
+
+## Restrições MySQL específicas da revisão temporal
+
+- **Overlap:** MySQL/InnoDB não possui constraint declarativa geral do tipo excluir intervalos sobrepostos; uma UNIQUE(rede_id,inicio) não impede [10,12) e [11,13). Se sobreposição for proibida, exigir transação e lock de linha agregadora estável/estratégia equivalente, com índices e teste de concorrência (DB-005).
+- **Locks dependem dos índices e da consulta:** range scans podem bloquear mais linhas; sem índice um UPDATE/locking read pode ter bloqueios amplos. Testar EXPLAIN e concorrência real.
+- **REPEATABLE READ:** uma leitura de snapshot não é trava para decisões críticas de autorização/execução; ler e gravar em operação transacional apropriada.
+- **Eventos agendados:** Event Scheduler MySQL pode iniciar instâncias sobrepostas quando uma execução dura além do intervalo; não usá-lo como garantia automática de entrega única.
+- **Fuso:** event_scheduler e conexões têm semântica de time_zone; UTC para instantes e zona nomeada para recorrência são recomendações a validar.
+- **Datas:** DATE, TIME, DATETIME e TIMESTAMP não são sinônimos; fixar versão/precisão e testar DST.
+- **Mínimo de prova antes do DDL:** cenário L-T01–L-T42, DB-005/010/011/015/021/029–033 e FKs compostas de escopo.
+
+Fontes: https://dev.mysql.com/doc/refman/8.4/en/innodb-locks-set.html ; https://dev.mysql.com/doc/refman/8.4/en/innodb-transaction-model.html ; https://dev.mysql.com/doc/refman/8.4/en/events-overview.html ; https://dev.mysql.com/doc/refman/8.4/en/time-zone-support.html .
