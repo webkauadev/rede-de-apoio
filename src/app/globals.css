@@ -1,0 +1,150 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+:root {
+  --background: #fbf8ff;
+  --foreground: #12222b;
+  --card: #ffffff;
+  --card-foreground: #12222b;
+  --popover: #ffffff;
+  --popover-foreground: #12222b;
+  --primary: #00567c;
+  --primary-foreground: #ffffff;
+  --secondary: #ebe8fa;
+  --secondary-foreground: #00567c;
+  --muted: #f3f0f7;
+  --muted-foreground: #4a5a66;
+  --accent: #d0e9f3;
+  --accent-foreground: #003d59;
+  --destructive: #b3261e;
+  --border: #e5e5e5;
+  --input: #6e8496;
+  --ring: #00567c;
+  --brand: #2a6f97;
+  --success: #256b4d;
+  --success-surface: #e6f4ee;
+  --warning: #7a5000;
+  --warning-surface: #fff6e5;
+  --danger-surface: #fdecea;
+  --surface-low: #f8f5fa;
+  --header-start: #eef2f8;
+  --header-end: #dcebf4;
+  --radius: 0.75rem;
+}
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-success: var(--success);
+  --color-success-surface: var(--success-surface);
+  --color-warning: var(--warning);
+  --color-warning-surface: var(--warning-surface);
+  --color-danger-surface: var(--danger-surface);
+  --color-surface-low: var(--surface-low);
+  --radius-lg: var(--radius);
+  --radius-md: 0.5rem;
+  --font-sans: "Geist", "Inter", sans-serif;
+  --text-title: 1.5rem;
+  --text-title--line-height: 2rem;
+  --text-heading: 1.25rem;
+  --text-heading--line-height: 1.75rem;
+  --text-subheading: 1.0625rem;
+  --text-subheading--line-height: 1.5rem;
+  --text-meta: 0.875rem;
+  --text-meta--line-height: 1.25rem;
+  --shadow-card: 0 1px 2px rgba(18, 34, 43, 0.06);
+}
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+@layer components {
+  .app-shell {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    max-width: 48rem;
+    margin-inline: auto;
+    overflow: hidden;
+  }
+  .app-header {
+    flex-shrink: 0;
+    padding: calc(1rem + env(safe-area-inset-top)) 1rem 1rem;
+    background: linear-gradient(
+      to right,
+      var(--header-start),
+      var(--header-end)
+    );
+  }
+  .content-viewport {
+    flex: 1;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    isolation: isolate;
+    padding: 1.5rem 1rem;
+  }
+  .primary-navigation {
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    background: var(--card);
+    padding: 0.5rem 1rem calc(0.5rem + env(safe-area-inset-bottom));
+  }
+  .nav-item {
+    min-height: 48px;
+    min-width: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-decoration: none;
+  }
+  .nav-indicator {
+    display: flex;
+    justify-content: center;
+    padding: 0.25rem 1rem;
+    border-radius: 999px;
+  }
+  .skip-link {
+    position: absolute;
+    z-index: 10;
+    transform: translateY(-200%);
+    background: var(--card);
+    color: var(--primary);
+    padding: 1rem;
+  }
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+}

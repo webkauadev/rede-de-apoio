@@ -94,3 +94,12 @@ pending_work:
   P07: {issue: 79, status: closed, state_reason: completed}
   P08: {issue: 80, status: closed, state_reason: completed}
   P09: {issue: 81, status: closed, state_reason: completed}
+
+# Infraestrutura não acrescenta RF/RNF/US ao catálogo.
+technical_tasks:
+  INFRA-117:
+    issue: 117
+    scope: nextjs_v1_scaffold_without_mysql_execution
+    branch: feat/infra-scaffold-v1
+    status: awaiting_human_review
+    evidence: docs/10_IMPLEMENTACAO/RUNBOOK_LOCAL_V1.md

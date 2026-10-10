@@ -33,3 +33,7 @@ O app ainda nao tem stack, backend/frontend, migrations ou auth definidos/implem
 **Primeira leitura:** [DECISOES_V1_HOMOLOGADAS.md](DECISOES_V1_HOMOLOGADAS.md) → [STACK_V1_HOMOLOGADA.md](STACK_V1_HOMOLOGADA.md) → [CODEX_PLAYBOOK.md](CODEX_PLAYBOOK.md) → [IMPLEMENTATION_BACKLOG.json](IMPLEMENTATION_BACKLOG.json) → [FIGMA_SNAPSHOT](FIGMA_SNAPSHOT/README.md) → [SQL MySQL V1](../../database/mysql/README.md).
 
 **Arquivos históricos:** [STACK_CANDIDATA.md](STACK_CANDIDATA.md) e [PORTOES_PENDENTES.md](PORTOES_PENDENTES.md) foram preparados antes da ratificação. Ver [GATES_DE_IMPLANTACAO_V1.md](GATES_DE_IMPLANTACAO_V1.md) para pendências de execução física/produção que permanecem reais. Não criar o aplicativo nesta revisão do SQL; o Codex já tem especificação para iniciar o código como tarefa posterior.
+
+## Infraestrutura de aplicação — Issue #117
+
+[Runbook local V1](RUNBOOK_LOCAL_V1.md): scaffold, versões instaladas, testes reais e limites de segurança. [Continuidade incremental](CONTINUIDADE_V1.md): sequência das 36 US, sem mudar o tracker canônico. A incorporação do scaffold exige revisão humana; nenhum banco foi executado.

@@ -300,3 +300,7 @@ Este documento originalmente consolida setembro/2026. **A decisão posterior** `
 - Implantação real com dados sensíveis exige prova de integração, controles LGPD/retention e revisão adicional.
 
 Esta atualização não afirma que aplicativo, banco físico ou deploy já existem.
+
+## Infraestrutura #117 — proposta em revisão (2026-10-09)
+
+Scaffold Next.js V1 em `feat/infra-scaffold-v1`, com página técnica, shell/tokens, MySQL lazy sem execução, testes unitários/E2E e CI. [Runbook](../10_IMPLEMENTACAO/RUNBOOK_LOCAL_V1.md) registra evidências e pendência de dependências dev. As 36 US permanecem não implementadas; SQL/baselines/requisitos preservados. Merge e continuação dependente aguardam revisão humana.
