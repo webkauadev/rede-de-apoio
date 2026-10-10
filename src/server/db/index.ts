@@ -14,6 +14,17 @@ export class DatabaseUnavailableError extends Error {
     this.name = "DatabaseUnavailableError";
   }
 }
+/**
+ * O COMMIT foi tentado, mas não recebemos confirmação confiável.
+ * O banco pode ter confirmado a transação: nunca repetir automaticamente
+ * o comando sem reconciliação/idempotência no serviço de domínio.
+ */
+export class TransactionOutcomeUnknownError extends Error {
+  constructor() {
+    super("Não foi possível confirmar o resultado da transação.");
+    this.name = "TransactionOutcomeUnknownError";
+  }
+}
 /** Importar este módulo não cria pool nem abre conexão. */
 function getPool(): Pool {
   return (pool ??= createPool(readDatabaseConfig(process.env)));
@@ -85,6 +96,7 @@ export async function withTransaction<T>(
     throw new DatabaseUnavailableError();
   }
   let reusable = true;
+  let commitAttempted = false;
   try {
     try {
       await connection.beginTransaction();
@@ -92,18 +104,25 @@ export async function withTransaction<T>(
       throw new DatabaseUnavailableError();
     }
     const result = await operation(executor(connection));
+    commitAttempted = true;
     try {
       await connection.commit();
     } catch {
-      throw new DatabaseUnavailableError();
+      // A confirmação pode ter ocorrido no servidor antes da falha de rede.
+      // ROLLBACK agora não prova reversão: descarte e exija reconciliação.
+      reusable = false;
+      connection.destroy();
+      throw new TransactionOutcomeUnknownError();
     }
     return result;
   } catch (error) {
-    try {
-      await connection.rollback();
-    } catch {
-      reusable = false;
-      connection.destroy();
+    if (!commitAttempted) {
+      try {
+        await connection.rollback();
+      } catch {
+        reusable = false;
+        connection.destroy();
+      }
     }
     throw error;
   } finally {

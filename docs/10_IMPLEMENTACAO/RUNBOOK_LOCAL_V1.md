@@ -151,3 +151,16 @@ em `ACCEPTANCE_CRITERIA.yaml`. `STATE_MATRIX.yaml`, `SCREEN_REGISTRY.yaml`, toke
 [Plano incremental](CONTINUIDADE_V1.md): próxima US recomendada é US-001/#37,
 após revisão e incorporação humana desta infraestrutura. Persistência real depende de autorização
 para ambiente descartável e G-DB; escopo/testes serão definidos a partir do comentário canônico.
+
+## Revisão de segurança transacional do PR #118 — 2026-10-09
+
+Após revisão, a camada `withTransaction` distingue erro **antes de tentar COMMIT** de erro **depois de iniciar COMMIT**. Uma exceção de `commit()` **não demonstra que a transação foi revertida**: pode ter sido confirmada no servidor e a resposta ter sido perdida. Nesse caso o módulo agora:
+
+- não tenta um `ROLLBACK` enganoso após o COMMIT incerto;
+- destrói a conexão em vez de devolvê-la ao pool;
+- retorna `TransactionOutcomeUnknownError` sem detalhes internos;
+- não faz retry implícito (operações posteriores deverão usar a estratégia aprovada de idempotência/reconciliação).
+
+Foi adicionado teste unitário sintético para falha de COMMIT, descarte da conexão e ausência de `rollback`/retry. Isso **não comprova** comportamento de duas sessões em MySQL real, que continua sujeito ao gate G-DB.
+
+**Dependências de desenvolvimento:** o `npm audit` registrado no PR identificou cinco achados high na cadeia de ferramentas de lint/transitivas; em runtime o audit anterior `--omit=dev` indicou zero vulnerabilidades. Não aplicar `npm audit fix --force` com downgrade incompatível. O PR permanecerá **draft** enquanto a avaliação/aceitação do risco de dependências estiver pendente. Atualizações devem ser compatíveis com Node/Next homologados e comprovadas por CI, sem prometer que esse commit saneia o advisory.

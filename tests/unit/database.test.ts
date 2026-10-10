@@ -17,7 +17,9 @@ import {
   closeDatabase,
   database,
   DatabaseUnavailableError,
+  TransactionOutcomeUnknownError,
   withTransaction,
+  type SqlExecutor,
 } from "@/server/db";
 
 describe("acesso a dados sem servidor MySQL (driver simulado)", () => {
@@ -95,7 +97,7 @@ describe("acesso a dados sem servidor MySQL (driver simulado)", () => {
     expect(mocks.connection.release).toHaveBeenCalledOnce();
     expect(mocks.connection.commit).not.toHaveBeenCalled();
   });
-  it.each(["beginTransaction", "execute", "commit"] as const)(
+  it.each(["beginTransaction", "execute"] as const)(
     "sanitiza falha de %s e reverte",
     async (stage) => {
       mocks.connection[stage].mockRejectedValue(
@@ -108,6 +110,25 @@ describe("acesso a dados sem servidor MySQL (driver simulado)", () => {
       expect(mocks.connection.release).toHaveBeenCalledOnce();
     },
   );
+  it("descarta conexão e sinaliza resultado desconhecido quando COMMIT falha", async () => {
+    mocks.connection.commit.mockRejectedValue(
+      new Error("driver-error-with-sensitive-value"),
+    );
+    const operation = vi.fn(async (tx: SqlExecutor) => {
+      await tx.execute("UPDATE synthetic SET value = ?", [1]);
+      return "tentativa-unica";
+    });
+    await expect(withTransaction(operation)).rejects.toThrow(
+      TransactionOutcomeUnknownError,
+    );
+    expect(operation).toHaveBeenCalledOnce();
+    expect(mocks.connection.beginTransaction).toHaveBeenCalledOnce();
+    expect(mocks.connection.execute).toHaveBeenCalledOnce();
+    expect(mocks.connection.commit).toHaveBeenCalledOnce();
+    expect(mocks.connection.rollback).not.toHaveBeenCalled();
+    expect(mocks.connection.destroy).toHaveBeenCalledOnce();
+    expect(mocks.connection.release).not.toHaveBeenCalled();
+  });
   it("descarta conexão cujo rollback falha", async () => {
     mocks.connection.rollback.mockRejectedValue(
       new Error("driver-error-with-sensitive-value"),
