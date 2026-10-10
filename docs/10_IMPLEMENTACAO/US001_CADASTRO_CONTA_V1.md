@@ -1,99 +1,95 @@
-# US-001 — Cadastro de Conta: implementação parcial para revisão
+# US-001 / RF01 / T02 — cadastro de CUIDADOR por convite
 
-**Issue:** [#37](https://github.com/webkauadev/rede-de-apoio/issues/37). **Branch:** `feat/us001-cadastro-conta-v1`. **Owner:** David, preservado. Base: scaffold revisado e incorporado em `ed75c72`, PR #118. Esta entrega não conclui a US e não libera cadastro em ambiente público.
+**Estado:** fluxo local implementado, em validação/revisão humana no **Draft PR #120**, branch `feat/us001-cadastro-conta-v1`. Owner David preservado. Nenhum merge, deploy ou encerramento automático da Issue.
 
-## Fontes e escopo
+## Fontes canônicas
 
-- [Comentário técnico atual](https://github.com/webkauadev/rede-de-apoio/issues/37#issuecomment-6091789679), [aceite aprovado](https://github.com/webkauadev/rede-de-apoio/issues/37#issuecomment-5673832998), [RF01/#5](https://github.com/webkauadev/rede-de-apoio/issues/5), RNF01.
-- [Aceites canônicos](../01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml), [decisões V1](DECISOES_V1_HOMOLOGADAS.md), [stack](STACK_V1_HOMOLOGADA.md), [gates](GATES_DE_IMPLANTACAO_V1.md), [permissões](../02_BUSINESS_RULES/PERMISSIONS_MATRIX.md).
-- T02: [baseline congelada](FIGMA_SNAPSHOT/assets/T02.png), [registry](../07_AI_CONTEXT/SCREEN_REGISTRY.yaml), [estados](../07_AI_CONTEXT/STATE_MATRIX.yaml), [tokens](../04_DESIGN_SYSTEM/DESIGN_TOKENS.md) e [componentes](../04_DESIGN_SYSTEM/COMPONENT_MAP.yaml). Nenhum snapshot, RF, aceite, permissão ou DDL foi alterado.
+- [Issue #37](https://github.com/webkauadev/rede-de-apoio/issues/37), [três aceites aprovados](https://github.com/webkauadev/rede-de-apoio/issues/37#issuecomment-5673832998), RF01/RNF01.
+- **[DEC-AUTH-001 homologada](DEC_AUTH_001_CONVITES_CUIDADORES.md)** e [aprovação na Issue](https://github.com/webkauadev/rede-de-apoio/issues/37#issuecomment-6092864135) resolvem a lacuna de autorização de cadastro. Não permanece BLOCKED_BY_DECISION para esse modelo.
+- [Instruções de continuação do PR](https://github.com/webkauadev/rede-de-apoio/pull/120#issuecomment-6092916927), [decisões V1](DECISOES_V1_HOMOLOGADAS.md), [stack](STACK_V1_HOMOLOGADA.md), [aceites](../01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml), [permissões](../02_BUSINESS_RULES/PERMISSIONS_MATRIX.md), [gates](GATES_DE_IMPLANTACAO_V1.md).
+- [T02 congelada](FIGMA_SNAPSHOT/assets/T02.png), [estados](../07_AI_CONTEXT/STATE_MATRIX.yaml), [tokens](../04_DESIGN_SYSTEM/DESIGN_TOKENS.md). Baseline e critérios não foram alterados.
 
-`/cadastro` implementa T02 com AuthShell, campos nome/e-mail/senha/confirmação, visibilidade de senha, validações associadas aos campos, foco no primeiro erro, loading sem duplo envio e feedback de indisponibilidade no mesmo shell. Não usa a navegação autenticada. Todos os controles têm pelo menos 48 × 48 px; scroll fica contido abaixo do header. Desktop centraliza a composição de 390 px da baseline; telas menores podem rolar. O botão Entrar permanece desabilitado até T01/US-002. Confirmação de criação no componente só pode aparecer com resposta 201 real; o resolver atual torna esse caminho inacessível. Não existe login automático, sessão ou redirecionamento funcional nesta entrega.
+## Fluxo e segurança
 
-## Bloqueios explícitos
+1. Operador técnico local, autenticado pelo SO e por credenciais do MySQL descartável autorizado, emite o primeiro convite pela CLI. Não existe endpoint de emissão, formulário público, usuário admin ou papel do operador no app.
+2. T02 aceita código individual mascarado ou fragmento `#convite=...`. O navegador remove o fragmento do histórico antes de preencher o campo; token não vai em query/referrer, storage ou analytics. A página usa `no-referrer`. Dados inválidos têm mensagens ligadas aos campos e foco; loading mantém o AuthShell. A adição de código/ajuda é o delta necessário da DEC-AUTH-001; demais campos/tokens/controles são reutilizados. Conteúdo maior rola no viewport abaixo do header, inclusive em 320×568; targets ≥48×48.
+3. Backend exige origem canônica **explicitamente configurada** e JSON limitado a 8192 bytes. Zod estrito rejeita campos de papel/rede/categoria/autorização/emitente. Senhas são preservadas sem trim, confirmação igual e limite técnico 1024 bytes. E-mail usa trim/lowercase, formato e limite 254; nome trim/limite 160. Não foi inventada política de composição de senha.
+4. Antes de Argon2id, aplica limite persistente por janela UTC no MySQL e verifica token SHA-256, e-mail exato, expiração, uso e revogação. Nenhum erro expõe existência de e-mail, SQL, credenciais ou token. O retorno 409 genérico também cobre convite usado e conflito de unicidade.
+5. Argon2id real (`argon2` 0.45.1), m=19456 KiB, t=2, p=1, salt aleatório, hash 32 bytes. [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html), [node-argon2](https://github.com/ranisalt/node-argon2).
+6. Transação confirma novamente convite com `SELECT ... FOR UPDATE`, insere somente `usuario/CUIDADOR`, consome convite exigindo uma linha alterada e grava auditoria PERMITIDO. Qualquer falha reverte esses efeitos juntos. UNIQUE do e-mail é a garantia final. DENY de convite/dados é sanitizado e persiste fora do rollback; limitações ficam nos contadores persistentes, sem eventos ilimitados por tentativas bloqueadas.
+7. COMMIT sem confirmação descarta a conexão; não faz rollback enganoso ou repetição de INSERT. Reconcilia somente leitura: convite consumido + e-mail + hash Argon2id aleatório **desta operação**. Sem essa prova, 503 informa resultado não confirmado. Repetição normal de convite usado retorna 409, sem efeito novo.
+8. Cadastro não cria sessão, `membro_rede`, papel familiar, rede, plantão ou acesso clínico. Identidade fica disponível no modelo comum de autenticação; login/sessões continuam US-002. Pessoa Idosa e convites de titular continuam US-036/DB-017. Emissão posterior pelo Principal depende de US-002/005/007; não foi fabricada integração de administração de rede.
 
-### BLOCKED_BY_DECISION — como comprovar usuário autorizado
+## Bootstrap local controlado
 
-RF01 e o aceite de US-001 exigem usuário autorizado, mas as fontes consultadas não definem mecanismo de autorização inicial para cadastro. O comentário técnico determina negar/restringir sem inventar requisito. `authorizeRegistration()` sempre nega; não há flag de ambiente, parâmetro do cliente, convite inventado ou bypass público para habilitar cadastro. A rota responde 403 com explicação, antes de hash ou conexão MySQL.
+Token CSPRNG de 32 bytes em base64url; somente SHA-256 é persistido. CLI exige `--confirm-local-disposable`, usuário de SO não-root, ambiente local autorizado, origem/host loopback, arquivo novo (`O_EXCL`, 0600) e diretório privado do próprio operador (0700). Não aceita token como argumento e não imprime token. A entrega a um destinatário depende de canal privado autorizado, fora de logs; nenhuma mensagem externa foi enviada nesta execução.
 
-**migration_required:** registrar na Issue #37 uma decisão humana específica sobre a comprovação de autorização, seu contexto/validade e os testes negativos correspondentes. Isso é uma lacuna registrada, não novo critério aprovado. O serviço aceita uma dependência de autorização exclusivamente de servidor para viabilizar a decisão futura; permissões positivas nos testes são simuladas e não equivalem a autorização homologada.
+Emissão e cadastro usam o mesmo lock nomeado na **mesma conexão** da transação, preservando ausência de cuidadores e único bootstrap aberto diante de corrida. Isso serializa a seção final de criação e o bootstrap nesta V1 local; o hash fica antes da seção crítica. [Locks nomeados MySQL 8.4](https://dev.mysql.com/doc/refman/8.4/en/locking-functions.html) precisam de liberação explícita na conexão, inclusive após commit; falha de liberação destrói conexão. FOR UPDATE e índices permanecem como proteção dos dados.
 
-### G-DB — persistência e concorrência reais pendentes
+Convite vencido ainda ocupa “aberto”. Reemitir exige `--revoke-previous` explícito e zero CUIDADOR. `--revoke` revoga somente bootstrap aberto. `--hours` aceita 1–168 horas como limite técnico de operação, padrão 24. Falha de escrita/COMMIT na emissão pode exigir revogação/reconciliação operacional; **não repetir automaticamente**. Depois de existir CUIDADOR, a CLI nega nova emissão bootstrap.
 
-Nenhum MySQL foi instalado, provisionado, conectado ou executado. Não houve importação, migration, seed ou uso de dados reais. Não há ambiente MySQL 8.4 descartável explicitamente liberado para esta execução. O [SQL V1](../../database/mysql/001_rede_de_apoio_schema.sql) permanece intacto.
+## Controle técnico de abuso e limites de publicação
 
-O repositório utiliza apenas `INSERT INTO usuario (nome, email_normalizado, senha_hash, tipo_acesso) VALUES (?, ?, ?, 'CUIDADOR')`, dentro da infraestrutura transacional existente. A restrição `uq_usuario_email` é a proteção definitiva contra duplicação. Não há consulta seguida de INSERT como garantia de unicidade. `ER_DUP_ENTRY` vira uma classificação sanitizada, sem SQL, e-mail, credenciais ou mensagem do driver; o serviço retorna erro genérico. Falha ao confirmar COMMIT continua descartando a conexão, sem rollback enganoso ou retry automático.
+`004_cadastro_rate_limit.sql` é aditivo, sem alteração do `001`/`003` e sem nova regra funcional. Acrescenta buckets persistentes sem IP/e-mail/token bruto: global **30 tentativas/minuto**, por hash de convite **5/15 minutos**, ambos parâmetros de engenharia para revisão. Incremento é atômico, nega antes do hash e confirma contagem mesmo se cadastro falhar. Bucket global nega antes de criar buckets arbitrários; contadores sobrevivem a novo pool/processo. Indisponibilidade do banco/limitador nega o cadastro, sem fallback em memória.
 
-Testes com executor simulado comprovam o contrato e tratamento de erro; **não comprovam UNIQUE, rollback, charset ou concorrência no MySQL**. A integração futura deve executar o SQL homologado em ambiente descartável autorizado e verificar duas requisições concorrentes para o mesmo e-mail, uma identidade persistida, hash verificável, zero vínculos/papéis e reconciliação de COMMIT incerto. G-DB segue aberto; não encerrar a Issue.
+A aplicação só habilita este fluxo no perfil explícito `REGISTRATION_ENVIRONMENT=local-disposable`, com banco loopback e origem local. Esse perfil **não comprova autorização**: convite válido continua obrigatório. Fora dele permanece 403. Rate limit global conservador é adequado ao ensaio, não certificação anti-abuso para exposição pública. G-AUTH/G-SEC/G-PRIV/G-REL continuam exigindo revisão; sessão/recovery e operação pública estão fora desta entrega.
 
-## Contratos e segurança
+## MySQL real autorizado e reprodução no Fedora
 
-- Zod estrito no cliente e no servidor: campos desconhecidos (papel, rede, tipo_acesso, admin) são rejeitados; somente quatro entradas são aceitas.
-- Nome: trim, obrigatório, limite de 160 caracteres do schema. E-mail: trim/lowercase, formato válido, até 254 caracteres. Sem heurísticas de Gmail ou remoção de pontos. A collation MySQL `utf8mb4_0900_ai_ci` pode considerar equivalentes valores além dessa normalização; verificar no gate real, sem mudar o DDL por hipótese.
-- Senha e confirmação são preservadas sem trim; obrigatórias e iguais. **Não há política aprovada de composição ou mínimo de oito caracteres**. Limite de 1024 bytes UTF-8 é proteção técnica contra custo excessivo, não novo requisito funcional; corpo HTTP limitado a 8192 bytes antes de JSON.parse. Revisão humana pode ajustar estes limites técnicos.
-- Argon2id (`argon2` 0.45.1), memória 19456 KiB, duas iterações, paralelismo 1, hash 32 bytes, salt aleatório da biblioteca. Referência: [OWASP Password Storage](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) e [node-argon2](https://github.com/ranisalt/node-argon2). Testes usam o algoritmo real e verificam hashes/salts.
-- Cadastro preparado cria somente `usuario` com `CUIDADOR`; nenhum `membro_rede`, Familiar Principal, Plantonista Atual, rede, permissão clínica ou sessão é criado. `PESSOA_IDOSA`/convite pertence à US-036 e é rejeitado neste DTO.
-- `/api/auth/cadastro`: aceita apenas JSON, exige Origin igual à origem canônica do servidor, respostas sem cache, erros sanitizados, sem logs de payload/senha. Não confia em X-Forwarded-Host. `APPLICATION_ORIGIN` define a origem pública quando a URL interna do Next.js difere; configuração inválida nega a solicitação. Ausência usa a origem da URL recebida pelo servidor.
-- Rate limit, sessão, convite, recuperação e auditoria contextual não estão concluídos. G-AUTH continua aberto. Não liberar endpoint de cadastro enquanto faltarem decisão de autorização, controles aplicáveis e prova de integração. O resolver fechado atualmente impede processamento Argon2/SQL por requisições públicas.
-
-## Reprodução no Fedora
-
-Ambiente utilizado: Fedora 44 x86_64, Node 24.18.0, npm 11.16.0, Python 3.14.7. O Argon2 funcionou com o binário disponibilizado pelo pacote, sem instalar MySQL ou alterar bibliotecas do sistema.
+Fedora 44 x86_64; Podman 5.8.7 rootless; Node 24.18.0; npm 11.16.0; Python 3.14.7. Harness usa `mysql:8.4`, verifica versão/destino, cria nome/rótulo exclusivos e volume anônimo novo, mapeia só `127.0.0.1:<porta-livre>:3306`. Credenciais CSPRNG ficam em diretório temporário 0700/arquivos 0600 fora do Git. Container e volume preexistentes, inclusive MySQL do host, não são utilizados.
 
 ```bash
 npm ci
-APPLICATION_ORIGIN=http://localhost:3000 npm run dev
-# Abra http://localhost:3000/cadastro; cadastro será negado pelo resolver.
-npm run format:check
-npm run lint
-npm run typecheck
-npm test
+podman pull docker.io/library/mysql:8.4
+node scripts/mysql-disposable.mjs start
+# Copie somente o caminho state.json informado, nunca seu conteúdo/segredos.
+# Exemplo abaixo: substitua <estado-privado> pelo caminho emitido.
+node scripts/run-disposable-check.mjs <estado-privado> npm run test:integration
 npm run build
-npm run test:e2e
-npm audit --omit=dev --audit-level=high
-.venv/bin/python scripts/validate_agent_context.py
-.venv/bin/python scripts/validate_sql_prototype.py
-.venv/bin/python scripts/validate_visual_snapshot.py
-.venv/bin/python scripts/validate_implementation_backlog.py
+node scripts/run-disposable-check.mjs <estado-privado> npm run test:e2e:mysql
+# Para desenvolvimento com este ambiente: npm run dev -- --hostname 127.0.0.1 --port 3100 via run-disposable-check.
+# Bootstrap manual, com destino em diretório 0700 do operador:
+node scripts/run-disposable-check.mjs <estado-privado> npm run invite:bootstrap -- --email synthetic@example.invalid --token-file /caminho/privado/convite --confirm-local-disposable
+# Somente recursos criados pelo harness; identidade/rótulo são conferidos:
+node scripts/mysql-disposable.mjs stop <estado-privado>
 ```
 
-Veja [runbook](RUNBOOK_LOCAL_V1.md) para preparar Python/PyYAML e Chromium. Playwright inicia o build em `http://127.0.0.1:3100`, configura essa origem no servidor e verifica mobile 390 × 844 e desktop. Somente o teste de loading intercepta resposta atrasada; os testes de autorização usam o handler HTTP real. Usam identidades sintéticas `example.invalid`. A vulnerabilidade de desenvolvimento preexistente permanece acompanhada em [#119](https://github.com/webkauadev/rede-de-apoio/issues/119); o audit de runtime é obrigatório.
+Se prontidão expirar, `initialize <estado-privado>` permite retomar **somente no container identificado**, e só importa em schema vazio. Não inicialize host:3306 ou servidor externo. `run-disposable-check` confere nome/rótulo/ID antes de executar comando com ambiente privado. Ensaios usam somente `example.invalid` e dados sintéticos; arquivos de token são removidos ao final.
 
-## Rastreabilidade e próximos passos
+O harness executa `001` (30 tabelas), `002` de leitura ainda no baseline de 30, `003` (31) e `004` (32). Salva metadados/SHOW CREATE TABLE sem valores de usuários ou tokens. [Evidência estrutural](EVIDENCIAS/US001/mysql-structure.json). `001` e `002` permanecem intactos; contagens históricas não foram alteradas para esconder a migração.
 
-Implementação parcial está registrada em `SCREEN_REGISTRY.yaml`, `COMPONENT_MAP.yaml` e `CURRENT_PROJECT_STATE.md`. O backlog histórico das 36 US e os aceites aprovados permanecem preservados; seu validador exige revisão manual antes de alterar estados de implementação. Este documento registra progresso em revisão sem afirmar conclusão ou transformar a projeção em tracker.
+## Resultados reais
 
-Para concluir US-001: homologar autorização na Issue, liberar ambiente descartável, provar persistência/concorrência e vínculos ausentes, revisar limites técnicos e UI, obter CI verde e revisão humana. Só então avaliar encerramento. US-002 reutilizará AuthShell e hash, mas login/sessões continuam em escopo próprio; US-036 terá convite separado. Nenhum merge ou deploy está autorizado.
-
-## Evidências executadas no Fedora — 2026-10-09
+Verificações executadas após `npm ci` limpo no Fedora:
 
 | Comando | Resultado real |
 |---|---|
-| `npm ci` | PASS — instalação pelo lockfile; Argon2id executado depois da instalação limpa |
-| `npm run format:check` | PASS |
-| `npm run lint` | PASS — zero warnings |
-| `npm run typecheck` | PASS |
-| `npm test` | PASS — 52 testes em 4 arquivos |
-| `npm run build` | PASS — `/cadastro` estática e `/api/auth/cadastro` dinâmica, sem MySQL |
-| `npm run test:e2e` | PASS — 16 testes, mobile e desktop, 14 específicos deste incremento |
+| `npm ci` | PASS — lockfile, Argon2 e CLI TypeScript nativa verificados |
+| `npm run format:check`, `npm run lint`, `npm run typecheck` | PASS |
+| `npm test` | **67 PASS** em 5 arquivos |
+| `npm run build` | PASS — página/handler, sem banco necessário para build |
+| `npm run test:e2e` | **18 PASS** mobile/desktop sem MySQL |
+| `npm run test:integration` via harness | **18 PASS**, MySQL 8.4.11 real |
+| `npm run test:e2e:mysql` via harness | **6 PASS**, navegador/CLI/API/MySQL real, mobile/desktop |
+| Quatro validadores Python | PASS — contexto, SQL baseline, 26 imagens, backlog/aceites |
 | `npm audit --omit=dev --audit-level=high` | PASS — zero vulnerabilidades de runtime |
-| `validate_agent_context.py` | PASS — 17 telas, 36 US, 30 RF |
-| `validate_sql_prototype.py` | PASS estático — 30 tabelas, 77 FKs, 120 constraints; não prova execução MySQL |
-| `validate_visual_snapshot.py` | PASS — 26 PNGs canônicos preservados |
-| `validate_implementation_backlog.py` | PASS — 36 US e comentários aprovados preservados |
 | `git diff --check` | PASS |
+| Scanner de credenciais efêmeras em arquivos versionáveis | PASS — nenhum segredo encontrado |
 
-Falhas corrigidas durante o desenvolvimento: teste Argon2 assumia ordem dos parâmetros PHC (a biblioteca ordena diferentemente; agora compara parâmetros sem depender da ordem); teste SQL inicialmente fora do setup dos mocks; seleção de alert confundia anunciação de rota do Next.js com formulário; origem externa distinta da URL interna do Next.js (correção testada por configuração explícita). Nenhuma falha local causada pela alteração permanece aberta.
+Corridas comprovaram uma conta, um convite consumido e um evento PERMITIDO; segunda requisição negada, sem efeitos duplicados. Os 18 ensaios SQL incluem conexão concorrente realmente bloqueada por FOR UPDATE, índices UNIQUE, rollback após consumo, convite expirado/revogado/token/e-mail incorreto antes de Argon2id, bootstrap concorrente, reemissão explícita, persistência do limitador após novo pool e segurança da CLI. As duas suites de navegador verificaram também 403/422/409/429 reais.
 
-Capturas de execução separadas do snapshot canônico:
+**Cleanup confirmado:** `node scripts/mysql-disposable.mjs stop` removeu somente `rede-apoio-us001-e55972cbcfcc` e seu volume anônimo após validar ID/nome/rótulo. Diretório de credenciais apagado; `mysql-workbench`, `compat` e MySQL preexistente do host preservados. Cache da imagem permanece disponível. Nenhum ensaio tocou produção.
 
-- [T02 mobile default](EVIDENCIAS/US001/T02-mobile-default.png) e [desktop default](EVIDENCIAS/US001/T02-desktop-default.png).
-- [Validation Error](EVIDENCIAS/US001/T02-mobile-validation.png).
-- [Loading — resposta atrasada simulada](EVIDENCIAS/US001/T02-mobile-loading-simulated.png).
-- [Negação pelo handler real](EVIDENCIAS/US001/T02-mobile-authorization-pending.png).
+[Estrutura física](EVIDENCIAS/US001/mysql-structure.json) / [Resumo verificável](EVIDENCIAS/US001/results.json) / [T02 mobile](EVIDENCIAS/US001/T02-mobile-default.png) / [desktop](EVIDENCIAS/US001/T02-desktop-default.png) / [validação](EVIDENCIAS/US001/T02-mobile-validation.png) / [loading simulado](EVIDENCIAS/US001/T02-mobile-loading-simulated.png) / [ambiente fechado](EVIDENCIAS/US001/T02-mobile-authorization-pending.png). As capturas foram atualizadas após o delta do convite, sem alterar snapshots canônicos. CI do head publicado será registrado no PR. As suítes são separadas: `npm test` unitário; `npm run test:e2e` interface/negação sem MySQL; `test:integration` MySQL real; `test:e2e:mysql` navegador/API/banco real. CI padrão valida aplicação/contexto e continua sem conexão MySQL; a autorização de ensaio físico desta entrega foi aplicada no Fedora local.
 
-Revisão visual manual comparou estrutura, tokens, hierarquia, espaçamento e viewport com T02 congelada; não é certificação pixel-perfect. Capturas com campos preenchidos usam somente dados sintéticos. CI remoto será registrado no Draft PR; não confundir checks verdes com aceites funcionais integralmente comprovados.
+Na integração, todas as respostas SQL vêm do MySQL real. Testes de confirmação incerta **injetam perda de confirmação após COMMIT real**, incluindo descarte da conexão real pelo driver, ou antes de qualquer efeito, e verificam reconciliação; não afirmam ter causado uma queda real de rede/produção. Traces/vídeos/capturas e snapshot DOM automático de falha dos testes com token real ficam desativados (PLAYWRIGHT_NO_COPY_PROMPT), e os campos são limpos no teardown para impedir vazamento; capturas visuais usam código sintético inválido mascarado.
 
-## ATUALIZAÇÃO DE APROVAÇÃO — DEC-AUTH-001 (2026-10-09)
+Falha de desenvolvimento encontrada/corrigida: expressão de vigência retorna `"0"` com opções BIGINT do driver; conversão explícita impede hash de convite vencido. Também corrigidos fixtures sem o novo campo e comparação de posição em loading que ignorava scroll necessário do botão. Primeiro prazo de startup MySQL expirou antes de prontidão; execução retomada somente no container próprio identificado.
 
-**Este adendo substitui apenas o status da lacuna decisória registrado acima**: o usuário aprovou cadastro de **CUIDADOR por convite individual** e bootstrap técnico restrito, com autorização para testes reais em **MySQL 8.4 local, isolado e descartável no Fedora, somente com dados sintéticos**. Registro canônico [Issue #37](https://github.com/webkauadev/rede-de-apoio/issues/37#issuecomment-6092864135). [Contrato completo](DEC_AUTH_001_CONVITES_CUIDADORES.md) e [SQL incremental 003](../../database/mysql/003_convite_cadastro_cuidador.sql). **O código atual ainda nega todo cadastro** e essa migração ainda não foi executada/validada; o Codex deve implementar o consumo atômico do convite, testar a persistência e atualizar este relatório. Não fechar US-001 nem publicar enquanto faltarem testes/revisão.
+## Aceites e revisão
+
+1. Usuário com convite autorizado cria identidade por T02: comprovado localmente por CLI → navegador → handler → MySQL.
+2. Identidade usa estrutura comum `usuario`/e-mail/Argon2id e não ganha acesso além do atribuído: hash verificado e ausência de sessão/vínculos comprovadas. Login comum ponta a ponta ainda pertence à US-002; **não declarar esse fluxo concluído nem fechar a US agora**.
+3. Cadastro não concede papel/permissão: zero vínculos/papéis/redes/plantões, DTO privilegiado rejeitado e SQL restrito comprovados.
+
+Revisão humana dos três aceites permanece obrigatória. Evidência de US-001 não encerra **G-DB global**: concorrência de Principal/tarefa/plantão e outras US ainda exigem seus ensaios. GHSA dev preexistente continua em [#119](https://github.com/webkauadev/rede-de-apoio/issues/119); audit de runtime é obrigatório. Não marcar RF01/US-001 finalizadas, mudar owner, fazer merge ou deploy.

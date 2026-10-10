@@ -40,7 +40,7 @@ O app ainda nao tem stack, backend/frontend, migrations ou auth definidos/implem
 
 ## US-001 — cadastro em revisão
 
-[Handoff US-001 / Issue #37](US001_CADASTRO_CONTA_V1.md): T02 executável e serviço de identidade preparado. **Cadastro ainda bloqueado** por decisão de autorização ausente e integração MySQL não executada. Não tratar testes simulados como prova de persistência nem encerrar a Issue.
+[Handoff US-001 / Issue #37](US001_CADASTRO_CONTA_V1.md): T02 executável e serviço de identidade preparado. DEC-AUTH-001 resolve o modelo de autorização; fluxo local por convite e integração MySQL real registrados no handoff. Revisão humana, login US-002 e gates de publicação continuam pendentes; não encerrar a Issue.
 
 ## DEC-AUTH-001 — convites CUIDADOR (homologada 2026-10-09)
 

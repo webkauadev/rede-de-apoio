@@ -242,7 +242,7 @@ implementation_scaffold:
 
 code_implementation_review:
   issue: 37
-  status: PARTIAL_BLOCKED_PENDING_REVIEW
+  status: LOCAL_INVITATION_FLOW_PENDING_REVIEW
   components:
     auth_shell: {path: src/components/layout/auth-shell.tsx, screens: [T02], reusable_for: [T01]}
     button: {path: src/components/ui/button.tsx, screens: [T02], tokens: existing_project_tokens}
