@@ -304,3 +304,7 @@ Esta atualização não afirma que aplicativo, banco físico ou deploy já exist
 ## Infraestrutura #117 — proposta em revisão (2026-10-09)
 
 Scaffold Next.js V1 em `feat/infra-scaffold-v1`, com página técnica, shell/tokens, MySQL lazy sem execução, testes unitários/E2E e CI. [Runbook](../10_IMPLEMENTACAO/RUNBOOK_LOCAL_V1.md) registra evidências e pendência de dependências dev. As 36 US permanecem não implementadas; SQL/baselines/requisitos preservados. Merge e continuação dependente aguardam revisão humana.
+
+## Atualização — scaffold incorporado e US-001 em revisão (2026-10-09)
+
+O PR #118 foi incorporado à main por revisão humana, base `ed75c72`. A seção anterior de infraestrutura em proposta é histórica. US-001/#37 possui implementação **parcial** na branch `feat/us001-cadastro-conta-v1`: T02/AuthShell, contrato Zod, Argon2id, serviço/repositório preparados e testes. O resolver oficial nega cadastro antes de hash/SQL enquanto faltar decisão canônica sobre como comprovar usuário autorizado (**BLOCKED_BY_DECISION / migration_required**). Persistência e concorrência MySQL não executadas; **G-DB aberto**. Não há sessão, rede, papéis ou cadastro concluído. [Evidências e limites](../10_IMPLEMENTACAO/US001_CADASTRO_CONTA_V1.md). Owner David, aceites e backlog histórico preservados; PR draft e revisão humana obrigatórios.

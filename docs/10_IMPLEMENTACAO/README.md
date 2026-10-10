@@ -37,3 +37,7 @@ O app ainda nao tem stack, backend/frontend, migrations ou auth definidos/implem
 ## Infraestrutura de aplicação — Issue #117
 
 [Runbook local V1](RUNBOOK_LOCAL_V1.md): scaffold, versões instaladas, testes reais e limites de segurança. [Continuidade incremental](CONTINUIDADE_V1.md): sequência das 36 US, sem mudar o tracker canônico. A incorporação do scaffold exige revisão humana; nenhum banco foi executado.
+
+## US-001 — cadastro em revisão
+
+[Handoff US-001 / Issue #37](US001_CADASTRO_CONTA_V1.md): T02 executável e serviço de identidade preparado. **Cadastro ainda bloqueado** por decisão de autorização ausente e integração MySQL não executada. Não tratar testes simulados como prova de persistência nem encerrar a Issue.

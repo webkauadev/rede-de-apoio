@@ -56,6 +56,14 @@ screens:
     user_stories: [US-001, US-036]
     purpose: Cadastrar conta de acesso; para Pessoa Idosa, a senha é definida pelo próprio titular e a conta é vinculada ao próprio perfil.
     target_shell: AuthShell
+    implementation_review:
+      issue: 37
+      branch: feat/us001-cadastro-conta-v1
+      route: /cadastro
+      status: PARTIAL_BLOCKED_PENDING_REVIEW
+      evidence: docs/10_IMPLEMENTACAO/US001_CADASTRO_CONTA_V1.md
+      blockers: [authorization_decision, G-DB]
+
   T03:
     name: Home / Visão Geral do Cuidado
     owner: Rhuan
