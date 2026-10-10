@@ -150,4 +150,19 @@ describe("acesso a dados sem servidor MySQL (driver simulado)", () => {
     );
     expect(mocks.connection.beginTransaction).not.toHaveBeenCalled();
   });
+
+  it("preserva somente a classificação ER_DUP_ENTRY, sem SQL/e-mail", async () => {
+    const db = await import("@/server/db");
+    const connection = mocks.connection;
+    connection.execute.mockRejectedValueOnce({
+      code: "ER_DUP_ENTRY",
+      sqlMessage: "senha secreta teste@example.invalid",
+      sql: "INSERT...",
+    });
+    await expect(
+      db.withTransaction((sql) =>
+        sql.execute("INSERT INTO usuario VALUES (?)", ["synthetic"]),
+      ),
+    ).rejects.toBeInstanceOf(db.DatabaseConflictError);
+  });
 });
