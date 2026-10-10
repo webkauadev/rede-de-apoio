@@ -41,3 +41,7 @@ O app ainda nao tem stack, backend/frontend, migrations ou auth definidos/implem
 ## US-001 — cadastro em revisão
 
 [Handoff US-001 / Issue #37](US001_CADASTRO_CONTA_V1.md): T02 executável e serviço de identidade preparado. **Cadastro ainda bloqueado** por decisão de autorização ausente e integração MySQL não executada. Não tratar testes simulados como prova de persistência nem encerrar a Issue.
+
+## DEC-AUTH-001 — convites CUIDADOR (homologada 2026-10-09)
+
+[Decisão de convites](DEC_AUTH_001_CONVITES_CUIDADORES.md), homologada na [Issue #37](https://github.com/webkauadev/rede-de-apoio/issues/37#issuecomment-6092864135). **O impedimento de decisão funcional para US-001 foi resolvido**, mas a autorização por convite, o backend, a migração incremental e a prova real com MySQL descartável ainda precisam ser implementados/testados no PR #120. Não confundir com convites de Pessoa Idosa DB-017/US-036 e não considerar a US concluída.

@@ -93,3 +93,7 @@ Capturas de execução separadas do snapshot canônico:
 - [Negação pelo handler real](EVIDENCIAS/US001/T02-mobile-authorization-pending.png).
 
 Revisão visual manual comparou estrutura, tokens, hierarquia, espaçamento e viewport com T02 congelada; não é certificação pixel-perfect. Capturas com campos preenchidos usam somente dados sintéticos. CI remoto será registrado no Draft PR; não confundir checks verdes com aceites funcionais integralmente comprovados.
+
+## ATUALIZAÇÃO DE APROVAÇÃO — DEC-AUTH-001 (2026-10-09)
+
+**Este adendo substitui apenas o status da lacuna decisória registrado acima**: o usuário aprovou cadastro de **CUIDADOR por convite individual** e bootstrap técnico restrito, com autorização para testes reais em **MySQL 8.4 local, isolado e descartável no Fedora, somente com dados sintéticos**. Registro canônico [Issue #37](https://github.com/webkauadev/rede-de-apoio/issues/37#issuecomment-6092864135). [Contrato completo](DEC_AUTH_001_CONVITES_CUIDADORES.md) e [SQL incremental 003](../../database/mysql/003_convite_cadastro_cuidador.sql). **O código atual ainda nega todo cadastro** e essa migração ainda não foi executada/validada; o Codex deve implementar o consumo atômico do convite, testar a persistência e atualizar este relatório. Não fechar US-001 nem publicar enquanto faltarem testes/revisão.
