@@ -4,7 +4,8 @@ import "server-only";
 export function hasSameOrigin(request: Request): boolean {
   try {
     const configured = process.env.APPLICATION_ORIGIN;
-    const expected = configured || new URL(request.url).origin;
+    if (!configured) return false;
+    const expected = configured;
     const origin = new URL(expected);
     if (
       origin.origin !== expected ||

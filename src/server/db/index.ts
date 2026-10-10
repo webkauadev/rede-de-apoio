@@ -105,6 +105,7 @@ export const database: SqlExecutor = {
 /** Sem retry automático: serviços futuros definem locks, idempotência e autorização. */
 export async function withTransaction<T>(
   operation: (transaction: SqlExecutor) => Promise<T>,
+  lockName?: string,
 ): Promise<T> {
   let connection: PoolConnection;
   try {
@@ -114,7 +115,24 @@ export async function withTransaction<T>(
   }
   let reusable = true;
   let commitAttempted = false;
+  let namedLock = false;
   try {
+    if (lockName) {
+      try {
+        const rows = await executor(connection).select<RowDataPacket>(
+          "SELECT GET_LOCK(?, 5) AS acquired",
+          [lockName],
+        );
+        if (Number(rows[0].acquired) !== 1)
+          throw new DatabaseUnavailableError();
+        namedLock = true;
+      } catch {
+        // Sem confirmacao do lock, nao devolver uma sessao possivelmente proprietaria ao pool.
+        reusable = false;
+        connection.destroy();
+        throw new DatabaseUnavailableError();
+      }
+    }
     try {
       await connection.beginTransaction();
     } catch {
@@ -133,7 +151,7 @@ export async function withTransaction<T>(
     }
     return result;
   } catch (error) {
-    if (!commitAttempted) {
+    if (!commitAttempted && reusable) {
       try {
         await connection.rollback();
       } catch {
@@ -143,6 +161,18 @@ export async function withTransaction<T>(
     }
     throw error;
   } finally {
+    if (reusable && namedLock) {
+      try {
+        const rows = await executor(connection).select<RowDataPacket>(
+          "SELECT RELEASE_LOCK(?) AS released",
+          [lockName!],
+        );
+        if (Number(rows[0].released) !== 1) throw new Error();
+      } catch {
+        reusable = false;
+        connection.destroy();
+      }
+    }
     if (reusable) connection.release();
   }
 }

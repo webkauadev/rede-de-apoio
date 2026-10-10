@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { AuthShell } from "@/components/layout/auth-shell";
 import { RegistrationForm } from "@/domains/auth/registration/registration-form";
 export const metadata: Metadata = {
+  referrer: "no-referrer",
   title: "Criar conta | Rede de Apoio",
   description: "Cadastro de conta da Rede de Apoio.",
 };

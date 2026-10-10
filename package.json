@@ -16,7 +16,10 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "invite:bootstrap": "node --conditions=react-server --import tsx scripts/invite-bootstrap.ts",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "test:e2e:mysql": "playwright test --config playwright.mysql.config.ts"
   },
   "dependencies": {
     "@fontsource/geist": "^5.3.0",
@@ -44,6 +47,7 @@
     "postcss": "^8.5.29",
     "prettier": "^3.9.9",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3",
     "vitest": "^5.0.3"
   },

@@ -2,6 +2,9 @@ import { expect, test, type Page } from "@playwright/test";
 
 async function fillValid(page: Page) {
   await page
+    .getByLabel("Código de convite", { exact: true })
+    .fill("a".repeat(43));
+  await page
     .getByLabel("Nome completo", { exact: true })
     .fill("Conta sintética");
   await page.getByLabel("E-mail", { exact: true }).fill("test@example.invalid");
@@ -47,7 +50,9 @@ test("validação acessível mantém T02 e não envia dados inválidos", async (
   });
   await page.goto("/cadastro");
   await page.getByRole("button", { name: "Criar conta", exact: true }).click();
-  await expect(page.getByLabel("Nome completo", { exact: true })).toBeFocused();
+  await expect(
+    page.getByLabel("Código de convite", { exact: true }),
+  ).toBeFocused();
   await expect(
     page.getByLabel("Nome completo", { exact: true }),
   ).toHaveAttribute("aria-invalid", "true");
@@ -104,6 +109,9 @@ test("loading bloqueia reenvio e mantém a estrutura (resposta atrasada simulada
   });
   await page.goto("/cadastro");
   await fillValid(page);
+  await page
+    .getByRole("button", { name: "Criar conta", exact: true })
+    .scrollIntoViewIfNeeded();
   const before = await page.locator('[data-screen="T02"]').boundingBox();
   await page.getByRole("button", { name: "Criar conta", exact: true }).click();
   try {
@@ -141,7 +149,7 @@ test("handler real nega cadastro pendente sem criar sessão e sem MySQL", async 
   await page.getByRole("button", { name: "Criar conta", exact: true }).click();
   expect((await response).status()).toBe(403);
   await expect(page.locator("form").getByRole("alert")).toContainText(
-    "autorização para criar contas está em definição",
+    "Cadastro indisponível neste ambiente",
   );
   expect(await page.context().cookies()).toEqual([]);
   await expect(page.getByText("Conta criada.", { exact: false })).toHaveCount(
@@ -159,6 +167,7 @@ test("API real recusa injeção de papel e requisições sem origem", async ({
   baseURL,
 }) => {
   const data = {
+    invitationToken: "a".repeat(43),
     name: "Conta sintética",
     email: "test@example.invalid",
     password: "senha sintética",
@@ -193,4 +202,19 @@ test("viewport curto mantém scroll abaixo do header sem clipping de controles",
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(
     320,
   );
+});
+
+test("fragmento de convite e removido sem envio ao servidor (codigo sintetico invalido)", async ({
+  page,
+}) => {
+  const requested: string[] = [];
+  page.on("request", (r) => requested.push(r.url()));
+  await page.goto("/cadastro#convite=" + "a".repeat(43));
+  await expect(page).toHaveURL(/\/cadastro$/);
+  expect(
+    (await page
+      .getByLabel("Código de convite", { exact: true })
+      .inputValue()) === "a".repeat(43),
+  ).toBe(true);
+  expect(requested.some((url) => url.includes("convite="))).toBe(false);
 });

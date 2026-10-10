@@ -1,3 +1,9 @@
+import { assertLocalRegistrationEnvironment } from "@/server/security/registration-environment";
+import {
+  InvitationRejectedError,
+  InvitationUsedError,
+} from "@/server/auth/invitations";
+import { RegistrationRateLimitError } from "@/server/security/registration-rate-limit";
 import { hasSameOrigin } from "@/server/security/origin";
 import {
   registrationSchema,
@@ -6,7 +12,6 @@ import {
 import {
   registerAccount,
   registrationDependencies,
-  RegistrationAuthorizationPendingError,
   RegistrationConflictError,
 } from "@/server/auth/registration";
 
@@ -72,13 +77,23 @@ export async function POST(request: Request) {
       422,
     );
   try {
+    assertLocalRegistrationEnvironment();
+  } catch {
+    return response({ message: "Cadastro indisponível neste ambiente." }, 403);
+  }
+  try {
     await registerAccount(parsed.data, registrationDependencies);
     return response({ created: true }, 201);
   } catch (error) {
-    if (error instanceof RegistrationAuthorizationPendingError)
-      return response({ message: error.message }, 403);
-    if (error instanceof RegistrationConflictError)
+    if (error instanceof RegistrationRateLimitError)
+      return response({ message: error.message }, 429);
+    if (
+      error instanceof RegistrationConflictError ||
+      error instanceof InvitationUsedError
+    )
       return response({ message: error.message }, 409);
+    if (error instanceof InvitationRejectedError)
+      return response({ message: error.message }, 403);
     return response(
       {
         message:

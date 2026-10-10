@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Eye, EyeOff, LoaderCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -51,8 +51,29 @@ export function RegistrationForm() {
   const [visible, setVisible] = useState<
     Partial<Record<RegistrationField, boolean>>
   >({});
+  useEffect(() => {
+    // Fragmento nunca e enviado ao servidor/referrer; apaga antes de preencher.
+    const fragment = window.location.hash;
+    if (fragment) {
+      window.history.replaceState(null, "", window.location.pathname);
+      const token = new URLSearchParams(fragment.slice(1)).get("convite");
+      const control = form.current?.elements.namedItem(
+        "invitationToken",
+      ) as HTMLInputElement | null;
+      if (control && token && /^[A-Za-z0-9_-]{43}$/.test(token))
+        control.value = token;
+    }
+  }, []);
   function focusError(nextErrors: RegistrationErrors) {
     const first = fields.find((field) => nextErrors[field.name]);
+    if (nextErrors.invitationToken) {
+      (
+        form.current?.elements.namedItem(
+          "invitationToken",
+        ) as HTMLInputElement | null
+      )?.focus();
+      return;
+    }
     if (first)
       (
         form.current?.elements.namedItem(first.name) as HTMLInputElement | null
@@ -62,9 +83,10 @@ export function RegistrationForm() {
     event.preventDefault();
     if (pending.current || created) return;
     const data = new FormData(event.currentTarget);
-    const input = Object.fromEntries(
-      fields.map(({ name }) => [name, data.get(name)]),
-    );
+    const input = Object.fromEntries([
+      ...["invitationToken"].map((name) => [name, data.get(name)]),
+      ...fields.map(({ name }) => [name, data.get(name)]),
+    ]);
     const parsed = registrationSchema.safeParse(input);
     setMessage("");
     if (!parsed.success) {
@@ -92,6 +114,7 @@ export function RegistrationForm() {
       ) {
         setCreated(true);
         form.current?.reset();
+        setVisible({});
         setMessage("Conta criada. O acesso depende das permissões atribuídas.");
       } else {
         setMessage(
@@ -133,6 +156,36 @@ export function RegistrationForm() {
       >
         <fieldset disabled={loading || created} className="min-w-0 space-y-4">
           <legend className="sr-only">Dados da conta</legend>
+          <div>
+            <label htmlFor="invitationToken" className="mb-1 block text-meta">
+              Código de convite
+            </label>
+            <Input
+              id="invitationToken"
+              name="invitationToken"
+              type="password"
+              autoComplete="off"
+              autoCapitalize="none"
+              spellCheck={false}
+              maxLength={43}
+              placeholder="Código recebido no convite"
+              required
+              aria-invalid={!!errors.invitationToken}
+              aria-describedby="invitation-help invitation-error"
+            />
+            <p
+              id="invitation-help"
+              className="mt-1 text-meta text-muted-foreground"
+            >
+              Use o convite individual enviado para seu e-mail.
+            </p>
+            <p
+              id="invitation-error"
+              className="mt-1 text-meta text-destructive"
+            >
+              {errors.invitationToken}
+            </p>
+          </div>
           {fields.map((field) => {
             const password = field.type === "password";
             const error = errors[field.name];

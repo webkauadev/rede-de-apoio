@@ -3,6 +3,12 @@ import { z } from "zod";
 /** Mesma normalização no cliente/servidor; não aplica heurísticas de provedores. */
 export const registrationSchema = z
   .object({
+    invitationToken: z
+      .string()
+      .regex(
+        /^[A-Za-z0-9_-]{43}$/,
+        "Informe o código de convite de 43 caracteres.",
+      ),
     name: z
       .string()
       .trim()
@@ -36,6 +42,7 @@ export function fieldErrors(error: z.ZodError): RegistrationErrors {
   for (const issue of error.issues) {
     const key = issue.path[0];
     if (
+      key === "invitationToken" ||
       key === "name" ||
       key === "email" ||
       key === "password" ||
