@@ -164,3 +164,7 @@ Após revisão, a camada `withTransaction` distingue erro **antes de tentar COMM
 Foi adicionado teste unitário sintético para falha de COMMIT, descarte da conexão e ausência de `rollback`/retry. Isso **não comprova** comportamento de duas sessões em MySQL real, que continua sujeito ao gate G-DB.
 
 **Dependências de desenvolvimento:** o `npm audit` registrado no PR identificou cinco achados high na cadeia de ferramentas de lint/transitivas; em runtime o audit anterior `--omit=dev` indicou zero vulnerabilidades. Não aplicar `npm audit fix --force` com downgrade incompatível. O PR permanecerá **draft** enquanto a avaliação/aceitação do risco de dependências estiver pendente. Atualizações devem ser compatíveis com Node/Next homologados e comprovadas por CI, sem prometer que esse commit saneia o advisory.
+
+## Avaliação consolidada do GHSA-vfj7-8cjw-p6xm — 2026-10-09
+
+A cadeia de desenvolvimento `eslint-config-next → @next/eslint-plugin-next → fast-glob → micromatch → braces` foi auditada. A ficha oficial não disponibiliza versão corrigida de `braces` nesta data. Não aplicar `npm audit fix --force` nem alterar stack Next/ESLint incompatível. Avaliação integral, limites e critérios de revisão estão em [AVALIACAO_RISCO_DEPENDENCIAS_V1.md](AVALIACAO_RISCO_DEPENDENCIAS_V1.md). O CI agora executa `npm audit --omit=dev --audit-level=high` para reprovar novas vulnerabilidades high/critical em runtime. Os avisos dev permanecem como risco residual a ser avaliado no merge humano; **não estão corrigidos**.
