@@ -11,7 +11,10 @@ CLAUDE.md
 README.md
 docs
 database
-scripts
+scripts/*
+!scripts/invite-bootstrap.ts
+!scripts/mysql-disposable.mjs
+!scripts/run-disposable-check.mjs
 ES-03
 .github/workflows/agent-context-validation.yml
 .github/workflows/sql-prototype-validation.yml
