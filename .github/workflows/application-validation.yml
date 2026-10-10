@@ -1,4 +1,4 @@
-name: Validate application scaffold
+name: Validate application V1
 on:
   pull_request:
   push:
@@ -11,6 +11,8 @@ jobs:
     timeout-minutes: 15
     env:
       NEXT_TELEMETRY_DISABLED: "1"
+      # O ensaio MySQL autorizado e executado no Fedora; CI padrao permanece fechado.
+      REGISTRATION_ENVIRONMENT: ""
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

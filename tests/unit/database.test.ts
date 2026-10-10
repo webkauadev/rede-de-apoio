@@ -150,4 +150,68 @@ describe("acesso a dados sem servidor MySQL (driver simulado)", () => {
     );
     expect(mocks.connection.beginTransaction).not.toHaveBeenCalled();
   });
+
+  it("preserva somente a classificação ER_DUP_ENTRY, sem SQL/e-mail", async () => {
+    const db = await import("@/server/db");
+    const connection = mocks.connection;
+    connection.execute.mockRejectedValueOnce({
+      code: "ER_DUP_ENTRY",
+      sqlMessage: "senha secreta teste@example.invalid",
+      sql: "INSERT...",
+    });
+    await expect(
+      db.withTransaction((sql) =>
+        sql.execute("INSERT INTO usuario VALUES (?)", ["synthetic"]),
+      ),
+    ).rejects.toBeInstanceOf(db.DatabaseConflictError);
+  });
+  it("lock nomeado fica na mesma conexao e e liberado apos commit", async () => {
+    mocks.connection.execute
+      .mockResolvedValueOnce([[{ acquired: 1 }], []])
+      .mockResolvedValueOnce([[{ released: 1 }], []]);
+    await expect(
+      withTransaction(async () => "ok", "technical-lock"),
+    ).resolves.toBe("ok");
+    expect(mocks.connection.execute).toHaveBeenNthCalledWith(
+      1,
+      "SELECT GET_LOCK(?, 5) AS acquired",
+      ["technical-lock"],
+    );
+    expect(mocks.connection.execute).toHaveBeenNthCalledWith(
+      2,
+      "SELECT RELEASE_LOCK(?) AS released",
+      ["technical-lock"],
+    );
+    expect(mocks.connection.release).toHaveBeenCalledOnce();
+  });
+  it("timeout do lock nega operacao antes do begin", async () => {
+    mocks.connection.execute.mockResolvedValueOnce([[{ acquired: 0 }], []]);
+    const operation = vi.fn();
+    await expect(
+      withTransaction(operation, "technical-lock"),
+    ).rejects.toBeInstanceOf(DatabaseUnavailableError);
+    expect(operation).not.toHaveBeenCalled();
+    expect(mocks.connection.beginTransaction).not.toHaveBeenCalled();
+  });
+  it("falha ao liberar lock descarta conexao sem negar commit confirmado", async () => {
+    mocks.connection.execute
+      .mockResolvedValueOnce([[{ acquired: 1 }], []])
+      .mockResolvedValueOnce([[{ released: 0 }], []]);
+    await expect(
+      withTransaction(async () => "ok", "technical-lock"),
+    ).resolves.toBe("ok");
+    expect(mocks.connection.destroy).toHaveBeenCalledOnce();
+    expect(mocks.connection.release).not.toHaveBeenCalled();
+  });
+  it("aquisicao de lock sem confirmacao descarta sessao, sem rollback/reuso", async () => {
+    mocks.connection.execute.mockRejectedValueOnce(
+      new Error("Confirmacao perdida sintetica"),
+    );
+    await expect(
+      withTransaction(async () => "never", "technical-lock"),
+    ).rejects.toBeInstanceOf(DatabaseUnavailableError);
+    expect(mocks.connection.destroy).toHaveBeenCalledOnce();
+    expect(mocks.connection.release).not.toHaveBeenCalled();
+    expect(mocks.connection.rollback).not.toHaveBeenCalled();
+  });
 });
