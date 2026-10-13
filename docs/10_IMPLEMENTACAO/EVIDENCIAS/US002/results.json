@@ -1,0 +1,21 @@
+{
+  "story": "US-002",
+  "origin": "RF02",
+  "issue": 38,
+  "screen": "T01",
+  "element": "E01",
+  "date": "2026-10-13",
+  "branch": "feat/us002-login-sessoes-v1",
+  "base": "53796a41303ebd0ef8135300b45441554d54c180",
+  "technical_comment": 6145678447,
+  "approval_comment": 5673834103,
+  "environment": {"os": "Fedora 44 x86_64", "node": "24.18.0", "npm": "11.16.0", "python": "3.14.7"},
+  "checks": {"npm_ci": "PASS", "format": "PASS", "lint": "PASS", "typecheck": "PASS", "build": "PASS", "unit": {"passed": 148, "new": 81, "argon2": "real", "sql": "mock"}, "e2e_without_mysql": {"passed": 36, "new": 18, "projects": ["mobile-chromium", "desktop-chromium"], "success_loading_invalid_credentials": "intercepted simulated responses", "closed_handlers": "real HTTP without database"}, "python_validators": "4 PASS", "production_audit_vulnerabilities": 0},
+  "mysql": {"executed": false, "authorized_for_this_increment": false, "migration": "005_sessoes_login.sql", "persistence_concurrency_expiration_rollback": "PENDING explicit disposable environment authorization"},
+  "canonical_requirements_and_snapshots_preserved": true,
+  "public_auth_enabled": false,
+  "care_access_granted": false,
+  "issue_closed": false,
+  "merge": false,
+  "deploy": false
+}

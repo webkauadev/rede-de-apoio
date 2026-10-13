@@ -45,3 +45,11 @@ O app ainda nao tem stack, backend/frontend, migrations ou auth definidos/implem
 ## DEC-AUTH-001 — convites CUIDADOR (homologada 2026-10-09)
 
 [Decisão de convites](DEC_AUTH_001_CONVITES_CUIDADORES.md), homologada na [Issue #37](https://github.com/webkauadev/rede-de-apoio/issues/37#issuecomment-6092864135). **O impedimento de decisão funcional para US-001 foi resolvido**, mas a autorização por convite, o backend, a migração incremental e a prova real com MySQL descartável ainda precisam ser implementados/testados no PR #120. Não confundir com convites de Pessoa Idosa DB-017/US-036 e não considerar a US concluída.
+
+## US-002 — login e sessões em Draft
+
+[Handoff US-002 / Issue #38](US002_LOGIN_SESSOES_V1.md): T01 e infraestrutura de sessões,
+base humana `53796a4`, com testes sem MySQL. A instrução mais recente da Issue #38 supera
+os estados históricos do PR #120 acima. Migração 005 preparada; persistência/concorrência
+deste incremento aguardam nova autorização específica. Nenhum aceite, gate global ou
+outra US foi declarado concluído por esta implementação.

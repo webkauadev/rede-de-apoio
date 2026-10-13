@@ -312,3 +312,15 @@ O PR #118 foi incorporado à main por revisão humana, base `ed75c72`. A seção
 ## Continuação DEC-AUTH-001 — fluxo local de convite em revisão
 
 DEC-AUTH-001 homologada na Issue #37 resolveu o modelo de autorização. Na mesma branch/PR #120, bootstrap é CLI local controlada; T02 aceita convite individual, validado/consumido atomicamente com criação somente de identidade CUIDADOR. Rate limit persistente, auditoria sanitizada, origem configurada e reconciliação de COMMIT foram implementados. MySQL **8.4.11 rootless local descartável** executou `001`/`002`/`003`/`004`: 30/30/31/32 tabelas; DDL base preservado. [Evidências e limites atuais](../10_IMPLEMENTACAO/US001_CADASTRO_CONTA_V1.md) substituem os bloqueios funcionais históricos da seção anterior. Login/sessões US-002, emissão futura por Principal US-005/007, segurança pública e revisão humana continuam pendentes; US/RF não finalizadas e G-DB global não encerrado. Sem merge/deploy.
+
+## Incremento US-002 — T01/login/sessões (2026-10-13)
+
+A [instrução técnica da Issue #38](https://github.com/webkauadev/rede-de-apoio/issues/38#issuecomment-6145678447)
+registra a incorporação humana do PR #120 na base `53796a4`. Esse registro supera o estado histórico
+"US-001 em revisão" das seções anteriores. Nesta branch `feat/us002-login-sessoes-v1`, T01 usa
+AuthShell/tokens; login Argon2id, sessões SQL revogáveis, guardas server-side, Origin e limite
+persistente estão preparados. Aditiva 005 **não executada**. Testes de SQL usam mocks; E2E sem
+MySQL verificam UI e falha fechada, não persistência real. Conta autenticada não ganha papéis
+ou acesso clínico. US-002/RF02 continuam abertas, owner David preservado; sem merge/deploy.
+[Relatório e rastreabilidade](../10_IMPLEMENTACAO/US002_LOGIN_SESSOES_V1.md) descrevem integração
+MySQL pendente de nova autorização e gates públicos ainda abertos.

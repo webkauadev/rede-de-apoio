@@ -249,3 +249,15 @@ code_implementation_review:
     input: {path: src/components/ui/input.tsx, screens: [T02], tokens: existing_project_tokens}
     registration_form: {path: src/domains/auth/registration/registration-form.tsx, screens: [T02], states: [default, validation_error, loading]}
   evidence: docs/10_IMPLEMENTACAO/US001_CADASTRO_CONTA_V1.md
+
+implementation_us002_review:
+  issue: 38
+  screen: T01
+  element: E01
+  status: LOGIN_SESSIONS_PENDING_MYSQL_AND_REVIEW
+  reused: [AuthShell, Input, Button]
+  domain_components:
+    - src/domains/auth/login/login-form.tsx
+    - src/domains/auth/login/logout-button.tsx
+  states: [default, invalid_credentials, loading]
+  evidence: docs/10_IMPLEMENTACAO/US002_LOGIN_SESSOES_V1.md
