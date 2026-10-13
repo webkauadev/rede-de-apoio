@@ -14,4 +14,4 @@ Use `requireIdentity` dentro de cada rota/página protegida. Identidade não é 
 `denyCareAccess` permanece fechado até as US de domínio implementarem a matriz contextual.
 Não substituir essas guardas por esconder botões, cookie-presence em proxy ou cache de sessão.
 Não há fallback em memória, JWT de autorização, senha/token em logs ou recuperação funcional.
-Migração aditiva `005_sessoes_login.sql` **não executada**; exige nova autorização de MySQL.
+Migração aditiva `005_sessoes_login.sql` executada somente no ensaio autorizado US-002; evidências no relatório. Novo ensaio exige autorização própria.

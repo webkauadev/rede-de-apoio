@@ -53,3 +53,10 @@ base humana `53796a4`, com testes sem MySQL. A instrução mais recente da Issue
 os estados históricos do PR #120 acima. Migração 005 preparada; persistência/concorrência
 deste incremento aguardam nova autorização específica. Nenhum aceite, gate global ou
 outra US foi declarado concluído por esta implementação.
+
+### US-002 — integração física da continuidade
+
+A autorização específica da Issue #38 liberou o ensaio novo: 005 executada em MySQL 8.4.11,
+34 tabelas, **30 testes físicos e 20 E2E com banco real** passaram. [Relatório US-002](US002_LOGIN_SESSOES_V1.md)
+registra correções de rotação/concorrência e cleanup. A pendência histórica anterior foi suprida somente
+nesse escopo local. PR #121 segue Draft para nova revisão humana; gates públicos/globais não encerrados.

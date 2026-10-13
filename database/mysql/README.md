@@ -89,3 +89,11 @@ janela UTC e índice para coleta limitada). Baseline e migrações anteriores pr
 A projeção é 34 tabelas após 005; **essa contagem e o DDL não foram verificados em MySQL**.
 O ensaio da US-001 e seus scripts não autorizam nem comprovam o incremento US-002.
 [Escopo, evidências e testes de integração pendentes](../../docs/10_IMPLEMENTACAO/US002_LOGIN_SESSOES_V1.md).
+
+### Evidência posterior US-002 — 005 executada no ensaio autorizado
+
+A autorização específica [#6146197937](https://github.com/webkauadev/rede-de-apoio/issues/38#issuecomment-6146197937)
+supera a pendência histórica acima. MySQL 8.4.11 novo/rootless/loopback executou 001/002/003/004/005,
+com **30/30/31/32/34 tabelas**. FK, índices e CHECK de expiração foram verificados fisicamente;
+30 testes de integração e 20 E2E MySQL passaram. Baseline e migrações preservadas. Apenas recursos
+do ensaio foram removidos; nenhum banco existente/produção alterado. [Evidências US-002](../../docs/10_IMPLEMENTACAO/US002_LOGIN_SESSOES_V1.md).

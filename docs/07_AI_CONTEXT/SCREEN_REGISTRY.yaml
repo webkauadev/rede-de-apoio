@@ -49,9 +49,9 @@ screens:
       issue: 38
       branch: feat/us002-login-sessoes-v1
       route: /login
-      status: LOGIN_SESSIONS_PENDING_MYSQL_AND_REVIEW
+      status: LOCAL_MYSQL_LOGIN_SESSIONS_PENDING_REVIEW
       evidence: docs/10_IMPLEMENTACAO/US002_LOGIN_SESSOES_V1.md
-      pending: [mysql_integration_authorization, contextual_domain_authorization, human_review, public_security_gates]
+      pending: [contextual_domain_authorization, human_review, public_security_gates]
   T02:
     name: Cadastro de Conta
     owner: David
