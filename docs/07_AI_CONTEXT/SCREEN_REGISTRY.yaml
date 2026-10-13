@@ -182,6 +182,14 @@ screens:
     purpose: Manter o perfil e configurar a conta própria read-only da Pessoa Idosa sem criar app separado.
     target_entry_surface: settings_management_sheet
     elderly_access: approved_read_only
+    implementation_review:
+      issue: 39
+      branch: feat/us003-cadastro-pessoa-idosa-v1
+      route: /pessoa-idosa/cadastro
+      status: BLOCKED_BY_DECISION
+      migration_required: verifiable_bootstrap_actor_eligibility
+      evidence: docs/10_IMPLEMENTACAO/US003_CADASTRO_PESSOA_IDOSA_V1.md
+      pending: [bootstrap_eligibility_decision, authorized_positive_flow, human_review]
   T13:
     name: Rede de Cuidado
     owner: David
