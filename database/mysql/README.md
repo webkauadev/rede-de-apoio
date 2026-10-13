@@ -79,3 +79,21 @@ Após a aprovação específica do usuário em 2026-10-09, foi preparado [003_co
 ## Ensaio físico US-001 autorizado por DEC-AUTH-001
 
 O incremento do Draft PR #120 executou os arquivos no MySQL 8.4.11 **local, rootless e descartável**, com dados sintéticos: `001` e validação `002` (30 tabelas), `003` (31), `004_cadastro_rate_limit.sql` (32). O quarto arquivo acrescenta somente buckets técnicos persistentes de abuso. [Runbook/evidências](../../docs/10_IMPLEMENTACAO/US001_CADASTRO_CONTA_V1.md). Não significa execução em produção nem encerramento do G-DB global; `001`/`002` preservados.
+
+## US-002 — migração aditiva preparada, não executada
+
+`005_sessoes_login.sql` sucede `001`/`003`/`004` e acrescenta **duas** tabelas técnicas:
+`sessao_usuario` (token SHA-256, FK usuario, snapshot de credencial, vencimento absoluto UTC,
+revogação e índices de usuário/vencimento) e `login_rate_limit` (buckets HMAC separados,
+janela UTC e índice para coleta limitada). Baseline e migrações anteriores preservados.
+A projeção é 34 tabelas após 005; **essa contagem e o DDL não foram verificados em MySQL**.
+O ensaio da US-001 e seus scripts não autorizam nem comprovam o incremento US-002.
+[Escopo, evidências e testes de integração pendentes](../../docs/10_IMPLEMENTACAO/US002_LOGIN_SESSOES_V1.md).
+
+### Evidência posterior US-002 — 005 executada no ensaio autorizado
+
+A autorização específica [#6146197937](https://github.com/webkauadev/rede-de-apoio/issues/38#issuecomment-6146197937)
+supera a pendência histórica acima. MySQL 8.4.11 novo/rootless/loopback executou 001/002/003/004/005,
+com **30/30/31/32/34 tabelas**. FK, índices e CHECK de expiração foram verificados fisicamente;
+30 testes de integração e 20 E2E MySQL passaram. Baseline e migrações preservadas. Apenas recursos
+do ensaio foram removidos; nenhum banco existente/produção alterado. [Evidências US-002](../../docs/10_IMPLEMENTACAO/US002_LOGIN_SESSOES_V1.md).

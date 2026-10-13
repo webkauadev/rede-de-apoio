@@ -45,6 +45,13 @@ screens:
     user_stories: [US-002, US-036]
     purpose: Autenticar usuário com conta válida, incluindo a Pessoa Idosa com conta própria aprovada por RF30.
     target_shell: AuthShell
+    implementation_review:
+      issue: 38
+      branch: feat/us002-login-sessoes-v1
+      route: /login
+      status: LOCAL_MYSQL_LOGIN_SESSIONS_PENDING_REVIEW
+      evidence: docs/10_IMPLEMENTACAO/US002_LOGIN_SESSOES_V1.md
+      pending: [contextual_domain_authorization, human_review, public_security_gates]
   T02:
     name: Cadastro de Conta
     owner: David

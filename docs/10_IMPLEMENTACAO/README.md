@@ -45,3 +45,22 @@ O app ainda nao tem stack, backend/frontend, migrations ou auth definidos/implem
 ## DEC-AUTH-001 — convites CUIDADOR (homologada 2026-10-09)
 
 [Decisão de convites](DEC_AUTH_001_CONVITES_CUIDADORES.md), homologada na [Issue #37](https://github.com/webkauadev/rede-de-apoio/issues/37#issuecomment-6092864135). **O impedimento de decisão funcional para US-001 foi resolvido**, mas a autorização por convite, o backend, a migração incremental e a prova real com MySQL descartável ainda precisam ser implementados/testados no PR #120. Não confundir com convites de Pessoa Idosa DB-017/US-036 e não considerar a US concluída.
+
+## US-002 — login e sessões em Draft
+
+[Handoff US-002 / Issue #38](US002_LOGIN_SESSOES_V1.md): T01 e infraestrutura de sessões,
+base humana `53796a4`, com testes sem MySQL. A instrução mais recente da Issue #38 supera
+os estados históricos do PR #120 acima. Migração 005 preparada; persistência/concorrência
+deste incremento aguardam nova autorização específica. Nenhum aceite, gate global ou
+outra US foi declarado concluído por esta implementação.
+
+### US-002 — integração física da continuidade
+
+A autorização específica da Issue #38 liberou o ensaio novo: 005 executada em MySQL 8.4.11,
+34 tabelas, **30 testes físicos e 20 E2E com banco real** passaram. [Relatório US-002](US002_LOGIN_SESSOES_V1.md)
+registra correções de rotação/concorrência e cleanup. A pendência histórica anterior foi suprida somente
+nesse escopo local. PR #121 segue Draft para nova revisão humana; gates públicos/globais não encerrados.
+
+## Política de testes em camadas — PR #122
+
+[TESTES_EFICIENTES_V1.md](TESTES_EFICIENTES_V1.md) define ciclos rápidos no Codex, smoke mobile, E2E padrão com seleção desktop `@responsive` e regressão completa opcional nas duas plataformas. Os gates de MySQL físico, integridade, concorrência e autorização continuam obrigatórios por US. O protocolo é aplicável após aprovação e incorporação do PR #122.

@@ -14,7 +14,7 @@ async function fillValid(page: Page) {
     .fill("senha sintética");
 }
 
-test("T02 preserva shell, campos, targets e separação da navegação autenticada", async ({
+test("T02 preserva shell, campos, targets e separação da navegação autenticada @responsive @smoke", async ({
   page,
 }, testInfo) => {
   await page.goto("/cadastro");
@@ -24,7 +24,9 @@ test("T02 preserva shell, campos, targets e separação da navegação autentica
   await expect(
     page.getByRole("navigation", { name: "Navegação principal" }),
   ).toHaveCount(0);
-  await expect(page.getByRole("button", { name: "Entrar" })).toBeDisabled();
+  await expect(
+    page.getByRole("link", { name: "Entrar", exact: true }),
+  ).toHaveAttribute("href", "/login");
   for (const control of await page.locator("input, button").all()) {
     const bounds = await control.boundingBox();
     expect(bounds?.height).toBeGreaterThanOrEqual(48);
@@ -41,7 +43,7 @@ test("T02 preserva shell, campos, targets e separação da navegação autentica
   });
 });
 
-test("validação acessível mantém T02 e não envia dados inválidos", async ({
+test("validação acessível mantém T02 e não envia dados inválidos @responsive", async ({
   page,
 }, testInfo) => {
   let requests = 0;
@@ -88,7 +90,7 @@ test("visibilidade de senha tem nome acessível e preserva valor", async ({
   await expect(password).toHaveAttribute("type", "password");
 });
 
-test("loading bloqueia reenvio e mantém a estrutura (resposta atrasada simulada)", async ({
+test("loading bloqueia reenvio e mantém a estrutura (resposta atrasada simulada) @responsive", async ({
   page,
 }, testInfo) => {
   let release!: () => void;
@@ -138,7 +140,7 @@ test("loading bloqueia reenvio e mantém a estrutura (resposta atrasada simulada
   expect(requests).toBe(1);
 });
 
-test("handler real nega cadastro pendente sem criar sessão e sem MySQL", async ({
+test("handler real nega cadastro pendente sem criar sessão e sem MySQL @smoke", async ({
   page,
 }, testInfo) => {
   await page.goto("/cadastro");

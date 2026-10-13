@@ -35,3 +35,20 @@
 ## Evidência posterior parcial — US-001 / DEC-AUTH-001
 
 A autorização específica da DEC-AUTH-001 permitiu o ensaio **local descartável**, registrado no [handoff US-001](US001_CADASTRO_CONTA_V1.md). MySQL 8.4.11 executou baseline 001/validação 002 (30 tabelas), convite 003 (31) e buckets técnicos 004 (32), com persistência/concorrência de convite, bootstrap e rollback comprovados. A indicação histórica “NÃO EXECUTADO” não descreve mais essa parte do ensaio. **G-DB global permanece aberto** para as demais transações de Principal/tarefa/plantão e domínios. G-AUTH possui Argon2id/convite/limitação/auditoria de cadastro local implementados, mas login, sessão, recuperação e liberação pública continuam pendentes. Não implica fechamento de US, merge ou deploy.
+
+## Incremento US-002 — evidência sem MySQL
+
+T01/login/infraestrutura de sessão SQL possuem [testes e relatório US-002](US002_LOGIN_SESSOES_V1.md).
+G-AUTH permanece **aberto**: recuperação não implementada, integração de sessões/concorrência
+MySQL e autorização contextual de domínios pendentes. G-DB não é encerrado por mocks ou CI;
+nenhuma execução MySQL foi autorizada neste novo incremento. Liberação pública desativada
+por configuração explícita, sem fallback inseguro, merge ou deploy.
+
+### Continuidade US-002: prova física local autorizada
+
+A autorização #6146197937 liberou 005/MySQL 8.4 descartável. [Relatório US-002](US002_LOGIN_SESSOES_V1.md)
+registra **30 integrações físicas e 20 E2E MySQL**: sessão, cookie/guarda/logout, concorrência,
+limites, auditoria e rollback/COMMIT injetado. O recurso e suas credenciais foram removidos.
+A pendência específica de executar 005 foi suprida; **não fecha G-DB global, G-AUTH/G-SEC/G-PRIV/G-REL**,
+nem US/RF. Recuperação e autorização contextual de domínios futuros permanecem fora desta prova;
+Draft aguarda nova revisão humana. Sem merge, deploy ou dados reais.

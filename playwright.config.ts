@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+const fullDesktop = process.env.PLAYWRIGHT_FULL_DESKTOP === "1";
 export default defineConfig({
   testDir: "./tests/e2e",
   testIgnore: "**/mysql/**",
@@ -12,13 +13,26 @@ export default defineConfig({
       name: "mobile-chromium",
       use: { ...devices["Pixel 7"], viewport: { width: 390, height: 844 } },
     },
-    { name: "desktop-chromium", use: { ...devices["Desktop Chrome"] } },
+    {
+      name: "desktop-chromium",
+      // Apenas cenarios @responsive repetem em desktop; mobile executa a suite completa.
+      grep: fullDesktop ? undefined : /@responsive/,
+      use: { ...devices["Desktop Chrome"] },
+    },
   ],
   webServer: {
     command: "npm run start -- --hostname 127.0.0.1 --port 3100",
     url: "http://127.0.0.1:3100",
     reuseExistingServer: false,
     timeout: 60000,
-    env: { APPLICATION_ORIGIN: "http://127.0.0.1:3100" },
+    env: {
+      APPLICATION_ORIGIN: "http://127.0.0.1:3100",
+      AUTH_ENVIRONMENT: "",
+      REGISTRATION_ENVIRONMENT: "",
+      SESSION_SECRET: "",
+      DATABASE_HOST: "",
+      DATABASE_USER: "",
+      DATABASE_PASSWORD: "",
+    },
   },
 });
