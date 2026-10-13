@@ -19,6 +19,14 @@ export default defineConfig({
     url: "http://127.0.0.1:3100",
     reuseExistingServer: false,
     timeout: 60000,
-    env: { APPLICATION_ORIGIN: "http://127.0.0.1:3100" },
+    env: {
+      APPLICATION_ORIGIN: "http://127.0.0.1:3100",
+      AUTH_ENVIRONMENT: "",
+      REGISTRATION_ENVIRONMENT: "",
+      SESSION_SECRET: "",
+      DATABASE_HOST: "",
+      DATABASE_USER: "",
+      DATABASE_PASSWORD: "",
+    },
   },
 });

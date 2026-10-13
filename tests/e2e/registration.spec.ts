@@ -24,7 +24,9 @@ test("T02 preserva shell, campos, targets e separação da navegação autentica
   await expect(
     page.getByRole("navigation", { name: "Navegação principal" }),
   ).toHaveCount(0);
-  await expect(page.getByRole("button", { name: "Entrar" })).toBeDisabled();
+  await expect(
+    page.getByRole("link", { name: "Entrar", exact: true }),
+  ).toHaveAttribute("href", "/login");
   for (const control of await page.locator("input, button").all()) {
     const bounds = await control.boundingBox();
     expect(bounds?.height).toBeGreaterThanOrEqual(48);
