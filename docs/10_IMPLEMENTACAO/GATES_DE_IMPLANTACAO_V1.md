@@ -31,3 +31,7 @@
 5. Produção com dados reais somente após G-PRIV/G-SEC/G-REL concluídos.
 
 **Importante:** a autorização atual para consolidar SQL e PRs documentais não é autorização para provisionar um MySQL por conta própria.
+
+## Evidência posterior parcial — US-001 / DEC-AUTH-001
+
+A autorização específica da DEC-AUTH-001 permitiu o ensaio **local descartável**, registrado no [handoff US-001](US001_CADASTRO_CONTA_V1.md). MySQL 8.4.11 executou baseline 001/validação 002 (30 tabelas), convite 003 (31) e buckets técnicos 004 (32), com persistência/concorrência de convite, bootstrap e rollback comprovados. A indicação histórica “NÃO EXECUTADO” não descreve mais essa parte do ensaio. **G-DB global permanece aberto** para as demais transações de Principal/tarefa/plantão e domínios. G-AUTH possui Argon2id/convite/limitação/auditoria de cadastro local implementados, mas login, sessão, recuperação e liberação pública continuam pendentes. Não implica fechamento de US, merge ou deploy.

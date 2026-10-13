@@ -14,6 +14,23 @@ export class DatabaseUnavailableError extends Error {
     this.name = "DatabaseUnavailableError";
   }
 }
+export class DatabaseConflictError extends Error {
+  constructor() {
+    super("Conflito de unicidade nos dados.");
+    this.name = "DatabaseConflictError";
+  }
+}
+function sanitizedError(error: unknown): Error {
+  if (error instanceof DatabaseConflictError) return error;
+  if (
+    typeof error === "object" &&
+    error !== null &&
+    "code" in error &&
+    error.code === "ER_DUP_ENTRY"
+  )
+    return new DatabaseConflictError();
+  return new DatabaseUnavailableError();
+}
 /**
  * O COMMIT foi tentado, mas não recebemos confirmação confiável.
  * O banco pode ter confirmado a transação: nunca repetir automaticamente
@@ -49,8 +66,8 @@ function executor(connection: Pool | PoolConnection): SqlExecutor {
       try {
         const [rows] = await connection.execute<T[]>(sql, [...parameters]);
         return rows;
-      } catch {
-        throw new DatabaseUnavailableError();
+      } catch (error) {
+        throw sanitizedError(error);
       }
     },
     async execute(sql, parameters) {
@@ -59,8 +76,8 @@ function executor(connection: Pool | PoolConnection): SqlExecutor {
           ...parameters,
         ]);
         return result;
-      } catch {
-        throw new DatabaseUnavailableError();
+      } catch (error) {
+        throw sanitizedError(error);
       }
     },
   };
@@ -73,21 +90,22 @@ export const database: SqlExecutor = {
   ) {
     try {
       return await executor(getPool()).select<T>(sql, parameters);
-    } catch {
-      throw new DatabaseUnavailableError();
+    } catch (error) {
+      throw sanitizedError(error);
     }
   },
   async execute(sql, parameters) {
     try {
       return await executor(getPool()).execute(sql, parameters);
-    } catch {
-      throw new DatabaseUnavailableError();
+    } catch (error) {
+      throw sanitizedError(error);
     }
   },
 };
 /** Sem retry automático: serviços futuros definem locks, idempotência e autorização. */
 export async function withTransaction<T>(
   operation: (transaction: SqlExecutor) => Promise<T>,
+  lockName?: string,
 ): Promise<T> {
   let connection: PoolConnection;
   try {
@@ -97,7 +115,24 @@ export async function withTransaction<T>(
   }
   let reusable = true;
   let commitAttempted = false;
+  let namedLock = false;
   try {
+    if (lockName) {
+      try {
+        const rows = await executor(connection).select<RowDataPacket>(
+          "SELECT GET_LOCK(?, 5) AS acquired",
+          [lockName],
+        );
+        if (Number(rows[0].acquired) !== 1)
+          throw new DatabaseUnavailableError();
+        namedLock = true;
+      } catch {
+        // Sem confirmacao do lock, nao devolver uma sessao possivelmente proprietaria ao pool.
+        reusable = false;
+        connection.destroy();
+        throw new DatabaseUnavailableError();
+      }
+    }
     try {
       await connection.beginTransaction();
     } catch {
@@ -116,7 +151,7 @@ export async function withTransaction<T>(
     }
     return result;
   } catch (error) {
-    if (!commitAttempted) {
+    if (!commitAttempted && reusable) {
       try {
         await connection.rollback();
       } catch {
@@ -126,6 +161,18 @@ export async function withTransaction<T>(
     }
     throw error;
   } finally {
+    if (reusable && namedLock) {
+      try {
+        const rows = await executor(connection).select<RowDataPacket>(
+          "SELECT RELEASE_LOCK(?) AS released",
+          [lockName!],
+        );
+        if (Number(rows[0].released) !== 1) throw new Error();
+      } catch {
+        reusable = false;
+        connection.destroy();
+      }
+    }
     if (reusable) connection.release();
   }
 }

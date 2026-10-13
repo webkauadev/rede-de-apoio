@@ -71,3 +71,11 @@ O arquivo `001_rede_de_apoio_schema.sql` foi consolidado para **30 tabelas MySQL
 **A sequência de importação no Workbench permanece a mesma.** O validador `scripts/validate_sql_prototype.py` e o arquivo `002_validar_estrutura.sql` agora verificam **30 tabelas**. Nenhuma sessão MySQL foi executada; o uso em banco real de teste e o EER definitivo exigem sua importação posterior. As referências numéricas de V1 no início deste README são histórico.
 
 **Contrato mínimo do Codex:** [STACK_V1_HOMOLOGADA.md](../../docs/10_IMPLEMENTACAO/STACK_V1_HOMOLOGADA.md), [GATES_DE_IMPLANTACAO_V1.md](../../docs/10_IMPLEMENTACAO/GATES_DE_IMPLANTACAO_V1.md) e [MAPA_RELACIONAMENTOS.md](MAPA_RELACIONAMENTOS.md). Prazo legal de retenção e critérios clínicos excepcionais não são fabricados pelo SQL.
+
+## SQL incremental de convite CUIDADOR — DEC-AUTH-001
+
+Após a aprovação específica do usuário em 2026-10-09, foi preparado [003_convite_cadastro_cuidador.sql](003_convite_cadastro_cuidador.sql) como **migração estritamente aditiva**, complementar às **30 tabelas do 001**. Juntos, os scripts definem **31 tabelas** num banco descartável após execução real. Este novo arquivo NÃO integra o EER histórico de 30 tabelas sem uma nova importação nem altera o `001`; `002_validar_estrutura.sql` inspeciona metadados. **O SQL 003 ainda não foi executado em MySQL 8.4**: Codex deve verificar sintaxe, unicidades geradas e concorrência no ambiente de ensaio autorizado e corrigir em PR antes da aprovação. [Autoridade/limites](../../docs/10_IMPLEMENTACAO/DEC_AUTH_001_CONVITES_CUIDADORES.md). A autorização é local, em contêiner descartável no Fedora, com dados fictícios; nunca em banco real ou produção.
+
+## Ensaio físico US-001 autorizado por DEC-AUTH-001
+
+O incremento do Draft PR #120 executou os arquivos no MySQL 8.4.11 **local, rootless e descartável**, com dados sintéticos: `001` e validação `002` (30 tabelas), `003` (31), `004_cadastro_rate_limit.sql` (32). O quarto arquivo acrescenta somente buckets técnicos persistentes de abuso. [Runbook/evidências](../../docs/10_IMPLEMENTACAO/US001_CADASTRO_CONTA_V1.md). Não significa execução em produção nem encerramento do G-DB global; `001`/`002` preservados.

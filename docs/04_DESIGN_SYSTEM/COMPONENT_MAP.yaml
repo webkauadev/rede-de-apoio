@@ -239,3 +239,13 @@ implementation_scaffold:
   tokens: src/app/globals.css
   scope: technical_demonstration_only
   evidence: docs/10_IMPLEMENTACAO/evidencias/issue-117/
+
+code_implementation_review:
+  issue: 37
+  status: LOCAL_INVITATION_FLOW_PENDING_REVIEW
+  components:
+    auth_shell: {path: src/components/layout/auth-shell.tsx, screens: [T02], reusable_for: [T01]}
+    button: {path: src/components/ui/button.tsx, screens: [T02], tokens: existing_project_tokens}
+    input: {path: src/components/ui/input.tsx, screens: [T02], tokens: existing_project_tokens}
+    registration_form: {path: src/domains/auth/registration/registration-form.tsx, screens: [T02], states: [default, validation_error, loading]}
+  evidence: docs/10_IMPLEMENTACAO/US001_CADASTRO_CONTA_V1.md

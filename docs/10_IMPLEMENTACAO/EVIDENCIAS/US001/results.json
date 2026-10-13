@@ -1,0 +1,69 @@
+{
+  "scope": "US-001 / RF01 / T02 / DEC-AUTH-001; Draft PR #120",
+  "executed_local_date": "2026-10-09 America/Porto_Velho",
+  "environment": {
+    "fedora": "44 x86_64",
+    "podman": "5.8.7 rootless",
+    "mysql": "8.4.11",
+    "node": "24.18.0",
+    "npm": "11.16.0",
+    "python": "3.14.7"
+  },
+  "commands": {
+    "npm ci": "PASS",
+    "format:check": "PASS",
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "npm test": {
+      "result": "PASS",
+      "tests": 67,
+      "files": 5
+    },
+    "build": "PASS",
+    "test:e2e": {
+      "result": "PASS",
+      "tests": 18
+    },
+    "test:integration": {
+      "result": "PASS",
+      "tests": 18,
+      "database": "real disposable MySQL"
+    },
+    "test:e2e:mysql": {
+      "result": "PASS",
+      "tests": 6,
+      "database": "real disposable MySQL"
+    },
+    "python_validators": "4 PASS",
+    "runtime_audit": "0 vulnerabilities",
+    "diff_check": "PASS",
+    "ephemeral_secret_scan": "PASS"
+  },
+  "concurrency": {
+    "same_invitation_same_normalized_email": {
+      "accounts": 1,
+      "consumed_invitations": 1,
+      "allowed_audit_events": 1
+    },
+    "row_lock": "second distinct connection blocked until first commits",
+    "bootstrap": "only one open invitation",
+    "rate_limit": "persistent UTC counters, concurrent requests capped"
+  },
+  "commit_uncertainty": "Fault injection after real COMMIT, destroyed real connection, read-only reconciliation with same operation password hash; no automatic retry. No real network outage claimed.",
+  "cleanup": {
+    "own_container": "rede-apoio-us001-e55972cbcfcc",
+    "container_and_anonymous_volume_removed": true,
+    "private_credential_directory_removed": true,
+    "preexisting_resources_preserved": true
+  },
+  "pending": [
+    "human review",
+    "US-002 common login/sessions",
+    "US-005/007 contextual Principal issuance",
+    "global G-DB and public security gates",
+    "development advisory #119"
+  ],
+  "issue_closed": false,
+  "merge": false,
+  "deploy": false
+}
