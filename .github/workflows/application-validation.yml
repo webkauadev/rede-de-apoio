@@ -1,8 +1,33 @@
 name: Validate application V1
 on:
   pull_request:
+    paths-ignore:
+      - 'docs/09_BANCO_DE_DADOS/**'
+      - 'docs/11_ENTREGA_SQL_EER/**'
+      - 'database/mysql/**'
+      - 'entrega/sql-eer/**'
+      - 'scripts/prepare_sql_eer_delivery.mjs'
+      - 'scripts/verify_mysql_sql_eer.mjs'
+      - '.github/workflows/sql-eer-delivery.yml'
+      - '.github/workflows/application-validation.yml'
+      - 'AGENTS.md'
+      - 'docs/10_IMPLEMENTACAO/CODEX_PLAYBOOK.md'
+      - 'docs/10_IMPLEMENTACAO/README.md'
   push:
     branches: [main, feat/infra-scaffold-v1]
+    paths-ignore:
+      - 'docs/09_BANCO_DE_DADOS/**'
+      - 'docs/11_ENTREGA_SQL_EER/**'
+      - 'database/mysql/**'
+      - 'entrega/sql-eer/**'
+      - 'scripts/prepare_sql_eer_delivery.mjs'
+      - 'scripts/verify_mysql_sql_eer.mjs'
+      - '.github/workflows/sql-eer-delivery.yml'
+      - '.github/workflows/application-validation.yml'
+      - 'AGENTS.md'
+      - 'docs/10_IMPLEMENTACAO/CODEX_PLAYBOOK.md'
+      - 'docs/10_IMPLEMENTACAO/README.md'
+
 permissions:
   contents: read
 jobs:

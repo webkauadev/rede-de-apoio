@@ -1,5 +1,11 @@
 # AGENTS.md — Contrato de execução para agentes
 
+## Missão SQL + EER prioritária — Issue #124 (13/10/2026)
+
+**Para pedidos de SQL, modelo EER/Workbench ou banco de dados para entrega de hoje, NÃO seguir as 34 US restantes.** Leia primeiro [contrato SQL+EER](docs/11_ENTREGA_SQL_EER/README.md), [runbook Codex](docs/11_ENTREGA_SQL_EER/RUNBOOK_CODEX.md) e [checklist](docs/11_ENTREGA_SQL_EER/CHECKLIST.md). Execute um único pacote de SQL+EER com 34 tabelas, evidências MySQL real e arquivo `.mwb` do Workbench. Um grafo `.dot` não substitui o `.mwb`.
+
+As instruções históricas de implementar uma US por vez estão **suspensas apenas para a Issue #124**. O PR #123 da US-003 está em Draft: falta prova de elegibilidade para bootstrap do Familiar Principal. Isso bloqueia o **fluxo do aplicativo**, não o DDL de `pessoa_idosa` nem o EER. Preserve decisões homologadas, dados sintéticos, isolamento de MySQL, revisão humana e proibição de deploy sem gates.
+
 Este repositório GitHub (`webkauadev/rede-de-apoio`) é a **fonte única de verdade operacional** do projeto Rede de Apoio a Cuidadores de Idosos para requisitos, RF/RNF, User Stories, Issues, tarefas, status, critérios de aceitação, contexto de IA e versionamento.
 
 O Figma é a fonte canônica **somente do design visual/prototípico vigente**. A página `Fluxo Final` (`5926:1014`) é o protótipo canônico de usuário final quando houver equivalente às owner pages.

@@ -1,0 +1,876 @@
+{
+  "schema": "rede_de_apoio",
+  "mysql_required": "8.4.x",
+  "sources": [
+    {
+      "path": "database/mysql/001_rede_de_apoio_schema.sql",
+      "tables": [
+        "usuario",
+        "pessoa_idosa",
+        "rede_cuidado",
+        "membro_rede",
+        "atribuicao_papel_familiar",
+        "plantao",
+        "solicitacao_troca_plantao",
+        "tarefa",
+        "conclusao_tarefa",
+        "compromisso",
+        "consulta",
+        "recomendacao",
+        "medicamento",
+        "regime_medicamento",
+        "horario_regime",
+        "ocorrencia_programada",
+        "administracao_medicamento",
+        "registro_cuidado",
+        "correcao_registro_cuidado",
+        "correcao_consulta",
+        "correcao_administracao_medicamento",
+        "anexo",
+        "contato_importante",
+        "informacao_emergencia",
+        "preferencia_notificacao",
+        "auditoria",
+        "entrega_tecnica_notificacao",
+        "idempotencia_comando",
+        "habilitacao_acesso_idoso",
+        "historico_plantao"
+      ]
+    },
+    {
+      "path": "database/mysql/003_convite_cadastro_cuidador.sql",
+      "tables": [
+        "convite_cadastro_cuidador"
+      ]
+    },
+    {
+      "path": "database/mysql/004_cadastro_rate_limit.sql",
+      "tables": [
+        "cadastro_rate_limit"
+      ]
+    },
+    {
+      "path": "database/mysql/005_sessoes_login.sql",
+      "tables": [
+        "sessao_usuario",
+        "login_rate_limit"
+      ]
+    }
+  ],
+  "table_count": 34,
+  "tables": [
+    "administracao_medicamento",
+    "anexo",
+    "atribuicao_papel_familiar",
+    "auditoria",
+    "cadastro_rate_limit",
+    "compromisso",
+    "conclusao_tarefa",
+    "consulta",
+    "contato_importante",
+    "convite_cadastro_cuidador",
+    "correcao_administracao_medicamento",
+    "correcao_consulta",
+    "correcao_registro_cuidado",
+    "entrega_tecnica_notificacao",
+    "habilitacao_acesso_idoso",
+    "historico_plantao",
+    "horario_regime",
+    "idempotencia_comando",
+    "informacao_emergencia",
+    "login_rate_limit",
+    "medicamento",
+    "membro_rede",
+    "ocorrencia_programada",
+    "pessoa_idosa",
+    "plantao",
+    "preferencia_notificacao",
+    "recomendacao",
+    "rede_cuidado",
+    "regime_medicamento",
+    "registro_cuidado",
+    "sessao_usuario",
+    "solicitacao_troca_plantao",
+    "tarefa",
+    "usuario"
+  ],
+  "fk_count": 79,
+  "foreign_keys": [
+    {
+      "table": "administracao_medicamento",
+      "name": "fk_administracao_autor",
+      "parent": "usuario"
+    },
+    {
+      "table": "administracao_medicamento",
+      "name": "fk_administracao_executor",
+      "parent": "membro_rede"
+    },
+    {
+      "table": "administracao_medicamento",
+      "name": "fk_administracao_horario",
+      "parent": "horario_regime"
+    },
+    {
+      "table": "administracao_medicamento",
+      "name": "fk_administracao_ocorrencia",
+      "parent": "ocorrencia_programada"
+    },
+    {
+      "table": "administracao_medicamento",
+      "name": "fk_administracao_regime",
+      "parent": "regime_medicamento"
+    },
+    {
+      "table": "anexo",
+      "name": "fk_anexo_administracao",
+      "parent": "administracao_medicamento"
+    },
+    {
+      "table": "anexo",
+      "name": "fk_anexo_autor",
+      "parent": "usuario"
+    },
+    {
+      "table": "anexo",
+      "name": "fk_anexo_consulta",
+      "parent": "consulta"
+    },
+    {
+      "table": "anexo",
+      "name": "fk_anexo_registro",
+      "parent": "registro_cuidado"
+    },
+    {
+      "table": "atribuicao_papel_familiar",
+      "name": "fk_papel_concedente",
+      "parent": "usuario"
+    },
+    {
+      "table": "atribuicao_papel_familiar",
+      "name": "fk_papel_membro_familiar",
+      "parent": "membro_rede"
+    },
+    {
+      "table": "auditoria",
+      "name": "fk_auditoria_ator",
+      "parent": "usuario"
+    },
+    {
+      "table": "auditoria",
+      "name": "fk_auditoria_pessoa",
+      "parent": "pessoa_idosa"
+    },
+    {
+      "table": "auditoria",
+      "name": "fk_auditoria_rede",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "compromisso",
+      "name": "fk_compromisso_contexto",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "compromisso",
+      "name": "fk_compromisso_criador",
+      "parent": "usuario"
+    },
+    {
+      "table": "compromisso",
+      "name": "fk_compromisso_responsavel",
+      "parent": "membro_rede"
+    },
+    {
+      "table": "conclusao_tarefa",
+      "name": "fk_conclusao_autor",
+      "parent": "usuario"
+    },
+    {
+      "table": "conclusao_tarefa",
+      "name": "fk_conclusao_executor",
+      "parent": "membro_rede"
+    },
+    {
+      "table": "conclusao_tarefa",
+      "name": "fk_conclusao_tarefa",
+      "parent": "tarefa"
+    },
+    {
+      "table": "consulta",
+      "name": "fk_consulta_autor",
+      "parent": "usuario"
+    },
+    {
+      "table": "consulta",
+      "name": "fk_consulta_compromisso",
+      "parent": "compromisso"
+    },
+    {
+      "table": "consulta",
+      "name": "fk_consulta_contexto",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "contato_importante",
+      "name": "fk_contato_autor",
+      "parent": "usuario"
+    },
+    {
+      "table": "contato_importante",
+      "name": "fk_contato_contexto",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "convite_cadastro_cuidador",
+      "name": "fk_convite_cuidador_emitente",
+      "parent": "usuario"
+    },
+    {
+      "table": "correcao_administracao_medicamento",
+      "name": "fk_correcao_administracao",
+      "parent": "administracao_medicamento"
+    },
+    {
+      "table": "correcao_administracao_medicamento",
+      "name": "fk_correcao_administracao_autor",
+      "parent": "usuario"
+    },
+    {
+      "table": "correcao_consulta",
+      "name": "fk_correcao_consulta",
+      "parent": "consulta"
+    },
+    {
+      "table": "correcao_consulta",
+      "name": "fk_correcao_consulta_autor",
+      "parent": "usuario"
+    },
+    {
+      "table": "correcao_registro_cuidado",
+      "name": "fk_correcao_registro",
+      "parent": "registro_cuidado"
+    },
+    {
+      "table": "correcao_registro_cuidado",
+      "name": "fk_correcao_registro_autor",
+      "parent": "usuario"
+    },
+    {
+      "table": "entrega_tecnica_notificacao",
+      "name": "fk_entrega_destinatario",
+      "parent": "usuario"
+    },
+    {
+      "table": "entrega_tecnica_notificacao",
+      "name": "fk_entrega_rede",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "habilitacao_acesso_idoso",
+      "name": "fk_habilitacao_pessoa_titular",
+      "parent": "pessoa_idosa"
+    },
+    {
+      "table": "habilitacao_acesso_idoso",
+      "name": "fk_habilitacao_solicitante",
+      "parent": "usuario"
+    },
+    {
+      "table": "habilitacao_acesso_idoso",
+      "name": "fk_habilitacao_titular",
+      "parent": "usuario"
+    },
+    {
+      "table": "historico_plantao",
+      "name": "fk_historico_ator",
+      "parent": "usuario"
+    },
+    {
+      "table": "historico_plantao",
+      "name": "fk_historico_membro_antes",
+      "parent": "membro_rede"
+    },
+    {
+      "table": "historico_plantao",
+      "name": "fk_historico_membro_depois",
+      "parent": "membro_rede"
+    },
+    {
+      "table": "historico_plantao",
+      "name": "fk_historico_plantao",
+      "parent": "plantao"
+    },
+    {
+      "table": "horario_regime",
+      "name": "fk_horario_regime",
+      "parent": "regime_medicamento"
+    },
+    {
+      "table": "idempotencia_comando",
+      "name": "fk_idempotencia_ator",
+      "parent": "usuario"
+    },
+    {
+      "table": "idempotencia_comando",
+      "name": "fk_idempotencia_rede",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "informacao_emergencia",
+      "name": "fk_emergencia_autor",
+      "parent": "usuario"
+    },
+    {
+      "table": "informacao_emergencia",
+      "name": "fk_emergencia_contexto",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "medicamento",
+      "name": "fk_medicamento_autor",
+      "parent": "usuario"
+    },
+    {
+      "table": "medicamento",
+      "name": "fk_medicamento_contexto",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "membro_rede",
+      "name": "fk_membro_rede",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "membro_rede",
+      "name": "fk_membro_usuario_tipo",
+      "parent": "usuario"
+    },
+    {
+      "table": "membro_rede",
+      "name": "fk_membro_vinculador",
+      "parent": "usuario"
+    },
+    {
+      "table": "ocorrencia_programada",
+      "name": "fk_ocorrencia_designado",
+      "parent": "membro_rede"
+    },
+    {
+      "table": "ocorrencia_programada",
+      "name": "fk_ocorrencia_horario",
+      "parent": "horario_regime"
+    },
+    {
+      "table": "ocorrencia_programada",
+      "name": "fk_ocorrencia_rede",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "ocorrencia_programada",
+      "name": "fk_ocorrencia_tarefa",
+      "parent": "tarefa"
+    },
+    {
+      "table": "pessoa_idosa",
+      "name": "fk_pessoa_cadastrante",
+      "parent": "usuario"
+    },
+    {
+      "table": "pessoa_idosa",
+      "name": "fk_pessoa_conta_tipo",
+      "parent": "usuario"
+    },
+    {
+      "table": "plantao",
+      "name": "fk_plantao_criador",
+      "parent": "usuario"
+    },
+    {
+      "table": "plantao",
+      "name": "fk_plantao_membro",
+      "parent": "membro_rede"
+    },
+    {
+      "table": "plantao",
+      "name": "fk_plantao_rede",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "preferencia_notificacao",
+      "name": "fk_preferencia_rede",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "preferencia_notificacao",
+      "name": "fk_preferencia_usuario",
+      "parent": "usuario"
+    },
+    {
+      "table": "recomendacao",
+      "name": "fk_recomendacao_autor",
+      "parent": "usuario"
+    },
+    {
+      "table": "recomendacao",
+      "name": "fk_recomendacao_consulta",
+      "parent": "consulta"
+    },
+    {
+      "table": "recomendacao",
+      "name": "fk_recomendacao_contexto",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "rede_cuidado",
+      "name": "fk_rede_criador",
+      "parent": "usuario"
+    },
+    {
+      "table": "rede_cuidado",
+      "name": "fk_rede_pessoa",
+      "parent": "pessoa_idosa"
+    },
+    {
+      "table": "regime_medicamento",
+      "name": "fk_regime_autor",
+      "parent": "usuario"
+    },
+    {
+      "table": "regime_medicamento",
+      "name": "fk_regime_medicamento",
+      "parent": "medicamento"
+    },
+    {
+      "table": "registro_cuidado",
+      "name": "fk_registro_autor",
+      "parent": "usuario"
+    },
+    {
+      "table": "registro_cuidado",
+      "name": "fk_registro_contexto",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "sessao_usuario",
+      "name": "fk_sessao_usuario",
+      "parent": "usuario"
+    },
+    {
+      "table": "solicitacao_troca_plantao",
+      "name": "fk_troca_destinatario",
+      "parent": "membro_rede"
+    },
+    {
+      "table": "solicitacao_troca_plantao",
+      "name": "fk_troca_plantao",
+      "parent": "plantao"
+    },
+    {
+      "table": "solicitacao_troca_plantao",
+      "name": "fk_troca_respondente",
+      "parent": "membro_rede"
+    },
+    {
+      "table": "solicitacao_troca_plantao",
+      "name": "fk_troca_solicitante",
+      "parent": "membro_rede"
+    },
+    {
+      "table": "tarefa",
+      "name": "fk_tarefa_criador",
+      "parent": "usuario"
+    },
+    {
+      "table": "tarefa",
+      "name": "fk_tarefa_rede",
+      "parent": "rede_cuidado"
+    },
+    {
+      "table": "tarefa",
+      "name": "fk_tarefa_responsavel",
+      "parent": "membro_rede"
+    }
+  ],
+  "checks": [
+    {
+      "table": "administracao_medicamento",
+      "name": "ck_administracao_ocorrencia"
+    },
+    {
+      "table": "anexo",
+      "name": "ck_anexo_estado"
+    },
+    {
+      "table": "anexo",
+      "name": "ck_anexo_pai"
+    },
+    {
+      "table": "atribuicao_papel_familiar",
+      "name": "ck_papel_categoria"
+    },
+    {
+      "table": "atribuicao_papel_familiar",
+      "name": "ck_papel_periodo"
+    },
+    {
+      "table": "atribuicao_papel_familiar",
+      "name": "ck_papel_tipo"
+    },
+    {
+      "table": "auditoria",
+      "name": "ck_auditoria_resultado"
+    },
+    {
+      "table": "compromisso",
+      "name": "ck_compromisso_periodo"
+    },
+    {
+      "table": "conclusao_tarefa",
+      "name": "ck_conclusao_ciclo"
+    },
+    {
+      "table": "contato_importante",
+      "name": "ck_contato_prioridade"
+    },
+    {
+      "table": "convite_cadastro_cuidador",
+      "name": "ck_convite_cuidador_emitente"
+    },
+    {
+      "table": "convite_cadastro_cuidador",
+      "name": "ck_convite_cuidador_exclusividade"
+    },
+    {
+      "table": "convite_cadastro_cuidador",
+      "name": "ck_convite_cuidador_expiracao"
+    },
+    {
+      "table": "convite_cadastro_cuidador",
+      "name": "ck_convite_cuidador_origem"
+    },
+    {
+      "table": "convite_cadastro_cuidador",
+      "name": "ck_convite_cuidador_revogacao"
+    },
+    {
+      "table": "convite_cadastro_cuidador",
+      "name": "ck_convite_cuidador_uso"
+    },
+    {
+      "table": "correcao_administracao_medicamento",
+      "name": "ck_correcao_administracao_versao"
+    },
+    {
+      "table": "correcao_consulta",
+      "name": "ck_correcao_consulta_versao"
+    },
+    {
+      "table": "correcao_registro_cuidado",
+      "name": "ck_correcao_registro_versao"
+    },
+    {
+      "table": "entrega_tecnica_notificacao",
+      "name": "ck_entrega_estado"
+    },
+    {
+      "table": "entrega_tecnica_notificacao",
+      "name": "ck_entrega_tipo"
+    },
+    {
+      "table": "habilitacao_acesso_idoso",
+      "name": "ck_habilitacao_nao_ambos"
+    },
+    {
+      "table": "habilitacao_acesso_idoso",
+      "name": "ck_habilitacao_prazo"
+    },
+    {
+      "table": "habilitacao_acesso_idoso",
+      "name": "ck_habilitacao_revogada"
+    },
+    {
+      "table": "habilitacao_acesso_idoso",
+      "name": "ck_habilitacao_usada"
+    },
+    {
+      "table": "historico_plantao",
+      "name": "ck_historico_plantao_evento"
+    },
+    {
+      "table": "historico_plantao",
+      "name": "ck_historico_plantao_versao"
+    },
+    {
+      "table": "horario_regime",
+      "name": "ck_horario_vigencia"
+    },
+    {
+      "table": "idempotencia_comando",
+      "name": "ck_idempotencia_estado"
+    },
+    {
+      "table": "membro_rede",
+      "name": "ck_membro_categoria"
+    },
+    {
+      "table": "membro_rede",
+      "name": "ck_membro_periodo"
+    },
+    {
+      "table": "membro_rede",
+      "name": "ck_membro_tipo_usuario"
+    },
+    {
+      "table": "ocorrencia_programada",
+      "name": "ck_ocorrencia_geracao"
+    },
+    {
+      "table": "ocorrencia_programada",
+      "name": "ck_ocorrencia_origem"
+    },
+    {
+      "table": "pessoa_idosa",
+      "name": "ck_pessoa_titular_tipo"
+    },
+    {
+      "table": "plantao",
+      "name": "ck_plantao_periodo"
+    },
+    {
+      "table": "plantao",
+      "name": "ck_plantao_situacao"
+    },
+    {
+      "table": "plantao",
+      "name": "ck_plantao_versao"
+    },
+    {
+      "table": "preferencia_notificacao",
+      "name": "ck_preferencia_tipo"
+    },
+    {
+      "table": "rede_cuidado",
+      "name": "ck_rede_situacao"
+    },
+    {
+      "table": "rede_cuidado",
+      "name": "ck_rede_versao"
+    },
+    {
+      "table": "regime_medicamento",
+      "name": "ck_regime_versao"
+    },
+    {
+      "table": "regime_medicamento",
+      "name": "ck_regime_vigencia"
+    },
+    {
+      "table": "registro_cuidado",
+      "name": "ck_registro_tipo"
+    },
+    {
+      "table": "sessao_usuario",
+      "name": "ck_sessao_expira"
+    },
+    {
+      "table": "solicitacao_troca_plantao",
+      "name": "ck_troca_status"
+    },
+    {
+      "table": "solicitacao_troca_plantao",
+      "name": "ck_troca_versao"
+    },
+    {
+      "table": "tarefa",
+      "name": "ck_tarefa_ciclo"
+    },
+    {
+      "table": "tarefa",
+      "name": "ck_tarefa_status"
+    },
+    {
+      "table": "usuario",
+      "name": "ck_usuario_tipo"
+    }
+  ],
+  "unique_indexes": [
+    {
+      "table": "administracao_medicamento",
+      "name": "uq_administracao_comando"
+    },
+    {
+      "table": "administracao_medicamento",
+      "name": "uq_administracao_escopo"
+    },
+    {
+      "table": "administracao_medicamento",
+      "name": "uq_administracao_ocorrencia_v1"
+    },
+    {
+      "table": "anexo",
+      "name": "uq_anexo_storage"
+    },
+    {
+      "table": "atribuicao_papel_familiar",
+      "name": "uq_papel_principal_rede"
+    },
+    {
+      "table": "atribuicao_papel_familiar",
+      "name": "uq_papel_vigente_membro"
+    },
+    {
+      "table": "compromisso",
+      "name": "uq_compromisso_escopo"
+    },
+    {
+      "table": "conclusao_tarefa",
+      "name": "uq_conclusao_ciclo"
+    },
+    {
+      "table": "conclusao_tarefa",
+      "name": "uq_conclusao_comando"
+    },
+    {
+      "table": "consulta",
+      "name": "uq_consulta_escopo"
+    },
+    {
+      "table": "convite_cadastro_cuidador",
+      "name": "uq_convite_cuidador_bootstrap_aberto"
+    },
+    {
+      "table": "convite_cadastro_cuidador",
+      "name": "uq_convite_cuidador_email_aberto"
+    },
+    {
+      "table": "convite_cadastro_cuidador",
+      "name": "uq_convite_cuidador_token"
+    },
+    {
+      "table": "correcao_administracao_medicamento",
+      "name": "uq_correcao_administracao_versao"
+    },
+    {
+      "table": "correcao_consulta",
+      "name": "uq_correcao_consulta_versao"
+    },
+    {
+      "table": "correcao_registro_cuidado",
+      "name": "uq_correcao_registro_versao"
+    },
+    {
+      "table": "entrega_tecnica_notificacao",
+      "name": "uq_entrega_evento_destinatario"
+    },
+    {
+      "table": "habilitacao_acesso_idoso",
+      "name": "uq_convite_aberto_pessoa"
+    },
+    {
+      "table": "habilitacao_acesso_idoso",
+      "name": "uq_habilitacao_token_hash"
+    },
+    {
+      "table": "historico_plantao",
+      "name": "uq_historico_plantao_versao"
+    },
+    {
+      "table": "horario_regime",
+      "name": "uq_horario_escopo"
+    },
+    {
+      "table": "horario_regime",
+      "name": "uq_horario_regime_triplo"
+    },
+    {
+      "table": "idempotencia_comando",
+      "name": "uq_idempotencia_ator_chave"
+    },
+    {
+      "table": "informacao_emergencia",
+      "name": "uq_emergencia_ficha"
+    },
+    {
+      "table": "medicamento",
+      "name": "uq_medicamento_escopo"
+    },
+    {
+      "table": "membro_rede",
+      "name": "uq_membro_escopo"
+    },
+    {
+      "table": "membro_rede",
+      "name": "uq_membro_escopo_categoria"
+    },
+    {
+      "table": "membro_rede",
+      "name": "uq_membro_usuario_ativo"
+    },
+    {
+      "table": "ocorrencia_programada",
+      "name": "uq_ocorrencia_escopo"
+    },
+    {
+      "table": "ocorrencia_programada",
+      "name": "uq_ocorrencia_horario"
+    },
+    {
+      "table": "ocorrencia_programada",
+      "name": "uq_ocorrencia_medicacao_triplo"
+    },
+    {
+      "table": "ocorrencia_programada",
+      "name": "uq_ocorrencia_tarefa"
+    },
+    {
+      "table": "pessoa_idosa",
+      "name": "uq_pessoa_titular"
+    },
+    {
+      "table": "pessoa_idosa",
+      "name": "uq_pessoa_titular_par"
+    },
+    {
+      "table": "plantao",
+      "name": "uq_plantao_escopo"
+    },
+    {
+      "table": "preferencia_notificacao",
+      "name": "uq_preferencia_notificacao"
+    },
+    {
+      "table": "rede_cuidado",
+      "name": "uq_rede_idoso_v1"
+    },
+    {
+      "table": "rede_cuidado",
+      "name": "uq_rede_pessoa"
+    },
+    {
+      "table": "regime_medicamento",
+      "name": "uq_regime_escopo"
+    },
+    {
+      "table": "regime_medicamento",
+      "name": "uq_regime_versao"
+    },
+    {
+      "table": "registro_cuidado",
+      "name": "uq_registro_escopo"
+    },
+    {
+      "table": "tarefa",
+      "name": "uq_tarefa_escopo"
+    },
+    {
+      "table": "usuario",
+      "name": "uq_usuario_email"
+    },
+    {
+      "table": "usuario",
+      "name": "uq_usuario_tipo"
+    }
+  ],
+  "evidence": "estrutura SQL; nao comprova autorizacao de negocio ou EER Workbench"
+}
