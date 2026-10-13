@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Eye, EyeOff, LoaderCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -264,14 +265,12 @@ export function RegistrationForm() {
       </form>
       <p className="mt-1 flex min-h-12 items-center gap-1 text-meta text-muted-foreground">
         Já tem uma conta?{" "}
-        <button
-          type="button"
-          disabled
-          className="min-h-12 min-w-12 text-primary"
-          title="Login disponível após implementação da US-002"
+        <Link
+          href="/login"
+          className="flex min-h-12 min-w-12 items-center text-primary"
         >
-          Entrar<span className="sr-only"> — login ainda indisponível</span>
-        </button>
+          Entrar
+        </Link>
       </p>
     </section>
   );
