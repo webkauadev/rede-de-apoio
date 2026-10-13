@@ -1,5 +1,8 @@
 # Banco de Dados — Cérebro de Modelagem | Rede de Apoio
 
+> **Auditoria transversal atual (13/10/2026):** [Regras de negócio × MySQL V1 — 34 tabelas, RN/RF/US/ADRs](AUDITORIA_REGRAS_V1/README.md). Este índice é documentação analítica e não substitui as fontes de regras aprovadas.
+
+
 > **Leitura vigente para entrega 2026-10-13:** [pacote SQL + EER #124](../11_ENTREGA_SQL_EER/README.md). Os trechos históricos "não executado" nesta análise não retratam mais as evidências MySQL 8.4.11 de US-002/US-003 (34 tabelas). O **SQL consolidado e EER final** ainda exigem uma validação própria e não são prova de regras da aplicação.
 
 **NOVIDADE POSTERIOR ÀS 7 REVISÕES DOCUMENTAIS:** foi autorizado um protótipo SQL V0.1 separado, disponível em [`database/mysql/001_rede_de_apoio_schema.sql`](../../database/mysql/001_rede_de_apoio_schema.sql), com [guia Workbench/EER](../../database/mysql/README.md) e [hipóteses explícitas](../../database/mysql/DECISOES_E_LIMITES.md). O SQL **não foi executado**, não altera RF/US canônicos nem resolve automaticamente DB-001/002/030. As notas anteriores de “nenhum SQL criado” descrevem o estado histórico de cada revisão e não o estado atual desta branch experimental.
