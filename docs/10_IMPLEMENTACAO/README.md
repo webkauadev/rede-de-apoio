@@ -53,3 +53,7 @@ base humana `53796a4`, com testes sem MySQL. A instrução mais recente da Issue
 os estados históricos do PR #120 acima. Migração 005 preparada; persistência/concorrência
 deste incremento aguardam nova autorização específica. Nenhum aceite, gate global ou
 outra US foi declarado concluído por esta implementação.
+
+## Política de testes em camadas — proposta em revisão
+
+[TESTES_EFICIENTES_V1.md](TESTES_EFICIENTES_V1.md) define ciclos rápidos no Codex, smoke mobile, E2E completo com seleção desktop `@responsive` e gates obrigatórios de MySQL físico. Não há redução das verificações críticas de persistência/concorrência/autorização. O ajuste foi criado em branch independente sobre o Draft PR #121 e só passa a valer após revisão e incorporação à branch alvo.

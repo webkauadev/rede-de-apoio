@@ -90,3 +90,9 @@ Quando o Codex não tiver conexão com Figma, usar esta ordem complementar:
 Você pode iniciar **implementação de aplicação** em branch/PR por US após consultar `IMPLEMENTATION_BACKLOG.json` (36 US), `FIGMA_SNAPSHOT` (17 baselines + 9 estados), `BUSINESS_RULES.md`/permissões/avisos e aceites da Issue. Não precisa Figma live para os PNGs da V1. Você **não** pode executar em produção, provisionar banco real sem ambiente autorizado, inferir novas regras clínicas, liberar segunda rede, reabrir tarefa, enviar N02 para todos os plantonistas ou criar inbox.
 
 A orientação antiga "stack ainda não aprovada" anterior a este complemento foi **superada por homologação explícita do solicitante**. Merge de futuros PRs de implementação continua a exigir revisão humana.
+
+## Política de execução eficiente de testes — 2026-10-13 (incremental)
+
+Usar [TESTES_EFICIENTES_V1.md](TESTES_EFICIENTES_V1.md) como roteiro de verificação: **arquivo afetado durante a edição → `npm run verify:fast` ao estabilizar → `npm run test:e2e:smoke` após build para inspeção breve → validação completa no CI antes do merge → MySQL 8.4 físico para aceitar mudanças de persistência autorizadas**. O Playwright padrão mantém todos os cenários mobile e repete em desktop apenas os cenários marcados `@responsive`; ao adicionar tela ou estado responsivo, registrar marcação desktop relevante.
+
+Esta política economiza repetições, **não** muda critérios de aceite, DoD, testes de segurança, autorização para MySQL, integridade/concorrência ou a necessidade de revisão humana para cada merge. Logs de testes simulados jamais representam integração real. A regra operacional mais recente complementa instruções históricas da era do protótipo sem reinterpretá-las como dispensa de testes.

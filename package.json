@@ -19,7 +19,9 @@
     "test:e2e": "playwright test",
     "invite:bootstrap": "node --conditions=react-server --import tsx scripts/invite-bootstrap.ts",
     "test:integration": "vitest run --config vitest.integration.config.ts",
-    "test:e2e:mysql": "playwright test --config playwright.mysql.config.ts"
+    "test:e2e:mysql": "playwright test --config playwright.mysql.config.ts",
+    "verify:fast": "npm run format:check && npm run lint && npm run typecheck && npm test",
+    "test:e2e:smoke": "playwright test --project=mobile-chromium --grep @smoke"
   },
   "dependencies": {
     "@fontsource/geist": "^5.3.0",
