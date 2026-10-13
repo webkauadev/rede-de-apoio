@@ -324,3 +324,13 @@ MySQL verificam UI e falha fechada, não persistência real. Conta autenticada n
 ou acesso clínico. US-002/RF02 continuam abertas, owner David preservado; sem merge/deploy.
 [Relatório e rastreabilidade](../10_IMPLEMENTACAO/US002_LOGIN_SESSOES_V1.md) descrevem integração
 MySQL pendente de nova autorização e gates públicos ainda abertos.
+
+### US-002: continuidade física autorizada e executada
+
+Issue #38/#6146197937 e parecer PR #121 autorizaram somente MySQL 8.4 novo/rootless/loopback.
+Migração 005 foi executada: **34 tabelas em 8.4.11**, 30 testes de integração e 20 E2E MySQL passaram.
+Rotação agora restringe revogação ao titular autenticado; limpeza de buckets após lock global corrige
+um deadlock físico encontrado. [Evidências atuais](../10_IMPLEMENTACAO/US002_LOGIN_SESSOES_V1.md)
+superam a pendência de autorização/execução da seção anterior. Recursos próprios do ensaio removidos,
+preexistentes preservados. PR #121 continua Draft para nova revisão; US-002/RF02 abertas, owner David,
+gates globais/públicos abertos, sem merge/deploy.

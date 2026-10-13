@@ -43,3 +43,12 @@ G-AUTH permanece **aberto**: recuperação não implementada, integração de se
 MySQL e autorização contextual de domínios pendentes. G-DB não é encerrado por mocks ou CI;
 nenhuma execução MySQL foi autorizada neste novo incremento. Liberação pública desativada
 por configuração explícita, sem fallback inseguro, merge ou deploy.
+
+### Continuidade US-002: prova física local autorizada
+
+A autorização #6146197937 liberou 005/MySQL 8.4 descartável. [Relatório US-002](US002_LOGIN_SESSOES_V1.md)
+registra **30 integrações físicas e 20 E2E MySQL**: sessão, cookie/guarda/logout, concorrência,
+limites, auditoria e rollback/COMMIT injetado. O recurso e suas credenciais foram removidos.
+A pendência específica de executar 005 foi suprida; **não fecha G-DB global, G-AUTH/G-SEC/G-PRIV/G-REL**,
+nem US/RF. Recuperação e autorização contextual de domínios futuros permanecem fora desta prova;
+Draft aguarda nova revisão humana. Sem merge, deploy ou dados reais.

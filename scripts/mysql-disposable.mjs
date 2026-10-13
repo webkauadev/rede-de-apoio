@@ -1,4 +1,4 @@
-/** Ensaio autorizado DEC-AUTH-001. Recursos novos, loopback, segredos fora de logs/Git. */
+/** Ensaio local autorizado por US: DEC-AUTH-001 e Issue #38/6146197937. Recursos novos, loopback, segredos fora de logs/Git. */
 import { spawnSync } from "node:child_process";
 import { mkdtemp, writeFile, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -18,11 +18,11 @@ function podman(args) {
 async function initialize(path) {
   const { name, id, env } = JSON.parse(await readFile(path, "utf8"));
   if (
-    !name.startsWith("rede-apoio-us001-") ||
+    !name.startsWith(`rede-apoio-${profile}-`) ||
     podman([
       "inspect",
       "--format",
-      '{{index .Config.Labels "rede-apoio.us001.disposable"}}',
+      `{{index .Config.Labels "rede-apoio.${profile}.disposable"}}`,
       id,
     ]) !== "true"
   )
@@ -79,16 +79,19 @@ async function initialize(path) {
       "002_validar_estrutura.sql",
       "003_convite_cadastro_cuidador.sql",
       "004_cadastro_rate_limit.sql",
+      ...(profile === "us002" ? ["005_sessoes_login.sql"] : []),
     ]) {
       await connection.query(
         await readFile(join("database/mysql", file), "utf8"),
       );
       results.tableCounts[file] = await count();
-      const expected = file.startsWith("003")
-        ? 31
-        : file.startsWith("004")
-          ? 32
-          : 30;
+      const expected = file.startsWith("005")
+        ? 34
+        : file.startsWith("003")
+          ? 31
+          : file.startsWith("004")
+            ? 32
+            : 30;
       if (results.tableCounts[file] !== expected)
         throw new Error("Contagem de tabelas inesperada.");
       process.stdout.write(`${file}: executado; ${await count()} tabelas\n`);
@@ -99,6 +102,7 @@ async function initialize(path) {
       "convite_cadastro_cuidador",
       "cadastro_rate_limit",
       "auditoria",
+      ...(profile === "us002" ? ["sessao_usuario", "login_rate_limit"] : []),
     ])
       results.ddl[table] = (
         await connection.query(`SHOW CREATE TABLE ${table}`)
@@ -116,12 +120,19 @@ async function initialize(path) {
   }
 }
 const [action, path] = process.argv.slice(2);
+const profile =
+  action === "start"
+    ? (path ?? "us001")
+    : /rede-apoio-us002-/.test(path ?? "")
+      ? "us002"
+      : "us001";
+if (!["us001", "us002"].includes(profile)) throw new Error("Perfil invalido.");
 try {
   if (action === "start") {
     if (podman(["info", "--format", "{{.Host.Security.Rootless}}"]) !== "true")
       throw new Error("Podman precisa ser rootless.");
-    const dir = await mkdtemp(join(tmpdir(), "rede-apoio-us001-"));
-    const name = `rede-apoio-us001-${randomBytes(6).toString("hex")}`;
+    const dir = await mkdtemp(join(tmpdir(), `rede-apoio-${profile}-`));
+    const name = `rede-apoio-${profile}-${randomBytes(6).toString("hex")}`;
     const server = createServer();
     await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
     const port = server.address().port;
@@ -131,16 +142,22 @@ try {
       DATABASE_HOST: "127.0.0.1",
       DATABASE_PORT: String(port),
       DATABASE_NAME: "rede_de_apoio",
-      DATABASE_USER: "us001_test",
+      DATABASE_USER: `${profile}_test`,
       DATABASE_PASSWORD: password,
       REGISTRATION_ENVIRONMENT: "local-disposable",
       APPLICATION_ORIGIN: "http://127.0.0.1:3100",
-      US001_INTEGRATION: "authorized-disposable",
+      ...(profile === "us002"
+        ? {
+            US002_INTEGRATION: "authorized-disposable",
+            AUTH_ENVIRONMENT: "local",
+            SESSION_SECRET: randomBytes(32).toString("hex"),
+          }
+        : { US001_INTEGRATION: "authorized-disposable" }),
     };
     const envFile = join(dir, "mysql.env");
     await writeFile(
       envFile,
-      `MYSQL_ROOT_PASSWORD=${randomBytes(32).toString("hex")}\nMYSQL_DATABASE=rede_de_apoio\nMYSQL_USER=us001_test\nMYSQL_PASSWORD=${password}\n`,
+      `MYSQL_ROOT_PASSWORD=${randomBytes(32).toString("hex")}\nMYSQL_DATABASE=rede_de_apoio\nMYSQL_USER=${profile}_test\nMYSQL_PASSWORD=${password}\n`,
       { mode: 0o600 },
     );
     const id = podman([
@@ -149,7 +166,7 @@ try {
       "--name",
       name,
       "--label",
-      "rede-apoio.us001.disposable=true",
+      `rede-apoio.${profile}.disposable=true`,
       "--env-file",
       envFile,
       "-p",
@@ -170,18 +187,18 @@ try {
   } else if (action === "stop") {
     if (
       basename(path) !== "state.json" ||
-      !basename(dirname(path)).startsWith("rede-apoio-us001-") ||
+      !basename(dirname(path)).startsWith(`rede-apoio-${profile}-`) ||
       dirname(dirname(path)) !== tmpdir()
     )
       throw new Error("Diretorio privado do ensaio nao confere.");
     const state = JSON.parse(await readFile(path, "utf8"));
     if (
-      !state.name.startsWith("rede-apoio-us001-") ||
+      !state.name.startsWith(`rede-apoio-${profile}-`) ||
       !/^[a-f0-9]{64}$/.test(state.id) ||
       podman([
         "inspect",
         "--format",
-        '{{index .Config.Labels "rede-apoio.us001.disposable"}}',
+        `{{index .Config.Labels "rede-apoio.${profile}.disposable"}}`,
         state.id,
       ]) !== "true" ||
       podman(["inspect", "--format", "{{.Name}}", state.id]) !== state.name

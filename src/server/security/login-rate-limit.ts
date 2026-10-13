@@ -14,10 +14,7 @@ export async function countLoginAttempts(
   secret: string,
 ): Promise<boolean> {
   // Coleta tecnica limitada; nunca apagar auditoria/clinica. Global primeiro limita novos buckets.
-  await sql.execute(
-    "DELETE FROM login_rate_limit WHERE janela_em < TIMESTAMPADD(DAY, -1, UTC_TIMESTAMP(6)) LIMIT 100",
-    [],
-  );
+  let accepted = true;
   for (const bucket of [
     { key: "login:global", seconds: 60, max: 60 },
     { key: `login:email:${email}`, seconds: 900, max: 5 },
@@ -31,9 +28,17 @@ export async function countLoginAttempts(
       "SELECT tentativas FROM login_rate_limit WHERE chave = ? FOR UPDATE",
       [key],
     );
-    if (Number(rows[0].tentativas) > bucket.max) return false;
+    if (Number(rows[0].tentativas) > bucket.max) {
+      accepted = false;
+      break;
+    }
   }
-  return true;
+  // Primeiro lock do bucket global, depois coleta: evita ciclo de gap locks DELETE/INSERT.
+  await sql.execute(
+    "DELETE FROM login_rate_limit WHERE janela_em < TIMESTAMPADD(DAY, -1, UTC_TIMESTAMP(6)) LIMIT 100",
+    [],
+  );
+  return accepted;
 }
 export async function limitLoginAttempts(email: string) {
   const { secret } = sessionConfig();

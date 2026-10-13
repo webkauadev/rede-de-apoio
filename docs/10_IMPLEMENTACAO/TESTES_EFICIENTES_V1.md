@@ -1,6 +1,6 @@
 # TESTES_EFICIENTES_V1 — validação em camadas
 
-**Status:** proposta operacional para revisão, branch `chore/testes-em-camadas-us002` baseada no Draft PR #121. **Não altera critérios de aceite, decisões SQL ou autorização para executar MySQL**. Este documento complementa `AGENTS.md`, `CODEX_PLAYBOOK.md` e os gates: em conflito, prevalecem a Issue aprovada e a segurança do domínio.
+**Status:** proposta operacional para revisão no PR #122, reconciliada com a continuidade MySQL do PR #121. **Não altera critérios de aceite, decisões SQL ou autorização para executar MySQL**. Este documento complementa `AGENTS.md`, `CODEX_PLAYBOOK.md` e os gates: em conflito, prevalecem a Issue aprovada e a segurança do domínio.
 
 ## Regra básica
 
@@ -29,7 +29,7 @@
 - Criptografia/senha/token/cookie e proteção contra reutilização; auditoria sanitizada de ações e negações; Origin/CSRF.
 - Chaves/FKs/UNIQUE/CHECK, transações, rollback, falha de COMMIT, idempotência, concorrência, isolamento/revalidação do ator.
 - Casos essenciais de sucesso e erro por contrato aprovado; qualquer falha de CI ou falha de integração exigida bloqueia homologação.
-- A US-002 **não** pode ser aprovada por 148 unitários e 36 E2E simulados: requer execução física de `005` e provas positivas/negativas do banco. A autorização específica de teste consta da Issue #38 e **não libera outros ambientes ou US**.
+- A US-002 teve 149 unitários, 36 E2E sem MySQL e agora também **30 integrações e 20 E2E com MySQL 8.4.11 real**, segundo evidências versionadas no PR #121. Essas evidências locais autorizadas não dispensam revisão humana, gates globais nem autorização para outros ambientes ou US.
 
 ## Desempenho do CI e métricas honestas
 

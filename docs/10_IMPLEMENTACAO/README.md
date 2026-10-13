@@ -54,6 +54,13 @@ os estados históricos do PR #120 acima. Migração 005 preparada; persistência
 deste incremento aguardam nova autorização específica. Nenhum aceite, gate global ou
 outra US foi declarado concluído por esta implementação.
 
-## Política de testes em camadas — proposta em revisão
+### US-002 — integração física da continuidade
 
-[TESTES_EFICIENTES_V1.md](TESTES_EFICIENTES_V1.md) define ciclos rápidos no Codex, smoke mobile, E2E completo com seleção desktop `@responsive` e gates obrigatórios de MySQL físico. Não há redução das verificações críticas de persistência/concorrência/autorização. O ajuste foi criado em branch independente sobre o Draft PR #121 e só passa a valer após revisão e incorporação à branch alvo.
+A autorização específica da Issue #38 liberou o ensaio novo: 005 executada em MySQL 8.4.11,
+34 tabelas, **30 testes físicos e 20 E2E com banco real** passaram. [Relatório US-002](US002_LOGIN_SESSOES_V1.md)
+registra correções de rotação/concorrência e cleanup. A pendência histórica anterior foi suprida somente
+nesse escopo local. PR #121 segue Draft para nova revisão humana; gates públicos/globais não encerrados.
+
+## Política de testes em camadas — PR #122
+
+[TESTES_EFICIENTES_V1.md](TESTES_EFICIENTES_V1.md) define ciclos rápidos no Codex, smoke mobile, E2E padrão com seleção desktop `@responsive` e regressão completa opcional nas duas plataformas. Os gates de MySQL físico, integridade, concorrência e autorização continuam obrigatórios por US. O protocolo é aplicável após aprovação e incorporação do PR #122.
