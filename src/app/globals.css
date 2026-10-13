@@ -178,3 +178,14 @@
     padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom));
   }
 }
+
+@layer components {
+  .profile-shell {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    max-width: 390px;
+    margin-inline: auto;
+    overflow: hidden;
+  }
+}

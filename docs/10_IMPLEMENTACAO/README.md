@@ -64,3 +64,9 @@ nesse escopo local. PR #121 segue Draft para nova revisão humana; gates públic
 ## Política de testes em camadas — PR #122
 
 [TESTES_EFICIENTES_V1.md](TESTES_EFICIENTES_V1.md) define ciclos rápidos no Codex, smoke mobile, E2E padrão com seleção desktop `@responsive` e regressão completa opcional nas duas plataformas. Os gates de MySQL físico, integridade, concorrência e autorização continuam obrigatórios por US. O protocolo é aplicável após aprovação e incorporação do PR #122.
+
+## US-003 — implementação parcial bloqueada
+
+[Relatório US-003/T12](US003_CADASTRO_PESSOA_IDOSA_V1.md): formulário, contrato e adaptador SQL preparados;
+serviço oficial permanece BLOCKED_BY_DECISION enquanto faltar prova canônica do ator elegível no bootstrap.
+Testes físicos do adaptador/negações não certificam cadastro autorizado. Nenhuma rede/papel antecipado.
