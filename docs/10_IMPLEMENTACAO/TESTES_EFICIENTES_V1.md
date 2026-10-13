@@ -22,6 +22,7 @@
 - **Mobile `mobile-chromium`** executa *todos* os E2E normais, inclusive falha fechada, validação, CSRF, navegação e mensagens. É a referência mobile-first da V1.
 - **Desktop `desktop-chromium`** executa **somente testes identificados com `@responsive`**. Os testes de T01 e T02 com esta marca cobrem: baseline/targets, validação/foco e loading/geometria. Nova tela **deve** ter pelo menos baseline responsivo e fluxos de layout pertinentes identificados. Não significa dispensar testes desktop ao alterar um comportamento exclusivo do desktop.
 - **`@smoke`** identifica quatro cenários rápidos (baseline T01, bloqueio real sem DB T01, baseline T02, bloqueio real sem DB T02) e é executado somente em mobile via `npm run test:e2e:smoke`. Não declara login ou cadastro persistido aprovado.
+- **Revisão ampliada:** `npm run test:e2e:all-platforms` repete TODOS os cenários também em desktop (variável `PLAYWRIGHT_FULL_DESKTOP=1`), para regressões transversais, alterações exclusivas de desktop e revisão final quando necessário. Esse comando não é o CI padrão, que continua seletivo.
 - **Todos os testes funcionais existentes continuam na suíte**; só deixamos de duplicar a maioria em dois tamanhos de tela. Na baseline atual: 18 cenários Playwright × 2 projetos = 36 execuções; com marcação T01/T02: **18 mobile + 6 desktop = 24 execuções**. Esses números são contagem planejada da configuração, não resultado executado do CI.
 - Testes em `tests/e2e/mysql/` continuam excluídos do Playwright padrão e só rodam com harness MySQL explicitamente autorizado. Essa exclusão **não** é uma dispensa de G-DB.
 
@@ -52,6 +53,7 @@ O setup-node de 130s ocorreu **uma vez** nesses quatro runs; não há evidência
 - Conferir no output do Playwright que os 24 casos planejados realmente foram descobertos, incluindo **6 desktop**; nunca aceitar seleção vazia mascarada como sucesso.
 - Se E2E ou CI falhar, corrigir/reverter a seleção, não remover testes de segurança para deixar verde.
 - Próximas telas devem manter `@responsive` onde houver comportamento ou layout responsivo relevante; mudanças transversais devem executar o E2E completo. Nenhuma alteração de runner/Node foi feita.
+- Para alterações transversais de layout ou navegação, executar também `npm run test:e2e:all-platforms` antes da revisão correspondente; o comando restaura a matriz móvel+desktop completa.
 - Para a branch US-002, incorporar este ajuste somente após revisão do PR de otimização; **não fazer merge automático** de nenhuma branch.
 
 **Objetivo:** menos ciclos redundantes de verificação, feedback de desenvolvimento rápido e evidências críticas preservadas.
