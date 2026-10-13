@@ -73,8 +73,8 @@ export async function persistSession(
     throw new AuthenticationDeniedError();
   if (previousToken)
     await sql.execute(
-      "UPDATE sessao_usuario SET revogado_em = UTC_TIMESTAMP(6) WHERE token_hash = ? AND revogado_em IS NULL",
-      [secretHash(previousToken)],
+      "UPDATE sessao_usuario SET revogado_em = UTC_TIMESTAMP(6) WHERE token_hash = ? AND usuario_id = ? AND revogado_em IS NULL",
+      [secretHash(previousToken), account.usuario_id],
     );
   await sql.execute(
     "INSERT INTO sessao_usuario (token_hash, usuario_id, credencial_hash, criado_em, expira_em) VALUES (?, ?, ?, UTC_TIMESTAMP(6), TIMESTAMPADD(SECOND, ?, UTC_TIMESTAMP(6)))",
@@ -142,9 +142,15 @@ export async function logout(token: string | null) {
     // Revogacao idempotente: nao duplica o evento de efeito em repeticao/COMMIT incerto.
     if (!token) return;
     const rows = await sql.select<SessionRow>(
-      "SELECT u.usuario_id, u.tipo_acesso FROM sessao_usuario s JOIN usuario u ON u.usuario_id = s.usuario_id WHERE s.token_hash = ? FOR UPDATE",
+      "SELECT u.usuario_id, u.tipo_acesso FROM sessao_usuario s JOIN usuario u ON u.usuario_id = s.usuario_id WHERE s.token_hash = ?",
       [secretHash(token)],
     );
+    // Mesma ordem de locks do login: usuario antes da sessao.
+    if (rows[0])
+      await sql.select<Account>(
+        "SELECT usuario_id FROM usuario WHERE usuario_id = ? FOR UPDATE",
+        [String(rows[0].usuario_id)],
+      );
     const revoked = await sql.execute(
       "UPDATE sessao_usuario SET revogado_em = UTC_TIMESTAMP(6) WHERE token_hash = ? AND revogado_em IS NULL",
       [secretHash(token)],

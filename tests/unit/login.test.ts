@@ -396,7 +396,7 @@ describe("limite persistente de login simulado", () => {
         "synthetic-secret",
       ),
     ).toBe(true);
-    expect(mocks.execute.mock.calls[0][0]).toContain(
+    expect(mocks.execute.mock.calls.at(-1)?.[0]).toContain(
       "DELETE FROM login_rate_limit",
     );
     expect(JSON.stringify(mocks.execute.mock.calls)).not.toContain(
@@ -611,5 +611,17 @@ describe("idempotencia de revogacao com SQL simulado", () => {
   it("logout anonimo nao registra efeito de sessao inexistente", async () => {
     await logout(null);
     expect(mocks.execute).not.toHaveBeenCalled();
+  });
+});
+
+describe("revisao tecnica de rotacao US002", () => {
+  it("rotacao parametriza tambem o titular da sessao anterior", async () => {
+    mocks.select.mockResolvedValue([account]);
+    await persistSession(sql, account, newSessionToken(), newSessionToken());
+    const revocation = mocks.execute.mock.calls.find((call) =>
+      call[0].startsWith("UPDATE sessao_usuario"),
+    )!;
+    expect(revocation[0]).toContain("usuario_id = ?");
+    expect(revocation[1][1]).toBe(account.usuario_id);
   });
 });
