@@ -1,0 +1,36 @@
+name: Validate SQL-EER delivery (static)
+on:
+  pull_request:
+    paths:
+      - 'database/mysql/**'
+      - 'entrega/sql-eer/**'
+      - 'docs/11_ENTREGA_SQL_EER/**'
+      - 'scripts/prepare_sql_eer_delivery.mjs'
+      - 'scripts/verify_mysql_sql_eer.mjs'
+      - '.github/workflows/sql-eer-delivery.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'database/mysql/**'
+      - 'entrega/sql-eer/**'
+      - 'docs/11_ENTREGA_SQL_EER/**'
+      - 'scripts/prepare_sql_eer_delivery.mjs'
+      - 'scripts/verify_mysql_sql_eer.mjs'
+      - '.github/workflows/sql-eer-delivery.yml'
+permissions:
+  contents: read
+jobs:
+  sql-eer-static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - run: node --check scripts/prepare_sql_eer_delivery.mjs
+      - run: node --check scripts/verify_mysql_sql_eer.mjs
+      - run: node scripts/prepare_sql_eer_delivery.mjs --check
+      - run: python3 scripts/validate_sql_prototype.py
+      - run: python3 entrega/sql-eer/tools/verify-artifacts.py
+      - run: echo 'STATIC ONLY; MySQL real e Workbench .mwb exigem evidencias separadas.'

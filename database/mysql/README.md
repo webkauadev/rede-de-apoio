@@ -1,5 +1,7 @@
 # Protótipo físico MySQL — Rede de Apoio (V1)
 
+> **Para entrega de 34 tabelas + EER:** usar [SQL unificado](../../entrega/sql-eer/01_schema_completo_v1.sql) e [runbook de entrega](../../docs/11_ENTREGA_SQL_EER/RUNBOOK_CODEX.md). `002_validar_estrutura.sql` verifica só as **30 tabelas do baseline histórico**; a validação de 34 está em [02_validar_34_tabelas.sql](../../entrega/sql-eer/02_validar_34_tabelas.sql). Arquivo `.mwb` deve ser gerado com todas as 34 tabelas, sem alegar conclusão antes da prova.
+
 **Status:** SQL V1 de desenho/experimentação homologado pelo solicitante; ainda não executado para MySQL **8.4** (mínimo recomendado: 8.0.16 para CHECK). **Não executado em servidor**, não aprovado para produção e sem dados reais. A criação deste protótipo foi pedida explicitamente pelo solicitante. O planejamento de origem está em [docs/09_BANCO_DE_DADOS](../../docs/09_BANCO_DE_DADOS/README.md) — PR #115.
 
 ## Arquivos

@@ -1,5 +1,9 @@
 # Contrato de execução autossuficiente para Codex
 
+## Trilha urgente e distinta: SQL+EER (#124)
+
+**Antes de selecionar nova US**, quando a tarefa for entrega de SQL/EER, seguir [docs/11_ENTREGA_SQL_EER/README.md](../11_ENTREGA_SQL_EER/README.md). Não gerar novas telas, endpoints ou E2E. Concentre no arquivo consolidado 001→003→004→005, teste físico das 34 tabelas e Workbench `.mwb`. Este atalho não redefine regras clínicas, permissões, backlog nem gates de produção; o bloqueio DB-002 do PR #123 não bloqueia o esquema. O protocolo de testes de aplicação continua válido para desenvolvimento futuro, **não** para a entrega exclusiva SQL/EER.
+
 **Estado:** handoff técnico versionado no GitHub. O repositório é fonte única de informação operacional; o agente NÃO deve precisar de histórico de chat para compreender o produto. **Esta branch apenas adiciona SQL protótipo**, não inicia a implementação de backend/frontend.
 
 ## Leitura mínima obrigatória em ordem

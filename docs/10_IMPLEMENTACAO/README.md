@@ -1,5 +1,7 @@
 # Execucao orientada por GitHub para Codex
 
+> **Prioridade de hoje (13/10/2026): [ENTREGA SQL + EER #124](../11_ENTREGA_SQL_EER/README.md)**. O Codex deve seguir o runbook do pacote SQL, não abrir 34 implementações por US. O PR #123 permanece Draft pela decisão de elegibilidade pendente, sem impacto sobre a modelagem SQL/EER.
+
 Esta pasta informa **como um agente executa**, sem depender do contexto privado de uma conversa.
 
 1. [CODEX_PLAYBOOK.md](CODEX_PLAYBOOK.md): fontes, ordem de leitura, seguranca, Definition of Done, criterios de bloqueio e fluxo de PR.
