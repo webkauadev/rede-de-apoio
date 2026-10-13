@@ -3,10 +3,11 @@ import { spawn, spawnSync } from "node:child_process";
 try {
   const [path, ...command] = process.argv.slice(2);
   const { name, id, env } = JSON.parse(await readFile(path, "utf8"));
+  const profile = name.startsWith("rede-apoio-us002-") ? "us002" : "us001";
   if (
-    !name.startsWith("rede-apoio-us001-") ||
+    !name.startsWith(`rede-apoio-${profile}-`) ||
     env.DATABASE_HOST !== "127.0.0.1" ||
-    env.US001_INTEGRATION !== "authorized-disposable"
+    env[`${profile.toUpperCase()}_INTEGRATION`] !== "authorized-disposable"
   )
     throw new Error("Ambiente nao autorizado.");
   const inspect = spawnSync(
@@ -14,7 +15,7 @@ try {
     [
       "inspect",
       "--format",
-      '{{.Name}} {{index .Config.Labels "rede-apoio.us001.disposable"}}',
+      `{{.Name}} {{index .Config.Labels "rede-apoio.${profile}.disposable"}}`,
       id,
     ],
     { encoding: "utf8" },
