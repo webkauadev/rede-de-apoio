@@ -5,7 +5,7 @@ async function credentials(page: Page) {
     .fill("synthetic@example.invalid");
   await page.getByLabel("Senha", { exact: true }).fill("senha sintética");
 }
-test("T01 baseline: AuthShell, campos, targets e convite restrito", async ({
+test("T01 baseline: AuthShell, campos, targets e convite restrito @responsive @smoke", async ({
   page,
 }, info) => {
   await page.goto("/login");
@@ -40,7 +40,7 @@ test("T01 baseline: AuthShell, campos, targets e convite restrito", async ({
   await page.getByRole("link", { name: "Entrar", exact: true }).click();
   await expect(page).toHaveURL(/\/login$/);
 });
-test("validacao local acessivel nao envia payload invalido", async ({
+test("validacao local acessivel nao envia payload invalido @responsive", async ({
   page,
 }, info) => {
   let count = 0;
@@ -102,7 +102,7 @@ test("invalid_credentials simulado mantem shell, limpa senha e foca feedback gen
   });
   expect(await page.context().cookies()).toEqual([]);
 });
-test("loading simulado impede envio duplo e preserva geometria", async ({
+test("loading simulado impede envio duplo e preserva geometria @responsive", async ({
   page,
 }, info) => {
   let release!: () => void;
@@ -148,7 +148,7 @@ test("loading simulado impede envio duplo e preserva geometria", async ({
     "E-mail ou senha inválidos.",
   );
 });
-test("handler real sem configuracao MySQL falha fechado sem sessao", async ({
+test("handler real sem configuracao MySQL falha fechado sem sessao @smoke", async ({
   page,
 }) => {
   await page.goto("/login");

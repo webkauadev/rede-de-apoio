@@ -60,3 +60,7 @@ A autorização específica da Issue #38 liberou o ensaio novo: 005 executada em
 34 tabelas, **30 testes físicos e 20 E2E com banco real** passaram. [Relatório US-002](US002_LOGIN_SESSOES_V1.md)
 registra correções de rotação/concorrência e cleanup. A pendência histórica anterior foi suprida somente
 nesse escopo local. PR #121 segue Draft para nova revisão humana; gates públicos/globais não encerrados.
+
+## Política de testes em camadas — PR #122
+
+[TESTES_EFICIENTES_V1.md](TESTES_EFICIENTES_V1.md) define ciclos rápidos no Codex, smoke mobile, E2E padrão com seleção desktop `@responsive` e regressão completa opcional nas duas plataformas. Os gates de MySQL físico, integridade, concorrência e autorização continuam obrigatórios por US. O protocolo é aplicável após aprovação e incorporação do PR #122.
