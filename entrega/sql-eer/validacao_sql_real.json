@@ -1,0 +1,621 @@
+{
+  "executedAt": "2026-10-13T15:13:30.785Z",
+  "version": "8.4.11",
+  "importedFile": "01_schema_completo_v1.sql",
+  "imports": 1,
+  "emptySchemaBefore": true,
+  "validation": [
+    [
+      {
+        "mysql_version": "8.4.11"
+      }
+    ],
+    [
+      {
+        "total_tabelas": 34,
+        "contagem_34": "PASS"
+      }
+    ],
+    [
+      {
+        "TABLE_NAME": "administracao_medicamento",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "anexo",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "atribuicao_papel_familiar",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "auditoria",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "cadastro_rate_limit",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "compromisso",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "conclusao_tarefa",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "consulta",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "contato_importante",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "convite_cadastro_cuidador",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "correcao_administracao_medicamento",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "correcao_consulta",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "correcao_registro_cuidado",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "entrega_tecnica_notificacao",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "habilitacao_acesso_idoso",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "historico_plantao",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "horario_regime",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "idempotencia_comando",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "informacao_emergencia",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "login_rate_limit",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "medicamento",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "membro_rede",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "ocorrencia_programada",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "pessoa_idosa",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "plantao",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "preferencia_notificacao",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "recomendacao",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "rede_cuidado",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "regime_medicamento",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "registro_cuidado",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "sessao_usuario",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "solicitacao_troca_plantao",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "tarefa",
+        "ENGINE": "InnoDB"
+      },
+      {
+        "TABLE_NAME": "usuario",
+        "ENGINE": "InnoDB"
+      }
+    ],
+    [
+      {
+        "CONSTRAINT_TYPE": "PRIMARY KEY",
+        "total": 34
+      },
+      {
+        "CONSTRAINT_TYPE": "UNIQUE",
+        "total": 44
+      },
+      {
+        "CONSTRAINT_TYPE": "FOREIGN KEY",
+        "total": 79
+      },
+      {
+        "CONSTRAINT_TYPE": "CHECK",
+        "total": 50
+      }
+    ],
+    [
+      {
+        "TABLE_NAME": "administracao_medicamento",
+        "CONSTRAINT_NAME": "fk_administracao_autor",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "administracao_medicamento",
+        "CONSTRAINT_NAME": "fk_administracao_executor",
+        "REFERENCED_TABLE_NAME": "membro_rede"
+      },
+      {
+        "TABLE_NAME": "administracao_medicamento",
+        "CONSTRAINT_NAME": "fk_administracao_horario",
+        "REFERENCED_TABLE_NAME": "horario_regime"
+      },
+      {
+        "TABLE_NAME": "administracao_medicamento",
+        "CONSTRAINT_NAME": "fk_administracao_ocorrencia",
+        "REFERENCED_TABLE_NAME": "ocorrencia_programada"
+      },
+      {
+        "TABLE_NAME": "administracao_medicamento",
+        "CONSTRAINT_NAME": "fk_administracao_regime",
+        "REFERENCED_TABLE_NAME": "regime_medicamento"
+      },
+      {
+        "TABLE_NAME": "anexo",
+        "CONSTRAINT_NAME": "fk_anexo_administracao",
+        "REFERENCED_TABLE_NAME": "administracao_medicamento"
+      },
+      {
+        "TABLE_NAME": "anexo",
+        "CONSTRAINT_NAME": "fk_anexo_autor",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "anexo",
+        "CONSTRAINT_NAME": "fk_anexo_consulta",
+        "REFERENCED_TABLE_NAME": "consulta"
+      },
+      {
+        "TABLE_NAME": "anexo",
+        "CONSTRAINT_NAME": "fk_anexo_registro",
+        "REFERENCED_TABLE_NAME": "registro_cuidado"
+      },
+      {
+        "TABLE_NAME": "atribuicao_papel_familiar",
+        "CONSTRAINT_NAME": "fk_papel_concedente",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "atribuicao_papel_familiar",
+        "CONSTRAINT_NAME": "fk_papel_membro_familiar",
+        "REFERENCED_TABLE_NAME": "membro_rede"
+      },
+      {
+        "TABLE_NAME": "auditoria",
+        "CONSTRAINT_NAME": "fk_auditoria_ator",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "auditoria",
+        "CONSTRAINT_NAME": "fk_auditoria_pessoa",
+        "REFERENCED_TABLE_NAME": "pessoa_idosa"
+      },
+      {
+        "TABLE_NAME": "auditoria",
+        "CONSTRAINT_NAME": "fk_auditoria_rede",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "compromisso",
+        "CONSTRAINT_NAME": "fk_compromisso_contexto",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "compromisso",
+        "CONSTRAINT_NAME": "fk_compromisso_criador",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "compromisso",
+        "CONSTRAINT_NAME": "fk_compromisso_responsavel",
+        "REFERENCED_TABLE_NAME": "membro_rede"
+      },
+      {
+        "TABLE_NAME": "conclusao_tarefa",
+        "CONSTRAINT_NAME": "fk_conclusao_autor",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "conclusao_tarefa",
+        "CONSTRAINT_NAME": "fk_conclusao_executor",
+        "REFERENCED_TABLE_NAME": "membro_rede"
+      },
+      {
+        "TABLE_NAME": "conclusao_tarefa",
+        "CONSTRAINT_NAME": "fk_conclusao_tarefa",
+        "REFERENCED_TABLE_NAME": "tarefa"
+      },
+      {
+        "TABLE_NAME": "consulta",
+        "CONSTRAINT_NAME": "fk_consulta_autor",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "consulta",
+        "CONSTRAINT_NAME": "fk_consulta_compromisso",
+        "REFERENCED_TABLE_NAME": "compromisso"
+      },
+      {
+        "TABLE_NAME": "consulta",
+        "CONSTRAINT_NAME": "fk_consulta_contexto",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "contato_importante",
+        "CONSTRAINT_NAME": "fk_contato_autor",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "contato_importante",
+        "CONSTRAINT_NAME": "fk_contato_contexto",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "convite_cadastro_cuidador",
+        "CONSTRAINT_NAME": "fk_convite_cuidador_emitente",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "correcao_administracao_medicamento",
+        "CONSTRAINT_NAME": "fk_correcao_administracao",
+        "REFERENCED_TABLE_NAME": "administracao_medicamento"
+      },
+      {
+        "TABLE_NAME": "correcao_administracao_medicamento",
+        "CONSTRAINT_NAME": "fk_correcao_administracao_autor",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "correcao_consulta",
+        "CONSTRAINT_NAME": "fk_correcao_consulta",
+        "REFERENCED_TABLE_NAME": "consulta"
+      },
+      {
+        "TABLE_NAME": "correcao_consulta",
+        "CONSTRAINT_NAME": "fk_correcao_consulta_autor",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "correcao_registro_cuidado",
+        "CONSTRAINT_NAME": "fk_correcao_registro",
+        "REFERENCED_TABLE_NAME": "registro_cuidado"
+      },
+      {
+        "TABLE_NAME": "correcao_registro_cuidado",
+        "CONSTRAINT_NAME": "fk_correcao_registro_autor",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "entrega_tecnica_notificacao",
+        "CONSTRAINT_NAME": "fk_entrega_destinatario",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "entrega_tecnica_notificacao",
+        "CONSTRAINT_NAME": "fk_entrega_rede",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "habilitacao_acesso_idoso",
+        "CONSTRAINT_NAME": "fk_habilitacao_pessoa_titular",
+        "REFERENCED_TABLE_NAME": "pessoa_idosa"
+      },
+      {
+        "TABLE_NAME": "habilitacao_acesso_idoso",
+        "CONSTRAINT_NAME": "fk_habilitacao_solicitante",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "habilitacao_acesso_idoso",
+        "CONSTRAINT_NAME": "fk_habilitacao_titular",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "historico_plantao",
+        "CONSTRAINT_NAME": "fk_historico_ator",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "historico_plantao",
+        "CONSTRAINT_NAME": "fk_historico_membro_antes",
+        "REFERENCED_TABLE_NAME": "membro_rede"
+      },
+      {
+        "TABLE_NAME": "historico_plantao",
+        "CONSTRAINT_NAME": "fk_historico_membro_depois",
+        "REFERENCED_TABLE_NAME": "membro_rede"
+      },
+      {
+        "TABLE_NAME": "historico_plantao",
+        "CONSTRAINT_NAME": "fk_historico_plantao",
+        "REFERENCED_TABLE_NAME": "plantao"
+      },
+      {
+        "TABLE_NAME": "horario_regime",
+        "CONSTRAINT_NAME": "fk_horario_regime",
+        "REFERENCED_TABLE_NAME": "regime_medicamento"
+      },
+      {
+        "TABLE_NAME": "idempotencia_comando",
+        "CONSTRAINT_NAME": "fk_idempotencia_ator",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "idempotencia_comando",
+        "CONSTRAINT_NAME": "fk_idempotencia_rede",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "informacao_emergencia",
+        "CONSTRAINT_NAME": "fk_emergencia_autor",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "informacao_emergencia",
+        "CONSTRAINT_NAME": "fk_emergencia_contexto",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "medicamento",
+        "CONSTRAINT_NAME": "fk_medicamento_autor",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "medicamento",
+        "CONSTRAINT_NAME": "fk_medicamento_contexto",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "membro_rede",
+        "CONSTRAINT_NAME": "fk_membro_rede",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "membro_rede",
+        "CONSTRAINT_NAME": "fk_membro_usuario_tipo",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "membro_rede",
+        "CONSTRAINT_NAME": "fk_membro_vinculador",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "ocorrencia_programada",
+        "CONSTRAINT_NAME": "fk_ocorrencia_designado",
+        "REFERENCED_TABLE_NAME": "membro_rede"
+      },
+      {
+        "TABLE_NAME": "ocorrencia_programada",
+        "CONSTRAINT_NAME": "fk_ocorrencia_horario",
+        "REFERENCED_TABLE_NAME": "horario_regime"
+      },
+      {
+        "TABLE_NAME": "ocorrencia_programada",
+        "CONSTRAINT_NAME": "fk_ocorrencia_rede",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "ocorrencia_programada",
+        "CONSTRAINT_NAME": "fk_ocorrencia_tarefa",
+        "REFERENCED_TABLE_NAME": "tarefa"
+      },
+      {
+        "TABLE_NAME": "pessoa_idosa",
+        "CONSTRAINT_NAME": "fk_pessoa_cadastrante",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "pessoa_idosa",
+        "CONSTRAINT_NAME": "fk_pessoa_conta_tipo",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "plantao",
+        "CONSTRAINT_NAME": "fk_plantao_criador",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "plantao",
+        "CONSTRAINT_NAME": "fk_plantao_membro",
+        "REFERENCED_TABLE_NAME": "membro_rede"
+      },
+      {
+        "TABLE_NAME": "plantao",
+        "CONSTRAINT_NAME": "fk_plantao_rede",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "preferencia_notificacao",
+        "CONSTRAINT_NAME": "fk_preferencia_rede",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "preferencia_notificacao",
+        "CONSTRAINT_NAME": "fk_preferencia_usuario",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "recomendacao",
+        "CONSTRAINT_NAME": "fk_recomendacao_autor",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "recomendacao",
+        "CONSTRAINT_NAME": "fk_recomendacao_consulta",
+        "REFERENCED_TABLE_NAME": "consulta"
+      },
+      {
+        "TABLE_NAME": "recomendacao",
+        "CONSTRAINT_NAME": "fk_recomendacao_contexto",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "rede_cuidado",
+        "CONSTRAINT_NAME": "fk_rede_criador",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "rede_cuidado",
+        "CONSTRAINT_NAME": "fk_rede_pessoa",
+        "REFERENCED_TABLE_NAME": "pessoa_idosa"
+      },
+      {
+        "TABLE_NAME": "regime_medicamento",
+        "CONSTRAINT_NAME": "fk_regime_autor",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "regime_medicamento",
+        "CONSTRAINT_NAME": "fk_regime_medicamento",
+        "REFERENCED_TABLE_NAME": "medicamento"
+      },
+      {
+        "TABLE_NAME": "registro_cuidado",
+        "CONSTRAINT_NAME": "fk_registro_autor",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "registro_cuidado",
+        "CONSTRAINT_NAME": "fk_registro_contexto",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "sessao_usuario",
+        "CONSTRAINT_NAME": "fk_sessao_usuario",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "solicitacao_troca_plantao",
+        "CONSTRAINT_NAME": "fk_troca_destinatario",
+        "REFERENCED_TABLE_NAME": "membro_rede"
+      },
+      {
+        "TABLE_NAME": "solicitacao_troca_plantao",
+        "CONSTRAINT_NAME": "fk_troca_plantao",
+        "REFERENCED_TABLE_NAME": "plantao"
+      },
+      {
+        "TABLE_NAME": "solicitacao_troca_plantao",
+        "CONSTRAINT_NAME": "fk_troca_respondente",
+        "REFERENCED_TABLE_NAME": "membro_rede"
+      },
+      {
+        "TABLE_NAME": "solicitacao_troca_plantao",
+        "CONSTRAINT_NAME": "fk_troca_solicitante",
+        "REFERENCED_TABLE_NAME": "membro_rede"
+      },
+      {
+        "TABLE_NAME": "tarefa",
+        "CONSTRAINT_NAME": "fk_tarefa_criador",
+        "REFERENCED_TABLE_NAME": "usuario"
+      },
+      {
+        "TABLE_NAME": "tarefa",
+        "CONSTRAINT_NAME": "fk_tarefa_rede",
+        "REFERENCED_TABLE_NAME": "rede_cuidado"
+      },
+      {
+        "TABLE_NAME": "tarefa",
+        "CONSTRAINT_NAME": "fk_tarefa_responsavel",
+        "REFERENCED_TABLE_NAME": "membro_rede"
+      }
+    ],
+    [
+      {
+        "Table": "rede_cuidado",
+        "Create Table": "CREATE TABLE `rede_cuidado` (\n  `rede_id` bigint unsigned NOT NULL AUTO_INCREMENT,\n  `pessoa_idosa_id` bigint unsigned NOT NULL,\n  `nome` varchar(160) NOT NULL,\n  `situacao` varchar(20) NOT NULL DEFAULT 'OPERACIONAL',\n  `versao` int unsigned NOT NULL DEFAULT '1',\n  `criada_por_usuario_id` bigint unsigned NOT NULL,\n  `criada_em` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),\n  `ativada_em` datetime(6) DEFAULT NULL,\n  PRIMARY KEY (`rede_id`),\n  UNIQUE KEY `uq_rede_pessoa` (`rede_id`,`pessoa_idosa_id`),\n  UNIQUE KEY `uq_rede_idoso_v1` (`pessoa_idosa_id`),\n  KEY `ix_rede_pessoa_situacao` (`pessoa_idosa_id`,`situacao`),\n  KEY `ix_rede_criador` (`criada_por_usuario_id`),\n  CONSTRAINT `fk_rede_criador` FOREIGN KEY (`criada_por_usuario_id`) REFERENCES `usuario` (`usuario_id`),\n  CONSTRAINT `fk_rede_pessoa` FOREIGN KEY (`pessoa_idosa_id`) REFERENCES `pessoa_idosa` (`pessoa_idosa_id`),\n  CONSTRAINT `ck_rede_situacao` CHECK ((`situacao` in (_utf8mb4'OPERACIONAL',_utf8mb4'ENCERRADA'))),\n  CONSTRAINT `ck_rede_versao` CHECK ((`versao` >= 1))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='V1: no maximo uma rede por pessoa. Bootstrap completo na transacao (Principal+Profissional)'"
+      }
+    ],
+    [
+      {
+        "Table": "membro_rede",
+        "Create Table": "CREATE TABLE `membro_rede` (\n  `membro_id` bigint unsigned NOT NULL AUTO_INCREMENT,\n  `rede_id` bigint unsigned NOT NULL,\n  `usuario_id` bigint unsigned NOT NULL,\n  `tipo_usuario_exigido` varchar(16) NOT NULL DEFAULT 'CUIDADOR',\n  `categoria` varchar(24) NOT NULL,\n  `vinculado_em` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),\n  `desvinculado_em` datetime(6) DEFAULT NULL,\n  `vinculado_por_usuario_id` bigint unsigned NOT NULL,\n  `usuario_vinculado_ativo` bigint unsigned GENERATED ALWAYS AS ((case when (`desvinculado_em` is null) then `usuario_id` else NULL end)) STORED,\n  PRIMARY KEY (`membro_id`),\n  UNIQUE KEY `uq_membro_escopo` (`rede_id`,`membro_id`),\n  UNIQUE KEY `uq_membro_escopo_categoria` (`rede_id`,`membro_id`,`categoria`),\n  UNIQUE KEY `uq_membro_usuario_ativo` (`rede_id`,`usuario_vinculado_ativo`),\n  KEY `ix_membro_usuario_hist` (`usuario_id`,`rede_id`,`vinculado_em`),\n  KEY `ix_membro_registrador` (`vinculado_por_usuario_id`),\n  KEY `fk_membro_usuario_tipo` (`usuario_id`,`tipo_usuario_exigido`),\n  CONSTRAINT `fk_membro_rede` FOREIGN KEY (`rede_id`) REFERENCES `rede_cuidado` (`rede_id`),\n  CONSTRAINT `fk_membro_usuario_tipo` FOREIGN KEY (`usuario_id`, `tipo_usuario_exigido`) REFERENCES `usuario` (`usuario_id`, `tipo_acesso`),\n  CONSTRAINT `fk_membro_vinculador` FOREIGN KEY (`vinculado_por_usuario_id`) REFERENCES `usuario` (`usuario_id`),\n  CONSTRAINT `ck_membro_categoria` CHECK ((`categoria` in (_utf8mb4'FAMILIAR',_utf8mb4'PROFISSIONAL_SAUDE'))),\n  CONSTRAINT `ck_membro_periodo` CHECK (((`desvinculado_em` is null) or (`desvinculado_em` >= `vinculado_em`))),\n  CONSTRAINT `ck_membro_tipo_usuario` CHECK ((`tipo_usuario_exigido` = _utf8mb4'CUIDADOR'))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Vinculo historico por episodio; usuario nao deve ganhar acesso depois do fim'"
+      }
+    ],
+    [
+      {
+        "Table": "atribuicao_papel_familiar",
+        "Create Table": "CREATE TABLE `atribuicao_papel_familiar` (\n  `atribuicao_id` bigint unsigned NOT NULL AUTO_INCREMENT,\n  `rede_id` bigint unsigned NOT NULL,\n  `membro_id` bigint unsigned NOT NULL,\n  `categoria_exigida` varchar(24) NOT NULL DEFAULT 'FAMILIAR',\n  `papel` varchar(16) NOT NULL,\n  `concedido_em` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),\n  `revogado_em` datetime(6) DEFAULT NULL,\n  `concedido_por_usuario_id` bigint unsigned NOT NULL,\n  `principal_ativo_rede` bigint unsigned GENERATED ALWAYS AS ((case when ((`papel` = _utf8mb4'PRINCIPAL') and (`revogado_em` is null)) then `rede_id` else NULL end)) STORED,\n  `papel_ativo_membro` bigint unsigned GENERATED ALWAYS AS ((case when (`revogado_em` is null) then `membro_id` else NULL end)) STORED,\n  PRIMARY KEY (`atribuicao_id`),\n  UNIQUE KEY `uq_papel_principal_rede` (`principal_ativo_rede`),\n  UNIQUE KEY `uq_papel_vigente_membro` (`rede_id`,`papel`,`papel_ativo_membro`),\n  KEY `ix_papel_membro_hist` (`rede_id`,`membro_id`,`concedido_em`),\n  KEY `ix_papel_concedente` (`concedido_por_usuario_id`),\n  KEY `fk_papel_membro_familiar` (`rede_id`,`membro_id`,`categoria_exigida`),\n  CONSTRAINT `fk_papel_concedente` FOREIGN KEY (`concedido_por_usuario_id`) REFERENCES `usuario` (`usuario_id`),\n  CONSTRAINT `fk_papel_membro_familiar` FOREIGN KEY (`rede_id`, `membro_id`, `categoria_exigida`) REFERENCES `membro_rede` (`rede_id`, `membro_id`, `categoria`),\n  CONSTRAINT `ck_papel_categoria` CHECK ((`categoria_exigida` = _utf8mb4'FAMILIAR')),\n  CONSTRAINT `ck_papel_periodo` CHECK (((`revogado_em` is null) or (`revogado_em` >= `concedido_em`))),\n  CONSTRAINT `ck_papel_tipo` CHECK ((`papel` in (_utf8mb4'PRINCIPAL',_utf8mb4'APOIO',_utf8mb4'EMERGENCIA')))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='UNIQUE assegura no maximo 1 Principal; pelo menos 1 depende da transacao'"
+      }
+    ],
+    [
+      {
+        "Table": "conclusao_tarefa",
+        "Create Table": "CREATE TABLE `conclusao_tarefa` (\n  `conclusao_id` bigint unsigned NOT NULL AUTO_INCREMENT,\n  `rede_id` bigint unsigned NOT NULL,\n  `tarefa_id` bigint unsigned NOT NULL,\n  `ciclo_numero` int unsigned NOT NULL,\n  `executor_membro_id` bigint unsigned NOT NULL,\n  `autor_usuario_id` bigint unsigned NOT NULL,\n  `concluida_em` datetime(6) NOT NULL,\n  `registrada_em` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),\n  `observacao` text,\n  `chave_idempotencia` varchar(100) DEFAULT NULL,\n  PRIMARY KEY (`conclusao_id`),\n  UNIQUE KEY `uq_conclusao_ciclo` (`rede_id`,`tarefa_id`,`ciclo_numero`),\n  UNIQUE KEY `uq_conclusao_comando` (`rede_id`,`autor_usuario_id`,`chave_idempotencia`),\n  KEY `ix_conclusao_executor` (`rede_id`,`executor_membro_id`),\n  KEY `ix_conclusao_autor` (`autor_usuario_id`),\n  CONSTRAINT `fk_conclusao_autor` FOREIGN KEY (`autor_usuario_id`) REFERENCES `usuario` (`usuario_id`),\n  CONSTRAINT `fk_conclusao_executor` FOREIGN KEY (`rede_id`, `executor_membro_id`) REFERENCES `membro_rede` (`rede_id`, `membro_id`),\n  CONSTRAINT `fk_conclusao_tarefa` FOREIGN KEY (`rede_id`, `tarefa_id`) REFERENCES `tarefa` (`rede_id`, `tarefa_id`),\n  CONSTRAINT `ck_conclusao_ciclo` CHECK ((`ciclo_numero` = 1))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='DEC-S03: unica conclusao por tarefa/ciclo; conflito e rollback na API'"
+      }
+    ],
+    [
+      {
+        "Table": "administracao_medicamento",
+        "Create Table": "CREATE TABLE `administracao_medicamento` (\n  `administracao_id` bigint unsigned NOT NULL AUTO_INCREMENT,\n  `rede_id` bigint unsigned NOT NULL,\n  `regime_id` bigint unsigned NOT NULL,\n  `horario_regime_id` bigint unsigned DEFAULT NULL,\n  `ocorrencia_id` bigint unsigned DEFAULT NULL,\n  `executor_membro_id` bigint unsigned DEFAULT NULL,\n  `autor_usuario_id` bigint unsigned NOT NULL,\n  `realizada_em` datetime(6) NOT NULL COMMENT 'Instante declarado da execucao; nao e instante do alerta',\n  `registrada_em` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),\n  `observacao_original` text,\n  `chave_idempotencia` varchar(100) DEFAULT NULL,\n  PRIMARY KEY (`administracao_id`),\n  UNIQUE KEY `uq_administracao_escopo` (`rede_id`,`administracao_id`),\n  UNIQUE KEY `uq_administracao_ocorrencia_v1` (`rede_id`,`ocorrencia_id`),\n  UNIQUE KEY `uq_administracao_comando` (`rede_id`,`autor_usuario_id`,`chave_idempotencia`),\n  KEY `ix_administracao_regime` (`rede_id`,`regime_id`,`realizada_em`),\n  KEY `ix_administracao_horario_fk` (`rede_id`,`regime_id`,`horario_regime_id`),\n  KEY `ix_administracao_ocorrencia_fk` (`rede_id`,`horario_regime_id`,`ocorrencia_id`),\n  KEY `ix_administracao_executor` (`rede_id`,`executor_membro_id`),\n  KEY `ix_administracao_autor` (`autor_usuario_id`),\n  CONSTRAINT `fk_administracao_autor` FOREIGN KEY (`autor_usuario_id`) REFERENCES `usuario` (`usuario_id`),\n  CONSTRAINT `fk_administracao_executor` FOREIGN KEY (`rede_id`, `executor_membro_id`) REFERENCES `membro_rede` (`rede_id`, `membro_id`),\n  CONSTRAINT `fk_administracao_horario` FOREIGN KEY (`rede_id`, `regime_id`, `horario_regime_id`) REFERENCES `horario_regime` (`rede_id`, `regime_id`, `horario_id`),\n  CONSTRAINT `fk_administracao_ocorrencia` FOREIGN KEY (`rede_id`, `horario_regime_id`, `ocorrencia_id`) REFERENCES `ocorrencia_programada` (`rede_id`, `horario_regime_id`, `ocorrencia_id`),\n  CONSTRAINT `fk_administracao_regime` FOREIGN KEY (`rede_id`, `regime_id`) REFERENCES `regime_medicamento` (`rede_id`, `regime_id`),\n  CONSTRAINT `ck_administracao_ocorrencia` CHECK (((`ocorrencia_id` is null) or (`horario_regime_id` is not null)))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='V1: maximo 1 administracao por ocorrencia (NULL permite avulsa autorizada); original imutavel'"
+      }
+    ],
+    [
+      {
+        "Table": "convite_cadastro_cuidador",
+        "Create Table": "CREATE TABLE `convite_cadastro_cuidador` (\n  `convite_id` bigint unsigned NOT NULL AUTO_INCREMENT,\n  `email_normalizado` varchar(254) NOT NULL,\n  `token_hash` char(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL COMMENT 'SHA-256 hexadecimal do token aleatorio; nunca token em claro',\n  `origem_emissao` varchar(24) NOT NULL,\n  `emitido_por_usuario_id` bigint unsigned DEFAULT NULL,\n  `criado_em` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),\n  `expira_em` datetime(6) NOT NULL,\n  `usado_em` datetime(6) DEFAULT NULL,\n  `revogado_em` datetime(6) DEFAULT NULL,\n  `email_convite_aberto` varchar(254) GENERATED ALWAYS AS ((case when ((`usado_em` is null) and (`revogado_em` is null)) then `email_normalizado` else NULL end)) STORED,\n  `bootstrap_aberto` tinyint GENERATED ALWAYS AS ((case when ((`origem_emissao` = _utf8mb4'OPERADOR_BOOTSTRAP') and (`usado_em` is null) and (`revogado_em` is null)) then 1 else NULL end)) STORED,\n  PRIMARY KEY (`convite_id`),\n  UNIQUE KEY `uq_convite_cuidador_token` (`token_hash`),\n  UNIQUE KEY `uq_convite_cuidador_email_aberto` (`email_convite_aberto`),\n  UNIQUE KEY `uq_convite_cuidador_bootstrap_aberto` (`bootstrap_aberto`),\n  KEY `ix_convite_cuidador_emitente` (`emitido_por_usuario_id`),\n  KEY `ix_convite_cuidador_email_historico` (`email_normalizado`,`criado_em`),\n  CONSTRAINT `fk_convite_cuidador_emitente` FOREIGN KEY (`emitido_por_usuario_id`) REFERENCES `usuario` (`usuario_id`),\n  CONSTRAINT `ck_convite_cuidador_emitente` CHECK ((((`origem_emissao` = _utf8mb4'OPERADOR_BOOTSTRAP') and (`emitido_por_usuario_id` is null)) or ((`origem_emissao` = _utf8mb4'PRINCIPAL') and (`emitido_por_usuario_id` is not null)))),\n  CONSTRAINT `ck_convite_cuidador_exclusividade` CHECK (((`usado_em` is null) or (`revogado_em` is null))),\n  CONSTRAINT `ck_convite_cuidador_expiracao` CHECK ((`expira_em` > `criado_em`)),\n  CONSTRAINT `ck_convite_cuidador_origem` CHECK ((`origem_emissao` in (_utf8mb4'OPERADOR_BOOTSTRAP',_utf8mb4'PRINCIPAL'))),\n  CONSTRAINT `ck_convite_cuidador_revogacao` CHECK (((`revogado_em` is null) or (`revogado_em` >= `criado_em`))),\n  CONSTRAINT `ck_convite_cuidador_uso` CHECK (((`usado_em` is null) or (`usado_em` >= `criado_em`)))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Identidade CUIDADOR por convite individual; nunca concede papel/vinculo automaticamente'"
+      }
+    ],
+    [
+      {
+        "Table": "sessao_usuario",
+        "Create Table": "CREATE TABLE `sessao_usuario` (\n  `token_hash` char(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,\n  `usuario_id` bigint unsigned NOT NULL,\n  `credencial_hash` char(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,\n  `criado_em` datetime(6) NOT NULL,\n  `expira_em` datetime(6) NOT NULL,\n  `revogado_em` datetime(6) DEFAULT NULL,\n  PRIMARY KEY (`token_hash`),\n  KEY `ix_sessao_usuario` (`usuario_id`,`revogado_em`,`expira_em`),\n  KEY `ix_sessao_expira` (`expira_em`),\n  CONSTRAINT `fk_sessao_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`usuario_id`),\n  CONSTRAINT `ck_sessao_expira` CHECK ((`expira_em` > `criado_em`))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci"
+      }
+    ],
+    [
+      {
+        "Table": "login_rate_limit",
+        "Create Table": "CREATE TABLE `login_rate_limit` (\n  `chave` char(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,\n  `janela_em` datetime(6) NOT NULL,\n  `tentativas` int unsigned NOT NULL,\n  PRIMARY KEY (`chave`),\n  KEY `ix_login_janela` (`janela_em`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci"
+      }
+    ]
+  ]
+}

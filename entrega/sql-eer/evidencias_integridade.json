@@ -1,0 +1,27 @@
+{
+  "algorithm": "SHA-256",
+  "files": {
+    "01_schema_completo_v1.sql": "b027249885ee7aadf00656750e0cfb22b6ec4ce58eef2e6251fe733c6f1273f7",
+    "02_manifest_estrutura.json": "ef88383934842b81a06a497af3e2acea7be4e8b75a68a79ef8e890bc1e27e807",
+    "02_validar_34_tabelas.sql": "44d71e2793b5ebece93f2c87283739c988381697285e7bd90cb18e401f6262ae",
+    "diagrama_agenda_tarefas.png": "e75d706353cf2cacc67163e5f4bf0f9b7ff60477afa93c17ddc8dd0cb652fe0a",
+    "diagrama_agenda_tarefas.svg": "37886c2b4255f7e7d3841e158ea7fa9e7e031dc4c599fe1eb5e0eae7e5efa15d",
+    "diagrama_diario_consultas.png": "0e57922aeda41dd5c3f0573b7f6be3a8b5838728dc93bbcf724b955aec456c88",
+    "diagrama_diario_consultas.svg": "7efeb2b9ce677321e5cb6eb0ba4fb466793f878b3e760f47889aaa4da2887bc9",
+    "diagrama_geral.png": "0349e3632f3ede432aeff65fbe790a73025a207bcab035bd45c23a128e8ad1e9",
+    "diagrama_geral.svg": "40493515dfeeab3728ce0896b7ab6d5f94264726b389d303ae5770397b1edb71",
+    "diagrama_identidade_rede.png": "c2d504315e5f83fb5b0bd4f9c56570ae7d8f2cea2a9f01f1e41507bd06f7d71f",
+    "diagrama_identidade_rede.svg": "a973f528fe8cb206990761f77ec948b2d63579f39c4bd8d8767dee06b740075b",
+    "diagrama_medicacao.png": "d6c9051fde359d198a44fbb2ce6978f351d2494167f2cf6771552c7f2adf507c",
+    "diagrama_medicacao.svg": "a6fe37608c1b96058b38e63261fb879072060804fc9e7759b7f515ae53b8f12d",
+    "diagrama_suporte_tecnico.png": "ac9cfafe02d688095c3e9e88884e8af20098e1ae35ac1187b7ec4a34cdb28983",
+    "diagrama_suporte_tecnico.svg": "ff058bb39d0bca3e5b234a664f96144a376bfb292540623c5fa365f7f6ea4573",
+    "estrutura_fisica.json": "225720f5a88281a8b332639110beac0910e622e5334539cb3be800e32661b37d",
+    "rede_de_apoio_v1.mwb": "b9168c1c00c001a3aff7c17f131d63bceff0d263f7c31d54aa9a4b7bb7b7d8b5",
+    "testes_estruturais.json": "621437f8effb10f76e0c56eac47d688fe625f7ff7ea9f932113da4cdf93038d2",
+    "validacao_sql_real.json": "56892ec5c8f4465b5311f275dd9cad00705b9d9194f37f8cef1e34838accbfbe",
+    "workbench_criacao.json": "ac65061c3708fade523c06aac9a6eb69b1eb8440f04a65e4da66351c0381b7a9",
+    "workbench_reabertura.json": "5e94ff6b815f59560a1e4fbf542ba23dd11f6ee5dd43e14ed12bdf5cf91cd752",
+    "workbench_vistas.json": "5a10550b3b681c911fb1378199b9ebb40e26c9c7d72734236cb1ce53e8ed09f3"
+  }
+}

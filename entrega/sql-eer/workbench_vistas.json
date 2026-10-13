@@ -1,0 +1,89 @@
+[
+  {
+    "name": "identidade_rede",
+    "tables": 10,
+    "connections": 14,
+    "scope": [
+      "usuario",
+      "pessoa_idosa",
+      "rede_cuidado",
+      "membro_rede",
+      "atribuicao_papel_familiar",
+      "convite_cadastro_cuidador",
+      "habilitacao_acesso_idoso",
+      "sessao_usuario",
+      "cadastro_rate_limit",
+      "login_rate_limit"
+    ]
+  },
+  {
+    "name": "agenda_tarefas",
+    "tables": 11,
+    "connections": 30,
+    "scope": [
+      "usuario",
+      "pessoa_idosa",
+      "rede_cuidado",
+      "membro_rede",
+      "plantao",
+      "solicitacao_troca_plantao",
+      "historico_plantao",
+      "tarefa",
+      "conclusao_tarefa",
+      "compromisso",
+      "ocorrencia_programada"
+    ]
+  },
+  {
+    "name": "medicacao",
+    "tables": 10,
+    "connections": 22,
+    "scope": [
+      "usuario",
+      "pessoa_idosa",
+      "rede_cuidado",
+      "membro_rede",
+      "medicamento",
+      "regime_medicamento",
+      "horario_regime",
+      "ocorrencia_programada",
+      "administracao_medicamento",
+      "correcao_administracao_medicamento"
+    ]
+  },
+  {
+    "name": "diario_consultas",
+    "tables": 11,
+    "connections": 25,
+    "scope": [
+      "usuario",
+      "pessoa_idosa",
+      "rede_cuidado",
+      "membro_rede",
+      "registro_cuidado",
+      "correcao_registro_cuidado",
+      "consulta",
+      "correcao_consulta",
+      "recomendacao",
+      "anexo",
+      "compromisso"
+    ]
+  },
+  {
+    "name": "suporte_tecnico",
+    "tables": 10,
+    "connections": 20,
+    "scope": [
+      "usuario",
+      "pessoa_idosa",
+      "rede_cuidado",
+      "membro_rede",
+      "contato_importante",
+      "informacao_emergencia",
+      "preferencia_notificacao",
+      "entrega_tecnica_notificacao",
+      "auditoria",
+      "idempotencia_comando"
+    ]
+  }
+]

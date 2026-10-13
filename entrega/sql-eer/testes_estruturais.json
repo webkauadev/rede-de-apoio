@@ -1,0 +1,51 @@
+{
+  "executedAt": "2026-10-13T15:13:36.134Z",
+  "cases": [
+    {
+      "name": "Uma rede por pessoa idosa",
+      "status": "PASS",
+      "mysqlError": "ER_DUP_ENTRY"
+    },
+    {
+      "name": "Pessoa idosa não ganha vínculo cuidador",
+      "status": "PASS",
+      "mysqlError": "ER_NO_REFERENCED_ROW_2"
+    },
+    {
+      "name": "Papel familiar requer categoria familiar",
+      "status": "PASS",
+      "mysqlError": "ER_NO_REFERENCED_ROW_2"
+    },
+    {
+      "name": "No máximo um Principal ativo",
+      "status": "PASS",
+      "mysqlError": "ER_DUP_ENTRY"
+    },
+    {
+      "name": "Uma conclusão por tarefa/ciclo",
+      "status": "PASS",
+      "mysqlError": "ER_DUP_ENTRY"
+    },
+    {
+      "name": "Sem segundo ciclo V1",
+      "status": "PASS",
+      "mysqlError": "ER_CHECK_CONSTRAINT_VIOLATED"
+    },
+    {
+      "name": "Uma administração por ocorrência",
+      "status": "PASS",
+      "mysqlError": "ER_DUP_ENTRY"
+    },
+    {
+      "name": "Sessão exige expiração posterior",
+      "status": "PASS",
+      "mysqlError": "ER_CHECK_CONSTRAINT_VIOLATED"
+    }
+  ],
+  "rolledBack": true,
+  "all34TablesEmpty": true,
+  "limits": [
+    "DDL validates at most one Principal, not minimum members or application authorization",
+    "Session CHECK validates timestamps, not runtime authentication expiry"
+  ]
+}

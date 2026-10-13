@@ -1,0 +1,8 @@
+{
+  "workbench": "8.0.47",
+  "method": "DbMySQLRE live reverse engineering; native Workbench saveModelAs",
+  "tables": 34,
+  "foreignKeys": 79,
+  "diagramFigures": 34,
+  "diagramConnections": 79
+}

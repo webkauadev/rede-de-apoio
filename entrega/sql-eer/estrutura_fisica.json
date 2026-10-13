@@ -1,0 +1,2220 @@
+{
+  "foreignKeys": [
+    {
+      "child": "administracao_medicamento",
+      "name": "fk_administracao_autor",
+      "childColumn": "autor_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "administracao_medicamento",
+      "name": "fk_administracao_executor",
+      "childColumn": "rede_id",
+      "parent": "membro_rede",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "administracao_medicamento",
+      "name": "fk_administracao_executor",
+      "childColumn": "executor_membro_id",
+      "parent": "membro_rede",
+      "parentColumn": "membro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "administracao_medicamento",
+      "name": "fk_administracao_horario",
+      "childColumn": "rede_id",
+      "parent": "horario_regime",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "administracao_medicamento",
+      "name": "fk_administracao_horario",
+      "childColumn": "regime_id",
+      "parent": "horario_regime",
+      "parentColumn": "regime_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "administracao_medicamento",
+      "name": "fk_administracao_horario",
+      "childColumn": "horario_regime_id",
+      "parent": "horario_regime",
+      "parentColumn": "horario_id",
+      "position": 3,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "administracao_medicamento",
+      "name": "fk_administracao_ocorrencia",
+      "childColumn": "rede_id",
+      "parent": "ocorrencia_programada",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "administracao_medicamento",
+      "name": "fk_administracao_ocorrencia",
+      "childColumn": "horario_regime_id",
+      "parent": "ocorrencia_programada",
+      "parentColumn": "horario_regime_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "administracao_medicamento",
+      "name": "fk_administracao_ocorrencia",
+      "childColumn": "ocorrencia_id",
+      "parent": "ocorrencia_programada",
+      "parentColumn": "ocorrencia_id",
+      "position": 3,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "administracao_medicamento",
+      "name": "fk_administracao_regime",
+      "childColumn": "rede_id",
+      "parent": "regime_medicamento",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "administracao_medicamento",
+      "name": "fk_administracao_regime",
+      "childColumn": "regime_id",
+      "parent": "regime_medicamento",
+      "parentColumn": "regime_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "anexo",
+      "name": "fk_anexo_administracao",
+      "childColumn": "rede_id",
+      "parent": "administracao_medicamento",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "anexo",
+      "name": "fk_anexo_administracao",
+      "childColumn": "administracao_id",
+      "parent": "administracao_medicamento",
+      "parentColumn": "administracao_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "anexo",
+      "name": "fk_anexo_autor",
+      "childColumn": "enviado_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "anexo",
+      "name": "fk_anexo_consulta",
+      "childColumn": "rede_id",
+      "parent": "consulta",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "anexo",
+      "name": "fk_anexo_consulta",
+      "childColumn": "consulta_id",
+      "parent": "consulta",
+      "parentColumn": "consulta_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "anexo",
+      "name": "fk_anexo_registro",
+      "childColumn": "rede_id",
+      "parent": "registro_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "anexo",
+      "name": "fk_anexo_registro",
+      "childColumn": "registro_id",
+      "parent": "registro_cuidado",
+      "parentColumn": "registro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "atribuicao_papel_familiar",
+      "name": "fk_papel_concedente",
+      "childColumn": "concedido_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "atribuicao_papel_familiar",
+      "name": "fk_papel_membro_familiar",
+      "childColumn": "rede_id",
+      "parent": "membro_rede",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "atribuicao_papel_familiar",
+      "name": "fk_papel_membro_familiar",
+      "childColumn": "membro_id",
+      "parent": "membro_rede",
+      "parentColumn": "membro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "atribuicao_papel_familiar",
+      "name": "fk_papel_membro_familiar",
+      "childColumn": "categoria_exigida",
+      "parent": "membro_rede",
+      "parentColumn": "categoria",
+      "position": 3,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "auditoria",
+      "name": "fk_auditoria_ator",
+      "childColumn": "ator_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "auditoria",
+      "name": "fk_auditoria_pessoa",
+      "childColumn": "pessoa_idosa_id",
+      "parent": "pessoa_idosa",
+      "parentColumn": "pessoa_idosa_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "auditoria",
+      "name": "fk_auditoria_rede",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "compromisso",
+      "name": "fk_compromisso_contexto",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "compromisso",
+      "name": "fk_compromisso_contexto",
+      "childColumn": "pessoa_idosa_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "pessoa_idosa_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "compromisso",
+      "name": "fk_compromisso_criador",
+      "childColumn": "criado_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "compromisso",
+      "name": "fk_compromisso_responsavel",
+      "childColumn": "rede_id",
+      "parent": "membro_rede",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "compromisso",
+      "name": "fk_compromisso_responsavel",
+      "childColumn": "responsavel_membro_id",
+      "parent": "membro_rede",
+      "parentColumn": "membro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "conclusao_tarefa",
+      "name": "fk_conclusao_autor",
+      "childColumn": "autor_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "conclusao_tarefa",
+      "name": "fk_conclusao_executor",
+      "childColumn": "rede_id",
+      "parent": "membro_rede",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "conclusao_tarefa",
+      "name": "fk_conclusao_executor",
+      "childColumn": "executor_membro_id",
+      "parent": "membro_rede",
+      "parentColumn": "membro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "conclusao_tarefa",
+      "name": "fk_conclusao_tarefa",
+      "childColumn": "rede_id",
+      "parent": "tarefa",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "conclusao_tarefa",
+      "name": "fk_conclusao_tarefa",
+      "childColumn": "tarefa_id",
+      "parent": "tarefa",
+      "parentColumn": "tarefa_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "consulta",
+      "name": "fk_consulta_autor",
+      "childColumn": "autor_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "consulta",
+      "name": "fk_consulta_compromisso",
+      "childColumn": "rede_id",
+      "parent": "compromisso",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "consulta",
+      "name": "fk_consulta_compromisso",
+      "childColumn": "compromisso_id",
+      "parent": "compromisso",
+      "parentColumn": "compromisso_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "consulta",
+      "name": "fk_consulta_contexto",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "consulta",
+      "name": "fk_consulta_contexto",
+      "childColumn": "pessoa_idosa_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "pessoa_idosa_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "contato_importante",
+      "name": "fk_contato_autor",
+      "childColumn": "registrado_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "contato_importante",
+      "name": "fk_contato_contexto",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "contato_importante",
+      "name": "fk_contato_contexto",
+      "childColumn": "pessoa_idosa_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "pessoa_idosa_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "convite_cadastro_cuidador",
+      "name": "fk_convite_cuidador_emitente",
+      "childColumn": "emitido_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "correcao_administracao_medicamento",
+      "name": "fk_correcao_administracao",
+      "childColumn": "rede_id",
+      "parent": "administracao_medicamento",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "correcao_administracao_medicamento",
+      "name": "fk_correcao_administracao",
+      "childColumn": "administracao_id",
+      "parent": "administracao_medicamento",
+      "parentColumn": "administracao_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "correcao_administracao_medicamento",
+      "name": "fk_correcao_administracao_autor",
+      "childColumn": "autor_correcao_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "correcao_consulta",
+      "name": "fk_correcao_consulta",
+      "childColumn": "rede_id",
+      "parent": "consulta",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "correcao_consulta",
+      "name": "fk_correcao_consulta",
+      "childColumn": "consulta_id",
+      "parent": "consulta",
+      "parentColumn": "consulta_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "correcao_consulta",
+      "name": "fk_correcao_consulta_autor",
+      "childColumn": "autor_correcao_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "correcao_registro_cuidado",
+      "name": "fk_correcao_registro",
+      "childColumn": "rede_id",
+      "parent": "registro_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "correcao_registro_cuidado",
+      "name": "fk_correcao_registro",
+      "childColumn": "registro_id",
+      "parent": "registro_cuidado",
+      "parentColumn": "registro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "correcao_registro_cuidado",
+      "name": "fk_correcao_registro_autor",
+      "childColumn": "autor_correcao_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "entrega_tecnica_notificacao",
+      "name": "fk_entrega_destinatario",
+      "childColumn": "usuario_destinatario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "entrega_tecnica_notificacao",
+      "name": "fk_entrega_rede",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "habilitacao_acesso_idoso",
+      "name": "fk_habilitacao_pessoa_titular",
+      "childColumn": "pessoa_idosa_id",
+      "parent": "pessoa_idosa",
+      "parentColumn": "pessoa_idosa_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "habilitacao_acesso_idoso",
+      "name": "fk_habilitacao_pessoa_titular",
+      "childColumn": "usuario_titular_id",
+      "parent": "pessoa_idosa",
+      "parentColumn": "usuario_titular_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "habilitacao_acesso_idoso",
+      "name": "fk_habilitacao_solicitante",
+      "childColumn": "solicitada_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "habilitacao_acesso_idoso",
+      "name": "fk_habilitacao_titular",
+      "childColumn": "usuario_titular_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "historico_plantao",
+      "name": "fk_historico_ator",
+      "childColumn": "operado_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "historico_plantao",
+      "name": "fk_historico_membro_antes",
+      "childColumn": "rede_id",
+      "parent": "membro_rede",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "historico_plantao",
+      "name": "fk_historico_membro_antes",
+      "childColumn": "membro_anterior_id",
+      "parent": "membro_rede",
+      "parentColumn": "membro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "historico_plantao",
+      "name": "fk_historico_membro_depois",
+      "childColumn": "rede_id",
+      "parent": "membro_rede",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "historico_plantao",
+      "name": "fk_historico_membro_depois",
+      "childColumn": "membro_novo_id",
+      "parent": "membro_rede",
+      "parentColumn": "membro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "historico_plantao",
+      "name": "fk_historico_plantao",
+      "childColumn": "rede_id",
+      "parent": "plantao",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "historico_plantao",
+      "name": "fk_historico_plantao",
+      "childColumn": "plantao_id",
+      "parent": "plantao",
+      "parentColumn": "plantao_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "horario_regime",
+      "name": "fk_horario_regime",
+      "childColumn": "rede_id",
+      "parent": "regime_medicamento",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "horario_regime",
+      "name": "fk_horario_regime",
+      "childColumn": "regime_id",
+      "parent": "regime_medicamento",
+      "parentColumn": "regime_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "idempotencia_comando",
+      "name": "fk_idempotencia_ator",
+      "childColumn": "ator_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "idempotencia_comando",
+      "name": "fk_idempotencia_rede",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "informacao_emergencia",
+      "name": "fk_emergencia_autor",
+      "childColumn": "atualizado_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "informacao_emergencia",
+      "name": "fk_emergencia_contexto",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "informacao_emergencia",
+      "name": "fk_emergencia_contexto",
+      "childColumn": "pessoa_idosa_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "pessoa_idosa_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "medicamento",
+      "name": "fk_medicamento_autor",
+      "childColumn": "cadastrado_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "medicamento",
+      "name": "fk_medicamento_contexto",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "medicamento",
+      "name": "fk_medicamento_contexto",
+      "childColumn": "pessoa_idosa_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "pessoa_idosa_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "membro_rede",
+      "name": "fk_membro_rede",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "membro_rede",
+      "name": "fk_membro_usuario_tipo",
+      "childColumn": "usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "membro_rede",
+      "name": "fk_membro_usuario_tipo",
+      "childColumn": "tipo_usuario_exigido",
+      "parent": "usuario",
+      "parentColumn": "tipo_acesso",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "membro_rede",
+      "name": "fk_membro_vinculador",
+      "childColumn": "vinculado_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "ocorrencia_programada",
+      "name": "fk_ocorrencia_designado",
+      "childColumn": "rede_id",
+      "parent": "membro_rede",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "ocorrencia_programada",
+      "name": "fk_ocorrencia_designado",
+      "childColumn": "responsavel_membro_id",
+      "parent": "membro_rede",
+      "parentColumn": "membro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "ocorrencia_programada",
+      "name": "fk_ocorrencia_horario",
+      "childColumn": "rede_id",
+      "parent": "horario_regime",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "ocorrencia_programada",
+      "name": "fk_ocorrencia_horario",
+      "childColumn": "horario_regime_id",
+      "parent": "horario_regime",
+      "parentColumn": "horario_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "ocorrencia_programada",
+      "name": "fk_ocorrencia_rede",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "ocorrencia_programada",
+      "name": "fk_ocorrencia_tarefa",
+      "childColumn": "rede_id",
+      "parent": "tarefa",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "ocorrencia_programada",
+      "name": "fk_ocorrencia_tarefa",
+      "childColumn": "tarefa_id",
+      "parent": "tarefa",
+      "parentColumn": "tarefa_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "pessoa_idosa",
+      "name": "fk_pessoa_cadastrante",
+      "childColumn": "cadastrado_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "pessoa_idosa",
+      "name": "fk_pessoa_conta_tipo",
+      "childColumn": "usuario_titular_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "pessoa_idosa",
+      "name": "fk_pessoa_conta_tipo",
+      "childColumn": "tipo_titular_exigido",
+      "parent": "usuario",
+      "parentColumn": "tipo_acesso",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "plantao",
+      "name": "fk_plantao_criador",
+      "childColumn": "criado_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "plantao",
+      "name": "fk_plantao_membro",
+      "childColumn": "rede_id",
+      "parent": "membro_rede",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "plantao",
+      "name": "fk_plantao_membro",
+      "childColumn": "membro_responsavel_id",
+      "parent": "membro_rede",
+      "parentColumn": "membro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "plantao",
+      "name": "fk_plantao_rede",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "preferencia_notificacao",
+      "name": "fk_preferencia_rede",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "preferencia_notificacao",
+      "name": "fk_preferencia_usuario",
+      "childColumn": "usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "recomendacao",
+      "name": "fk_recomendacao_autor",
+      "childColumn": "autor_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "recomendacao",
+      "name": "fk_recomendacao_consulta",
+      "childColumn": "rede_id",
+      "parent": "consulta",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "recomendacao",
+      "name": "fk_recomendacao_consulta",
+      "childColumn": "consulta_id",
+      "parent": "consulta",
+      "parentColumn": "consulta_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "recomendacao",
+      "name": "fk_recomendacao_contexto",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "recomendacao",
+      "name": "fk_recomendacao_contexto",
+      "childColumn": "pessoa_idosa_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "pessoa_idosa_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "rede_cuidado",
+      "name": "fk_rede_criador",
+      "childColumn": "criada_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "rede_cuidado",
+      "name": "fk_rede_pessoa",
+      "childColumn": "pessoa_idosa_id",
+      "parent": "pessoa_idosa",
+      "parentColumn": "pessoa_idosa_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "regime_medicamento",
+      "name": "fk_regime_autor",
+      "childColumn": "criado_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "regime_medicamento",
+      "name": "fk_regime_medicamento",
+      "childColumn": "rede_id",
+      "parent": "medicamento",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "regime_medicamento",
+      "name": "fk_regime_medicamento",
+      "childColumn": "medicamento_id",
+      "parent": "medicamento",
+      "parentColumn": "medicamento_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "registro_cuidado",
+      "name": "fk_registro_autor",
+      "childColumn": "autor_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "registro_cuidado",
+      "name": "fk_registro_contexto",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "registro_cuidado",
+      "name": "fk_registro_contexto",
+      "childColumn": "pessoa_idosa_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "pessoa_idosa_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "sessao_usuario",
+      "name": "fk_sessao_usuario",
+      "childColumn": "usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "solicitacao_troca_plantao",
+      "name": "fk_troca_destinatario",
+      "childColumn": "rede_id",
+      "parent": "membro_rede",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "solicitacao_troca_plantao",
+      "name": "fk_troca_destinatario",
+      "childColumn": "destinatario_membro_id",
+      "parent": "membro_rede",
+      "parentColumn": "membro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "solicitacao_troca_plantao",
+      "name": "fk_troca_plantao",
+      "childColumn": "rede_id",
+      "parent": "plantao",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "solicitacao_troca_plantao",
+      "name": "fk_troca_plantao",
+      "childColumn": "plantao_id",
+      "parent": "plantao",
+      "parentColumn": "plantao_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "solicitacao_troca_plantao",
+      "name": "fk_troca_respondente",
+      "childColumn": "rede_id",
+      "parent": "membro_rede",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "solicitacao_troca_plantao",
+      "name": "fk_troca_respondente",
+      "childColumn": "respondido_por_membro_id",
+      "parent": "membro_rede",
+      "parentColumn": "membro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "solicitacao_troca_plantao",
+      "name": "fk_troca_solicitante",
+      "childColumn": "rede_id",
+      "parent": "membro_rede",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "solicitacao_troca_plantao",
+      "name": "fk_troca_solicitante",
+      "childColumn": "solicitante_membro_id",
+      "parent": "membro_rede",
+      "parentColumn": "membro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "tarefa",
+      "name": "fk_tarefa_criador",
+      "childColumn": "criado_por_usuario_id",
+      "parent": "usuario",
+      "parentColumn": "usuario_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "tarefa",
+      "name": "fk_tarefa_rede",
+      "childColumn": "rede_id",
+      "parent": "rede_cuidado",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "tarefa",
+      "name": "fk_tarefa_responsavel",
+      "childColumn": "rede_id",
+      "parent": "membro_rede",
+      "parentColumn": "rede_id",
+      "position": 1,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    },
+    {
+      "child": "tarefa",
+      "name": "fk_tarefa_responsavel",
+      "childColumn": "responsavel_membro_id",
+      "parent": "membro_rede",
+      "parentColumn": "membro_id",
+      "position": 2,
+      "updateRule": "NO ACTION",
+      "deleteRule": "NO ACTION"
+    }
+  ],
+  "checks": [
+    {
+      "name": "ck_administracao_ocorrencia",
+      "clause": "((`ocorrencia_id` is null) or (`horario_regime_id` is not null))"
+    },
+    {
+      "name": "ck_anexo_estado",
+      "clause": "(`estado_tecnico` in (_utf8mb4\\'PENDENTE\\',_utf8mb4\\'VALIDADO\\',_utf8mb4\\'REJEITADO\\'))"
+    },
+    {
+      "name": "ck_anexo_pai",
+      "clause": "((((`registro_id` is not null) + (`consulta_id` is not null)) + (`administracao_id` is not null)) = 1)"
+    },
+    {
+      "name": "ck_auditoria_resultado",
+      "clause": "(`resultado` in (_utf8mb4\\'PERMITIDO\\',_utf8mb4\\'NEGADO\\',_utf8mb4\\'ERRO\\'))"
+    },
+    {
+      "name": "ck_compromisso_periodo",
+      "clause": "((`fim_em` is null) or (`inicio_em` < `fim_em`))"
+    },
+    {
+      "name": "ck_conclusao_ciclo",
+      "clause": "(`ciclo_numero` = 1)"
+    },
+    {
+      "name": "ck_contato_prioridade",
+      "clause": "(`prioridade` >= 1)"
+    },
+    {
+      "name": "ck_convite_cuidador_emitente",
+      "clause": "(((`origem_emissao` = _utf8mb4\\'OPERADOR_BOOTSTRAP\\') and (`emitido_por_usuario_id` is null)) or ((`origem_emissao` = _utf8mb4\\'PRINCIPAL\\') and (`emitido_por_usuario_id` is not null)))"
+    },
+    {
+      "name": "ck_convite_cuidador_exclusividade",
+      "clause": "((`usado_em` is null) or (`revogado_em` is null))"
+    },
+    {
+      "name": "ck_convite_cuidador_expiracao",
+      "clause": "(`expira_em` > `criado_em`)"
+    },
+    {
+      "name": "ck_convite_cuidador_origem",
+      "clause": "(`origem_emissao` in (_utf8mb4\\'OPERADOR_BOOTSTRAP\\',_utf8mb4\\'PRINCIPAL\\'))"
+    },
+    {
+      "name": "ck_convite_cuidador_revogacao",
+      "clause": "((`revogado_em` is null) or (`revogado_em` >= `criado_em`))"
+    },
+    {
+      "name": "ck_convite_cuidador_uso",
+      "clause": "((`usado_em` is null) or (`usado_em` >= `criado_em`))"
+    },
+    {
+      "name": "ck_correcao_administracao_versao",
+      "clause": "(`numero_versao` >= 1)"
+    },
+    {
+      "name": "ck_correcao_consulta_versao",
+      "clause": "(`numero_versao` >= 1)"
+    },
+    {
+      "name": "ck_correcao_registro_versao",
+      "clause": "(`numero_versao` >= 1)"
+    },
+    {
+      "name": "ck_entrega_estado",
+      "clause": "(`estado_transporte` in (_utf8mb4\\'PENDENTE\\',_utf8mb4\\'PROCESSANDO\\',_utf8mb4\\'ENTREGUE\\',_utf8mb4\\'CANCELADA\\',_utf8mb4\\'FALHA\\'))"
+    },
+    {
+      "name": "ck_entrega_tipo",
+      "clause": "(`tipo_evento` in (_utf8mb4\\'N01\\',_utf8mb4\\'N02\\',_utf8mb4\\'N03\\',_utf8mb4\\'N04\\'))"
+    },
+    {
+      "name": "ck_habilitacao_nao_ambos",
+      "clause": "((`usada_em` is null) or (`revogada_em` is null))"
+    },
+    {
+      "name": "ck_habilitacao_prazo",
+      "clause": "(`expira_em` > `criada_em`)"
+    },
+    {
+      "name": "ck_habilitacao_revogada",
+      "clause": "((`revogada_em` is null) or (`revogada_em` >= `criada_em`))"
+    },
+    {
+      "name": "ck_habilitacao_usada",
+      "clause": "((`usada_em` is null) or (`usada_em` >= `criada_em`))"
+    },
+    {
+      "name": "ck_historico_plantao_evento",
+      "clause": "(`tipo_evento` in (_utf8mb4\\'CRIADO\\',_utf8mb4\\'ATRIBUIDO\\',_utf8mb4\\'ALTERADO\\',_utf8mb4\\'CANCELADO\\',_utf8mb4\\'TROCA_ACEITA\\'))"
+    },
+    {
+      "name": "ck_historico_plantao_versao",
+      "clause": "((`versao_anterior` >= 0) and (`versao_nova` = (`versao_anterior` + 1)))"
+    },
+    {
+      "name": "ck_horario_vigencia",
+      "clause": "((`fim_data` is null) or (`fim_data` >= `inicio_data`))"
+    },
+    {
+      "name": "ck_idempotencia_estado",
+      "clause": "(`estado` in (_utf8mb4\\'EM_ANDAMENTO\\',_utf8mb4\\'CONCLUIDO\\',_utf8mb4\\'FALHOU\\'))"
+    },
+    {
+      "name": "ck_membro_categoria",
+      "clause": "(`categoria` in (_utf8mb4\\'FAMILIAR\\',_utf8mb4\\'PROFISSIONAL_SAUDE\\'))"
+    },
+    {
+      "name": "ck_membro_periodo",
+      "clause": "((`desvinculado_em` is null) or (`desvinculado_em` >= `vinculado_em`))"
+    },
+    {
+      "name": "ck_membro_tipo_usuario",
+      "clause": "(`tipo_usuario_exigido` = _utf8mb4\\'CUIDADOR\\')"
+    },
+    {
+      "name": "ck_ocorrencia_geracao",
+      "clause": "(`geracao_origem` >= 1)"
+    },
+    {
+      "name": "ck_ocorrencia_origem",
+      "clause": "(((`tarefa_id` is not null) and (`horario_regime_id` is null)) or ((`tarefa_id` is null) and (`horario_regime_id` is not null)))"
+    },
+    {
+      "name": "ck_papel_categoria",
+      "clause": "(`categoria_exigida` = _utf8mb4\\'FAMILIAR\\')"
+    },
+    {
+      "name": "ck_papel_periodo",
+      "clause": "((`revogado_em` is null) or (`revogado_em` >= `concedido_em`))"
+    },
+    {
+      "name": "ck_papel_tipo",
+      "clause": "(`papel` in (_utf8mb4\\'PRINCIPAL\\',_utf8mb4\\'APOIO\\',_utf8mb4\\'EMERGENCIA\\'))"
+    },
+    {
+      "name": "ck_pessoa_titular_tipo",
+      "clause": "(`tipo_titular_exigido` = _utf8mb4\\'PESSOA_IDOSA\\')"
+    },
+    {
+      "name": "ck_plantao_periodo",
+      "clause": "(`inicio_em` < `fim_em`)"
+    },
+    {
+      "name": "ck_plantao_situacao",
+      "clause": "(`situacao` in (_utf8mb4\\'AGENDADO\\',_utf8mb4\\'CANCELADO\\',_utf8mb4\\'CONCLUIDO\\'))"
+    },
+    {
+      "name": "ck_plantao_versao",
+      "clause": "(`versao` >= 1)"
+    },
+    {
+      "name": "ck_preferencia_tipo",
+      "clause": "(`tipo_evento` in (_utf8mb4\\'N03\\',_utf8mb4\\'N04\\'))"
+    },
+    {
+      "name": "ck_rede_situacao",
+      "clause": "(`situacao` in (_utf8mb4\\'OPERACIONAL\\',_utf8mb4\\'ENCERRADA\\'))"
+    },
+    {
+      "name": "ck_rede_versao",
+      "clause": "(`versao` >= 1)"
+    },
+    {
+      "name": "ck_regime_versao",
+      "clause": "(`versao_plano` >= 1)"
+    },
+    {
+      "name": "ck_regime_vigencia",
+      "clause": "((`fim_vigencia` is null) or (`fim_vigencia` >= `inicio_vigencia`))"
+    },
+    {
+      "name": "ck_registro_tipo",
+      "clause": "(`tipo` in (_utf8mb4\\'DIARIO\\',_utf8mb4\\'SINTOMA\\',_utf8mb4\\'INTERCORRENCIA\\'))"
+    },
+    {
+      "name": "ck_sessao_expira",
+      "clause": "(`expira_em` > `criado_em`)"
+    },
+    {
+      "name": "ck_tarefa_ciclo",
+      "clause": "((`ciclo_atual` = 1) and (`versao` >= 1))"
+    },
+    {
+      "name": "ck_tarefa_status",
+      "clause": "(`status` in (_utf8mb4\\'PENDENTE\\',_utf8mb4\\'CONCLUIDA\\',_utf8mb4\\'CANCELADA\\'))"
+    },
+    {
+      "name": "ck_troca_status",
+      "clause": "(`status` in (_utf8mb4\\'PENDENTE\\',_utf8mb4\\'ACEITA\\',_utf8mb4\\'RECUSADA\\',_utf8mb4\\'CANCELADA\\'))"
+    },
+    {
+      "name": "ck_troca_versao",
+      "clause": "(`versao_plantao_esperada` >= 1)"
+    },
+    {
+      "name": "ck_usuario_tipo",
+      "clause": "(`tipo_acesso` in (_utf8mb4\\'CUIDADOR\\',_utf8mb4\\'PESSOA_IDOSA\\'))"
+    }
+  ],
+  "indexes": [
+    {
+      "tableName": "administracao_medicamento",
+      "name": "PRIMARY",
+      "columnName": "administracao_id",
+      "position": 1
+    },
+    {
+      "tableName": "administracao_medicamento",
+      "name": "uq_administracao_comando",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "administracao_medicamento",
+      "name": "uq_administracao_comando",
+      "columnName": "autor_usuario_id",
+      "position": 2
+    },
+    {
+      "tableName": "administracao_medicamento",
+      "name": "uq_administracao_comando",
+      "columnName": "chave_idempotencia",
+      "position": 3
+    },
+    {
+      "tableName": "administracao_medicamento",
+      "name": "uq_administracao_escopo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "administracao_medicamento",
+      "name": "uq_administracao_escopo",
+      "columnName": "administracao_id",
+      "position": 2
+    },
+    {
+      "tableName": "administracao_medicamento",
+      "name": "uq_administracao_ocorrencia_v1",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "administracao_medicamento",
+      "name": "uq_administracao_ocorrencia_v1",
+      "columnName": "ocorrencia_id",
+      "position": 2
+    },
+    {
+      "tableName": "anexo",
+      "name": "PRIMARY",
+      "columnName": "anexo_id",
+      "position": 1
+    },
+    {
+      "tableName": "anexo",
+      "name": "uq_anexo_storage",
+      "columnName": "storage_key_opaca",
+      "position": 1
+    },
+    {
+      "tableName": "atribuicao_papel_familiar",
+      "name": "PRIMARY",
+      "columnName": "atribuicao_id",
+      "position": 1
+    },
+    {
+      "tableName": "atribuicao_papel_familiar",
+      "name": "uq_papel_principal_rede",
+      "columnName": "principal_ativo_rede",
+      "position": 1
+    },
+    {
+      "tableName": "atribuicao_papel_familiar",
+      "name": "uq_papel_vigente_membro",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "atribuicao_papel_familiar",
+      "name": "uq_papel_vigente_membro",
+      "columnName": "papel",
+      "position": 2
+    },
+    {
+      "tableName": "atribuicao_papel_familiar",
+      "name": "uq_papel_vigente_membro",
+      "columnName": "papel_ativo_membro",
+      "position": 3
+    },
+    {
+      "tableName": "auditoria",
+      "name": "PRIMARY",
+      "columnName": "auditoria_id",
+      "position": 1
+    },
+    {
+      "tableName": "cadastro_rate_limit",
+      "name": "PRIMARY",
+      "columnName": "chave",
+      "position": 1
+    },
+    {
+      "tableName": "compromisso",
+      "name": "PRIMARY",
+      "columnName": "compromisso_id",
+      "position": 1
+    },
+    {
+      "tableName": "compromisso",
+      "name": "uq_compromisso_escopo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "compromisso",
+      "name": "uq_compromisso_escopo",
+      "columnName": "compromisso_id",
+      "position": 2
+    },
+    {
+      "tableName": "conclusao_tarefa",
+      "name": "PRIMARY",
+      "columnName": "conclusao_id",
+      "position": 1
+    },
+    {
+      "tableName": "conclusao_tarefa",
+      "name": "uq_conclusao_ciclo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "conclusao_tarefa",
+      "name": "uq_conclusao_ciclo",
+      "columnName": "tarefa_id",
+      "position": 2
+    },
+    {
+      "tableName": "conclusao_tarefa",
+      "name": "uq_conclusao_ciclo",
+      "columnName": "ciclo_numero",
+      "position": 3
+    },
+    {
+      "tableName": "conclusao_tarefa",
+      "name": "uq_conclusao_comando",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "conclusao_tarefa",
+      "name": "uq_conclusao_comando",
+      "columnName": "autor_usuario_id",
+      "position": 2
+    },
+    {
+      "tableName": "conclusao_tarefa",
+      "name": "uq_conclusao_comando",
+      "columnName": "chave_idempotencia",
+      "position": 3
+    },
+    {
+      "tableName": "consulta",
+      "name": "PRIMARY",
+      "columnName": "consulta_id",
+      "position": 1
+    },
+    {
+      "tableName": "consulta",
+      "name": "uq_consulta_escopo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "consulta",
+      "name": "uq_consulta_escopo",
+      "columnName": "consulta_id",
+      "position": 2
+    },
+    {
+      "tableName": "contato_importante",
+      "name": "PRIMARY",
+      "columnName": "contato_id",
+      "position": 1
+    },
+    {
+      "tableName": "convite_cadastro_cuidador",
+      "name": "PRIMARY",
+      "columnName": "convite_id",
+      "position": 1
+    },
+    {
+      "tableName": "convite_cadastro_cuidador",
+      "name": "uq_convite_cuidador_bootstrap_aberto",
+      "columnName": "bootstrap_aberto",
+      "position": 1
+    },
+    {
+      "tableName": "convite_cadastro_cuidador",
+      "name": "uq_convite_cuidador_email_aberto",
+      "columnName": "email_convite_aberto",
+      "position": 1
+    },
+    {
+      "tableName": "convite_cadastro_cuidador",
+      "name": "uq_convite_cuidador_token",
+      "columnName": "token_hash",
+      "position": 1
+    },
+    {
+      "tableName": "correcao_administracao_medicamento",
+      "name": "PRIMARY",
+      "columnName": "correcao_id",
+      "position": 1
+    },
+    {
+      "tableName": "correcao_administracao_medicamento",
+      "name": "uq_correcao_administracao_versao",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "correcao_administracao_medicamento",
+      "name": "uq_correcao_administracao_versao",
+      "columnName": "administracao_id",
+      "position": 2
+    },
+    {
+      "tableName": "correcao_administracao_medicamento",
+      "name": "uq_correcao_administracao_versao",
+      "columnName": "numero_versao",
+      "position": 3
+    },
+    {
+      "tableName": "correcao_consulta",
+      "name": "PRIMARY",
+      "columnName": "correcao_id",
+      "position": 1
+    },
+    {
+      "tableName": "correcao_consulta",
+      "name": "uq_correcao_consulta_versao",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "correcao_consulta",
+      "name": "uq_correcao_consulta_versao",
+      "columnName": "consulta_id",
+      "position": 2
+    },
+    {
+      "tableName": "correcao_consulta",
+      "name": "uq_correcao_consulta_versao",
+      "columnName": "numero_versao",
+      "position": 3
+    },
+    {
+      "tableName": "correcao_registro_cuidado",
+      "name": "PRIMARY",
+      "columnName": "correcao_id",
+      "position": 1
+    },
+    {
+      "tableName": "correcao_registro_cuidado",
+      "name": "uq_correcao_registro_versao",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "correcao_registro_cuidado",
+      "name": "uq_correcao_registro_versao",
+      "columnName": "registro_id",
+      "position": 2
+    },
+    {
+      "tableName": "correcao_registro_cuidado",
+      "name": "uq_correcao_registro_versao",
+      "columnName": "numero_versao",
+      "position": 3
+    },
+    {
+      "tableName": "entrega_tecnica_notificacao",
+      "name": "PRIMARY",
+      "columnName": "entrega_id",
+      "position": 1
+    },
+    {
+      "tableName": "entrega_tecnica_notificacao",
+      "name": "uq_entrega_evento_destinatario",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "entrega_tecnica_notificacao",
+      "name": "uq_entrega_evento_destinatario",
+      "columnName": "tipo_evento",
+      "position": 2
+    },
+    {
+      "tableName": "entrega_tecnica_notificacao",
+      "name": "uq_entrega_evento_destinatario",
+      "columnName": "chave_evento",
+      "position": 3
+    },
+    {
+      "tableName": "entrega_tecnica_notificacao",
+      "name": "uq_entrega_evento_destinatario",
+      "columnName": "usuario_destinatario_id",
+      "position": 4
+    },
+    {
+      "tableName": "habilitacao_acesso_idoso",
+      "name": "PRIMARY",
+      "columnName": "habilitacao_id",
+      "position": 1
+    },
+    {
+      "tableName": "habilitacao_acesso_idoso",
+      "name": "uq_convite_aberto_pessoa",
+      "columnName": "convite_corrente_pessoa_id",
+      "position": 1
+    },
+    {
+      "tableName": "habilitacao_acesso_idoso",
+      "name": "uq_habilitacao_token_hash",
+      "columnName": "token_hash",
+      "position": 1
+    },
+    {
+      "tableName": "historico_plantao",
+      "name": "PRIMARY",
+      "columnName": "evento_plantao_id",
+      "position": 1
+    },
+    {
+      "tableName": "historico_plantao",
+      "name": "uq_historico_plantao_versao",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "historico_plantao",
+      "name": "uq_historico_plantao_versao",
+      "columnName": "plantao_id",
+      "position": 2
+    },
+    {
+      "tableName": "historico_plantao",
+      "name": "uq_historico_plantao_versao",
+      "columnName": "versao_nova",
+      "position": 3
+    },
+    {
+      "tableName": "horario_regime",
+      "name": "PRIMARY",
+      "columnName": "horario_id",
+      "position": 1
+    },
+    {
+      "tableName": "horario_regime",
+      "name": "uq_horario_escopo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "horario_regime",
+      "name": "uq_horario_escopo",
+      "columnName": "horario_id",
+      "position": 2
+    },
+    {
+      "tableName": "horario_regime",
+      "name": "uq_horario_regime_triplo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "horario_regime",
+      "name": "uq_horario_regime_triplo",
+      "columnName": "regime_id",
+      "position": 2
+    },
+    {
+      "tableName": "horario_regime",
+      "name": "uq_horario_regime_triplo",
+      "columnName": "horario_id",
+      "position": 3
+    },
+    {
+      "tableName": "idempotencia_comando",
+      "name": "PRIMARY",
+      "columnName": "comando_id",
+      "position": 1
+    },
+    {
+      "tableName": "idempotencia_comando",
+      "name": "uq_idempotencia_ator_chave",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "idempotencia_comando",
+      "name": "uq_idempotencia_ator_chave",
+      "columnName": "ator_usuario_id",
+      "position": 2
+    },
+    {
+      "tableName": "idempotencia_comando",
+      "name": "uq_idempotencia_ator_chave",
+      "columnName": "chave_cliente",
+      "position": 3
+    },
+    {
+      "tableName": "informacao_emergencia",
+      "name": "PRIMARY",
+      "columnName": "emergencia_id",
+      "position": 1
+    },
+    {
+      "tableName": "informacao_emergencia",
+      "name": "uq_emergencia_ficha",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "informacao_emergencia",
+      "name": "uq_emergencia_ficha",
+      "columnName": "pessoa_idosa_id",
+      "position": 2
+    },
+    {
+      "tableName": "login_rate_limit",
+      "name": "PRIMARY",
+      "columnName": "chave",
+      "position": 1
+    },
+    {
+      "tableName": "medicamento",
+      "name": "PRIMARY",
+      "columnName": "medicamento_id",
+      "position": 1
+    },
+    {
+      "tableName": "medicamento",
+      "name": "uq_medicamento_escopo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "medicamento",
+      "name": "uq_medicamento_escopo",
+      "columnName": "medicamento_id",
+      "position": 2
+    },
+    {
+      "tableName": "membro_rede",
+      "name": "PRIMARY",
+      "columnName": "membro_id",
+      "position": 1
+    },
+    {
+      "tableName": "membro_rede",
+      "name": "uq_membro_escopo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "membro_rede",
+      "name": "uq_membro_escopo",
+      "columnName": "membro_id",
+      "position": 2
+    },
+    {
+      "tableName": "membro_rede",
+      "name": "uq_membro_escopo_categoria",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "membro_rede",
+      "name": "uq_membro_escopo_categoria",
+      "columnName": "membro_id",
+      "position": 2
+    },
+    {
+      "tableName": "membro_rede",
+      "name": "uq_membro_escopo_categoria",
+      "columnName": "categoria",
+      "position": 3
+    },
+    {
+      "tableName": "membro_rede",
+      "name": "uq_membro_usuario_ativo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "membro_rede",
+      "name": "uq_membro_usuario_ativo",
+      "columnName": "usuario_vinculado_ativo",
+      "position": 2
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "PRIMARY",
+      "columnName": "ocorrencia_id",
+      "position": 1
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "uq_ocorrencia_escopo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "uq_ocorrencia_escopo",
+      "columnName": "ocorrencia_id",
+      "position": 2
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "uq_ocorrencia_horario",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "uq_ocorrencia_horario",
+      "columnName": "horario_regime_id",
+      "position": 2
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "uq_ocorrencia_horario",
+      "columnName": "previsto_em",
+      "position": 3
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "uq_ocorrencia_horario",
+      "columnName": "geracao_origem",
+      "position": 4
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "uq_ocorrencia_medicacao_triplo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "uq_ocorrencia_medicacao_triplo",
+      "columnName": "horario_regime_id",
+      "position": 2
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "uq_ocorrencia_medicacao_triplo",
+      "columnName": "ocorrencia_id",
+      "position": 3
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "uq_ocorrencia_tarefa",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "uq_ocorrencia_tarefa",
+      "columnName": "tarefa_id",
+      "position": 2
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "uq_ocorrencia_tarefa",
+      "columnName": "previsto_em",
+      "position": 3
+    },
+    {
+      "tableName": "ocorrencia_programada",
+      "name": "uq_ocorrencia_tarefa",
+      "columnName": "geracao_origem",
+      "position": 4
+    },
+    {
+      "tableName": "pessoa_idosa",
+      "name": "PRIMARY",
+      "columnName": "pessoa_idosa_id",
+      "position": 1
+    },
+    {
+      "tableName": "pessoa_idosa",
+      "name": "uq_pessoa_titular",
+      "columnName": "usuario_titular_id",
+      "position": 1
+    },
+    {
+      "tableName": "pessoa_idosa",
+      "name": "uq_pessoa_titular_par",
+      "columnName": "pessoa_idosa_id",
+      "position": 1
+    },
+    {
+      "tableName": "pessoa_idosa",
+      "name": "uq_pessoa_titular_par",
+      "columnName": "usuario_titular_id",
+      "position": 2
+    },
+    {
+      "tableName": "plantao",
+      "name": "PRIMARY",
+      "columnName": "plantao_id",
+      "position": 1
+    },
+    {
+      "tableName": "plantao",
+      "name": "uq_plantao_escopo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "plantao",
+      "name": "uq_plantao_escopo",
+      "columnName": "plantao_id",
+      "position": 2
+    },
+    {
+      "tableName": "preferencia_notificacao",
+      "name": "PRIMARY",
+      "columnName": "preferencia_id",
+      "position": 1
+    },
+    {
+      "tableName": "preferencia_notificacao",
+      "name": "uq_preferencia_notificacao",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "preferencia_notificacao",
+      "name": "uq_preferencia_notificacao",
+      "columnName": "usuario_id",
+      "position": 2
+    },
+    {
+      "tableName": "preferencia_notificacao",
+      "name": "uq_preferencia_notificacao",
+      "columnName": "tipo_evento",
+      "position": 3
+    },
+    {
+      "tableName": "recomendacao",
+      "name": "PRIMARY",
+      "columnName": "recomendacao_id",
+      "position": 1
+    },
+    {
+      "tableName": "rede_cuidado",
+      "name": "PRIMARY",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "rede_cuidado",
+      "name": "uq_rede_idoso_v1",
+      "columnName": "pessoa_idosa_id",
+      "position": 1
+    },
+    {
+      "tableName": "rede_cuidado",
+      "name": "uq_rede_pessoa",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "rede_cuidado",
+      "name": "uq_rede_pessoa",
+      "columnName": "pessoa_idosa_id",
+      "position": 2
+    },
+    {
+      "tableName": "regime_medicamento",
+      "name": "PRIMARY",
+      "columnName": "regime_id",
+      "position": 1
+    },
+    {
+      "tableName": "regime_medicamento",
+      "name": "uq_regime_escopo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "regime_medicamento",
+      "name": "uq_regime_escopo",
+      "columnName": "regime_id",
+      "position": 2
+    },
+    {
+      "tableName": "regime_medicamento",
+      "name": "uq_regime_versao",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "regime_medicamento",
+      "name": "uq_regime_versao",
+      "columnName": "medicamento_id",
+      "position": 2
+    },
+    {
+      "tableName": "regime_medicamento",
+      "name": "uq_regime_versao",
+      "columnName": "versao_plano",
+      "position": 3
+    },
+    {
+      "tableName": "registro_cuidado",
+      "name": "PRIMARY",
+      "columnName": "registro_id",
+      "position": 1
+    },
+    {
+      "tableName": "registro_cuidado",
+      "name": "uq_registro_escopo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "registro_cuidado",
+      "name": "uq_registro_escopo",
+      "columnName": "registro_id",
+      "position": 2
+    },
+    {
+      "tableName": "sessao_usuario",
+      "name": "PRIMARY",
+      "columnName": "token_hash",
+      "position": 1
+    },
+    {
+      "tableName": "solicitacao_troca_plantao",
+      "name": "PRIMARY",
+      "columnName": "troca_id",
+      "position": 1
+    },
+    {
+      "tableName": "tarefa",
+      "name": "PRIMARY",
+      "columnName": "tarefa_id",
+      "position": 1
+    },
+    {
+      "tableName": "tarefa",
+      "name": "uq_tarefa_escopo",
+      "columnName": "rede_id",
+      "position": 1
+    },
+    {
+      "tableName": "tarefa",
+      "name": "uq_tarefa_escopo",
+      "columnName": "tarefa_id",
+      "position": 2
+    },
+    {
+      "tableName": "usuario",
+      "name": "PRIMARY",
+      "columnName": "usuario_id",
+      "position": 1
+    },
+    {
+      "tableName": "usuario",
+      "name": "uq_usuario_email",
+      "columnName": "email_normalizado",
+      "position": 1
+    },
+    {
+      "tableName": "usuario",
+      "name": "uq_usuario_tipo",
+      "columnName": "usuario_id",
+      "position": 1
+    },
+    {
+      "tableName": "usuario",
+      "name": "uq_usuario_tipo",
+      "columnName": "tipo_acesso",
+      "position": 2
+    }
+  ]
+}
