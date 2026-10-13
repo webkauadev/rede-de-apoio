@@ -8,15 +8,12 @@
 
 ## Matriz de execução
 
-| Momento | Comando ou evidência | Obrigatoriedade |
-| --- | --- | --- |
-| Após cada alteração focal | `npm test -- tests/unit/login.test.ts` (substituir pelo arquivo alterado) | Rápido; escolher os testes relacionados, sem rodar toda a suíte a cada edição |
-| Ao estabilizar bloco de código | `npm run verify:fast` | Verifica formatter, lint, typecheck e todos os unitários; não inicia build/Chromium/MySQL |
-| Antes de uma revisão visual breve | `npm run build && npm run test:e2e:smoke` | Smoke somente em mobile e build válido; não substitui E2E completo |
-| Antes de abrir/atualizar PR pronto para revisão | CI existente: `npm ci`, audit runtime, formatter, lint, typecheck, **unitários completos**, build, **E2E completo configurado**, quatro validadores existentes | Obrigatório; falha bloqueia merge. Não remover gates já aprovados |
-| Antes de aprovar **persistência real ou concorrência** | Integração MySQL 8.4 real + casos de navegador→API→banco afetados | Obrigatório com autorização específica, esquema novo, dados sintéticos, evidências e cleanup; se não autorizado, PR permanece draft e a prova segue pendente |
-| Mudança transversal ou pré-publicação | Regressões ampliadas de segurança/autorização/contexto, restauração, e demais gates aplicáveis | Proporcional ao risco e às dependências efetivamente alteradas; sem liberação pública automática |
-
+- **Durante a edição:** `npm test -- tests/unit/login.test.ts` (substitua pelo teste afetado). Sem build, navegador ou banco a cada modificação.
+- **Ao estabilizar um bloco:** `npm run verify:fast`, que executa formatter, lint, typecheck e todos os unitários, sem Chromium/MySQL.
+- **Revisão visual rápida:** `npm run build && npm run test:e2e:smoke`, quatro cenários mobile selecionados. Não substitui E2E completo.
+- **Antes da revisão de PR:** CI atual com `npm ci`, audit runtime, formatter, lint, typecheck, unitários completos, build, E2E normal configurado e quatro validadores já existentes. Falha bloqueia merge.
+- **Persistência e concorrência:** para aceitar o incremento de banco, executar MySQL 8.4 real descartável, autorizado especificamente para a US, mais cenários navegador→API→banco afetados. Sem autorização, PR permanece draft.
+- **Revisão transversal ou pré-publicação:** ampliar regressões de segurança, contexto e integridade conforme riscos e gates aplicáveis; sem liberação pública automática.
 ### Estratégia Playwright aprovada para este incremento
 
 - **Mobile `mobile-chromium`** executa *todos* os E2E normais, inclusive falha fechada, validação, CSRF, navegação e mensagens. É a referência mobile-first da V1.
@@ -38,13 +35,10 @@
 
 Comparação de quatro runs reais do workflow `Validate application V1` (GitHub Actions; segundos aproximados):
 
-| Run | Total do job | setup-node | Unitários | E2E | Instalação Chromium |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| 38401027140 (US-002) | 198s | 130s | 2s | 11s | 25s |
-| 38397743564 (main) | 80s | 5s | 1s | 7s | 27s |
-| 38020898359 (US-001) | 73s | 5s | 2s | 8s | 18s |
-| 38011465809 (scaffold) | 85s | 5s | 1s | 10s | 27s |
-
+- **Run 38401027140 (US-002):** job 198s, setup-node 130s, unitários 2s, E2E 11s, instalação Chromium 25s.
+- **Run 38397743564 (main):** job 80s, setup-node 5s, unitários 1s, E2E 7s, instalação Chromium 27s.
+- **Run 38020898359 (US-001):** job 73s, setup-node 5s, unitários 2s, E2E 8s, instalação Chromium 18s.
+- **Run 38011465809 (scaffold):** job 85s, setup-node 5s, unitários 1s, E2E 10s, instalação Chromium 27s.
 O setup-node de 130s ocorreu **uma vez** nesses quatro runs; não há evidência suficiente de gargalo recorrente na instalação do Node. **Não trocar Node/cache/segurança por uma anomalia única**. A redução de E2E deve ser medida após este PR, comparando o job e registrando variação dos tempos, sem prometer percentuais de economia total. Instalação de navegador e provisionamento de runner também custam tempo fixo.
 
 ## Condições de adoção/rollback

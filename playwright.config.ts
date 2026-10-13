@@ -15,7 +15,10 @@ export default defineConfig({
     {
       name: "desktop-chromium",
       // Apenas cenarios @responsive repetem em desktop; mobile executa a suite completa.
-      grep: process.env.PLAYWRIGHT_FULL_DESKTOP === "1" ? undefined : /@responsive/,
+      grep:
+        process.env.PLAYWRIGHT_FULL_DESKTOP === "1"
+          ? undefined
+          : /@responsive/,
       use: { ...devices["Desktop Chrome"] },
     },
   ],
