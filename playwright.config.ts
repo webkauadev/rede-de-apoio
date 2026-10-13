@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+const fullDesktop = process.env.PLAYWRIGHT_FULL_DESKTOP === "1";
 export default defineConfig({
   testDir: "./tests/e2e",
   testIgnore: "**/mysql/**",
@@ -15,10 +16,7 @@ export default defineConfig({
     {
       name: "desktop-chromium",
       // Apenas cenarios @responsive repetem em desktop; mobile executa a suite completa.
-      grep:
-        process.env.PLAYWRIGHT_FULL_DESKTOP === "1"
-          ? undefined
-          : /@responsive/,
+      grep: fullDesktop ? undefined : /@responsive/,
       use: { ...devices["Desktop Chrome"] },
     },
   ],
