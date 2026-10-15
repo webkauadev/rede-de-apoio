@@ -4,24 +4,22 @@
 **Situação:** planejamento para revisão; nenhuma correção aplicada ao Figma  
 **Auditoria de origem:** `Relatorio_auditoria_Figma.md` (fornecido pelo solicitante nesta etapa; relatório completo e seus anexos externos não estão incorporados aqui)  
 **Base da auditoria:** `main` em `4712047e4550e4504b213e638aaf8a17310f4935`  
-**Origem Figma intocável:** `tcyj2fkTXei2CJbqaRxqCp`, página `Fluxo Final`, node `5926:1014`  
+**Origem Figma intocável:** arquivo `tcyj2fkTXei2CJbqaRxqCp`, **somente a página** `Fluxo Final`, node `5926:1014`. As demais páginas do arquivo não fazem parte da política de backup deste plano.  
 **Autoridade funcional:** RF/RNF/US, critérios aprovados, BUSINESS_RULES/DEC-AUTH-001 e demais decisões em `main`.  
 **Design:** Figma canônico/Design Foundation + Material Design 3 subordinado às regras aprovadas.
 
 > Este plano não é homologação, não cria novo RF/RNF/US, não substitui a matriz de permissões, não autoriza promover a cópia como canônica. É o backlog executável dos 28 achados da auditoria: **11 P1, 16 P2, 1 P3, nenhum P0 demonstrado**. A auditoria não conseguiu executar nenhum cenário no Figma Presentation: `Não testado em runtime` não pode ser chamado de `Passou`.
 
-## 0. Regra de preservação e checkpoints
+## 0. Regra de preservação e checkpoints — escopo revisado em 15/10/2026 por orientação do solicitante
 
-1. **Não modificar** o arquivo Figma original nem a página canônica. Se a ferramenta de edição usar `fileKey` da origem, cancelar antes de qualquer escrita.
-2. Antes de editar, usar a operação nativa **Duplicate** do arquivo Figma inteiro, preservando componentes, componentes locais, instâncias, imagens, variáveis e Prototype reactions. Criar:
-   - `Rede de Apoio — BACKUP — 2026-10-15 — SOMENTE LEITURA` (arquivo congelado, sem alterações).
-   - `Rede de Apoio — CORRECOES AUDITORIA — 2026-10-15` (arquivo de trabalho independente; duplicado do mesmo estado).
-   - Caso a duplicação nativa não seja disponível no ambiente automatizado, **não** substituir por PNGs, reconstrução ou importação parcial. Registrar bloqueio e executar o passo via Figma UI/Work.
-3. Registrar no GitHub **URLs e fileKeys reais** dos três arquivos, IDs de páginas/nós após duplicação, data/hora e quem verificou. Nunca presumir que o `node-id` da origem permanece igual na cópia.
-4. Gate de integridade na cópia: 17 bases T01–T17, inventário de estados canônicos conforme registries (113 nós no recorte auditado), 5 cadastros por Bottom Sheet e grafo RO/Settings preservados; links de navegação não podem continuar apontando à origem; confrontar amostra de telas/prototype links.
-5. Antes da primeira alteração, abrir e salvar um **checkpoint de versão nomeado** dentro da cópia de trabalho e registrar no GitHub. Se disponível, usar nova versão nomeada após cada lote concluído.
-6. A origem permanece pronta para demonstração nos limites do estado atual; não atualizar `FIGMA_REGISTRY.yaml` para apontar para a cópia durante o trabalho. Manter registro separado do arquivo experimental.
-7. Correções apenas em Figma de trabalho; documentação em branch, commits e PRs pequenos; **merge somente com revisão humana**, respeitando `AGENTS.md`. Não alterar app, MySQL, código, deploy ou critérios de aceitação nesta missão.
+1. **Proteger exclusivamente a página `Fluxo Final` original** (`5926:1014`), não todo o arquivo Figma nem outras páginas. O arquivo original pode permanecer o mesmo: `fileKey` igual é aceitável quando os `node-id` das páginas forem distintos. **Não editar, apagar, renomear nem mover a página original ou seus descendentes.**
+2. O solicitante **duplicará nativamente somente a página completa `Fluxo Final`**, uma única vez, no Figma, mantendo a original como baseline/backup preservado. Nome recomendado da página duplicada: `Fluxo Final — CORREÇÕES AUDITORIA — 2026-10-15`. A cópia pode ficar no mesmo arquivo; não exigir duplicação de arquivo inteiro, dois arquivos novos ou fileKeys distintos. **Não** substituir pela clonagem avulsa de frames ou por PNGs/reconstrução.
+3. Registrar no GitHub os **links diretos e node IDs reais das duas páginas**, seus fileKeys (possivelmente idênticos), data/hora e executor. Resolver os IDs dos nós dentro da página duplicada; não presumir que coincidam com a origem.
+4. Gate de integridade da **página copiada**: 17 bases T01–T17, estados/overlays/Settings/ramo RO e 113 nós do recorte auditado, cinco cadastros Bottom Sheet, componentes, imagens, variáveis e reactions. Verificar se as interações internas foram redirecionadas à **página copiada**, sem desviar de volta à original. O inventário e o grafo de 113 nós são a referência da auditoria, não a afirmação antecipada de equivalência.
+5. **Proteção contra efeitos cruzados em arquivo compartilhado:** componentes mestres, estilos, variáveis e bibliotecas podem ser compartilhados entre páginas. Qualquer ajuste em componente ou token global que afete a página original é **proibido**. Ajustar somente instâncias/elementos da cópia ou criar uma variante/master local independente na página de trabalho quando indispensável, registrando dependências. Nunca mudar um master compartilhado para corrigir a cópia.
+6. Criar um checkpoint/versão nomeada de pré-correção quando a interface permitir, informando que o versionamento pode ser do arquivo inteiro. Se indisponível, registrar a limitação sem tentar substituí-lo por exportação raster.
+7. A página original continua sendo o protótipo canônico demonstrável nos limites atuais. Não atualizar `FIGMA_REGISTRY.yaml` nem `PROTOTYPE_INTEGRITY.yaml` para promover a cópia sem homologação/decisão humana. Manter IDs experimentais em registro separado; documentar em branch e PR, com commits pequenos e merge apenas após revisão humana.
+8. A execução do **LOTE 00** após o envio do link pelo solicitante deve **verificar a cópia existente**, não tentar duplicar o arquivo inteiro nem refazer cópias. Se houver defeito estrutural grave, documentar e parar antes das correções. Não alterar app, MySQL, deploy ou critérios aprovados.
 
 ## 1. Inventário dos 28 defeitos e solução exigida
 
@@ -62,7 +60,7 @@ Referência para links de cada tela: `docs/05_FIGMA/FIGMA_REGISTRY.yaml` no orig
 
 ## 2. Plano de execução por lotes pequenos
 
-**LOTE 00 — Preparação (gate bloqueante).** Backup inteiro + cópia de trabalho + checkpoint, manifesto de fileKeys/links e evidência de que o original não foi alterado. Sem essas provas, parar. *Entrega:* registro do backup e identidade do arquivo de trabalho.
+**LOTE 00 — Preparação (gate bloqueante).** Solicitante duplica nativamente **apenas a página `Fluxo Final`** e preserva a original como backup/baseline. Work verifica os dois links/IDs de página, conteúdo/reactions da cópia, efeitos cruzados de componentes compartilhados e checkpoint quando possível; documenta o estado no PR. *Entrega:* original protegida, cópia de página identificada e íntegra. **Não exigir cópias integrais do arquivo.**
 
 **LOTE 01 — Contratos, permissões e fixtures.** Resolver o roteiro de T01/T02/T13/T16, atores e mudanças de papéis; definir fixtures por entidade para T06/T07/T09/T14/T17. AUD-001, AUD-006–011, parte AUD-012. *Entrega:* matriz de cenários com ator, seleção, entidade, antes/depois e destinos esperados. NÃO reabrir decisões funcionais aprovadas.
 
@@ -82,7 +80,7 @@ Referência para links de cada tela: `docs/05_FIGMA/FIGMA_REGISTRY.yaml` no orig
 
 ## 3. Protocolo obrigatório para TODOS os prompts de execução
 
-- Cada prompt deve referenciar um lote e seus AUD-IDs exatos; informar arquivo de trabalho `fileKey` obtido no LOTE 00. Nunca editar o arquivo original.
+- Cada prompt deve referenciar um lote e seus AUD-IDs exatos; informar **fileKey e node ID da página duplicada**, obtidos no LOTE 00. **Nunca editar a página original**, mesmo quando ambas compartilham o mesmo fileKey.
 - Antes de escrever, ler documentos/Issues relevantes, localizar no arquivo de trabalho os novos node IDs e confirmar o escopo de telas/overlays tocados.
 - Fazer uma edição funcional pequena, mantendo decisões, componentes, variáveis, estados, quatro destinos primários, Settings e Bottom Sheets.
 - Verificar localmente apenas os riscos afetados (navegação, estado, shell, overflow, permissão). Evitar auditorias integrais repetitivas; fazer uma regressão integrada no LOTE 07.
@@ -96,7 +94,7 @@ Referência para links de cada tela: `docs/05_FIGMA/FIGMA_REGISTRY.yaml` no orig
 
 | Verificação | Exigência |
 |---|---|
-| Preservação | FileKey de origem intocado; backup congelado; trabalho em fileKey diferente |
+| Preservação | Página canônica `5926:1014` e seus descendentes intocados; trabalho somente na página duplicada (fileKey pode ser o mesmo); sem alterar masters/estilos/variáveis compartilhados que afetem o original |
 | Rastreabilidade | 28 AUDs com estado Aberto/Em execução/Corrigido/Verificado/Aceito, evidência e link do nó de trabalho |
 | Navegação | Cada fluxo obrigatório com entrada, resultado, saída/retorno; zero destination legado/inexistente ou semanticamente errado |
 | Estados | Shell, navegação, dados e tokens preservados, salvo delta aprovado |
@@ -115,9 +113,12 @@ lote: LOTE-XX
 status: planejado # planejado | em_execucao | corrigido | verificado | aceito | bloqueado
 aud_ids: []
 figma_original_file_key: tcyj2fkTXei2CJbqaRxqCp
-figma_backup_file_key: PREENCHER_APOS_DUPLICACAO
-figma_trabalho_file_key: PREENCHER_APOS_DUPLICACAO
-checkpoint_figma: PREENCHER
+figma_original_page_node_id: "5926:1014"
+figma_original_page_url: https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp?node-id=5926-1014
+figma_trabalho_file_key: PREENCHER_COM_FILEKEY_DO_LINK # pode ser igual ao original
+figma_trabalho_page_node_id: PREENCHER_APOS_DUPLICACAO
+figma_trabalho_page_url: PREENCHER_APOS_DUPLICACAO
+checkpoint_figma: PREENCHER_SE_DISPONIVEL
 git_branch: PREENCHER
 git_commit: PREENCHER
 git_pr: PREENCHER
@@ -128,4 +129,4 @@ limitacoes: []
 aprovacao_humana: pendente
 ```
 
-**Próximo passo operacional:** executar somente o LOTE 00 no Work/Figma com duplicação nativa de arquivo; voltar com os URLs e fileKeys verificados. Correções começam no LOTE 01, somente na cópia.
+**Próximo passo operacional:** o solicitante duplicará nativamente **somente a página `Fluxo Final`**, manterá a original intacta e enviará ao Work o link direto da página de trabalho. O Work retoma **somente a verificação/documentação do LOTE 00** com a página já duplicada; correções começam no LOTE 01, exclusivamente nos descendentes da cópia.
