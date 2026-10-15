@@ -10,16 +10,27 @@
 
 > Este plano não é homologação, não cria novo RF/RNF/US, não substitui a matriz de permissões, não autoriza promover a cópia como canônica. É o backlog executável dos 28 achados da auditoria: **11 P1, 16 P2, 1 P3, nenhum P0 demonstrado**. A auditoria não conseguiu executar nenhum cenário no Figma Presentation: `Não testado em runtime` não pode ser chamado de `Passou`.
 
-## 0. Regra de preservação e checkpoints — escopo revisado em 15/10/2026 por orientação do solicitante
+## 0. Regra de preservação e execução — atualização operacional definitiva em 15/10/2026
 
-1. **Proteger exclusivamente a página `Fluxo Final` original** (`5926:1014`), não todo o arquivo Figma nem outras páginas. O arquivo original pode permanecer o mesmo: `fileKey` igual é aceitável quando os `node-id` das páginas forem distintos. **Não editar, apagar, renomear nem mover a página original ou seus descendentes.**
-2. O solicitante **duplicará nativamente somente a página completa `Fluxo Final`**, uma única vez, no Figma, mantendo a original como baseline/backup preservado. Nome recomendado da página duplicada: `Fluxo Final — CORREÇÕES AUDITORIA — 2026-10-15`. A cópia pode ficar no mesmo arquivo; não exigir duplicação de arquivo inteiro, dois arquivos novos ou fileKeys distintos. **Não** substituir pela clonagem avulsa de frames ou por PNGs/reconstrução.
-3. Registrar no GitHub os **links diretos e node IDs reais das duas páginas**, seus fileKeys (possivelmente idênticos), data/hora e executor. Resolver os IDs dos nós dentro da página duplicada; não presumir que coincidam com a origem.
-4. Gate de integridade da **página copiada**: 17 bases T01–T17, estados/overlays/Settings/ramo RO e 113 nós do recorte auditado, cinco cadastros Bottom Sheet, componentes, imagens, variáveis e reactions. Verificar se as interações internas foram redirecionadas à **página copiada**, sem desviar de volta à original. O inventário e o grafo de 113 nós são a referência da auditoria, não a afirmação antecipada de equivalência.
-5. **Proteção contra efeitos cruzados em arquivo compartilhado:** componentes mestres, estilos, variáveis e bibliotecas podem ser compartilhados entre páginas. Qualquer ajuste em componente ou token global que afete a página original é **proibido**. Ajustar somente instâncias/elementos da cópia ou criar uma variante/master local independente na página de trabalho quando indispensável, registrando dependências. Nunca mudar um master compartilhado para corrigir a cópia.
-6. Criar um checkpoint/versão nomeada de pré-correção quando a interface permitir, informando que o versionamento pode ser do arquivo inteiro. Se indisponível, registrar a limitação sem tentar substituí-lo por exportação raster.
-7. A página original continua sendo o protótipo canônico demonstrável nos limites atuais. Não atualizar `FIGMA_REGISTRY.yaml` nem `PROTOTYPE_INTEGRITY.yaml` para promover a cópia sem homologação/decisão humana. Manter IDs experimentais em registro separado; documentar em branch e PR, com commits pequenos e merge apenas após revisão humana.
-8. A execução do **LOTE 00** após o envio do link pelo solicitante deve **verificar a cópia existente**, não tentar duplicar o arquivo inteiro nem refazer cópias. Se houver defeito estrutural grave, documentar e parar antes das correções. Não alterar app, MySQL, deploy ou critérios aprovados.
+**Fato novo fornecido pelo solicitante:** o **arquivo Figma inteiro já foi duplicado nativamente**. As anteriores exigências de duplicar arquivo ou página estão superadas. O relatório `LOTE_00_VERIFICACAO_PAGINA_2026-10-15.md` auditou a página `6223:6270` **no arquivo antigo** e encontrou 26 destinos para a página-base `5926:1014`; esse diagnóstico e o mapa de IDs devem ser reutilizados no arquivo novo, mas o bloqueio anterior por falta de ambiente independente **deixa de existir**.
+
+| Papel | FileKey | Página | Ação permitida |
+|---|---|---|---|
+| Original canônico externo e protegido | `tcyj2fkTXei2CJbqaRxqCp` | `Fluxo Final` / `5926:1014` | **somente leitura** |
+| **Novo projeto Figma de trabalho** | **`ljFSoPfNcvDgZtdR2sHmti`** | **`Fluxo Final — CORREÇÕES AUDITORIA` / `6223:6270`** | **edição autorizada** |
+| Outra página-base preservada dentro do novo arquivo | `ljFSoPfNcvDgZtdR2sHmti` | `Fluxo Final` / `5926:1014` | referência interna; **não editar esta página**, usar somente para verificar/remapear destinos |
+
+**Link de trabalho:** https://www.figma.com/design/ljFSoPfNcvDgZtdR2sHmti/PROJETO-REDE-DE-APOIO--c%C3%B3pia-?node-id=6223-6270
+
+O conector Figma confirmou por leitura que o **arquivo novo resolve ambas as páginas** `6223:6270` e `5926:1014`, com conteúdo de `Fluxo Final`. Logo, o endereço do projeto novo **é válido para trabalho**, e a tarefa não deve travar pedindo novo backup, nova cópia, novo link ou reauditoria integral.
+
+**LOTE 00.1 — Consertar o isolamento dentro do arquivo novo, agora autorizado.** O mapa das **26 reactions** e os equivalentes de destino estão nas §§7.1–7.2 do relatório LOTE 00. Corrigir os **17 destinos canônicos** nas categorias T09 (5), T14 (2), Settings comum (6), Settings Pessoa Idosa (4) que levam à página `5926:1014`. Para os **9 links do quadro não canônico**, corrigir apenas quando necessário para impedir saída da página de trabalho em cenários de inspeção; se preferível manter o material histórico, marcar como não canônico e isolar seus starting points, sem destruir evidências. **Não repetir o erro lógico pré-existente AUD-007/AUD-008:** o destino estrutural equivalente é temporário; se o contexto de tarefa/contato precisar de destino contextual novo, resolvê-lo junto com as correções desses AUDs. Após retarget, conferir que todos os links visíveis canônicos terminam dentro de `6223:6270` e que nenhum destino leva ao Figma original ou à página-base `5926:1014` do novo arquivo.
+
+**Proteção adicional:** componentes, styles ou variables compartilhados no novo arquivo podem ser usados e editados **apenas se nenhuma alteração for propagada ao arquivo original externo**; preferir overrides/instâncias locais. É proibido chamar ferramentas de escrita com `fileKey=tcyj2fkTXei2CJbqaRxqCp`; toda mutação de Figma deve usar `fileKey=ljFSoPfNcvDgZtdR2sHmti`, com node-alvo na árvore de `6223:6270`. Não alterar a página `5926:1014` no arquivo novo por engano.
+
+**Andamento obrigatório:** executar LOTE 00.1 (correção das ligações), documentar em GitHub com evidence e **avançar ao LOTE 01** sem parar para pedir aprovação de novo backup. Prosseguir em lotes pequenos de correção real quando operacionalmente possível, sem iniciar app, SQL, deploy ou merge. Só suspender diante de falha técnica real que impossibilite escrita/validação em Figma, explicitando operações tentadas.
+
+**Documentação:** atualizar o manifesto experimental de URLs/IDs e o relatório de isolamento para refletir o **novo fileKey**, sem alterar `FIGMA_REGISTRY.yaml` canônico nem promover a nova página à origem oficial. O PR #127 permanece Draft para revisão humana; commits/documentos de correção devem registrar alterações de cada lote.
 
 ## 1. Inventário dos 28 defeitos e solução exigida
 
@@ -60,7 +71,7 @@ Referência para links de cada tela: `docs/05_FIGMA/FIGMA_REGISTRY.yaml` no orig
 
 ## 2. Plano de execução por lotes pequenos
 
-**LOTE 00 — Preparação (gate bloqueante).** Solicitante duplica nativamente **apenas a página `Fluxo Final`** e preserva a original como backup/baseline. Work verifica os dois links/IDs de página, conteúdo/reactions da cópia, efeitos cruzados de componentes compartilhados e checkpoint quando possível; documenta o estado no PR. *Entrega:* original protegida, cópia de página identificada e íntegra. **Não exigir cópias integrais do arquivo.**
+**LOTE 00.1 — Isolamento da nova cópia (correção autorizada).** O novo arquivo integral já existe; não duplicar novamente. Remapear os 17 destinos visíveis canônicos e tratar os 9 destinos do quadro de revisão relatados, todos no `fileKey=ljFSoPfNcvDgZtdR2sHmti`; verificar que a página `6223:6270` não envia o usuário para `5926:1014`. Registrar no GitHub e **avançar ao LOTE 01**, sem nova rodada de somente leitura. *Entrega:* reactions ajustadas no arquivo novo e relatório de isolamento.
 
 **LOTE 01 — Contratos, permissões e fixtures.** Resolver o roteiro de T01/T02/T13/T16, atores e mudanças de papéis; definir fixtures por entidade para T06/T07/T09/T14/T17. AUD-001, AUD-006–011, parte AUD-012. *Entrega:* matriz de cenários com ator, seleção, entidade, antes/depois e destinos esperados. NÃO reabrir decisões funcionais aprovadas.
 
@@ -80,7 +91,7 @@ Referência para links de cada tela: `docs/05_FIGMA/FIGMA_REGISTRY.yaml` no orig
 
 ## 3. Protocolo obrigatório para TODOS os prompts de execução
 
-- Cada prompt deve referenciar um lote e seus AUD-IDs exatos; informar **fileKey e node ID da página duplicada**, obtidos no LOTE 00. **Nunca editar a página original**, mesmo quando ambas compartilham o mesmo fileKey.
+- Cada prompt deve referenciar um lote e seus AUD-IDs exatos; **fileKey de escrita obrigatório: `ljFSoPfNcvDgZtdR2sHmti`, page ID obrigatório: `6223:6270`**. **Nunca escrever no original `tcyj2fkTXei2CJbqaRxqCp` nem na página-base interna `5926:1014`.**
 - Antes de escrever, ler documentos/Issues relevantes, localizar no arquivo de trabalho os novos node IDs e confirmar o escopo de telas/overlays tocados.
 - Fazer uma edição funcional pequena, mantendo decisões, componentes, variáveis, estados, quatro destinos primários, Settings e Bottom Sheets.
 - Verificar localmente apenas os riscos afetados (navegação, estado, shell, overflow, permissão). Evitar auditorias integrais repetitivas; fazer uma regressão integrada no LOTE 07.
@@ -94,7 +105,7 @@ Referência para links de cada tela: `docs/05_FIGMA/FIGMA_REGISTRY.yaml` no orig
 
 | Verificação | Exigência |
 |---|---|
-| Preservação | Página canônica `5926:1014` e seus descendentes intocados; trabalho somente na página duplicada (fileKey pode ser o mesmo); sem alterar masters/estilos/variáveis compartilhados que afetem o original |
+| Preservação | Arquivo original externo `tcyj2fkTXei2CJbqaRxqCp` intocado; correções somente no novo arquivo `ljFSoPfNcvDgZtdR2sHmti`, página `6223:6270` |
 | Rastreabilidade | 28 AUDs com estado Aberto/Em execução/Corrigido/Verificado/Aceito, evidência e link do nó de trabalho |
 | Navegação | Cada fluxo obrigatório com entrada, resultado, saída/retorno; zero destination legado/inexistente ou semanticamente errado |
 | Estados | Shell, navegação, dados e tokens preservados, salvo delta aprovado |
@@ -115,9 +126,10 @@ aud_ids: []
 figma_original_file_key: tcyj2fkTXei2CJbqaRxqCp
 figma_original_page_node_id: "5926:1014"
 figma_original_page_url: https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp?node-id=5926-1014
-figma_trabalho_file_key: PREENCHER_COM_FILEKEY_DO_LINK # pode ser igual ao original
-figma_trabalho_page_node_id: PREENCHER_APOS_DUPLICACAO
-figma_trabalho_page_url: PREENCHER_APOS_DUPLICACAO
+figma_trabalho_file_key: ljFSoPfNcvDgZtdR2sHmti
+figma_trabalho_page_node_id: "6223:6270"
+figma_trabalho_page_url: https://www.figma.com/design/ljFSoPfNcvDgZtdR2sHmti?node-id=6223-6270
+figma_base_page_in_new_file: "5926:1014" # read-only interno, não editar
 checkpoint_figma: PREENCHER_SE_DISPONIVEL
 git_branch: PREENCHER
 git_commit: PREENCHER
@@ -129,4 +141,4 @@ limitacoes: []
 aprovacao_humana: pendente
 ```
 
-**Próximo passo operacional:** o solicitante duplicará nativamente **somente a página `Fluxo Final`**, manterá a original intacta e enviará ao Work o link direto da página de trabalho. O Work retoma **somente a verificação/documentação do LOTE 00** com a página já duplicada; correções começam no LOTE 01, exclusivamente nos descendentes da cópia.
+**Próximo passo operacional:** **EXECUTAR CORREÇÕES** no projeto já duplicado `ljFSoPfNcvDgZtdR2sHmti`: remapear os 26 destinos herdados na página `6223:6270`, documentar no PR #127 e prosseguir no LOTE 01 (autenticação/fixtures/permissões), sem nova duplicação e sem reauditoria integral da origem.
