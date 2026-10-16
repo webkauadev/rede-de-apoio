@@ -1,5 +1,7 @@
 # Auditoria visual Material Design 3 — 16/10/2026
 
+> **TERMO FINAL — 16/10/2026:** após aplicar VIS-001–VIS-008 e conferir as composições corrigidas, o solicitante aprovou o acabamento e solicitou encerramento/homologação. Consulte [Homologação final do protótipo](../HOMOLOGACAO_FINAL_PROTOTIPO_2026-10-16.md). O relatório abaixo descreve a **auditoria anterior às correções**; a execução está em [Execução das microcorreções](EXECUCAO_MICROCORRECOES_2026-10-16.md). A homologação é por aceite humano para demonstração, com ressalva sobre testes interativos exaustivos.
+
 > **Atualização de execução — 16/10/2026:** após autorização explícita do solicitante, as microcorreções VIS-001–VIS-008 foram aplicadas na página experimental do Figma, com verificações estruturais e capturas direcionadas. **Não há edição no original; a regressão interativa curta continua pendente.** Consulte [Execução das microcorreções](EXECUCAO_MICROCORRECOES_2026-10-16.md). O restante deste documento permanece como registro histórico da auditoria feita antes das alterações.
 
 **Somente leitura no Figma. Diagnóstico entregue para aprovação; nenhuma microcorreção foi executada.**
