@@ -1,5 +1,7 @@
 # LOTE 07 — parecer de homologação integrada
 
+> **ADENDO DE ENCERRAMENTO — 16/10/2026:** este é o **parecer histórico da tentativa remota**, que terminou sem acesso ao Presentation. **NÃO é o status final do protótipo.** Após esse bloqueio, o solicitante aprovou no navegador local Login e navegação principal, as oito correções visuais foram aplicadas e o responsável solicitou expressamente a homologação e o encerramento. **Status final do artefato:** HOMOLOGADO COM RESSALVA DOCUMENTAL para demonstração/entrega acadêmica, conforme [Termo de homologação final](../../HOMOLOGACAO_FINAL_PROTOTIPO_2026-10-16.md). As contagens 0/0/39 abaixo não foram reescritas, porque refletem apenas a sessão remota e não equivalem a todos os cenários terem sido executados.
+
 **Parecer: NÃO APROVADO. Homologação interativa bloqueada por indisponibilidade de acesso no navegador desta sessão.**
 
 Rodada de 16/10/2026, America/Manaus. Evidência capturada às **07:42:53 −04:00** / **11:42:53 UTC**. Relatório gerado em `2026-10-16T07:49:31.963684-04:00`. Fonte documental atualizada: PR [#127](https://github.com/webkauadev/rede-de-apoio/pull/127), branch `docs/figma-plano-correcao-20261015`, commit `9762ac719cdd04eca802521f6a452ecaf61ffdab`. As evidências estáticas das correções permanecem atribuídas a `925b19e20b1fa851107cf1b12c0442287fc6350e`.
