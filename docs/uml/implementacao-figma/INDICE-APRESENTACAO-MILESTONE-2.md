@@ -7,8 +7,8 @@
 
 ## Estado atual
 
-- **17 dos 19** artefatos planejados estão criados no Figma e possuem Node IDs confirmados nos registros das implementações. Estão distribuídos pela página e **não necessariamente ordenados como apresentação final**.
-- **2 dos 19** artefatos (DB-D e EER-D) só existem como prévias SVG no GitHub. **Não existem frames oficiais destes dois** porque não havia ferramenta de escrita do Figma disponível nesta sessão.
+- **19 dos 19** artefatos planejados estão criados no Figma e possuem Node IDs confirmados nos registros das implementações. Estão distribuídos pela página e **não necessariamente ordenados como apresentação final**.
+- **DB-D e EER-D agora estão implementados** no Figma oficial: nós `6287:3485` e `6288:3484`; as prévias SVG no GitHub permanecem apenas como evidências auxiliares.
 - Avaliação visual preliminar foi feita nas rodadas anteriores, mas **não equivale a aprovação acadêmica final** nem garante legibilidade de cada campo dos EER panorâmicos.
 - Nenhum novo diagrama de atividades ou máquinas de estados está previsto; governança D não gera UC/CL/SQ próprios.
 
@@ -35,8 +35,8 @@
 | 15 | C | EER-C1 | Workbench original — Medicação | [Frame 6278-3484](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6278-3484) | Figma; exportação original |
 | 16 | C | DB-C2 | Banco físico editável — Diário, Consultas e Anexos | [Frame 6276-3484](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6276-3484) | Figma; recorte seletivo |
 | 17 | C | EER-C2 | Workbench original — Diário e Consultas | [Frame 6278-3565](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6278-3565) | Figma; exportação original |
-| 18 | D | DB-D | Banco físico de Governança (recorte editável) | [Prévia SVG](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/docs/uml/implementacao-figma/previews/DB-D-governanca-preview.svg) | **Importação no Figma pendente** |
-| 19 | D | EER-D | Workbench original — Suporte Técnico | [Lâmina de prévia](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/docs/uml/implementacao-figma/previews/EER-D-workbench-preview.svg) · [Fonte nativa](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/entrega/sql-eer/diagrama_suporte_tecnico.svg) | **Importação no Figma pendente** |
+| 18 | D | DB-D | Banco físico de Governança (recorte editável) | [Frame 6287-3485](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6287-3485) | **Figma: editável, conferido** |
+| 19 | D | EER-D | Workbench original — Suporte Técnico | [Frame 6288-3484](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6288-3484) · [Fonte nativa](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/entrega/sql-eer/diagrama_suporte_tecnico.svg) | **Figma: importação vetorial conferida** |
 
 ## Organização visual obrigatória
 
@@ -57,8 +57,8 @@ Os frames devem permanecer em 1920 × 1080 (16:9), adotando a identidade visual 
 
 ## Checklist de fechamento (não marcar concluído por inferência)
 
-- [ ] Importar DB-D como **objetos editáveis**, verificar oito vínculos de FK e textos contra o SQL V1.
-- [ ] Importar EER-D usando a exportação nativa `diagrama_suporte_tecnico.svg`, conferir renderização e registrar Node ID real.
+- [x] Importar DB-D como **objetos editáveis**, verificar oito vínculos de FK e textos contra o SQL V1.
+- [x] Importar EER-D usando a exportação nativa `diagrama_suporte_tecnico.svg`, conferir renderização e registrar Node ID real.
 - [ ] Reorganizar os 19 frames no Figma na ordem acima, mantendo originais/backup preservados até a aprovação.
 - [ ] Conferir a apresentação em 16:9: evitar setas soltas, cruzamentos indevidos, sobreposição de títulos/rótulos, fontes diminutas e fragmentos UML ambíguos.
 - [ ] Conferir semântica de multiplicidades, papéis e mensagens contra os roteiros textuais, inclusive UC-03/CL-03/SQ-03 e a separação solicitante/destinatário no SQ-02.
@@ -71,4 +71,8 @@ Os frames devem permanecer em 1920 × 1080 (16:9), adotando a identidade visual 
 
 - [Relatório Domínio A](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/docs/uml/implementacao-figma/dominio-A.md) · [Relatório Domínio B](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/docs/uml/implementacao-figma/dominio-B.md) · [Relatório Domínio C](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/docs/uml/implementacao-figma/dominio-C.md) · [Relatório Domínio D](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/docs/uml/implementacao-figma/dominio-D.md).
 - Fonte de persistência: `entrega/sql-eer/rede_de_apoio_v1.mwb` e `entrega/sql-eer/01_schema_completo_v1.sql` (sem modificações).
-- **Impedimento:** integração corrente com Figma sem capacidade de escrita; até restabelecimento, não atribuir Node ID fictício ao Domínio D, nem declarar a ordenação feita.
+- **Impedimento superado em 2026-10-16:** os dois frames D foram inseridos e verificados no Figma. **Pendente:** ordenação global dos 19 frames, apresentação integrada e validação acadêmica final.
+
+## Atualização da implementação do Domínio D
+
+DB-D: [`6287:3485`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6287-3485) (Figma nativo editável). EER-D: [`6288:3484`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6288-3484) (SVG canônico Workbench incorporado). Capturas reais revisadas; nenhuma alteração no SQL/EER fonte. **19/19 artefatos criados**, aguardando montagem/validação final da apresentação.
