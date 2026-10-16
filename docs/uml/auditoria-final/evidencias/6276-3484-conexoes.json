@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "[{\"id\":\"6277:32758\",\"name\":\"FK-C2-registro-correcao\",\"x\":409,\"y\":415,\"width\":49,\"height\":0,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 49 0\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6277:32759\",\"name\":\"FK-C2-consulta-correcao\",\"x\":1185,\"y\":415,\"width\":65,\"height\":0,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 65 0\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6277:32760\",\"name\":\"FK-C2-registro-anexo\",\"x\":220,\"y\":543,\"width\":40,\"height\":143,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 40 0 L 40 113 L 0 113 L 0 143\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6277:32761\",\"name\":\"FK-C2-consulta-recomendacao\",\"x\":755,\"y\":516,\"width\":295,\"height\":170,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 295 0 L 295 108 L 0 108 L 0 170\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6277:32762\",\"name\":\"FK-C2-consulta-anexo\",\"x\":387,\"y\":516,\"width\":563,\"height\":170,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 563 0 L 563 87 L 0 87 L 0 170\"}],\"dash\":[],\"fills\":[]}]"
+    }
+  ],
+  "isError": false
+}

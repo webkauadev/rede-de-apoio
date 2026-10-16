@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "[{\"id\":\"6266:3572\",\"name\":\"DBB-FK-troca-plantao\",\"x\":430,\"y\":468,\"width\":100,\"height\":0,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 100 0\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6266:3573\",\"name\":\"DBB-FK-historico-plantao\",\"x\":268,\"y\":549,\"width\":929,\"height\":62,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 0 62 L 929 62 L 929 0\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6266:3574\",\"name\":\"DBB-FK-conclusao-tarefa\",\"x\":480,\"y\":766,\"width\":95,\"height\":0,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 95 0\"}],\"dash\":[],\"fills\":[]}]"
+    }
+  ],
+  "isError": false
+}

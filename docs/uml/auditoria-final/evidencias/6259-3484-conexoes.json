@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "[{\"id\":\"6259:3586\",\"name\":\"DBA-R01 · usuario titular→pessoa_idosa\",\"x\":382,\"y\":450,\"width\":93,\"height\":0,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 93 0\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6259:3587\",\"name\":\"DBA-R02 · pessoa_idosa→rede_cuidado\",\"x\":750,\"y\":450,\"width\":88,\"height\":0,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 88 0\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6259:3588\",\"name\":\"DBA-R03 · rede_cuidado→membro_rede\",\"x\":1114,\"y\":450,\"width\":100,\"height\":0,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 100 0\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6259:3589\",\"name\":\"DBA-R04 · membro_rede→atrib_papel\",\"x\":1489,\"y\":450,\"width\":82,\"height\":0,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 82 0\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6259:3590\",\"name\":\"DBA-R05 · rede_cuidado→contato\",\"x\":900,\"y\":546,\"width\":0,\"height\":143,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 0 143\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6259:3591\",\"name\":\"DBA-R06 · rede_cuidado→emergencia\",\"x\":1050,\"y\":546,\"width\":330,\"height\":143,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 0 84 L 330 84 L 330 143\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6259:3592\",\"name\":\"DBA-R07 · usuario→membro (FK usuario_id)\",\"x\":240,\"y\":312,\"width\":1110,\"height\":56,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 56 L 0 0 L 1110 0 L 1110 56\"}],\"dash\":[],\"fills\":[]}]"
+    }
+  ],
+  "isError": false
+}

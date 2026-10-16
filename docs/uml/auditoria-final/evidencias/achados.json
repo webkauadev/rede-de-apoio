@@ -1,0 +1,296 @@
+[
+  {
+    "id": "AUD-M2-001",
+    "sev": "P1",
+    "title": "Multiplicidades invertidas nos três papéis da troca",
+    "ids": [
+      "CL-02"
+    ],
+    "origin": "[REQUISITO] [PERSISTENCIA] [ACADEMICO]",
+    "element": "CL02-R03a/R03b/R03c; rótulos 6263:3646–3651; linhas 6263:3581–3583",
+    "found": "Junto a MembroRede consta 0..*; junto a SolicitacaoTrocaPlantao constam 1, 1 e 0..1. Leitura encontrada: cada solicitação admite zero ou muitos membros em cada papel; cada membro está limitado a uma solicitação como solicitante/destinatário e a zero ou uma como respondente.",
+    "expected": "R03a/b: SolicitacaoTrocaPlantao [0..*] — [1] MembroRede. Cada solicitação tem um solicitante e um destinatário; cada membro pode participar de muitas solicitações. R03c: SolicitacaoTrocaPlantao [0..*] — [0..1] MembroRede. Cada solicitação tem zero ou um respondente; cada membro pode responder a muitas. SQL: solicitante_membro_id e destinatario_membro_id NOT NULL; respondido_por_membro_id NULL; FKs compostas (rede_id, membro) para membro_rede(rede_id,membro_id), sem UNIQUE limitando o membro a uma solicitação.",
+    "refs": [
+      "docs/uml/especificacao-para-figma/dominio-B-organizacao/CL-02.md",
+      "entrega/sql-eer/01_schema_completo_v1.sql"
+    ],
+    "impact": "Inverte o modelo de participação, não é mero deslocamento estético.",
+    "fix": "Trocar os valores de extremidade dessas três relações e manter os papéis separados. Não alterar o SQL.",
+    "human": "Não para a leitura UML; revisão humana da correção antes da homologação.",
+    "done": "Ler as três relações nos dois sentidos e reproduzir exatamente as seis multiplicidades esperadas."
+  },
+  {
+    "id": "AUD-M2-002",
+    "sev": "P1",
+    "title": "Anexo indevidamente obrigado a ter RegistroCuidado",
+    "ids": [
+      "DB-C2"
+    ],
+    "origin": "[PERSISTENCIA] [REQUISITO]",
+    "element": "R03; rótulo 6277:32767; anexo.registro_id",
+    "found": "A relação exibe registro_cuidado [1] — [0..*] anexo, embora a própria tabela exiba registro_id NULL. Leitura: cada anexo precisa de um registro; um registro pode ter muitos anexos.",
+    "expected": "registro_cuidado [0..1] — [0..*] anexo. Cada anexo pode ter zero ou um registro por essa FK; cada registro pode ter zero ou muitos anexos. fk_anexo_registro: (rede_id,registro_id) → registro_cuidado(rede_id,registro_id); registro_id BIGINT UNSIGNED NULL. ck_anexo_pai obriga exatamente UM dos três IDs registro/consulta/administração. Um anexo de consulta não exige registro de diário.",
+    "refs": [
+      "entrega/sql-eer/01_schema_completo_v1.sql",
+      "docs/uml/especificacao-para-figma/dominio-C-registros/CL-03.md"
+    ],
+    "impact": "Contradiz a exclusividade dos pais e o CL-03; exclui conceitualmente anexos válidos de consulta/administração.",
+    "fix": "Alterar somente a multiplicidade próxima de registro_cuidado para 0..1, preservando a nota de exclusividade.",
+    "human": "Não para a cardinalidade; conferir visualmente depois.",
+    "done": "Os três caminhos de pai têm máximo um e mínimo zero individualmente, sujeitos ao XOR global; exemplo de anexo só de consulta é representável."
+  },
+  {
+    "id": "AUD-M2-003",
+    "sev": "P1",
+    "title": "Cardinalidades nativas do Workbench não refletem UNIQUE e nulidade",
+    "ids": [
+      "EER-A",
+      "EER-B",
+      "EER-C1",
+      "EER-C2",
+      "EER-D"
+    ],
+    "origin": "[PERSISTENCIA]",
+    "element": "fk_rede_pessoa, comum às cinco vistas; demais FKs enumeradas no caderno",
+    "found": "No XML do .mwb, as 79 FKs têm many=1, mandatory=1 e referencedMandatory=1. A exportação mostra pé de galinha na extremidade rede_cuidado de fk_rede_pessoa. A conferência visual da exportação identidade_rede confirma a marca de muitos; todas as cinco vistas contêm essa FK. O problema já está na fonte nativa, não foi causado pela importação Figma.",
+    "expected": "Cada rede pertence a exatamente uma pessoa; cada pessoa tem zero ou uma rede V1: pessoa_idosa [1] — [0..1] rede_cuidado. rede_cuidado.pessoa_idosa_id é NOT NULL e UNIQUE uq_rede_idoso_v1(pessoa_idosa_id). A presença de uq_rede_pessoa(rede_id,pessoa_idosa_id), sozinha, não provaria esse máximo. FKs anuláveis, como anexo.registro_id e auditoria.ator_usuario_id, não tornam obrigatório o pai individual. Consultar o inventário XML/SQL para cada caso.",
+    "refs": [
+      "entrega/sql-eer/01_schema_completo_v1.sql",
+      "entrega/sql-eer/rede_de_apoio_v1.mwb",
+      "entrega/sql-eer/diagrama_identidade_rede.svg"
+    ],
+    "impact": "Uma exportação fiel de um modelo graficamente incorreto continua transmitindo relações incorretas; afeta os cinco EER.",
+    "fix": "Em rodada autorizada, revisar propriedades de cardinalidade/obrigatoriedade no modelo e reexportar as cinco vistas, preservando o DDL homologado. Se o Workbench não representar uma restrição, explicitá-la em nota em vez de afirmar fidelidade integral.",
+    "human": "Sim: revisão do responsável pelo modelo e autorização para alterar apenas a representação; não executar nesta missão.",
+    "done": "fk_rede_pessoa mostra máximo um na extremidade rede; FKs opcionais e máximos únicos revisados individualmente; comparação estrutural com SQL continua sem divergência."
+  },
+  {
+    "id": "AUD-M2-004",
+    "sev": "P1",
+    "title": "Chamadas síncronas desenhadas com ponta aberta",
+    "ids": [
+      "SQ-01",
+      "SQ-02",
+      "SQ-03"
+    ],
+    "origin": "[ACADEMICO] [REQUISITO]",
+    "element": "SQ01 M01/M02/M04/M05; SQ02 M01/M02/M03/M07/M08/M09/M10; SQ03 M01/M02/M03",
+    "found": "As chamadas usam chevron aberto, como os retornos. Exemplo verificável: 6257:3738, vetor M 0 0 L 10 6 L 0 12, fills=[]; 6257:3741 repete a construção. Legendas dizem chamada síncrona. M05 de criação em SQ02 também diverge da ponta cheia expressamente prescrita pelo contrato.",
+    "expected": "Chamadas síncronas comuns com linha contínua e ponta triangular preenchida; retornos tracejados com ponta aberta. Criação deve conservar chegada à cabeça de P05 e início da vida nesse ponto; revisar sua convenção específica com o professor, sem classificá-la automaticamente como chamada comum.",
+    "refs": [
+      "docs/uml/especificacao-para-figma/dominio-A-pessoas-rede/SQ-01.md",
+      "docs/uml/especificacao-para-figma/dominio-B-organizacao/SQ-02.md",
+      "docs/uml/especificacao-para-figma/dominio-C-registros/SQ-03.md",
+      "docs/uml/diretrizes-professor.md"
+    ],
+    "impact": "Símbolo de mensagem incompatível com o tipo declarado em todos os roteiros.",
+    "fix": "Corrigir pontas das chamadas síncronas e a legenda. Preservar retornos e a criação temporal de SQ02.",
+    "human": "Não para chamadas síncronas comuns; sim para confirmar a convenção didática da mensagem de criação.",
+    "done": "Pontas preenchidas nas chamadas comuns listadas, retornos tracejados distintos, sem mudar direção, ordem ou guardas."
+  },
+  {
+    "id": "AUD-M2-005",
+    "sev": "P1",
+    "title": "Autenticação atribuída simultaneamente à entidade e ao serviço",
+    "ids": [
+      "CL-01",
+      "SQ-01"
+    ],
+    "origin": "[INFERENCIA] [REQUISITO]",
+    "element": "Usuario.autenticar(): ResultadoAutenticacao; nó 6255:3605",
+    "found": "CL-01 contém + autenticar(): ResultadoAutenticacao. SQ-01 atribui autenticar(credenciais) ao Serviço de Autenticação; seu contrato declara expressamente que não é operação de Usuario. A incompatibilidade já existe entre os contratos, não é desvio exclusivo do desenho.",
+    "expected": "Uma responsabilidade coerente e documentada. O contrato de CL-01 marca essa operação como INFERENCIA de RF02, portanto ela não pode prevalecer sobre a separação explicitada no SQ-01.",
+    "refs": [
+      "docs/uml/especificacao-para-figma/dominio-A-pessoas-rede/CL-01.md",
+      "docs/uml/especificacao-para-figma/dominio-A-pessoas-rede/SQ-01.md"
+    ],
+    "impact": "O leitor não consegue determinar qual participante realiza a autenticação nem como a operação da entidade participa do fluxo.",
+    "fix": "Reconciliar a inferência do CL-01 com o serviço já previsto no SQ-01; retirar ou justificar a operação na entidade e atualizar o contrato correspondente após decisão.",
+    "human": "Sim: escolha de modelagem e atualização do contrato; não inventar nova classe de domínio.",
+    "done": "Contrato CL-01 e roteiro SQ-01 deixam de afirmar responsabilidades incompatíveis; receptor da mensagem é o responsável definido."
+  },
+  {
+    "id": "AUD-M2-006",
+    "sev": "P1",
+    "title": "Resposta à troca não demonstra proteção contra versão obsoleta",
+    "ids": [
+      "SQ-02"
+    ],
+    "origin": "[REQUISITO]",
+    "element": "M08 → M09 aceitar/recusar → M10 atribuirResponsavel; alt F01",
+    "found": "Após processarResposta(decisao), as únicas guardas são decisão=aceitar/recusar. M03/M04 consultam o contexto antes da criação do pedido; não há guarda, nota ou caminho de conflito na resposta. A responsabilidade textual do serviço menciona versão, mas não mostra quando o resultado é validado.",
+    "expected": "DB-006 determina aceitar/recusar com versão esperada e conflito 409 se stale. A validação deve anteceder a aplicação da decisão e a mudança do responsável. Uma pré-condição de vínculo na solicitação não demonstra revalidação no instante da resposta.",
+    "refs": [
+      "docs/uml/especificacao-para-figma/dominio-B-organizacao/SQ-02.md",
+      "docs/10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md",
+      "docs/02_BUSINESS_RULES/PERMISSIONS_MATRIX.md"
+    ],
+    "impact": "O roteiro não distingue decisão válida de resposta a plantão alterado concorrentemente. Não se afirma uma vulnerabilidade do backend: o achado é insuficiência do modelo de execução.",
+    "fix": "Acrescentar condição explícita de versão/contexto válidos na resposta e resultado de conflito sem M09/M10/N01; documentar atomicidade da mudança. A alteração exige revisão do contrato, sem novas lifelines obrigatórias.",
+    "human": "Sim: aprovar o ajuste do roteiro seletivo e a representação do caminho de conflito.",
+    "done": "Um pedido criado em versão v não pode alterar plantão em v+1; caminho obsoleto é reconhecível e não emite N01 nem muda responsável."
+  },
+  {
+    "id": "AUD-M2-007",
+    "sev": "P1",
+    "title": "Telefone opcional de ContatoImportante incompatível com persistência",
+    "ids": [
+      "CL-01"
+    ],
+    "origin": "[PERSISTENCIA] [INFERENCIA]",
+    "element": "ContatoImportante.telefone: String [0..1]",
+    "found": "O CL-01 admite ausência de telefone. contato_importante.telefone é VARCHAR(32) NOT NULL. O modelo não diferencia contato em preparação de contato válido persistido.",
+    "expected": "Uma instância persistível deve fornecer telefone; se a opcionalidade representar estado transitório, essa condição e sua validação precisam estar documentadas. US-026, por si, não estabelece telefone opcional.",
+    "refs": [
+      "docs/uml/especificacao-para-figma/dominio-A-pessoas-rede/CL-01.md",
+      "entrega/sql-eer/01_schema_completo_v1.sql",
+      "docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml"
+    ],
+    "impact": "Estado admitido pelo modelo de domínio não possui representação persistente equivalente sem decisão adicional.",
+    "fix": "Alinhar a multiplicidade do atributo à V1 ou explicitar o estado transitório e a validação antes de persistir. Não relaxar a coluna SQL.",
+    "human": "Sim: esclarecer intenção do atributo opcional; a nulidade física é comprovada.",
+    "done": "Nenhum contato tratado como válido/persistido é modelado sem telefone, ou a fronteira de validação fica expressa."
+  },
+  {
+    "id": "AUD-M2-008",
+    "sev": "P2",
+    "title": "Rotas e rótulos prejudicam a leitura inequívoca",
+    "ids": [
+      "UC-02",
+      "UC-03",
+      "CL-01",
+      "CL-02",
+      "CL-03",
+      "EER-A"
+    ],
+    "origin": "[ACADEMICO] [INFERENCIA]",
+    "element": "UC02-C10; UC03-C01/C04/C10/C18; CL01-R05; CL02-R04/R06; cadeia superior de CL03; rodapé EER-A",
+    "found": "UC02-C10 cruza a elipse de compromisso; rotas UC03 atravessam elipses intermediárias. Os destinos finais são os previstos, mas as passagens sugerem vínculos extras. CL01-R05 comprime multiplicidades em vão curto; atributos quebram perto de divisórias. CL02-R04 inicia 15 px abaixo da caixa de MembroRede (fim y571; linha y586); R06 disputa espaço com Tarefa. CL03 comprime rótulos/multiplicidades entre caixas. EER-A tem texto do rodapé sobreposto à parte inferior da imagem.",
+    "expected": "Rotas fora de elementos não relacionados, pontas ancoradas nos contornos, multiplicidades próximas apenas da extremidade correspondente e rodapé fora da exportação.",
+    "refs": [
+      "docs/uml/especificacao-para-figma/dominio-B-organizacao/UC-02.md",
+      "docs/uml/especificacao-para-figma/dominio-C-registros/UC-03.md",
+      "docs/uml/especificacao-para-figma/dominio-A-pessoas-rede/CL-01.md",
+      "docs/uml/especificacao-para-figma/dominio-B-organizacao/CL-02.md",
+      "docs/uml/especificacao-para-figma/dominio-C-registros/CL-03.md"
+    ],
+    "impact": "Aumenta risco de leitura falsa em apresentação, mesmo onde os valores e destinos estão corretos. Não é contagem de associações adicionais.",
+    "fix": "Reencaminhar só os segmentos afetados, ampliar vãos e reposicionar rótulos/rodapé; manter associações e conteúdo.",
+    "human": "Revisão visual humana em projeção recomendada.",
+    "done": "Nenhuma linha cruza elipse/caixa alheia; R04 toca MembroRede; rótulos e rodapé não encobrem conteúdo."
+  },
+  {
+    "id": "AUD-M2-009",
+    "sev": "P2",
+    "title": "Tipos físicos omitem UNSIGNED sem convenção explícita",
+    "ids": [
+      "DB-A",
+      "DB-B",
+      "DB-C1",
+      "DB-C2",
+      "DB-D"
+    ],
+    "origin": "[PERSISTENCIA]",
+    "element": "Campos BIGINT/INT discriminados no caderno de campos",
+    "found": "Exibem BIGINT ou INT onde o SQL especifica BIGINT UNSIGNED/INT UNSIGNED, enquanto outros campos do mesmo slide exibem o modificador. Exemplos: pessoa_idosa_id em DB-A, versao_plantao_esperada em DB-B, versao_plano em DB-C1 e usuario_destinatario_id em DB-D (6287:3622).",
+    "expected": "Todo tipo físico exibido deve ser exato ou ter abreviação inequívoca declarada. Campo omitido é simplificação legítima; um tipo parcial apresentado ao lado de tipos completos é ambíguo.",
+    "refs": [
+      "entrega/sql-eer/01_schema_completo_v1.sql"
+    ],
+    "impact": "Sugere domínio numérico com sinal diferente da fonte canônica; prejudica comparação FK/PK.",
+    "fix": "Exibir UNSIGNED nos campos afetados ou declarar convenção única e inequívoca que preserve a informação física.",
+    "human": "Não: comparação textual objetiva.",
+    "done": "Todos os tipos explícitos conferem com o SQL ou seguem convenção documentada sem exceções implícitas."
+  },
+  {
+    "id": "AUD-M2-010",
+    "sev": "P2",
+    "title": "Assinaturas abreviadas não reconciliadas entre classes e sequências",
+    "ids": [
+      "CL-03",
+      "SQ-01",
+      "SQ-03"
+    ],
+    "origin": "[ACADEMICO] [INFERENCIA]",
+    "element": "AdministracaoMedicamento.registrar e Auditoria.registrarEvento",
+    "found": "CL-03 exibe registrar() e registrarEvento(), enquanto SQ03-M03 envia registrar(realizadaEm, autor) e SQ01-M05 registrarEvento(NEGADO, contextoSanitizado). Não há convenção explícita dizendo que parênteses vazios suprimem parâmetros.",
+    "expected": "Assinaturas compatíveis com os argumentos das mensagens, ou nota de abstração indicando que o catálogo não especifica assinatura completa. Não inferir que todos os métodos sem parâmetros são implementação final.",
+    "refs": [
+      "docs/uml/especificacao-para-figma/dominio-C-registros/CL-03.md",
+      "docs/uml/especificacao-para-figma/dominio-A-pessoas-rede/SQ-01.md",
+      "docs/uml/especificacao-para-figma/dominio-C-registros/SQ-03.md"
+    ],
+    "impact": "Impossibilita conferir rigorosamente parâmetros, tipos e retornos entre diagramas.",
+    "fix": "Documentar parâmetros/retornos dessas operações ou uniformizar explicitamente a notação resumida.",
+    "human": "Sim para escolher nível de detalhe; não requer nova funcionalidade.",
+    "done": "É possível mapear cada argumento de M03/M05 à operação receptora ou a uma convenção de abstração publicada."
+  },
+  {
+    "id": "AUD-M2-011",
+    "sev": "P2",
+    "title": "Versões antigas ainda estão na faixa principal da apresentação",
+    "ids": [
+      "UC-01",
+      "CL-01",
+      "SQ-01",
+      "DB-A"
+    ],
+    "origin": "[PENDENTE] [INFERENCIA]",
+    "element": "Página 6103:3636; frames antigos 6231:3484, 6234:3484, 6235:3484, 6238:3484",
+    "found": "Os quatro frames antigos continuam visible=true, y=0, x24960/27040/29120/31200; as versões atuais ficam à direita com prefixo TESTE ChatGPT. EER-A permanece na posição anterior. Inventário direto salvo em inventario-pagina.json.",
+    "expected": "Sequência de apresentação deve apontar inequivocamente aos 19 IDs atuais; versões antigas não devem se confundir com slides finais.",
+    "refs": [
+      "docs/uml/implementacao-figma/INDICE-APRESENTACAO-MILESTONE-2.md",
+      "docs/uml/implementacao-figma/dominio-A.md"
+    ],
+    "impact": "Risco de apresentar modelos superados mesmo após corrigir os atuais. Não se afirma que um player específico executou essa ordem: a evidência é a faixa visual.",
+    "fix": "Após aprovação, arquivar/ocultar os quatro antigos, ordenar os atuais e retirar TESTE do nome. Preservar o EER-A atual 6238:3578.",
+    "human": "Sim: organização da apresentação, expressamente fora da execução desta missão.",
+    "done": "Área principal e roteiro de apresentação contêm somente os 19 IDs atuais; antigos continuam preservados em área histórica."
+  },
+  {
+    "id": "AUD-M2-012",
+    "sev": "P2",
+    "title": "Promessa de todas as restrições no EER é incorreta",
+    "ids": [
+      "DB-C2"
+    ],
+    "origin": "[PERSISTENCIA]",
+    "element": "Rodapé técnico 6277:3542",
+    "found": "O texto afirma que a exportação original preserva todas as chaves, campos e restrições. O SQL tem 50 CHECKs; o XML .mwb não possui objetos db.CheckConstraint, e as exportações não demonstram esses CHECKs. As vistas temáticas também são seletivas.",
+    "expected": "Identificar SQL como referência para CHECKs/regras não expressas na vista e .mwb/SVG como representação temática; separar fidelidade de colunas/FKs da cobertura de restrições.",
+    "refs": [
+      "entrega/sql-eer/01_schema_completo_v1.sql",
+      "entrega/sql-eer/rede_de_apoio_v1.mwb"
+    ],
+    "impact": "Leitor pode presumir garantias como XOR dos anexos e ciclo único de tarefa apenas a partir do EER.",
+    "fix": "Substituir a promessa absoluta por referência explícita ao SQL e aos limites da vista. Não é necessário materializar cada CHECK como caixa.",
+    "human": "Não para retirar a afirmação comprovadamente excessiva.",
+    "done": "Rodapé não promete cobertura integral; ck_anexo_pai, ck_ocorrencia_origem e demais CHECKs ficam rastreáveis ao SQL."
+  },
+  {
+    "id": "AUD-M2-013",
+    "sev": "P2",
+    "title": "Rastreabilidade ao protótipo não demonstra os fluxos de troca e administração",
+    "ids": [
+      "UC-02",
+      "SQ-02",
+      "UC-03",
+      "SQ-03"
+    ],
+    "origin": "[REQUISITO] [PENDENTE]",
+    "element": "Fluxo Final 5926:1014; T04 5926:1261; T08 5926:1801; T05 5926:1420",
+    "found": "T04 apresenta consulta de escala; suas actions lidas não iniciam solicitar/responder troca. T08 oferece Cadastrar, abrindo 5967:6307, com nome/concentração/forma/observação, sem administração ou regime. T05 mostra administração já registrada e horários de realização/registro distintos, mas não a ação de registrá-la. Busca estrutural na página não encontrou textos/frames específicos desses fluxos. As correspondências documentais T04/T08 não provam sua execução.",
+    "expected": "Identificar entrada e estados verificáveis de US-012/013/018/019, inclusive recusa, negativa e administração avulsa quando demonstrada. Se fora do alcance do protótipo atual, declarar a lacuna; não inventar uma reação equivalente.",
+    "refs": [
+      "docs/01_REQUIREMENTS/USER_STORIES_INDEX.yaml",
+      "docs/01_REQUIREMENTS/ACCEPTANCE_CRITERIA.yaml",
+      "docs/uml/especificacao-para-figma/dominio-B-organizacao/SQ-02.md",
+      "docs/uml/especificacao-para-figma/dominio-C-registros/SQ-03.md"
+    ],
+    "impact": "A cadeia RF→US→CA→UML→persistência tem correspondência conceitual, mas seu último elo não pode receber PASS completo.",
+    "fix": "Documentar links de ações/estados existentes ou delimitar formalmente a demonstração. Eventual implementação no protótipo exige rodada separada autorizada.",
+    "human": "Sim: confirmar eventual fluxo em outra superfície e seu caráter canônico.",
+    "done": "Há roteiro navegável comprovado nos IDs canônicos ou ressalva acadêmica explícita sobre cobertura do protótipo; não basta screenshot da lista."
+  }
+]
