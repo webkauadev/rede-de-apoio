@@ -2,6 +2,8 @@
 
 Registrar por caso: data, ator/fixture, node inicial, passos, resultado observado, captura e aprovado/reprovado/não verificável. Esta execução validou configurações; os campos abaixo continuam pendentes de execução no Presentation.
 
+**Retomada em 16/10/2026:** Presentation retornou `Site Unavailable` também após uma recarga. Zero jornadas executadas; nenhum item aprovado nesta tentativa. Ver [registro e captura do impedimento](LOTE_07_RETOMADA_2026-10-16.md). Os itens abaixo continuam pendentes.
+
 ## Entrada e permissão
 
 - [ ] T01: sem credenciais válidas, Entrar mostra erro e não abre conteúdo protegido; tocar o campo permite demonstrar credenciais válidas, Loading e Home autorizada.

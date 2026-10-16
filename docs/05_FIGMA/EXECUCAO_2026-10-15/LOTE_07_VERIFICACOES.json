@@ -9,7 +9,8 @@
     "page_id": "6223:6270",
     "status": "correcoes_aplicadas_homologacao_runtime_pendente",
     "original_write_calls": 0,
-    "baseline_page_write_calls": 0
+    "baseline_page_write_calls": 0,
+    "last_presentation_attempt_utc": "2026-10-16T11:43:35.532Z"
   },
   "evidence": {
     "qa_final": {
@@ -283,7 +284,50 @@
     "url": "https://www.figma.com/proto/ljFSoPfNcvDgZtdR2sHmti?node-id=6223-6272",
     "observed_title": "Site Unavailable",
     "observed_body": "Unable to access this site.",
-    "tests_by_click_performed": 0
+    "tests_by_click_performed": 0,
+    "latest_attempt": {
+      "observed_at_utc": "2026-10-16T11:43:35.532Z",
+      "observed_at_local": "2026-10-16T07:43:35.532-04:00",
+      "timezone": "America/Manaus",
+      "pre_documentation_head_sha": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "status": "bloqueado_por_indisponibilidade_do_presentation_neste_navegador",
+      "url": "https://www.figma.com/proto/ljFSoPfNcvDgZtdR2sHmti?node-id=6223-6272",
+      "observed_title": "Site Unavailable",
+      "observed_body": "Unable to access this site.",
+      "navigation_attempts": [
+        {
+          "action": "open_new_tab",
+          "result": "site_unavailable"
+        },
+        {
+          "action": "reload_once",
+          "result": "site_unavailable"
+        }
+      ],
+      "integration_surface": {
+        "response": {
+          "surface": "thread"
+        },
+        "controllable_tab_available": false
+      },
+      "cause": "indeterminada",
+      "login_wall_observed": false,
+      "captcha_observed": false,
+      "automation_block_observed": false,
+      "runtime_journeys_executed": 0,
+      "runtime_journeys_passed": 0,
+      "runtime_journeys_failed_by_product_behavior": 0,
+      "checklist_status": "todos_os_casos_runtime_pendentes_nao_verificaveis_nesta_tentativa",
+      "new_product_defects_confirmed": 0,
+      "prior_configuration_checks_repeated": false,
+      "figma_write_calls": 0,
+      "evidence": {
+        "path": "evidencias/presentation-indisponivel-2026-10-16.jpg",
+        "sha256": "43d831311335c1b6ab1e767b6cfba4d5321d9c9fa2747a4634d086bce66712ab",
+        "bytes": 12217
+      },
+      "report": "LOTE_07_RETOMADA_2026-10-16.md"
+    }
   },
   "supplement": {
     "correction_complete_qa_start": "6223:7474",

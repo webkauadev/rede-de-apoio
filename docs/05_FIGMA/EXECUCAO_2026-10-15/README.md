@@ -25,7 +25,7 @@ A página-base interna mantém as mesmas contagens estruturais e fingerprints de
 | 03 | Plantões E03–E07, posologia/horário/administração, bootstrap e N01–N04; preenchimento válido dos cinco Sheets. | [JSON](LOTE_03_EVIDENCIAS.json) |
 | 04 | Inclusões, autoria, cronologia, anexos e identidade das entidades. | [JSON](LOTE_04_EVIDENCIAS.json) |
 | 05–06 | Viewports, reflow, tokens, tipografia, contraste, targets e LocalSubnav. | [JSON](LOTE_05_06_EVIDENCIAS.json) |
-| 07 | Configurações e capturas verificadas; Presentation indisponível neste navegador. | [Verificações](LOTE_07_VERIFICACOES.json) |
+| 07 | Configurações e capturas verificadas anteriormente; nova tentativa em 16/10 sem acesso ao Presentation. Homologação interativa bloqueada. | [Verificações](LOTE_07_VERIFICACOES.json) · [Retomada e captura](LOTE_07_RETOMADA_2026-10-16.md) |
 | 08 | Registro experimental, evidências e checklist entregues no PR; sem promoção canônica. | [Registry](FIGMA_CORRECOES_EXPERIMENTAL.json) |
 
 Os JSONs registram IDs criados/modificados, cenários e destinos. Os mapas de tarefas, contatos, registros, medicamentos, papéis e preferências detalham as variantes; os links abaixo são âncoras representativas. Dois exemplos antigos da cópia (`6223:7460`, `6223:8612`) foram identificados como referências substituídas, sem exclusão. Formulários full-page legados mantêm suas ações históricas e não recebem entradas do fluxo canônico. Estados condicionais têm starting points de QA, sem seletor de papel ou novo menu de produto.
@@ -86,6 +86,8 @@ A origem funcional de cada item está em [STATUS_28_ACHADOS.json](STATUS_28_ACHA
 ## Limitações e próximo lote
 
 O endereço de Presentation da cópia retornou **Site Unavailable — Unable to access this site** neste navegador. Nenhum cenário foi marcado como aprovado por clique, gesto ou scroll em runtime. A indisponibilidade do navegador não impediu as alterações via conector.
+
+**Atualização de 16/10/2026:** uma nova abertura e uma única recarga mantiveram esse erro. A integração Figma não disponibilizou aba controlável alternativa. [Registro da retomada e captura real](LOTE_07_RETOMADA_2026-10-16.md). Nesta retomada não houve escrita no Figma nem nova validação das configurações; o LOTE 07 permanece bloqueado.
 
 As fixtures do Figma demonstram entradas e transições predefinidas; não simulam armazenamento ilimitado, autenticação real, concorrência, entrega de notificações ou geração real de CSV. A identidade/contexto de QA é explícita nos starting points. Leitores de tela, foco, teclado e acessibilidade nativa dependem da aplicação. O recolhimento da LocalSubnav por direção do scroll continua especificado, sem simulação desse gesto, e não foi classificado como defeito do produto.
 
