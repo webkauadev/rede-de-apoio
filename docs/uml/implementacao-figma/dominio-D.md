@@ -63,3 +63,11 @@ Em 2026-10-16, a ferramenta de escrita no Figma retornou `The tool failed intern
 **Situação real:** DB-D e EER-D pendentes de execução no Figma. Node IDs não atribuídos; não inventar links.
 
 **Próximo passo após recuperação da integração:** construir DB-D a partir deste catálogo; conferir captura; importar SVG original no EER-D; validar ambos; atualizar esta página com links reais, Node IDs e resultado da revisão. Não iniciar auditoria geral nova nem refazer a documentação acadêmica.
+
+## Artefato contingencial gerado enquanto o Figma bloqueia gravações
+
+[**Prévia vetorial DB-D em SVG (1920 × 1080)**](./previews/DB-D-governanca-preview.svg) — arquivo criado no GitHub como **representação auxiliar**, com quatro tabelas centrais, referências `usuario`/`rede_cuidado`, oito linhas de FK e legenda de escopo. O arquivo vetorial é adequado para importação posterior; não é um frame Figma, não substitui a vista nativa EER-D e não deve ser marcado como diagrama editável no arquivo oficial até ser importado e validado.
+
+**Importante:** o SVG serve para preservar o trabalho gráfico durante a indisponibilidade. Conferir na importação a posição final das ancoragens, múltiplos vínculos e cardinalidades antes de aceitar a apresentação. O SQL canônico mantém precedência sobre quaisquer abreviações desta prévia.
+
+A [exportação nativa do Workbench — suporte técnico](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/entrega/sql-eer/diagrama_suporte_tecnico.svg) já existe e permanece disponível, sem alterações. Falta somente incorporá-la no slide EER-D da apresentação.
