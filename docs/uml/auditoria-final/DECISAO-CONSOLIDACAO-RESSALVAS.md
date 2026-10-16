@@ -34,3 +34,11 @@
 O PR de auditoria #128 será mantido como evidência do parecer anterior, inclusive após o merge. O relatório [STATUS-CORRECOES-M2.md](STATUS-CORRECOES-M2.md) continua sendo a fonte do status de cada AUD-M2-001–013; este documento registra o **aceite de ressalvas para integração**, não uma nova auditoria.
 
 **Estado da entrega na data desta decisão: INTEGRÁVEL COM RESSALVAS / AINDA NÃO HOMOLOGADA.** Um eventual parecer `APROVADO COM RESSALVAS` para apresentação depende da finalização do AUD-M2-003 e da verificação final correspondente.
+
+## Falha de CI identificada antes do merge
+
+No PR de correções #129, o check `sql-eer-static` falhou em `entrega/sql-eer/tools/verify-artifacts.py` porque a SHA-256 do arquivo `rede_de_apoio_v1.mwb` não corresponde mais àquela registrada em `entrega/sql-eer/evidencias_integridade.json`. A divergência é esperada após a mutação do arquivo binário, **mas a validação continua falhando**, e deve ser corrigida por atualização íntegra dos hashes após o teste real e reexportação Workbench.
+
+O responsável solicitou integração imediata mesmo com pendências. **Este documento registra o aceite explícito de tal risco, não um PASS fictício do CI**. Não desativar nem contornar o verificador, não substituir hash por valor adivinhado e não alterar SQL canônico. O Codex deverá restaurar `sql-eer-static` verde antes da homologação final.
+
+Verificações observadas: `validate-agent-context` concluído com sucesso; `sql-eer-static` concluiu com falha na checagem de SHA-256 de artefatos; `application` estava em execução durante a conferência. A integração, se realizada, ficará identificada como **provisória com CI pendente**.
