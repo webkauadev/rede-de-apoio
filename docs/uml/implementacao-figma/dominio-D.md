@@ -1,6 +1,6 @@
 # Domínio D — Governança e Rastreabilidade
 
-**Estado:** documentação do DB-D verificada no SQL V1; **frames DB-D/EER-D ainda não construídos no Figma** por bloqueio técnico da integração de gravação em 2026-10-16. Não marcar como implementado.
+**Estado atual (2026-10-16):** **DB-D e EER-D implementados e conferidos visualmente no Figma oficial.** Validação acadêmica final e ordenação definitiva do conjunto da apresentação permanecem pendentes. As notas anteriores de bloqueio da integração constituem histórico já superado.
 
 ## Escopo aprovado
 
@@ -60,7 +60,7 @@ EER-D: incorporar **a exportação SVG original** `diagrama_suporte_tecnico.svg`
 
 Em 2026-10-16, a ferramenta de escrita no Figma retornou `The tool failed internally` para a tentativa de construir o DB-D, depois também para **a criação de frame vazio** e **um teste mínimo não destrutivo**, embora as leituras do documento tenham funcionado. Uma inspeção posterior não encontrou frame DB-D criado parcialmente.
 
-**Situação real:** DB-D e EER-D pendentes de execução no Figma. Node IDs não atribuídos; não inventar links.
+**Situação histórica (superada em 2026-10-16):** a integração bloqueou as primeiras tentativas; os dois frames foram posteriormente criados e tiveram IDs confirmados.
 
 **Próximo passo após recuperação da integração:** construir DB-D a partir deste catálogo; conferir captura; importar SVG original no EER-D; validar ambos; atualizar esta página com links reais, Node IDs e resultado da revisão. Não iniciar auditoria geral nova nem refazer a documentação acadêmica.
 
@@ -79,3 +79,18 @@ A lâmina [**EER-D Workbench — prévia SVG**](./previews/EER-D-workbench-previ
 Está disponível também o [**índice de montagem da apresentação**](./INDICE-APRESENTACAO-MILESTONE-2.md), com 19 posições propostas: 17 frames Figma conhecidos dos domínios A/B/C e 2 lâminas pendentes de importação (DB-D, EER-D).
 
 **Importante:** o arquivo Figma continua sem escrita nesta sessão. O preparo dos SVGs e o planejamento no GitHub não significam importação, posicionamento ou aprovação visual dentro do Figma. A execução dessas duas importações, seguida da verificação de conexões e legibilidade, permanece necessária.
+
+## Execução concluída no Figma oficial — 2026-10-16
+
+A edição da página `Apresentação — Milestone 2 · Protótipo e Modelagem` do arquivo `tcyj2fkTXei2CJbqaRxqCp` foi restabelecida. Os dois diagramas restantes foram efetivamente inseridos e conferidos em capturas reais:
+
+| Artefato | Link direto e Node ID | Implementação | Verificação |
+|---|---|---|---|
+| **DB-D** | [Abrir frame no Figma](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6287-3485) · `6287:3485` | Frame 1920 × 1080 com textos, formas e vetores **nativos editáveis**. Tabelas `auditoria`, `preferencia_notificacao`, `entrega_tecnica_notificacao`, `idempotencia_comando`; referências visuais a `usuario` e `rede_cuidado`; oito ligações FK principais. | Captura real revisada; âncoras e rótulos principais legíveis, com baixa sobreposição. FKs opcionais de auditoria e as diferenças N03/N04 versus N01–N04 sinalizadas. |
+| **EER-D** | [Abrir frame no Figma](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6288-3484) · `6288:3484` | Frame 1920 × 1080 com exportação canônica `diagrama_suporte_tecnico.svg` incorporada via vetores do SVG original. Nó do SVG importado: `6289:3571`. **Sem redesenho ou modificação do modelo SQL/Workbench.** | Captura real revisada e conteúdo enquadrado como visão panorâmica; para leitura de detalhes pequenos, usar SVG original ou Workbench. |
+
+A exportação original foi lida com comprimento de 258.678 caracteres e reconstituída integralmente antes da importação vetorial (2.275 nós vetoriais/geométricos inspecionados para enquadramento). A área temporária de transferência `6288:3564` e seus oito blocos de texto foram **removidos** após a incorporação.
+
+**Não foram alterados**: `rede_de_apoio_v1.mwb`, `01_schema_completo_v1.sql`, SVG canônico, requisitos ou diagramas dos domínios A/B/C. As prévias em `previews/` permanecem como evidências históricas, mas **os links acima são os frames oficiais vigentes**.
+
+**Ainda pendente:** organizar o conjunto na ordem definitiva do índice da apresentação, validar legibilidade de todos os slides em modo apresentação e obter aprovação acadêmica da equipe/professor. Esta execução não constitui homologação acadêmica automática.
