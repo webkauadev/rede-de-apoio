@@ -71,3 +71,11 @@ Em 2026-10-16, a ferramenta de escrita no Figma retornou `The tool failed intern
 **Importante:** o SVG serve para preservar o trabalho gráfico durante a indisponibilidade. Conferir na importação a posição final das ancoragens, múltiplos vínculos e cardinalidades antes de aceitar a apresentação. O SQL canônico mantém precedência sobre quaisquer abreviações desta prévia.
 
 A [exportação nativa do Workbench — suporte técnico](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/entrega/sql-eer/diagrama_suporte_tecnico.svg) já existe e permanece disponível, sem alterações. Falta somente incorporá-la no slide EER-D da apresentação.
+
+## Preparação para apresentação — 2026-10-16
+
+A lâmina [**EER-D Workbench — prévia SVG**](./previews/EER-D-workbench-preview.svg) foi criada em **1920 × 1080**, preservando os vetores da exportação canônica de suporte técnico no interior de um novo layout de apresentação. A exportação nativa [`diagrama_suporte_tecnico.svg`](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/entrega/sql-eer/diagrama_suporte_tecnico.svg) continua intacta. A prévia aplica um enquadramento visual para slide e **não substitui a fonte completa para inspeção de campos**.
+
+Está disponível também o [**índice de montagem da apresentação**](./INDICE-APRESENTACAO-MILESTONE-2.md), com 19 posições propostas: 17 frames Figma conhecidos dos domínios A/B/C e 2 lâminas pendentes de importação (DB-D, EER-D).
+
+**Importante:** o arquivo Figma continua sem escrita nesta sessão. O preparo dos SVGs e o planejamento no GitHub não significam importação, posicionamento ou aprovação visual dentro do Figma. A execução dessas duas importações, seguida da verificação de conexões e legibilidade, permanece necessária.
