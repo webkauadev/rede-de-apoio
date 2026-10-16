@@ -1,7 +1,7 @@
 # Plano de correção pós-auditoria — Protótipo Figma Rede de Apoio
 
 **Data do plano:** 2026-10-15  
-**Situação:** planejamento para revisão; nenhuma correção aplicada ao Figma  
+**Situação:** correções aplicadas na cópia experimental; verificação de configuração e composição realizada; homologação no Presentation pendente  
 **Auditoria de origem:** `Relatorio_auditoria_Figma.md` (fornecido pelo solicitante nesta etapa; relatório completo e seus anexos externos não estão incorporados aqui)  
 **Base da auditoria:** `main` em `4712047e4550e4504b213e638aaf8a17310f4935`  
 **Origem Figma intocável:** arquivo `tcyj2fkTXei2CJbqaRxqCp`, **somente a página** `Fluxo Final`, node `5926:1014`. As demais páginas do arquivo não fazem parte da política de backup deste plano.  
@@ -34,7 +34,7 @@ O conector Figma confirmou por leitura que o **arquivo novo resolve ambas as pá
 
 ## 1. Inventário dos 28 defeitos e solução exigida
 
-Legenda: P1 = prioridade alta; P2 = relevante; P3 = polimento. Todos os itens começam **PENDENTE**, sem presumir correção/execução.
+Legenda: P1 = prioridade alta; P2 = relevante; P3 = polimento. O quadro abaixo preserva o backlog de origem. O estado atualizado de execução está no [registro dos 28 achados](EXECUCAO_2026-10-15/STATUS_28_ACHADOS.json); não confundir alteração aplicada com teste manual aprovado.
 
 | ID | P | Onde | Ação corretiva específica | Critério de aceite da correção |
 |---|---|---|---|---|
@@ -141,4 +141,13 @@ limitacoes: []
 aprovacao_humana: pendente
 ```
 
-**Próximo passo operacional:** **EXECUTAR CORREÇÕES** no projeto já duplicado `ljFSoPfNcvDgZtdR2sHmti`: remapear os 26 destinos herdados na página `6223:6270`, documentar no PR #127 e prosseguir no LOTE 01 (autenticação/fixtures/permissões), sem nova duplicação e sem reauditoria integral da origem.
+## 6. Execução realizada e próximo passo
+
+As 26 ligações herdadas foram corrigidas no novo arquivo e os 28 achados receberam alterações efetivas, documentadas no [relatório de execução](EXECUCAO_2026-10-15/README.md). Os lotes funcionais têm configuração conferida, com testes de clique/gesto pendentes. Correções visuais/de dados foram conferidas por propriedades e capturas representativas. O original externo e a baseline interna não receberam escrita; o registry canônico não foi promovido.
+
+**Próximo passo operacional: LOTE 07 — homologação integrada no Presentation.** O navegador desta execução retornou Site Unavailable. Usar o [checklist de homologação](EXECUCAO_2026-10-15/CHECKLIST_HOMOLOGACAO.md), registrar evidências por caso e tratar falhas que a execução real revelar. Não afirmar homologação integral ou merge aprovado com base apenas nas reactions configuradas. PR #127 permanece Draft.
+## 6. Execução realizada e próximo passo
+
+As 26 ligações herdadas foram corrigidas no novo arquivo e os 28 achados receberam alterações efetivas, documentadas no [relatório de execução](EXECUCAO_2026-10-15/README.md). Os lotes funcionais têm configuração conferida, com testes de clique/gesto pendentes. Correções visuais/de dados foram conferidas por propriedades e capturas representativas. O original externo e a baseline interna não receberam escrita; o registry canônico não foi promovido.
+
+**Próximo passo operacional: LOTE 07 — homologação integrada no Presentation.** O navegador desta execução retornou Site Unavailable. Usar o [checklist de homologação](EXECUCAO_2026-10-15/CHECKLIST_HOMOLOGACAO.md), registrar evidências por caso e tratar falhas que a execução real revelar. Não afirmar homologação integral ou merge aprovado com base apenas nas reactions configuradas. PR #127 permanece Draft.
