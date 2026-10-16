@@ -1,0 +1,224 @@
+{
+  "captured_date": "2026-10-16",
+  "base_branch": "docs/estudo-uml-milestone2",
+  "base_commit": "88302e793d7a29cd60cad60483c6aaca357113e1",
+  "file_key": "tcyj2fkTXei2CJbqaRxqCp",
+  "page_id": "6103:3636",
+  "artifacts": [
+    {
+      "id": "UC-01",
+      "domain": "A",
+      "node_id": "6250:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6250-3484",
+      "screenshot": "6250-3484.png"
+    },
+    {
+      "id": "CL-01",
+      "domain": "A",
+      "node_id": "6255:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6255-3484",
+      "screenshot": "6255-3484.png"
+    },
+    {
+      "id": "SQ-01",
+      "domain": "A",
+      "node_id": "6257:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6257-3484",
+      "screenshot": "6257-3484.png"
+    },
+    {
+      "id": "DB-A",
+      "domain": "A",
+      "node_id": "6259:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6259-3484",
+      "screenshot": "6259-3484.png"
+    },
+    {
+      "id": "EER-A",
+      "domain": "A",
+      "node_id": "6238:3578",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6238-3578",
+      "screenshot": "6238-3578.png"
+    },
+    {
+      "id": "UC-02",
+      "domain": "B",
+      "node_id": "6262:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6262-3484",
+      "screenshot": "6262-3484.png"
+    },
+    {
+      "id": "CL-02",
+      "domain": "B",
+      "node_id": "6263:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6263-3484",
+      "screenshot": "6263-3484.png"
+    },
+    {
+      "id": "SQ-02",
+      "domain": "B",
+      "node_id": "6265:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6265-3484",
+      "screenshot": "6265-3484.png"
+    },
+    {
+      "id": "DB-B",
+      "domain": "B",
+      "node_id": "6266:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6266-3484",
+      "screenshot": "6266-3484.png"
+    },
+    {
+      "id": "EER-B",
+      "domain": "B",
+      "node_id": "6268:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6268-3484",
+      "screenshot": "6268-3484.png"
+    },
+    {
+      "id": "UC-03",
+      "domain": "C",
+      "node_id": "6270:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6270-3484",
+      "screenshot": "6270-3484.png"
+    },
+    {
+      "id": "CL-03",
+      "domain": "C",
+      "node_id": "6272:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6272-3484",
+      "screenshot": "6272-3484.png"
+    },
+    {
+      "id": "SQ-03",
+      "domain": "C",
+      "node_id": "6273:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6273-3484",
+      "screenshot": "6273-3484.png"
+    },
+    {
+      "id": "DB-C1",
+      "domain": "C",
+      "node_id": "6275:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6275-3484",
+      "screenshot": "6275-3484.png"
+    },
+    {
+      "id": "EER-C1",
+      "domain": "C",
+      "node_id": "6278:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6278-3484",
+      "screenshot": "6278-3484.png"
+    },
+    {
+      "id": "DB-C2",
+      "domain": "C",
+      "node_id": "6276:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6276-3484",
+      "screenshot": "6276-3484.png"
+    },
+    {
+      "id": "EER-C2",
+      "domain": "C",
+      "node_id": "6278:3565",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6278-3565",
+      "screenshot": "6278-3565.png"
+    },
+    {
+      "id": "DB-D",
+      "domain": "D",
+      "node_id": "6287:3485",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6287-3485",
+      "screenshot": "6287-3485.png"
+    },
+    {
+      "id": "EER-D",
+      "domain": "D",
+      "node_id": "6288:3484",
+      "url": "https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6288-3484",
+      "screenshot": "6288-3484.png"
+    }
+  ],
+  "source_sha256": {
+    "entrega/sql-eer/01_schema_completo_v1.sql": "b027249885ee7aadf00656750e0cfb22b6ec4ce58eef2e6251fe733c6f1273f7",
+    "entrega/sql-eer/rede_de_apoio_v1.mwb": "b9168c1c00c001a3aff7c17f131d63bceff0d263f7c31d54aa9a4b7bb7b7d8b5",
+    "entrega/sql-eer/diagrama_identidade_rede.svg": "a973f528fe8cb206990761f77ec948b2d63579f39c4bd8d8767dee06b740075b",
+    "entrega/sql-eer/diagrama_identidade_rede.png": "c2d504315e5f83fb5b0bd4f9c56570ae7d8f2cea2a9f01f1e41507bd06f7d71f",
+    "entrega/sql-eer/diagrama_agenda_tarefas.svg": "37886c2b4255f7e7d3841e158ea7fa9e7e031dc4c599fe1eb5e0eae7e5efa15d",
+    "entrega/sql-eer/diagrama_agenda_tarefas.png": "e75d706353cf2cacc67163e5f4bf0f9b7ff60477afa93c17ddc8dd0cb652fe0a",
+    "entrega/sql-eer/diagrama_medicacao.svg": "a6fe37608c1b96058b38e63261fb879072060804fc9e7759b7f515ae53b8f12d",
+    "entrega/sql-eer/diagrama_medicacao.png": "d6c9051fde359d198a44fbb2ce6978f351d2494167f2cf6771552c7f2adf507c",
+    "entrega/sql-eer/diagrama_diario_consultas.svg": "7efeb2b9ce677321e5cb6eb0ba4fb466793f878b3e760f47889aaa4da2887bc9",
+    "entrega/sql-eer/diagrama_diario_consultas.png": "0e57922aeda41dd5c3f0573b7f6be3a8b5838728dc93bbcf724b955aec456c88",
+    "entrega/sql-eer/diagrama_suporte_tecnico.svg": "ff058bb39d0bca3e5b234a664f96144a376bfb292540623c5fa365f7f6ea4573",
+    "entrega/sql-eer/diagrama_suporte_tecnico.png": "ac9cfafe02d688095c3e9e88884e8af20098e1ae35ac1187b7ec4a34cdb28983"
+  },
+  "evidence_sha256": {
+    "6238-3578.json": "cb9494c9045c01b72f6221e0ad3c315fde29411c1b7449d2e723ba523c317cca",
+    "6238-3578.png": "72672db7120b85f81255759038e1bf4c7455fefe95c61177ba628bb60af8fc2c",
+    "6250-3484-conexoes.json": "533f0bf387e45a8813aeb1490d56ffecec1302fc3f307e13ceee8f8fa2305355",
+    "6250-3484.json": "db623df73d6184c9c3e73f69ad3d4379ee841c119706a3630756f149017585e1",
+    "6250-3484.png": "0cbc4dbf9f9e53b338531ef93b1bc71943f025a86756b32b1ca8d9757f28f02a",
+    "6255-3484-conexoes.json": "00926d8c1a44e3b7943f916258458c444792efc652f39a32cf2f4648f6633447",
+    "6255-3484.json": "a5a7c1f6f896bd86deb3bbd494db4e88fd2318fa5bbfb73c79ee9e8bab880a29",
+    "6255-3484.png": "fbbcd7d7e7b69c919113403e0733f7a64775065de803af5b72b89a381a95571d",
+    "6257-3484-conexoes.json": "dbf03dfe58a501fe9d26ea0dba3ffd256294c33f260ee499aec875d60d5c1e91",
+    "6257-3484.json": "e8c6f8726e70f1755b52a0cb42a8da545936b7647cf4c0c2c1297a4475a92430",
+    "6257-3484.png": "da446b9e939cfb592fc13907a30a50e40380dd98b7d0f5517f8faabddd20921a",
+    "6259-3484-conexoes.json": "e51ef619764f0a4caadee21b8dbf714a377519a1310bf1111080148e2df4a379",
+    "6259-3484.json": "a12f86f9b541787c85f7de785fcd523a0806d5fdf41f840a79859d7ebbd0e18d",
+    "6259-3484.png": "1b21027114dabc74b8add92eaa7af9651202777e8f054facf5e8916b05934fde",
+    "6262-3484-conexoes.json": "c236df009e5bea3f73c9749e42eae2071bb2d233597a878234d896fd22abac19",
+    "6262-3484.json": "b338e83ee702aefa9f5231df7b5d81ed3a96ca67ba8159246a4a6bfade909846",
+    "6262-3484.png": "c169d84d9081381b724e67e41da4da41f8f12066f1cf7cf9b7f5f331b85d0d43",
+    "6263-3484-conexoes.json": "09ba6547b153328a3dc11650cbe30709a3298d6b2cf0463d3c17387e11beff33",
+    "6263-3484.json": "d82e4435747fae404577309bee5beb2a5ef662fc3ea79c525bd2b4ea2657235c",
+    "6263-3484.png": "827b76314eaef688abeccdf0f96be236451c6058d26871889caaa2b61441d46d",
+    "6265-3484-conexoes.json": "d321ee00b34658d980f1fbcf8bdb2913cb543a9f76460d3551ce7ab82f6e7ba6",
+    "6265-3484.json": "dbfcc0272f0e75fadaa8a2a5b611f26736ad574389bd496522e3c8d4127e9817",
+    "6265-3484.png": "15a46ee1aed218da0ef1f53b0a3ecb8bb78fa01d2657d53b7e4696e5ee4b72be",
+    "6266-3484-conexoes.json": "6bcff4af28bc6038f60071e9d3a506512ad9f8165104cb3d0f6e3d7bd93cc430",
+    "6266-3484.json": "3afc9f3c6331771a40c806352cd7203d271ec45bae46da537c6237bb9e2ca0e0",
+    "6266-3484.png": "9cdc77db5790e984821f3065427ca99113a8303b1a9adbda37c6cdc3d030caf5",
+    "6268-3484.json": "4c8613eb9f22c69d3971bda667754d4651836c7692a10bd8e5cbf5f73534f3c2",
+    "6268-3484.png": "63a5c13ab0e6689f31ae957d9530dfe15bbebec2c0bb80b403cce6530b6c7ca2",
+    "6270-3484-conexoes.json": "fadfc1b27fa41f514243536fc7fc7dda79412b0cfa74fe2fa253941fe97710c0",
+    "6270-3484.json": "5c26feb18178e62344f0dfb23032183c6311b36448e5b444f1da2d944cfcd1fc",
+    "6270-3484.png": "6d3fc1624126cdef40746bd4a555578dd0d79de0b08a42fc9d315a9ddbe5cea3",
+    "6272-3484-conexoes.json": "1870b0db06cf0894348af1d7507563e591807a3df1a4dbf2332c33d1900cc741",
+    "6272-3484.json": "2cf9ba412a9a532c6e127f7fd9e86d20a3c3f8fba39ed9ff7debe5a653669f59",
+    "6272-3484.png": "b84f6c48a311d37fc5e22c69d00a817e980ebea5c3ca18b67cc0f861c89fbd17",
+    "6273-3484-conexoes.json": "208cfc56eb187eec29a256d51ced09b43c3824926773d72dd39ed2f59c78413e",
+    "6273-3484.json": "a54d1ab5b4358f430acf15ac229f5ce061d1e5c09ac2e1dcfbaefd18533f777f",
+    "6273-3484.png": "50bb4b475c0bd9b51adf5879bba2a9fc854647639a0d9982301004132f718bd4",
+    "6275-3484-conexoes.json": "046bc09f86d7e6d998abebd9374d15c714fd6c22c7ee54a5282f0dd8d0b78d5b",
+    "6275-3484.json": "0af1e6aff7f23ed992dd811ecc8a5b71f8d12703bb2be0bfe3fbdb417749c605",
+    "6275-3484.png": "32084e1799e827c62a259267602284dbd191ba1b1b198017b17ddc8ff3675b50",
+    "6276-3484-conexoes.json": "b82c9c030f76ae5582eb4f2d869313670efc92342f4ce9a93d49d542334fc863",
+    "6276-3484.json": "885ff0cc524f489dfeae633f05c28d3849dc5e60ce2312e08486360c49fa742f",
+    "6276-3484.png": "271e0923708c2305b89cefa3a4d83f2b5ca5071646e80ee6033c423405472e32",
+    "6278-3484.json": "25378df97f66a7f5c8a1e72c65a66950496fdacb2f2100b41cfa512076777884",
+    "6278-3484.png": "b320e9b72db0727d476c7a6c2df57c1cc3185d1d96dd8f7be4794e6ab24f658e",
+    "6278-3565.json": "a8360ffe03d38e19e2708eb42d1f57484c31c7b3e5055444764840c37b72895a",
+    "6278-3565.png": "5d7644a5882b0eef4bcbe446ecefc10beef05df078fbeb87cabe51a4fc94e7f9",
+    "6287-3485-conexoes.json": "aadc891dd7db00866a3bf499e4e9129217df55f411f8dda2e3d9d78429033231",
+    "6287-3485.json": "30c295f6fe7e22d6f32966c692aa851ca7ee5e702c157d5c010f5aa42c77f36c",
+    "6287-3485.png": "b6a1cd0f5f0c9684af6b0c58dde862cabfb74e12e4cf584581824a6d3e685a32",
+    "6288-3484.json": "e8ac07dd231add2e6f8b7d62e33f1e286e0781b8e53fa630e4688cb06fbb4c0e",
+    "6288-3484.png": "675d8cb61f290882a339ce26c450db6da48d861e642a910212e3f59a1fbc9e3f",
+    "README.md": "519471b254c893d5147bef274fc38ea6e4367159b360a36b5e947994818e6d31",
+    "achados.json": "edd217a18f622978e6213beeae686f6b1fe38fbe22a49cd8ba2503ee5105cf01",
+    "comparar_sql_mwb.py": "df6a0377dcf5d9028be39858161c4d75c6df6f7d0eac5f18db3b62d02f7bafee",
+    "eer-identidade-detalhe-fonte.png": "dcfdea1613b373b4d828e1592815cc1aa638d0304aaf7cf872132f639287fcb4",
+    "inventario-pagina.json": "55d85b0b610f8279e310c4b760ce105c02ea33b09098b94fb92c443e47cb7a09",
+    "prototipo-acoes.json": "b45696fa254535a5f243e6a71878a1aac64380ba1cb899435f6695ab3d794cdb",
+    "prototipo-busca.json": "ab0994c653572a02feb05b946794c60ebeced214a639c40f37f13bdc13ea6dac",
+    "sql-mwb-comparacao.json": "12e47918a121bcee8975ca698cb5211539c9616e3da65f96bf47afc1d4a42722"
+  },
+  "limitations": [
+    "Figma capturado em sequência, não snapshot transacional de versão imutável",
+    "Não foi executado MySQL",
+    "Protótipo inspecionado estaticamente; cobertura navegável parcial",
+    "PDF docente não inspecionado visualmente na íntegra"
+  ]
+}

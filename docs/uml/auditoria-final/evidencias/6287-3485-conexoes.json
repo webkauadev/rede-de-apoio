@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "[{\"id\":\"6287:3565\",\"name\":\"AUD-USUARIO · relação FK\",\"x\":710,\"y\":350,\"width\":112,\"height\":26,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 57 0 L 57 26 L 112 26\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6287:3568\",\"name\":\"AUD-REDE · relação FK\",\"x\":710,\"y\":481,\"width\":112,\"height\":17,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 56 0 L 56 17 L 112 17\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6287:3571\",\"name\":\"PREF-USUARIO · relação FK\",\"x\":1100,\"y\":350,\"width\":115,\"height\":26,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 115 0 L 58 0 L 58 26 L 0 26\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6287:3574\",\"name\":\"PREF-REDE · relação FK\",\"x\":1100,\"y\":478,\"width\":115,\"height\":20,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 115 0 L 58 0 L 58 20 L 0 20\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6287:3577\",\"name\":\"IDEMP-USUARIO · relação FK\",\"x\":710,\"y\":714,\"width\":112,\"height\":0,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 58 0 M 58 0 L 58 0 Z M 58 0 L 112 0\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6287:3580\",\"name\":\"IDEMP-REDE · relação FK\",\"x\":710,\"y\":830,\"width\":112,\"height\":8,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 0 0 L 58 0 L 58 8 L 112 8\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6287:3583\",\"name\":\"ENTREGA-USUARIO · relação FK\",\"x\":1100,\"y\":714,\"width\":115,\"height\":0,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 115 0 L 59 0 M 59 0 L 59 0 Z M 59 0 L 0 0\"}],\"dash\":[],\"fills\":[]},{\"id\":\"6287:3586\",\"name\":\"ENTREGA-REDE · relação FK\",\"x\":1100,\"y\":838,\"width\":115,\"height\":0,\"paths\":[{\"windingRule\":\"NONE\",\"data\":\"M 115 0 L 59 0 M 59 0 L 59 0 Z M 59 0 L 0 0\"}],\"dash\":[],\"fills\":[]}]"
+    }
+  ],
+  "isError": false
+}

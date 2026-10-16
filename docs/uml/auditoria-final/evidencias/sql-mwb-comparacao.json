@@ -1,0 +1,4230 @@
+{
+  "tables": {
+    "administracao_medicamento": {
+      "administracao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "regime_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "horario_regime_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "ocorrencia_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "executor_membro_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "autor_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "realizada_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "registrada_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "observacao_original": {
+        "type": "TEXT",
+        "not_null": false,
+        "generated": false
+      },
+      "chave_idempotencia": {
+        "type": "VARCHAR(100)",
+        "not_null": false,
+        "generated": false
+      }
+    },
+    "anexo": {
+      "anexo_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "registro_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "consulta_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "administracao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "enviado_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "nome_sanitizado": {
+        "type": "VARCHAR(240)",
+        "not_null": true,
+        "generated": false
+      },
+      "mime_validado": {
+        "type": "VARCHAR(120)",
+        "not_null": true,
+        "generated": false
+      },
+      "tamanho_bytes": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "checksum_sha256": {
+        "type": "CHAR(64)",
+        "not_null": true,
+        "generated": false
+      },
+      "storage_key_opaca": {
+        "type": "VARCHAR(500)",
+        "not_null": true,
+        "generated": false
+      },
+      "estado_tecnico": {
+        "type": "VARCHAR(16)",
+        "not_null": true,
+        "generated": false
+      },
+      "criado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "atribuicao_papel_familiar": {
+      "atribuicao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "membro_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "categoria_exigida": {
+        "type": "VARCHAR(24)",
+        "not_null": true,
+        "generated": false
+      },
+      "papel": {
+        "type": "VARCHAR(16)",
+        "not_null": true,
+        "generated": false
+      },
+      "concedido_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "revogado_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      },
+      "concedido_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "principal_ativo_rede": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": true
+      },
+      "papel_ativo_membro": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": true
+      }
+    },
+    "auditoria": {
+      "auditoria_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "pessoa_idosa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "ator_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "evento_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "operacao": {
+        "type": "VARCHAR(80)",
+        "not_null": true,
+        "generated": false
+      },
+      "recurso_tipo": {
+        "type": "VARCHAR(70)",
+        "not_null": false,
+        "generated": false
+      },
+      "recurso_id_opaco": {
+        "type": "VARCHAR(120)",
+        "not_null": false,
+        "generated": false
+      },
+      "categoria_snapshot": {
+        "type": "VARCHAR(32)",
+        "not_null": false,
+        "generated": false
+      },
+      "papeis_snapshot": {
+        "type": "JSON",
+        "not_null": false,
+        "generated": false
+      },
+      "resultado": {
+        "type": "VARCHAR(12)",
+        "not_null": true,
+        "generated": false
+      },
+      "correlacao_id": {
+        "type": "CHAR(36)",
+        "not_null": false,
+        "generated": false
+      },
+      "detalhe_sanitizado": {
+        "type": "VARCHAR(500)",
+        "not_null": false,
+        "generated": false
+      }
+    },
+    "cadastro_rate_limit": {
+      "chave": {
+        "type": "CHAR(64)",
+        "not_null": true,
+        "generated": false
+      },
+      "janela_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "tentativas": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "compromisso": {
+      "compromisso_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "pessoa_idosa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "responsavel_membro_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "titulo": {
+        "type": "VARCHAR(180)",
+        "not_null": true,
+        "generated": false
+      },
+      "detalhes": {
+        "type": "TEXT",
+        "not_null": false,
+        "generated": false
+      },
+      "local": {
+        "type": "VARCHAR(240)",
+        "not_null": false,
+        "generated": false
+      },
+      "inicio_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "fim_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      },
+      "criado_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "criado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "conclusao_tarefa": {
+      "conclusao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "tarefa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "ciclo_numero": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "executor_membro_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "autor_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "concluida_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "registrada_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "observacao": {
+        "type": "TEXT",
+        "not_null": false,
+        "generated": false
+      },
+      "chave_idempotencia": {
+        "type": "VARCHAR(100)",
+        "not_null": false,
+        "generated": false
+      }
+    },
+    "consulta": {
+      "consulta_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "pessoa_idosa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "compromisso_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "realizada_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "observacao_original": {
+        "type": "TEXT",
+        "not_null": false,
+        "generated": false
+      },
+      "autor_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "registrada_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "contato_importante": {
+      "contato_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "pessoa_idosa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "nome": {
+        "type": "VARCHAR(160)",
+        "not_null": true,
+        "generated": false
+      },
+      "relacao": {
+        "type": "VARCHAR(100)",
+        "not_null": false,
+        "generated": false
+      },
+      "telefone": {
+        "type": "VARCHAR(32)",
+        "not_null": true,
+        "generated": false
+      },
+      "prioridade": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "ativo": {
+        "type": "TINYINT",
+        "not_null": true,
+        "generated": false
+      },
+      "registrado_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "atualizado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "convite_cadastro_cuidador": {
+      "convite_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "email_normalizado": {
+        "type": "VARCHAR(254)",
+        "not_null": true,
+        "generated": false
+      },
+      "token_hash": {
+        "type": "CHAR(64)",
+        "not_null": true,
+        "generated": false
+      },
+      "origem_emissao": {
+        "type": "VARCHAR(24)",
+        "not_null": true,
+        "generated": false
+      },
+      "emitido_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "criado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "expira_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "usado_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      },
+      "revogado_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      },
+      "email_convite_aberto": {
+        "type": "VARCHAR(254)",
+        "not_null": false,
+        "generated": true
+      },
+      "bootstrap_aberto": {
+        "type": "TINYINT",
+        "not_null": false,
+        "generated": true
+      }
+    },
+    "correcao_administracao_medicamento": {
+      "correcao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "administracao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "numero_versao": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "realizada_em_corrigida": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "observacao_corrigida": {
+        "type": "TEXT",
+        "not_null": false,
+        "generated": false
+      },
+      "justificativa": {
+        "type": "TEXT",
+        "not_null": true,
+        "generated": false
+      },
+      "autor_correcao_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "corrigido_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "correcao_consulta": {
+      "correcao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "consulta_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "numero_versao": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "realizada_em_corrigida": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "observacao_corrigida": {
+        "type": "TEXT",
+        "not_null": false,
+        "generated": false
+      },
+      "justificativa": {
+        "type": "TEXT",
+        "not_null": true,
+        "generated": false
+      },
+      "autor_correcao_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "corrigido_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "correcao_registro_cuidado": {
+      "correcao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "registro_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "numero_versao": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "descricao_corrigida": {
+        "type": "TEXT",
+        "not_null": true,
+        "generated": false
+      },
+      "ocorrido_em_corrigido": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "justificativa": {
+        "type": "TEXT",
+        "not_null": true,
+        "generated": false
+      },
+      "autor_correcao_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "corrigido_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "entrega_tecnica_notificacao": {
+      "entrega_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "usuario_destinatario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "tipo_evento": {
+        "type": "VARCHAR(3)",
+        "not_null": true,
+        "generated": false
+      },
+      "chave_evento": {
+        "type": "CHAR(64)",
+        "not_null": true,
+        "generated": false
+      },
+      "estado_transporte": {
+        "type": "VARCHAR(16)",
+        "not_null": true,
+        "generated": false
+      },
+      "tentativas": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "disponivel_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "entregue_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      },
+      "expira_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      }
+    },
+    "habilitacao_acesso_idoso": {
+      "habilitacao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "pessoa_idosa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "usuario_titular_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "solicitada_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "token_hash": {
+        "type": "CHAR(64)",
+        "not_null": true,
+        "generated": false
+      },
+      "criada_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "expira_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "usada_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      },
+      "revogada_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      },
+      "convite_corrente_pessoa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": true
+      }
+    },
+    "historico_plantao": {
+      "evento_plantao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "plantao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "membro_anterior_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "membro_novo_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "versao_anterior": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "versao_nova": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "tipo_evento": {
+        "type": "VARCHAR(22)",
+        "not_null": true,
+        "generated": false
+      },
+      "operado_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "ocorrido_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "operacao_correlacao_id": {
+        "type": "CHAR(36)",
+        "not_null": false,
+        "generated": false
+      }
+    },
+    "horario_regime": {
+      "horario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "regime_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "hora_local": {
+        "type": "TIME",
+        "not_null": true,
+        "generated": false
+      },
+      "fuso_iana": {
+        "type": "VARCHAR(64)",
+        "not_null": true,
+        "generated": false
+      },
+      "regra_recorrencia": {
+        "type": "VARCHAR(255)",
+        "not_null": false,
+        "generated": false
+      },
+      "inicio_data": {
+        "type": "DATE",
+        "not_null": true,
+        "generated": false
+      },
+      "fim_data": {
+        "type": "DATE",
+        "not_null": false,
+        "generated": false
+      },
+      "criado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "idempotencia_comando": {
+      "comando_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "ator_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "chave_cliente": {
+        "type": "VARCHAR(100)",
+        "not_null": true,
+        "generated": false
+      },
+      "payload_sha256": {
+        "type": "CHAR(64)",
+        "not_null": true,
+        "generated": false
+      },
+      "estado": {
+        "type": "VARCHAR(16)",
+        "not_null": true,
+        "generated": false
+      },
+      "resultado_minimo": {
+        "type": "JSON",
+        "not_null": false,
+        "generated": false
+      },
+      "criado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "finalizado_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      }
+    },
+    "informacao_emergencia": {
+      "emergencia_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "pessoa_idosa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "orientacoes": {
+        "type": "TEXT",
+        "not_null": true,
+        "generated": false
+      },
+      "observacoes": {
+        "type": "TEXT",
+        "not_null": false,
+        "generated": false
+      },
+      "atualizado_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "atualizado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "login_rate_limit": {
+      "chave": {
+        "type": "CHAR(64)",
+        "not_null": true,
+        "generated": false
+      },
+      "janela_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "tentativas": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "medicamento": {
+      "medicamento_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "pessoa_idosa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "nome": {
+        "type": "VARCHAR(180)",
+        "not_null": true,
+        "generated": false
+      },
+      "apresentacao": {
+        "type": "VARCHAR(180)",
+        "not_null": false,
+        "generated": false
+      },
+      "ativo": {
+        "type": "TINYINT",
+        "not_null": true,
+        "generated": false
+      },
+      "cadastrado_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "cadastrado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "membro_rede": {
+      "membro_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "tipo_usuario_exigido": {
+        "type": "VARCHAR(16)",
+        "not_null": true,
+        "generated": false
+      },
+      "categoria": {
+        "type": "VARCHAR(24)",
+        "not_null": true,
+        "generated": false
+      },
+      "vinculado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "desvinculado_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      },
+      "vinculado_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "usuario_vinculado_ativo": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": true
+      }
+    },
+    "ocorrencia_programada": {
+      "ocorrencia_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "tarefa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "horario_regime_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "responsavel_membro_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "previsto_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "geracao_origem": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "cancelada_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      },
+      "criada_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "pessoa_idosa": {
+      "pessoa_idosa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "usuario_titular_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "tipo_titular_exigido": {
+        "type": "VARCHAR(16)",
+        "not_null": true,
+        "generated": false
+      },
+      "nome": {
+        "type": "VARCHAR(160)",
+        "not_null": true,
+        "generated": false
+      },
+      "data_nascimento": {
+        "type": "DATE",
+        "not_null": false,
+        "generated": false
+      },
+      "ativo": {
+        "type": "TINYINT",
+        "not_null": true,
+        "generated": false
+      },
+      "cadastrado_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "criado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "plantao": {
+      "plantao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "membro_responsavel_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "inicio_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "fim_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "situacao": {
+        "type": "VARCHAR(16)",
+        "not_null": true,
+        "generated": false
+      },
+      "versao": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "criado_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "criado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "atualizado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "preferencia_notificacao": {
+      "preferencia_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "tipo_evento": {
+        "type": "VARCHAR(3)",
+        "not_null": true,
+        "generated": false
+      },
+      "receber": {
+        "type": "TINYINT",
+        "not_null": true,
+        "generated": false
+      },
+      "atualizado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "recomendacao": {
+      "recomendacao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "pessoa_idosa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "consulta_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "descricao": {
+        "type": "TEXT",
+        "not_null": true,
+        "generated": false
+      },
+      "autor_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "registrada_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "rede_cuidado": {
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "pessoa_idosa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "nome": {
+        "type": "VARCHAR(160)",
+        "not_null": true,
+        "generated": false
+      },
+      "situacao": {
+        "type": "VARCHAR(20)",
+        "not_null": true,
+        "generated": false
+      },
+      "versao": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "criada_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "criada_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "ativada_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      }
+    },
+    "regime_medicamento": {
+      "regime_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "medicamento_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "versao_plano": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "posologia_textual": {
+        "type": "TEXT",
+        "not_null": true,
+        "generated": false
+      },
+      "inicio_vigencia": {
+        "type": "DATE",
+        "not_null": true,
+        "generated": false
+      },
+      "fim_vigencia": {
+        "type": "DATE",
+        "not_null": false,
+        "generated": false
+      },
+      "criado_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "criado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "registro_cuidado": {
+      "registro_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "pessoa_idosa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "tipo": {
+        "type": "VARCHAR(20)",
+        "not_null": true,
+        "generated": false
+      },
+      "descricao_original": {
+        "type": "TEXT",
+        "not_null": true,
+        "generated": false
+      },
+      "ocorrido_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "registrado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "autor_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "sessao_usuario": {
+      "token_hash": {
+        "type": "CHAR(64)",
+        "not_null": true,
+        "generated": false
+      },
+      "usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "credencial_hash": {
+        "type": "CHAR(64)",
+        "not_null": true,
+        "generated": false
+      },
+      "criado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "expira_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "revogado_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      }
+    },
+    "solicitacao_troca_plantao": {
+      "troca_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "plantao_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "versao_plantao_esperada": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "solicitante_membro_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "destinatario_membro_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "respondido_por_membro_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "status": {
+        "type": "VARCHAR(16)",
+        "not_null": true,
+        "generated": false
+      },
+      "justificativa": {
+        "type": "TEXT",
+        "not_null": false,
+        "generated": false
+      },
+      "solicitada_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      },
+      "respondida_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      }
+    },
+    "tarefa": {
+      "tarefa_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "rede_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "responsavel_membro_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": false,
+        "generated": false
+      },
+      "titulo": {
+        "type": "VARCHAR(180)",
+        "not_null": true,
+        "generated": false
+      },
+      "descricao": {
+        "type": "TEXT",
+        "not_null": false,
+        "generated": false
+      },
+      "previsto_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      },
+      "prazo_em": {
+        "type": "DATETIME(6)",
+        "not_null": false,
+        "generated": false
+      },
+      "status": {
+        "type": "VARCHAR(16)",
+        "not_null": true,
+        "generated": false
+      },
+      "ciclo_atual": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "versao": {
+        "type": "INT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "criado_por_usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "criado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    },
+    "usuario": {
+      "usuario_id": {
+        "type": "BIGINT UNSIGNED",
+        "not_null": true,
+        "generated": false
+      },
+      "nome": {
+        "type": "VARCHAR(160)",
+        "not_null": true,
+        "generated": false
+      },
+      "email_normalizado": {
+        "type": "VARCHAR(254)",
+        "not_null": true,
+        "generated": false
+      },
+      "senha_hash": {
+        "type": "VARCHAR(255)",
+        "not_null": false,
+        "generated": false
+      },
+      "tipo_acesso": {
+        "type": "VARCHAR(16)",
+        "not_null": true,
+        "generated": false
+      },
+      "telefone": {
+        "type": "VARCHAR(32)",
+        "not_null": false,
+        "generated": false
+      },
+      "ativo": {
+        "type": "TINYINT",
+        "not_null": true,
+        "generated": false
+      },
+      "criado_em": {
+        "type": "DATETIME(6)",
+        "not_null": true,
+        "generated": false
+      }
+    }
+  },
+  "foreign_keys": {
+    "fk_administracao_autor": {
+      "child": "administracao_medicamento",
+      "columns": [
+        "autor_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_administracao_executor": {
+      "child": "administracao_medicamento",
+      "columns": [
+        "rede_id",
+        "executor_membro_id"
+      ],
+      "parent": "membro_rede",
+      "ref_columns": [
+        "rede_id",
+        "membro_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_administracao_horario": {
+      "child": "administracao_medicamento",
+      "columns": [
+        "rede_id",
+        "regime_id",
+        "horario_regime_id"
+      ],
+      "parent": "horario_regime",
+      "ref_columns": [
+        "rede_id",
+        "regime_id",
+        "horario_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_administracao_ocorrencia": {
+      "child": "administracao_medicamento",
+      "columns": [
+        "rede_id",
+        "horario_regime_id",
+        "ocorrencia_id"
+      ],
+      "parent": "ocorrencia_programada",
+      "ref_columns": [
+        "rede_id",
+        "horario_regime_id",
+        "ocorrencia_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_administracao_regime": {
+      "child": "administracao_medicamento",
+      "columns": [
+        "rede_id",
+        "regime_id"
+      ],
+      "parent": "regime_medicamento",
+      "ref_columns": [
+        "rede_id",
+        "regime_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_anexo_administracao": {
+      "child": "anexo",
+      "columns": [
+        "rede_id",
+        "administracao_id"
+      ],
+      "parent": "administracao_medicamento",
+      "ref_columns": [
+        "rede_id",
+        "administracao_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_anexo_autor": {
+      "child": "anexo",
+      "columns": [
+        "enviado_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_anexo_consulta": {
+      "child": "anexo",
+      "columns": [
+        "rede_id",
+        "consulta_id"
+      ],
+      "parent": "consulta",
+      "ref_columns": [
+        "rede_id",
+        "consulta_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_anexo_registro": {
+      "child": "anexo",
+      "columns": [
+        "rede_id",
+        "registro_id"
+      ],
+      "parent": "registro_cuidado",
+      "ref_columns": [
+        "rede_id",
+        "registro_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_papel_concedente": {
+      "child": "atribuicao_papel_familiar",
+      "columns": [
+        "concedido_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_papel_membro_familiar": {
+      "child": "atribuicao_papel_familiar",
+      "columns": [
+        "rede_id",
+        "membro_id",
+        "categoria_exigida"
+      ],
+      "parent": "membro_rede",
+      "ref_columns": [
+        "rede_id",
+        "membro_id",
+        "categoria"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_auditoria_ator": {
+      "child": "auditoria",
+      "columns": [
+        "ator_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_auditoria_pessoa": {
+      "child": "auditoria",
+      "columns": [
+        "pessoa_idosa_id"
+      ],
+      "parent": "pessoa_idosa",
+      "ref_columns": [
+        "pessoa_idosa_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_auditoria_rede": {
+      "child": "auditoria",
+      "columns": [
+        "rede_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_compromisso_contexto": {
+      "child": "compromisso",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_compromisso_criador": {
+      "child": "compromisso",
+      "columns": [
+        "criado_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_compromisso_responsavel": {
+      "child": "compromisso",
+      "columns": [
+        "rede_id",
+        "responsavel_membro_id"
+      ],
+      "parent": "membro_rede",
+      "ref_columns": [
+        "rede_id",
+        "membro_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_conclusao_autor": {
+      "child": "conclusao_tarefa",
+      "columns": [
+        "autor_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_conclusao_executor": {
+      "child": "conclusao_tarefa",
+      "columns": [
+        "rede_id",
+        "executor_membro_id"
+      ],
+      "parent": "membro_rede",
+      "ref_columns": [
+        "rede_id",
+        "membro_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_conclusao_tarefa": {
+      "child": "conclusao_tarefa",
+      "columns": [
+        "rede_id",
+        "tarefa_id"
+      ],
+      "parent": "tarefa",
+      "ref_columns": [
+        "rede_id",
+        "tarefa_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_consulta_autor": {
+      "child": "consulta",
+      "columns": [
+        "autor_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_consulta_compromisso": {
+      "child": "consulta",
+      "columns": [
+        "rede_id",
+        "compromisso_id"
+      ],
+      "parent": "compromisso",
+      "ref_columns": [
+        "rede_id",
+        "compromisso_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_consulta_contexto": {
+      "child": "consulta",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_contato_autor": {
+      "child": "contato_importante",
+      "columns": [
+        "registrado_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_contato_contexto": {
+      "child": "contato_importante",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_convite_cuidador_emitente": {
+      "child": "convite_cadastro_cuidador",
+      "columns": [
+        "emitido_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_correcao_administracao": {
+      "child": "correcao_administracao_medicamento",
+      "columns": [
+        "rede_id",
+        "administracao_id"
+      ],
+      "parent": "administracao_medicamento",
+      "ref_columns": [
+        "rede_id",
+        "administracao_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_correcao_administracao_autor": {
+      "child": "correcao_administracao_medicamento",
+      "columns": [
+        "autor_correcao_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_correcao_consulta": {
+      "child": "correcao_consulta",
+      "columns": [
+        "rede_id",
+        "consulta_id"
+      ],
+      "parent": "consulta",
+      "ref_columns": [
+        "rede_id",
+        "consulta_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_correcao_consulta_autor": {
+      "child": "correcao_consulta",
+      "columns": [
+        "autor_correcao_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_correcao_registro": {
+      "child": "correcao_registro_cuidado",
+      "columns": [
+        "rede_id",
+        "registro_id"
+      ],
+      "parent": "registro_cuidado",
+      "ref_columns": [
+        "rede_id",
+        "registro_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_correcao_registro_autor": {
+      "child": "correcao_registro_cuidado",
+      "columns": [
+        "autor_correcao_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_entrega_destinatario": {
+      "child": "entrega_tecnica_notificacao",
+      "columns": [
+        "usuario_destinatario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_entrega_rede": {
+      "child": "entrega_tecnica_notificacao",
+      "columns": [
+        "rede_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_habilitacao_pessoa_titular": {
+      "child": "habilitacao_acesso_idoso",
+      "columns": [
+        "pessoa_idosa_id",
+        "usuario_titular_id"
+      ],
+      "parent": "pessoa_idosa",
+      "ref_columns": [
+        "pessoa_idosa_id",
+        "usuario_titular_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_habilitacao_solicitante": {
+      "child": "habilitacao_acesso_idoso",
+      "columns": [
+        "solicitada_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_habilitacao_titular": {
+      "child": "habilitacao_acesso_idoso",
+      "columns": [
+        "usuario_titular_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_historico_ator": {
+      "child": "historico_plantao",
+      "columns": [
+        "operado_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_historico_membro_antes": {
+      "child": "historico_plantao",
+      "columns": [
+        "rede_id",
+        "membro_anterior_id"
+      ],
+      "parent": "membro_rede",
+      "ref_columns": [
+        "rede_id",
+        "membro_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_historico_membro_depois": {
+      "child": "historico_plantao",
+      "columns": [
+        "rede_id",
+        "membro_novo_id"
+      ],
+      "parent": "membro_rede",
+      "ref_columns": [
+        "rede_id",
+        "membro_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_historico_plantao": {
+      "child": "historico_plantao",
+      "columns": [
+        "rede_id",
+        "plantao_id"
+      ],
+      "parent": "plantao",
+      "ref_columns": [
+        "rede_id",
+        "plantao_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_horario_regime": {
+      "child": "horario_regime",
+      "columns": [
+        "rede_id",
+        "regime_id"
+      ],
+      "parent": "regime_medicamento",
+      "ref_columns": [
+        "rede_id",
+        "regime_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_idempotencia_ator": {
+      "child": "idempotencia_comando",
+      "columns": [
+        "ator_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_idempotencia_rede": {
+      "child": "idempotencia_comando",
+      "columns": [
+        "rede_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_emergencia_autor": {
+      "child": "informacao_emergencia",
+      "columns": [
+        "atualizado_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_emergencia_contexto": {
+      "child": "informacao_emergencia",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_medicamento_autor": {
+      "child": "medicamento",
+      "columns": [
+        "cadastrado_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_medicamento_contexto": {
+      "child": "medicamento",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_membro_rede": {
+      "child": "membro_rede",
+      "columns": [
+        "rede_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_membro_usuario_tipo": {
+      "child": "membro_rede",
+      "columns": [
+        "usuario_id",
+        "tipo_usuario_exigido"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id",
+        "tipo_acesso"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_membro_vinculador": {
+      "child": "membro_rede",
+      "columns": [
+        "vinculado_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_ocorrencia_designado": {
+      "child": "ocorrencia_programada",
+      "columns": [
+        "rede_id",
+        "responsavel_membro_id"
+      ],
+      "parent": "membro_rede",
+      "ref_columns": [
+        "rede_id",
+        "membro_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_ocorrencia_horario": {
+      "child": "ocorrencia_programada",
+      "columns": [
+        "rede_id",
+        "horario_regime_id"
+      ],
+      "parent": "horario_regime",
+      "ref_columns": [
+        "rede_id",
+        "horario_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_ocorrencia_rede": {
+      "child": "ocorrencia_programada",
+      "columns": [
+        "rede_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_ocorrencia_tarefa": {
+      "child": "ocorrencia_programada",
+      "columns": [
+        "rede_id",
+        "tarefa_id"
+      ],
+      "parent": "tarefa",
+      "ref_columns": [
+        "rede_id",
+        "tarefa_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_pessoa_cadastrante": {
+      "child": "pessoa_idosa",
+      "columns": [
+        "cadastrado_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_pessoa_conta_tipo": {
+      "child": "pessoa_idosa",
+      "columns": [
+        "usuario_titular_id",
+        "tipo_titular_exigido"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id",
+        "tipo_acesso"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_plantao_criador": {
+      "child": "plantao",
+      "columns": [
+        "criado_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_plantao_membro": {
+      "child": "plantao",
+      "columns": [
+        "rede_id",
+        "membro_responsavel_id"
+      ],
+      "parent": "membro_rede",
+      "ref_columns": [
+        "rede_id",
+        "membro_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_plantao_rede": {
+      "child": "plantao",
+      "columns": [
+        "rede_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_preferencia_rede": {
+      "child": "preferencia_notificacao",
+      "columns": [
+        "rede_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_preferencia_usuario": {
+      "child": "preferencia_notificacao",
+      "columns": [
+        "usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_recomendacao_autor": {
+      "child": "recomendacao",
+      "columns": [
+        "autor_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_recomendacao_consulta": {
+      "child": "recomendacao",
+      "columns": [
+        "rede_id",
+        "consulta_id"
+      ],
+      "parent": "consulta",
+      "ref_columns": [
+        "rede_id",
+        "consulta_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_recomendacao_contexto": {
+      "child": "recomendacao",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_rede_criador": {
+      "child": "rede_cuidado",
+      "columns": [
+        "criada_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_rede_pessoa": {
+      "child": "rede_cuidado",
+      "columns": [
+        "pessoa_idosa_id"
+      ],
+      "parent": "pessoa_idosa",
+      "ref_columns": [
+        "pessoa_idosa_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_regime_autor": {
+      "child": "regime_medicamento",
+      "columns": [
+        "criado_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_regime_medicamento": {
+      "child": "regime_medicamento",
+      "columns": [
+        "rede_id",
+        "medicamento_id"
+      ],
+      "parent": "medicamento",
+      "ref_columns": [
+        "rede_id",
+        "medicamento_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_registro_autor": {
+      "child": "registro_cuidado",
+      "columns": [
+        "autor_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_registro_contexto": {
+      "child": "registro_cuidado",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_sessao_usuario": {
+      "child": "sessao_usuario",
+      "columns": [
+        "usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_troca_destinatario": {
+      "child": "solicitacao_troca_plantao",
+      "columns": [
+        "rede_id",
+        "destinatario_membro_id"
+      ],
+      "parent": "membro_rede",
+      "ref_columns": [
+        "rede_id",
+        "membro_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_troca_plantao": {
+      "child": "solicitacao_troca_plantao",
+      "columns": [
+        "rede_id",
+        "plantao_id"
+      ],
+      "parent": "plantao",
+      "ref_columns": [
+        "rede_id",
+        "plantao_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_troca_respondente": {
+      "child": "solicitacao_troca_plantao",
+      "columns": [
+        "rede_id",
+        "respondido_por_membro_id"
+      ],
+      "parent": "membro_rede",
+      "ref_columns": [
+        "rede_id",
+        "membro_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_troca_solicitante": {
+      "child": "solicitacao_troca_plantao",
+      "columns": [
+        "rede_id",
+        "solicitante_membro_id"
+      ],
+      "parent": "membro_rede",
+      "ref_columns": [
+        "rede_id",
+        "membro_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_tarefa_criador": {
+      "child": "tarefa",
+      "columns": [
+        "criado_por_usuario_id"
+      ],
+      "parent": "usuario",
+      "ref_columns": [
+        "usuario_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_tarefa_rede": {
+      "child": "tarefa",
+      "columns": [
+        "rede_id"
+      ],
+      "parent": "rede_cuidado",
+      "ref_columns": [
+        "rede_id"
+      ],
+      "nullable": false,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    },
+    "fk_tarefa_responsavel": {
+      "child": "tarefa",
+      "columns": [
+        "rede_id",
+        "responsavel_membro_id"
+      ],
+      "parent": "membro_rede",
+      "ref_columns": [
+        "rede_id",
+        "membro_id"
+      ],
+      "nullable": true,
+      "many": "1",
+      "mandatory": "1",
+      "referencedMandatory": "1"
+    }
+  },
+  "indexes": {
+    "administracao_medicamento": {
+      "PRIMARY": {
+        "columns": [
+          "administracao_id"
+        ],
+        "unique": true
+      },
+      "uq_administracao_escopo": {
+        "columns": [
+          "rede_id",
+          "administracao_id"
+        ],
+        "unique": true
+      },
+      "uq_administracao_ocorrencia_v1": {
+        "columns": [
+          "rede_id",
+          "ocorrencia_id"
+        ],
+        "unique": true
+      },
+      "uq_administracao_comando": {
+        "columns": [
+          "rede_id",
+          "autor_usuario_id",
+          "chave_idempotencia"
+        ],
+        "unique": true
+      },
+      "ix_administracao_regime": {
+        "columns": [
+          "rede_id",
+          "regime_id",
+          "realizada_em"
+        ],
+        "unique": false
+      },
+      "ix_administracao_horario_fk": {
+        "columns": [
+          "rede_id",
+          "regime_id",
+          "horario_regime_id"
+        ],
+        "unique": false
+      },
+      "ix_administracao_ocorrencia_fk": {
+        "columns": [
+          "rede_id",
+          "horario_regime_id",
+          "ocorrencia_id"
+        ],
+        "unique": false
+      },
+      "ix_administracao_executor": {
+        "columns": [
+          "rede_id",
+          "executor_membro_id"
+        ],
+        "unique": false
+      },
+      "ix_administracao_autor": {
+        "columns": [
+          "autor_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "anexo": {
+      "PRIMARY": {
+        "columns": [
+          "anexo_id"
+        ],
+        "unique": true
+      },
+      "uq_anexo_storage": {
+        "columns": [
+          "storage_key_opaca"
+        ],
+        "unique": true
+      },
+      "ix_anexo_registro": {
+        "columns": [
+          "rede_id",
+          "registro_id"
+        ],
+        "unique": false
+      },
+      "ix_anexo_consulta": {
+        "columns": [
+          "rede_id",
+          "consulta_id"
+        ],
+        "unique": false
+      },
+      "ix_anexo_administracao": {
+        "columns": [
+          "rede_id",
+          "administracao_id"
+        ],
+        "unique": false
+      },
+      "ix_anexo_autor": {
+        "columns": [
+          "enviado_por_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "atribuicao_papel_familiar": {
+      "PRIMARY": {
+        "columns": [
+          "atribuicao_id"
+        ],
+        "unique": true
+      },
+      "uq_papel_principal_rede": {
+        "columns": [
+          "principal_ativo_rede"
+        ],
+        "unique": true
+      },
+      "uq_papel_vigente_membro": {
+        "columns": [
+          "rede_id",
+          "papel",
+          "papel_ativo_membro"
+        ],
+        "unique": true
+      },
+      "ix_papel_membro_hist": {
+        "columns": [
+          "rede_id",
+          "membro_id",
+          "concedido_em"
+        ],
+        "unique": false
+      },
+      "ix_papel_concedente": {
+        "columns": [
+          "concedido_por_usuario_id"
+        ],
+        "unique": false
+      },
+      "fk_papel_membro_familiar": {
+        "columns": [
+          "rede_id",
+          "membro_id",
+          "categoria_exigida"
+        ],
+        "unique": false
+      }
+    },
+    "auditoria": {
+      "PRIMARY": {
+        "columns": [
+          "auditoria_id"
+        ],
+        "unique": true
+      },
+      "ix_auditoria_rede_tempo": {
+        "columns": [
+          "rede_id",
+          "evento_em"
+        ],
+        "unique": false
+      },
+      "ix_auditoria_pessoa_tempo": {
+        "columns": [
+          "pessoa_idosa_id",
+          "evento_em"
+        ],
+        "unique": false
+      },
+      "ix_auditoria_ator_tempo": {
+        "columns": [
+          "ator_usuario_id",
+          "evento_em"
+        ],
+        "unique": false
+      },
+      "ix_auditoria_correlacao": {
+        "columns": [
+          "correlacao_id"
+        ],
+        "unique": false
+      }
+    },
+    "cadastro_rate_limit": {
+      "PRIMARY": {
+        "columns": [
+          "chave"
+        ],
+        "unique": true
+      }
+    },
+    "compromisso": {
+      "PRIMARY": {
+        "columns": [
+          "compromisso_id"
+        ],
+        "unique": true
+      },
+      "uq_compromisso_escopo": {
+        "columns": [
+          "rede_id",
+          "compromisso_id"
+        ],
+        "unique": true
+      },
+      "ix_compromisso_pessoa_tempo": {
+        "columns": [
+          "rede_id",
+          "pessoa_idosa_id",
+          "inicio_em"
+        ],
+        "unique": false
+      },
+      "ix_compromisso_responsavel": {
+        "columns": [
+          "rede_id",
+          "responsavel_membro_id"
+        ],
+        "unique": false
+      },
+      "ix_compromisso_criador": {
+        "columns": [
+          "criado_por_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "conclusao_tarefa": {
+      "PRIMARY": {
+        "columns": [
+          "conclusao_id"
+        ],
+        "unique": true
+      },
+      "uq_conclusao_ciclo": {
+        "columns": [
+          "rede_id",
+          "tarefa_id",
+          "ciclo_numero"
+        ],
+        "unique": true
+      },
+      "uq_conclusao_comando": {
+        "columns": [
+          "rede_id",
+          "autor_usuario_id",
+          "chave_idempotencia"
+        ],
+        "unique": true
+      },
+      "ix_conclusao_executor": {
+        "columns": [
+          "rede_id",
+          "executor_membro_id"
+        ],
+        "unique": false
+      },
+      "ix_conclusao_autor": {
+        "columns": [
+          "autor_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "consulta": {
+      "PRIMARY": {
+        "columns": [
+          "consulta_id"
+        ],
+        "unique": true
+      },
+      "uq_consulta_escopo": {
+        "columns": [
+          "rede_id",
+          "consulta_id"
+        ],
+        "unique": true
+      },
+      "ix_consulta_pessoa_data": {
+        "columns": [
+          "rede_id",
+          "pessoa_idosa_id",
+          "realizada_em"
+        ],
+        "unique": false
+      },
+      "ix_consulta_compromisso": {
+        "columns": [
+          "rede_id",
+          "compromisso_id"
+        ],
+        "unique": false
+      },
+      "ix_consulta_autor": {
+        "columns": [
+          "autor_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "contato_importante": {
+      "PRIMARY": {
+        "columns": [
+          "contato_id"
+        ],
+        "unique": true
+      },
+      "ix_contato_pessoa": {
+        "columns": [
+          "rede_id",
+          "pessoa_idosa_id",
+          "prioridade"
+        ],
+        "unique": false
+      },
+      "ix_contato_autor": {
+        "columns": [
+          "registrado_por_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "convite_cadastro_cuidador": {
+      "PRIMARY": {
+        "columns": [
+          "convite_id"
+        ],
+        "unique": true
+      },
+      "uq_convite_cuidador_token": {
+        "columns": [
+          "token_hash"
+        ],
+        "unique": true
+      },
+      "uq_convite_cuidador_email_aberto": {
+        "columns": [
+          "email_convite_aberto"
+        ],
+        "unique": true
+      },
+      "uq_convite_cuidador_bootstrap_aberto": {
+        "columns": [
+          "bootstrap_aberto"
+        ],
+        "unique": true
+      },
+      "ix_convite_cuidador_emitente": {
+        "columns": [
+          "emitido_por_usuario_id"
+        ],
+        "unique": false
+      },
+      "ix_convite_cuidador_email_historico": {
+        "columns": [
+          "email_normalizado",
+          "criado_em"
+        ],
+        "unique": false
+      }
+    },
+    "correcao_administracao_medicamento": {
+      "PRIMARY": {
+        "columns": [
+          "correcao_id"
+        ],
+        "unique": true
+      },
+      "uq_correcao_administracao_versao": {
+        "columns": [
+          "rede_id",
+          "administracao_id",
+          "numero_versao"
+        ],
+        "unique": true
+      },
+      "ix_correcao_administracao_autor": {
+        "columns": [
+          "autor_correcao_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "correcao_consulta": {
+      "PRIMARY": {
+        "columns": [
+          "correcao_id"
+        ],
+        "unique": true
+      },
+      "uq_correcao_consulta_versao": {
+        "columns": [
+          "rede_id",
+          "consulta_id",
+          "numero_versao"
+        ],
+        "unique": true
+      },
+      "ix_correcao_consulta_autor": {
+        "columns": [
+          "autor_correcao_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "correcao_registro_cuidado": {
+      "PRIMARY": {
+        "columns": [
+          "correcao_id"
+        ],
+        "unique": true
+      },
+      "uq_correcao_registro_versao": {
+        "columns": [
+          "rede_id",
+          "registro_id",
+          "numero_versao"
+        ],
+        "unique": true
+      },
+      "ix_correcao_registro_autor": {
+        "columns": [
+          "autor_correcao_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "entrega_tecnica_notificacao": {
+      "PRIMARY": {
+        "columns": [
+          "entrega_id"
+        ],
+        "unique": true
+      },
+      "uq_entrega_evento_destinatario": {
+        "columns": [
+          "rede_id",
+          "tipo_evento",
+          "chave_evento",
+          "usuario_destinatario_id"
+        ],
+        "unique": true
+      },
+      "ix_entrega_fila": {
+        "columns": [
+          "estado_transporte",
+          "disponivel_em"
+        ],
+        "unique": false
+      },
+      "ix_entrega_destinatario": {
+        "columns": [
+          "usuario_destinatario_id"
+        ],
+        "unique": false
+      }
+    },
+    "habilitacao_acesso_idoso": {
+      "PRIMARY": {
+        "columns": [
+          "habilitacao_id"
+        ],
+        "unique": true
+      },
+      "uq_habilitacao_token_hash": {
+        "columns": [
+          "token_hash"
+        ],
+        "unique": true
+      },
+      "uq_convite_aberto_pessoa": {
+        "columns": [
+          "convite_corrente_pessoa_id"
+        ],
+        "unique": true
+      },
+      "ix_habilitacao_titular": {
+        "columns": [
+          "usuario_titular_id"
+        ],
+        "unique": false
+      },
+      "ix_habilitacao_autor": {
+        "columns": [
+          "solicitada_por_usuario_id"
+        ],
+        "unique": false
+      },
+      "fk_habilitacao_pessoa_titular": {
+        "columns": [
+          "pessoa_idosa_id",
+          "usuario_titular_id"
+        ],
+        "unique": false
+      }
+    },
+    "historico_plantao": {
+      "PRIMARY": {
+        "columns": [
+          "evento_plantao_id"
+        ],
+        "unique": true
+      },
+      "uq_historico_plantao_versao": {
+        "columns": [
+          "rede_id",
+          "plantao_id",
+          "versao_nova"
+        ],
+        "unique": true
+      },
+      "ix_historico_plantao": {
+        "columns": [
+          "rede_id",
+          "plantao_id",
+          "ocorrido_em"
+        ],
+        "unique": false
+      },
+      "ix_historico_membro_antes": {
+        "columns": [
+          "rede_id",
+          "membro_anterior_id"
+        ],
+        "unique": false
+      },
+      "ix_historico_membro_depois": {
+        "columns": [
+          "rede_id",
+          "membro_novo_id"
+        ],
+        "unique": false
+      },
+      "ix_historico_ator": {
+        "columns": [
+          "operado_por_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "horario_regime": {
+      "PRIMARY": {
+        "columns": [
+          "horario_id"
+        ],
+        "unique": true
+      },
+      "uq_horario_escopo": {
+        "columns": [
+          "rede_id",
+          "horario_id"
+        ],
+        "unique": true
+      },
+      "uq_horario_regime_triplo": {
+        "columns": [
+          "rede_id",
+          "regime_id",
+          "horario_id"
+        ],
+        "unique": true
+      },
+      "ix_horario_regime": {
+        "columns": [
+          "rede_id",
+          "regime_id",
+          "hora_local"
+        ],
+        "unique": false
+      }
+    },
+    "idempotencia_comando": {
+      "PRIMARY": {
+        "columns": [
+          "comando_id"
+        ],
+        "unique": true
+      },
+      "uq_idempotencia_ator_chave": {
+        "columns": [
+          "rede_id",
+          "ator_usuario_id",
+          "chave_cliente"
+        ],
+        "unique": true
+      },
+      "ix_idempotencia_criado": {
+        "columns": [
+          "criado_em"
+        ],
+        "unique": false
+      },
+      "fk_idempotencia_ator": {
+        "columns": [
+          "ator_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "informacao_emergencia": {
+      "PRIMARY": {
+        "columns": [
+          "emergencia_id"
+        ],
+        "unique": true
+      },
+      "uq_emergencia_ficha": {
+        "columns": [
+          "rede_id",
+          "pessoa_idosa_id"
+        ],
+        "unique": true
+      },
+      "ix_emergencia_autor": {
+        "columns": [
+          "atualizado_por_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "login_rate_limit": {
+      "PRIMARY": {
+        "columns": [
+          "chave"
+        ],
+        "unique": true
+      },
+      "ix_login_janela": {
+        "columns": [
+          "janela_em"
+        ],
+        "unique": false
+      }
+    },
+    "medicamento": {
+      "PRIMARY": {
+        "columns": [
+          "medicamento_id"
+        ],
+        "unique": true
+      },
+      "uq_medicamento_escopo": {
+        "columns": [
+          "rede_id",
+          "medicamento_id"
+        ],
+        "unique": true
+      },
+      "ix_medicamento_pessoa": {
+        "columns": [
+          "rede_id",
+          "pessoa_idosa_id",
+          "ativo"
+        ],
+        "unique": false
+      },
+      "ix_medicamento_autor": {
+        "columns": [
+          "cadastrado_por_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "membro_rede": {
+      "PRIMARY": {
+        "columns": [
+          "membro_id"
+        ],
+        "unique": true
+      },
+      "uq_membro_escopo": {
+        "columns": [
+          "rede_id",
+          "membro_id"
+        ],
+        "unique": true
+      },
+      "uq_membro_escopo_categoria": {
+        "columns": [
+          "rede_id",
+          "membro_id",
+          "categoria"
+        ],
+        "unique": true
+      },
+      "uq_membro_usuario_ativo": {
+        "columns": [
+          "rede_id",
+          "usuario_vinculado_ativo"
+        ],
+        "unique": true
+      },
+      "ix_membro_usuario_hist": {
+        "columns": [
+          "usuario_id",
+          "rede_id",
+          "vinculado_em"
+        ],
+        "unique": false
+      },
+      "ix_membro_registrador": {
+        "columns": [
+          "vinculado_por_usuario_id"
+        ],
+        "unique": false
+      },
+      "fk_membro_usuario_tipo": {
+        "columns": [
+          "usuario_id",
+          "tipo_usuario_exigido"
+        ],
+        "unique": false
+      }
+    },
+    "ocorrencia_programada": {
+      "PRIMARY": {
+        "columns": [
+          "ocorrencia_id"
+        ],
+        "unique": true
+      },
+      "uq_ocorrencia_escopo": {
+        "columns": [
+          "rede_id",
+          "ocorrencia_id"
+        ],
+        "unique": true
+      },
+      "uq_ocorrencia_medicacao_triplo": {
+        "columns": [
+          "rede_id",
+          "horario_regime_id",
+          "ocorrencia_id"
+        ],
+        "unique": true
+      },
+      "uq_ocorrencia_tarefa": {
+        "columns": [
+          "rede_id",
+          "tarefa_id",
+          "previsto_em",
+          "geracao_origem"
+        ],
+        "unique": true
+      },
+      "uq_ocorrencia_horario": {
+        "columns": [
+          "rede_id",
+          "horario_regime_id",
+          "previsto_em",
+          "geracao_origem"
+        ],
+        "unique": true
+      },
+      "ix_ocorrencia_rede_previsto": {
+        "columns": [
+          "rede_id",
+          "previsto_em"
+        ],
+        "unique": false
+      },
+      "ix_ocorrencia_designado": {
+        "columns": [
+          "rede_id",
+          "responsavel_membro_id"
+        ],
+        "unique": false
+      }
+    },
+    "pessoa_idosa": {
+      "PRIMARY": {
+        "columns": [
+          "pessoa_idosa_id"
+        ],
+        "unique": true
+      },
+      "uq_pessoa_titular": {
+        "columns": [
+          "usuario_titular_id"
+        ],
+        "unique": true
+      },
+      "uq_pessoa_titular_par": {
+        "columns": [
+          "pessoa_idosa_id",
+          "usuario_titular_id"
+        ],
+        "unique": true
+      },
+      "ix_pessoa_cadastrante": {
+        "columns": [
+          "cadastrado_por_usuario_id"
+        ],
+        "unique": false
+      },
+      "fk_pessoa_conta_tipo": {
+        "columns": [
+          "usuario_titular_id",
+          "tipo_titular_exigido"
+        ],
+        "unique": false
+      }
+    },
+    "plantao": {
+      "PRIMARY": {
+        "columns": [
+          "plantao_id"
+        ],
+        "unique": true
+      },
+      "uq_plantao_escopo": {
+        "columns": [
+          "rede_id",
+          "plantao_id"
+        ],
+        "unique": true
+      },
+      "ix_plantao_rede_tempo": {
+        "columns": [
+          "rede_id",
+          "inicio_em",
+          "fim_em"
+        ],
+        "unique": false
+      },
+      "ix_plantao_responsavel": {
+        "columns": [
+          "rede_id",
+          "membro_responsavel_id",
+          "inicio_em"
+        ],
+        "unique": false
+      },
+      "ix_plantao_criador": {
+        "columns": [
+          "criado_por_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "preferencia_notificacao": {
+      "PRIMARY": {
+        "columns": [
+          "preferencia_id"
+        ],
+        "unique": true
+      },
+      "uq_preferencia_notificacao": {
+        "columns": [
+          "rede_id",
+          "usuario_id",
+          "tipo_evento"
+        ],
+        "unique": true
+      },
+      "ix_preferencia_usuario": {
+        "columns": [
+          "usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "recomendacao": {
+      "PRIMARY": {
+        "columns": [
+          "recomendacao_id"
+        ],
+        "unique": true
+      },
+      "ix_recomendacao_consulta": {
+        "columns": [
+          "rede_id",
+          "consulta_id"
+        ],
+        "unique": false
+      },
+      "ix_recomendacao_pessoa": {
+        "columns": [
+          "rede_id",
+          "pessoa_idosa_id"
+        ],
+        "unique": false
+      },
+      "ix_recomendacao_autor": {
+        "columns": [
+          "autor_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "rede_cuidado": {
+      "PRIMARY": {
+        "columns": [
+          "rede_id"
+        ],
+        "unique": true
+      },
+      "uq_rede_pessoa": {
+        "columns": [
+          "rede_id",
+          "pessoa_idosa_id"
+        ],
+        "unique": true
+      },
+      "uq_rede_idoso_v1": {
+        "columns": [
+          "pessoa_idosa_id"
+        ],
+        "unique": true
+      },
+      "ix_rede_pessoa_situacao": {
+        "columns": [
+          "pessoa_idosa_id",
+          "situacao"
+        ],
+        "unique": false
+      },
+      "ix_rede_criador": {
+        "columns": [
+          "criada_por_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "regime_medicamento": {
+      "PRIMARY": {
+        "columns": [
+          "regime_id"
+        ],
+        "unique": true
+      },
+      "uq_regime_escopo": {
+        "columns": [
+          "rede_id",
+          "regime_id"
+        ],
+        "unique": true
+      },
+      "uq_regime_versao": {
+        "columns": [
+          "rede_id",
+          "medicamento_id",
+          "versao_plano"
+        ],
+        "unique": true
+      },
+      "ix_regime_medicamento": {
+        "columns": [
+          "rede_id",
+          "medicamento_id",
+          "inicio_vigencia"
+        ],
+        "unique": false
+      },
+      "ix_regime_autor": {
+        "columns": [
+          "criado_por_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "registro_cuidado": {
+      "PRIMARY": {
+        "columns": [
+          "registro_id"
+        ],
+        "unique": true
+      },
+      "uq_registro_escopo": {
+        "columns": [
+          "rede_id",
+          "registro_id"
+        ],
+        "unique": true
+      },
+      "ix_registro_historico": {
+        "columns": [
+          "rede_id",
+          "pessoa_idosa_id",
+          "ocorrido_em"
+        ],
+        "unique": false
+      },
+      "ix_registro_autor": {
+        "columns": [
+          "autor_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "sessao_usuario": {
+      "PRIMARY": {
+        "columns": [
+          "token_hash"
+        ],
+        "unique": true
+      },
+      "ix_sessao_usuario": {
+        "columns": [
+          "usuario_id",
+          "revogado_em",
+          "expira_em"
+        ],
+        "unique": false
+      },
+      "ix_sessao_expira": {
+        "columns": [
+          "expira_em"
+        ],
+        "unique": false
+      }
+    },
+    "solicitacao_troca_plantao": {
+      "PRIMARY": {
+        "columns": [
+          "troca_id"
+        ],
+        "unique": true
+      },
+      "ix_troca_plantao_status": {
+        "columns": [
+          "rede_id",
+          "plantao_id",
+          "status"
+        ],
+        "unique": false
+      },
+      "ix_troca_solicitante": {
+        "columns": [
+          "rede_id",
+          "solicitante_membro_id"
+        ],
+        "unique": false
+      },
+      "ix_troca_destinatario": {
+        "columns": [
+          "rede_id",
+          "destinatario_membro_id"
+        ],
+        "unique": false
+      },
+      "ix_troca_respondente": {
+        "columns": [
+          "rede_id",
+          "respondido_por_membro_id"
+        ],
+        "unique": false
+      }
+    },
+    "tarefa": {
+      "PRIMARY": {
+        "columns": [
+          "tarefa_id"
+        ],
+        "unique": true
+      },
+      "uq_tarefa_escopo": {
+        "columns": [
+          "rede_id",
+          "tarefa_id"
+        ],
+        "unique": true
+      },
+      "ix_tarefa_rede_prazo": {
+        "columns": [
+          "rede_id",
+          "prazo_em",
+          "status"
+        ],
+        "unique": false
+      },
+      "ix_tarefa_responsavel": {
+        "columns": [
+          "rede_id",
+          "responsavel_membro_id"
+        ],
+        "unique": false
+      },
+      "ix_tarefa_criador": {
+        "columns": [
+          "criado_por_usuario_id"
+        ],
+        "unique": false
+      }
+    },
+    "usuario": {
+      "PRIMARY": {
+        "columns": [
+          "usuario_id"
+        ],
+        "unique": true
+      },
+      "uq_usuario_email": {
+        "columns": [
+          "email_normalizado"
+        ],
+        "unique": true
+      },
+      "uq_usuario_tipo": {
+        "columns": [
+          "usuario_id",
+          "tipo_acesso"
+        ],
+        "unique": true
+      }
+    }
+  },
+  "views": [
+    {
+      "name": "V1 - 34 tabelas e 79 relacionamentos",
+      "tables": [
+        "administracao_medicamento",
+        "anexo",
+        "atribuicao_papel_familiar",
+        "auditoria",
+        "cadastro_rate_limit",
+        "compromisso",
+        "conclusao_tarefa",
+        "consulta",
+        "contato_importante",
+        "convite_cadastro_cuidador",
+        "correcao_administracao_medicamento",
+        "correcao_consulta",
+        "correcao_registro_cuidado",
+        "entrega_tecnica_notificacao",
+        "habilitacao_acesso_idoso",
+        "historico_plantao",
+        "horario_regime",
+        "idempotencia_comando",
+        "informacao_emergencia",
+        "login_rate_limit",
+        "medicamento",
+        "membro_rede",
+        "ocorrencia_programada",
+        "pessoa_idosa",
+        "plantao",
+        "preferencia_notificacao",
+        "recomendacao",
+        "rede_cuidado",
+        "regime_medicamento",
+        "registro_cuidado",
+        "sessao_usuario",
+        "solicitacao_troca_plantao",
+        "tarefa",
+        "usuario"
+      ],
+      "fks": [
+        "fk_anexo_administracao",
+        "fk_consulta_compromisso",
+        "fk_anexo_consulta",
+        "fk_correcao_administracao",
+        "fk_correcao_consulta",
+        "fk_administracao_horario",
+        "fk_administracao_executor",
+        "fk_papel_membro_familiar",
+        "fk_conclusao_executor",
+        "fk_compromisso_responsavel",
+        "fk_historico_membro_depois",
+        "fk_historico_membro_antes",
+        "fk_ocorrencia_designado",
+        "fk_ocorrencia_horario",
+        "fk_administracao_ocorrencia",
+        "fk_auditoria_pessoa",
+        "fk_habilitacao_pessoa_titular",
+        "fk_plantao_membro",
+        "fk_historico_plantao",
+        "fk_recomendacao_consulta",
+        "fk_rede_pessoa",
+        "fk_auditoria_rede",
+        "fk_compromisso_contexto",
+        "fk_consulta_contexto",
+        "fk_contato_contexto",
+        "fk_entrega_rede",
+        "fk_idempotencia_rede",
+        "fk_membro_rede",
+        "fk_emergencia_contexto",
+        "fk_medicamento_contexto",
+        "fk_ocorrencia_rede",
+        "fk_preferencia_rede",
+        "fk_plantao_rede",
+        "fk_recomendacao_contexto",
+        "fk_regime_medicamento",
+        "fk_administracao_regime",
+        "fk_horario_regime",
+        "fk_registro_contexto",
+        "fk_anexo_registro",
+        "fk_correcao_registro",
+        "fk_troca_destinatario",
+        "fk_troca_plantao",
+        "fk_troca_respondente",
+        "fk_troca_solicitante",
+        "fk_tarefa_rede",
+        "fk_tarefa_responsavel",
+        "fk_conclusao_tarefa",
+        "fk_ocorrencia_tarefa",
+        "fk_administracao_autor",
+        "fk_anexo_autor",
+        "fk_papel_concedente",
+        "fk_compromisso_criador",
+        "fk_auditoria_ator",
+        "fk_contato_autor",
+        "fk_consulta_autor",
+        "fk_conclusao_autor",
+        "fk_convite_cuidador_emitente",
+        "fk_correcao_administracao_autor",
+        "fk_entrega_destinatario",
+        "fk_correcao_consulta_autor",
+        "fk_correcao_registro_autor",
+        "fk_idempotencia_ator",
+        "fk_historico_ator",
+        "fk_habilitacao_titular",
+        "fk_habilitacao_solicitante",
+        "fk_emergencia_autor",
+        "fk_medicamento_autor",
+        "fk_pessoa_conta_tipo",
+        "fk_membro_usuario_tipo",
+        "fk_pessoa_cadastrante",
+        "fk_membro_vinculador",
+        "fk_preferencia_usuario",
+        "fk_sessao_usuario",
+        "fk_plantao_criador",
+        "fk_recomendacao_autor",
+        "fk_rede_criador",
+        "fk_regime_autor",
+        "fk_registro_autor",
+        "fk_tarefa_criador"
+      ]
+    },
+    {
+      "name": "identidade_rede",
+      "tables": [
+        "usuario",
+        "pessoa_idosa",
+        "rede_cuidado",
+        "membro_rede",
+        "atribuicao_papel_familiar",
+        "convite_cadastro_cuidador",
+        "habilitacao_acesso_idoso",
+        "sessao_usuario",
+        "cadastro_rate_limit",
+        "login_rate_limit"
+      ],
+      "fks": [
+        "fk_pessoa_cadastrante",
+        "fk_pessoa_conta_tipo",
+        "fk_rede_criador",
+        "fk_rede_pessoa",
+        "fk_membro_rede",
+        "fk_membro_usuario_tipo",
+        "fk_membro_vinculador",
+        "fk_papel_concedente",
+        "fk_papel_membro_familiar",
+        "fk_convite_cuidador_emitente",
+        "fk_habilitacao_pessoa_titular",
+        "fk_habilitacao_solicitante",
+        "fk_habilitacao_titular",
+        "fk_sessao_usuario"
+      ]
+    },
+    {
+      "name": "agenda_tarefas",
+      "tables": [
+        "usuario",
+        "pessoa_idosa",
+        "rede_cuidado",
+        "membro_rede",
+        "plantao",
+        "solicitacao_troca_plantao",
+        "historico_plantao",
+        "tarefa",
+        "conclusao_tarefa",
+        "compromisso",
+        "ocorrencia_programada"
+      ],
+      "fks": [
+        "fk_pessoa_cadastrante",
+        "fk_pessoa_conta_tipo",
+        "fk_rede_criador",
+        "fk_rede_pessoa",
+        "fk_membro_rede",
+        "fk_membro_usuario_tipo",
+        "fk_membro_vinculador",
+        "fk_plantao_criador",
+        "fk_plantao_membro",
+        "fk_plantao_rede",
+        "fk_troca_destinatario",
+        "fk_troca_plantao",
+        "fk_troca_respondente",
+        "fk_troca_solicitante",
+        "fk_historico_ator",
+        "fk_historico_membro_antes",
+        "fk_historico_membro_depois",
+        "fk_historico_plantao",
+        "fk_tarefa_criador",
+        "fk_tarefa_rede",
+        "fk_tarefa_responsavel",
+        "fk_conclusao_autor",
+        "fk_conclusao_executor",
+        "fk_conclusao_tarefa",
+        "fk_compromisso_contexto",
+        "fk_compromisso_criador",
+        "fk_compromisso_responsavel",
+        "fk_ocorrencia_designado",
+        "fk_ocorrencia_rede",
+        "fk_ocorrencia_tarefa"
+      ]
+    },
+    {
+      "name": "medicacao",
+      "tables": [
+        "usuario",
+        "pessoa_idosa",
+        "rede_cuidado",
+        "membro_rede",
+        "medicamento",
+        "regime_medicamento",
+        "horario_regime",
+        "ocorrencia_programada",
+        "administracao_medicamento",
+        "correcao_administracao_medicamento"
+      ],
+      "fks": [
+        "fk_pessoa_cadastrante",
+        "fk_pessoa_conta_tipo",
+        "fk_rede_criador",
+        "fk_rede_pessoa",
+        "fk_membro_rede",
+        "fk_membro_usuario_tipo",
+        "fk_membro_vinculador",
+        "fk_medicamento_autor",
+        "fk_medicamento_contexto",
+        "fk_regime_autor",
+        "fk_regime_medicamento",
+        "fk_horario_regime",
+        "fk_ocorrencia_designado",
+        "fk_ocorrencia_horario",
+        "fk_ocorrencia_rede",
+        "fk_administracao_autor",
+        "fk_administracao_executor",
+        "fk_administracao_horario",
+        "fk_administracao_ocorrencia",
+        "fk_administracao_regime",
+        "fk_correcao_administracao",
+        "fk_correcao_administracao_autor"
+      ]
+    },
+    {
+      "name": "diario_consultas",
+      "tables": [
+        "usuario",
+        "pessoa_idosa",
+        "rede_cuidado",
+        "membro_rede",
+        "registro_cuidado",
+        "correcao_registro_cuidado",
+        "consulta",
+        "correcao_consulta",
+        "recomendacao",
+        "anexo",
+        "compromisso"
+      ],
+      "fks": [
+        "fk_pessoa_cadastrante",
+        "fk_pessoa_conta_tipo",
+        "fk_rede_criador",
+        "fk_rede_pessoa",
+        "fk_membro_rede",
+        "fk_membro_usuario_tipo",
+        "fk_membro_vinculador",
+        "fk_registro_autor",
+        "fk_registro_contexto",
+        "fk_correcao_registro",
+        "fk_correcao_registro_autor",
+        "fk_consulta_autor",
+        "fk_consulta_contexto",
+        "fk_correcao_consulta",
+        "fk_correcao_consulta_autor",
+        "fk_recomendacao_autor",
+        "fk_recomendacao_consulta",
+        "fk_recomendacao_contexto",
+        "fk_anexo_autor",
+        "fk_anexo_consulta",
+        "fk_anexo_registro",
+        "fk_compromisso_contexto",
+        "fk_compromisso_criador",
+        "fk_compromisso_responsavel",
+        "fk_consulta_compromisso"
+      ]
+    },
+    {
+      "name": "suporte_tecnico",
+      "tables": [
+        "usuario",
+        "pessoa_idosa",
+        "rede_cuidado",
+        "membro_rede",
+        "contato_importante",
+        "informacao_emergencia",
+        "preferencia_notificacao",
+        "entrega_tecnica_notificacao",
+        "auditoria",
+        "idempotencia_comando"
+      ],
+      "fks": [
+        "fk_pessoa_cadastrante",
+        "fk_pessoa_conta_tipo",
+        "fk_rede_criador",
+        "fk_rede_pessoa",
+        "fk_membro_rede",
+        "fk_membro_usuario_tipo",
+        "fk_membro_vinculador",
+        "fk_contato_autor",
+        "fk_contato_contexto",
+        "fk_emergencia_autor",
+        "fk_emergencia_contexto",
+        "fk_preferencia_rede",
+        "fk_preferencia_usuario",
+        "fk_entrega_destinatario",
+        "fk_entrega_rede",
+        "fk_auditoria_ator",
+        "fk_auditoria_pessoa",
+        "fk_auditoria_rede",
+        "fk_idempotencia_ator",
+        "fk_idempotencia_rede"
+      ]
+    }
+  ],
+  "comparison_differences": [],
+  "sql_tables": 34,
+  "mwb_tables": 34,
+  "mwb_columns": 305,
+  "mwb_fks": 79,
+  "checks_in_sql": 50,
+  "checks_in_mwb": 0
+}
