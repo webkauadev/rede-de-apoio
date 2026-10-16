@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080"><title>DB-D — Governança e Rastreabilidade — prévia vetorial, SQL V1</title><desc>Recorte físico temático para futura importação no Figma. Referências usuario e rede_cuidado duplicadas graficamente, não no banco. FK opcional da auditoria para pessoa_idosa consta apenas em nota. Fonte SQL V1.</desc>
+<rect width="1920" height="1080" fill="#FBF9FD"/>
+<rect x="98" y="62" width="260" height="38" rx="19" fill="#E9F3F7" stroke="#CFE1EA" stroke-width="1.4"/>
+<text x="118" y="88" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" text-anchor="start" fill="#00618A">MILESTONE 2 · DOMÍNIO D</text>
+<text x="110" y="158" font-family="Arial,Helvetica,sans-serif" font-size="41" font-weight="700" text-anchor="start" fill="#142A36">DB-D — Governança e Rastreabilidade</text>
+<text x="110" y="200" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#53616A">Recorte físico editável em SVG · Fonte: SQL V1 (sem alterar esquema)</text>
+<rect x="100" y="270" width="630" height="257" rx="10" fill="#fff" stroke="#CCD8DF" stroke-width="1.4"/>
+<path d="M109 270 H721 Q730 270 730 279 V310 H100 V279 Q100 270 109 270" fill="#E8F3F7"/>
+<text x="116" y="298" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="#00577D">auditoria</text>
+<text x="118" y="340" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="700" text-anchor="start" fill="#142A36">PK auditoria_id BIGINT UNSIGNED</text>
+<text x="118" y="369" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">FK rede_id BIGINT UNSIGNED NULL</text>
+<text x="118" y="398" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">FK pessoa_idosa_id BIGINT UNSIGNED NULL</text>
+<text x="118" y="427" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">FK ator_usuario_id BIGINT UNSIGNED NULL</text>
+<text x="118" y="456" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">evento_em DATETIME(6)</text>
+<text x="118" y="485" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">operacao VARCHAR(80)</text>
+<text x="118" y="514" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">resultado VARCHAR(12)</text>
+<rect x="1190" y="270" width="630" height="228" rx="10" fill="#fff" stroke="#CCD8DF" stroke-width="1.4"/>
+<path d="M1199 270 H1811 Q1820 270 1820 279 V310 H1190 V279 Q1190 270 1199 270" fill="#E8F3F7"/>
+<text x="1206" y="298" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="#00577D">preferencia_notificacao</text>
+<text x="1208" y="340" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="700" text-anchor="start" fill="#142A36">PK preferencia_id BIGINT UNSIGNED</text>
+<text x="1208" y="369" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">FK rede_id BIGINT UNSIGNED</text>
+<text x="1208" y="398" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">FK usuario_id BIGINT UNSIGNED</text>
+<text x="1208" y="427" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">tipo_evento VARCHAR(3) [N03/N04]</text>
+<text x="1208" y="456" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">receber BOOLEAN</text>
+<text x="1208" y="485" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">atualizado_em DATETIME(6)</text>
+<rect x="100" y="657" width="630" height="228" rx="10" fill="#fff" stroke="#CCD8DF" stroke-width="1.4"/>
+<path d="M109 657 H721 Q730 657 730 666 V697 H100 V666 Q100 657 109 657" fill="#E8F3F7"/>
+<text x="116" y="685" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="#00577D">idempotencia_comando</text>
+<text x="118" y="727" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="700" text-anchor="start" fill="#142A36">PK comando_id BIGINT UNSIGNED</text>
+<text x="118" y="756" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">FK rede_id BIGINT UNSIGNED</text>
+<text x="118" y="785" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">FK ator_usuario_id BIGINT UNSIGNED</text>
+<text x="118" y="814" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">chave_cliente VARCHAR(100)</text>
+<text x="118" y="843" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">payload_sha256 CHAR(64)</text>
+<text x="118" y="872" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">estado VARCHAR(16)</text>
+<rect x="1190" y="657" width="630" height="257" rx="10" fill="#fff" stroke="#CCD8DF" stroke-width="1.4"/>
+<path d="M1199 657 H1811 Q1820 657 1820 666 V697 H1190 V666 Q1190 657 1199 657" fill="#E8F3F7"/>
+<text x="1206" y="685" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="#00577D">entrega_tecnica_notificacao</text>
+<text x="1208" y="727" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="700" text-anchor="start" fill="#142A36">PK entrega_id BIGINT UNSIGNED</text>
+<text x="1208" y="756" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">FK rede_id BIGINT UNSIGNED</text>
+<text x="1208" y="785" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">FK usuario_destinatario_id BIGINT UNSIGNED</text>
+<text x="1208" y="814" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">tipo_evento VARCHAR(3) [N01–N04]</text>
+<text x="1208" y="843" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">chave_evento CHAR(64)</text>
+<text x="1208" y="872" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">estado_transporte VARCHAR(16)</text>
+<text x="1208" y="901" font-family="Arial,Helvetica,sans-serif" font-size="17.2" font-weight="400" text-anchor="start" fill="#53616A">tentativas INT UNSIGNED</text>
+<rect x="822" y="320" width="277" height="70" rx="10" fill="#F4F9FB" stroke="#CCD8DF" stroke-width="1.4"/>
+<text x="841" y="348" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#00618A">usuario [referência]</text>
+<text x="841" y="371" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#586772">PK usuario_id</text>
+<rect x="822" y="453" width="277" height="70" rx="10" fill="#F4F9FB" stroke="#CCD8DF" stroke-width="1.4"/>
+<text x="841" y="481" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#00618A">rede_cuidado [referência]</text>
+<text x="841" y="504" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#586772">PK rede_id</text>
+<rect x="822" y="694" width="277" height="70" rx="10" fill="#F4F9FB" stroke="#CCD8DF" stroke-width="1.4"/>
+<text x="841" y="722" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#00618A">usuario [referência]</text>
+<text x="841" y="745" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#586772">PK usuario_id</text>
+<rect x="822" y="821" width="277" height="70" rx="10" fill="#F4F9FB" stroke="#CCD8DF" stroke-width="1.4"/>
+<text x="841" y="849" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#00618A">rede_cuidado [referência]</text>
+<text x="841" y="872" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#586772">PK rede_id</text>
+<polyline points="730,354 785,354 785,355 822,355" fill="none" stroke="#336078" stroke-width="2" stroke-linejoin="round"/>
+<text x="740" y="335" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">0..*</text>
+<text x="786" y="332" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">0..1</text>
+<polyline points="730,483 780,483 780,488 822,488" fill="none" stroke="#336078" stroke-width="2" stroke-linejoin="round"/>
+<text x="739" y="465" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">0..*</text>
+<text x="789" y="464" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">0..1</text>
+<polyline points="1190,348 1132,348 1132,355 1099,355" fill="none" stroke="#336078" stroke-width="2" stroke-linejoin="round"/>
+<text x="1150" y="331" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">0..*</text>
+<text x="1106" y="329" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">1</text>
+<polyline points="1190,462 1133,462 1133,488 1099,488" fill="none" stroke="#336078" stroke-width="2" stroke-linejoin="round"/>
+<text x="1148" y="448" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">0..*</text>
+<text x="1105" y="455" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">1</text>
+<polyline points="1190,742 1132,742 1132,729 1099,729" fill="none" stroke="#336078" stroke-width="2" stroke-linejoin="round"/>
+<text x="1146" y="719" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">0..*</text>
+<text x="1107" y="702" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">1</text>
+<polyline points="1190,860 1132,860 1132,856 1099,856" fill="none" stroke="#336078" stroke-width="2" stroke-linejoin="round"/>
+<text x="1148" y="835" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">0..*</text>
+<text x="1107" y="831" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">1</text>
+<polyline points="730,742 780,742 780,729 822,729" fill="none" stroke="#336078" stroke-width="2" stroke-linejoin="round"/>
+<text x="737" y="724" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">0..*</text>
+<text x="786" y="703" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">1</text>
+<polyline points="730,860 780,860 780,856 822,856" fill="none" stroke="#336078" stroke-width="2" stroke-linejoin="round"/>
+<text x="738" y="835" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">0..*</text>
+<text x="791" y="830" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" text-anchor="start" fill="#00618A">1</text>
+<rect x="110" y="957" width="1700" height="60" rx="8" fill="#fff" stroke="#D0DDE5" stroke-width="1.4"/>
+<text x="129" y="979" font-family="Arial,Helvetica,sans-serif" font-size="16.5" font-weight="400" text-anchor="start" fill="#52636C">Nota: usuario e rede_cuidado são as mesmas tabelas físicas, repetidas visualmente para reduzir cruzamentos.</text>
+<text x="129" y="1001" font-family="Arial,Helvetica,sans-serif" font-size="16.2" font-weight="400" text-anchor="start" fill="#52636C">Auditoria também referencia pessoa_idosa (FK opcional). Preferências: N03/N04; entregas técnicas: N01–N04. UNIQUE/CHECK no SQL.</text>
+<text x="110" y="1043" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#6B7780">PRÉVIA VETORIAL PARA IMPORTAÇÃO · Não é frame do Figma · Modelo EER original permanece inalterado</text>
+</svg>
