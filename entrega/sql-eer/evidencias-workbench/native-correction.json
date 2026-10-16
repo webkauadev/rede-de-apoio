@@ -1,0 +1,1571 @@
+{
+  "startedUtc": "2026-10-16T23:39:59.965173+00:00",
+  "nativeOpenModel": true,
+  "inputSha256": "f8454746ffae0d408b37f9ce87a51eddf9d61fbf4fafe5bb2a41230801f5a120",
+  "tableCount": 34,
+  "foreignKeyCount": 79,
+  "diagramCount": 6,
+  "cardinalities": [
+    {
+      "table": "administracao_medicamento",
+      "foreignKey": "fk_administracao_autor",
+      "parent": "usuario",
+      "columns": [
+        "autor_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "administracao_medicamento",
+      "foreignKey": "fk_administracao_executor",
+      "parent": "membro_rede",
+      "columns": [
+        "rede_id",
+        "executor_membro_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "administracao_medicamento",
+      "foreignKey": "fk_administracao_horario",
+      "parent": "horario_regime",
+      "columns": [
+        "rede_id",
+        "regime_id",
+        "horario_regime_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "administracao_medicamento",
+      "foreignKey": "fk_administracao_ocorrencia",
+      "parent": "ocorrencia_programada",
+      "columns": [
+        "rede_id",
+        "horario_regime_id",
+        "ocorrencia_id"
+      ],
+      "many": 0,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 0,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 0,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "administracao_medicamento",
+      "foreignKey": "fk_administracao_regime",
+      "parent": "regime_medicamento",
+      "columns": [
+        "rede_id",
+        "regime_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "anexo",
+      "foreignKey": "fk_anexo_administracao",
+      "parent": "administracao_medicamento",
+      "columns": [
+        "rede_id",
+        "administracao_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "anexo",
+      "foreignKey": "fk_anexo_autor",
+      "parent": "usuario",
+      "columns": [
+        "enviado_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "anexo",
+      "foreignKey": "fk_anexo_consulta",
+      "parent": "consulta",
+      "columns": [
+        "rede_id",
+        "consulta_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "anexo",
+      "foreignKey": "fk_anexo_registro",
+      "parent": "registro_cuidado",
+      "columns": [
+        "rede_id",
+        "registro_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "atribuicao_papel_familiar",
+      "foreignKey": "fk_papel_concedente",
+      "parent": "usuario",
+      "columns": [
+        "concedido_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "atribuicao_papel_familiar",
+      "foreignKey": "fk_papel_membro_familiar",
+      "parent": "membro_rede",
+      "columns": [
+        "rede_id",
+        "membro_id",
+        "categoria_exigida"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "auditoria",
+      "foreignKey": "fk_auditoria_ator",
+      "parent": "usuario",
+      "columns": [
+        "ator_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "auditoria",
+      "foreignKey": "fk_auditoria_pessoa",
+      "parent": "pessoa_idosa",
+      "columns": [
+        "pessoa_idosa_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "auditoria",
+      "foreignKey": "fk_auditoria_rede",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "compromisso",
+      "foreignKey": "fk_compromisso_contexto",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "compromisso",
+      "foreignKey": "fk_compromisso_criador",
+      "parent": "usuario",
+      "columns": [
+        "criado_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "compromisso",
+      "foreignKey": "fk_compromisso_responsavel",
+      "parent": "membro_rede",
+      "columns": [
+        "rede_id",
+        "responsavel_membro_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "conclusao_tarefa",
+      "foreignKey": "fk_conclusao_autor",
+      "parent": "usuario",
+      "columns": [
+        "autor_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "conclusao_tarefa",
+      "foreignKey": "fk_conclusao_executor",
+      "parent": "membro_rede",
+      "columns": [
+        "rede_id",
+        "executor_membro_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "conclusao_tarefa",
+      "foreignKey": "fk_conclusao_tarefa",
+      "parent": "tarefa",
+      "columns": [
+        "rede_id",
+        "tarefa_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "consulta",
+      "foreignKey": "fk_consulta_autor",
+      "parent": "usuario",
+      "columns": [
+        "autor_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "consulta",
+      "foreignKey": "fk_consulta_compromisso",
+      "parent": "compromisso",
+      "columns": [
+        "rede_id",
+        "compromisso_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "consulta",
+      "foreignKey": "fk_consulta_contexto",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "contato_importante",
+      "foreignKey": "fk_contato_autor",
+      "parent": "usuario",
+      "columns": [
+        "registrado_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "contato_importante",
+      "foreignKey": "fk_contato_contexto",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "convite_cadastro_cuidador",
+      "foreignKey": "fk_convite_cuidador_emitente",
+      "parent": "usuario",
+      "columns": [
+        "emitido_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "correcao_administracao_medicamento",
+      "foreignKey": "fk_correcao_administracao",
+      "parent": "administracao_medicamento",
+      "columns": [
+        "rede_id",
+        "administracao_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "correcao_administracao_medicamento",
+      "foreignKey": "fk_correcao_administracao_autor",
+      "parent": "usuario",
+      "columns": [
+        "autor_correcao_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "correcao_consulta",
+      "foreignKey": "fk_correcao_consulta",
+      "parent": "consulta",
+      "columns": [
+        "rede_id",
+        "consulta_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "correcao_consulta",
+      "foreignKey": "fk_correcao_consulta_autor",
+      "parent": "usuario",
+      "columns": [
+        "autor_correcao_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "correcao_registro_cuidado",
+      "foreignKey": "fk_correcao_registro",
+      "parent": "registro_cuidado",
+      "columns": [
+        "rede_id",
+        "registro_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "correcao_registro_cuidado",
+      "foreignKey": "fk_correcao_registro_autor",
+      "parent": "usuario",
+      "columns": [
+        "autor_correcao_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "entrega_tecnica_notificacao",
+      "foreignKey": "fk_entrega_destinatario",
+      "parent": "usuario",
+      "columns": [
+        "usuario_destinatario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "entrega_tecnica_notificacao",
+      "foreignKey": "fk_entrega_rede",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "habilitacao_acesso_idoso",
+      "foreignKey": "fk_habilitacao_pessoa_titular",
+      "parent": "pessoa_idosa",
+      "columns": [
+        "pessoa_idosa_id",
+        "usuario_titular_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "habilitacao_acesso_idoso",
+      "foreignKey": "fk_habilitacao_solicitante",
+      "parent": "usuario",
+      "columns": [
+        "solicitada_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "habilitacao_acesso_idoso",
+      "foreignKey": "fk_habilitacao_titular",
+      "parent": "usuario",
+      "columns": [
+        "usuario_titular_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "historico_plantao",
+      "foreignKey": "fk_historico_ator",
+      "parent": "usuario",
+      "columns": [
+        "operado_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "historico_plantao",
+      "foreignKey": "fk_historico_membro_antes",
+      "parent": "membro_rede",
+      "columns": [
+        "rede_id",
+        "membro_anterior_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "historico_plantao",
+      "foreignKey": "fk_historico_membro_depois",
+      "parent": "membro_rede",
+      "columns": [
+        "rede_id",
+        "membro_novo_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "historico_plantao",
+      "foreignKey": "fk_historico_plantao",
+      "parent": "plantao",
+      "columns": [
+        "rede_id",
+        "plantao_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "horario_regime",
+      "foreignKey": "fk_horario_regime",
+      "parent": "regime_medicamento",
+      "columns": [
+        "rede_id",
+        "regime_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "idempotencia_comando",
+      "foreignKey": "fk_idempotencia_ator",
+      "parent": "usuario",
+      "columns": [
+        "ator_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "idempotencia_comando",
+      "foreignKey": "fk_idempotencia_rede",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "informacao_emergencia",
+      "foreignKey": "fk_emergencia_autor",
+      "parent": "usuario",
+      "columns": [
+        "atualizado_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "informacao_emergencia",
+      "foreignKey": "fk_emergencia_contexto",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "many": 0,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 0,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 0,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "medicamento",
+      "foreignKey": "fk_medicamento_autor",
+      "parent": "usuario",
+      "columns": [
+        "cadastrado_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "medicamento",
+      "foreignKey": "fk_medicamento_contexto",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "membro_rede",
+      "foreignKey": "fk_membro_rede",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "membro_rede",
+      "foreignKey": "fk_membro_usuario_tipo",
+      "parent": "usuario",
+      "columns": [
+        "usuario_id",
+        "tipo_usuario_exigido"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "membro_rede",
+      "foreignKey": "fk_membro_vinculador",
+      "parent": "usuario",
+      "columns": [
+        "vinculado_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "ocorrencia_programada",
+      "foreignKey": "fk_ocorrencia_designado",
+      "parent": "membro_rede",
+      "columns": [
+        "rede_id",
+        "responsavel_membro_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "ocorrencia_programada",
+      "foreignKey": "fk_ocorrencia_horario",
+      "parent": "horario_regime",
+      "columns": [
+        "rede_id",
+        "horario_regime_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "ocorrencia_programada",
+      "foreignKey": "fk_ocorrencia_rede",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "ocorrencia_programada",
+      "foreignKey": "fk_ocorrencia_tarefa",
+      "parent": "tarefa",
+      "columns": [
+        "rede_id",
+        "tarefa_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "pessoa_idosa",
+      "foreignKey": "fk_pessoa_cadastrante",
+      "parent": "usuario",
+      "columns": [
+        "cadastrado_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "pessoa_idosa",
+      "foreignKey": "fk_pessoa_conta_tipo",
+      "parent": "usuario",
+      "columns": [
+        "usuario_titular_id",
+        "tipo_titular_exigido"
+      ],
+      "many": 0,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 0,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 0,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "plantao",
+      "foreignKey": "fk_plantao_criador",
+      "parent": "usuario",
+      "columns": [
+        "criado_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "plantao",
+      "foreignKey": "fk_plantao_membro",
+      "parent": "membro_rede",
+      "columns": [
+        "rede_id",
+        "membro_responsavel_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "plantao",
+      "foreignKey": "fk_plantao_rede",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "preferencia_notificacao",
+      "foreignKey": "fk_preferencia_rede",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "preferencia_notificacao",
+      "foreignKey": "fk_preferencia_usuario",
+      "parent": "usuario",
+      "columns": [
+        "usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "recomendacao",
+      "foreignKey": "fk_recomendacao_autor",
+      "parent": "usuario",
+      "columns": [
+        "autor_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "recomendacao",
+      "foreignKey": "fk_recomendacao_consulta",
+      "parent": "consulta",
+      "columns": [
+        "rede_id",
+        "consulta_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "recomendacao",
+      "foreignKey": "fk_recomendacao_contexto",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "rede_cuidado",
+      "foreignKey": "fk_rede_criador",
+      "parent": "usuario",
+      "columns": [
+        "criada_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "rede_cuidado",
+      "foreignKey": "fk_rede_pessoa",
+      "parent": "pessoa_idosa",
+      "columns": [
+        "pessoa_idosa_id"
+      ],
+      "many": 0,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 0,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 0,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "regime_medicamento",
+      "foreignKey": "fk_regime_autor",
+      "parent": "usuario",
+      "columns": [
+        "criado_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "regime_medicamento",
+      "foreignKey": "fk_regime_medicamento",
+      "parent": "medicamento",
+      "columns": [
+        "rede_id",
+        "medicamento_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "registro_cuidado",
+      "foreignKey": "fk_registro_autor",
+      "parent": "usuario",
+      "columns": [
+        "autor_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "registro_cuidado",
+      "foreignKey": "fk_registro_contexto",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id",
+        "pessoa_idosa_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "sessao_usuario",
+      "foreignKey": "fk_sessao_usuario",
+      "parent": "usuario",
+      "columns": [
+        "usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "solicitacao_troca_plantao",
+      "foreignKey": "fk_troca_destinatario",
+      "parent": "membro_rede",
+      "columns": [
+        "rede_id",
+        "destinatario_membro_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "solicitacao_troca_plantao",
+      "foreignKey": "fk_troca_plantao",
+      "parent": "plantao",
+      "columns": [
+        "rede_id",
+        "plantao_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "solicitacao_troca_plantao",
+      "foreignKey": "fk_troca_respondente",
+      "parent": "membro_rede",
+      "columns": [
+        "rede_id",
+        "respondido_por_membro_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "solicitacao_troca_plantao",
+      "foreignKey": "fk_troca_solicitante",
+      "parent": "membro_rede",
+      "columns": [
+        "rede_id",
+        "solicitante_membro_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "tarefa",
+      "foreignKey": "fk_tarefa_criador",
+      "parent": "usuario",
+      "columns": [
+        "criado_por_usuario_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "tarefa",
+      "foreignKey": "fk_tarefa_rede",
+      "parent": "rede_cuidado",
+      "columns": [
+        "rede_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 1,
+      "expectedMany": 1,
+      "expectedParentMandatory": 1,
+      "before": {
+        "many": 1,
+        "mandatory": 1,
+        "referencedMandatory": 0
+      }
+    },
+    {
+      "table": "tarefa",
+      "foreignKey": "fk_tarefa_responsavel",
+      "parent": "membro_rede",
+      "columns": [
+        "rede_id",
+        "responsavel_membro_id"
+      ],
+      "many": 1,
+      "mandatory": 0,
+      "referencedMandatory": 0,
+      "expectedMany": 1,
+      "expectedParentMandatory": 0,
+      "before": {
+        "many": 1,
+        "mandatory": 0,
+        "referencedMandatory": 0
+      }
+    }
+  ],
+  "criticalRelationship": "pessoa_idosa [1] -- [0..1] rede_cuidado",
+  "exports": [
+    {
+      "name": "V1 - 34 tabelas e 79 relacionamentos",
+      "figures": 34,
+      "connections": 79,
+      "svg": {
+        "returnCode": 0,
+        "bytes": 768208,
+        "sha256": "cc92db92b0d8abb6d0dd37f7c5396fcf7df5c9de5bd9e76a3e9c632eb6e12652"
+      },
+      "png": {
+        "returnCode": 0,
+        "bytes": 749915,
+        "sha256": "f9b1408d4698a249b901097302bf9f6ab5098e524de0bab535037e8bfe4d43c9"
+      }
+    },
+    {
+      "name": "identidade_rede",
+      "figures": 10,
+      "connections": 14,
+      "svg": {
+        "returnCode": 0,
+        "bytes": 216482,
+        "sha256": "a574bd4d7712fca9527fc3ff5f95eb22dae58edeca9b9efb858e75e56f6d7ece"
+      },
+      "png": {
+        "returnCode": 0,
+        "bytes": 195778,
+        "sha256": "66b90213f3cab1f9680cf7f715beb1e580ce9b8eec289f01d86a0c388a43240d"
+      }
+    },
+    {
+      "name": "agenda_tarefas",
+      "figures": 11,
+      "connections": 30,
+      "svg": {
+        "returnCode": 0,
+        "bytes": 287350,
+        "sha256": "58d7b5f4bc2f2e82d93df0a40b12794cd0406523c87f1b8424892717850b996d"
+      },
+      "png": {
+        "returnCode": 0,
+        "bytes": 267349,
+        "sha256": "5c85241e8a05f8acbff44e2a9cf379caa82d141a60b9f9af4fb919d09098cd12"
+      }
+    },
+    {
+      "name": "medicacao",
+      "figures": 10,
+      "connections": 22,
+      "svg": {
+        "returnCode": 0,
+        "bytes": 244848,
+        "sha256": "41d62b293087ceb78ee8d27a8f3da7943800c6fe93f48c5379aa085273dabe44"
+      },
+      "png": {
+        "returnCode": 0,
+        "bytes": 226083,
+        "sha256": "879ece57c10a3047b609354ad88f0f3c1742aef050fbf417eaca724e370c7fc9"
+      }
+    },
+    {
+      "name": "diario_consultas",
+      "figures": 11,
+      "connections": 25,
+      "svg": {
+        "returnCode": 0,
+        "bytes": 267178,
+        "sha256": "68a3ddd39be76480491c8ed1744c097c2bf45d6564442ba0980dbca514c5ecc2"
+      },
+      "png": {
+        "returnCode": 0,
+        "bytes": 237412,
+        "sha256": "86acf01895788e0b68434a81e0731a45badb2695e69417a2e38ea889271fa654"
+      }
+    },
+    {
+      "name": "suporte_tecnico",
+      "figures": 10,
+      "connections": 20,
+      "svg": {
+        "returnCode": 0,
+        "bytes": 243310,
+        "sha256": "3adc965e324be443c773c510381644b634d1fa946c065e2c4980ac8c664b3500"
+      },
+      "png": {
+        "returnCode": 0,
+        "bytes": 233785,
+        "sha256": "42edef5d6955672a7230b6a46f2c30b97fad1c33143f7ba65e745fcc403b7c7a"
+      }
+    }
+  ],
+  "nativeSaveReturnCode": 0,
+  "status": "PASS",
+  "finishedUtc": "2026-10-16T23:40:00.740593+00:00"
+}

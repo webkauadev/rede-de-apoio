@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import zipfile
+import struct
+import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 manifest = json.loads((ROOT / '02_manifest_estrutura.json').read_text())
@@ -39,6 +41,22 @@ for fk in fks:
     actual.add(key)
 assert actual == set(expected)
 assert actual == {(f['table'], f['name']) for f in manifest['foreign_keys']}
+# Workbench native renderer: start = child, end = referenced parent.
+# UNIQUE FK => child maximum 1; nullable FK => optional parent.
+for table in tables:
+    columns = {n.get('id'): n for n in table.findall("value[@key='columns']/value")}
+    unique_sets = []
+    for index in table.findall("value[@key='indices']/value"):
+        if text(index, 'unique') == '1' or text(index, 'isPrimary') == '1':
+            unique_sets.append({text(c, 'referencedColumn') for c in index.findall("value[@key='columns']/value")})
+    for fk in table.findall("value[@key='foreignKeys']/value"):
+        col_ids = {n.text for n in fk.findall("value[@key='columns']/link")}
+        expected_many = int(not any(u and u <= col_ids for u in unique_sets))
+        parent_mandatory = int(all(text(columns[c], 'isNotNull') == '1' for c in col_ids))
+        assert int(text(fk, 'many')) == expected_many, text(fk, 'name')
+        assert text(fk, 'mandatory') == '0', text(fk, 'name')
+        assert int(text(fk, 'referencedMandatory')) == parent_mandatory, text(fk, 'name')
+
 diagrams = named('workbench.physical.Diagram')
 assert len(diagrams) == 6
 for diagram in diagrams:
@@ -52,8 +70,36 @@ for diagram in diagrams:
 assert len(physical['checks']) == len(manifest['checks']) == 50
 assert len({(r['tableName'], r['name']) for r in physical['indexes'] if r['name'] != 'PRIMARY'}) == len(manifest['unique_indexes']) == 44
 for suffix in ['geral', 'identidade_rede', 'agenda_tarefas', 'medicacao', 'diario_consultas', 'suporte_tecnico']:
-    assert (ROOT / f'diagrama_{suffix}.png').read_bytes().startswith(b'\x89PNG\r\n\x1a\n')
-    assert ET.parse(ROOT / f'diagrama_{suffix}.svg').getroot().tag.endswith('svg')
+    png = (ROOT / f'diagrama_{suffix}.png').read_bytes()
+    assert png.startswith(b'\x89PNG\r\n\x1a\n')
+    offset, compressed = 8, bytearray()
+    while offset < len(png):
+        length = struct.unpack('>I', png[offset:offset+4])[0]
+        kind = png[offset+4:offset+8]
+        payload = png[offset+8:offset+8+length]
+        crc = struct.unpack('>I', png[offset+8+length:offset+12+length])[0]
+        assert zlib.crc32(kind + payload) & 0xffffffff == crc
+        if kind == b'IHDR':
+            width, height = struct.unpack('>II', payload[:8])
+            assert width >= 1000 and height >= 1000
+        if kind == b'IDAT':
+            compressed.extend(payload)
+        offset += 12 + length
+    assert len(set(zlib.decompress(compressed))) > 10, 'Empty PNG'
+    svg = ET.parse(ROOT / f'diagrama_{suffix}.svg').getroot()
+    assert svg.tag.endswith('svg') and len(list(svg.iter())) > 100
+native = json.loads((ROOT / 'evidencias-workbench/native-export.json').read_text())
+assert native['status'] == 'PASS' and native['nativeOpenModel'] is True
+assert (native['tableCount'], native['foreignKeyCount'], native['diagramCount']) == (34, 79, 6)
+assert native['inputSha256'] == hashlib.sha256((ROOT / 'rede_de_apoio_v1.mwb').read_bytes()).hexdigest()
+assert len(native['exports']) == 6
+for exported in native['exports']:
+    suffix = 'geral' if exported['name'].startswith('V1') else exported['name']
+    for ext in ['svg', 'png']:
+        data = (ROOT / f'diagrama_{suffix}.{ext}').read_bytes()
+        assert exported[ext]['returnCode'] == 0
+        assert exported[ext]['bytes'] == len(data)
+        assert exported[ext]['sha256'] == hashlib.sha256(data).hexdigest()
 proof = json.loads((ROOT / 'evidencias_integridade.json').read_text())
 for filename, expected_hash in proof['files'].items():
     assert hashlib.sha256((ROOT / filename).read_bytes()).hexdigest() == expected_hash
