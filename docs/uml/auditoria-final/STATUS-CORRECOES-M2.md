@@ -38,7 +38,7 @@
 - `python3 entrega/sql-eer/tools/verify-artifacts.py`: **PASS**, MWB nativo estruturalmente íntegro, seis diagramas e PNG/SVG válidos.
 - `python3 docs/uml/auditoria-final/evidencias/comparar_sql_mwb.py`: **PASS**, sem divergências SQL↔MWB; a evidência `sql-mwb-comparacao.json` foi regenerada para os indicadores gráficos atuais.
 - `python3 scripts/validate_sql_prototype.py`: **PASS estático**, com a limitação já declarada de não executar MySQL.
-- A correção de formatação dos oito arquivos reportados foi aplicada seletivamente. `npx prettier@3.6.2 --check` passou nesses arquivos. `npm run format:check` não pode ser executado neste ambiente: o projeto exige Node `>=24 <25` e npm `>=11 <12`, enquanto o ambiente disponibiliza Node `20.19.2` e npm `9.2.0`; `npm ci` foi recusado pelo gate de engine. Isso não é um PASS do workflow `application`; a confirmação permanece para o runner compatível do GitHub Actions.
+- A correção de formatação dos oito arquivos reportados foi aplicada seletivamente. `npx prettier@3.6.2 --check` passou nesses arquivos. `npm run format:check` não pode ser executado neste ambiente: o projeto exige Node `>=24 <25` e npm `>=11 <12`, enquanto o ambiente disponibiliza Node `20.19.2` e npm `9.2.0`; `npm ci` foi recusado pelo gate de engine. A confirmação ocorreu no runner compatível do GitHub Actions: no PR #131, `application`, `sql-eer-static` e `validate-agent-context` concluíram como **SUCCESS** (execuções `38973994691`, `38973994848` e `38973994945`).
 
 ## Portões restantes para a homologação
 
