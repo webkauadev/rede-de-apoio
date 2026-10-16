@@ -1,0 +1,338 @@
+{
+  "metadata": {
+    "execution_utc": "2026-10-16T03:08:24+00:00",
+    "execution_local": "2026-10-15T23:08:24-04:00",
+    "reference_main_sha": "4712047e4550e4504b213e638aaf8a17310f4935",
+    "pr": 127,
+    "branch": "docs/figma-plano-correcao-20261015",
+    "file_key": "ljFSoPfNcvDgZtdR2sHmti",
+    "page_id": "6223:6270",
+    "status": "correcoes_aplicadas_homologacao_runtime_pendente",
+    "original_write_calls": 0,
+    "baseline_page_write_calls": 0,
+    "last_presentation_attempt_utc": "2026-10-16T11:43:35.532Z"
+  },
+  "evidence": {
+    "qa_final": {
+      "page": "6223:6270",
+      "roots": 247,
+      "mainScreens": [
+        {
+          "id": "6223:6272",
+          "present": true
+        },
+        {
+          "id": "6223:6301",
+          "present": true
+        },
+        {
+          "id": "6223:6338",
+          "present": true
+        },
+        {
+          "id": "6223:6364",
+          "present": true
+        },
+        {
+          "id": "6223:6495",
+          "present": true
+        },
+        {
+          "id": "6223:6562",
+          "present": true
+        },
+        {
+          "id": "6223:6581",
+          "present": true
+        },
+        {
+          "id": "6223:6593",
+          "present": true
+        },
+        {
+          "id": "6223:6630",
+          "present": true
+        },
+        {
+          "id": "6223:6663",
+          "present": true
+        },
+        {
+          "id": "6223:6682",
+          "present": true
+        },
+        {
+          "id": "6223:6704",
+          "present": true
+        },
+        {
+          "id": "6223:6738",
+          "present": true
+        },
+        {
+          "id": "6223:6773",
+          "present": true
+        },
+        {
+          "id": "6223:6788",
+          "present": true
+        },
+        {
+          "id": "6223:6800",
+          "present": true
+        },
+        {
+          "id": "6223:6836",
+          "present": true
+        }
+      ],
+      "navigation": {
+        "edges": 1488,
+        "visibleEdges": 1478,
+        "invalid": [],
+        "urls": [],
+        "roReachable": [
+          "6223:9197",
+          "6223:9764",
+          "6223:9223",
+          "6223:9449",
+          "6223:9594",
+          "6223:9646",
+          "6223:9534",
+          "6223:9516",
+          "6223:9557",
+          "6223:9668",
+          "6223:9702",
+          "6223:9737",
+          "6223:9752",
+          "6223:9354",
+          "6223:9627",
+          "6223:9546",
+          "8012:14839"
+        ],
+        "roLeaks": [],
+        "roWrites": [],
+        "badBottomNavigation": []
+      },
+      "smallText": [],
+      "manualSubnav": [],
+      "badTargets": [],
+      "recordDest": [
+        [
+          "6223:6571",
+          "8012:11874"
+        ],
+        [
+          "6223:6572",
+          "8012:12260"
+        ],
+        [
+          "6223:6573",
+          "8012:12646"
+        ],
+        [
+          "6223:6574",
+          "8012:13032"
+        ],
+        [
+          "6223:6578",
+          "8012:13418"
+        ],
+        [
+          "6223:6579",
+          "8012:13804"
+        ]
+      ],
+      "readonlyWeek": {
+        "clip": true,
+        "overflow": "VERTICAL",
+        "parentOrder": [
+          "6223:9225",
+          "6223:9224",
+          "6223:9353"
+        ]
+      },
+      "signupLoading": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "8009:11294",
+            "navigation": "NAVIGATE",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": true
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "8009:11294",
+              "navigation": "NAVIGATE",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": true
+            }
+          ],
+          "trigger": {
+            "type": "AFTER_TIMEOUT",
+            "timeout": 0.800000011920929
+          }
+        }
+      ],
+      "orphanStates": [
+        [
+          "6223:7474",
+          "[PROTO STATE] T07 — Histórico de Cuidados / correction_complete"
+        ]
+      ]
+    },
+    "qa_contrast": {
+      "checked": 4656,
+      "skipped": 346,
+      "violations": []
+    },
+    "qa_baseline": {
+      "page": "5926:1014",
+      "rootsChecked": 142,
+      "expectedRoots": 142,
+      "structuralReactionDifferences": [],
+      "differenceCount": 0,
+      "visualFingerprintDifferences": 142,
+      "note": "Comparação entre arquivos não prova identidade visual: estilos/keys podem mudar na duplicação nativa. Nenhuma escrita foi enviada a esta página.",
+      "mutatedNodeIds": []
+    },
+    "qa_fi_and_reflow": {
+      "modified": [
+        "8012:11974",
+        "8012:12360",
+        "8012:12746",
+        "8012:13132",
+        "8012:13518",
+        "8012:13904",
+        "6223:8019"
+      ],
+      "canonicalDestinationsToLegacy": [],
+      "correctionPositions": [
+        [
+          "8012:11975",
+          "Day Summary / Hoje",
+          20,
+          140
+        ],
+        [
+          "8012:12142",
+          "Care Record — Correção vinculada / Mobilidade 8 de setembro 15:20",
+          172,
+          140
+        ],
+        [
+          "8012:11979",
+          "Care Record / 15:20 — Mobilidade",
+          324,
+          158
+        ],
+        [
+          "8012:11980",
+          "Care Record / 12:40 — Alimentação",
+          494,
+          152
+        ],
+        [
+          "8012:11981",
+          "Care Record / 10:35 — Hidratação",
+          658,
+          152
+        ],
+        [
+          "8012:11982",
+          "Care Record / 08:10 — Alimentação",
+          822,
+          152
+        ],
+        [
+          "8012:11983",
+          "Date Header — Ontem, 31 de agosto",
+          986,
+          53
+        ],
+        [
+          "8012:11986",
+          "Care Record / 19:15 — Alimentação",
+          1051,
+          132
+        ],
+        [
+          "8012:11987",
+          "Care Record / 16:30 — Descanso",
+          1195,
+          152
+        ]
+      ]
+    },
+    "additionalWrites": {
+      "disabledValidationButtons": [
+        "6223:6887",
+        "6223:6954",
+        "6223:9018",
+        "6223:9085",
+        "8018:15758"
+      ],
+      "completeCorrectionQaEntry": "6223:7474"
+    }
+  },
+  "presentation": {
+    "status": "nao_verificado",
+    "url": "https://www.figma.com/proto/ljFSoPfNcvDgZtdR2sHmti?node-id=6223-6272",
+    "observed_title": "Site Unavailable",
+    "observed_body": "Unable to access this site.",
+    "tests_by_click_performed": 0,
+    "latest_attempt": {
+      "observed_at_utc": "2026-10-16T11:43:35.532Z",
+      "observed_at_local": "2026-10-16T07:43:35.532-04:00",
+      "timezone": "America/Manaus",
+      "pre_documentation_head_sha": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "status": "bloqueado_por_indisponibilidade_do_presentation_neste_navegador",
+      "url": "https://www.figma.com/proto/ljFSoPfNcvDgZtdR2sHmti?node-id=6223-6272",
+      "observed_title": "Site Unavailable",
+      "observed_body": "Unable to access this site.",
+      "navigation_attempts": [
+        {
+          "action": "open_new_tab",
+          "result": "site_unavailable"
+        },
+        {
+          "action": "reload_once",
+          "result": "site_unavailable"
+        }
+      ],
+      "integration_surface": {
+        "response": {
+          "surface": "thread"
+        },
+        "controllable_tab_available": false
+      },
+      "cause": "indeterminada",
+      "login_wall_observed": false,
+      "captcha_observed": false,
+      "automation_block_observed": false,
+      "runtime_journeys_executed": 0,
+      "runtime_journeys_passed": 0,
+      "runtime_journeys_failed_by_product_behavior": 0,
+      "checklist_status": "todos_os_casos_runtime_pendentes_nao_verificaveis_nesta_tentativa",
+      "new_product_defects_confirmed": 0,
+      "prior_configuration_checks_repeated": false,
+      "figma_write_calls": 0,
+      "evidence": {
+        "path": "evidencias/presentation-indisponivel-2026-10-16.jpg",
+        "sha256": "43d831311335c1b6ab1e767b6cfba4d5321d9c9fa2747a4634d086bce66712ab",
+        "bytes": 12217
+      },
+      "report": "LOTE_07_RETOMADA_2026-10-16.md"
+    }
+  },
+  "supplement": {
+    "correction_complete_qa_start": "6223:7474",
+    "reason": "Último estado sem entrada ganhou starting point de QA após a varredura; a reaction e as saídas foram lidas.",
+    "full_visual_audit_of_all_247_roots": false,
+    "baseline_cross_file_fingerprints": "Estrutura e reactions iguais em 142 raízes; fingerprints de propriedades diferem em 142, portanto não provam identidade visual entre arquivos."
+  }
+}
