@@ -42,3 +42,14 @@ No PR de correções #129, o check `sql-eer-static` falhou em `entrega/sql-eer/t
 O responsável solicitou integração imediata mesmo com pendências. **Este documento registra o aceite explícito de tal risco, não um PASS fictício do CI**. Não desativar nem contornar o verificador, não substituir hash por valor adivinhado e não alterar SQL canônico. O Codex deverá restaurar `sql-eer-static` verde antes da homologação final.
 
 Verificações observadas: `validate-agent-context` concluído com sucesso; `sql-eer-static` concluiu com falha na checagem de SHA-256 de artefatos; `application` estava em execução durante a conferência. A integração, se realizada, ficará identificada como **provisória com CI pendente**.
+
+## Verificação pós-merge em `main`
+
+PRs **#128, #129 e #130** integrados. Commit de consolidação: `3231dc704426f0ec16811357ec221c205b6be546`.
+
+Checks observados nesse commit:
+- `validate-agent-context`: **PASS**.
+- `sql-eer-static`: **FAIL**, rastreado ao SHA-256 antigo de `rede_de_apoio_v1.mwb` em `evidencias_integridade.json`, conforme `verify-artifacts.py`.
+- `application`: **FAIL** no comando `npm run format:check` (Prettier). Arquivos informados: `.github/workflows/application-validation.yml`, `.github/workflows/sql-eer-delivery.yml`, `entrega/sql-eer/02_manifest_estrutura.json`, `entrega/sql-eer/RELATORIO_FINAL.md`, `entrega/sql-eer/workbench_criacao.json`, `entrega/sql-eer/workbench_reabertura.json`, `entrega/sql-eer/workbench_vistas.json`, `saidas/1.md`. A checagem `npm audit --omit=dev --audit-level=high` concluiu com zero vulnerabilidades.
+
+Os dois FAILs não foram "aprovados" como checks verdes. Permanecem obrigações técnicas para a rodada de finalização com Codex. Alterações de formatação devem ser restritas aos oito arquivos nomeados, sem reformatar o repositório inteiro.
