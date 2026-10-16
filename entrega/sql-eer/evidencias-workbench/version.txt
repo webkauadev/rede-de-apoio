@@ -1,0 +1,2 @@
+Workbench can't find libproj.so, some options may be unavailable.
+MySQL Workbench CE (GPL) 8.0.47 CE build 5817297

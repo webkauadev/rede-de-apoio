@@ -1,5 +1,7 @@
 # Entrega SQL + EER — Issue #124 / PR #125
 
+> **Atualização de 2026-10-16:** abertura real, correção dos extremos de cardinalidade e reexportação das seis vistas em Workbench 8.0.47 estão documentadas no [relatório nativo](RELATORIO_WORKBENCH_NATIVO.md). As seções abaixo preservam o histórico MySQL de 2026-10-13.
+
 Ensaio realizado em **2026-10-13**, exclusivamente na branch `chore/entrega-sql-eer-v1`. O pacote SQL único foi importado **uma vez** em schema previamente inexistente, no MySQL **8.4.11** local descartável. O modelo nativo foi salvo e reaberto pelo **MySQL Workbench 8.0.47-1ubuntu24.04**, em processos separados. Entrega técnica disponível para revisão humana; nenhum merge ou deploy autorizado.
 
 ## Evidência desta execução

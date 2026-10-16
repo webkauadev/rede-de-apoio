@@ -1,0 +1,18 @@
+Agent context validation passed.
+- screens: 17
+- screens with known Figma nodes: 17
+- state entries: 17
+- official user stories indexed: 36
+- user stories with canonical GitHub Issues: 36
+- user stories awaiting content migration: 0
+- functional requirements indexed: 30
+- canonical issue references registered: 78
+PASS SQL+EER: 34 tabelas, 79 FKs; modo check
+PASS — 30 tabelas, 77 FKs, 120 constraints unicas conferidas estaticamente
+LIMITACAO: NAO valida sintaxe completa, InnoDB, execucao MySQL, concurrencia ou autorizacao.
+PASS native MWB: 34 tables, 79 complete FKs, six diagrams; physical 50 CHECK/44 UNIQUE; PNG/SVG valid
+PASS: 17 baselines T01–T17 e 9 estados criticos, 26 PNGs validos, fontes em registries.
+LIMITE: valida inventario e formato PNG; nao compara pixels ao Figma nem reactions.
+PASS: 36 US + owner + origem unica + issue + telas conferidos no backlog e fonte canonica.
+PASS: 36 registros aprovados de comentario P01 identificados.
+LIMITE: nao executa codigo, nao confirma estados do GitHub nem aprova dependencias de ADR.

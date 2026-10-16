@@ -1,0 +1,30 @@
+19:40:40 [INF][   WBContext UI]: Initializing workbench context UI with these values:
+	base dir: /tmp/rda-workbench.hs09ISw9/root/usr/share/mysql-workbench
+	plugin path: /tmp/rda-workbench.hs09ISw9/root/usr/lib/mysql-workbench/plugins
+	struct path: /tmp/rda-workbench.hs09ISw9/root/usr/share/mysql-workbench/grt
+	module path: /tmp/rda-workbench.hs09ISw9/root/usr/lib/mysql-workbench/modules
+	library path: /tmp/rda-workbench.hs09ISw9/root/usr/share/mysql-workbench/libraries
+	user data dir: /tmp/rda-workbench.hs09ISw9/home/.mysql/workbench
+	open at start: /home/kaua-fernandes/Projetos/rede-de-apoio/entrega/sql-eer/tools/export_native_workbench.py
+	open type: run-script
+	run at startup:
+	run type: python
+	Force SW rendering: No
+	Force OpenGL: No
+	quit when done: Yes
+19:40:40 [INF][      WBContext]: WbContext::init
+19:40:41 [INF][            WBA]: Looking for extension modules for WBA...
+19:40:41 [INF][            WBA]: 0 extension modules found
+19:40:41 [WRN][            grt]: Duplicate plugin name wb.tools.cmdlineClient	There is more than one plugin with the name wb.tools.cmdlineClient (in PyWbUtils and PyWbUtils).
+19:40:41 [WRN][            grt]: Duplicate plugin name wb.tools.cmdlineClient	There is more than one plugin with the name wb.tools.cmdlineClient (in PyWbUtils and PyWbUtils).
+19:40:41 [INF][      WBContext]: System info:
+	MySQL Workbench Community (GPL) for Linux/Unix version 8.0.47 CE build 5817297 (64 bit)
+	Configuration Directory: /tmp/rda-workbench.hs09ISw9/home/.mysql/workbench
+	Data Directory: /tmp/rda-workbench.hs09ISw9/root/usr/share/mysql-workbench
+	Cairo Version: 1.18.0
+	OS: Ubuntu 24.04 x86_64
+	CPU: 20x 13th Gen Intel(R) Core(TM) i5-13500 (3499.963MHz) - 15.29GiB RAM
+No video adapter info available
+	Distribution: Ubuntu 24.04.5 LTS
+
+	Fips mode enabled: no
