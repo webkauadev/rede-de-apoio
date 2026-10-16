@@ -7,14 +7,14 @@
 
 ## Estado atual
 
-- **19 dos 19** artefatos planejados estão criados no Figma e possuem Node IDs confirmados nos registros das implementações. Estão distribuídos pela página e **não necessariamente ordenados como apresentação final**.
+- **19 dos 19** artefatos planejados estão criados no Figma e possuem Node IDs confirmados nos registros das implementações. Estão posicionados na página na sequência oficial **13–31**, após os 12 slides originais, mantendo os Node IDs listados.
 - **DB-D e EER-D agora estão implementados** no Figma oficial: nós `6287:3485` e `6288:3484`; as prévias SVG no GitHub permanecem apenas como evidências auxiliares.
 - Avaliação visual preliminar foi feita nas rodadas anteriores, mas **não equivale a aprovação acadêmica final** nem garante legibilidade de cada campo dos EER panorâmicos.
 - Nenhum novo diagrama de atividades ou máquinas de estados está previsto; governança D não gera UC/CL/SQ próprios.
 
 ## Ordem recomendada de apresentação
 
-> Esta é uma ordem de montagem, **não** uma alegação de que os frames já foram movidos. O objetivo é apresentar cada domínio em ordem UC → CL → SQ → DB físico editável → EER Workbench, seguindo as regras existentes de identidade visual 16:9.
+> **Ordem aplicada no Figma em 2026-10-16.** Frames atuais movidos para a faixa principal nas posições 13–31, com sequência UC → CL → SQ → DB físico editável → EER Workbench. Os quatro frames antigos do Domínio A estão preservados em área histórica abaixo dos slides.
 
 | Ordem | Domínio | ID | Conteúdo | Localização | Estado |
 |---:|:---:|---|---|---|---|
@@ -59,8 +59,8 @@ Os frames devem permanecer em 1920 × 1080 (16:9), adotando a identidade visual 
 
 - [x] Importar DB-D como **objetos editáveis**, verificar oito vínculos de FK e textos contra o SQL V1.
 - [x] Importar EER-D usando a exportação nativa `diagrama_suporte_tecnico.svg`, conferir renderização e registrar Node ID real.
-- [ ] Reorganizar os 19 frames no Figma na ordem acima, mantendo originais/backup preservados até a aprovação.
-- [ ] Conferir a apresentação em 16:9: evitar setas soltas, cruzamentos indevidos, sobreposição de títulos/rótulos, fontes diminutas e fragmentos UML ambíguos.
+- [x] Reorganizar os 19 frames no Figma na ordem acima, mantendo originais/backup preservados até a aprovação.
+- [ ] Conferir a apresentação em 16:9 **em projetor**: houve ajustes de geometria e tipos, mas a leitura final em projeção permanece pendente.
 - [ ] Conferir semântica de multiplicidades, papéis e mensagens contra os roteiros textuais, inclusive UC-03/CL-03/SQ-03 e a separação solicitante/destinatário no SQ-02.
 - [ ] Conferir títulos/IDs, links e referências do rodapé.
 - [ ] Manter EER completo como referência da persistência; prévias DB seletivas não substituem SQL canônico.
@@ -76,3 +76,9 @@ Os frames devem permanecer em 1920 × 1080 (16:9), adotando a identidade visual 
 ## Atualização da implementação do Domínio D
 
 DB-D: [`6287:3485`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6287-3485) (Figma nativo editável). EER-D: [`6288:3484`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6288-3484) (SVG canônico Workbench incorporado). Capturas reais revisadas; nenhuma alteração no SQL/EER fonte. **19/19 artefatos criados**, aguardando montagem/validação final da apresentação.
+
+## Correções posteriores à auditoria (2026-10-16)
+
+Os contratos CL-01, CL-03 e SQ-02, assim como multiplicidades de CL-02/DB-C2, mensagens síncronas SQ-01/02/03, tipos dos cinco DB, rotas e ordenação foram corrigidos. Ver [STATUS-CORRECOES-M2](../auditoria-final/STATUS-CORRECOES-M2.md).
+
+**Atenção: EER-A/B/C1/C2/D continuam com os SVGs anteriores à correção da fonte `.mwb`.** Esses cinco slides receberam alertas corretivos e **NÃO devem ser considerados homologados** até a abertura do modelo alterado no Workbench, reexportação fiel das cinco vistas e substituição dos vetores nos frames atuais.
