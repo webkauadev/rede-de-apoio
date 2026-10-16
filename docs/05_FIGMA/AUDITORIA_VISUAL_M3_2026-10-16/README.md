@@ -1,5 +1,7 @@
 # Auditoria visual Material Design 3 — 16/10/2026
 
+> **Atualização de execução — 16/10/2026:** após autorização explícita do solicitante, as microcorreções VIS-001–VIS-008 foram aplicadas na página experimental do Figma, com verificações estruturais e capturas direcionadas. **Não há edição no original; a regressão interativa curta continua pendente.** Consulte [Execução das microcorreções](EXECUCAO_MICROCORRECOES_2026-10-16.md). O restante deste documento permanece como registro histórico da auditoria feita antes das alterações.
+
 **Somente leitura no Figma. Diagnóstico entregue para aprovação; nenhuma microcorreção foi executada.**
 
 **8 padrões de defeito visual confirmados: 1 P1, 5 P2 e 2 P3.** O principal é o recorte de rótulos no rodapé de novos formulários. A mesma composição estreita foi medida em **15 overlays**. Não são 15 defeitos independentes.
