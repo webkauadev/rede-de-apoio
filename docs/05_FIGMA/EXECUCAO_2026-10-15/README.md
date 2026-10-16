@@ -4,6 +4,14 @@
 
 Referência funcional: `main` em `4712047e4550e4504b213e638aaf8a17310f4935`. Auditoria e plano de 15/10/2026. Registro final gerado em `2026-10-16T03:08:24+00:00` / `2026-10-15T23:08:24-04:00`. PR [#127](https://github.com/webkauadev/rede-de-apoio/pull/127), branch `docs/figma-plano-correcao-20261015`, mantido em Draft e sem merge.
 
+## Atualização LOTE 07 — 16/10/2026
+
+**NÃO APROVADO para homologação funcional:** uma tentativa de Presentation retornou Site Unavailable antes de carregar a primeira tela. Nenhum cenário interativo foi executado. O roteiro preserva os 39 cenários operacionais do checklist: **0 aprovados, 0 reprovados por defeito observado e 39 não verificáveis**. Os 3 gates são separados.
+
+[Parecer desta rodada](HOMOLOGACAO_2026-10-16/PARECER.md) · [Execução assistida local](HOMOLOGACAO_2026-10-16/ROTEIRO_ASSISTIDO.md) · [Resultados e status dos 28 AUDs](HOMOLOGACAO_2026-10-16/RESULTADOS.json) · [Evidência do bloqueio](HOMOLOGACAO_2026-10-16/evidencias/EV07-ENV-001.jpg). Nenhuma escrita no Figma ou repetição dos lotes anteriores. PR #127 permanece Draft e sem merge.
+
+---
+
 ## Ambiente e preservação
 
 | Ambiente | FileKey | Página | Operação realizada |
