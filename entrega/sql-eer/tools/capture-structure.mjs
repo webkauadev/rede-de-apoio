@@ -1,6 +1,6 @@
 // Read-only capture of the actual imported schema, for Workbench relationship verification.
 import mysql from "mysql2/promise";
-import { readFile, writeFile } from "node:fs/promises";
+import { writeFile } from "node:fs/promises";
 import { loadState } from "./load-state.mjs";
 const s = await loadState(process.argv[2]);
 const c = await mysql.createConnection({
