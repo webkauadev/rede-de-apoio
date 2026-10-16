@@ -1,5 +1,7 @@
 # Execução das correções da auditoria Figma
 
+> **ENCERRAMENTO DESTE MARCO — 16/10/2026:** o solicitante aprovou o protótipo corrigido para demonstração/entrega acadêmica, **com ressalva documental de cobertura de testes**. Consulte o [Termo de homologação final](../HOMOLOGACAO_FINAL_PROTOTIPO_2026-10-16.md). O parecer histórico do browser remoto permanece válido *para aquela rodada* e não foi convertido artificialmente em 39 testes aprovados. A execução visual posterior está registrada em [VIS-001–008](../AUDITORIA_VISUAL_M3_2026-10-16/EXECUCAO_MICROCORRECOES_2026-10-16.md). A página original externa permanece protegida.
+
 **Situação: correções aplicadas na cópia experimental; homologação por execução no Presentation pendente.**
 
 Referência funcional: `main` em `4712047e4550e4504b213e638aaf8a17310f4935`. Auditoria e plano de 15/10/2026. Registro final gerado em `2026-10-16T03:08:24+00:00` / `2026-10-15T23:08:24-04:00`. PR [#127](https://github.com/webkauadev/rede-de-apoio/pull/127), branch `docs/figma-plano-correcao-20261015`, mantido em Draft e sem merge.
