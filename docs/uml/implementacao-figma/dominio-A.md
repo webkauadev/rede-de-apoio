@@ -1,6 +1,6 @@
 # Implementação no Figma — Domínio A
 
-Status: **concluída e pronta para validação da equipe**
+Status: **corrigida visualmente e pronta para validação da equipe**
 
 Data: 2026-10-15
 Referência das especificações: commit `d5be5a0` na branch `docs/estudo-uml-milestone2`.
@@ -29,7 +29,21 @@ DB-A mostra `usuario`, `pessoa_idosa`, `rede_cuidado`, `membro_rede`, `atribuica
 
 Os cinco frames usam a página oficial da apresentação, formato `1920 × 1080`, tipografia Geist, base clara e a paleta azul observada no slide S05 (`6013:1166`). Cada frame contém título, subtítulo, área diagramática editável, legenda compacta e rodapé com referências.
 
-Foi renderizada uma captura real de cada frame e revisados: presença dos elementos e conexões especificados, títulos e nomenclatura, orientação das mensagens e retornos de SQ-01, multiplicidade de CL01-R02, e identificação de PK/FK no recorte físico. Não foram gerados arquivos achatados para substituir os elementos editáveis; as exportações do Workbench existentes foram apenas referenciadas.
+Foi renderizada uma captura real de cada frame e revisados: presença dos elementos e conexões especificados, títulos e nomenclatura, orientação das mensagens e retornos de SQ-01, multiplicidade de CL01-R02, e identificação de PK/FK no recorte físico. Não foram gerados arquivos achatados para substituir os elementos editáveis de UC-01, CL-01, SQ-01 ou DB-A; EER-A incorpora deliberadamente a exportação nativa do Workbench.
+
+## Correção visual e semântica — 05A.1
+
+Os IDs dos cinco frames foram preservados. A correção foi limitada à apresentação e às conexões, sem mudança de requisitos, contratos de modelagem ou esquema físico.
+
+| Frame | Correções realizadas | Resultado da validação visual |
+|---|---|---|
+| UC-01 | Atores redesenhados com cabeça, corpo, braços e pernas; rótulos separados; fronteira única; as 13 associações foram roteadas para os contornos dos respectivos casos de uso. | 11 casos de uso, 5 atores e 13 associações. Não há `include`, `extend` ou generalização. |
+| CL-01 | Sete classes redistribuídas em torno de `RedeCuidado`; relações roteadas fora dos compartimentos; atributos/operações ampliados; rótulos e multiplicidades recolocados nas extremidades. | Sete associações presentes. CL01-R02 aparece como `PessoaIdosa [1] — [0..1] RedeCuidado`. |
+| SQ-01 | Cinco linhas de vida tracejadas reforçadas; barras de ativação desenhadas; fragmentos `alt` divididos em operandos e guardas; chamadas e retornos reposicionados. | Cinco participantes, sete mensagens e os dois caminhos de `alt` preservados; M-05/M-06 ocorrem apenas no operando não autorizado. |
+| DB-A | Tabelas físicas reorganizadas; PK/FK destacadas; vínculos roteados fora de atributos; legenda ajustada para `PK`, `FK`, vínculo FK→PK e cardinalidades. | Mantém elementos editáveis e o recorte V1 sem criar ou modificar tabela, chave ou relação. |
+| EER-A | A reconstrução manual foi removida. O frame agora contém a exportação nativa incorporada, identificada como tal. | Imagem inserida: `entrega/sql-eer/diagrama_identidade_rede.png`, exportação temática do modelo `entrega/sql-eer/rede_de_apoio_v1.mwb`. |
+
+As cinco lâminas foram renderizadas após os ajustes. A imagem de EER-A é intencionalmente rasterizada por ser a exportação real do Workbench; DB-A é a representação física complementar que preserva tabelas e conexões individualmente editáveis no Figma.
 
 ## Escopo e pendências
 
