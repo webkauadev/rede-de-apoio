@@ -44,8 +44,5 @@
   "diagramConnections": 79,
   "fkColumnsAndRulesVerified": true,
   "diagrams": 6,
-  "exports": [
-    "diagrama_geral.svg",
-    "diagrama_geral.png"
-  ]
+  "exports": ["diagrama_geral.svg", "diagrama_geral.png"]
 }

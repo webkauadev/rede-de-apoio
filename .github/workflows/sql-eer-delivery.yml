@@ -2,21 +2,21 @@ name: Validate SQL-EER delivery (static)
 on:
   pull_request:
     paths:
-      - 'database/mysql/**'
-      - 'entrega/sql-eer/**'
-      - 'docs/11_ENTREGA_SQL_EER/**'
-      - 'scripts/prepare_sql_eer_delivery.mjs'
-      - 'scripts/verify_mysql_sql_eer.mjs'
-      - '.github/workflows/sql-eer-delivery.yml'
+      - "database/mysql/**"
+      - "entrega/sql-eer/**"
+      - "docs/11_ENTREGA_SQL_EER/**"
+      - "scripts/prepare_sql_eer_delivery.mjs"
+      - "scripts/verify_mysql_sql_eer.mjs"
+      - ".github/workflows/sql-eer-delivery.yml"
   push:
     branches: [main]
     paths:
-      - 'database/mysql/**'
-      - 'entrega/sql-eer/**'
-      - 'docs/11_ENTREGA_SQL_EER/**'
-      - 'scripts/prepare_sql_eer_delivery.mjs'
-      - 'scripts/verify_mysql_sql_eer.mjs'
-      - '.github/workflows/sql-eer-delivery.yml'
+      - "database/mysql/**"
+      - "entrega/sql-eer/**"
+      - "docs/11_ENTREGA_SQL_EER/**"
+      - "scripts/prepare_sql_eer_delivery.mjs"
+      - "scripts/verify_mysql_sql_eer.mjs"
+      - ".github/workflows/sql-eer-delivery.yml"
 permissions:
   contents: read
 jobs:
