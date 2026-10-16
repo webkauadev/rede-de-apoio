@@ -76,7 +76,18 @@ const dot = [
 ].join("\n");
 const output = [
   ["entrega/sql-eer/01_schema_completo_v1.sql", sql],
-  ["entrega/sql-eer/02_manifest_estrutura.json", JSON.stringify(manifest, null, 2) + "\n"],
+  [
+    "entrega/sql-eer/02_manifest_estrutura.json",
+    JSON.stringify(manifest, null, 2)
+      .replace(
+        /"tables": \[\n\s+"([^"]+)"\n\s+\]/g,
+        '"tables": ["$1"]',
+      )
+      .replace(
+        /"tables": \[\n\s+"([^"]+)",\n\s+"([^"]+)"\n\s+\]/g,
+        '"tables": ["$1", "$2"]',
+      ) + "\n",
+  ],
   ["entrega/sql-eer/03_relacionamentos_referencia.dot", dot]
 ];
 for (const [name, content] of output) {

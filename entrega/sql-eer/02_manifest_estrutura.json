@@ -39,22 +39,15 @@
     },
     {
       "path": "database/mysql/003_convite_cadastro_cuidador.sql",
-      "tables": [
-        "convite_cadastro_cuidador"
-      ]
+      "tables": ["convite_cadastro_cuidador"]
     },
     {
       "path": "database/mysql/004_cadastro_rate_limit.sql",
-      "tables": [
-        "cadastro_rate_limit"
-      ]
+      "tables": ["cadastro_rate_limit"]
     },
     {
       "path": "database/mysql/005_sessoes_login.sql",
-      "tables": [
-        "sessao_usuario",
-        "login_rate_limit"
-      ]
+      "tables": ["sessao_usuario", "login_rate_limit"]
     }
   ],
   "table_count": 34,

@@ -4,19 +4,19 @@ Ensaio realizado em **2026-10-13**, exclusivamente na branch `chore/entrega-sql-
 
 ## Evidência desta execução
 
-| Verificação | Resultado real |
-| --- | --- |
-| Importação de `01_schema_completo_v1.sql` | PASS, uma importação, banco novo |
-| Tabelas / engine | 34 / todas InnoDB |
-| PRIMARY KEY | 34 |
-| FOREIGN KEY | 79, nomes, tabelas, colunas ordenadas e regras conferidos |
-| CHECK | 50 |
-| UNIQUE secundárias | 44, além das 34 PK |
-| Casos negativos estruturais | 8 PASS; rollback; todas as 34 tabelas vazias |
-| `.mwb` reaberto em outro processo Workbench | 34 tabelas, 79 FKs completas |
-| Diagrama geral reaberto | 34 figuras, 79 conexões |
-| Vistas adicionais no mesmo modelo | 5; exportadas em SVG e PNG |
-| Validações locais de contexto / SQL / snapshot / backlog / artefatos | PASS |
+| Verificação                                                          | Resultado real                                            |
+| -------------------------------------------------------------------- | --------------------------------------------------------- |
+| Importação de `01_schema_completo_v1.sql`                            | PASS, uma importação, banco novo                          |
+| Tabelas / engine                                                     | 34 / todas InnoDB                                         |
+| PRIMARY KEY                                                          | 34                                                        |
+| FOREIGN KEY                                                          | 79, nomes, tabelas, colunas ordenadas e regras conferidos |
+| CHECK                                                                | 50                                                        |
+| UNIQUE secundárias                                                   | 44, além das 34 PK                                        |
+| Casos negativos estruturais                                          | 8 PASS; rollback; todas as 34 tabelas vazias              |
+| `.mwb` reaberto em outro processo Workbench                          | 34 tabelas, 79 FKs completas                              |
+| Diagrama geral reaberto                                              | 34 figuras, 79 conexões                                   |
+| Vistas adicionais no mesmo modelo                                    | 5; exportadas em SVG e PNG                                |
+| Validações locais de contexto / SQL / snapshot / backlog / artefatos | PASS                                                      |
 
 Arquivos de prova:
 
@@ -32,14 +32,14 @@ Estas provas foram produzidas na execução da Issue #124. Não reutilizam ensai
 
 Abrir [rede_de_apoio_v1.mwb](rede_de_apoio_v1.mwb) no Workbench. O catálogo contém as 34 tabelas e as 79 relações; o documento contém seis diagramas. As vistas repetem figuras das mesmas tabelas do catálogo, sem duplicar tabelas físicas. Nas vistas temáticas, verde identifica as quatro tabelas de contexto comuns; azul identifica o recorte do domínio. Relações com tabelas fora do recorte ficam no diagrama geral.
 
-| Diagrama | Tabelas / conexões | Exportações nativas |
-| --- | --- | --- |
-| Geral | 34 / 79 | [SVG](diagrama_geral.svg), [PNG](diagrama_geral.png) |
-| Identidade e rede | 10 / 14 | [SVG](diagrama_identidade_rede.svg), [PNG](diagrama_identidade_rede.png) |
-| Agenda e tarefas | 11 / 30 | [SVG](diagrama_agenda_tarefas.svg), [PNG](diagrama_agenda_tarefas.png) |
-| Medicação | 10 / 22 | [SVG](diagrama_medicacao.svg), [PNG](diagrama_medicacao.png) |
-| Diário e consultas | 11 / 25 | [SVG](diagrama_diario_consultas.svg), [PNG](diagrama_diario_consultas.png) |
-| Suporte técnico | 10 / 20 | [SVG](diagrama_suporte_tecnico.svg), [PNG](diagrama_suporte_tecnico.png) |
+| Diagrama           | Tabelas / conexões | Exportações nativas                                                        |
+| ------------------ | ------------------ | -------------------------------------------------------------------------- |
+| Geral              | 34 / 79            | [SVG](diagrama_geral.svg), [PNG](diagrama_geral.png)                       |
+| Identidade e rede  | 10 / 14            | [SVG](diagrama_identidade_rede.svg), [PNG](diagrama_identidade_rede.png)   |
+| Agenda e tarefas   | 11 / 30            | [SVG](diagrama_agenda_tarefas.svg), [PNG](diagrama_agenda_tarefas.png)     |
+| Medicação          | 10 / 22            | [SVG](diagrama_medicacao.svg), [PNG](diagrama_medicacao.png)               |
+| Diário e consultas | 11 / 25            | [SVG](diagrama_diario_consultas.svg), [PNG](diagrama_diario_consultas.png) |
+| Suporte técnico    | 10 / 20            | [SVG](diagrama_suporte_tecnico.svg), [PNG](diagrama_suporte_tecnico.png)   |
 
 Engenharia reversa executada **dentro do Workbench**, por seu módulo nativo `DbMySQLRE`, conectado ao servidor descartável. O módulo de parsing por tabela deixou referências futuras sem objeto pai: a primeira inspeção encontrou 79 FKs, mas somente 17 conexões renderizadas. Os vínculos GRT foram restaurados usando exclusivamente `information_schema` desse servidor: tabela pai, colunas compostas em ordem, `UPDATE_RULE` e `DELETE_RULE`. O banco e o DDL não foram alterados. O Workbench então salvou o modelo com `saveModelAs` e o reabriu com `openModel`; a conferência final exigiu **79 conexões**, e cada FK foi comparada aos metadados físicos. Nenhum XML do modelo foi escrito manualmente. Uma tentativa preliminar enquanto o DDL ainda importava também foi rejeitada pelo gate de 34 tabelas; só o modelo completo integra a entrega.
 

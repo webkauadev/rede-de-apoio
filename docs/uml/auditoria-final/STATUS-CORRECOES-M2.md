@@ -1,6 +1,6 @@
 # Execução dos achados AUD-M2 — Milestone 2
 
-**Data:** 2026-10-16. **Branch de trabalho:** `fix/uml-milestone2-homologacao` (derivada de `audit/uml-milestone2-final`). **Estado:** correções executadas, **homologação ainda NÃO aprovada**. O diagnóstico independente e as capturas originais da auditoria foram preservados.
+**Data:** 2026-10-16. **Branch de trabalho:** `fix/m2-workbench-reexport-final` (derivada de `main` em `6f604f9`). **Estado:** correções executadas, **homologação ainda NÃO aprovada**. O diagnóstico independente e as capturas originais da auditoria foram preservados.
 
 **Figma oficial:** [arquivo](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/), página `6103:3636`. Os Node IDs correntes permanecem os mesmos da [matriz original](MATRIZ-VALIDACAO-19-ARTEFATOS.md).
 
@@ -10,7 +10,7 @@
 |---|---|---|
 | AUD-M2-001 — P1 | **Correção aplicada no Figma** | [CL-02](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6263-3484): solicitante/destinatário, junto a MembroRede `1` e junto a Solicitação `0..*`; respondente, junto a MembroRede `0..1` e junto a Solicitação `0..*`. Conferido por captura. |
 | AUD-M2-002 — P1 | **Correção aplicada no Figma** | [DB-C2](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6276-3484): multiplicidade pai `registro_cuidado` agora `0..1`; XOR de exatamente um dos três pais permanece. |
-| AUD-M2-003 — P1 | **Fonte MWB atualizada; EERs ainda pendentes** | [Modelo `.mwb` desta branch](https://github.com/webkauadev/rede-de-apoio/blob/fix/uml-milestone2-homologacao/entrega/sql-eer/rede_de_apoio_v1.mwb): propriedades gráficas de 79 FKs derivadas do SQL V1 (4 `many` alterados para 0; 21 `mandatory` alterados para 0; 79 `referencedMandatory` alterados para 0), total 104 alterações. CRC original validado; ZIP reempacotado com integridade estrutural e modelo XML preservado salvo esses indicadores. **Ainda falta validar abertura no aplicativo Workbench e reexportar as cinco vistas nativas**, depois substituí-las no GitHub e no Figma. SVGs anteriores continuam exibidos com alerta corretivo nos slides. |
+| AUD-M2-003 — P1 | **Validação estática atualizada; Workbench/EER/Figma ainda pendentes** | O `.mwb` atual tem SHA-256 `f8454746ffae0d408b37f9ce87a51eddf9d61fbf4fafe5bb2a41230801f5a120`; o manifesto de integridade foi atualizado com esse valor. A comparação atual SQL↔MWB passou sem divergências estruturais: 34 tabelas, 305 colunas, 79 FKs, 6 vistas, 50 CHECKs no SQL e 44 UNIQUEs. Os flags atuais são 4 `many=0`, 21 `mandatory=0` e 79 `referencedMandatory=0`; `fk_rede_pessoa` está com `many=0`, `mandatory=1`, `referencedMandatory=0`, coerente com máximo `0..1` de rede por pessoa. O ambiente desta execução não possui binário/pacote/Flatpak/Snap/imagem local do MySQL Workbench; portanto **não houve abertura, salvamento nativo, reexportação ou atualização dos cinco frames do Figma**. SVGs/PNGs e alertas existentes permanecem pendentes de substituição real. |
 | AUD-M2-004 — P1 | **Correção aplicada no Figma** | [SQ-01](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6257-3484), [SQ-02](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6265-3484), [SQ-03](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6273-3484): 16 pontas de chamada fechadas e preenchidas; retornos tracejados não foram alterados. |
 | AUD-M2-005 — P1 | **Correção aplicada no Figma e contrato** | [CL-01](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6255-3484): removida a operação inferida `Usuario.autenticar()`, mantendo autenticação no serviço em SQ-01. Contrato `CL-01.md` atualizado nesta branch. |
 | AUD-M2-006 — P1 | **Correção aplicada no Figma e contrato** | [SQ-02](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6265-3484): revalidação de versão/contexto na resposta e novo operando `alt` de conflito 409 sem M-09/M-10/N01; mantém seis lifelines e versão esperada. Contrato `SQ-02.md` atualizado. Validação ainda é de modelagem, não prova de concorrência de backend. |
@@ -30,6 +30,15 @@
 - O arquivo Workbench nativo ainda deve ser aberto no aplicativo para certificar leitura e exportação; o comparador da auditoria deve ser executado novamente depois da reexportação.
 - Os textos de alerta nos cinco EER são provisórios e devem ser removidos **somente após** as novas exportações terem sido incorporadas e validadas.
 - Nada foi mesclado à branch `docs/estudo-uml-milestone2` ou `main`.
+
+## Execução final de integridade e CI — 2026-10-16
+
+- Cópia preservada antes da execução: `/tmp/rede_de_apoio_v1.pre-workbench-reexport.mwb`, SHA-256 idêntico ao arquivo de trabalho. Não foi realizada mutação adicional do `.mwb` nem do SQL V1.
+- `node scripts/prepare_sql_eer_delivery.mjs --check`: **PASS**, 34 tabelas e 79 FKs. O gerador foi ajustado apenas para emitir o `02_manifest_estrutura.json` na mesma formatação do Prettier, preservando o conteúdo e permitindo que os dois checks convivam.
+- `python3 entrega/sql-eer/tools/verify-artifacts.py`: **PASS**, MWB nativo estruturalmente íntegro, seis diagramas e PNG/SVG válidos.
+- `python3 docs/uml/auditoria-final/evidencias/comparar_sql_mwb.py`: **PASS**, sem divergências SQL↔MWB; a evidência `sql-mwb-comparacao.json` foi regenerada para os indicadores gráficos atuais.
+- `python3 scripts/validate_sql_prototype.py`: **PASS estático**, com a limitação já declarada de não executar MySQL.
+- A correção de formatação dos oito arquivos reportados foi aplicada seletivamente. `npx prettier@3.6.2 --check` passou nesses arquivos. `npm run format:check` não pode ser executado neste ambiente: o projeto exige Node `>=24 <25` e npm `>=11 <12`, enquanto o ambiente disponibiliza Node `20.19.2` e npm `9.2.0`; `npm ci` foi recusado pelo gate de engine. A confirmação ocorreu no runner compatível do GitHub Actions: no PR #131, `application`, `sql-eer-static` e `validate-agent-context` concluíram como **SUCCESS** (execuções `38973994691`, `38973994848` e `38973994945`).
 
 ## Portões restantes para a homologação
 

@@ -1607,7 +1607,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_administracao_executor": {
       "child": "administracao_medicamento",
@@ -1622,8 +1622,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_administracao_horario": {
       "child": "administracao_medicamento",
@@ -1640,8 +1640,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_administracao_ocorrencia": {
       "child": "administracao_medicamento",
@@ -1657,9 +1657,9 @@
         "ocorrencia_id"
       ],
       "nullable": true,
-      "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "many": "0",
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_administracao_regime": {
       "child": "administracao_medicamento",
@@ -1675,7 +1675,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_anexo_administracao": {
       "child": "anexo",
@@ -1690,8 +1690,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_anexo_autor": {
       "child": "anexo",
@@ -1705,7 +1705,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_anexo_consulta": {
       "child": "anexo",
@@ -1720,8 +1720,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_anexo_registro": {
       "child": "anexo",
@@ -1736,8 +1736,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_papel_concedente": {
       "child": "atribuicao_papel_familiar",
@@ -1751,7 +1751,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_papel_membro_familiar": {
       "child": "atribuicao_papel_familiar",
@@ -1769,7 +1769,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_auditoria_ator": {
       "child": "auditoria",
@@ -1782,8 +1782,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_auditoria_pessoa": {
       "child": "auditoria",
@@ -1796,8 +1796,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_auditoria_rede": {
       "child": "auditoria",
@@ -1810,8 +1810,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_compromisso_contexto": {
       "child": "compromisso",
@@ -1827,7 +1827,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_compromisso_criador": {
       "child": "compromisso",
@@ -1841,7 +1841,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_compromisso_responsavel": {
       "child": "compromisso",
@@ -1856,8 +1856,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_conclusao_autor": {
       "child": "conclusao_tarefa",
@@ -1871,7 +1871,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_conclusao_executor": {
       "child": "conclusao_tarefa",
@@ -1887,7 +1887,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_conclusao_tarefa": {
       "child": "conclusao_tarefa",
@@ -1903,7 +1903,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_consulta_autor": {
       "child": "consulta",
@@ -1917,7 +1917,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_consulta_compromisso": {
       "child": "consulta",
@@ -1932,8 +1932,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_consulta_contexto": {
       "child": "consulta",
@@ -1949,7 +1949,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_contato_autor": {
       "child": "contato_importante",
@@ -1963,7 +1963,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_contato_contexto": {
       "child": "contato_importante",
@@ -1979,7 +1979,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_convite_cuidador_emitente": {
       "child": "convite_cadastro_cuidador",
@@ -1992,8 +1992,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_correcao_administracao": {
       "child": "correcao_administracao_medicamento",
@@ -2009,7 +2009,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_correcao_administracao_autor": {
       "child": "correcao_administracao_medicamento",
@@ -2023,7 +2023,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_correcao_consulta": {
       "child": "correcao_consulta",
@@ -2039,7 +2039,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_correcao_consulta_autor": {
       "child": "correcao_consulta",
@@ -2053,7 +2053,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_correcao_registro": {
       "child": "correcao_registro_cuidado",
@@ -2069,7 +2069,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_correcao_registro_autor": {
       "child": "correcao_registro_cuidado",
@@ -2083,7 +2083,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_entrega_destinatario": {
       "child": "entrega_tecnica_notificacao",
@@ -2097,7 +2097,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_entrega_rede": {
       "child": "entrega_tecnica_notificacao",
@@ -2111,7 +2111,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_habilitacao_pessoa_titular": {
       "child": "habilitacao_acesso_idoso",
@@ -2127,7 +2127,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_habilitacao_solicitante": {
       "child": "habilitacao_acesso_idoso",
@@ -2141,7 +2141,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_habilitacao_titular": {
       "child": "habilitacao_acesso_idoso",
@@ -2155,7 +2155,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_historico_ator": {
       "child": "historico_plantao",
@@ -2169,7 +2169,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_historico_membro_antes": {
       "child": "historico_plantao",
@@ -2184,8 +2184,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_historico_membro_depois": {
       "child": "historico_plantao",
@@ -2200,8 +2200,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_historico_plantao": {
       "child": "historico_plantao",
@@ -2217,7 +2217,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_horario_regime": {
       "child": "horario_regime",
@@ -2233,7 +2233,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_idempotencia_ator": {
       "child": "idempotencia_comando",
@@ -2247,7 +2247,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_idempotencia_rede": {
       "child": "idempotencia_comando",
@@ -2261,7 +2261,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_emergencia_autor": {
       "child": "informacao_emergencia",
@@ -2275,7 +2275,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_emergencia_contexto": {
       "child": "informacao_emergencia",
@@ -2289,9 +2289,9 @@
         "pessoa_idosa_id"
       ],
       "nullable": false,
-      "many": "1",
+      "many": "0",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_medicamento_autor": {
       "child": "medicamento",
@@ -2305,7 +2305,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_medicamento_contexto": {
       "child": "medicamento",
@@ -2321,7 +2321,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_membro_rede": {
       "child": "membro_rede",
@@ -2335,7 +2335,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_membro_usuario_tipo": {
       "child": "membro_rede",
@@ -2351,7 +2351,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_membro_vinculador": {
       "child": "membro_rede",
@@ -2365,7 +2365,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_ocorrencia_designado": {
       "child": "ocorrencia_programada",
@@ -2380,8 +2380,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_ocorrencia_horario": {
       "child": "ocorrencia_programada",
@@ -2396,8 +2396,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_ocorrencia_rede": {
       "child": "ocorrencia_programada",
@@ -2411,7 +2411,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_ocorrencia_tarefa": {
       "child": "ocorrencia_programada",
@@ -2426,8 +2426,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_pessoa_cadastrante": {
       "child": "pessoa_idosa",
@@ -2441,7 +2441,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_pessoa_conta_tipo": {
       "child": "pessoa_idosa",
@@ -2455,9 +2455,9 @@
         "tipo_acesso"
       ],
       "nullable": true,
-      "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "many": "0",
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_plantao_criador": {
       "child": "plantao",
@@ -2471,7 +2471,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_plantao_membro": {
       "child": "plantao",
@@ -2487,7 +2487,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_plantao_rede": {
       "child": "plantao",
@@ -2501,7 +2501,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_preferencia_rede": {
       "child": "preferencia_notificacao",
@@ -2515,7 +2515,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_preferencia_usuario": {
       "child": "preferencia_notificacao",
@@ -2529,7 +2529,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_recomendacao_autor": {
       "child": "recomendacao",
@@ -2543,7 +2543,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_recomendacao_consulta": {
       "child": "recomendacao",
@@ -2558,8 +2558,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_recomendacao_contexto": {
       "child": "recomendacao",
@@ -2575,7 +2575,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_rede_criador": {
       "child": "rede_cuidado",
@@ -2589,7 +2589,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_rede_pessoa": {
       "child": "rede_cuidado",
@@ -2601,9 +2601,9 @@
         "pessoa_idosa_id"
       ],
       "nullable": false,
-      "many": "1",
+      "many": "0",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_regime_autor": {
       "child": "regime_medicamento",
@@ -2617,7 +2617,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_regime_medicamento": {
       "child": "regime_medicamento",
@@ -2633,7 +2633,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_registro_autor": {
       "child": "registro_cuidado",
@@ -2647,7 +2647,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_registro_contexto": {
       "child": "registro_cuidado",
@@ -2663,7 +2663,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_sessao_usuario": {
       "child": "sessao_usuario",
@@ -2677,7 +2677,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_troca_destinatario": {
       "child": "solicitacao_troca_plantao",
@@ -2693,7 +2693,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_troca_plantao": {
       "child": "solicitacao_troca_plantao",
@@ -2709,7 +2709,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_troca_respondente": {
       "child": "solicitacao_troca_plantao",
@@ -2724,8 +2724,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     },
     "fk_troca_solicitante": {
       "child": "solicitacao_troca_plantao",
@@ -2741,7 +2741,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_tarefa_criador": {
       "child": "tarefa",
@@ -2755,7 +2755,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_tarefa_rede": {
       "child": "tarefa",
@@ -2769,7 +2769,7 @@
       "nullable": false,
       "many": "1",
       "mandatory": "1",
-      "referencedMandatory": "1"
+      "referencedMandatory": "0"
     },
     "fk_tarefa_responsavel": {
       "child": "tarefa",
@@ -2784,8 +2784,8 @@
       ],
       "nullable": true,
       "many": "1",
-      "mandatory": "1",
-      "referencedMandatory": "1"
+      "mandatory": "0",
+      "referencedMandatory": "0"
     }
   },
   "indexes": {
