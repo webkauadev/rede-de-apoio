@@ -36,7 +36,7 @@
 | 16 | C | DB-C2 | Banco físico editável — Diário, Consultas e Anexos | [Frame 6276-3484](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6276-3484) | Figma; recorte seletivo |
 | 17 | C | EER-C2 | Workbench original — Diário e Consultas | [Frame 6278-3565](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6278-3565) | Figma; exportação original |
 | 18 | D | DB-D | Banco físico de Governança (recorte editável) | [Frame 6287-3485](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6287-3485) | **Figma: editável, conferido** |
-| 19 | D | EER-D | Workbench original — Suporte Técnico | [Frame 6288-3484](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6288-3484) · [Fonte nativa](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/entrega/sql-eer/diagrama_suporte_tecnico.svg) | **Figma: importação vetorial conferida** |
+| 19 | D | EER-D | Workbench original — Suporte Técnico | [Frame 6288-3484](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6288-3484) · [Fonte nativa corrigida](https://github.com/webkauadev/rede-de-apoio/blob/main/entrega/sql-eer/diagrama_suporte_tecnico.svg) | **Figma: importação vetorial conferida** |
 
 ## Organização visual obrigatória
 
@@ -71,14 +71,26 @@ Os frames devem permanecer em 1920 × 1080 (16:9), adotando a identidade visual 
 
 - [Relatório Domínio A](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/docs/uml/implementacao-figma/dominio-A.md) · [Relatório Domínio B](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/docs/uml/implementacao-figma/dominio-B.md) · [Relatório Domínio C](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/docs/uml/implementacao-figma/dominio-C.md) · [Relatório Domínio D](https://github.com/webkauadev/rede-de-apoio/blob/docs/estudo-uml-milestone2/docs/uml/implementacao-figma/dominio-D.md).
 - Fonte de persistência: `entrega/sql-eer/rede_de_apoio_v1.mwb` e `entrega/sql-eer/01_schema_completo_v1.sql` (sem modificações).
-- **Impedimento superado em 2026-10-16:** os dois frames D foram inseridos e verificados no Figma. **Pendente:** ordenação global dos 19 frames, apresentação integrada e validação acadêmica final.
+- **Impedimento superado em 2026-10-16:** os dois frames D foram inseridos e verificados no Figma. **Resolvido:** os 19 frames estão ordenados. **Pendente:** validação integrada/legibilidade acadêmica final.
 
 ## Atualização da implementação do Domínio D
 
-DB-D: [`6287:3485`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6287-3485) (Figma nativo editável). EER-D: [`6288:3484`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6288-3484) (SVG canônico Workbench incorporado). Capturas reais revisadas; nenhuma alteração no SQL/EER fonte. **19/19 artefatos criados**, aguardando montagem/validação final da apresentação.
+DB-D: [`6287:3485`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6287-3485) (Figma nativo editável). EER-D: [`6288:3484`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6288-3484) (SVG canônico Workbench incorporado). Capturas reais revisadas; nenhuma alteração no SQL/EER fonte. **19/19 artefatos criados e ordenados**, aguardando validação acadêmica final da apresentação.
 
 ## Correções posteriores à auditoria (2026-10-16)
 
 Os contratos CL-01, CL-03 e SQ-02, assim como multiplicidades de CL-02/DB-C2, mensagens síncronas SQ-01/02/03, tipos dos cinco DB, rotas e ordenação foram corrigidos. Ver [STATUS-CORRECOES-M2](../auditoria-final/STATUS-CORRECOES-M2.md).
 
-**Atenção: EER-A/B/C1/C2/D continuam com os SVGs anteriores à correção da fonte `.mwb`.** Esses cinco slides receberam alertas corretivos e **NÃO devem ser considerados homologados** até a abertura do modelo alterado no Workbench, reexportação fiel das cinco vistas e substituição dos vetores nos frames atuais.
+**Atualização definitiva da representação EER (2026-10-16, PR #132):** após a abertura, salvamento e reabertura efetivos do arquivo `.mwb` no Workbench CE 8.0.47, as seis vistas foram reexportadas nativamente. EER-A, EER-B, EER-C1, EER-C2 e EER-D receberam os cinco SVGs temáticos corrigidos dentro dos frames originais no Figma. Todas as capturas de conferência visual foram revisadas, cinco versões anteriores e os cinco avisos `AUD-M2-003` foram removidos. **AUD-M2-003 concluído tecnicamente; homologação acadêmica global ainda depende da revalidação integrada e das ressalvas.**
+
+## EER revisados e sincronizados com o Workbench CE 8.0.47
+
+| Artefato | Slide da apresentação | Frame Figma | Origem canônica atualizada |
+|---|---:|---|---|
+| EER-A | 17 | [`6238:3578`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6238-3578) | `diagrama_identidade_rede.svg` |
+| EER-B | 22 | [`6268:3484`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6268-3484) | `diagrama_agenda_tarefas.svg` |
+| EER-C1 | 27 | [`6278:3484`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6278-3484) | `diagrama_medicacao.svg` |
+| EER-C2 | 29 | [`6278:3565`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6278-3565) | `diagrama_diario_consultas.svg` |
+| EER-D | 31 | [`6288:3484`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6288-3484) | `diagrama_suporte_tecnico.svg` |
+
+Fontes em `entrega/sql-eer/` na branch `main` após o [PR #132](https://github.com/webkauadev/rede-de-apoio/pull/132). Conferência estrutural no Figma: cinco SVGs vetoriais novos, zero alertas temporários, versões antigas removidas, frames e sequência 13–31 preservados. Ver [status detalhado de correções](../auditoria-final/STATUS-CORRECOES-M2.md). Os SVGs panorâmicos exigem zoom para leitura integral de campos e não substituem consulta ao SQL V1.
