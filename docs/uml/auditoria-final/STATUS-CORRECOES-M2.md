@@ -62,3 +62,7 @@ O repositório `main` já contém as seis exportações **nativas** do Workbench
 | EER-D | [`6288:3484`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6288-3484) | `6322:47790` | Importado e conferido; alerta removido |
 
 **Verificação estrutural final no Figma:** cada um dos cinco frames tem exatamente um novo objeto `SVG Nativo ... PR132`, nenhum objeto de importação anterior e zero `ALERTA AUD-M2-003`. Todos preservam a dimensão 1920×1080. Essas evidências confirmam a entrega técnica do AUD-M2-003; **não anulam os resultados históricos da auditoria**, nem provam, isoladamente, a homologação acadêmica global.
+
+### Observação de CI após PR #132
+
+Ao abrir o PR documental de sincronização com o Figma, o check `application` falhou na etapa `npm run format:check` por **quatro artefatos de evidência criados no PR #132**, não por uma alteração nos frames ou no SQL: `entrega/sql-eer/evidencias-workbench/native-correction.json`, `native-export.json`, `sql-mwb-comparacao.json` e `entrega/sql-eer/RELATORIO_WORKBENCH_NATIVO.md`. Os checks `sql-eer-static` e `validate-agent-context` do PR #132 haviam passado. O reparo de formatação dessas evidências deve preservar integridade SHA-256, regenerando os hashes correspondentes quando necessário; **não alterar conteúdos semânticos, imagens nativas ou o modelo `.mwb`**. Esse ponto não invalida a atualização Figma concluída, mas impede declarar todos os checks verdes sem nova execução.
