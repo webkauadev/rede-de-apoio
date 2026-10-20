@@ -1,0 +1,1268 @@
+{
+  "reference": {
+    "repo": "webkauadev/rede-de-apoio",
+    "sha": "4712047e4550e4504b213e638aaf8a17310f4935",
+    "date": "2026-10-13"
+  },
+  "tables": [
+    "administracao_medicamento",
+    "anexo",
+    "atribuicao_papel_familiar",
+    "auditoria",
+    "cadastro_rate_limit",
+    "compromisso",
+    "conclusao_tarefa",
+    "consulta",
+    "contato_importante",
+    "convite_cadastro_cuidador",
+    "correcao_administracao_medicamento",
+    "correcao_consulta",
+    "correcao_registro_cuidado",
+    "entrega_tecnica_notificacao",
+    "habilitacao_acesso_idoso",
+    "historico_plantao",
+    "horario_regime",
+    "idempotencia_comando",
+    "informacao_emergencia",
+    "login_rate_limit",
+    "medicamento",
+    "membro_rede",
+    "ocorrencia_programada",
+    "pessoa_idosa",
+    "plantao",
+    "preferencia_notificacao",
+    "recomendacao",
+    "rede_cuidado",
+    "regime_medicamento",
+    "registro_cuidado",
+    "sessao_usuario",
+    "solicitacao_troca_plantao",
+    "tarefa",
+    "usuario"
+  ],
+  "RN": [
+    {
+      "id": "RN-001",
+      "summary": "Exatamente um Familiar Principal ativo por rede operacional; transferência atômica.",
+      "tables": [
+        "rede_cuidado",
+        "membro_rede",
+        "atribuicao_papel_familiar"
+      ],
+      "guarantee": "SQL: `uq_papel_principal_rede` impede dois Principais ativos; FK da atribuição exige membro Familiar. Aplicação: garante **pelo menos um** Principal na rede operacional e transferência sem estado intermediário por transação.",
+      "nature": "SQL parcial + transação"
+    },
+    {
+      "id": "RN-002",
+      "summary": "Papéis familiares Principal/Apoio/Emergência são acumuláveis; permissões positivas se somam, sem superar restrições; avisos não duplicam.",
+      "tables": [
+        "membro_rede",
+        "atribuicao_papel_familiar",
+        "entrega_tecnica_notificacao"
+      ],
+      "guarantee": "SQL: atribuições distintas, FK de categoria Familiar, UNIQUE por papel vigente; UNIQUE na entrega de evento/destinatário. Aplicação: calcula união e aplica restrições de cada operação.",
+      "nature": "SQL parcial + autorização"
+    },
+    {
+      "id": "RN-003",
+      "summary": "Plantonista Atual é condição temporária calculada pelo turno, não perfil nem categoria; sobreposições entre plantões diferentes são permitidas.",
+      "tables": [
+        "plantao",
+        "membro_rede",
+        "historico_plantao"
+      ],
+      "guarantee": "SQL: horários início<fim, FK de membro na mesma rede; sem UNIQUE que proíba intervalos coincidentes. Aplicação: calcula quem está ativo no instante, confere vigência e autorização.",
+      "nature": "SQL parcial + consulta temporal"
+    },
+    {
+      "id": "RN-004",
+      "summary": "Profissional da Saúde é categoria independente, sem papel familiar; ao menos um por rede operacional.",
+      "tables": [
+        "usuario",
+        "membro_rede",
+        "atribuicao_papel_familiar",
+        "rede_cuidado"
+      ],
+      "guarantee": "SQL: categoria distinta e FK composta bloqueiam concessão de papel Familiar a Profissional. Aplicação: assegura mínimo de um Profissional e bloqueia remoção do último sem substituição.",
+      "nature": "SQL parcial + transação"
+    },
+    {
+      "id": "RN-005",
+      "summary": "Fatos de cuidado originais não podem ser apagados ou sobrescritos para corrigir.",
+      "tables": [
+        "registro_cuidado",
+        "consulta",
+        "administracao_medicamento",
+        "correcao_registro_cuidado",
+        "correcao_consulta",
+        "correcao_administracao_medicamento"
+      ],
+      "guarantee": "SQL organiza fatos originais separados das versões; **CREATE TABLE não impede UPDATE/DELETE por si só**. Aplicação/credenciais SQL precisam restringir operações.",
+      "nature": "Modelo físico + segurança operacional"
+    },
+    {
+      "id": "RN-006",
+      "summary": "Correção versionada vinculada ao original, com justificativa, autoria e instante; quem corrige deve poder criar aquele tipo de fato.",
+      "tables": [
+        "registro_cuidado",
+        "consulta",
+        "administracao_medicamento",
+        "correcao_registro_cuidado",
+        "correcao_consulta",
+        "correcao_administracao_medicamento",
+        "usuario"
+      ],
+      "guarantee": "SQL: FK real original, `numero_versao`, UNIQUE por original/versão. Aplicação: permissão atual, concorrência, leitura da maior versão e preservação de original.",
+      "nature": "SQL parcial + serviço"
+    },
+    {
+      "id": "RN-007",
+      "summary": "Dados pessoais e de saúde são restritos a usuários autorizados; proteção e rastreabilidade.",
+      "tables": [
+        "usuario",
+        "pessoa_idosa",
+        "rede_cuidado",
+        "membro_rede",
+        "registro_cuidado",
+        "consulta",
+        "administracao_medicamento",
+        "anexo",
+        "auditoria"
+      ],
+      "guarantee": "SQL: FKs compostas para coerência de rede e trilhas. Aplicação: verifica identidade/papel/recurso em TODA leitura e escrita; storage privado e LGPD são gates adicionais.",
+      "nature": "SQL parcial + autorização/LGPD"
+    },
+    {
+      "id": "RN-008",
+      "summary": "Auditar usuário, categoria/papéis, idoso, tempo, ação, recurso e resultado; inclusive CSV e negações.",
+      "tables": [
+        "auditoria",
+        "usuario",
+        "pessoa_idosa",
+        "rede_cuidado"
+      ],
+      "guarantee": "SQL: `auditoria` armazena operação, resultado e snapshots mínimos. Aplicação: emite eventos pertinentes; negações em transação separada da ação negada.",
+      "nature": "Tabela de suporte + serviços"
+    },
+    {
+      "id": "RN-009",
+      "summary": "Pessoa Idosa possui conta própria vinculada ao perfil, acesso somente leitura e sem papéis/plantões/CSV.",
+      "tables": [
+        "usuario",
+        "pessoa_idosa",
+        "habilitacao_acesso_idoso",
+        "membro_rede",
+        "atribuicao_papel_familiar",
+        "auditoria"
+      ],
+      "guarantee": "SQL: `tipo_acesso` e FKs compostas impossibilitam a conta titular atuar como membro de rede; habilitação com token hash. Aplicação: filtro do próprio perfil e negação de ações/rotas.",
+      "nature": "SQL parcial + autorização"
+    },
+    {
+      "id": "RN-010",
+      "summary": "Criar/corrigir registros depende da categoria, papel, vínculo e responsabilidade contextual na ação.",
+      "tables": [
+        "usuario",
+        "membro_rede",
+        "atribuicao_papel_familiar",
+        "plantao",
+        "tarefa",
+        "registro_cuidado",
+        "consulta",
+        "administracao_medicamento",
+        "auditoria"
+      ],
+      "guarantee": "SQL evita algumas referências entre redes; autorização depende de ator + recurso + tempo + escopo e fica no backend.",
+      "nature": "Serviço de autorização"
+    },
+    {
+      "id": "RN-011",
+      "summary": "Somente Familiar Principal vigente exporta CSV de histórico autorizado; operação auditada.",
+      "tables": [
+        "registro_cuidado",
+        "correcao_registro_cuidado",
+        "consulta",
+        "administracao_medicamento",
+        "atribuicao_papel_familiar",
+        "auditoria"
+      ],
+      "guarantee": "Não há tabela de CSV: exportação é consulta filtrada e autorizada; aplicativo registra evento em `auditoria`.",
+      "nature": "Operação de aplicação + auditoria"
+    }
+  ],
+  "N": [
+    {
+      "id": "N01",
+      "summary": "Mudança em plantão: usuário afetado e Principal obrigatórios; destino T04.",
+      "tables": [
+        "plantao",
+        "historico_plantao",
+        "atribuicao_papel_familiar",
+        "entrega_tecnica_notificacao"
+      ],
+      "mechanism": "Evento do domínio+serviço de destinatário; UNIQUE técnico impede duplicar entrega por evento/destinatário."
+    },
+    {
+      "id": "N02",
+      "summary": "Lembrete no horário previsto apenas ao responsável designado que seja Plantonista Atual elegível; sem fallback arbitrário; T05.",
+      "tables": [
+        "ocorrencia_programada",
+        "plantao",
+        "membro_rede",
+        "entrega_tecnica_notificacao"
+      ],
+      "mechanism": "Ocorrência referencia responsável, mas elegibilidade e horário exigem consulta/serviço; se inelegível, não enviar e registrar pendência."
+    },
+    {
+      "id": "N03",
+      "summary": "Cuidado realizado: Principal obrigatório e demais elegíveis opcionalmente; T05/T07.",
+      "tables": [
+        "registro_cuidado",
+        "administracao_medicamento",
+        "conclusao_tarefa",
+        "preferencia_notificacao",
+        "entrega_tecnica_notificacao"
+      ],
+      "mechanism": "Preferência SQL apenas N03/N04; serviço seleciona destinatários e emite outbox deduplicada."
+    },
+    {
+      "id": "N04",
+      "summary": "Após H+15 sem execução registrada confirmada: Principal obrigatório, demais elegíveis configuráveis; ausência de registro não prova omissão.",
+      "tables": [
+        "ocorrencia_programada",
+        "administracao_medicamento",
+        "conclusao_tarefa",
+        "preferencia_notificacao",
+        "entrega_tecnica_notificacao"
+      ],
+      "mechanism": "H+15 é regra temporal de backend; outbox recebe evento, deduplica; notificação não apaga histórico se houver registro posterior."
+    }
+  ],
+  "ADR": [
+    {
+      "id": "DB-001",
+      "decision": "Uma rede histórica por pessoa idosa na V1",
+      "tables": [
+        "pessoa_idosa",
+        "rede_cuidado"
+      ],
+      "mechanism": "Direto: `uq_rede_idoso_v1`; perfil sem rede é permitido."
+    },
+    {
+      "id": "DB-002",
+      "decision": "Perfil pode anteceder rede; rede operacional nasce com Principal + Profissional em uma transação",
+      "tables": [
+        "pessoa_idosa",
+        "rede_cuidado",
+        "membro_rede",
+        "atribuicao_papel_familiar"
+      ],
+      "mechanism": "Parcial: DDL não impõe mínimo de linhas; serviço transacional; prova de elegibilidade do primeiro ator ainda bloqueia fluxo positivo US-003."
+    },
+    {
+      "id": "DB-003",
+      "decision": "Reingresso com novo episódio de membro e revogação do anterior",
+      "tables": [
+        "membro_rede",
+        "atribuicao_papel_familiar",
+        "auditoria"
+      ],
+      "mechanism": "Parcial: vigência e UNIQUE do vínculo ativo; aplicativo realiza revogação/novo vínculo."
+    },
+    {
+      "id": "DB-004",
+      "decision": "Principal deriva de atribuição de papel familiar vigente",
+      "tables": [
+        "atribuicao_papel_familiar",
+        "membro_rede",
+        "rede_cuidado"
+      ],
+      "mechanism": "Parcial: `uq_papel_principal_rede` no máximo um; pelo menos um por serviço."
+    },
+    {
+      "id": "DB-005",
+      "decision": "Plantões de registros distintos podem se sobrepor",
+      "tables": [
+        "plantao",
+        "membro_rede"
+      ],
+      "mechanism": "SQL compatível: não proíbe sobreposição; a condição atual é calculada."
+    },
+    {
+      "id": "DB-006",
+      "decision": "Troca V1 altera um plantão, sem permuta bilateral",
+      "tables": [
+        "solicitacao_troca_plantao",
+        "plantao",
+        "historico_plantao"
+      ],
+      "mechanism": "Parcial: versão esperada persistida; transação/conflict 409 no serviço."
+    },
+    {
+      "id": "DB-007",
+      "decision": "Tarefa tem um ciclo e uma conclusão; não reabre na V1",
+      "tables": [
+        "tarefa",
+        "conclusao_tarefa"
+      ],
+      "mechanism": "Direto/parcial: CHECK do ciclo e `uq_conclusao_ciclo`; confirmação atômica no serviço."
+    },
+    {
+      "id": "DB-008",
+      "decision": "Correções tipadas por domínio, sem modificar original",
+      "tables": [
+        "registro_cuidado",
+        "consulta",
+        "administracao_medicamento",
+        "correcao_registro_cuidado",
+        "correcao_consulta",
+        "correcao_administracao_medicamento"
+      ],
+      "mechanism": "FK/UNIQUE versão no SQL; bloqueio de UPDATE/DELETE no serviço e credenciais."
+    },
+    {
+      "id": "DB-009",
+      "decision": "Consulta independente de compromisso; recomendação pode ser avulsa",
+      "tables": [
+        "compromisso",
+        "consulta",
+        "recomendacao"
+      ],
+      "mechanism": "Direto: FKs opcionais com escopo de rede."
+    },
+    {
+      "id": "DB-010",
+      "decision": "Posologia textual e recorrência diária/semanal; sem PRN automático",
+      "tables": [
+        "medicamento",
+        "regime_medicamento",
+        "horario_regime",
+        "ocorrencia_programada"
+      ],
+      "mechanism": "Parcial: armazena texto/fuso; aplicação interpreta recorrência sem inventar dose."
+    },
+    {
+      "id": "DB-011",
+      "decision": "Administração é fato realizado; ausência de registro não confirma omissão",
+      "tables": [
+        "ocorrencia_programada",
+        "administracao_medicamento"
+      ],
+      "mechanism": "SQL separa identidades; interpretação clínica é regra de domínio."
+    },
+    {
+      "id": "DB-012",
+      "decision": "Uma ficha vigente de emergência por rede/idoso",
+      "tables": [
+        "informacao_emergencia",
+        "rede_cuidado"
+      ],
+      "mechanism": "Direto: `uq_emergencia_ficha`; autorização de edição é do backend."
+    },
+    {
+      "id": "DB-013",
+      "decision": "Anexo possui exatamente um original como pai",
+      "tables": [
+        "anexo",
+        "registro_cuidado",
+        "consulta",
+        "administracao_medicamento"
+      ],
+      "mechanism": "Direto: `ck_anexo_pai` XOR e FKs; arquivo privado/validação externa ao SQL."
+    },
+    {
+      "id": "DB-014",
+      "decision": "Outbox técnica sem Central de Notificações",
+      "tables": [
+        "entrega_tecnica_notificacao"
+      ],
+      "mechanism": "Tabela de transporte; UI transient e disparo efetivo no serviço."
+    },
+    {
+      "id": "DB-015",
+      "decision": "Instantes UTC DATETIME(6), com referência civil de fuso IANA",
+      "tables": [
+        "plantao",
+        "horario_regime",
+        "ocorrencia_programada",
+        "administracao_medicamento"
+      ],
+      "mechanism": "Tipos suportam desenho; conversão DST/UTC ocorre no backend."
+    },
+    {
+      "id": "DB-016",
+      "decision": "Autenticação por email/Argon2id/sessão segura/rate limit",
+      "tables": [
+        "usuario",
+        "sessao_usuario",
+        "login_rate_limit",
+        "cadastro_rate_limit"
+      ],
+      "mechanism": "Estruturas/hashes persistidos; cookie/CSRF/Argon2id dependem da aplicação."
+    },
+    {
+      "id": "DB-017",
+      "decision": "Acesso idoso habilitado por convite temporário de uso único",
+      "tables": [
+        "habilitacao_acesso_idoso",
+        "pessoa_idosa",
+        "usuario"
+      ],
+      "mechanism": "Direto: hash/UNIQUE e checks; consumo serializado e senha pelo titular no serviço."
+    },
+    {
+      "id": "DB-018",
+      "decision": "Não excluir dados clínicos automaticamente; retenção/LGPD exige validação",
+      "tables": [
+        "registro_cuidado",
+        "consulta",
+        "administracao_medicamento",
+        "anexo",
+        "auditoria"
+      ],
+      "mechanism": "Decisão de política; sem TTL clínico; governança e conformidade pendentes para produção."
+    },
+    {
+      "id": "DB-019",
+      "decision": "Somente Principal vigente edita ficha de emergência",
+      "tables": [
+        "informacao_emergencia",
+        "atribuicao_papel_familiar",
+        "auditoria"
+      ],
+      "mechanism": "Backend verifica papel atual e audita; UNIQUE protege uma ficha."
+    },
+    {
+      "id": "DB-020",
+      "decision": "Múltiplos cuidadores/profissionais; ao menos um profissional na rede operacional",
+      "tables": [
+        "membro_rede",
+        "rede_cuidado",
+        "usuario"
+      ],
+      "mechanism": "FK/categoria no SQL; mínimo via serviço transacional."
+    },
+    {
+      "id": "DB-021",
+      "decision": "No máximo uma administração vinculada por ocorrência na V1",
+      "tables": [
+        "administracao_medicamento",
+        "ocorrencia_programada"
+      ],
+      "mechanism": "Direto: `uq_administracao_ocorrencia_v1` (ocorrência NULL permite avulso autorizado)."
+    },
+    {
+      "id": "DB-022",
+      "decision": "Histórico próprio de mudanças efetivas de plantão",
+      "tables": [
+        "historico_plantao",
+        "plantao",
+        "auditoria"
+      ],
+      "mechanism": "Tabela de eventos separada de `auditoria`; serviço precisa criar eventos."
+    },
+    {
+      "id": "DB-023",
+      "decision": "Outbox expira por evento; auditoria sem TTL automático",
+      "tables": [
+        "entrega_tecnica_notificacao",
+        "auditoria"
+      ],
+      "mechanism": "Coluna expira_em; limpeza/retenção sob política aprovada, não automática pelo DDL."
+    },
+    {
+      "id": "DB-024",
+      "decision": "Auditoria guarda snapshot mínimo de categoria/papéis, sem conteúdo clínico",
+      "tables": [
+        "auditoria",
+        "usuario"
+      ],
+      "mechanism": "Colunas de snapshot; saneamento do conteúdo na aplicação."
+    },
+    {
+      "id": "DB-025",
+      "decision": "Conta Pessoa Idosa não se mistura com CUIDADOR",
+      "tables": [
+        "usuario",
+        "pessoa_idosa",
+        "membro_rede"
+      ],
+      "mechanism": "Direto/parcial: tipo exclusivo e FK composta no membro; app verifica contexto."
+    },
+    {
+      "id": "DB-026",
+      "decision": "Somente membro Familiar pode receber atribuição de papel",
+      "tables": [
+        "membro_rede",
+        "atribuicao_papel_familiar"
+      ],
+      "mechanism": "Direto: FK composta categoria e CHECK categoria."
+    },
+    {
+      "id": "DB-027",
+      "decision": "Vínculo temporal [início,fim), sem reativação de episódio anterior",
+      "tables": [
+        "membro_rede",
+        "atribuicao_papel_familiar"
+      ],
+      "mechanism": "CHECK vigência, unicidade de episódio aberto; comportamento de término no backend."
+    },
+    {
+      "id": "DB-028",
+      "decision": "Não retirar último Principal/Profissional sem substituição e tratar tarefas/plantões futuros",
+      "tables": [
+        "membro_rede",
+        "atribuicao_papel_familiar",
+        "plantao",
+        "tarefa"
+      ],
+      "mechanism": "Transação multi-entidade e checagem no backend; DDL sozinho não garante."
+    },
+    {
+      "id": "DB-029",
+      "decision": "Ocorrência programada versionada por origem e data",
+      "tables": [
+        "ocorrencia_programada",
+        "tarefa",
+        "horario_regime"
+      ],
+      "mechanism": "Direto: `ck_ocorrencia_origem` e UNIQUE por fonte/instante/geração."
+    },
+    {
+      "id": "DB-030",
+      "decision": "N02 a responsável explícito, que deve ser Plantonista Atual, sem fallback",
+      "tables": [
+        "ocorrencia_programada",
+        "plantao",
+        "membro_rede",
+        "entrega_tecnica_notificacao",
+        "auditoria"
+      ],
+      "mechanism": "Designação persistida; elegibilidade no disparo via aplicação."
+    },
+    {
+      "id": "DB-031",
+      "decision": "N04 em H+15, serializada e não apagada por registro posterior",
+      "tables": [
+        "ocorrencia_programada",
+        "administracao_medicamento",
+        "entrega_tecnica_notificacao"
+      ],
+      "mechanism": "A ausência e o limite são calculados no backend; UNIQUE outbox previne reenvio duplicado."
+    },
+    {
+      "id": "DB-032",
+      "decision": "Conclusão única, idempotência por ator/chave/payload, conflito de versão",
+      "tables": [
+        "conclusao_tarefa",
+        "tarefa",
+        "idempotencia_comando"
+      ],
+      "mechanism": "UNIQUE de ciclo/chave e tabela de comando; comparação payload/transação no serviço."
+    },
+    {
+      "id": "DB-033",
+      "decision": "Horário local DST ambíguo/inexistente não é resolvido silenciosamente",
+      "tables": [
+        "horario_regime",
+        "ocorrencia_programada",
+        "auditoria"
+      ],
+      "mechanism": "Fuso guardado; detecção de horário civil inválido requer aplicação."
+    },
+    {
+      "id": "DB-034",
+      "decision": "Revisão separada por domínio, com FK real",
+      "tables": [
+        "correcao_registro_cuidado",
+        "correcao_consulta",
+        "correcao_administracao_medicamento"
+      ],
+      "mechanism": "Direto: tabelas próprias, FKs não polimórficas."
+    },
+    {
+      "id": "DB-035",
+      "decision": "Correção armazena snapshot completo da versão, não apenas diff",
+      "tables": [
+        "correcao_registro_cuidado",
+        "correcao_consulta",
+        "correcao_administracao_medicamento"
+      ],
+      "mechanism": "Estrutura textual/temporal da versão; aplicação seleciona maior versão válida."
+    },
+    {
+      "id": "DB-036",
+      "decision": "Correção apenas de descrição/observação e instante declarado, com justificativa",
+      "tables": [
+        "correcao_registro_cuidado",
+        "correcao_consulta",
+        "correcao_administracao_medicamento"
+      ],
+      "mechanism": "Colunas restritas; autorização/validação do serviço."
+    },
+    {
+      "id": "DB-037",
+      "decision": "Anexo permanece ligado ao original, validado e privado; não migra automaticamente",
+      "tables": [
+        "anexo",
+        "registro_cuidado",
+        "consulta",
+        "administracao_medicamento"
+      ],
+      "mechanism": "SQL pai e estado; antivírus/MIME/autorização/storage no serviço."
+    },
+    {
+      "id": "DB-038",
+      "decision": "Negação auditada fora do rollback da tentativa de gravação",
+      "tables": [
+        "auditoria",
+        "usuario",
+        "rede_cuidado"
+      ],
+      "mechanism": "Separação transacional é responsabilidade do backend."
+    }
+  ],
+  "additional": [
+    {
+      "id": "DEC-AUTH-001",
+      "rule": "Cadastro CUIDADOR por convite individual vinculado a email; emissão bootstrap fora do app, uso único e sem conceder vínculos ou papéis.",
+      "tables": [
+        "convite_cadastro_cuidador",
+        "usuario",
+        "cadastro_rate_limit",
+        "auditoria"
+      ],
+      "mechanism": "SQL: UNIQUE para token hash/e-mail convite aberto/bootstrap aberto e checks de expiração/uso/revogação. App: FOR UPDATE, transação convite + conta, Argon2id, CSRF/limites, nenhum acesso clínico por mero cadastro."
+    }
+  ],
+  "requirements": [
+    {
+      "id": "RF01",
+      "description": "Conta por convite",
+      "stories": [
+        "US-001"
+      ],
+      "tables": [
+        "usuario",
+        "convite_cadastro_cuidador",
+        "cadastro_rate_limit",
+        "auditoria"
+      ]
+    },
+    {
+      "id": "RF02",
+      "description": "Login e sessão",
+      "stories": [
+        "US-002"
+      ],
+      "tables": [
+        "usuario",
+        "sessao_usuario",
+        "login_rate_limit",
+        "auditoria"
+      ]
+    },
+    {
+      "id": "RF03",
+      "description": "Perfil da pessoa idosa",
+      "stories": [
+        "US-003",
+        "US-004"
+      ],
+      "tables": [
+        "pessoa_idosa",
+        "usuario",
+        "rede_cuidado",
+        "auditoria"
+      ]
+    },
+    {
+      "id": "RF04",
+      "description": "Vínculo e desligamento",
+      "stories": [
+        "US-005",
+        "US-006"
+      ],
+      "tables": [
+        "rede_cuidado",
+        "membro_rede",
+        "atribuicao_papel_familiar",
+        "auditoria"
+      ]
+    },
+    {
+      "id": "RF05",
+      "description": "Papéis acumuláveis",
+      "stories": [
+        "US-007"
+      ],
+      "tables": [
+        "membro_rede",
+        "atribuicao_papel_familiar"
+      ]
+    },
+    {
+      "id": "RF06",
+      "description": "Plantões",
+      "stories": [
+        "US-008"
+      ],
+      "tables": [
+        "plantao",
+        "historico_plantao"
+      ]
+    },
+    {
+      "id": "RF07",
+      "description": "Calendário e detalhe do dia",
+      "stories": [
+        "US-009",
+        "US-010"
+      ],
+      "tables": [
+        "plantao",
+        "tarefa",
+        "ocorrencia_programada",
+        "compromisso",
+        "registro_cuidado",
+        "administracao_medicamento"
+      ]
+    },
+    {
+      "id": "RF08",
+      "description": "Designar responsável de plantão",
+      "stories": [
+        "US-011"
+      ],
+      "tables": [
+        "plantao",
+        "membro_rede"
+      ]
+    },
+    {
+      "id": "RF09",
+      "description": "Solicitação/resposta de troca",
+      "stories": [
+        "US-012",
+        "US-013"
+      ],
+      "tables": [
+        "solicitacao_troca_plantao",
+        "plantao",
+        "historico_plantao"
+      ]
+    },
+    {
+      "id": "RF10",
+      "description": "Avisos de plantão N01",
+      "stories": [
+        "US-014"
+      ],
+      "tables": [
+        "plantao",
+        "historico_plantao",
+        "entrega_tecnica_notificacao"
+      ]
+    },
+    {
+      "id": "RF11",
+      "description": "Diário de cuidados",
+      "stories": [
+        "US-015"
+      ],
+      "tables": [
+        "registro_cuidado",
+        "usuario"
+      ]
+    },
+    {
+      "id": "RF12",
+      "description": "Histórico de cuidados",
+      "stories": [
+        "US-016"
+      ],
+      "tables": [
+        "registro_cuidado",
+        "correcao_registro_cuidado",
+        "consulta",
+        "administracao_medicamento"
+      ]
+    },
+    {
+      "id": "RF13",
+      "description": "Autoria/data/hora, transversal",
+      "stories": [],
+      "tables": [
+        "registro_cuidado",
+        "consulta",
+        "administracao_medicamento",
+        "conclusao_tarefa",
+        "auditoria"
+      ]
+    },
+    {
+      "id": "RF14",
+      "description": "Medicamentos",
+      "stories": [
+        "US-017"
+      ],
+      "tables": [
+        "medicamento"
+      ]
+    },
+    {
+      "id": "RF15",
+      "description": "Posologia/horários",
+      "stories": [
+        "US-018"
+      ],
+      "tables": [
+        "regime_medicamento",
+        "horario_regime",
+        "ocorrencia_programada"
+      ]
+    },
+    {
+      "id": "RF16",
+      "description": "Administração registrada",
+      "stories": [
+        "US-019"
+      ],
+      "tables": [
+        "administracao_medicamento",
+        "ocorrencia_programada"
+      ]
+    },
+    {
+      "id": "RF17",
+      "description": "Lembrete N02",
+      "stories": [
+        "US-020"
+      ],
+      "tables": [
+        "ocorrencia_programada",
+        "plantao",
+        "membro_rede",
+        "entrega_tecnica_notificacao"
+      ]
+    },
+    {
+      "id": "RF18",
+      "description": "Sintomas/intercorrências",
+      "stories": [
+        "US-021"
+      ],
+      "tables": [
+        "registro_cuidado"
+      ]
+    },
+    {
+      "id": "RF19",
+      "description": "Consultas/recomendações",
+      "stories": [
+        "US-022"
+      ],
+      "tables": [
+        "consulta",
+        "recomendacao"
+      ]
+    },
+    {
+      "id": "RF20",
+      "description": "Compromissos",
+      "stories": [
+        "US-023"
+      ],
+      "tables": [
+        "compromisso"
+      ]
+    },
+    {
+      "id": "RF21",
+      "description": "Tarefas e conclusão",
+      "stories": [
+        "US-024",
+        "US-025"
+      ],
+      "tables": [
+        "tarefa",
+        "conclusao_tarefa",
+        "ocorrencia_programada"
+      ]
+    },
+    {
+      "id": "RF22",
+      "description": "Contatos importantes",
+      "stories": [
+        "US-026"
+      ],
+      "tables": [
+        "contato_importante"
+      ]
+    },
+    {
+      "id": "RF23",
+      "description": "Documentos/imagens",
+      "stories": [
+        "US-027"
+      ],
+      "tables": [
+        "anexo",
+        "registro_cuidado",
+        "consulta",
+        "administracao_medicamento"
+      ]
+    },
+    {
+      "id": "RF24",
+      "description": "Informações de emergência",
+      "stories": [
+        "US-028"
+      ],
+      "tables": [
+        "informacao_emergencia"
+      ]
+    },
+    {
+      "id": "RF25",
+      "description": "Notificação de cuidado registrado N03",
+      "stories": [
+        "US-029"
+      ],
+      "tables": [
+        "entrega_tecnica_notificacao",
+        "preferencia_notificacao",
+        "registro_cuidado",
+        "administracao_medicamento",
+        "conclusao_tarefa"
+      ]
+    },
+    {
+      "id": "RF26",
+      "description": "Aviso após H+15 N04",
+      "stories": [
+        "US-030"
+      ],
+      "tables": [
+        "ocorrencia_programada",
+        "entrega_tecnica_notificacao",
+        "preferencia_notificacao"
+      ]
+    },
+    {
+      "id": "RF27",
+      "description": "Preferências opcionais N03/N04",
+      "stories": [
+        "US-031"
+      ],
+      "tables": [
+        "preferencia_notificacao"
+      ]
+    },
+    {
+      "id": "RF28",
+      "description": "Exportação autorizada CSV",
+      "stories": [
+        "US-032"
+      ],
+      "tables": [
+        "auditoria",
+        "registro_cuidado",
+        "correcao_registro_cuidado"
+      ]
+    },
+    {
+      "id": "RF29",
+      "description": "Consulta de auditoria",
+      "stories": [
+        "US-033"
+      ],
+      "tables": [
+        "auditoria"
+      ]
+    },
+    {
+      "id": "RF30",
+      "description": "Leitura própria do idoso",
+      "stories": [
+        "US-036"
+      ],
+      "tables": [
+        "usuario",
+        "pessoa_idosa",
+        "habilitacao_acesso_idoso",
+        "membro_rede",
+        "auditoria"
+      ]
+    },
+    {
+      "id": "RNF01",
+      "description": "Controle de acesso e negações",
+      "stories": [
+        "US-035"
+      ],
+      "tables": [
+        "usuario",
+        "membro_rede",
+        "atribuicao_papel_familiar",
+        "auditoria"
+      ]
+    },
+    {
+      "id": "RNF02",
+      "description": "Imutabilidade/correção",
+      "stories": [
+        "US-034"
+      ],
+      "tables": [
+        "registro_cuidado",
+        "correcao_registro_cuidado",
+        "consulta",
+        "correcao_consulta",
+        "administracao_medicamento",
+        "correcao_administracao_medicamento"
+      ]
+    },
+    {
+      "id": "RNF03",
+      "description": "Auditoria transversal",
+      "stories": [],
+      "tables": [
+        "auditoria",
+        "usuario",
+        "rede_cuidado"
+      ]
+    }
+  ],
+  "table_groups": [
+    {
+      "name": "Identidade, acesso e rede",
+      "tables": [
+        {
+          "name": "usuario",
+          "purpose": "Identidade autenticável, email normalizado, categoria CUIDADOR/PESSOA_IDOSA, hash de senha.",
+          "traces": "RF01 RF02 RF30; RN-009; DB-016/025",
+          "note": "identidade não atribui papel"
+        },
+        {
+          "name": "convite_cadastro_cuidador",
+          "purpose": "Convite individual para criar conta CUIDADOR, de uso único e token em hash.",
+          "traces": "RF01; DEC-AUTH-001",
+          "note": "convite ≠ autorização de cuidado"
+        },
+        {
+          "name": "cadastro_rate_limit",
+          "purpose": "Contador técnico de tentativas no cadastro.",
+          "traces": "RF01; DEC-AUTH-001",
+          "note": "não é domínio clínico"
+        },
+        {
+          "name": "sessao_usuario",
+          "purpose": "Sessão temporária, hash de token, expiração e revogação.",
+          "traces": "RF02; DB-016",
+          "note": "cookie seguro no app"
+        },
+        {
+          "name": "login_rate_limit",
+          "purpose": "Contador técnico de tentativas de login.",
+          "traces": "RF02; DB-016",
+          "note": "bloqueio no servidor"
+        },
+        {
+          "name": "pessoa_idosa",
+          "purpose": "Perfil da pessoa cuidada, possível vínculo a conta própria.",
+          "traces": "RF03 RF30; RN-009; DB-001/017",
+          "note": "pode preceder rede"
+        },
+        {
+          "name": "rede_cuidado",
+          "purpose": "Unidade de contexto do cuidado; uma por pessoa na V1.",
+          "traces": "RF04; RN-001/004; DB-001/002",
+          "note": "estado operacional mínimo depende de transação"
+        },
+        {
+          "name": "membro_rede",
+          "purpose": "Participação/episódio de CUIDADOR na rede, categoria e vigência.",
+          "traces": "RF04; RN-003/004/010; DB-003/027",
+          "note": "não confundir pessoa com vínculo"
+        },
+        {
+          "name": "atribuicao_papel_familiar",
+          "purpose": "Concessão de papéis familiares por vínculo, com histórico e Principal único vigente.",
+          "traces": "RF05; RN-001/002; DB-004/026",
+          "note": "FK bloqueia papel de profissional"
+        },
+        {
+          "name": "habilitacao_acesso_idoso",
+          "purpose": "Convite de ativação da conta titular, separada da conta CUIDADOR.",
+          "traces": "RF30; RN-009; DB-017",
+          "note": "senha pelo próprio titular"
+        }
+      ]
+    },
+    {
+      "name": "Escala e atividades",
+      "tables": [
+        {
+          "name": "plantao",
+          "purpose": "Escala, intervalo, responsável, versão e situação.",
+          "traces": "RF06 RF08; RN-003; DB-005/006",
+          "note": "sobreposição permitida"
+        },
+        {
+          "name": "solicitacao_troca_plantao",
+          "purpose": "Pedido/resposta de mudança de responsável e versão esperada.",
+          "traces": "RF09; DB-006",
+          "note": "aceitar/refusar é serviço transacional"
+        },
+        {
+          "name": "historico_plantao",
+          "purpose": "Histórico de alterações efetivas dos plantões.",
+          "traces": "RF06 RF09; DB-022",
+          "note": "fato de negócio ≠ log técnico"
+        },
+        {
+          "name": "tarefa",
+          "purpose": "Tarefa de cuidado com responsável opcional e dados de programação.",
+          "traces": "RF21; DB-007",
+          "note": "não reabre na V1"
+        },
+        {
+          "name": "conclusao_tarefa",
+          "purpose": "Fato imutável de conclusão, executor e ciclo único.",
+          "traces": "RF21; DB-007/032",
+          "note": "UNIQUE impede dupla conclusão"
+        },
+        {
+          "name": "compromisso",
+          "purpose": "Evento de agenda vinculado à rede, independente de consulta.",
+          "traces": "RF20; DB-009",
+          "note": "não é sempre consulta"
+        }
+      ]
+    },
+    {
+      "name": "Saúde e histórico",
+      "tables": [
+        {
+          "name": "medicamento",
+          "purpose": "Cadastro contextual de medicamento da pessoa idosa.",
+          "traces": "RF14; DB-010",
+          "note": "não é prescrição automatizada"
+        },
+        {
+          "name": "regime_medicamento",
+          "purpose": "Plano/posologia textual com versões e vigência.",
+          "traces": "RF15; DB-010",
+          "note": "vigência do regime"
+        },
+        {
+          "name": "horario_regime",
+          "purpose": "Recorrência e fuso IANA de horários de medicamento.",
+          "traces": "RF15; DB-015/033",
+          "note": "DST validado fora do DDL"
+        },
+        {
+          "name": "ocorrencia_programada",
+          "purpose": "Ocorrência prevista de tarefa OU regime, com responsável e geração.",
+          "traces": "RF15 RF17 RF21 RF26; DB-029/030",
+          "note": "planejamento ≠ realização"
+        },
+        {
+          "name": "administracao_medicamento",
+          "purpose": "Registro de fato realmente informado, com executor e horário real.",
+          "traces": "RF16; DB-011/021",
+          "note": "ausência não prova omissão"
+        },
+        {
+          "name": "registro_cuidado",
+          "purpose": "Diário, sintoma e intercorrência com autor e tempo.",
+          "traces": "RF11 RF18; RN-005; DB-008",
+          "note": "sem atraso para sintoma espontâneo"
+        },
+        {
+          "name": "correcao_registro_cuidado",
+          "purpose": "Nova versão de registro de cuidado, com justificativa.",
+          "traces": "RNF02; RN-006; DB-034/035",
+          "note": "preserva original"
+        },
+        {
+          "name": "consulta",
+          "purpose": "Consulta realizada com possível compromisso de origem.",
+          "traces": "RF19; DB-009",
+          "note": "independente de compromisso"
+        },
+        {
+          "name": "recomendacao",
+          "purpose": "Recomendação de saúde, opcionalmente ligada à consulta.",
+          "traces": "RF19; DB-009",
+          "note": "pode existir sem consulta"
+        },
+        {
+          "name": "correcao_consulta",
+          "purpose": "Correções tipadas do fato consulta.",
+          "traces": "RNF02; DB-034/035",
+          "note": "versão mantém FK de original"
+        },
+        {
+          "name": "correcao_administracao_medicamento",
+          "purpose": "Correções tipadas de administração.",
+          "traces": "RNF02; DB-034/035",
+          "note": "não muda regime de origem"
+        },
+        {
+          "name": "anexo",
+          "purpose": "Metadados do arquivo privado com FK para exatamente um fato original.",
+          "traces": "RF23; DB-013/037",
+          "note": "arquivo físico fica fora do SQL"
+        }
+      ]
+    },
+    {
+      "name": "Apoio e emergência",
+      "tables": [
+        {
+          "name": "contato_importante",
+          "purpose": "Contatos úteis de referência para a rede.",
+          "traces": "RF22",
+          "note": "contato não exige conta"
+        },
+        {
+          "name": "informacao_emergencia",
+          "purpose": "Ficha rápida de emergência única por rede/idoso.",
+          "traces": "RF24; DB-012/019",
+          "note": "edição Principal atual"
+        }
+      ]
+    },
+    {
+      "name": "Infraestrutura e governança",
+      "tables": [
+        {
+          "name": "preferencia_notificacao",
+          "purpose": "Configuração de eventos opcionais N03/N04 por usuário/rede.",
+          "traces": "RF27; N03/N04",
+          "note": "N01/N02 não são desligáveis"
+        },
+        {
+          "name": "entrega_tecnica_notificacao",
+          "purpose": "Outbox/deduplicação técnica N01–N04, não inbox.",
+          "traces": "RF10 RF17 RF25 RF26; DB-014/023",
+          "note": "sem central de notificações"
+        },
+        {
+          "name": "idempotencia_comando",
+          "purpose": "Chave/resultado técnico de comando para evitar replay.",
+          "traces": "DB-032",
+          "note": "não substitui transação"
+        },
+        {
+          "name": "auditoria",
+          "purpose": "Trilha auditável mínima para ações e negações.",
+          "traces": "RF29 RNF01 RNF03; RN-008; DB-024/038",
+          "note": "registro da negação em transação separada"
+        }
+      ]
+    }
+  ]
+}

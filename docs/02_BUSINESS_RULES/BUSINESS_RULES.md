@@ -1,5 +1,8 @@
 # Business Rules — Rede de Apoio
 
+> **Rastreabilidade do banco V1:** [auditoria das regras RN-001–RN-011, notificações, decisões e tabelas](../09_BANCO_DE_DADOS/AUDITORIA_REGRAS_V1/README.md). O vínculo com a estrutura SQL é analítico e não altera estas regras canônicas.
+
+
 ## RN-001 — Familiar Principal único
 
 Deve existir exatamente um Familiar Principal ativo por pessoa idosa/rede de cuidado.
