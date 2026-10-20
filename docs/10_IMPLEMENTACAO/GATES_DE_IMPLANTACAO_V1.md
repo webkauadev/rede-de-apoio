@@ -52,3 +52,10 @@ limites, auditoria e rollback/COMMIT injetado. O recurso e suas credenciais fora
 A pendência específica de executar 005 foi suprida; **não fecha G-DB global, G-AUTH/G-SEC/G-PRIV/G-REL**,
 nem US/RF. Recuperação e autorização contextual de domínios futuros permanecem fora desta prova;
 Draft aguarda nova revisão humana. Sem merge, deploy ou dados reais.
+
+## US-003 — prova de adaptador não é prova de autorização
+
+O handoff Issue39/#6147135134 autorizou MySQL novo/rootless/loopback para US003. O [relatório T12](US003_CADASTRO_PESSOA_IDOSA_V1.md)
+registra testes físicos de adaptador e negações, com perfil pendente sem rede. Elegibilidade do Familiar
+que será Principal inicial continua migration_required/BLOCKED_BY_DECISION; sessão/convite não resolvem
+essa autorização. Nenhum gate global/aceite foi encerrado, rede operacional/Principal não foram criados.

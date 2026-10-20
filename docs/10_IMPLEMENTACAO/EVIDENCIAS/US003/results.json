@@ -1,0 +1,63 @@
+{
+  "story": "US-003",
+  "origin": "RF03",
+  "issue": 39,
+  "screen": "T12",
+  "element": "E21",
+  "owner": "David",
+  "branch": "feat/us003-cadastro-pessoa-idosa-v1",
+  "base": "5ab918a2e4831572afad0900f6971b52b3ac126e",
+  "handoff_comment": 6147135134,
+  "approval_comment": 5673834995,
+  "status": "BLOCKED_BY_DECISION",
+  "migration_required": "verifiable bootstrap actor eligibility",
+  "checks": {
+    "targeted_unit": 17,
+    "verify_fast_total_unit": 166,
+    "targeted_e2e": {
+      "passed": 6,
+      "mobile": 4,
+      "desktop_responsive": 2
+    },
+    "mysql_repository_and_denial": {
+      "passed": 10,
+      "success_scope": "repository/fixtures only, not authorized app registration",
+      "affected_fixture_recheck": 1
+    },
+    "mysql_e2e": {
+      "passed": 1,
+      "scope": "real session + denied registration, zero profile/network/roles"
+    },
+    "python_validators": 4,
+    "runtime_vulnerabilities": 0
+  },
+  "mysql": {
+    "version": "8.4.11",
+    "table_counts": [
+      30,
+      30,
+      31,
+      32,
+      34
+    ],
+    "new_sequential_resources": [
+      "rede-apoio-us003-3e5b30e8c358",
+      "rede-apoio-us003-dc20df3b0c7b"
+    ],
+    "loopback_ports": [
+      33155,
+      39407
+    ],
+    "own_resources_and_secrets_removed": true,
+    "preexisting_resources_preserved": true,
+    "secret_scan": "PASS"
+  },
+  "corrected_failure": "E2E body read timed out at 30s and 60s; client now consumes JSON response; restored 30s timeout passes",
+  "commit_fault": "injected after real COMMIT, not network outage",
+  "authorized_positive_flow": "BLOCKED, not proved",
+  "operational_network_created": false,
+  "principal_role_created": false,
+  "merge": false,
+  "deploy": false,
+  "issues_closed": false
+}
