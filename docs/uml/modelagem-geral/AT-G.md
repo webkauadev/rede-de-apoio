@@ -12,9 +12,9 @@ Partições: Familiar Iniciador / Principal; Sistema / Serviços; Responsável A
 - `D01` mínimos de constituição? **Sim:** `A02` constituir rede operacional com exatamente um Familiar Principal vigente e pelo menos um Profissional, de forma atômica; **não:** `E01` manter perfil pendente e sem acesso ao cuidado → fim alternativo.
 - `A03` organizar plantões, tarefas e regime.
 - `A04` gerar programação validando horário/responsável conforme as regras de recorrência.
-- `A05` consultar dia e executar cuidado real.
+- `A05` **solicitar acesso** ao detalhamento e à operação de registro; nenhum dado protegido é exibido antes da autorização.
 - `D02` autorização/contexto válido? **Sim:** `A06` consultar dia e informar execução realizada; **não:** `E02` bloquear exposição, negar e auditar, sem fato clínico criado → fim alternativo.
-- `A07` persistir original imutável, autoria e tempo.
+- `A07` **revalidar contexto de escrita no commit**, persistir original imutável com autoria e tempo e somente então confirmar registro.
 - `A08` acompanhar histórico autorizado.
 - `D03` correção necessária? **Não:** fim; **sim:** `A09` solicitar correção justificada com permissão efetiva **atual** para o mesmo tipo → `A10` **revalidar escrita** e persistir nova versão preservando original e auditar → fim.
 
