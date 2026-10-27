@@ -1,6 +1,6 @@
 # CL-G — Núcleo conceitual integrado de classes
 
-[Figma: diagrama editável CL-G](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6434-3326) · Frame `6434:3326`, 4930×3780 px · 16 classes com atributos e operações essenciais, 13 associações anotadas.
+[Figma: diagrama editável CL-G](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6434-3326) · Frame `6434:3326`, 4930×3780 px · 16 classes com atributos e operações essenciais, 13 associações com multiplicidades reposicionadas junto aos extremos.
 
 ## Inventário
 `Usuario`, `PessoaIdosa`, `RedeCuidado`, `MembroRede`, `AtribuicaoPapelFamiliar`, `Plantao`, `SolicitacaoTrocaPlantao`, `Tarefa`, `ConclusaoTarefa`, `Medicamento`, `RegimeMedicamento`, `HorarioRegime`, `OcorrenciaProgramada`, `AdministracaoMedicamento`, `RegistroCuidado`, `CorrecaoRegistro`.
@@ -26,4 +26,4 @@
 
 Fonte: [CL-01](../especificacao-para-figma/dominio-A-pessoas-rede/CL-01.md), [CL-02](../especificacao-para-figma/dominio-B-organizacao/CL-02.md), [CL-03](../especificacao-para-figma/dominio-C-registros/CL-03.md), [regras de domínio](../../02_BUSINESS_RULES/BUSINESS_RULES.md), [aulas 16–26](../diretrizes-professor.md).
 
-**Ressalvas:** as multiplicidades estão descritas por rótulos complementares nas ligações, mas antes da aprovação devem ser revisadas quanto a posição exata das extremidades, legibilidade e vínculo entre domínios. Modelagem conceitual, não prova de integridade de runtime.
+**Revisão aplicada em 2026-10-27:** os 13 rótulos compostos foram substituídos por **26 valores junto às extremidades** das 13 relações, e os agrupamentos B/C foram renomeados para não classificar `ConclusaoTarefa` como medicação. A revisão visual confirmou posições sem sobrepor atributos. **Ressalva remanescente:** as relações entre domínios exibidas ainda são seletivas; `RedeCuidado` não possui todos os vínculos transversais graficamente representados. Avaliar inclusão desses vínculos com base em regras/SQL antes da defesa final. Não equivale a prova de integridade em runtime.
