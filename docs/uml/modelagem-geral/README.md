@@ -37,7 +37,7 @@
 
 ## Auditoria subsequente
 
-Em 2026-10-27 foi concluída uma **segunda revisão técnica** do conjunto, com [relatório de auditoria, evidências, correções e pendências](AUDITORIA-2026-10-27.md). As mudanças no Figma foram aplicadas a UC-G, CL-G, SQ-G, DB-G e AT-G sem alterar os 19 diagramas anteriores. O PR continua **Draft** porque há limitações estruturais a revisar antes de homologação. A auditoria é interna ao processo de modelagem e **não constitui parecer acadêmico independente**.
+Em 2026-10-27 foi concluída uma **segunda revisão técnica** do conjunto, com [relatório de auditoria, evidências, correções e pendências](AUDITORIA-2026-10-27.md) e [manifesto estrutural dos seis frames](MANIFESTO-FIGMA.json), lido diretamente da página após a revisão. As mudanças no Figma foram aplicadas a UC-G, CL-G, SQ-G, DB-G e AT-G sem alterar os 19 diagramas anteriores. O PR continua **Draft** porque há limitações estruturais a revisar antes de homologação. A auditoria é interna ao processo de modelagem e **não constitui parecer acadêmico independente**.
 
 ## Checklist para homologação e uso na apresentação
 
