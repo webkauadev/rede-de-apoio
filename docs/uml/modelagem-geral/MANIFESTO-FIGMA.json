@@ -14,7 +14,8 @@
       "width": 3800,
       "height": 3920,
       "direct_children": 84,
-      "status": "revisado_sem_homologacao"
+      "status": "revisado_sem_homologacao",
+      "seguranca_v1": "validacao_anterior_a_leitura_e_escrita; revalidacao_ao_registrar_e_corrigir"
     },
     {
       "id": "UC-G",
@@ -34,7 +35,14 @@
       "classes": 16,
       "associacoes": 13,
       "valores_multiplicidade": 26,
-      "status": "revisado_sem_homologacao"
+      "status": "revisado_sem_homologacao",
+      "relacoes_canônicas_entre_nos_presentes_nao_desenhadas": [
+        "CL01-R04",
+        "CL02-R03a",
+        "CL02-R03b",
+        "CL02-R03c",
+        "CL02-R06"
+      ]
     },
     {
       "id": "SQ-G",
@@ -54,8 +62,8 @@
       "height": 3780,
       "direct_children": 115,
       "tabelas_selecionadas": 17,
-      "fks_desenhadas_e_rotuladas": 11,
-      "status": "recorte_parcial_sem_homologacao"
+      "status": "recorte_parcial_sem_homologacao",
+      "trechos_fisicos_rotulados": 11
     },
     {
       "id": "EER-G",
@@ -76,5 +84,7 @@
     "vinculos_transversais_classes",
     "cenarios_idempotencia_409",
     "eer_geral_embutido_figma_se_exigido"
-  ]
+  ],
+  "auditoria_mais_recente": "AUDITORIA-RODADA-3-2026-10-27.md",
+  "matriz_rastreabilidade": "MATRIZ-RASTREABILIDADE-2026-10-27.md"
 }
