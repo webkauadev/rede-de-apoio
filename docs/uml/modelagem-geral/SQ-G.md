@@ -35,4 +35,6 @@ Fragmento `alt`: guarda de **nova execução válida** (permissão/contexto/ocor
 - M06 é efeito de interface conceitual; se a notação pedir retorno estrito do mesmo tipo, revisar.
 - Referências: [SQ-03](../especificacao-para-figma/dominio-C-registros/SQ-03.md), [CL-03](../especificacao-para-figma/dominio-C-registros/CL-03.md), [autorização](../../02_BUSINESS_RULES/PERMISSIONS_MATRIX.md), [DB-038](../../10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md), [aulas 28–39](../diretrizes-professor.md).
 
-**Revisão aplicada em 2026-10-27:** M12 e M14 convergiram para a operação `registrarEvento(resultado, contextoSanitizado)`, M13 foi separado de N03, M15 ficou somente para negação sem misturar conflito de payload, e M09R foi acrescentado. **Pendente:** revisão independente de guarda/retorno e critérios Gherkin antes de homologar.
+**Revisão aplicada em 2026-10-27:** M12 e M14 convergiram para a operação `registrarEvento(resultado, contextoSanitizado)`, M13 foi separado de N03, M15 ficou somente para negação sem misturar conflito de payload, e M09R foi acrescentado. **Auditoria de terceira rodada:** os controladores `Serviço de Agenda`, `Autorização Contextual` e `Serviço de Auditoria` são inferências arquiteturais [INFERÊNCIA] e **não constam como lifelines do SQ-03**. Não inferir código implementado. Fonte e mapeamento mensagens em [matriz](MATRIZ-RASTREABILIDADE-2026-10-27.md).
+
+**Pendente:** revisão independente de guarda/retorno e critérios Gherkin antes de homologar; leitura negada, replay idempotente, 409 e indisponibilidade de auditoria são outros cenários.
