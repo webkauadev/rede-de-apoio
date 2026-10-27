@@ -35,15 +35,22 @@
 - Originais clínicos imutáveis; correções versionadas, anexo no original e auditoria, inclusive das negações.
 - O modelo físico único permanece com **34 tabelas/79 FKs**; DB-G é amostra didática.
 
+## Auditoria subsequente
+
+Em 2026-10-27 foi concluída uma **segunda revisão técnica** do conjunto, com [relatório de auditoria, evidências, correções e pendências](AUDITORIA-2026-10-27.md). As mudanças no Figma foram aplicadas a UC-G, CL-G, SQ-G, DB-G e AT-G sem alterar os 19 diagramas anteriores. O PR continua **Draft** porque há limitações estruturais a revisar antes de homologação. A auditoria é interna ao processo de modelagem e **não constitui parecer acadêmico independente**.
+
 ## Checklist para homologação e uso na apresentação
 
 - [x] Cinco pranchas Figma novas em página isolada, sem substituir os 19 diagramas anteriores.
 - [x] Prancha EER-G com referência ao `.mwb` e ao SVG geral canônicos.
 - [x] Especificação rastreável por artefato e fonte em arquivos dedicados.
 - [x] Correção de referência temporal de Familiar Iniciador / Principal e de FKs compostas no DB-G.
+- [x] Substituir ator genérico de UC-G por Familiar de Apoio/Emergência, com autorização explícita e solicitação de troca baseada em UC-02.
 - [ ] **Revisar correspondência integral** de UC-G com papéis/US, inclusive o fato de casos serem compartilhados fora das linhas de apresentação.
-- [ ] **Revisar multiplicidades nos extremos** do CL-G e coerência entre os 3 contratos CL e contexto V1.
-- [ ] **Revisar SQ-G**: operação de auditoria, retornos, parâmetros e guardas/ramo negado contra DB-038 e CL-03.
+- [x] Reposicionar e conferir visualmente os **26 valores de multiplicidade** nas 13 associações do CL-G.
+- [ ] Revisão acadêmica externa da semântica de todas as multiplicidades e definição de vínculos transversais omitidos.
+- [x] Ajustar SQ-G: M09R, M12/M14 com assinatura CL-03, N03 como nota, M15 exclusivamente de negação e guardas do cenário coberto.
+- [ ] Revisão independente de SQ-G, especialmente serviços inferidos e casos idempotentes/409 não desenhados.
 - [ ] Projetar em tela/monitor e validar leitura das pranchas grandes por zoom.
 - [ ] Se houver exigência de EER geral incorporado **dentro do Figma**, importar **o SVG canônico** (não o redesenhar) e registrar Node ID.
 - [ ] Obter validação final da equipe/professor; não declarar homologação por inferência.
