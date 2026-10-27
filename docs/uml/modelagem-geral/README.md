@@ -37,7 +37,7 @@
 
 ## Auditoria subsequente
 
-Em 2026-10-27 foi concluída uma **segunda revisão técnica** do conjunto, com [relatório de auditoria, evidências, correções e pendências](AUDITORIA-2026-10-27.md) e [manifesto estrutural dos seis frames](MANIFESTO-FIGMA.json), lido diretamente da página após a revisão. As mudanças no Figma foram aplicadas a UC-G, CL-G, SQ-G, DB-G e AT-G sem alterar os 19 diagramas anteriores. O PR continua **Draft** porque há limitações estruturais a revisar antes de homologação. A auditoria é interna ao processo de modelagem e **não constitui parecer acadêmico independente**.
+Em 2026-10-27 foi concluída uma **segunda revisão técnica** do conjunto, com [relatório da segunda passagem](AUDITORIA-2026-10-27.md), [auditoria de terceira rodada](AUDITORIA-RODADA-3-2026-10-27.md), [matriz de rastreabilidade literal UC/CL/SQ/DB](MATRIZ-RASTREABILIDADE-2026-10-27.md) e [manifesto estrutural dos seis frames](MANIFESTO-FIGMA.json), lido diretamente da página após a revisão. As mudanças no Figma foram aplicadas a UC-G, CL-G, SQ-G, DB-G e AT-G sem alterar os 19 diagramas anteriores. O PR continua **Draft** porque há limitações estruturais a revisar antes de homologação. A auditoria é interna ao processo de modelagem e **não constitui parecer acadêmico independente**.
 
 ## Checklist para homologação e uso na apresentação
 
@@ -48,9 +48,10 @@ Em 2026-10-27 foi concluída uma **segunda revisão técnica** do conjunto, com 
 - [x] Substituir ator genérico de UC-G por Familiar de Apoio/Emergência, com autorização explícita e solicitação de troca baseada em UC-02.
 - [ ] **Revisar correspondência integral** de UC-G com papéis/US, inclusive o fato de casos serem compartilhados fora das linhas de apresentação.
 - [x] Reposicionar e conferir visualmente os **26 valores de multiplicidade** nas 13 associações do CL-G.
-- [ ] Revisão acadêmica externa da semântica de todas as multiplicidades e definição de vínculos transversais omitidos.
+- [ ] Revisão acadêmica externa da semântica de todas as multiplicidades e **cinco vínculos canônicos entre classes presentes que não estão desenhados (AG3-006)**.
 - [x] Ajustar SQ-G: M09R, M12/M14 com assinatura CL-03, N03 como nota, M15 exclusivamente de negação e guardas do cenário coberto.
 - [ ] Revisão independente de SQ-G, especialmente serviços inferidos e casos idempotentes/409 não desenhados.
+- [x] Corrigir a ordem da autorização no AT-G para impedir leitura/escrita antes da validação; revalidar escrita no commit e na correção (AG3-001/002).
 - [ ] Projetar em tela/monitor e validar leitura das pranchas grandes por zoom.
 - [ ] Se houver exigência de EER geral incorporado **dentro do Figma**, importar **o SVG canônico** (não o redesenhar) e registrar Node ID.
 - [ ] Obter validação final da equipe/professor; não declarar homologação por inferência.
