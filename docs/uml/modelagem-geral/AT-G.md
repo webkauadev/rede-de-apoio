@@ -22,4 +22,6 @@ Partições: Familiar Iniciador / Principal; Sistema / Serviços; Responsável A
 - N02 só é dirigido ao responsável *designado e elegível* no instante. Não é um ator nem uma ação exigida para todo cuidado; N04 em H+15 na ausência de confirmação não demonstra omissão clínica (DB-030/031).
 - A proposta representa o fluxo principal **sem prometer** que todos esses caminhos estão navegáveis no protótipo atual (ver AUD-M2-013).
 - Fontes: [regras RN-001/003/004/005/006/008/010](../../02_BUSINESS_RULES/BUSINESS_RULES.md), [decisões DB-001/002/008/011/021/030/031/034/035/038](../../10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md), UC-01/02/03, aulas atividades 41–46.
-- **Pendente:** validar com equipe/professor semântica das raias, realização de cuidado versus registro de fato, e visibilidade em projetor.
+- **Inspeção visual 2026-10-27:** legenda da pré-condição e três raias conferidas em captura do frame após alteração.
+
+**Pendente:** validar com equipe/professor semântica das raias, realização de cuidado versus registro de fato, e visibilidade em projetor.
