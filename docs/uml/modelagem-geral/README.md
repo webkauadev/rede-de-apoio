@@ -1,9 +1,9 @@
 # Modelagem Geral — Entrega Final aos Professores
 
 **Projeto:** Rede de Apoio a Cuidadores de Idosos  
-**Status geral:** **seis perspectivas catalogadas**, das quais cinco pranchas novas no Figma (AT-G, UC-G, SQ-G, CL-G, DB-G) e uma prancha-indexadora do **EER-G original**. **Não homologadas academicamente**.  
+**Status geral:** **DOCUMENTAÇÃO HOMOLOGADA PELO SOLICITANTE COM RESSALVAS**, conforme [termo de aceite documental de 27/10/2026](HOMOLOGACAO-DOCUMENTAL-2026-10-27.md). Seis perspectivas catalogadas: cinco pranchas novas no Figma (AT-G, UC-G, SQ-G, CL-G, DB-G) e uma prancha-indexadora do EER-G original. **Não equivale a homologação acadêmica ou funcional.**  
 **Figma oficial — [página Modelagem Geral](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6430-3326)**.
-**GitHub:** documentação sob `docs/uml/modelagem-geral/` em branch própria / PR Draft. Não houve mudança na `main`, SQL, MWB ou 19 artefatos existentes.
+**GitHub:** documentação sob `docs/uml/modelagem-geral/` aceita para incorporação na `main` pelo [PR #134](https://github.com/webkauadev/rede-de-apoio/pull/134). SQL, MWB e 19 artefatos originais permanecem preservados.
 
 ## Índice de acesso
 
@@ -37,9 +37,11 @@
 
 ## Auditoria subsequente
 
-Em 2026-10-27 foram executadas revisões técnicas sucessivas, com [relatório da segunda passagem](AUDITORIA-2026-10-27.md), [auditoria de terceira rodada](AUDITORIA-RODADA-3-2026-10-27.md), [auditoria de quarta rodada](AUDITORIA-RODADA-4-2026-10-27.md), [matriz de rastreabilidade literal UC/CL/SQ/DB](MATRIZ-RASTREABILIDADE-2026-10-27.md) e [manifesto estrutural dos seis frames](MANIFESTO-FIGMA.json), lido diretamente da página após a revisão. As mudanças no Figma foram aplicadas a UC-G, CL-G, SQ-G, DB-G e AT-G sem alterar os 19 diagramas anteriores. O PR continua **Draft** porque há limitações estruturais a revisar antes de homologação. A auditoria é interna ao processo de modelagem e **não constitui parecer acadêmico independente**.
+Em 2026-10-27 foram executadas revisões técnicas sucessivas, com [relatório da segunda passagem](AUDITORIA-2026-10-27.md), [auditoria de terceira rodada](AUDITORIA-RODADA-3-2026-10-27.md), [auditoria de quarta rodada](AUDITORIA-RODADA-4-2026-10-27.md), [matriz de rastreabilidade literal UC/CL/SQ/DB](MATRIZ-RASTREABILIDADE-2026-10-27.md) e [manifesto estrutural dos seis frames](MANIFESTO-FIGMA.json), lido diretamente da página após a revisão. As mudanças no Figma foram aplicadas a UC-G, CL-G, SQ-G, DB-G e AT-G sem alterar os 19 diagramas anteriores. O **solicitante autorizou o merge e homologou o acervo documental com ressalvas** no [termo](HOMOLOGACAO-DOCUMENTAL-2026-10-27.md). A auditoria é interna ao processo de modelagem e **não constitui parecer acadêmico independente**. O job `application` da CI segue com vulnerabilidades runtime abertas em [#135](https://github.com/webkauadev/rede-de-apoio/issues/135); aprovação da documentação não valida o aplicativo.
 
-## Checklist para homologação e uso na apresentação
+## Checklist para apresentação e validação acadêmica
+
+- [x] [Aceite documental do solicitante](HOMOLOGACAO-DOCUMENTAL-2026-10-27.md) e autorização expressa para merge do PR #134; pendências técnicas explicitadas.
 
 - [x] Cinco pranchas Figma novas em página isolada, sem substituir os 19 diagramas anteriores.
 - [x] Prancha EER-G com referência ao `.mwb` e ao SVG geral canônicos.
@@ -58,4 +60,4 @@ Em 2026-10-27 foram executadas revisões técnicas sucessivas, com [relatório d
 - [ ] Se houver exigência de EER geral incorporado **dentro do Figma**, importar **o SVG canônico** (não o redesenhar) e registrar Node ID.
 - [ ] Obter validação final da equipe/professor; não declarar homologação por inferência.
 
-**Estado de entrega:** pranchas produzidas e conferidas visualmente em capturas de inspeção; revisão acadêmica e técnica independente permanece pendente. O registro não equivale a validação formal de implementação, CI ou MySQL em runtime.
+**Estado de entrega:** documentação **homologada pelo solicitante para versionamento e uso como base de apresentação, com ressalvas**; pranchas conferidas visualmente em capturas de inspeção. Validação acadêmica dos professores, revisão técnica independente e testes da aplicação permanecem pendentes. O registro não equivale a validação da CI ou MySQL em runtime.
