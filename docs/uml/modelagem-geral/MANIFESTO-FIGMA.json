@@ -33,10 +33,11 @@
       "height": 3780,
       "direct_children": 150,
       "classes": 16,
-      "associacoes": 13,
-      "valores_multiplicidade": 26,
+      "associacoes": 18,
+      "valores_multiplicidade": 36,
       "status": "revisado_sem_homologacao",
-      "relacoes_canônicas_entre_nos_presentes_nao_desenhadas": [
+      "relacoes_canônicas_entre_nos_presentes_nao_desenhadas": [],
+      "relacoes_incorporadas_na_quarta_rodada": [
         "CL01-R04",
         "CL02-R03a",
         "CL02-R03b",
@@ -53,7 +54,8 @@
       "participantes": 7,
       "mensagens_base": 15,
       "retorno_adicionado": "M09R",
-      "status": "revisado_sem_homologacao"
+      "status": "revisado_sem_homologacao",
+      "barras_ativacao": 9
     },
     {
       "id": "DB-G",
@@ -81,10 +83,19 @@
     "legibilidade_projetor",
     "rastreabilidade_cruzada",
     "cobertura_total_casos_uso",
-    "vinculos_transversais_classes",
     "cenarios_idempotencia_409",
-    "eer_geral_embutido_figma_se_exigido"
+    "eer_geral_embutido_figma_se_exigido",
+    "classe_derivada_tarefa_ocorrencia_a_avaliar_sem_inventar_contrato"
   ],
-  "auditoria_mais_recente": "AUDITORIA-RODADA-3-2026-10-27.md",
-  "matriz_rastreabilidade": "MATRIZ-RASTREABILIDADE-2026-10-27.md"
+  "auditoria_mais_recente": "AUDITORIA-RODADA-4-2026-10-27.md",
+  "matriz_rastreabilidade": "MATRIZ-RASTREABILIDADE-2026-10-27.md",
+  "validacao_estrutural_rodada4": {
+    "figma_page": "6430:3326",
+    "cl_g_original_tracos": 13,
+    "cl_g_novos_tracos": 5,
+    "cl_g_total_tracos": 18,
+    "cl_g_total_valores_multiplicidade": 36,
+    "sq_g_barras_ativacao": 9,
+    "sem_duplicatas_nas_cinco_ligacoes": true
+  }
 }
