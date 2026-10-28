@@ -11,15 +11,15 @@
 | AUD-M2-001 | P1 | CL-02 | papéis e multiplicidades da troca | correções no Figma relatadas, com captura; precisa de leitura bilateral de cada extremo | **CONFORME NO ESCOPO VERIFICADO** | Rhuan → David |
 | AUD-M2-002 | P1 | DB-C2 | FK opcional de anexo e XOR de exatamente um pai | captura mostra pai 0..1; conferir CHECK e FK originais no DDL | **CONFORME NO ESCOPO VERIFICADO** | Henrique → Kauã |
 | AUD-M2-003 | P1 | EER-A/B/C1/C2/D | cardinalidades Workbench versus NOT NULL/UNIQUE | MWB reaberto/exportado, 5 SVGs nativos em Figma; não certifica todos os rótulos na banca | **CONFORME NO ESCOPO VERIFICADO** | Kauã → Henrique |
-| AUD-M2-004 | P1 | SQ-01/02/03 | pontas de chamada síncrona versus retorno | 16 pontas corrigidas conforme relatório; revisar visualmente cada trecho | **CORRIGIDO AGUARDANDO REVALIDAÇÃO** | Domínios A/B/C → Kauã |
+| AUD-M2-004 | P1 | SQ-01/02/03 | pontas de chamada síncrona versus retorno | 16 pontas corrigidas conforme relatório; revisar visualmente cada trecho | **CONFORME NO ESCOPO VERIFICADO** | Domínios A/B/C → Kauã |
 | AUD-M2-005 | P1 | CL-01 × SQ-01 | autenticação com responsabilidade conflitante | operação inferida removida do domínio; conferir contratos e mensagens finais | **CONFORME NO ESCOPO VERIFICADO** | David → Rhuan |
 | AUD-M2-006 | P1 | SQ-02 | versão concorrente/contexto no aceitar/recusar | alt com 409 e revalidação desenhado; examinar guardas e ausência de N01 em conflito | **CONFORME NO ESCOPO VERIFICADO** | Rhuan → David |
 | AUD-M2-007 | P1 | CL-01 | ContatoImportante.telefone obrigatório | contrato e Figma alterados; confirmar NOT NULL no SQL e multiplicidade | **CONFORME NO ESCOPO VERIFICADO** | David → Henrique |
 | AUD-M2-008 | P2 | UC-02/03; CL-01/02/03; EER-A | geometria, rótulos e legibilidade | revisão parcial; possíveis cruzamentos residuais de CL-03 e projeção pendente | **PENDENTE DE CORREÇÃO** | Domínios A/B/C → Kauã |
-| AUD-M2-009 | P2 | DB-A/B/C1/C2/D | tipos físicos parciais, UNSIGNED | 72 campos corrigidos conforme histórico; comparar texto atual com DDL | **CORRIGIDO AGUARDANDO REVALIDAÇÃO** | Domínios A/B/C/D → Henrique |
-| AUD-M2-010 | P2 | CL-03 × SQ-03 | assinaturas das operações e mensagens | assinaturas compatibilizadas; inspecionar parâmetro e receptor de cada chamada | **CORRIGIDO AGUARDANDO REVALIDAÇÃO** | Henrique → Kauã |
-| AUD-M2-011 | P2 | Apresentação M2 | ordem de slides e versões históricas | frames oficiais reposicionados 13–31; verificar caminho da apresentação | **CORRIGIDO AGUARDANDO REVALIDAÇÃO** | Kauã → David |
-| AUD-M2-012 | P2 | DB-C2 | autoridade do SQL sobre CHECK/XOR | rodapé já ressalva limites; conferir semântica do vínculo no DDL | **CORRIGIDO AGUARDANDO REVALIDAÇÃO** | Henrique → Kauã |
+| AUD-M2-009 | P2 | DB-A/B/C1/C2/D | tipos físicos parciais, UNSIGNED | 72 campos corrigidos conforme histórico; comparar texto atual com DDL | **CONFORME NO ESCOPO VERIFICADO** | Domínios A/B/C/D → Henrique |
+| AUD-M2-010 | P2 | CL-03 × SQ-03 | assinaturas das operações e mensagens | assinaturas compatibilizadas; inspecionar parâmetro e receptor de cada chamada | **CONFORME NO ESCOPO VERIFICADO** | Henrique → Kauã |
+| AUD-M2-011 | P2 | Apresentação M2 | ordem de slides e versões históricas | frames oficiais reposicionados 13–31; verificar caminho da apresentação | **CONFORME NO ESCOPO VERIFICADO** | Kauã → David |
+| AUD-M2-012 | P2 | DB-C2 | autoridade do SQL sobre CHECK/XOR | rodapé já ressalva limites; conferir semântica do vínculo no DDL | **CONFORME NO ESCOPO VERIFICADO** | Henrique → Kauã |
 | AUD-M2-013 | P2 | Fluxo Final T04/T05/T08 | fluxo navegável de troca e administração | limite de evidência documentado, não defeito UML automático | **EM AUDITORIA** | Rhuan/Henrique → David |
 
 ## Critérios de revalidação sem calendário
@@ -43,3 +43,10 @@
 
 
 **Revalidação independente focal:** [REVALIDACAO-FOCAL-P1.md](REVALIDACAO-FOCAL-P1.md) conferiu AUD-M2-001, 002, 005, 006 e 007 contra contratos, capturas atuais e SQL, quando aplicável. O status `CONFORME NO ESCOPO VERIFICADO` é **estritamente limitado** ao defeito original; não é PASS global do frame nem homologação acadêmica.
+
+
+## Revalidação complementar da segunda passagem
+
+- [AUD-M2-003/004](REVALIDACAO-AUD-003-004.md): reabertura native Workbench 79/79 flags coerentes com 0 divergências SQL–MWB; 3 SQ examinados por notação de chamadas e retornos. **CONFORME NO ESCOPO VERIFICADO**.
+- [AUD-M2-008–012](REVALIDACAO-AUD-008-012.md): **AUD-009–012** conforme no escopo delimitado. Em AUD-009, **158/158 campos exibidos** apresentam nome/tipo exatos contra DDL. **AUD-008 segue PENDENTE**, particularmente legibilidade de rótulos no CL-03.
+- O histórico de 1 PASS e 18 FAIL **não é reescrito**. Não há homologação docente nem certificação funcional integral.
