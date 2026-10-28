@@ -11,6 +11,7 @@
 | Inventário M1/M2 | [INVENTARIO-M1-M2.md](INVENTARIO-M1-M2.md): 19 diagramas originais, 6 perspectivas gerais, 17 telas e demais acervos | **Consolidação inicial realizada**; revisão cruzada pendente |
 | Rastreabilidade das US | [MATRIZ-36-US.md](MATRIZ-36-US.md): 36/36 histórias reconciliadas aos owners/origens/telas; conceitos candidatos preservados como candidatos | **Consolidação inicial realizada**; vínculos UML reais ainda por validar |
 | Auditoria M2 histórica × corrigida | [RECONCILIACAO-AUD-M2.md](RECONCILIACAO-AUD-M2.md): 13 achados, P1/P2, correções e verificação que falta | **Classificação realizada**; não homologada automaticamente |
+| Revalidação focal P1 | [REVALIDACAO-FOCAL-P1.md](REVALIDACAO-FOCAL-P1.md): contrato × Figma × SQL para 001, 002, 005, 006, 007 | **Conforme no escopo verificado** desses defeitos; não da M2 inteira |
 | Banco DDL × regras | [BANCO-GARANTIAS.md](BANCO-GARANTIAS.md): evidência MySQL real 34/79/50/44 e limites transacionais | **Conforme no escopo de estrutura física**, sem afirmar serviço concluído |
 | Backlog e gates | [BACKLOG-SEM-DATAS.md](BACKLOG-SEM-DATAS.md): oito atividades, owners sugeridos, revisão, critérios e dependências | **Planejado**; não criar/atribuir issues institucionalmente sem contexto da equipe |
 
