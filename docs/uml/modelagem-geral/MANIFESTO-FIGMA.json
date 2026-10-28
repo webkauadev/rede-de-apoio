@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "data_revisao": "2026-10-27",
+  "projeto": "Rede de Apoio a Cuidadores de Idosos",
+  "fonte": "Figma via leitura estrutural pos-revisao",
+  "file_key": "tcyj2fkTXei2CJbqaRxqCp",
+  "page_id": "6430:3326",
+  "pr_documental": "https://github.com/webkauadev/rede-de-apoio/pull/134",
+  "politica": "nao substituir os 19 diagramas existentes ou o MWB/SQL original",
+  "frames": [
+    {
+      "id": "AT-G",
+      "node_id": "6431:3326",
+      "width": 3800,
+      "height": 3920,
+      "direct_children": 84,
+      "status": "revisado_sem_homologacao",
+      "seguranca_v1": "validacao_anterior_a_leitura_e_escrita; revalidacao_ao_registrar_e_corrigir"
+    },
+    {
+      "id": "UC-G",
+      "node_id": "6432:3326",
+      "width": 5000,
+      "height": 3540,
+      "direct_children": 73,
+      "casos_uso": 16,
+      "status": "revisado_sem_homologacao"
+    },
+    {
+      "id": "CL-G",
+      "node_id": "6434:3326",
+      "width": 4930,
+      "height": 3780,
+      "direct_children": 150,
+      "classes": 16,
+      "associacoes": 18,
+      "valores_multiplicidade": 36,
+      "status": "revisado_sem_homologacao",
+      "relacoes_canônicas_entre_nos_presentes_nao_desenhadas": [],
+      "relacoes_incorporadas_na_quarta_rodada": [
+        "CL01-R04",
+        "CL02-R03a",
+        "CL02-R03b",
+        "CL02-R03c",
+        "CL02-R06"
+      ]
+    },
+    {
+      "id": "SQ-G",
+      "node_id": "6433:3326",
+      "width": 4850,
+      "height": 3600,
+      "direct_children": 75,
+      "participantes": 7,
+      "mensagens_base": 15,
+      "retorno_adicionado": "M09R",
+      "status": "revisado_sem_homologacao",
+      "barras_ativacao": 9
+    },
+    {
+      "id": "DB-G",
+      "node_id": "6435:3326",
+      "width": 5500,
+      "height": 3780,
+      "direct_children": 115,
+      "tabelas_selecionadas": 17,
+      "status": "recorte_parcial_sem_homologacao",
+      "trechos_fisicos_rotulados": 11
+    },
+    {
+      "id": "EER-G",
+      "node_id": "6438:3326",
+      "width": 3600,
+      "height": 2360,
+      "direct_children": 36,
+      "status": "prancha_indice_do_modelo_preexistente",
+      "fonte_eer": "entrega/sql-eer/diagrama_geral.svg",
+      "modelo": "entrega/sql-eer/rede_de_apoio_v1.mwb"
+    }
+  ],
+  "pendencias": [
+    "aprovacao_academica",
+    "legibilidade_projetor",
+    "rastreabilidade_cruzada",
+    "cobertura_total_casos_uso",
+    "cenarios_idempotencia_409",
+    "eer_geral_embutido_figma_se_exigido",
+    "classe_derivada_tarefa_ocorrencia_a_avaliar_sem_inventar_contrato"
+  ],
+  "auditoria_mais_recente": "AUDITORIA-RODADA-4-2026-10-27.md",
+  "matriz_rastreabilidade": "MATRIZ-RASTREABILIDADE-2026-10-27.md",
+  "validacao_estrutural_rodada4": {
+    "figma_page": "6430:3326",
+    "cl_g_original_tracos": 13,
+    "cl_g_novos_tracos": 5,
+    "cl_g_total_tracos": 18,
+    "cl_g_total_valores_multiplicidade": 36,
+    "sq_g_barras_ativacao": 9,
+    "sem_duplicatas_nas_cinco_ligacoes": true
+  }
+}
