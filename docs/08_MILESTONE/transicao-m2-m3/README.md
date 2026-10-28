@@ -12,6 +12,7 @@
 | Rastreabilidade das US | [MATRIZ-36-US.md](MATRIZ-36-US.md): 36/36 histórias reconciliadas aos owners/origens/telas; conceitos candidatos preservados como candidatos | **Consolidação inicial realizada**; vínculos UML reais ainda por validar |
 | Auditoria M2 histórica × corrigida | [RECONCILIACAO-AUD-M2.md](RECONCILIACAO-AUD-M2.md): 13 achados, P1/P2, correções e verificação que falta | **Classificação realizada**; não homologada automaticamente |
 | Rascunho CL-03 / AUD-008 | [AUD-008-REVISAO-CL03.md](AUD-008-REVISAO-CL03.md): cópia de revisão 6466:3327, 8 associações e 16 multiplicidades; original preservado | **Rascunho produzido, não promovido** |
+| Plano de testes navegáveis | [PLANO-TESTES-E06-E07-E16.md](PLANO-TESTES-E06-E07-E16.md): dez roteiros com fontes dos CA aprovados, casos negativos e critérios de evidência | **Planejado, não executado** |
 | Fluxos do protótipo / AUD-013 | [AUD-013-COBERTURA-NAVEGACAO.md](AUD-013-COBERTURA-NAVEGACAO.md): T04/day e cadastro E14 navegáveis; E06/E07/E16 não demonstrados | **Lacuna canônica confirmada** |
 | Revalidação focal P1 | [REVALIDACAO-FOCAL-P1.md](REVALIDACAO-FOCAL-P1.md): contrato × Figma × SQL para 001, 002, 005, 006, 007 | **Conforme no escopo verificado** desses defeitos; não da M2 inteira |
 | Sequências e EER | [REVALIDACAO-AUD-003-004.md](REVALIDACAO-AUD-003-004.md): setas/retornos e 79/79 FKs conferidas no renderer Workbench | **Conforme no escopo verificado** |
