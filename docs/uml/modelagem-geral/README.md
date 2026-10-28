@@ -11,8 +11,8 @@
 |---|---|---|---|---|
 | 1 | AT-G | Fluxo de ponta a ponta do cuidado, com partições e decisões | [AT-G](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6431-3326) | [AT-G.md](AT-G.md) |
 | 2 | UC-G | Quem participa de quais objetivos selecionados | [UC-G](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6432-3326) | [UC-G.md](UC-G.md) |
-| 3 | CL-G | Vocabulário, operações e associações essenciais de domínio | [CL-G](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6434-3326) | [CL-G.md](CL-G.md) |
-| 4 | SQ-G | Como os serviços colaboram no registro de administração | [SQ-G](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6433-3326) | [SQ-G.md](SQ-G.md) |
+| 3 | CL-G | 16 classes e **18 associações** entre classes selecionadas | [CL-G](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6434-3326) | [CL-G.md](CL-G.md) |
+| 4 | SQ-G | Sequência integrada com 7 lifelines e **9 barras de ativação** | [SQ-G](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6433-3326) | [SQ-G.md](SQ-G.md) |
 | 5 | DB-G | Recorte de 17 tabelas reais, PKs e FKs prioritárias | [DB-G](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6435-3326) | [DB-G.md](DB-G.md) |
 | 6 | EER-G | Modelo Workbench integral **já existente**: 34 tabelas, 79 FKs, 6 vistas | [Prancha de referência](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6438-3326) · [SVG nativo geral](../../../entrega/sql-eer/diagrama_geral.svg) · [MWB](../../../entrega/sql-eer/rede_de_apoio_v1.mwb) | [EER-G.md](EER-G.md) |
 
@@ -37,7 +37,7 @@
 
 ## Auditoria subsequente
 
-Em 2026-10-27 foi concluída uma **segunda revisão técnica** do conjunto, com [relatório da segunda passagem](AUDITORIA-2026-10-27.md), [auditoria de terceira rodada](AUDITORIA-RODADA-3-2026-10-27.md), [matriz de rastreabilidade literal UC/CL/SQ/DB](MATRIZ-RASTREABILIDADE-2026-10-27.md) e [manifesto estrutural dos seis frames](MANIFESTO-FIGMA.json), lido diretamente da página após a revisão. As mudanças no Figma foram aplicadas a UC-G, CL-G, SQ-G, DB-G e AT-G sem alterar os 19 diagramas anteriores. O PR continua **Draft** porque há limitações estruturais a revisar antes de homologação. A auditoria é interna ao processo de modelagem e **não constitui parecer acadêmico independente**.
+Em 2026-10-27 foram executadas revisões técnicas sucessivas, com [relatório da segunda passagem](AUDITORIA-2026-10-27.md), [auditoria de terceira rodada](AUDITORIA-RODADA-3-2026-10-27.md), [auditoria de quarta rodada](AUDITORIA-RODADA-4-2026-10-27.md), [matriz de rastreabilidade literal UC/CL/SQ/DB](MATRIZ-RASTREABILIDADE-2026-10-27.md) e [manifesto estrutural dos seis frames](MANIFESTO-FIGMA.json), lido diretamente da página após a revisão. As mudanças no Figma foram aplicadas a UC-G, CL-G, SQ-G, DB-G e AT-G sem alterar os 19 diagramas anteriores. O PR continua **Draft** porque há limitações estruturais a revisar antes de homologação. A auditoria é interna ao processo de modelagem e **não constitui parecer acadêmico independente**.
 
 ## Checklist para homologação e uso na apresentação
 
@@ -48,8 +48,10 @@ Em 2026-10-27 foi concluída uma **segunda revisão técnica** do conjunto, com 
 - [x] Substituir ator genérico de UC-G por Familiar de Apoio/Emergência, com autorização explícita e solicitação de troca baseada em UC-02.
 - [ ] **Revisar correspondência integral** de UC-G com papéis/US, inclusive o fato de casos serem compartilhados fora das linhas de apresentação.
 - [x] Reposicionar e conferir visualmente os **26 valores de multiplicidade** nas 13 associações do CL-G.
-- [ ] Revisão acadêmica externa da semântica de todas as multiplicidades e **cinco vínculos canônicos entre classes presentes que não estão desenhados (AG3-006)**.
+- [x] Incluir no CL-G as cinco relações canônicas antes ausentes (CL01-R04; CL02-R03a/b/c; CL02-R06), preservando três papéis distintos de troca; **18 associações, 36 rótulos de multiplicidade** (A4-001).
+- [ ] Revisão acadêmica externa da semântica de todas as multiplicidades e das classes omitidas do recorte.
 - [x] Ajustar SQ-G: M09R, M12/M14 com assinatura CL-03, N03 como nota, M15 exclusivamente de negação e guardas do cenário coberto.
+- [x] Inserir **9 barras de ativação** no SQ-G, alinhadas às mensagens existentes (A4-002).
 - [ ] Revisão independente de SQ-G, especialmente serviços inferidos e casos idempotentes/409 não desenhados.
 - [x] Corrigir a ordem da autorização no AT-G para impedir leitura/escrita antes da validação; revalidar escrita no commit e na correção (AG3-001/002).
 - [ ] Projetar em tela/monitor e validar leitura das pranchas grandes por zoom.
