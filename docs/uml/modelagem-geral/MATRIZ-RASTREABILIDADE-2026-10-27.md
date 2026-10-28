@@ -26,7 +26,7 @@
 
 **Lacunas conscientes:** autenticar-se U-02 não está no UC-G, embora seja pré-condição técnica de utilização; cadastro elegível U-01 não é mostrado. Transferência de Principal U-08, preferência de notificações U-33, consulta de auditoria U-35 e conclusão de tarefa U-21 também não aparecem como elipses próprias. Não usar UC-G para provar cobertura integral dos RF01–RF30/US-001–036. A posição das elipses por grupo representa *exemplos de participação*, não herança, exclusividade ou autorização automática.
 
-## CL-G — 13 relações selecionadas
+## CL-G — 18 relações selecionadas (13 originais + 5 integradas)
 
 | Rel. | Fonte | Representação atual | Verificação e limite |
 |---|---|---|---|
@@ -44,15 +44,20 @@
 | R12 | CL03-R04 | OcorrenciaProgramada [0..1] — [0..1] AdministracaoMedicamento | Avulsa permitida, vinculação em até uma ocorrência |
 | R13 | CL03-R05 | RegistroCuidado [1] — [0..*] CorrecaoRegistro | Correção versão ligada ao original; não é composição |
 
-**Associações CANÔNICAS ainda ausentes entre classes que já estão desenhadas:**
+## CL-G — Cinco relações canônicas integradas na quarta rodada
 
-1. **CL01-R04** — `Usuario — MembroRede`, com 1 no extremo Usuario e 0..* no extremo MembroRede.
-2. **CL02-R03a** — `SolicitacaoTrocaPlantao — MembroRede` pelo papel *solicitante*, 0..* / 1.
-3. **CL02-R03b** — mesma dupla, papel *destinatário*, 0..* / 1.
-4. **CL02-R03c** — mesma dupla, papel *respondente*, 0..* / 0..1.
-5. **CL02-R06** — `MembroRede — ConclusaoTarefa`, 1 / 0..*.
+A auditoria terceira rodada identificou cinco ausências (**AG3-006**). Elas **foram desenhadas e verificadas visualmente** em 2026-10-27, no próprio CL-G, preservando as 13 associações preexistentes.
 
-Essas cinco ausências são **lacunas de cobertura do CL-G**, não erros das respectivas especificações de domínio. **Não adicionar linhas sem separar os três papéis distintos da solicitação**. O vínculo `Tarefa — OcorrenciaProgramada` é suportado pelo SQL (`fk_ocorrencia_tarefa` e XOR), porém não é relação CL03-R03 e deve ser modelado conceitualmente como nova relação **derivada/inferida**, nunca atribuído falsamente a um contrato existente.
+| Relação acrescentada | Fonte original | Multiplicidade em cada ponta | Papel de associação |
+|---|---|---|---|
+| R14 Usuario — MembroRede | CL01-R04 | perto de Usuario **1**, MembroRede **0..*** | participa por |
+| R15 SolicitacaoTrocaPlantao — MembroRede | CL02-R03a | perto de Solicitação **0..***, MembroRede **1** | solicitante |
+| R16 SolicitacaoTrocaPlantao — MembroRede | CL02-R03b | perto de Solicitação **0..***, MembroRede **1** | destinatário |
+| R17 SolicitacaoTrocaPlantao — MembroRede | CL02-R03c | perto de Solicitação **0..***, MembroRede **0..1** | respondente (opcional) |
+| R18 MembroRede — ConclusaoTarefa | CL02-R06 | perto de MembroRede **1**, ConclusaoTarefa **0..*** | executa |
+
+**Contagem visual conferida:** 18 linhas de associação e **36 valores de multiplicidade** (2 por associação). As três relações da troca são três conexões diferentes, não uma generalização, classe nova ou uma tripla associação multiplicativa. A legenda cromática tem valor didático; a semântica reside nas relações e nos papéis. O vínculo `Tarefa — OcorrenciaProgramada` é suportado pelo SQL (`fk_ocorrencia_tarefa` e XOR), porém não é relação CL03-R03 e deve ser modelado conceitualmente como relação **derivada**, nunca atribuído falsamente a um contrato existente.
+
 
 Há ainda classes excluídas deliberadamente: `ContatoImportante`, `InformacaoEmergencia`, `Compromisso`, `Consulta`, `Recomendacao`, `Anexo`, `Auditoria`. Suas relações não podem aparecer como se os nós estivessem presentes.
 
@@ -79,4 +84,4 @@ A prancha DB-G seleciona 17 tabelas e **11 trechos de vínculo** internos (um de
 
 Fontes relacionadas: [contratos individuais](../especificacao-para-figma/00-matriz-rastreabilidade.md), [governança](../especificacao-para-figma/00-governanca-transversal.md), [matriz de permissões](../../02_BUSINESS_RULES/PERMISSIONS_MATRIX.md), [decisões V1](../../10_IMPLEMENTACAO/DECISOES_V1_HOMOLOGADAS.md).
 
-**Status:** matriz de auditoria técnica de recortes. Nem cobertura integral dos requisitos, nem aprovação acadêmica independente.
+**Status:** matriz atualizada após auditoria 4; recortes não constituem cobertura integral do produto. Nem cobertura integral dos requisitos, nem aprovação acadêmica independente.
