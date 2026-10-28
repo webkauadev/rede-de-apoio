@@ -12,6 +12,9 @@
 | Rastreabilidade das US | [MATRIZ-36-US.md](MATRIZ-36-US.md): 36/36 histórias reconciliadas aos owners/origens/telas; conceitos candidatos preservados como candidatos | **Consolidação inicial realizada**; vínculos UML reais ainda por validar |
 | Auditoria M2 histórica × corrigida | [RECONCILIACAO-AUD-M2.md](RECONCILIACAO-AUD-M2.md): 13 achados, P1/P2, correções e verificação que falta | **Classificação realizada**; não homologada automaticamente |
 | Revalidação focal P1 | [REVALIDACAO-FOCAL-P1.md](REVALIDACAO-FOCAL-P1.md): contrato × Figma × SQL para 001, 002, 005, 006, 007 | **Conforme no escopo verificado** desses defeitos; não da M2 inteira |
+| Sequências e EER | [REVALIDACAO-AUD-003-004.md](REVALIDACAO-AUD-003-004.md): setas/retornos e 79/79 FKs conferidas no renderer Workbench | **Conforme no escopo verificado** |
+| Banco DB e assinaturas P2 | [REVALIDACAO-AUD-008-012.md](REVALIDACAO-AUD-008-012.md): 158 campos SQL 100% compatíveis; 010–012 conferidos; CL-03 legibilidade pendente | **AUD-008 permanece aberto** |
+| Rastreabilidade por caso de uso | [MATRIZ-UC-VERIFICADOS.md](MATRIZ-UC-VERIFICADOS.md): 31 US ligadas literalmente a U-xx; 5 por regras N01–N04 e RNF | **Comprovação documental do elo US↔UC** |
 | Banco DDL × regras | [BANCO-GARANTIAS.md](BANCO-GARANTIAS.md): evidência MySQL real 34/79/50/44 e limites transacionais | **Conforme no escopo de estrutura física**, sem afirmar serviço concluído |
 | Backlog e gates | [BACKLOG-SEM-DATAS.md](BACKLOG-SEM-DATAS.md): oito atividades, owners sugeridos, revisão, critérios e dependências | **Planejado**; não criar/atribuir issues institucionalmente sem contexto da equipe |
 
@@ -45,7 +48,7 @@
 
 ## Controle dos gates sem datas
 
-**G1 (inventário):** em auditoria; **G2 (pendências):** em auditoria; **G3 (UML/banco):** em auditoria; **G4 (integração documental):** em auditoria; **G5/G6/G7:** não verificados. A execução de artefato não fecha gate sem revisor e evidência.
+**G1 (inventário):** em auditoria; **G2 (pendências):** em auditoria; **G3 (UML/banco):** em auditoria com **AUD-M2-008 aberto**; **G4 (integração documental):** em auditoria; **G5/G6/G7:** não verificados. A execução de artefato não fecha gate sem revisor e evidência.
 
 ## Regra de proteção
 
@@ -62,3 +65,7 @@
 - [Projeto físico](https://github.com/webkauadev/rede-de-apoio/tree/main/entrega/sql-eer), [proposta conceitual](https://github.com/webkauadev/rede-de-apoio/tree/main/docs/09_BANCO_DE_DADOS).
 - [Telas do Figma](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=5926-1014), [apresentação M2](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6103-3636).
 - [Diretrizes da aula](https://github.com/webkauadev/rede-de-apoio/blob/main/docs/uml/diretrizes-professor.md) e Diretrizes Gerais de trabalho em equipe fornecidas pelo solicitante.
+
+## Segunda passagem de revalidação documentada
+
+Os relatórios adicionais encerram **no escopo específico** AUD-M2-003/004 e AUD-M2-009/010/011/012, mantendo AUD-M2-008 pendente de correção geométrica do CL-03, AUD-M2-013 pendente de prova navegável e a aprovação docente fora do escopo. A [matriz UC verificada](MATRIZ-UC-VERIFICADOS.md) resolve referências literais para 31 US e fundamenta as 5 sem elipse individual.
