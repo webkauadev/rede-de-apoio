@@ -11,6 +11,8 @@
 | Inventário M1/M2 | [INVENTARIO-M1-M2.md](INVENTARIO-M1-M2.md): 19 diagramas originais, 6 perspectivas gerais, 17 telas e demais acervos | **Consolidação inicial realizada**; revisão cruzada pendente |
 | Rastreabilidade das US | [MATRIZ-36-US.md](MATRIZ-36-US.md): 36/36 histórias reconciliadas aos owners/origens/telas; conceitos candidatos preservados como candidatos | **Consolidação inicial realizada**; vínculos UML reais ainda por validar |
 | Auditoria M2 histórica × corrigida | [RECONCILIACAO-AUD-M2.md](RECONCILIACAO-AUD-M2.md): 13 achados, P1/P2, correções e verificação que falta | **Classificação realizada**; não homologada automaticamente |
+| Rascunho CL-03 / AUD-008 | [AUD-008-REVISAO-CL03.md](AUD-008-REVISAO-CL03.md): cópia de revisão 6466:3327, 8 associações e 16 multiplicidades; original preservado | **Rascunho produzido, não promovido** |
+| Fluxos do protótipo / AUD-013 | [AUD-013-COBERTURA-NAVEGACAO.md](AUD-013-COBERTURA-NAVEGACAO.md): T04/day e cadastro E14 navegáveis; E06/E07/E16 não demonstrados | **Lacuna canônica confirmada** |
 | Revalidação focal P1 | [REVALIDACAO-FOCAL-P1.md](REVALIDACAO-FOCAL-P1.md): contrato × Figma × SQL para 001, 002, 005, 006, 007 | **Conforme no escopo verificado** desses defeitos; não da M2 inteira |
 | Sequências e EER | [REVALIDACAO-AUD-003-004.md](REVALIDACAO-AUD-003-004.md): setas/retornos e 79/79 FKs conferidas no renderer Workbench | **Conforme no escopo verificado** |
 | Banco DB e assinaturas P2 | [REVALIDACAO-AUD-008-012.md](REVALIDACAO-AUD-008-012.md): 158 campos SQL 100% compatíveis; 010–012 conferidos; CL-03 legibilidade pendente | **AUD-008 permanece aberto** |
@@ -69,3 +71,7 @@
 ## Segunda passagem de revalidação documentada
 
 Os relatórios adicionais encerram **no escopo específico** AUD-M2-003/004 e AUD-M2-009/010/011/012, mantendo AUD-M2-008 pendente de correção geométrica do CL-03, AUD-M2-013 pendente de prova navegável e a aprovação docente fora do escopo. A [matriz UC verificada](MATRIZ-UC-VERIFICADOS.md) resolve referências literais para 31 US e fundamenta as 5 sem elipse individual.
+
+### Nova evidência focal no Figma
+
+A [cópia geométrica CL-03](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6466-3327) é um rascunho isolado e não altera a apresentação M2. A análise da árvore de reações [Fluxo Final](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=5926-1014) confirmou ausência de E06/E07/E16 como interações navegáveis nos estados canônicos auditados. Essas constatações atualizam os bloqueios sem simularem a aprovação dos professores.
