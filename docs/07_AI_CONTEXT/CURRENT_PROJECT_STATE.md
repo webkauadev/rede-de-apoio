@@ -334,3 +334,13 @@ um deadlock físico encontrado. [Evidências atuais](../10_IMPLEMENTACAO/US002_L
 superam a pendência de autorização/execução da seção anterior. Recursos próprios do ensaio removidos,
 preexistentes preservados. PR #121 continua Draft para nova revisão; US-002/RF02 abertas, owner David,
 gates globais/públicos abertos, sem merge/deploy.
+
+## US-003 — T12 parcial e BLOCKED_BY_DECISION
+
+Base humana5ab918a (PRs121/122 incorporados pelo responsável), branch feat/us003-cadastro-pessoa-idosa-v1.
+Handoff Issue39/#6147135134 autoriza apenas novo ensaio MySQL local e exige prova verificável do Familiar
+que será Principal inicial. DB-002 define B3, mas não como provar essa elegibilidade; DEC-AUTH-001 não
+transforma convite em permissão. T12/contrato/adaptador foram preparados; serviço oficial nega INSERT
+com BLOCKED_BY_DECISION. [Evidências e lacuna](../10_IMPLEMENTACAO/US003_CADASTRO_PESSOA_IDOSA_V1.md).
+Nenhuma rede/papel/titular antecipado. US003/RF03 abertas, owner David, Draft para revisão, sem merge/deploy.
+Seções históricas de US002 em Draft acima foram superadas pela incorporação humana registrada na Issue39.

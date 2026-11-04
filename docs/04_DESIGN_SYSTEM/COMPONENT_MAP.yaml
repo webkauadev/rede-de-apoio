@@ -261,3 +261,13 @@ implementation_us002_review:
     - src/domains/auth/login/logout-button.tsx
   states: [default, invalid_credentials, loading]
   evidence: docs/10_IMPLEMENTACAO/US002_LOGIN_SESSOES_V1.md
+
+implementation_us003_review:
+  issue: 39
+  screen: T12
+  element: E21
+  status: BLOCKED_BY_DECISION
+  reused: [Input, Button]
+  domain_component: src/domains/pessoa-idosa/registration-form.tsx
+  states: [registration, validation_error]
+  evidence: docs/10_IMPLEMENTACAO/US003_CADASTRO_PESSOA_IDOSA_V1.md

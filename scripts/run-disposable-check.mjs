@@ -3,7 +3,11 @@ import { spawn, spawnSync } from "node:child_process";
 try {
   const [path, ...command] = process.argv.slice(2);
   const { name, id, env } = JSON.parse(await readFile(path, "utf8"));
-  const profile = name.startsWith("rede-apoio-us002-") ? "us002" : "us001";
+  const profile = name.startsWith("rede-apoio-us003-")
+    ? "us003"
+    : name.startsWith("rede-apoio-us002-")
+      ? "us002"
+      : "us001";
   if (
     !name.startsWith(`rede-apoio-${profile}-`) ||
     env.DATABASE_HOST !== "127.0.0.1" ||

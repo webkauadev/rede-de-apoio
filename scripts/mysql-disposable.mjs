@@ -1,4 +1,4 @@
-/** Ensaio local autorizado por US: DEC-AUTH-001 e Issue #38/6146197937. Recursos novos, loopback, segredos fora de logs/Git. */
+/** Ensaio local autorizado por US: DEC-AUTH-001, Issue #38/6146197937 e #39/6147135134. Recursos novos, loopback, segredos fora de logs/Git. */
 import { spawnSync } from "node:child_process";
 import { mkdtemp, writeFile, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -79,7 +79,7 @@ async function initialize(path) {
       "002_validar_estrutura.sql",
       "003_convite_cadastro_cuidador.sql",
       "004_cadastro_rate_limit.sql",
-      ...(profile === "us002" ? ["005_sessoes_login.sql"] : []),
+      ...(profile !== "us001" ? ["005_sessoes_login.sql"] : []),
     ]) {
       await connection.query(
         await readFile(join("database/mysql", file), "utf8"),
@@ -102,7 +102,7 @@ async function initialize(path) {
       "convite_cadastro_cuidador",
       "cadastro_rate_limit",
       "auditoria",
-      ...(profile === "us002" ? ["sessao_usuario", "login_rate_limit"] : []),
+      ...(profile !== "us001" ? ["sessao_usuario", "login_rate_limit"] : []),
     ])
       results.ddl[table] = (
         await connection.query(`SHOW CREATE TABLE ${table}`)
@@ -123,10 +123,13 @@ const [action, path] = process.argv.slice(2);
 const profile =
   action === "start"
     ? (path ?? "us001")
-    : /rede-apoio-us002-/.test(path ?? "")
-      ? "us002"
-      : "us001";
-if (!["us001", "us002"].includes(profile)) throw new Error("Perfil invalido.");
+    : /rede-apoio-us003-/.test(path ?? "")
+      ? "us003"
+      : /rede-apoio-us002-/.test(path ?? "")
+        ? "us002"
+        : "us001";
+if (!["us001", "us002", "us003"].includes(profile))
+  throw new Error("Perfil invalido.");
 try {
   if (action === "start") {
     if (podman(["info", "--format", "{{.Host.Security.Rootless}}"]) !== "true")
@@ -146,9 +149,9 @@ try {
       DATABASE_PASSWORD: password,
       REGISTRATION_ENVIRONMENT: "local-disposable",
       APPLICATION_ORIGIN: "http://127.0.0.1:3100",
-      ...(profile === "us002"
+      ...(profile !== "us001"
         ? {
-            US002_INTEGRATION: "authorized-disposable",
+            [`${profile.toUpperCase()}_INTEGRATION`]: "authorized-disposable",
             AUTH_ENVIRONMENT: "local",
             SESSION_SECRET: randomBytes(32).toString("hex"),
           }
