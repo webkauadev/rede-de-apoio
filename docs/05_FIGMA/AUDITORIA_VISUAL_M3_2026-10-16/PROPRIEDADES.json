@@ -1,0 +1,1181 @@
+{
+  "metadata": {
+    "generated_at_local": "2026-10-16T09:40:31.275794-04:00",
+    "source_commit": "2d4eb7a3526bcb6bc1e2c90a23a2d27a0fc07705",
+    "file_key": "ljFSoPfNcvDgZtdR2sHmti",
+    "page_id": "6223:6270",
+    "audit_mode": "READ_ONLY_VISUAL_STRUCTURAL",
+    "figma_mutations": 0,
+    "prototype_tests": 0
+  },
+  "action_rows": [
+    {
+      "root_id": "8016:13861",
+      "root_name": "[OVERLAY] T04 / E03 — Novo plantão",
+      "actions_id": "8016:13876",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8016:15161",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8016:15167",
+          "name": "Action / Criar plantão",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8016:13952",
+      "root_name": "[OVERLAY] T04 / E04 — Alterar plantão",
+      "actions_id": "8016:13967",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8016:15173",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8016:15179",
+          "name": "Action / Salvar alteração",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8016:14055",
+      "root_name": "[OVERLAY] T04 / E04 — Cancelar plantão",
+      "actions_id": "8016:14070",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8016:15185",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8016:15191",
+          "name": "Action / Confirmar cancelamento",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8016:14158",
+      "root_name": "[OVERLAY] T04 / E05 — Atribuir responsável",
+      "actions_id": "8016:14173",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8016:15197",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8016:15203",
+          "name": "Action / Confirmar atribuição",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8016:14249",
+      "root_name": "[OVERLAY] T04 / E06 — Solicitar troca",
+      "actions_id": "8016:14264",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8016:15209",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8016:15215",
+          "name": "Action / Enviar solicitação",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8016:15427",
+      "root_name": "[OVERLAY] T04 / E07 — Responder à troca",
+      "actions_id": "8016:15442",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8016:15858",
+          "name": "Action / Recusar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8016:15864",
+          "name": "Action / Aceitar",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8017:14551",
+      "root_name": "[OVERLAY] T08 / E15 — Posologia e horário / Medicamento A",
+      "actions_id": "8017:14566",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8017:14654",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8017:14660",
+          "name": "Action / Salvar plano",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8017:14668",
+      "root_name": "[OVERLAY] T08 / E16 — Registrar administração / Medicamento A",
+      "actions_id": "8017:14683",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8017:14864",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8017:14870",
+          "name": "Action / Confirmar registro",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8017:15253",
+      "root_name": "[OVERLAY] T08 / E15 — Posologia e horário / Medicamento B",
+      "actions_id": "8017:15268",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8017:15356",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8017:15362",
+          "name": "Action / Salvar plano",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8017:15370",
+      "root_name": "[OVERLAY] T08 / E16 — Registrar administração / Medicamento B",
+      "actions_id": "8017:15385",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8017:15566",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8017:15572",
+          "name": "Action / Confirmar registro",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8017:15955",
+      "root_name": "[OVERLAY] T08 / E15 — Posologia e horário / Medicamento C",
+      "actions_id": "8017:15970",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8017:16058",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8017:16064",
+          "name": "Action / Salvar plano",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8017:16072",
+      "root_name": "[OVERLAY] T08 / E16 — Registrar administração / Medicamento C",
+      "actions_id": "8017:16087",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8017:16268",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8017:16274",
+          "name": "Action / Confirmar registro",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8018:15830",
+      "root_name": "[OVERLAY] T13 / Constituir rede",
+      "actions_id": "8018:15845",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8018:16031",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8018:16037",
+          "name": "Action / Constituir",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8025:16751",
+      "root_name": "[OVERLAY] T08 / E15 — Posologia e horário / Item A",
+      "actions_id": "8025:16770",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8025:16771",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8025:16772",
+          "name": "Action / Salvar plano",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    },
+    {
+      "root_id": "8025:16905",
+      "root_name": "[OVERLAY] T08 / E16 — Registrar administração / Item A",
+      "actions_id": "8025:16924",
+      "x": 16.0,
+      "y": 640.0,
+      "width": 157,
+      "height": 48,
+      "buttons": [
+        {
+          "id": "8025:16925",
+          "name": "Action / Cancelar",
+          "x": 0.0,
+          "width": 73.5,
+          "height": 48.0
+        },
+        {
+          "id": "8025:16926",
+          "name": "Action / Confirmar registro",
+          "x": 85.5,
+          "width": 71.5,
+          "height": 48.0
+        }
+      ]
+    }
+  ],
+  "confirmation_label": {
+    "node": "I8016:15191;1953:29724",
+    "x": -45.75,
+    "width": 163,
+    "height": 20,
+    "button_width": 71.5
+  },
+  "confirmation_value": {
+    "node": "I8016:14147;1953:18941",
+    "width": 346,
+    "height": 20,
+    "control_width": 326,
+    "horizontal_padding": 10
+  },
+  "access_support": {
+    "node": "6223:8927",
+    "width": 326,
+    "height": 40,
+    "line_height": 20,
+    "rendered_lines": 3,
+    "parent_card": "6223:8919",
+    "parent_height": 230,
+    "y_in_card": 174
+  },
+  "scrim": {
+    "reference": {
+      "node": "5652:625",
+      "rgba": [
+        0,
+        0,
+        0,
+        82
+      ],
+      "alpha": 0.3215686274509804
+    },
+    "work": {
+      "node": "6223:8967",
+      "rgba": [
+        0,
+        0,
+        0,
+        92
+      ],
+      "alpha": 0.3607843137254902
+    }
+  },
+  "input_contrast": {
+    "stroke": "#E5E5E5",
+    "resolved_by": "get_variable_defs",
+    "ratios": {
+      "#F8F5FA": 1.166,
+      "#F4F2FF": 1.139,
+      "#FBF8FF": 1.198
+    },
+    "semantic_reference": "#6E8496",
+    "reference_ratios": {
+      "#F8F5FA": 3.596,
+      "#F4F2FF": 3.514,
+      "#FBF8FF": 3.696
+    },
+    "scope_note": "Não é certificação WCAG de toda a aplicação; trata dos contornos inspecionados."
+  },
+  "style_excerpts": {
+    "t06_controls": [
+      "            <div className=\"bg-[var(--color\\/surface-container-low,#f8f5fa)] border border-[var(--shadcn-colors\\/general\\/input,#e5e5e5)] border-solid content-stretch flex gap-[var(--out-of-scale\\/1\\,5,6px)] h-[36px] items-center min-h-[32px] overflow-clip pl-[var(--out-of-scale\\/2\\,5,10px)] pr-[var(--xs,8px)] py-[var(--out-of-scale\\/1\\,5,6px)] relative rounded-[var(--radius-lg-\\(radius\\),10px)] shrink-0 w-[326px]\" data-node-id=\"6223:9150\" data-name=\"Control instance\">",
+      "              <div className=\"bg-[#f4f2ff] border border-[var(--shadcn-colors\\/general\\/input,#e5e5e5)] border-solid content-stretch flex gap-[var(--xs,8px)] items-center min-h-[32px] overflow-clip px-[var(--out-of-scale\\/2\\,5,10px)] py-[var(--out-of-scale\\/1\\,5,6px)] relative rounded-[var(--radius-lg-\\(radius\\),10px)] shadow-[var(--xs\\/x,0px)_var(--xs\\/y,1px)_var(--xs\\/blur,2px)_var(--xs\\/spread,0px)_var(--xs\\/color,rgba(0,0,0,0.05))] shrink-0 w-full\" data-node-id=\"I6223:9158;1999:6893\" data-name=\"Input - Nova\">",
+      "                <div className=\"content-stretch flex flex-col items-center justify-center p-[var(--3xs,2px)] relative shrink-0 w-[20px]\" data-node-id=\"I6223:9158;1999:6893;1953:18936\" data-name=\"Decoration left\">",
+      "                  <div className=\"relative shrink-0 size-[16px]\" data-node-id=\"I6223:9158;1999:6893;1953:18936;1953:19928\" data-name=\"Icon\">",
+      "                <div className=\"content-stretch flex flex-[1_0_0] gap-[var(--2xs,4px)] items-center min-w-px relative\" data-node-id=\"I6223:9158;1999:6893;1953:18937\" data-name=\"AL\">",
+      "                  <div className=\"content-stretch flex flex-[1_0_0] flex-col gap-[var(--xs,8px)] items-start min-w-px relative\" data-node-id=\"I6223:9158;1999:6893;1953:18939\" data-name=\"AL\">",
+      "                    <div className=\"content-stretch flex gap-px items-center overflow-clip relative shrink-0\" data-node-id=\"I6223:9158;1999:6893;1953:18940\" data-name=\"AL\">",
+      "                      <p className=\"[word-break:break-word] font-[family-name:var(--font-definitions\\/font-family-body,'Geist:Regular')] font-normal leading-[var(--paragraph\\/small\\/line-height,20px)] relative shrink-0 text-[color:var(--rede-apoio-color-muted-foreground,#4a5a66)] text-[length:var(--paragraph\\/small\\/font-size,14px)] tracking-[var(--paragraph\\/small\\/letter-spacing,0px)] whitespace-nowrap\" data-node-id=\"I6223:9158;1999:6893;1953:18941\">",
+      "              <div className=\"bg-[#f4f2ff] border border-[var(--shadcn-colors\\/general\\/input,#e5e5e5)] border-solid content-stretch flex gap-[var(--xs,8px)] items-center min-h-[32px] overflow-clip px-[var(--out-of-scale\\/2\\,5,10px)] py-[var(--out-of-scale\\/1\\,5,6px)] relative rounded-[var(--radius-lg-\\(radius\\),10px)] shadow-[var(--xs\\/x,0px)_var(--xs\\/y,1px)_var(--xs\\/blur,2px)_var(--xs\\/spread,0px)_var(--xs\\/color,rgba(0,0,0,0.05))] shrink-0 w-full\" data-node-id=\"I6223:9162;1999:6893\" data-name=\"Input - Nova\">",
+      "                <div className=\"content-stretch flex flex-col items-center justify-center p-[var(--3xs,2px)] relative shrink-0 size-[20px]\" data-node-id=\"I6223:9162;1999:6893;1953:18936\" data-name=\"Decoration left\" />",
+      "                <div className=\"content-stretch flex flex-[1_0_0] gap-[var(--2xs,4px)] items-center min-w-px relative\" data-node-id=\"I6223:9162;1999:6893;1953:18937\" data-name=\"AL\">",
+      "                  <div className=\"content-stretch flex flex-[1_0_0] flex-col gap-[var(--xs,8px)] items-start min-w-px relative\" data-node-id=\"I6223:9162;1999:6893;1953:18939\" data-name=\"AL\">",
+      "                    <div className=\"content-stretch flex gap-px items-center overflow-clip relative shrink-0\" data-node-id=\"I6223:9162;1999:6893;1953:18940\" data-name=\"AL\">",
+      "                      <p className=\"[word-break:break-word] font-[family-name:var(--font-definitions\\/font-family-body,'Geist:Regular')] font-normal leading-[var(--paragraph\\/small\\/line-height,20px)] relative shrink-0 text-[color:var(--rede-apoio-color-muted-foreground,#4a5a66)] text-[length:var(--paragraph\\/small\\/font-size,14px)] tracking-[var(--paragraph\\/small\\/letter-spacing,0px)] whitespace-nowrap\" data-node-id=\"I6223:9162;1999:6893;1953:18941\">"
+    ],
+    "t12_dest": [
+      "    <a className=\"bg-[var(--rede-apoio-color-surface,white)] border border-[var(--rede-apoio-color-border-subtle,#e5e5e5)] border-solid content-stretch cursor-pointer flex gap-[12px] items-center overflow-clip px-[16px] py-[12px] relative rounded-[16px] size-full\" data-node-id=\"6223:6719\" data-name=\"Destination / Rede de Cuidado\">"
+    ],
+    "t12_support": [
+      "          <p className=\"font-['Geist:Regular'] font-normal h-[40px] leading-[20px] relative shrink-0 text-[14px] text-[color:var(--color\\/on-surface-variant,#4a5a66)] w-full\" data-node-id=\"6223:8927\">\n            Acesso somente leitura ao próprio cuidado. Nenhuma ação de escrita ou administração é concedida.\n          </p>"
+    ],
+    "t14_inputs": [
+      "    <div className={className || \"border border-[var(--shadcn-colors\\\\/general\\\\/input,#e5e5e5)] border-solid content-stretch flex gap-[var(--xs,8px)] items-center min-h-[32px] overflow-clip px-[var(--out-of-scale\\\\/2\\\\,5,10px)] py-[var(--out-of-scale\\\\/1\\\\,5,6px)] relative rounded-[var(--radius-lg-\\\\(radius\\\\),10px)] w-[320px]\"} data-node-id=\"1953:19055\">",
+      "          <InputNova className=\"border border-[var(--shadcn-colors\\/general\\/input,#e5e5e5)] border-solid content-stretch flex gap-[var(--xs,8px)] h-[48px] items-center min-h-[32px] overflow-clip px-[var(--out-of-scale\\/2\\,5,10px)] py-[var(--out-of-scale\\/1\\,5,6px)] relative rounded-[var(--radius-lg-\\(radius\\),10px)] shrink-0 w-full\" value=\"Dr. Carlos Mendes\" />",
+      "          <div className=\"border border-[var(--shadcn-colors\\/general\\/input,#e5e5e5)] border-solid content-stretch flex gap-[var(--xs,8px)] h-[48px] items-center min-h-[32px] overflow-clip px-[var(--out-of-scale\\/2\\,5,10px)] py-[var(--out-of-scale\\/1\\,5,6px)] relative rounded-[var(--radius-lg-\\(radius\\),10px)] shrink-0 w-full\" data-node-id=\"8006:33708\" data-name=\"E26 — Telefone\">",
+      "          <InputNova className=\"border border-[var(--shadcn-colors\\/general\\/input,#e5e5e5)] border-solid content-stretch flex gap-[var(--xs,8px)] h-[48px] items-center min-h-[32px] overflow-clip px-[var(--out-of-scale\\/2\\,5,10px)] py-[var(--out-of-scale\\/1\\,5,6px)] relative rounded-[var(--radius-lg-\\(radius\\),10px)] shrink-0 w-full\" value=\"Médico\" />"
+    ],
+    "t13_grid": [
+      "      <div className=\"content-stretch flex flex-col gap-[12px] h-[780px] items-start overflow-x-clip overflow-y-auto pb-[24px] pt-[20px] px-[24px] relative shrink-0 w-[390px]\" data-node-id=\"8010:12354\" data-name=\"Main Content / Scroll\">"
+    ],
+    "t01_loading": [
+      "            </p>\n            <a className=\"cursor-pointer flex flex-col font-['Geist:Medium'] font-medium h-[48px] justify-center leading-[0] relative shrink-0 text-[color:var(--rede-apoio-color-primary,#00567c)] w-[73px]\" data-node-id=\"6223:6919\">\n              <p className=\"leading-[20px]\">Criar conta</p>",
+      "            <a className=\"cursor-pointer flex flex-col font-['Geist:Medium'] font-medium h-[48px] justify-center leading-[0] relative shrink-0 text-[color:var(--rede-apoio-color-primary,#00567c)] w-[73px]\" data-node-id=\"6223:6919\">\n              <p className=\"leading-[20px]\">Criar conta</p>\n            </a>"
+    ],
+    "scrim": [
+      "      <div className=\"absolute bg-[var(--color\\/scrim,black)] h-[844px] left-0 opacity-36 top-0 w-[390px]\" data-node-id=\"6223:8967\" data-name=\"Modal Scrim / Cadastrar medicamento\" />"
+    ],
+    "confirmation": [
+      "                    <p className=\"[word-break:break-word] font-[family-name:var(--font-definitions\\/font-family-body,'Geist:Regular')] font-normal leading-[var(--paragraph\\/small\\/line-height,20px)] relative shrink-0 text-[color:var(--rede-apoio-color-muted-foreground,#4a5a66)] text-[length:var(--paragraph\\/small\\/font-size,14px)] tracking-[var(--paragraph\\/small\\/letter-spacing,0px)] whitespace-nowrap\" data-node-id=\"I8016:14147;1953:18941\">\n                      O plantão será cancelado; o histórico será preservado.\n                    </p>"
+    ]
+  },
+  "variables": {
+    "t06_select": {
+      "var(--rede-apoio-color-muted-foreground)": "#4a5a66",
+      "paragraph/small/letter-spacing": "0",
+      "paragraph/small/font-size": "14",
+      "paragraph/paragraph-weight": "Regular",
+      "font definitions/font-family-body": "Geist",
+      "paragraph/small/spacing": "14",
+      "paragraph/small/line height": "20",
+      "paragraph small/normal": "Font(family: \"font definitions/font-family-body\", style: paragraph/paragraph-weight, size: paragraph/small/font-size, weight: 400, lineHeight: paragraph/small/line height, letterSpacing: paragraph/small/letter-spacing)",
+      "xs": "8",
+      "shadcn colors/general/muted foreground": "#737373",
+      "out-of-scale/1,5": "6",
+      "out-of-scale/2,5": "10",
+      "radius-lg (radius)": "10",
+      "Color/Surface Container Low": "#f8f5fa",
+      "shadcn colors/general/input": "#e5e5e5"
+    },
+    "t06_date": {
+      "shadcn colors/general/foreground": "#000000",
+      "md": "16",
+      "3xs": "2",
+      "var(--rede-apoio-color-muted-foreground)": "#4a5a66",
+      "paragraph/small/letter-spacing": "0",
+      "paragraph/small/font-size": "14",
+      "paragraph/paragraph-weight": "Regular",
+      "font definitions/font-family-body": "Geist",
+      "paragraph/small/spacing": "14",
+      "paragraph/small/line height": "20",
+      "paragraph small/normal": "Font(family: \"font definitions/font-family-body\", style: paragraph/paragraph-weight, size: paragraph/small/font-size, weight: 400, lineHeight: paragraph/small/line height, letterSpacing: paragraph/small/letter-spacing)",
+      "xs": "8",
+      "2xs": "4",
+      "out-of-scale/2,5": "10",
+      "out-of-scale/1,5": "6",
+      "radius-lg (radius)": "10",
+      "shadcn colors/general/input": "#e5e5e5",
+      "xs/color": "#0000000d",
+      "xs/x": "0",
+      "xs/y": "1",
+      "xs/blur": "2",
+      "xs/spread": "0"
+    },
+    "foundation_field": {
+      "shadcn colors/general/muted foreground": "#737373",
+      "paragraph/small/letter-spacing": "0",
+      "paragraph/small/font-size": "14",
+      "paragraph/paragraph-weight": "Regular",
+      "font definitions/font-family-body": "Geist",
+      "paragraph/small/spacing": "14",
+      "paragraph/small/line height": "20",
+      "paragraph small/normal": "Font(family: \"font definitions/font-family-body\", style: paragraph/paragraph-weight, size: paragraph/small/font-size, weight: 400, lineHeight: paragraph/small/line height, letterSpacing: paragraph/small/letter-spacing)",
+      "xs": "8",
+      "2xs": "4",
+      "sm": "12",
+      "out-of-scale/2,5": "10",
+      "radius-lg (radius)": "10",
+      "shadcn colors/general/input": "#e5e5e5"
+    },
+    "t14_edit": {
+      "shadcn colors/general/foreground": "#000000",
+      "var(--rede-apoio-color-foreground)": "#12222b",
+      "Rede de Apoio / Type / Section Title": "Font(family: \"Geist\", style: SemiBold, size: 20, weight: 600, lineHeight: 28, letterSpacing: 0)",
+      "var(--rede-apoio-color-surface)": "#ffffff",
+      "Color/On Surface Variant": "#4a5a66",
+      "radius-full": "999",
+      "Color/On Surface": "#12222b",
+      "paragraph/small/letter-spacing": "0",
+      "paragraph/small/font-size": "14",
+      "paragraph/paragraph-weight": "Regular",
+      "font definitions/font-family-body": "Geist",
+      "paragraph/small/spacing": "14",
+      "paragraph/small/line height": "20",
+      "paragraph small/normal": "Font(family: \"font definitions/font-family-body\", style: paragraph/paragraph-weight, size: paragraph/small/font-size, weight: 400, lineHeight: paragraph/small/line height, letterSpacing: paragraph/small/letter-spacing)",
+      "xs": "8",
+      "2xs": "4",
+      "out-of-scale/2,5": "10",
+      "out-of-scale/1,5": "6",
+      "radius-lg (radius)": "10",
+      "shadcn colors/general/input": "#e5e5e5",
+      "paragraph/paragraph-medium-weight": "Medium",
+      "paragraph small/medium": "Font(family: \"font definitions/font-family-body\", style: paragraph/paragraph-medium-weight, size: paragraph/small/font-size, weight: 500, lineHeight: paragraph/small/line height, letterSpacing: paragraph/small/letter-spacing)",
+      "radius-sm": "6",
+      "alpha/white/outline-bg": "#ffffff",
+      "shadcn colors/general/border": "#e5e5e5",
+      "shadcn colors/general/primary foreground": "#ffffff",
+      "var(--rede-apoio-color-primary)": "#00567c",
+      "var(--rede-apoio-color-background)": "#fbf8ff"
+    },
+    "navbar": {
+      "shadcn colors/general/foreground": "#000000",
+      "var(--rede-apoio-color-foreground)": "#12222b",
+      "Rede de Apoio / Type / Label": "Font(family: \"Geist\", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: 0)",
+      "Color/On Secondary Container": "#00567c",
+      "Color/Secondary Container": "#ebe8fa",
+      "var(--rede-apoio-color-surface)": "#ffffff"
+    }
+  },
+  "geometry": [
+    {
+      "root_id": "6223:6738",
+      "xml": {
+        "id": "6223:6738",
+        "name": "[FLUXO FINAL] T13 — Rede de Cuidado / default",
+        "x": "24",
+        "y": "2748",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": []
+    },
+    {
+      "root_id": "6223:6894",
+      "xml": {
+        "id": "6223:6894",
+        "name": "[PROTO STATE] T01 — Login / loading",
+        "x": "454",
+        "y": "48",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": []
+    },
+    {
+      "root_id": "6223:8289",
+      "xml": {
+        "id": "6223:8289",
+        "name": "[PROTO STATE] T13 — Rede de Cuidado / manage_roles",
+        "x": "1744",
+        "y": "10848",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": []
+    },
+    {
+      "root_id": "6223:8895",
+      "xml": {
+        "id": "6223:8895",
+        "name": "[PROTO STATE] T12 — Perfil da Pessoa Idosa / access_active",
+        "x": "1314",
+        "y": "16248",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "6223:8919",
+          "name": "Card / Acesso ao aplicativo",
+          "x": "16",
+          "y": "476",
+          "width": "358",
+          "height": "230"
+        },
+        {
+          "type": "text",
+          "id": "6223:8927",
+          "name": "Supporting",
+          "x": "16",
+          "y": "174",
+          "width": "326",
+          "height": "40"
+        }
+      ]
+    },
+    {
+      "root_id": "8006:33693",
+      "xml": {
+        "id": "8006:33693",
+        "name": "[PROTO STATE] T14 — Contatos / editar Dr. Carlos Mendes / 6223:6773",
+        "x": "7264",
+        "y": "48",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": []
+    },
+    {
+      "root_id": "8010:11973",
+      "xml": {
+        "id": "8010:11973",
+        "name": "[PROTO STATE] T13 — Papéis / seleção 0",
+        "x": "10180",
+        "y": "48",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": []
+    },
+    {
+      "root_id": "8010:12196",
+      "xml": {
+        "id": "8010:12196",
+        "name": "[PROTO STATE] T13 — Papéis / seleção 2",
+        "x": "11542",
+        "y": "48",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": []
+    },
+    {
+      "root_id": "8010:12352",
+      "xml": {
+        "id": "8010:12352",
+        "name": "[PROTO STATE] T13 — Papéis / seleção 3",
+        "x": "10634",
+        "y": "992",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8010:12354",
+          "name": "Main Content / Scroll",
+          "x": "0",
+          "y": "64",
+          "width": "390",
+          "height": "780"
+        },
+        {
+          "type": "text",
+          "id": "8010:12355",
+          "name": "Page Description",
+          "x": "24",
+          "y": "20",
+          "width": "342",
+          "height": "72"
+        },
+        {
+          "type": "frame",
+          "id": "8010:12370",
+          "name": "Ações",
+          "x": "24",
+          "y": "462",
+          "width": "342",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8016:13861",
+      "xml": {
+        "id": "8016:13861",
+        "name": "[OVERLAY] T04 / E03 — Novo plantão",
+        "x": "6744",
+        "y": "48",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8016:13876",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8016:13952",
+      "xml": {
+        "id": "8016:13952",
+        "name": "[OVERLAY] T04 / E04 — Alterar plantão",
+        "x": "7198",
+        "y": "48",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8016:13967",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8016:14055",
+      "xml": {
+        "id": "8016:14055",
+        "name": "[OVERLAY] T04 / E04 — Cancelar plantão",
+        "x": "7652",
+        "y": "48",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "instance",
+          "id": "8016:14147",
+          "name": "E20 — Compromisso",
+          "x": "0",
+          "y": "26",
+          "width": "326",
+          "height": "48"
+        },
+        {
+          "type": "frame",
+          "id": "8016:14070",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8016:14158",
+      "xml": {
+        "id": "8016:14158",
+        "name": "[OVERLAY] T04 / E05 — Atribuir responsável",
+        "x": "6290",
+        "y": "992",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8016:14173",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8016:14249",
+      "xml": {
+        "id": "8016:14249",
+        "name": "[OVERLAY] T04 / E06 — Solicitar troca",
+        "x": "6744",
+        "y": "992",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8016:14264",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8016:15427",
+      "xml": {
+        "id": "8016:15427",
+        "name": "[OVERLAY] T04 / E07 — Responder à troca",
+        "x": "7198",
+        "y": "992",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8016:15442",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8017:14551",
+      "xml": {
+        "id": "8017:14551",
+        "name": "[OVERLAY] T08 / E15 — Posologia e horário / Medicamento A",
+        "x": "8202",
+        "y": "48",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8017:14566",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8017:14668",
+      "xml": {
+        "id": "8017:14668",
+        "name": "[OVERLAY] T08 / E16 — Registrar administração / Medicamento A",
+        "x": "8656",
+        "y": "48",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8017:14683",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8017:15253",
+      "xml": {
+        "id": "8017:15253",
+        "name": "[OVERLAY] T08 / E15 — Posologia e horário / Medicamento B",
+        "x": "9110",
+        "y": "48",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8017:15268",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8017:15370",
+      "xml": {
+        "id": "8017:15370",
+        "name": "[OVERLAY] T08 / E16 — Registrar administração / Medicamento B",
+        "x": "9564",
+        "y": "48",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8017:15385",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8017:15955",
+      "xml": {
+        "id": "8017:15955",
+        "name": "[OVERLAY] T08 / E15 — Posologia e horário / Medicamento C",
+        "x": "8202",
+        "y": "992",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8017:15970",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8017:16072",
+      "xml": {
+        "id": "8017:16072",
+        "name": "[OVERLAY] T08 / E16 — Registrar administração / Medicamento C",
+        "x": "8656",
+        "y": "992",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8017:16087",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8018:15830",
+      "xml": {
+        "id": "8018:15830",
+        "name": "[OVERLAY] T13 / Constituir rede",
+        "x": "10114",
+        "y": "48",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8018:15845",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8025:16751",
+      "xml": {
+        "id": "8025:16751",
+        "name": "[OVERLAY] T08 / E15 — Posologia e horário / Item A",
+        "x": "17322",
+        "y": "1900",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8025:16770",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "8025:16905",
+      "xml": {
+        "id": "8025:16905",
+        "name": "[OVERLAY] T08 / E16 — Registrar administração / Item A",
+        "x": "17776",
+        "y": "1900",
+        "width": "390",
+        "height": "844"
+      },
+      "measured_nodes": [
+        {
+          "type": "frame",
+          "id": "8025:16924",
+          "name": "Actions",
+          "x": "16",
+          "y": "640",
+          "width": "157",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "root_id": "I8016:14147;1953:18941",
+      "xml": {
+        "id": "I8016:14147;1953:18941",
+        "name": "Value",
+        "x": "0",
+        "y": "0",
+        "width": "346",
+        "height": "20"
+      },
+      "measured_nodes": []
+    }
+  ],
+  "component_descriptions": [
+    {
+      "source": "T14_edit_Carlos",
+      "descriptions": "Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.\n\n## Rede de Apoio / Foundation / AppHeader / Back\n**Node ID:** 5640:21512\n\nHeader de subpágina: voltar em alvo de 48 px, título e espaço para ação secundária autorizada.\n\n## Lucide / arrow-left\n**Node ID:** 1957:25251\n\nprevious, back, direction, west, <-\n\n## Avatar With Image\n**Node ID:** 1953:32193\n\nAn image element for representing the user.\n\n## Button - Nova\n**Node ID:** 1953:29720\n\nDisplays a button or a component that looks like a button."
+    },
+    {
+      "source": "T13_roles",
+      "descriptions": "Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.\n\n## Rede de Apoio / Foundation / AppHeader / Back\n**Node ID:** 5640:21512\n\nHeader de subpágina: voltar em alvo de 48 px, título e espaço para ação secundária autorizada.\n\n## Lucide / arrow-left\n**Node ID:** 1957:25251\n\nprevious, back, direction, west, <-\n\n## Avatar With Image\n**Node ID:** 1953:32193\n\nAn image element for representing the user.\n\n## Button - Nova\n**Node ID:** 1953:29720\n\nDisplays a button or a component that looks like a button.\n\n## Lucide / check\n**Node ID:** 1957:25317\n\ndone, todo, tick, complete, task"
+    },
+    {
+      "source": "T16_optional",
+      "descriptions": "Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.\n\n## Rede de Apoio / Foundation / AppHeader / Back\n**Node ID:** 5640:21512\n\nHeader de subpágina: voltar em alvo de 48 px, título e espaço para ação secundária autorizada.\n\n## Lucide / arrow-left\n**Node ID:** 1957:25251\n\nprevious, back, direction, west, <-\n\n## Active=Preferências\n**Node ID:** 5912:1677\n\nFixed local navigation for Controle e Privacidade. Active tab: Preferências. Use immediately below AppHeader / Back on T16/T17 secondary management screens.\n\n## Rede de Apoio / Foundation / LocalSubnav / Controle e Privacidade\n**Node ID:** 5912:1699\n\nFixed primary tabs for the secondary management pair T16 Preferências de Notificações and T17 Auditoria. Place immediately below AppHeader / Back. Use Active=Preferências on T16 and Active=Auditoria on T17.\n\n## Lucide / lock\n**Node ID:** 2017:8291\n\nsecurity, password, secure, admin\n\n## Button - Nova\n**Node ID:** 1953:29720\n\nDisplays a button or a component that looks like a button."
+    },
+    {
+      "source": "T08_sheet_error",
+      "descriptions": "Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.\n\n## Button - Nova\n**Node ID:** 1953:29720\n\nDisplays a button or a component that looks like a button."
+    },
+    {
+      "source": "T09_sheet_error",
+      "descriptions": "Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.\n\n## Lucide / chevron-down\n**Node ID:** 1957:25319\n\nbackwards, reverse, slow, dropdown\n\n## Button - Nova\n**Node ID:** 1953:29720\n\nDisplays a button or a component that looks like a button."
+    },
+    {
+      "source": "T11_sheet_error",
+      "descriptions": "Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.\n\n## Button - Nova\n**Node ID:** 1953:29720\n\nDisplays a button or a component that looks like a button."
+    },
+    {
+      "source": "T08_posology_A",
+      "descriptions": "Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.\n\n## Button - Nova\n**Node ID:** 1953:29720\n\nDisplays a button or a component that looks like a button."
+    }
+  ],
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "04e4a55b7d13dc50a490255303a436e894b0392b20fe24dcaf7efe9bc7024406",
+      "commit": "2d4eb7a3526bcb6bc1e2c90a23a2d27a0fc07705"
+    },
+    {
+      "path": "docs/07_AI_CONTEXT/AI_DESIGN_CONTRACT.md",
+      "sha256": "c9d7929ecb6ef9e94d207cf0f2f3800a842a3d3b5ea7fbd099323a812332d3eb",
+      "commit": "2d4eb7a3526bcb6bc1e2c90a23a2d27a0fc07705"
+    },
+    {
+      "path": "docs/04_DESIGN_SYSTEM/MATERIAL3_VISUAL_DIRECTION.md",
+      "sha256": "c10ec8596e812605508fd34e31b5519c57c8f563c8b95a19a7acb769d2164f98",
+      "commit": "2d4eb7a3526bcb6bc1e2c90a23a2d27a0fc07705"
+    },
+    {
+      "path": "docs/04_DESIGN_SYSTEM/DESIGN_TOKENS.md",
+      "sha256": "fdfd13e2d0b696e3ed4c6557c1644dd0db0fb4b613ba6c4b70943a8edf307f8a",
+      "commit": "2d4eb7a3526bcb6bc1e2c90a23a2d27a0fc07705"
+    },
+    {
+      "path": "docs/04_DESIGN_SYSTEM/COMPONENT_ARCHITECTURE.md",
+      "sha256": "8a5bad05ea53a253ee181f7f9ec4daeaa6e997c7afde8808643bce293d28c303",
+      "commit": "2d4eb7a3526bcb6bc1e2c90a23a2d27a0fc07705"
+    },
+    {
+      "path": "docs/04_DESIGN_SYSTEM/COMPONENT_MAP.yaml",
+      "sha256": "b5a1ef8e5d714ed1a9e283e877542c42b38c835837639373a02009df70c18ec9",
+      "commit": "2d4eb7a3526bcb6bc1e2c90a23a2d27a0fc07705"
+    },
+    {
+      "path": "docs/04_DESIGN_SYSTEM/ENTITY_ENTRY_BOTTOM_SHEET_PATTERN.md",
+      "sha256": "6169e4fcc3a7e901596c6a1e1b808651b6c1d1fdaca97a10e7c8b09c7d22ac04",
+      "commit": "2d4eb7a3526bcb6bc1e2c90a23a2d27a0fc07705"
+    },
+    {
+      "path": "docs/05_FIGMA/FIGMA_GUIDELINES.md",
+      "sha256": "94261b186b9fad7dfb1f00463a269cb1d057b519b2b76a6d263c7b011a1af32f",
+      "commit": "2d4eb7a3526bcb6bc1e2c90a23a2d27a0fc07705"
+    },
+    {
+      "path": "docs/05_FIGMA/EXECUCAO_2026-10-15/README.md",
+      "sha256": "e4b7f71c7213b5bceafc28dbd02d1ee7ea0740a85b21532e8ae28760d6f81247",
+      "commit": "2d4eb7a3526bcb6bc1e2c90a23a2d27a0fc07705"
+    },
+    {
+      "path": "docs/05_FIGMA/EXECUCAO_2026-10-15/HOMOLOGACAO_2026-10-16/VALIDACAO_MANUAL_FLUXO_2026-10-16.md",
+      "sha256": "6fd0d33391a1ffc439f865f25cf94ab83890c6dceaca3046d1b555185a464ec0",
+      "commit": "2d4eb7a3526bcb6bc1e2c90a23a2d27a0fc07705"
+    }
+  ],
+  "header_tinted_resolution": {
+    "node_id": "5746:157",
+    "name": "Rede de Apoio / Foundation / AppHeader / Root / Tinted",
+    "type": "symbol",
+    "width": 390,
+    "height": 80,
+    "settings_target_node": "5746:162",
+    "settings_target_size": [
+      48,
+      48
+    ],
+    "source": "get_metadata no arquivo de trabalho durante a conferência final; ID não constava do XML de inventário da página Foundation, mas foi resolvido diretamente."
+  }
+}

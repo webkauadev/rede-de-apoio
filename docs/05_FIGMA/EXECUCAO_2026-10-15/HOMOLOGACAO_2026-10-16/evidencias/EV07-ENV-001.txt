@@ -1,0 +1,14 @@
+Captura UTC: 2026-10-16T11:42:53.430Z
+Captura America/Manaus: 2026-10-16T07:42:53.430-04:00
+Tentativas: 1. Recargas: 0. Cliques no produto: 0.
+
+Browser tab: 1, Title: "Site Unavailable"
+URL: https://www.figma.com/proto/ljFSoPfNcvDgZtdR2sHmti?node-id=6223-6272&page-id=6223-6270
+0 AXWebArea Site Unavailable
+  1 heading Site Unavailable
+    2 text Site Unavailable
+  3 text Unable to access this site.
+
+SHA-256 JPG: 43d831311335c1b6ab1e767b6cfba4d5321d9c9fa2747a4634d086bce66712ab
+
+A captura é do erro de acesso no navegador. Não representa tela ou comportamento do aplicativo.

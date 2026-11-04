@@ -1,0 +1,3601 @@
+{
+  "metadata": {
+    "lot": "07",
+    "execution_utc": "2026-10-16T11:49:31.963684+00:00",
+    "execution_local": "2026-10-16T07:49:31.963684-04:00",
+    "timezone": "America/Manaus",
+    "pr": 127,
+    "branch": "docs/figma-plano-correcao-20261015",
+    "source_commit": "9762ac719cdd04eca802521f6a452ecaf61ffdab",
+    "prior_static_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+    "file_key": "ljFSoPfNcvDgZtdR2sHmti",
+    "page_id": "6223:6270",
+    "mode": "presentation_attempt_then_assisted_local_checklist",
+    "recommendation": "NÃO APROVADO",
+    "lot_status": "BLOQUEADO_PARA_HOMOLOGACAO_INTERATIVA",
+    "original_file": "tcyj2fkTXei2CJbqaRxqCp",
+    "figma_write_calls": 0,
+    "structural_reaudit_performed": false,
+    "old_lots_repeated": false,
+    "copy_created": false,
+    "canonical_promoted": false,
+    "merged": false
+  },
+  "summary": {
+    "planned_scenarios": 39,
+    "approved": 0,
+    "failed": 0,
+    "not_verifiable": 39,
+    "interactive_scenarios_executed": 0,
+    "planned_priorities": {
+      "P1": 26,
+      "P2": 13
+    },
+    "count_unit": "Cenário operacional H07; variantes não contadas como testes executados. CH-40–42 são gates separados."
+  },
+  "environment": {
+    "id": "EV07-ENV-001",
+    "kind": "AMBIENTE_NAO_CARREGOU",
+    "observed_at_utc": "2026-10-16T11:42:53.430Z",
+    "observed_at_local": "2026-10-16T07:42:53.430-04:00",
+    "requested_url": "https://www.figma.com/proto/ljFSoPfNcvDgZtdR2sHmti?node-id=6223-6272&page-id=6223-6270",
+    "observed_url": "https://www.figma.com/proto/ljFSoPfNcvDgZtdR2sHmti?node-id=6223-6272&page-id=6223-6270",
+    "observed_title": "Site Unavailable",
+    "observed_body": "Unable to access this site.",
+    "browser": "Chrome remoto (cloud browser), cdp, tab 1",
+    "open_attempts": 1,
+    "reloads": 0,
+    "product_screens_loaded": 0,
+    "product_clicks": 0,
+    "product_gestures": 0,
+    "product_scrolls": 0,
+    "screenshot": "evidencias/EV07-ENV-001.jpg",
+    "screenshot_sha256": "43d831311335c1b6ab1e767b6cfba4d5321d9c9fa2747a4634d086bce66712ab",
+    "classification": "Limitação de acesso deste navegador; causa técnica não determinada. Não é evidência de defeito do protótipo, indisponibilidade geral ou bloqueio por bot.",
+    "ax_snapshot": "Browser tab: 1, Title: \"Site Unavailable\"\nURL: https://www.figma.com/proto/ljFSoPfNcvDgZtdR2sHmti?node-id=6223-6272&page-id=6223-6270\n0 AXWebArea Site Unavailable\n  1 heading Site Unavailable\n    2 text Site Unavailable\n  3 text Unable to access this site."
+  },
+  "scenarios": [
+    {
+      "id": "H07-001",
+      "original_checklist": "CH-01",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Login inválido, válido e Loading",
+      "related_auds": [
+        "AUD-001",
+        "AUD-012"
+      ],
+      "actor_fixture": "Identidade autorizada da fixture de login",
+      "start_nodes": [
+        {
+          "id": "6223:6272",
+          "name": "[FLUXO FINAL] T01 — Login / default"
+        }
+      ],
+      "criterion": "T01: sem credenciais válidas, Entrar mostra erro e não abre conteúdo protegido; tocar o campo permite demonstrar credenciais válidas, Loading e Home autorizada.",
+      "planned_actions": [
+        "Acionar Entrar sem credenciais válidas e registrar a mensagem.",
+        "Tocar os campos previstos na fixture para demonstrar o preenchimento válido; acionar Entrar.",
+        "Observar Loading e destino final; tentar retornar."
+      ],
+      "expected_result": "Erro não abre conteúdo protegido; a fixture válida passa por Loading e chega à Home autorizada.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-002",
+      "original_checklist": "CH-02",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Cadastro por convite sem sessão automática",
+      "related_auds": [
+        "AUD-001"
+      ],
+      "actor_fixture": "Convidado individual da fixture",
+      "start_nodes": [
+        {
+          "id": "6223:6272",
+          "name": "[FLUXO FINAL] T01 — Login / default"
+        }
+      ],
+      "criterion": "T01 → Usar convite → T02: preencher a fixture válida, criar a identidade, ver confirmação e retornar ao login; nenhuma Home automática.",
+      "planned_actions": [
+        "Acionar Usar convite e conferir o contexto individual do convite.",
+        "Usar os campos predefinidos para a fixture válida e enviar.",
+        "Observar confirmação; continuar e conferir o retorno ao Login."
+      ],
+      "expected_result": "A identidade é criada na simulação, sem sessão ou Home automática; o próximo passo é autenticar.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-003",
+      "original_checklist": "CH-03",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Validação do cadastro",
+      "related_auds": [
+        "AUD-001",
+        "AUD-012"
+      ],
+      "actor_fixture": "Convidado individual da fixture",
+      "start_nodes": [
+        {
+          "id": "6223:6301",
+          "name": "[FLUXO FINAL] T02 — Cadastro / default"
+        }
+      ],
+      "criterion": "T02: erro de confirmação permanece sem submissão; corrigir o campo habilita o caminho válido.",
+      "planned_actions": [
+        "Submeter a fixture inválida de confirmação.",
+        "Conferir erro e ausência de submissão autenticada.",
+        "Corrigir pela interação de campo da fixture e submeter o caminho válido."
+      ],
+      "expected_result": "O erro corresponde aos campos mostrados e não concede acesso; a correção permite apenas o caminho de cadastro sem sessão.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-004",
+      "original_checklist": "CH-04",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Autenticação compartilhada da Pessoa Idosa",
+      "related_auds": [
+        "AUD-012"
+      ],
+      "actor_fixture": "Pessoa Idosa do próprio perfil autorizado",
+      "start_nodes": [
+        {
+          "id": "8009:11349",
+          "name": "[QA AUTENTICAÇÃO COMPARTILHADA] T01 — Pessoa Idosa / credenciais válidas"
+        }
+      ],
+      "criterion": "QA Pessoa Idosa: autenticar pelo AuthShell comum e chegar somente ao próprio grafo de leitura.",
+      "planned_actions": [
+        "Iniciar o QA Login Pessoa Idosa.",
+        "Preencher pela interação predefinida e Entrar.",
+        "Observar Loading e conferir a Home de leitura e o perfil apresentado."
+      ],
+      "expected_result": "O AuthShell é compartilhado e o destino é o cuidado próprio autorizado em modo somente leitura.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-005",
+      "original_checklist": "CH-05",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Isolamento do ramo somente leitura",
+      "related_auds": [
+        "AUD-005",
+        "AUD-012",
+        "AUD-014"
+      ],
+      "actor_fixture": "Pessoa Idosa autenticada",
+      "start_nodes": [
+        {
+          "id": "6223:9197",
+          "name": "[READONLY Pessoa Idosa] T03 — default"
+        }
+      ],
+      "criterion": "Pessoa Idosa: navegar T03–T15 e Settings; não encontrar escrita, correção, conclusão, administração, CSV, T16 ou T17.",
+      "planned_actions": [
+        "Percorrer as quatro áreas, submenus e Settings; abrir e voltar de cada destino de leitura.",
+        "Procurar ações de criar, editar, corrigir, concluir, administrar, exportar e gerenciar a rede.",
+        "Percorrer Ver correção; tentar somente os acessos negados previstos pela fixture."
+      ],
+      "expected_result": "Apenas leitura do próprio cuidado; nenhuma operação de escrita/CSV nem entrada funcional em T16/T17; os retornos permanecem no ramo de leitura.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-006",
+      "original_checklist": "CH-06",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Acesso direto negado e texto de auditoria",
+      "related_auds": [
+        "AUD-012",
+        "AUD-027"
+      ],
+      "actor_fixture": "Pessoa Idosa na fixture de acesso negado",
+      "start_nodes": [
+        {
+          "id": "8009:11485",
+          "name": "[QA ACESSO DIRETO] T17 — Pessoa Idosa / negação"
+        }
+      ],
+      "criterion": "QA acesso direto negado: nenhum dado protegido é exibido; retorno permanece seguro e texto exige auditoria da tentativa.",
+      "planned_actions": [
+        "Acionar a tentativa de acesso direto prevista no QA.",
+        "Conferir o conteúdo e a mensagem de negação.",
+        "Usar a saída disponível e conferir o destino seguro."
+      ],
+      "expected_result": "Dados protegidos não são exibidos; retorno seguro; a mensagem afirma o registro da tentativa, sem alegar comprovação de backend.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-007",
+      "original_checklist": "CH-07",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Cadastro da Pessoa Idosa e perfil pendente",
+      "related_auds": [
+        "AUD-004"
+      ],
+      "actor_fixture": "Identidade elegível da fixture US-003",
+      "start_nodes": [
+        {
+          "id": "8018:15612",
+          "name": "[QA US-003 / elegibilidade aprovada] T01 — Ana / bootstrap"
+        }
+      ],
+      "criterion": "QA US-003: cadastro vazio dá erro; nome/data válidos produzem perfil pendente sem acesso ao cuidado.",
+      "planned_actions": [
+        "Autenticar na fixture elegível e abrir o cadastro da Pessoa Idosa.",
+        "Submeter vazio; registrar validação.",
+        "Preencher nome/data pela fixture e enviar; tentar os caminhos disponíveis no resultado pendente."
+      ],
+      "expected_result": "Nome/data e perfil correspondem; o perfil pendente não libera cuidado antes da constituição exigida da rede.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-008",
+      "original_checklist": "CH-08",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Constituição conjunta da rede",
+      "related_auds": [
+        "AUD-004"
+      ],
+      "actor_fixture": "Identidade elegível; rede pendente de Antônio Oliveira",
+      "start_nodes": [
+        {
+          "id": "8018:15769",
+          "name": "[PROTO STATE] T12 — Perfil cadastrado / rede pendente"
+        }
+      ],
+      "criterion": "Constituir rede: confirmar um Principal e ao menos um Profissional; resultado mostra a mesma Pessoa Idosa e os vínculos definidos.",
+      "planned_actions": [
+        "Partindo do perfil pendente, abrir Constituir rede.",
+        "Conferir um Familiar Principal e ao menos um Profissional e confirmar.",
+        "Conferir o resultado, os vínculos e a pessoa exibida; continuar pelo retorno disponível."
+      ],
+      "expected_result": "A mesma Pessoa Idosa é preservada e os vínculos exigidos aparecem; nenhum acesso antecipado é criado.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-009",
+      "original_checklist": "CH-09",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Jornada entre T01–T17 com retornos",
+      "related_auds": [
+        "AUD-005"
+      ],
+      "actor_fixture": "Fixture autorizada; Principal nos destinos restritos",
+      "start_nodes": [
+        {
+          "id": "6223:6272",
+          "name": "[FLUXO FINAL] T01 — Login / default"
+        }
+      ],
+      "criterion": "De T01, alcançar as 17 telas pelo fluxo aprovado; ir e voltar, inclusive depois de rolar.",
+      "planned_actions": [
+        "Autenticar e, pela navegação do produto, visitar cada T01–T17 aplicável.",
+        "Em cada destino, registrar origem, elemento acionado, tela alcançada e retorno.",
+        "Repetir os retornos após scroll nas telas com lista."
+      ],
+      "expected_result": "As 17 telas são alcançáveis pelos caminhos aprovados para os atores elegíveis, com retornos funcionais; abertura direta de um frame não comprova alcance.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "screen": "T01",
+          "node_id": "6223:6272",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T02",
+          "node_id": "6223:6301",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T03",
+          "node_id": "6223:6338",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T04",
+          "node_id": "6223:6364",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T05",
+          "node_id": "6223:6495",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V05",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T06",
+          "node_id": "6223:6562",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V06",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T07",
+          "node_id": "6223:6581",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V07",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T08",
+          "node_id": "6223:6593",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V08",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T09",
+          "node_id": "6223:6630",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V09",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T10",
+          "node_id": "6223:6663",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V10",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T11",
+          "node_id": "6223:6682",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V11",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T12",
+          "node_id": "6223:6704",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V12",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T13",
+          "node_id": "6223:6738",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V13",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T14",
+          "node_id": "6223:6773",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V14",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T15",
+          "node_id": "6223:6788",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V15",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T16",
+          "node_id": "6223:6800",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V16",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T17",
+          "node_id": "6223:6836",
+          "role": "ator elegível pela matriz; não aplicar todos os destinos a Pessoa Idosa",
+          "iteration_id": "H07-009-V17",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-010",
+      "original_checklist": "CH-10",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Quatro destinos primários e estado ativo",
+      "related_auds": [
+        "AUD-005"
+      ],
+      "actor_fixture": "Identidade autorizada da fixture",
+      "start_nodes": [
+        {
+          "id": "6223:6338",
+          "name": "[FLUXO FINAL] T03 — Home / default"
+        }
+      ],
+      "criterion": "Navigation Bar mostra exatamente Home · Agenda · Diário · Saúde e indica o destino ativo.",
+      "planned_actions": [
+        "Acionar Home, Agenda, Diário e Saúde em sequência e voltar.",
+        "Conferir rótulo ativo e permanência do shell em cada destino."
+      ],
+      "expected_result": "Exatamente quatro destinos; nenhum Mais; cada seleção abre a área correspondente e indica o estado ativo.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-011",
+      "original_checklist": "CH-11",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Settings comum e somente leitura",
+      "related_auds": [
+        "AUD-005"
+      ],
+      "actor_fixture": "Fixture autorizada comum e Pessoa Idosa, em execuções separadas",
+      "start_nodes": [
+        {
+          "id": "6223:6338",
+          "name": "[FLUXO FINAL] T03 — Home / default"
+        },
+        {
+          "id": "6223:9197",
+          "name": "[READONLY Pessoa Idosa] T03 — default"
+        }
+      ],
+      "criterion": "Settings comum chega aos seis destinos administrativos corretos; Settings read-only apenas aos quatro permitidos.",
+      "planned_actions": [
+        "Abrir Settings pelo header e visitar cada destino permitido; voltar ao contexto anterior.",
+        "Reiniciar na Pessoa Idosa e repetir somente nos quatro destinos de leitura."
+      ],
+      "expected_result": "Settings comum leva a T12–T17, conforme permissão; Settings de leitura somente a T12–T15, sem troca acidental de ramo.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-012",
+      "original_checklist": "CH-12",
+      "priority": "P2",
+      "type": "INTERATIVO",
+      "title": "LocalSubnav de Saúde no mobile",
+      "related_auds": [
+        "AUD-022"
+      ],
+      "actor_fixture": "Identidade autorizada da fixture",
+      "start_nodes": [
+        {
+          "id": "6223:6593",
+          "name": "[FLUXO FINAL] T08 — Medicamentos / list"
+        }
+      ],
+      "criterion": "LocalSubnav Saúde rola horizontalmente até Compromissos e preserva destino/estado ativo.",
+      "planned_actions": [
+        "Rolar horizontalmente a LocalSubnav até Compromissos.",
+        "Acionar Medicamentos, Tarefas, Consultas e Compromissos e retornar.",
+        "Rolar o conteúdo vertical e observar posicionamento e estado ativo."
+      ],
+      "expected_result": "Abas alcançáveis, destinos e seleção corretos; conteúdo não invade elementos fixos. Recolhimento por direção não prototipado é limitação declarada, não reprovação automática.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-013",
+      "original_checklist": "CH-13",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Saídas de estados condicionais",
+      "related_auds": [
+        "AUD-005"
+      ],
+      "actor_fixture": "Ator indicado por cada starting point de QA",
+      "start_nodes": [
+        {
+          "id": "6223:6998",
+          "name": "[PROTO STATE] T03 — Home / loading"
+        },
+        {
+          "id": "6223:7111",
+          "name": "[PROTO STATE] T05 — Detalhamento do Dia / empty"
+        },
+        {
+          "id": "6223:7154",
+          "name": "[PROTO STATE] T05 — Detalhamento do Dia / delay"
+        },
+        {
+          "id": "6223:7221",
+          "name": "[PROTO STATE] T05 — Detalhamento do Dia / corrected"
+        },
+        {
+          "id": "6223:8736",
+          "name": "[PROTO STATE] T17 — Auditoria / forbidden"
+        }
+      ],
+      "criterion": "Loading/Empty/Detail/Delayed/Corrected/Forbidden abertos pelos starting points de QA têm saída funcional e shell coerente.",
+      "planned_actions": [
+        "Usar os starting points de QA documentados para Loading, Empty, Detail, Delayed, Corrected e Forbidden.",
+        "Executar as saídas e botões disponíveis; testar header, Back e navegação quando presentes.",
+        "Registrar individualmente os estados efetivamente percorridos."
+      ],
+      "expected_result": "Cada estado demonstrável tem saída coerente e mantém shell/permissões da base; não aprovar toda a família por um único exemplo.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "node_id": "6223:6894",
+          "state": "[PROTO STATE] T01 — Login / loading",
+          "iteration_id": "H07-013-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:6961",
+          "state": "[PROTO STATE] T02 — Cadastro / loading",
+          "iteration_id": "H07-013-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:6998",
+          "state": "[PROTO STATE] T03 — Home / loading",
+          "iteration_id": "H07-013-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7111",
+          "state": "[PROTO STATE] T05 — Detalhamento do Dia / empty",
+          "iteration_id": "H07-013-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7129",
+          "state": "[PROTO STATE] T05 — Detalhamento do Dia / loading",
+          "iteration_id": "H07-013-V05",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7154",
+          "state": "[PROTO STATE] T05 — Detalhamento do Dia / delay",
+          "iteration_id": "H07-013-V06",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7221",
+          "state": "[PROTO STATE] T05 — Detalhamento do Dia / corrected",
+          "iteration_id": "H07-013-V07",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7288",
+          "state": "[PROTO STATE] T05 — Detalhamento do Dia / detail",
+          "iteration_id": "H07-013-V08",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7308",
+          "state": "[PROTO STATE] T06 — Diário de Cuidados / empty",
+          "iteration_id": "H07-013-V09",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7315",
+          "state": "[PROTO STATE] T06 — Diário de Cuidados / loading",
+          "iteration_id": "H07-013-V10",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7432",
+          "state": "[PROTO STATE] T07 — Histórico de Cuidados / empty",
+          "iteration_id": "H07-013-V11",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7440",
+          "state": "[PROTO STATE] T07 — Histórico de Cuidados / loading",
+          "iteration_id": "H07-013-V12",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7449",
+          "state": "[PROTO STATE] T07 — Histórico de Cuidados / detail",
+          "iteration_id": "H07-013-V13",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7474",
+          "state": "[PROTO STATE] T07 — Histórico de Cuidados / correction_complete",
+          "iteration_id": "H07-013-V14",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7512",
+          "state": "[PROTO STATE] T08 — Medicamentos / empty",
+          "iteration_id": "H07-013-V15",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7660",
+          "state": "[PROTO STATE] T09 — Tarefas / empty",
+          "iteration_id": "H07-013-V16",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7679",
+          "state": "[PROTO STATE] T09 — Tarefas / loading",
+          "iteration_id": "H07-013-V17",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7828",
+          "state": "[PROTO STATE] T10 — Consultas e Recomendações / empty",
+          "iteration_id": "H07-013-V18",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7839",
+          "state": "[PROTO STATE] T10 — Consultas e Recomendações / loading",
+          "iteration_id": "H07-013-V19",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7915",
+          "state": "[PROTO STATE] T11 — Compromissos / empty",
+          "iteration_id": "H07-013-V20",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:7934",
+          "state": "[PROTO STATE] T11 — Compromissos / loading",
+          "iteration_id": "H07-013-V21",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:8196",
+          "state": "[PROTO STATE] T13 — Rede de Cuidado / loading",
+          "iteration_id": "H07-013-V22",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:8500",
+          "state": "[PROTO STATE] T14 — Contatos Importantes / empty",
+          "iteration_id": "H07-013-V23",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:8512",
+          "state": "[PROTO STATE] T14 — Contatos Importantes / loading",
+          "iteration_id": "H07-013-V24",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:8628",
+          "state": "[PROTO STATE] T15 — Informações de Emergência / loading",
+          "iteration_id": "H07-013-V25",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:8640",
+          "state": "[PROTO STATE] T15 — Informações de Emergência / empty",
+          "iteration_id": "H07-013-V26",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:8689",
+          "state": "[PROTO STATE] T17 — Auditoria / loading",
+          "iteration_id": "H07-013-V27",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:8703",
+          "state": "[PROTO STATE] T17 — Auditoria / empty",
+          "iteration_id": "H07-013-V28",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:8715",
+          "state": "[PROTO STATE] T17 — Auditoria / detail",
+          "iteration_id": "H07-013-V29",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:8736",
+          "state": "[PROTO STATE] T17 — Auditoria / forbidden",
+          "iteration_id": "H07-013-V30",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "6223:8798",
+          "state": "[PROTO STATE] T03 — Home / notification_n04_delayed",
+          "iteration_id": "H07-013-V31",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "8009:11403",
+          "state": "[PROTO STATE] T01 — Login / loading Pessoa Idosa",
+          "iteration_id": "H07-013-V32",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "node_id": "8009:11459",
+          "state": "[PROTO STATE] T17 — Forbidden / Pessoa Idosa",
+          "iteration_id": "H07-013-V33",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-014",
+      "original_checklist": "CH-14",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "CSV contextual restrito ao Principal",
+      "related_auds": [
+        "AUD-005"
+      ],
+      "actor_fixture": "Familiar Principal; repetir a busca da ação na Pessoa Idosa",
+      "start_nodes": [
+        {
+          "id": "6223:6581",
+          "name": "[FLUXO FINAL] T07 — Histórico de Cuidados / default"
+        },
+        {
+          "id": "6223:9534",
+          "name": "[READONLY Pessoa Idosa] T07 — default"
+        }
+      ],
+      "criterion": "Exportação CSV, somente na fixture Principal, tem resultado e permite continuar; nenhum loop obrigatório de exportação.",
+      "planned_actions": [
+        "No Histórico do Principal, acionar CSV e observar progresso e resultado simulado.",
+        "Continuar e retornar sem ser obrigado a exportar novamente.",
+        "Na leitura, conferir ausência da ação de exportação."
+      ],
+      "expected_result": "Somente o Principal demonstra exportação; resultado permite continuar; não exigir arquivo CSV real do protótipo.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-015",
+      "original_checklist": "CH-15",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Isolamento de navegação da página de trabalho",
+      "related_auds": [
+        "AUD-005"
+      ],
+      "actor_fixture": "Todos os atores usados nos demais cenários",
+      "start_nodes": [
+        {
+          "id": "6223:6338",
+          "name": "[FLUXO FINAL] T03 — Home / default"
+        },
+        {
+          "id": "6223:9197",
+          "name": "[READONLY Pessoa Idosa] T03 — default"
+        }
+      ],
+      "criterion": "Nenhuma navegação abre a página-base 5926:1014, o arquivo externo ou formulários LEGACY full-page.",
+      "planned_actions": [
+        "Durante as jornadas, registrar arquivo/frame de destino quando exposto pelo Presentation.",
+        "Revisitar Concluir de T09, Editar de T14 e os destinos dos dois Settings.",
+        "Registrar qualquer mudança para baseline, original ou formulário LEGACY."
+      ],
+      "expected_result": "Nenhum destino indevido observado. Se a interface não expuser identificação suficiente, registrar essa parcela como não verificável; não substituir cliques por inspeção do grafo.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-016",
+      "original_checklist": "CH-16",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Criar, alterar, cancelar e atribuir plantão",
+      "related_auds": [
+        "AUD-002"
+      ],
+      "actor_fixture": "Ator com permissão operacional na fixture de Agenda",
+      "start_nodes": [
+        {
+          "id": "6223:6364",
+          "name": "[FLUXO FINAL] T04 — Calendário de Cuidados / week"
+        }
+      ],
+      "criterion": "Agenda: criar, alterar, cancelar com confirmação e atribuir responsável; o resultado preserva o intervalo/entidade e as demais informações.",
+      "planned_actions": [
+        "Abrir Gerenciar plantões; criar pela fixture e conferir intervalo e demais itens.",
+        "Reiniciar a fixture; alterar o plantão selecionado e conferir apenas o intervalo alvo.",
+        "Reiniciar; abrir cancelamento, desistir e depois confirmar, conferindo cada resultado.",
+        "Reiniciar; atribuir responsável e conferir plantão e pessoa selecionados."
+      ],
+      "expected_result": "Cada operação preserva entidade e dados não afetados; Cancelar mantém o plantão até a confirmação. Registrar as quatro operações separadamente.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "operation": "create",
+          "form": "8016:13861",
+          "iteration_id": "H07-016-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "operation": "edit",
+          "form": "8016:13952",
+          "iteration_id": "H07-016-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "operation": "cancel",
+          "form": "8016:14055",
+          "iteration_id": "H07-016-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "operation": "assign",
+          "form": "8016:14158",
+          "iteration_id": "H07-016-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-017",
+      "original_checklist": "CH-17",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Solicitação, aceite e recusa de troca",
+      "related_auds": [
+        "AUD-002"
+      ],
+      "actor_fixture": "Juliana solicitante e Marina destinatária; fixtures separadas",
+      "start_nodes": [
+        {
+          "id": "6223:6364",
+          "name": "[FLUXO FINAL] T04 — Calendário de Cuidados / week"
+        },
+        {
+          "id": "8016:15263",
+          "name": "[QA US-013] T04 — Marina Souza / troca recebida"
+        }
+      ],
+      "criterion": "Troca: Juliana solicita para Marina; antes da aceitação a responsável original permanece. No QA Marina, aceitar altera somente essa responsabilidade; recusar preserva Juliana.",
+      "planned_actions": [
+        "Como Juliana, solicitar a troca para Marina e conferir a responsável antes da resposta.",
+        "No QA Marina, abrir a solicitação e aceitar; conferir a responsável.",
+        "Reiniciar o QA Marina e recusar; conferir a responsável e retornar."
+      ],
+      "expected_result": "Pedido pendente mantém Juliana; aceite muda somente a responsabilidade esperada; recusa mantém Juliana. Não inferir execução simultânea entre fixtures.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "operation": "responseScenario",
+          "node_id": "8016:15263",
+          "iteration_id": "H07-017-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "operation": "accepted",
+          "node_id": "8016:15530",
+          "iteration_id": "H07-017-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "operation": "refused",
+          "node_id": "8016:15694",
+          "iteration_id": "H07-017-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-018",
+      "original_checklist": "CH-18",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Plantonista Atual como condição temporal",
+      "related_auds": [
+        "AUD-002",
+        "AUD-010"
+      ],
+      "actor_fixture": "Ator da fixture de plantão; Principal na gestão de papéis",
+      "start_nodes": [
+        {
+          "id": "6223:6364",
+          "name": "[FLUXO FINAL] T04 — Calendário de Cuidados / week"
+        },
+        {
+          "id": "6223:6738",
+          "name": "[FLUXO FINAL] T13 — Rede de Cuidado / default"
+        }
+      ],
+      "criterion": "Plantonista Atual aparece como condição do intervalo, nunca como novo papel permanente.",
+      "planned_actions": [
+        "Conferir condição operacional e intervalo nos cenários de plantão.",
+        "Abrir a gestão de papéis e verificar os rótulos de seleção."
+      ],
+      "expected_result": "Plantonista Atual não é concedido como papel permanente; permissões contextuais e papéis aprovados são preservados.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-019",
+      "original_checklist": "CH-19",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Posologia e administração por medicamento",
+      "related_auds": [
+        "AUD-003"
+      ],
+      "actor_fixture": "Ator autorizado para a operação clínica demonstrada",
+      "start_nodes": [
+        {
+          "id": "6223:6593",
+          "name": "[FLUXO FINAL] T08 — Medicamentos / list"
+        }
+      ],
+      "criterion": "Medicamentos A/B/C e Item A: detalhe, posologia/agenda, responsável, administração e T05 mantêm a identidade selecionada.",
+      "planned_actions": [
+        "Para A/B/C, abrir o card selecionado, detalhar e configurar posologia, agenda e responsável pela fixture.",
+        "Registrar administração da ocorrência e conferir o resultado e T05.",
+        "Criar Item A pelo Sheet e repetir no item recém-incluído."
+      ],
+      "expected_result": "Nome, ocorrência, horários e responsável acompanham cada medicamento; T05 reflete o fato certo. Valores são fixtures de protótipo, não orientação clínica.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "medication": "Medicamento A",
+          "listCard": "6223:6600",
+          "detail": "8017:14336",
+          "plan": "8017:14551",
+          "planned": "8017:14464",
+          "administration": "8017:14668",
+          "result": "8017:14771",
+          "day": "8017:14877",
+          "iteration_id": "H07-019-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "medication": "Medicamento B",
+          "listCard": "6223:6611",
+          "detail": "8017:15040",
+          "plan": "8017:15253",
+          "planned": "8017:15166",
+          "administration": "8017:15370",
+          "result": "8017:15473",
+          "day": "8017:15579",
+          "iteration_id": "H07-019-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "medication": "Medicamento C",
+          "listCard": "6223:6620",
+          "detail": "8017:15742",
+          "plan": "8017:15955",
+          "planned": "8017:15868",
+          "administration": "8017:16072",
+          "result": "8017:16175",
+          "day": "8017:16281",
+          "iteration_id": "H07-019-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "medication": "Item A",
+          "detail": "8025:16674",
+          "plan": "8025:16751",
+          "planned": "8025:16817",
+          "administration": "8025:16905",
+          "result": "8025:16971",
+          "day": "8025:17066",
+          "iteration_id": "H07-019-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-020",
+      "original_checklist": "CH-20",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Prevenção de administração duplicada",
+      "related_auds": [
+        "AUD-003"
+      ],
+      "actor_fixture": "Mesmo ator e ocorrência do cenário de medicamento",
+      "start_nodes": [
+        {
+          "id": "8017:14771",
+          "name": "[PROTO STATE] T08 — Administração registrada / Medicamento A"
+        },
+        {
+          "id": "8017:15473",
+          "name": "[PROTO STATE] T08 — Administração registrada / Medicamento B"
+        },
+        {
+          "id": "8017:16175",
+          "name": "[PROTO STATE] T08 — Administração registrada / Medicamento C"
+        },
+        {
+          "id": "8025:16971",
+          "name": "[PROTO STATE] T08 — Administração registrada / Item A"
+        }
+      ],
+      "criterion": "Administração registrada não oferece conclusão duplicada da mesma ocorrência no estado de resultado; não surge dose extra ou omissão clínica automática.",
+      "planned_actions": [
+        "Chegar a cada resultado por administração real na fixture.",
+        "Tentar as ações de continuação/retorno disponíveis e conferir se há nova conclusão da mesma ocorrência."
+      ],
+      "expected_result": "Não há repetição da mesma administração, reabertura, dose extra ou afirmação automática de omissão clínica.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "medication": "Medicamento A",
+          "node_id": "8017:14771",
+          "iteration_id": "H07-020-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "medication": "Medicamento B",
+          "node_id": "8017:15473",
+          "iteration_id": "H07-020-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "medication": "Medicamento C",
+          "node_id": "8017:16175",
+          "iteration_id": "H07-020-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "medication": "Item A",
+          "node_id": "8025:16971",
+          "iteration_id": "H07-020-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-021",
+      "original_checklist": "CH-21",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Correção da ocorrência certa e original preservado",
+      "related_auds": [
+        "AUD-006",
+        "AUD-028"
+      ],
+      "actor_fixture": "Juliana Ferreira com permissão efetiva da fixture",
+      "start_nodes": [
+        {
+          "id": "6223:6562",
+          "name": "[FLUXO FINAL] T06 — Diário de Cuidados / normal"
+        },
+        {
+          "id": "6223:6581",
+          "name": "[FLUXO FINAL] T07 — Histórico de Cuidados / default"
+        }
+      ],
+      "criterion": "Diário: cada Corrigir abre o próprio registro; cancelar retorna sem alteração; salvar cria nova versão com autoria/hora próprias e mantém o original.",
+      "planned_actions": [
+        "Para cada uma das oito ocorrências da tabela, acionar Corrigir a partir do registro.",
+        "Conferir tipo/data/hora/texto/autor antes de salvar; cancelar e conferir retorno sem alteração.",
+        "Repetir, usar a correção predefinida e salvar; conferir original e nova versão com autoria e horário próprios."
+      ],
+      "expected_result": "Cada ação usa sua própria ocorrência; o original permanece íntegro e vinculado à nova versão; Hoje 8/9 e Ontem 7/9 são coerentes.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "source": "6223:6562",
+          "record": "6223:6571",
+          "key": "Mobilidade 8 de setembro 15:20",
+          "form": "8012:11874",
+          "result": "8012:11970",
+          "version": "8012:12162",
+          "original": {
+            "time": "15:20",
+            "category": "Mobilidade",
+            "body": "“Fez uma caminhada curta pela casa.”",
+            "author": "Carlos Souza"
+          },
+          "correction": "Correção do registro de 8 de setembro às 15:20: Fez uma caminhada curta pela casa.",
+          "actor": "Juliana Ferreira",
+          "time": "8 de setembro 16:00",
+          "iteration_id": "H07-021-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "source": "6223:6562",
+          "record": "6223:6572",
+          "key": "Alimentação 8 de setembro 12:40",
+          "form": "8012:12260",
+          "result": "8012:12356",
+          "version": "8012:12548",
+          "original": {
+            "time": "12:40",
+            "category": "Alimentação",
+            "body": "“Almoçou normalmente e descansou após a refeição.”",
+            "author": "Ana Ferreira"
+          },
+          "correction": "Correção do registro de 8 de setembro às 12:40: Almoçou normalmente e descansou após a refeição.",
+          "actor": "Juliana Ferreira",
+          "time": "8 de setembro 16:00",
+          "iteration_id": "H07-021-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "source": "6223:6562",
+          "record": "6223:6573",
+          "key": "Hidratação 8 de setembro 10:35",
+          "form": "8012:12646",
+          "result": "8012:12742",
+          "version": "8012:12934",
+          "original": {
+            "time": "10:35",
+            "category": "Hidratação",
+            "body": "“Bebeu um copo de água durante a manhã.”",
+            "author": "João Martins"
+          },
+          "correction": "Correção do registro de 8 de setembro às 10:35: Bebeu um copo de água durante a manhã.",
+          "actor": "Juliana Ferreira",
+          "time": "8 de setembro 16:00",
+          "iteration_id": "H07-021-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "source": "6223:6562",
+          "record": "6223:6574",
+          "key": "Alimentação 8 de setembro 08:10",
+          "form": "8012:13032",
+          "result": "8012:13128",
+          "version": "8012:13320",
+          "original": {
+            "time": "08:10",
+            "category": "Alimentação",
+            "body": "“Tomou café, comeu uma fatia de pão e uma banana.”",
+            "author": "Ana Ferreira"
+          },
+          "correction": "Correção do registro de 8 de setembro às 08:10: Tomou café, comeu uma fatia de pão e uma banana.",
+          "actor": "Juliana Ferreira",
+          "time": "8 de setembro 16:00",
+          "iteration_id": "H07-021-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "source": "6223:6562",
+          "record": "6223:6578",
+          "key": "Alimentação 7 de setembro 19:15",
+          "form": "8012:13418",
+          "result": "8012:13514",
+          "version": "8012:13706",
+          "original": {
+            "time": "19:15",
+            "category": "Alimentação",
+            "body": "“Jantou sopa de legumes e tomou suco.”",
+            "author": "Ana Ferreira"
+          },
+          "correction": "Correção do registro de 7 de setembro às 19:15: Jantou sopa de legumes e tomou suco.",
+          "actor": "Juliana Ferreira",
+          "time": "8 de setembro 16:00",
+          "iteration_id": "H07-021-V05",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "source": "6223:6562",
+          "record": "6223:6579",
+          "key": "Descanso 7 de setembro 16:30",
+          "form": "8012:13804",
+          "result": "8012:13900",
+          "version": "8012:14092",
+          "original": {
+            "time": "16:30",
+            "category": "Descanso",
+            "body": "“Descansou um pouco no sofá assistindo TV.”",
+            "author": "Carlos Souza"
+          },
+          "correction": "Correção do registro de 7 de setembro às 16:30: Descansou um pouco no sofá assistindo TV.",
+          "actor": "Juliana Ferreira",
+          "time": "8 de setembro 16:00",
+          "iteration_id": "H07-021-V06",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "source": "6223:6581",
+          "record": "6223:6590",
+          "key": "Medicação 8 de setembro 09:20",
+          "form": "8012:14190",
+          "result": "8012:14287",
+          "version": "8012:14397",
+          "original": {
+            "time": "09:20",
+            "category": "Medicação",
+            "body": "“Medicação registrada conforme orientação anterior.”",
+            "author": "Marina Souza"
+          },
+          "correction": "Correção do registro de 8 de setembro às 09:20: Medicação registrada conforme orientação anterior.",
+          "actor": "Juliana Ferreira",
+          "time": "8 de setembro 16:00",
+          "iteration_id": "H07-021-V07",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "source": "6223:6581",
+          "record": "6223:6591",
+          "key": "Medicação 8 de setembro 11:20",
+          "form": "8012:14495",
+          "result": "8012:14591",
+          "version": "8012:14701",
+          "original": {
+            "time": "11:20",
+            "category": "Medicação",
+            "body": "“Correção do registro das 09:20: medicação administrada após o café da manhã.”",
+            "author": "Marina Souza"
+          },
+          "correction": "Correção do registro de 8 de setembro às 11:20: Correção do registro das 09:20: medicação administrada após o café da manhã.",
+          "actor": "Juliana Ferreira",
+          "time": "8 de setembro 16:00",
+          "iteration_id": "H07-021-V08",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-022",
+      "original_checklist": "CH-22",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Ver correção comum e somente leitura",
+      "related_auds": [
+        "AUD-014"
+      ],
+      "actor_fixture": "Ator autorizado comum e Pessoa Idosa, separadamente",
+      "start_nodes": [
+        {
+          "id": "6223:6581",
+          "name": "[FLUXO FINAL] T07 — Histórico de Cuidados / default"
+        },
+        {
+          "id": "6223:9534",
+          "name": "[READONLY Pessoa Idosa] T07 — default"
+        }
+      ],
+      "criterion": "Ver correção abre a versão certa tanto no fluxo comum quanto no read-only; retornar conserva o contexto.",
+      "planned_actions": [
+        "Abrir Ver correção na ocorrência vinculada do Histórico.",
+        "Conferir a versão aberta e voltar.",
+        "Repetir no ramo somente leitura, procurando indevidamente ações de escrita."
+      ],
+      "expected_result": "A versão corresponde ao vínculo e o retorno preserva contexto; na leitura não aparece ação de correção.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "branch": "comum",
+          "version": "8012:14929",
+          "iteration_id": "H07-022-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "branch": "Pessoa Idosa",
+          "version": "8012:14839",
+          "iteration_id": "H07-022-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-023",
+      "original_checklist": "CH-23",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Conclusão de tarefas por item e combinação",
+      "related_auds": [
+        "AUD-007"
+      ],
+      "actor_fixture": "Ator autorizado para concluir as tarefas da fixture",
+      "start_nodes": [
+        {
+          "id": "6223:6630",
+          "name": "[FLUXO FINAL] T09 — Tarefas / default"
+        },
+        {
+          "id": "6223:7755",
+          "name": "[PROTO STATE] T09 — Tarefas / task_created"
+        }
+      ],
+      "criterion": "Tarefas: concluir cada pendente nas listas com e sem a tarefa criada; somente o item acionado muda e os demais permanecem, sem reabertura.",
+      "planned_actions": [
+        "Na lista sem nova tarefa, concluir cada pendente separadamente, reiniciando entre as escolhas.",
+        "Repetir na lista com Acompanhar hidratação criada.",
+        "Percorrer as combinações documentadas até todas concluídas e conferir os itens restantes em cada passo."
+      ],
+      "expected_result": "Somente o item acionado muda; tarefa criada e itens anteriores permanecem; não aparece reabertura. Cada combinação precisa de observação própria.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "id": "6223:6630",
+          "mask": 0,
+          "added": false,
+          "pending": [
+            "Separar documentos para consulta",
+            "Organizar itens para o atendimento"
+          ],
+          "iteration_id": "H07-023-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "id": "6223:7794",
+          "mask": 1,
+          "added": false,
+          "pending": [
+            "Organizar itens para o atendimento"
+          ],
+          "iteration_id": "H07-023-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "id": "8005:9666",
+          "mask": 2,
+          "added": false,
+          "pending": [
+            "Separar documentos para consulta"
+          ],
+          "iteration_id": "H07-023-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "id": "8005:9781",
+          "mask": 3,
+          "added": false,
+          "pending": [],
+          "iteration_id": "H07-023-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "id": "6223:7755",
+          "mask": 0,
+          "added": true,
+          "pending": [
+            "Separar documentos para consulta",
+            "Organizar itens para o atendimento",
+            "Acompanhar hidratação"
+          ],
+          "iteration_id": "H07-023-V05",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "id": "8005:9904",
+          "mask": 1,
+          "added": true,
+          "pending": [
+            "Organizar itens para o atendimento",
+            "Acompanhar hidratação"
+          ],
+          "iteration_id": "H07-023-V06",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "id": "8005:10043",
+          "mask": 2,
+          "added": true,
+          "pending": [
+            "Separar documentos para consulta",
+            "Acompanhar hidratação"
+          ],
+          "iteration_id": "H07-023-V07",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "id": "8005:10182",
+          "mask": 3,
+          "added": true,
+          "pending": [
+            "Acompanhar hidratação"
+          ],
+          "iteration_id": "H07-023-V08",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "id": "8005:10329",
+          "mask": 4,
+          "added": true,
+          "pending": [
+            "Separar documentos para consulta",
+            "Organizar itens para o atendimento"
+          ],
+          "iteration_id": "H07-023-V09",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "id": "8005:10468",
+          "mask": 5,
+          "added": true,
+          "pending": [
+            "Organizar itens para o atendimento"
+          ],
+          "iteration_id": "H07-023-V10",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "id": "8005:10615",
+          "mask": 6,
+          "added": true,
+          "pending": [
+            "Separar documentos para consulta"
+          ],
+          "iteration_id": "H07-023-V11",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "id": "8005:10762",
+          "mask": 7,
+          "added": true,
+          "pending": [],
+          "iteration_id": "H07-023-V12",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-024",
+      "original_checklist": "CH-24",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Edição do contato selecionado",
+      "related_auds": [
+        "AUD-008"
+      ],
+      "actor_fixture": "Ator autorizado para gerenciar contatos",
+      "start_nodes": [
+        {
+          "id": "6223:6773",
+          "name": "[FLUXO FINAL] T14 — Contatos Importantes / default"
+        },
+        {
+          "id": "6223:8525",
+          "name": "[PROTO STATE] T14 — Contatos Importantes / success"
+        }
+      ],
+      "criterion": "Contatos: Maria Helena, Carlos e Hospital abrem os próprios campos; alteração de telefone corresponde ao resultado; cancelar/salvar sem mudança não inventa alterações.",
+      "planned_actions": [
+        "Para cada contato/lista da tabela, acionar Editar e conferir identidade e telefone inicial.",
+        "Cancelar; depois salvar sem mudança, quando oferecido, e conferir que não inventa alteração.",
+        "Reabrir, acionar o telefone da fixture editada e salvar; conferir identidade, telefone final e demais contatos."
+      ],
+      "expected_result": "Maria Helena, Carlos e Hospital mantêm dados próprios; somente o telefone selecionado é atualizado.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "source": "6223:6773",
+          "contact": "Maria Helena Silva",
+          "form": "6223:8590",
+          "edited": "8006:33567",
+          "result": "8006:33630",
+          "phoneBefore": "(69) 98765-4321",
+          "phoneAfter": "(69) 98765-4322",
+          "iteration_id": "H07-024-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "source": "6223:6773",
+          "contact": "Dr. Carlos Mendes",
+          "form": "8006:33693",
+          "edited": "8006:33756",
+          "result": "8006:33819",
+          "phoneBefore": "(69) 3456-7890",
+          "phoneAfter": "(69) 3456-7891",
+          "iteration_id": "H07-024-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "source": "6223:8525",
+          "contact": "Maria Helena Silva",
+          "form": "8006:33881",
+          "edited": "8006:33944",
+          "result": "8006:34007",
+          "phoneBefore": "(69) 98765-4321",
+          "phoneAfter": "(69) 98765-4322",
+          "iteration_id": "H07-024-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "source": "6223:8525",
+          "contact": "Dr. Carlos Mendes",
+          "form": "8006:34086",
+          "edited": "8006:34149",
+          "result": "8006:34212",
+          "phoneBefore": "(69) 3456-7890",
+          "phoneAfter": "(69) 3456-7891",
+          "iteration_id": "H07-024-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "source": "6223:8525",
+          "contact": "Hospital São Lucas",
+          "form": "8006:34291",
+          "edited": "8006:34354",
+          "result": "8006:34417",
+          "phoneBefore": "(69) 3222-1180",
+          "phoneAfter": "(69) 3222-1181",
+          "iteration_id": "H07-024-V05",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-025",
+      "original_checklist": "CH-25",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Detalhes próprios dos eventos de auditoria",
+      "related_auds": [
+        "AUD-009"
+      ],
+      "actor_fixture": "Ator autorizado a T17",
+      "start_nodes": [
+        {
+          "id": "6223:6836",
+          "name": "[FLUXO FINAL] T17 — Auditoria / default"
+        }
+      ],
+      "criterion": "Auditoria: os três eventos mostram atores, recursos, horários e resultados correspondentes, com retorno funcional.",
+      "planned_actions": [
+        "Abrir os eventos Registro criado, Tarefa concluída e Acesso bloqueado.",
+        "Comparar ator, recurso, horário, operação e resultado com o evento escolhido.",
+        "Voltar à lista entre as escolhas."
+      ],
+      "expected_result": "Os três detalhes são distintos e correspondem à linha acionada; retorno funcional.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "event": "Registro criado",
+          "detail": "6223:8715",
+          "iteration_id": "H07-025-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "event": "Tarefa concluída 13:02",
+          "detail": "8011:11419",
+          "iteration_id": "H07-025-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "event": "Acesso bloqueado 11:18",
+          "detail": "8011:11492",
+          "iteration_id": "H07-025-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-026",
+      "original_checklist": "CH-26",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Quatro seleções de papéis",
+      "related_auds": [
+        "AUD-010"
+      ],
+      "actor_fixture": "Familiar Principal da fixture; membro alvo explícito",
+      "start_nodes": [
+        {
+          "id": "6223:6738",
+          "name": "[FLUXO FINAL] T13 — Rede de Cuidado / default"
+        }
+      ],
+      "criterion": "Papéis: testar quatro seleções; resultados refletem Apoio/Emergência escolhidos e preservam um único Principal.",
+      "planned_actions": [
+        "Abrir Gerenciar papéis e alternar Apoio/Emergência para cada uma das quatro combinações.",
+        "Cancelar uma alteração e conferir preservação da seleção anterior.",
+        "Salvar cada combinação e conferir o membro alvo, o resultado e o Principal da rede."
+      ],
+      "expected_result": "Resultado espelha exatamente a combinação mostrada; um único Principal é mantido; nenhuma permissão nova é inventada.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "mask": 0,
+          "form": "8010:11973",
+          "result": "8010:12034",
+          "iteration_id": "H07-026-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "mask": 1,
+          "form": "6223:8289",
+          "result": "8010:12119",
+          "iteration_id": "H07-026-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "mask": 2,
+          "form": "8010:12196",
+          "result": "8010:12257",
+          "iteration_id": "H07-026-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "mask": 3,
+          "form": "8010:12352",
+          "result": "6223:8310",
+          "iteration_id": "H07-026-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-027",
+      "original_checklist": "CH-27",
+      "priority": "P1",
+      "type": "INTERATIVO",
+      "title": "Preferências opcionais e entregas obrigatórias",
+      "related_auds": [
+        "AUD-011"
+      ],
+      "actor_fixture": "Apoio nas quatro fixtures; Principal em execução separada",
+      "start_nodes": [
+        {
+          "id": "8010:12439",
+          "name": "[QA] T16 — Familiar de Apoio / preferências opcionais"
+        },
+        {
+          "id": "6223:6800",
+          "name": "[FLUXO FINAL] T16 — Preferências de Notificações / default"
+        }
+      ],
+      "criterion": "Preferências Apoio: testar quatro combinações opcionais, salvar e aguardar o feedback desaparecer sem perder seleção. Principal não desliga entregas obrigatórias.",
+      "planned_actions": [
+        "Como Apoio, alternar os dois switches opcionais nas quatro combinações, salvar e aguardar o feedback.",
+        "Conferir seleção após timeout e retorno.",
+        "Na fixture Principal, tentar desligar N03/N04."
+      ],
+      "expected_result": "As quatro seleções opcionais persistem nos estados demonstrados; feedback desaparece; Principal não desliga entregas obrigatórias.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "mask": 0,
+          "form": "8010:12508",
+          "result": "8010:12577",
+          "iteration_id": "H07-027-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "mask": 1,
+          "form": "8010:12439",
+          "result": "8010:12650",
+          "iteration_id": "H07-027-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "mask": 2,
+          "form": "8010:12719",
+          "result": "8010:12788",
+          "iteration_id": "H07-027-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "mask": 3,
+          "form": "8010:12865",
+          "result": "8010:12934",
+          "iteration_id": "H07-027-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "actor": "Principal",
+          "form": "6223:6800",
+          "expected": "N03/N04 obrigatórias não podem ser desligadas",
+          "iteration_id": "H07-027-V05",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-028",
+      "original_checklist": "CH-28",
+      "priority": "P2",
+      "type": "INTERATIVO",
+      "title": "Inclusões e identidade dos resultados",
+      "related_auds": [
+        "AUD-024",
+        "AUD-025",
+        "AUD-028"
+      ],
+      "actor_fixture": "Ator autorizado por operação; membro novo Dr. Renato Costa",
+      "start_nodes": [
+        {
+          "id": "6223:6562",
+          "name": "[FLUXO FINAL] T06 — Diário de Cuidados / normal"
+        },
+        {
+          "id": "6223:6593",
+          "name": "[FLUXO FINAL] T08 — Medicamentos / list"
+        },
+        {
+          "id": "6223:6663",
+          "name": "[FLUXO FINAL] T10 — Consultas e Recomendações / default"
+        },
+        {
+          "id": "6223:6738",
+          "name": "[FLUXO FINAL] T13 — Rede de Cuidado / default"
+        }
+      ],
+      "criterion": "Inclusões T06/T08/T10/T13: novo registro, medicamento, consulta e membro aparecem mantendo os itens anteriores; nome, autoria e horários batem com o formulário.",
+      "planned_actions": [
+        "Criar pela fixture de cada fluxo: hidratação, Item A, consulta e membro.",
+        "Comparar nome, autoria e horários com o formulário; conferir presença dos itens anteriores.",
+        "Em T10, distinguir horário clínico do horário de registro e conferir também o ramo de leitura."
+      ],
+      "expected_result": "Os resultados demonstram a inclusão real na lista simulada, sem só exibir toast; T10 conserva autoria/data/hora e Diário conserva cronologia coerente.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-029",
+      "original_checklist": "CH-29",
+      "priority": "P2",
+      "type": "INTERATIVO",
+      "title": "Cinco Bottom Sheets completos",
+      "related_auds": [
+        "AUD-005",
+        "AUD-025",
+        "AUD-026"
+      ],
+      "actor_fixture": "Ator autorizado para cada criação contextual",
+      "start_nodes": [
+        {
+          "id": "6223:6562",
+          "name": "[FLUXO FINAL] T06 — Diário de Cuidados / normal"
+        },
+        {
+          "id": "6223:6593",
+          "name": "[FLUXO FINAL] T08 — Medicamentos / list"
+        },
+        {
+          "id": "6223:6630",
+          "name": "[FLUXO FINAL] T09 — Tarefas / default"
+        },
+        {
+          "id": "6223:6663",
+          "name": "[FLUXO FINAL] T10 — Consultas e Recomendações / default"
+        },
+        {
+          "id": "6223:6682",
+          "name": "[FLUXO FINAL] T11 — Compromissos / default"
+        }
+      ],
+      "criterion": "T06/T08/T09/T10/T11: abrir de baixo para cima com tela-base e scrim, preencher, salvar, cancelar e voltar.",
+      "planned_actions": [
+        "Partindo de cada base, abrir o cadastro por seu CTA.",
+        "Observar abertura bottom→up, base, scrim e dimensões.",
+        "Preencher pela fixture, salvar e continuar; reiniciar e cancelar; conferir a tela-base após fechar."
+      ],
+      "expected_result": "T06/T08/T09/T10/T11 usam Sheet contextual e não formulário full-page; salvar/cancelar/back têm contexto coerente.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "screen": "T06",
+          "base": "6223:6562",
+          "sheet": "6223:9141",
+          "validation_error": "6223:9168",
+          "iteration_id": "H07-029-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T08",
+          "base": "6223:6593",
+          "sheet": "6223:8966",
+          "validation_error": "6223:8992",
+          "iteration_id": "H07-029-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T09",
+          "base": "6223:6630",
+          "sheet": "6223:9019",
+          "validation_error": "6223:9034",
+          "iteration_id": "H07-029-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T10",
+          "base": "6223:6663",
+          "sheet": "6223:9051",
+          "validation_error": "6223:9068",
+          "iteration_id": "H07-029-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T11",
+          "base": "6223:6682",
+          "sheet": "6223:9102",
+          "validation_error": "6223:9120",
+          "iteration_id": "H07-029-V05",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-030",
+      "original_checklist": "CH-30",
+      "priority": "P2",
+      "type": "INTERATIVO",
+      "title": "Validações dentro dos cinco Sheets",
+      "related_auds": [
+        "AUD-017",
+        "AUD-026"
+      ],
+      "actor_fixture": "Ator autorizado para cada criação contextual",
+      "start_nodes": [
+        {
+          "id": "6223:6562",
+          "name": "[FLUXO FINAL] T06 — Diário de Cuidados / normal"
+        },
+        {
+          "id": "6223:6593",
+          "name": "[FLUXO FINAL] T08 — Medicamentos / list"
+        },
+        {
+          "id": "6223:6630",
+          "name": "[FLUXO FINAL] T09 — Tarefas / default"
+        },
+        {
+          "id": "6223:6663",
+          "name": "[FLUXO FINAL] T10 — Consultas e Recomendações / default"
+        },
+        {
+          "id": "6223:6682",
+          "name": "[FLUXO FINAL] T11 — Compromissos / default"
+        }
+      ],
+      "criterion": "Em cada Sheet: envio vazio permanece em erro, o campo corrigido leva à fixture válida, e o erro permanece dentro do Sheet.",
+      "planned_actions": [
+        "Em cada Sheet, submeter vazio ou inválido.",
+        "Conferir mensagem e conteúdo do campo dentro do Sheet.",
+        "Acionar o preenchimento válido da fixture e repetir o envio."
+      ],
+      "expected_result": "Erro permanece no Sheet e corresponde ao valor exibido; T08 não mostra nome preenchido com erro de nome obrigatório; o caminho corrigido funciona.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "screen": "T06",
+          "base": "6223:6562",
+          "sheet": "6223:9141",
+          "validation_error": "6223:9168",
+          "iteration_id": "H07-030-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T08",
+          "base": "6223:6593",
+          "sheet": "6223:8966",
+          "validation_error": "6223:8992",
+          "iteration_id": "H07-030-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T09",
+          "base": "6223:6630",
+          "sheet": "6223:9019",
+          "validation_error": "6223:9034",
+          "iteration_id": "H07-030-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T10",
+          "base": "6223:6663",
+          "sheet": "6223:9051",
+          "validation_error": "6223:9068",
+          "iteration_id": "H07-030-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T11",
+          "base": "6223:6682",
+          "sheet": "6223:9102",
+          "validation_error": "6223:9120",
+          "iteration_id": "H07-030-V05",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-031",
+      "original_checklist": "CH-31",
+      "priority": "P2",
+      "type": "INTERATIVO",
+      "title": "Handle, gesto e Back dos Sheets",
+      "related_auds": [
+        "AUD-005",
+        "AUD-015"
+      ],
+      "actor_fixture": "Ator autorizado nas cinco bases",
+      "start_nodes": [
+        {
+          "id": "6223:6562",
+          "name": "[FLUXO FINAL] T06 — Diário de Cuidados / normal"
+        },
+        {
+          "id": "6223:6593",
+          "name": "[FLUXO FINAL] T08 — Medicamentos / list"
+        },
+        {
+          "id": "6223:6630",
+          "name": "[FLUXO FINAL] T09 — Tarefas / default"
+        },
+        {
+          "id": "6223:6663",
+          "name": "[FLUXO FINAL] T10 — Consultas e Recomendações / default"
+        },
+        {
+          "id": "6223:6682",
+          "name": "[FLUXO FINAL] T11 — Compromissos / default"
+        }
+      ],
+      "criterion": "Testar handle/gesto e Back no Presentation; conferir fechamento sem trocar acidentalmente a tela-base.",
+      "planned_actions": [
+        "Abrir cada Sheet e tentar handle, gesto previsto, Cancelar e Back em execuções independentes.",
+        "Repetir após rolar a tela-base e conferir posição/contexto ao fechar."
+      ],
+      "expected_result": "Fechamento não troca indevidamente a base. Se o gesto não estiver disponível no protótipo, registrar limitação específica; Cancelar continua obrigatório.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "screen": "T06",
+          "base": "6223:6562",
+          "sheet": "6223:9141",
+          "validation_error": "6223:9168",
+          "iteration_id": "H07-031-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T08",
+          "base": "6223:6593",
+          "sheet": "6223:8966",
+          "validation_error": "6223:8992",
+          "iteration_id": "H07-031-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T09",
+          "base": "6223:6630",
+          "sheet": "6223:9019",
+          "validation_error": "6223:9034",
+          "iteration_id": "H07-031-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T10",
+          "base": "6223:6663",
+          "sheet": "6223:9051",
+          "validation_error": "6223:9068",
+          "iteration_id": "H07-031-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "screen": "T11",
+          "base": "6223:6682",
+          "sheet": "6223:9102",
+          "validation_error": "6223:9120",
+          "iteration_id": "H07-031-V05",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-032",
+      "original_checklist": "CH-32",
+      "priority": "P2",
+      "type": "INTERATIVO",
+      "title": "T10 erro e anexo sem overflow",
+      "related_auds": [
+        "AUD-017",
+        "AUD-024"
+      ],
+      "actor_fixture": "Ator autorizado para consulta",
+      "start_nodes": [
+        {
+          "id": "6223:6663",
+          "name": "[FLUXO FINAL] T10 — Consultas e Recomendações / default"
+        }
+      ],
+      "criterion": "T10 erro/anexo: nenhum campo, CTA ou mensagem ultrapassa a largura; arquivo aparece apenas no resultado com anexo.",
+      "planned_actions": [
+        "Abrir Novo registro, provocar erro e percorrer todos os campos e CTAs.",
+        "No cenário de anexo, acionar o anexo predefinido e salvar.",
+        "Comparar resultado com/sem anexo, autoria e horários."
+      ],
+      "expected_result": "Nada excede a largura disponível; mensagens e CTAs acessíveis; o arquivo só aparece no resultado correspondente ao cenário com anexo.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-033",
+      "original_checklist": "CH-33",
+      "priority": "P2",
+      "type": "INTERATIVO",
+      "title": "N01–N04, timeout, dismiss e destino",
+      "related_auds": [
+        "AUD-013"
+      ],
+      "actor_fixture": "Atores elegíveis por evento; fixtures N02/N03/N04 explícitas",
+      "start_nodes": [
+        {
+          "id": "6223:6364",
+          "name": "[FLUXO FINAL] T04 — Calendário de Cuidados / week"
+        },
+        {
+          "id": "8022:18663",
+          "name": "[QA EVENTO] [PROTO STATE] T03 — Home / notification_n02_reminder / precondição"
+        },
+        {
+          "id": "8022:18772",
+          "name": "[QA EVENTO] [PROTO STATE] T03 — Home / notification_n03_registered / precondição"
+        },
+        {
+          "id": "8022:18881",
+          "name": "[QA EVENTO] [PROTO STATE] T03 — Home / notification_n04_delayed / precondição"
+        }
+      ],
+      "criterion": "N01–N04: evento → aviso transitório → timeout/dismiss ou destino T04/T05/T07; não aparece central de notificações.",
+      "planned_actions": [
+        "Gerar os cinco eventos N01 documentados e observar o aviso.",
+        "Nos QA N02/N03/N04, acionar o evento precondicionado.",
+        "Para cada aviso, reiniciar e testar destino, dismiss quando oferecido e timeout; conferir o contexto preservado."
+      ],
+      "expected_result": "Avisos transitórios abrem T04/T05/T07 contextual; timeout/dismiss não desfaz o fato; nenhuma central de notificações é criada.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "notification": "N01",
+          "event": "created",
+          "notice": "8022:17315",
+          "persistentResult": "8016:14352",
+          "destination": "8016:14352",
+          "iteration_id": "H07-033-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "notification": "N01",
+          "event": "edited",
+          "notice": "8022:17499",
+          "persistentResult": "8016:14525",
+          "destination": "8016:14525",
+          "iteration_id": "H07-033-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "notification": "N01",
+          "event": "cancelled",
+          "notice": "8022:17669",
+          "persistentResult": "8016:14684",
+          "destination": "8016:14684",
+          "iteration_id": "H07-033-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "notification": "N01",
+          "event": "assigned",
+          "notice": "8022:17839",
+          "persistentResult": "8016:14843",
+          "destination": "8016:14843",
+          "iteration_id": "H07-033-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "notification": "N01",
+          "event": "accepted",
+          "notice": "8022:18009",
+          "persistentResult": "8016:15530",
+          "destination": "8016:15530",
+          "iteration_id": "H07-033-V05",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "notification": "N2",
+          "entry": "8022:18663",
+          "notice": "6223:8744",
+          "destination": "8022:18200",
+          "dismiss": "6223:6338",
+          "iteration_id": "H07-033-V06",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "notification": "N3",
+          "entry": "8022:18772",
+          "notice": "6223:8771",
+          "destination": "8022:18444",
+          "dismiss": "6223:6338",
+          "iteration_id": "H07-033-V07",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "notification": "N4",
+          "entry": "8022:18881",
+          "notice": "6223:8798",
+          "destination": "8022:18322",
+          "dismiss": "8022:18552",
+          "iteration_id": "H07-033-V08",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    },
+    {
+      "id": "H07-034",
+      "original_checklist": "CH-34",
+      "priority": "P2",
+      "type": "INTERATIVO",
+      "title": "Destinatário N02 e linguagem N04",
+      "related_auds": [
+        "AUD-013"
+      ],
+      "actor_fixture": "Responsável explicitamente elegível em N02; Principal em N04",
+      "start_nodes": [
+        {
+          "id": "8022:18663",
+          "name": "[QA EVENTO] [PROTO STATE] T03 — Home / notification_n02_reminder / precondição"
+        },
+        {
+          "id": "8022:18881",
+          "name": "[QA EVENTO] [PROTO STATE] T03 — Home / notification_n04_delayed / precondição"
+        }
+      ],
+      "criterion": "N02 usa a responsável explícita elegível; N04 em H+15 informa ausência de registro sem afirmar que o cuidado não ocorreu.",
+      "planned_actions": [
+        "Acionar N02 e conferir a responsável/ocorrência mostradas.",
+        "Acionar o cenário N04 H+15 e ler integralmente a mensagem e o destino."
+      ],
+      "expected_result": "N02 corresponde à designação explícita; N04 informa falta de registro, sem afirmar falta de cuidado. Não inferir envio real, concorrência ou fallback de backend.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-035",
+      "original_checklist": "CH-35",
+      "priority": "P2",
+      "type": "INTERATIVO",
+      "title": "Scroll, clipping e retorno de T04/T06",
+      "related_auds": [
+        "AUD-015",
+        "AUD-022"
+      ],
+      "actor_fixture": "Ator autorizado comum e Pessoa Idosa",
+      "start_nodes": [
+        {
+          "id": "6223:6364",
+          "name": "[FLUXO FINAL] T04 — Calendário de Cuidados / week"
+        },
+        {
+          "id": "6223:9223",
+          "name": "[READONLY Pessoa Idosa] T04 — week"
+        },
+        {
+          "id": "6223:6562",
+          "name": "[FLUXO FINAL] T06 — Diário de Cuidados / normal"
+        },
+        {
+          "id": "6223:9516",
+          "name": "[READONLY Pessoa Idosa] T06 — normal"
+        }
+      ],
+      "criterion": "T04 comum/read-only e T06: rolar listas sem invadir header, LocalSubnav ou Navigation Bar; voltar e testar overlays após scroll.",
+      "planned_actions": [
+        "Rolar as listas até o fim e voltar, observando header, LocalSubnav e Navigation Bar.",
+        "Abrir detalhe e retornar após scroll.",
+        "Nas bases com escrita autorizada, abrir e fechar overlays após scroll."
+      ],
+      "expected_result": "Conteúdo fica no viewport; elementos fixos não são invadidos; retorno e overlays preservam contexto. Read-only não recebe ações de escrita.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-036",
+      "original_checklist": "CH-36",
+      "priority": "P2",
+      "type": "INTERATIVO",
+      "title": "Mensagens de acesso próprio em T12",
+      "related_auds": [
+        "AUD-018"
+      ],
+      "actor_fixture": "Ator elegível para administrar acesso; Pessoa Idosa somente leitura",
+      "start_nodes": [
+        {
+          "id": "6223:6704",
+          "name": "[FLUXO FINAL] T12 — Perfil da Pessoa Idosa / view"
+        },
+        {
+          "id": "6223:8825",
+          "name": "[PROTO STATE] T12 — Perfil da Pessoa Idosa / access_not_configured"
+        },
+        {
+          "id": "6223:8860",
+          "name": "[PROTO STATE] T12 — Perfil da Pessoa Idosa / invitation_sent"
+        },
+        {
+          "id": "6223:8895",
+          "name": "[PROTO STATE] T12 — Perfil da Pessoa Idosa / access_active"
+        }
+      ],
+      "criterion": "T12 acesso: mensagens completas e Editar perfil alcançável, inclusive em viewport pequeno.",
+      "planned_actions": [
+        "Pelo fluxo ou starting points de QA, abrir os estados de acesso próprio.",
+        "Rolar e ler as mensagens completas; alcançar Editar perfil quando permitido.",
+        "Repetir em viewport local menor, registrando tamanho e modo de escala do Presentation."
+      ],
+      "expected_result": "Nenhum texto/CTA cortado; acesso a edição existe somente para o ator autorizado. Reduzir a janela não comprova responsividade de uma aplicação implementada.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-037",
+      "original_checklist": "CH-37",
+      "priority": "P2",
+      "type": "INTERATIVO_COM_REFERENCIA_ESTATICA",
+      "title": "Leitura visual e padrões entre estados",
+      "related_auds": [
+        "AUD-016",
+        "AUD-019",
+        "AUD-020",
+        "AUD-021",
+        "AUD-023"
+      ],
+      "actor_fixture": "Atores dos cenários funcionais; comparação dos estados percorridos",
+      "start_nodes": [
+        {
+          "id": "6223:6338",
+          "name": "[FLUXO FINAL] T03 — Home / default"
+        },
+        {
+          "id": "6223:6630",
+          "name": "[FLUXO FINAL] T09 — Tarefas / default"
+        },
+        {
+          "id": "6223:6800",
+          "name": "[FLUXO FINAL] T16 — Preferências de Notificações / default"
+        }
+      ],
+      "criterion": "Targets apontados têm 48×48; tipografia estrutural tem pelo menos 14 px; status, categorias e margens mantêm os tokens entre estados irmãos.",
+      "planned_actions": [
+        "Observar Home, alvos, rótulos, cores, categorias, margens e texto nos estados realmente percorridos.",
+        "Comparar antes/depois de cada transição e registrar diferenças concretas.",
+        "Consultar separadamente as medidas estáticas anteriores de 48×48, 14 px e contraste, sem promovê-las a testes runtime."
+      ],
+      "expected_result": "Home usa a surface prevista, conteúdo legível e estados consistentes. Screenshot não certifica dimensões/contraste; valores estáticos têm proveniência própria, sem nova auditoria estrutural.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-038",
+      "original_checklist": "CH-38",
+      "priority": "P2",
+      "type": "INTERATIVO",
+      "title": "Feedback não encobre ações críticas",
+      "related_auds": [
+        "AUD-013",
+        "AUD-018"
+      ],
+      "actor_fixture": "Ator do evento e operação demonstrados",
+      "start_nodes": [
+        {
+          "id": "6223:6338",
+          "name": "[FLUXO FINAL] T03 — Home / default"
+        },
+        {
+          "id": "6223:6800",
+          "name": "[FLUXO FINAL] T16 — Preferências de Notificações / default"
+        }
+      ],
+      "criterion": "Inspecionar conteúdo sob feedback e confirmar que nenhuma ação crítica fica permanentemente encoberta.",
+      "planned_actions": [
+        "Disparar feedback e localizar o conteúdo e CTA subjacentes.",
+        "Aguardar o timeout previsto ou usar dismiss oferecido.",
+        "Acionar a próxima ação e conferir seleção/contexto."
+      ],
+      "expected_result": "Nenhuma ação crítica permanece permanentemente encoberta; o feedback desaparece sem perda indevida de estado.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": []
+    },
+    {
+      "id": "H07-039",
+      "original_checklist": "CH-39",
+      "priority": "P2",
+      "type": "INTERATIVO_COM_REFERENCIA_ESTATICA",
+      "title": "Regressões FI-001–FI-008 e viewports",
+      "related_auds": [
+        "AUD-005",
+        "AUD-015",
+        "AUD-022"
+      ],
+      "actor_fixture": "Ator elegível por fluxo; Pessoa Idosa para regressão de leitura",
+      "start_nodes": [
+        {
+          "id": "6223:6593",
+          "name": "[FLUXO FINAL] T08 — Medicamentos / list"
+        },
+        {
+          "id": "6223:6663",
+          "name": "[FLUXO FINAL] T10 — Consultas e Recomendações / default"
+        },
+        {
+          "id": "6223:6800",
+          "name": "[FLUXO FINAL] T16 — Preferências de Notificações / default"
+        },
+        {
+          "id": "6223:6738",
+          "name": "[FLUXO FINAL] T13 — Rede de Cuidado / default"
+        },
+        {
+          "id": "6223:9223",
+          "name": "[READONLY Pessoa Idosa] T04 — week"
+        },
+        {
+          "id": "6223:6562",
+          "name": "[FLUXO FINAL] T06 — Diário de Cuidados / normal"
+        }
+      ],
+      "criterion": "Casos FI-001–FI-008 reexecutados com evidência atual, incluindo T04/T06 viewport, T10 e Preferências.",
+      "planned_actions": [
+        "FI-001: abrir criação de T08 e voltar, sem legado.",
+        "FI-002–FI-004: testar CTAs de T10 Empty, Loading e cadastro; não abrir medicamento.",
+        "FI-005: salvar Preferências e continuar em T16. FI-006/007: abrir Perfil/Auditoria via Settings conforme permissão.",
+        "Reexecutar T04/T06 após scroll. FI-008: consultar o registro histórico de nomes E22/E24/E25/E23, separado dos testes interativos."
+      ],
+      "expected_result": "As regressões interativas são comprovadas pelo uso; FI-008 é metadado estático e não pode ser aprovado por clique. Não reabrir defeitos históricos sem nova evidência.",
+      "executed_at": null,
+      "executed_by": null,
+      "browser": null,
+      "viewport": null,
+      "executed_actions": [],
+      "observed_result": "NÃO EXECUTADO: o Presentation exibiu Site Unavailable / Unable to access this site antes de carregar a primeira tela. Nenhuma ação deste cenário foi executada.",
+      "evidence": null,
+      "blocking_evidence": "EV07-ENV-001",
+      "status": "NÃO VERIFICÁVEL",
+      "iterations": [
+        {
+          "regression": "FI-001",
+          "mode": "INTERATIVO",
+          "prior_result": "resolvido ou superado; não revalidado nesta rodada",
+          "iteration_id": "H07-039-V01",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "regression": "FI-002",
+          "mode": "INTERATIVO",
+          "prior_result": "resolvido ou superado; não revalidado nesta rodada",
+          "iteration_id": "H07-039-V02",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "regression": "FI-003",
+          "mode": "INTERATIVO",
+          "prior_result": "resolvido ou superado; não revalidado nesta rodada",
+          "iteration_id": "H07-039-V03",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "regression": "FI-004",
+          "mode": "INTERATIVO",
+          "prior_result": "resolvido ou superado; não revalidado nesta rodada",
+          "iteration_id": "H07-039-V04",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "regression": "FI-005",
+          "mode": "INTERATIVO",
+          "prior_result": "resolvido ou superado; não revalidado nesta rodada",
+          "iteration_id": "H07-039-V05",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "regression": "FI-006",
+          "mode": "INTERATIVO",
+          "prior_result": "resolvido ou superado; não revalidado nesta rodada",
+          "iteration_id": "H07-039-V06",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "regression": "FI-007",
+          "mode": "INTERATIVO",
+          "prior_result": "resolvido ou superado; não revalidado nesta rodada",
+          "iteration_id": "H07-039-V07",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        },
+        {
+          "regression": "FI-008",
+          "mode": "ESTATICO_HISTORICO",
+          "prior_result": "resolvido ou superado; não revalidado nesta rodada",
+          "iteration_id": "H07-039-V08",
+          "status": "NÃO VERIFICÁVEL",
+          "executed_actions": [],
+          "observed_result": null,
+          "evidence": null
+        }
+      ]
+    }
+  ],
+  "auds": [
+    {
+      "id": "AUD-001",
+      "severity": "P1",
+      "title": "T02 diverge do cadastro por convite e concede uma continuação autenticada indevida na simulação",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-001",
+        "H07-002",
+        "H07-003"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-002",
+      "severity": "P1",
+      "title": "Operações obrigatórias de plantão não estão representadas no Fluxo Final",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-016",
+        "H07-017",
+        "H07-018"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-003",
+      "severity": "P1",
+      "title": "T08 não demonstra posologia, horários nem registro de administração",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-019",
+        "H07-020"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-004",
+      "severity": "P1",
+      "title": "Cadastro da Pessoa Idosa existe como imagem, mas não como jornada",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-007",
+        "H07-008"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-005",
+      "severity": "P1",
+      "title": "Estados clonados mantêm a navegação desenhada e perdem suas reactions",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-005",
+        "H07-009",
+        "H07-010",
+        "H07-011",
+        "H07-013",
+        "H07-014",
+        "H07-015",
+        "H07-029",
+        "H07-031",
+        "H07-039"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-006",
+      "severity": "P1",
+      "title": "Corrigir um registro do Diário abre a correção de outra ocorrência",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-021"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-007",
+      "severity": "P1",
+      "title": "Concluir tarefas diferentes produz o resultado de uma tarefa fixa",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-023"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-008",
+      "severity": "P1",
+      "title": "Editar o contato médico abre os dados de outra pessoa",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-024"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-009",
+      "severity": "P1",
+      "title": "Eventos distintos de auditoria abrem o detalhe de um único evento",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-025"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-010",
+      "severity": "P1",
+      "title": "Gerenciar papéis apresenta seleção incompatível com o resultado salvo",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-018",
+        "H07-026"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-011",
+      "severity": "P1",
+      "title": "T16 salva uma preferência que não pode ser alterada no protótipo",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-027"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-012",
+      "severity": "P2",
+      "title": "Autenticação não demonstra credenciais inválidas, Pessoa Idosa nem acesso negado",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-001",
+        "H07-003",
+        "H07-004",
+        "H07-005",
+        "H07-006"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-013",
+      "severity": "P2",
+      "title": "Notificações aprovadas não possuem jornada demonstrável completa",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-033",
+        "H07-034",
+        "H07-038"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-014",
+      "severity": "P2",
+      "title": "O vínculo Ver correção não abre a versão vinculada",
+      "prior_status": "aplicado_configuracao_verificada_runtime_pendente",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Configuração conferida; runtime pendente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-005",
+        "H07-022"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-015",
+      "severity": "P2",
+      "title": "Correção de viewport não foi propagada à Agenda read-only",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-031",
+        "H07-035",
+        "H07-039"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-016",
+      "severity": "P2",
+      "title": "Home default tem uma foto opaca como fundo da região de conteúdo",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-037"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-017",
+      "severity": "P2",
+      "title": "Sheet de T10 ganha overflow horizontal nos estados de erro e anexo",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-030",
+        "H07-032"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-018",
+      "severity": "P2",
+      "title": "Estados de acesso próprio em T12 cortam mensagens e o botão inferior",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-036",
+        "H07-038"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-019",
+      "severity": "P2",
+      "title": "Oito hotspots de clique ficam abaixo de 48 × 48 px",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-037"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-020",
+      "severity": "P2",
+      "title": "108 textos estruturais permanecem abaixo do piso de 14 px",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-037"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-021",
+      "severity": "P2",
+      "title": "Contraste de textos e limites de campos não atende aos contratos medidos",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-037"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-022",
+      "severity": "P2",
+      "title": "Onze LocalSubnav de Saúde são frames independentes apesar do master obrigatório",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-012",
+        "H07-035",
+        "H07-039"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-023",
+      "severity": "P2",
+      "title": "Estados irmãos alteram cores semânticas e grid sem justificativa funcional",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-037"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-024",
+      "severity": "P2",
+      "title": "T10 não identifica autoria e data/hora dos registros apresentados",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-028",
+        "H07-032"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-025",
+      "severity": "P2",
+      "title": "Alguns sucessos exibem confirmação sem demonstrar a inclusão anunciada",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-028",
+        "H07-029"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-026",
+      "severity": "P2",
+      "title": "Erro de nome obrigatório em T08 contradiz o valor mostrado",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-029",
+        "H07-030"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-027",
+      "severity": "P3",
+      "title": "Texto de acesso negado trata auditoria obrigatória como possibilidade",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-006"
+      ],
+      "new_defect_confirmed": false
+    },
+    {
+      "id": "AUD-028",
+      "severity": "P2",
+      "title": "Agrupamento temporal do Diário contradiz as próprias datas",
+      "prior_status": "corrigido_propriedades_dados_composicao",
+      "prior_evidence_commit": "925b19e20b1fa851107cf1b12c0442287fc6350e",
+      "prior_verification": "Propriedades/dados/composição conferidos anteriormente",
+      "lote_07_interactive_status": "NÃO VERIFICÁVEL",
+      "lote_07_status": "Correção aplicada anteriormente; homologação interativa pendente",
+      "source": "../STATUS_28_ACHADOS.json",
+      "scenario_ids": [
+        "H07-021",
+        "H07-028"
+      ],
+      "new_defect_confirmed": false
+    }
+  ],
+  "gates": [
+    {
+      "id": "CH-40",
+      "criterion": "Nenhum P0/P1 funcional pendente; P2 residual com decisão humana registrada.",
+      "status": "NÃO SATISFEITO",
+      "reason": "Cenários críticos de interação pendentes; ausência de reprovação observada não é aprovação."
+    },
+    {
+      "id": "CH-41",
+      "criterion": "Limitações de Figma e testes dependentes de backend/aplicação permanecem claramente separados de defeitos do protótipo.",
+      "status": "DOCUMENTADO",
+      "reason": "Limites de ferramenta, evidência estática anterior e dependências de aplicação estão separados; não é teste de produto."
+    },
+    {
+      "id": "CH-42",
+      "criterion": "Revisão humana aprova homologação; somente depois decidir eventual merge/promoção canônica.",
+      "status": "PENDENTE",
+      "reason": "Revisão humana não realizada; PR deve permanecer Draft e sem merge."
+    }
+  ]
+}

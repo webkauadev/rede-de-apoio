@@ -1,0 +1,23 @@
+{
+  "pr": 127,
+  "branch": "docs/figma-plano-correcao-20261015",
+  "commits": [
+    {
+      "lot": "00.1 e correções iniciais 007/008",
+      "sha": "5876f582f50d7de7ce41580509daeddc6ca66ed3"
+    },
+    {
+      "lot": "01–02",
+      "sha": "2a09748efaed03bcc5912168eec559085e5290fa"
+    },
+    {
+      "lot": "03–04",
+      "sha": "0bf5249ce345ce0b0ad15e3046185c70414f4809"
+    },
+    {
+      "lot": "05–06",
+      "sha": "688a834c6982b8c783c89caadc1d44b78683dee8"
+    }
+  ],
+  "consolidation": "O commit que adiciona este arquivo contém relatório, registry, checklist e verificações finais; permanece em Draft."
+}

@@ -1,0 +1,384 @@
+{
+  "metadata": {
+    "execution_utc": "2026-10-16T03:08:24+00:00",
+    "execution_local": "2026-10-15T23:08:24-04:00",
+    "reference_main_sha": "4712047e4550e4504b213e638aaf8a17310f4935",
+    "pr": 127,
+    "branch": "docs/figma-plano-correcao-20261015",
+    "file_key": "ljFSoPfNcvDgZtdR2sHmti",
+    "page_id": "6223:6270",
+    "status": "correcoes_aplicadas_homologacao_runtime_pendente",
+    "original_write_calls": 0,
+    "baseline_page_write_calls": 0
+  },
+  "findings": [
+    {
+      "id": "AUD-001",
+      "severity": "P1",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "T02 diverge do cadastro por convite e concede uma continuação autenticada indevida na simulação",
+      "change": "Convite individual explícito; cadastro cria identidade sem sessão e retorna ao login. Credenciais inválidas não concedem Home.",
+      "related_rules": "RF01/US-001; DEC-AUTH-001, regra 5; comentário #6092864135 da Issue #37, homologado em 09/10 e incorporado pelo PR #120.",
+      "representative_nodes": [
+        "6223:6961",
+        "8009:11294"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-002",
+      "severity": "P1",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "Operações obrigatórias de plantão não estão representadas no Fluxo Final",
+      "change": "Menu contextual e Sheets para criar, alterar, cancelar, atribuir e solicitar troca; resposta de Marina em cenário próprio, aceitação e recusa distintas, N01 e retorno.",
+      "related_rules": "RF06, RF08, RF09; US-008, US-011, US-012 e US-013; critérios individuais aprovados.",
+      "representative_nodes": [
+        "8016:13806",
+        "8016:15427"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-003",
+      "severity": "P1",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "T08 não demonstra posologia, horários nem registro de administração",
+      "change": "Detalhe por medicamento, posologia, agenda e responsável explícito; administração vinculada à ocorrência e fato em T05. Novo Item A mantém identidade própria.",
+      "related_rules": "RF15/US-018; RF16/US-019; RF13; E15/E16 no TRACEABILITY_MATRIX.",
+      "representative_nodes": [
+        "8017:14336",
+        "8017:14668",
+        "8025:16674"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-004",
+      "severity": "P1",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "Cadastro da Pessoa Idosa existe como imagem, mas não como jornada",
+      "change": "Entrada de QA por autenticação de identidade elegível; validação, perfil pendente e constituição conjunta com Principal e Profissional. Sem acesso antecipado ao cuidado.",
+      "related_rules": "RF03/US-003; adendo de bootstrap B3 em BUSINESS_RULES e decisões V1. Não implica resolver bloqueios técnicos da aplicação nesta auditoria.",
+      "representative_nodes": [
+        "6223:8040",
+        "8018:15769",
+        "8018:15830"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-005",
+      "severity": "P1",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "Estados clonados mantêm a navegação desenhada e perdem suas reactions",
+      "change": "Headers, Back, quatro destinos primários, subnavegação e saídas dos estados religados; resultados permitem continuar. Estados condicionais têm entradas de QA.",
+      "related_rules": "STATE = PAGE BASE + DELTA MÍNIMO; AI_DESIGN_CONTRACT; US-025/031/032/036 e navegação global aprovada.",
+      "representative_nodes": [
+        "6223:6270"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-006",
+      "severity": "P1",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "Corrigir um registro do Diário abre a correção de outra ocorrência",
+      "change": "Oito contextos de correção preservam tipo, data, horário, conteúdo e autor originais; nova versão tem autoria e horário próprios e vínculo consultável.",
+      "related_rules": "RN-005/RN-006, P03, RNF02/US-034; vínculo inequívoco ao original.",
+      "representative_nodes": [
+        "8012:11874",
+        "8012:11970"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-007",
+      "severity": "P1",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "Concluir tarefas diferentes produz o resultado de uma tarefa fixa",
+      "change": "Doze estados de tarefas cobrem combinações de conclusão das listas com e sem tarefa recém-criada. Somente a tarefa selecionada muda; nenhuma reabertura foi criada.",
+      "related_rules": "RF21/US-024/US-025; V1: uma conclusão por tarefa, sem reabertura.",
+      "representative_nodes": [
+        "6223:6630",
+        "8005:9666",
+        "8005:10762"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-008",
+      "severity": "P1",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "Editar o contato médico abre os dados de outra pessoa",
+      "change": "Cinco cenários de edição por contato e lista; formulário, telefone alterado e resultado correspondem a Maria Helena, Carlos ou Hospital.",
+      "related_rules": "RF22/US-026; escopo contextual de dados autorizado.",
+      "representative_nodes": [
+        "8006:33693",
+        "8006:33819"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-009",
+      "severity": "P1",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "Eventos distintos de auditoria abrem o detalhe de um único evento",
+      "change": "Registro criado, tarefa concluída e acesso bloqueado abrem detalhes próprios de ator, operação, horário, recurso e resultado.",
+      "related_rules": "RF29/US-033; RNF03; RN-008; critérios de evento auditável.",
+      "representative_nodes": [
+        "6223:8715",
+        "8011:11419",
+        "8011:11492"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-010",
+      "severity": "P1",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "Gerenciar papéis apresenta seleção incompatível com o resultado salvo",
+      "change": "Quatro seleções de papéis e quatro resultados correspondentes; checkbox alternável, Principal preservado e saída de cancelamento.",
+      "related_rules": "RF05/US-007; RN-001/RN-002 e P06; composição positiva de permissões sem concessão implícita.",
+      "representative_nodes": [
+        "6223:8289",
+        "8010:12352"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-011",
+      "severity": "P1",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "T16 salva uma preferência que não pode ser alterada no protótipo",
+      "change": "Quatro combinações opcionais para Apoio, alvos de 48 px e feedback de salvamento; contexto Principal mantém N03/N04 obrigatórias.",
+      "related_rules": "RF27/US-031; P04; regras N01–N04.",
+      "representative_nodes": [
+        "6223:6800",
+        "8010:12439",
+        "8010:12788"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-012",
+      "severity": "P2",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "Autenticação não demonstra credenciais inválidas, Pessoa Idosa nem acesso negado",
+      "change": "Credenciais válidas/inválidas, validação de cadastro, autenticação compartilhada da Pessoa Idosa e negação com retorno seguro; cenários de QA fora dos menus de produto.",
+      "related_rules": "RF02/US-002, RNF01/US-035, RF30/US-036.",
+      "representative_nodes": [
+        "8009:11349",
+        "8009:11459"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-013",
+      "severity": "P2",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "Notificações aprovadas não possuem jornada demonstrável completa",
+      "change": "N01–N04 com entrada de evento, aviso transitório, timeout e destinos T04/T05/T07; N04 não afirma omissão; nenhuma central ou sino foi criado.",
+      "related_rules": "P04/#76; RF10/17/25/26; US-014/020/029/030; NOTIFICATIONS_RULES.",
+      "representative_nodes": [
+        "8022:17499",
+        "6223:8744",
+        "6223:8771",
+        "6223:8798"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-014",
+      "severity": "P2",
+      "status": "aplicado_configuracao_verificada_runtime_pendente",
+      "title": "O vínculo Ver correção não abre a versão vinculada",
+      "change": "Ver correção abre a versão vinculada; detalhe comum e somente leitura separados, com retorno e sem escrita no grafo da Pessoa Idosa.",
+      "related_rules": "RN-006, RNF02/US-034, RF12/US-016; identificação da correção vinculada.",
+      "representative_nodes": [
+        "8012:14839",
+        "8012:14929"
+      ],
+      "presentation": "nao_verificado"
+    },
+    {
+      "id": "AUD-015",
+      "severity": "P2",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "Correção de viewport não foi propagada à Agenda read-only",
+      "change": "Viewport da semana read-only com clipping, rolagem vertical e conteúdo abaixo do header na ordem de desenho.",
+      "related_rules": "AGENTS §4.3; ENTITY_ENTRY_BOTTOM_SHEET_PATTERN; STATE = PAGE BASE + DELTA MÍNIMO.",
+      "representative_nodes": [
+        "6223:9225"
+      ],
+      "presentation": "nao_executado"
+    },
+    {
+      "id": "AUD-016",
+      "severity": "P2",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "Home default tem uma foto opaca como fundo da região de conteúdo",
+      "change": "Imagem opaca removida da região de conteúdo da Home; surface semântica aplicada, avatar preservado.",
+      "related_rules": "DESIGN_TOKENS; COLOR_SURFACE_STRATEGY; APP_HEADER_VISUAL_GRAMMAR; regra de estados.",
+      "representative_nodes": [
+        "6223:6340"
+      ],
+      "presentation": "nao_executado"
+    },
+    {
+      "id": "AUD-017",
+      "severity": "P2",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "Sheet de T10 ganha overflow horizontal nos estados de erro e anexo",
+      "change": "Padding horizontal dos formulários de erro/anexo em T10 zerado internamente; campos com Fill dentro dos 326 px disponíveis.",
+      "related_rules": "ENTITY_ENTRY_BOTTOM_SHEET_PATTERN; STATE = PAGE BASE + DELTA MÍNIMO; grid 390/16/358.",
+      "representative_nodes": [
+        "6223:9074",
+        "6223:9092"
+      ],
+      "presentation": "nao_executado"
+    },
+    {
+      "id": "AUD-018",
+      "severity": "P2",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "Estados de acesso próprio em T12 cortam mensagens e o botão inferior",
+      "change": "Mensagens de acesso com altura dinâmica, card em Hug e viewport rolável; CTA permanece alcançável.",
+      "related_rules": "RF30/US-036; AI_DESIGN_CONTRACT; Auto Layout e prevenção de clipping.",
+      "representative_nodes": [
+        "6223:8849",
+        "6223:8884",
+        "6223:8919"
+      ],
+      "presentation": "nao_executado"
+    },
+    {
+      "id": "AUD-019",
+      "severity": "P2",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "Oito hotspots de clique ficam abaixo de 48 × 48 px",
+      "change": "Links de autenticação com altura 48, cadastro em T08 no container 358×48 e ações de tarefa/contato com altura 48; switches usam o wrapper 48×48.",
+      "related_rules": "AGENTS, DESIGN_TOKENS e Foundation Touch Target 48; referência Material de 48 dp, usada como contrato de 48 px neste Figma.",
+      "representative_nodes": [
+        "6223:6297",
+        "6223:6598"
+      ],
+      "presentation": "nao_executado"
+    },
+    {
+      "id": "AUD-020",
+      "severity": "P2",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "108 textos estruturais permanecem abaixo do piso de 14 px",
+      "change": "Textos visíveis uniformes menores que 14 px normalizados; checagem final não encontrou ocorrências abaixo do limite no recorte canônico experimental.",
+      "related_rules": "DESIGN_TOKENS v4; AI_DESIGN_CONTRACT §4; Foundation Type / Badge 14 px.",
+      "representative_nodes": [
+        "6223:6270"
+      ],
+      "presentation": "nao_executado"
+    },
+    {
+      "id": "AUD-021",
+      "severity": "P2",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "Contraste de textos e limites de campos não atende aos contratos medidos",
+      "change": "Texto secundário e contornos essenciais vinculados a tokens locais. Medição com resolução de variáveis e camadas de fundo; 4.656 textos avaliados, 346 excluídos da medição.",
+      "related_rules": "DESIGN_TOKENS; WCAG 2.2 1.4.3/1.4.11; Material accessibility. Cores ligadas a variáveis foram resolvidas, sem usar o fallback Paint.color como resultado efetivo.",
+      "representative_nodes": [
+        "6223:6270"
+      ],
+      "presentation": "nao_executado"
+    },
+    {
+      "id": "AUD-022",
+      "severity": "P2",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "Onze LocalSubnav de Saúde são frames independentes apesar do master obrigatório",
+      "change": "Cópias manuais de LocalSubnav substituídas por instâncias da Foundation; viewport horizontal local conserva acesso a Compromissos sem editar o master.",
+      "related_rules": "LOCAL_SUBNAVIGATION_PATTERN §§14–16; COMPONENT_ARCHITECTURE; COMPONENT_MAP.",
+      "representative_nodes": [
+        "8029:17003",
+        "8029:17004"
+      ],
+      "presentation": "nao_executado"
+    },
+    {
+      "id": "AUD-023",
+      "severity": "P2",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "Estados irmãos alteram cores semânticas e grid sem justificativa funcional",
+      "change": "Categorias/status e margens de tarefas normalizados. Valores resolvidos também aplicados ao paint para renderizar cores iguais com a mesma variável.",
+      "related_rules": "COMPONENT_COLOR_GRAMMAR; DESIGN_TOKENS v4; STATE = PAGE BASE + DELTA MÍNIMO.",
+      "representative_nodes": [
+        "8005:9666"
+      ],
+      "presentation": "nao_executado"
+    },
+    {
+      "id": "AUD-024",
+      "severity": "P2",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "T10 não identifica autoria e data/hora dos registros apresentados",
+      "change": "Cards T10 comuns/read-only e novos resultados mostram autor e data/hora de registro; a descrição da nova consulta distingue horário clínico e horário de registro.",
+      "related_rules": "RF13 transversal; RF19/US-022; critérios de autoria/data e histórico.",
+      "representative_nodes": [
+        "6223:6663",
+        "6223:9627",
+        "6223:7849"
+      ],
+      "presentation": "nao_executado"
+    },
+    {
+      "id": "AUD-025",
+      "severity": "P2",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "Alguns sucessos exibem confirmação sem demonstrar a inclusão anunciada",
+      "change": "Resultados mostram a nova hidratação às 13:01, Item A, consulta de acompanhamento e Dr. Renato Costa, mantendo itens anteriores.",
+      "related_rules": "US-015, US-005, US-017 e US-022: entidade/registro permanece no contexto autorizado; integridade de estados.",
+      "representative_nodes": [
+        "8021:15992",
+        "8021:16049",
+        "8021:16090",
+        "8021:16249"
+      ],
+      "presentation": "nao_executado"
+    },
+    {
+      "id": "AUD-026",
+      "severity": "P2",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "Erro de nome obrigatório em T08 contradiz o valor mostrado",
+      "change": "Erro de nome obrigatório mostra placeholder de campo vazio; preenchimento válido tem caminho próprio e envio inválido fica bloqueado.",
+      "related_rules": "Regra de Validation Error como delta mínimo e mensagens compreensíveis; RF14/US-017.",
+      "representative_nodes": [
+        "6223:8992",
+        "8021:16015"
+      ],
+      "presentation": "nao_executado"
+    },
+    {
+      "id": "AUD-027",
+      "severity": "P3",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "Texto de acesso negado trata auditoria obrigatória como possibilidade",
+      "change": "A tentativa de acesso é registrada na trilha de auditoria substitui o texto condicional, sem alegar teste real de backend.",
+      "related_rules": "RNF01/RNF03; RN-008; US-035; BUSINESS_RULES V1.",
+      "representative_nodes": [
+        "6223:8743"
+      ],
+      "presentation": "nao_executado"
+    },
+    {
+      "id": "AUD-028",
+      "severity": "P2",
+      "status": "corrigido_propriedades_dados_composicao",
+      "title": "Agrupamento temporal do Diário contradiz as próprias datas",
+      "change": "Ontem corresponde a 7 de setembro quando Hoje é 8 de setembro, inclusive em estados irmãos e read-only.",
+      "related_rules": "RF11/RF12, RF13 transversal; US-015/016/036; integridade das fixtures temporais.",
+      "representative_nodes": [
+        "6223:6576",
+        "6223:9529"
+      ],
+      "presentation": "nao_executado"
+    }
+  ]
+}
