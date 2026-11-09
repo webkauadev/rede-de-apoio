@@ -26,3 +26,10 @@
 ## Restrições de adoção
 
 A conferência visual por captura não é teste em projetor. Cabe revisão cruzada das multiplicidades com o [contrato CL-03](../../uml/especificacao-para-figma/dominio-C-registros/CL-03.md), inclusive clareza das conexões pela borda superior. O AUD-M2-008 permanece **PENDENTE DE APROVAÇÃO/PROMOÇÃO** e de verificações geométricas residuais nos demais modelos. Não houve edição do frame original, da SQL ou do Workbench.
+
+
+## Adendo de revisão focal — 09/11/2026
+
+A cópia `6466:3327` foi inspecionada diretamente em Figma, por texto de camadas e por screenshot. Foram identificados 16 nós de multiplicidade nomeados R01/R02/R03/R04/R05/R07/R08/R09; os valores correspondem aos oito contratos do [CL-03](../../uml/especificacao-para-figma/dominio-C-registros/CL-03.md): **1–0..***, **1–0..***, **0..1–0..***, **0..1–0..1**, **1–0..***, e três vezes **0..1–0..*** para as origens alternativas de Anexo. A anotação XOR global está visível. Nenhum erro de valor foi identificado nessa leitura focal, **sem alegar auditoria completa da geometria das oito linhas**.
+
+Fonte adicional: [relatório da execução M3](EXECUCAO-LAB-FIGMA-2026-11-09.md). **Status:** conferência textual/visual feita, mas promoção para CL-03 canônico e teste em projetor ainda pendentes. Frame original `6272:3484` não foi alterado.
