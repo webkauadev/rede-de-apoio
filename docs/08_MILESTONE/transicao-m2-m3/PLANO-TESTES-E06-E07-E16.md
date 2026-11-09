@@ -38,3 +38,10 @@
 - [ ] Promoção versionada para página canônica somente após revisão; preservar o histórico e Node IDs relevantes.
 
 **Decisão de proteção:** nenhum estado foi criado ou alterado no Fluxo Final pelo presente documento. Não homologar AUD-M2-013 antes dos roteiros serem efetivamente executados.
+
+
+## Execução parcial do plano — 09/11/2026
+
+Na [página Figma de desenvolvimento](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6480-3326), **PT-01 a PT-10 tiveram PASS na inspeção estática de rotas e textos**: o verificador leu `ON_CLICK`, `destinationId` e conteúdo dos frames finais. O relatório detalhado informa as 15 raízes e respectivos Node IDs: [EXECUCAO-LAB-FIGMA-2026-11-09.md](EXECUCAO-LAB-FIGMA-2026-11-09.md).
+
+**Importante:** o `[ ]` acima para teste de clique/captura individual permanece em aberto. Não foi realizado clique manual em modo de apresentação, revisão do professor nem validação em backend. Nenhum passo de execução real sobre autorização ou notificação deve ser inferido do grafo demonstrativo.
