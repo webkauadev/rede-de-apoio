@@ -76,3 +76,10 @@ Os relatórios adicionais encerram **no escopo específico** AUD-M2-003/004 e AU
 ### Nova evidência focal no Figma
 
 A [cópia geométrica CL-03](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6466-3327) é um rascunho isolado e não altera a apresentação M2. A análise da árvore de reações [Fluxo Final](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=5926-1014) confirmou ausência de E06/E07/E16 como interações navegáveis nos estados canônicos auditados. Essas constatações atualizam os bloqueios sem simularem a aprovação dos professores.
+
+
+## Execução de laboratório no Figma — 09/11/2026
+
+**Atualização técnica:** foi criada [página isolada de validação E06/E07/E16](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6480-3326), com 15 estados demonstrativos, 27 interações `ON_CLICK` e dez verificações estruturais de caminhos/textos (**10/10 PASS na inspeção automatizada**). O histórico de testes está em [EXECUCAO-LAB-FIGMA-2026-11-09.md](EXECUCAO-LAB-FIGMA-2026-11-09.md).
+
+**NÃO significa fechamento do AUD-M2-013:** falta teste manual no modo apresentação, revisão cruzada e eventual promoção; `Fluxo Final` original permanece intacto. A inspeção focal da cópia CL-03 também foi documentada; AUD-M2-008 mantém testes de projeção e aprovação de adoção pendentes.
