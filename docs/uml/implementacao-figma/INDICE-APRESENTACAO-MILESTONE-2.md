@@ -105,3 +105,10 @@ Fontes em `entrega/sql-eer/` na branch `main` após o [PR #132](https://github.c
 - **Os 19 quadros da apresentação permanecem nos IDs e posições oficiais**, e os cinco SVGs EER nativos estão presentes.
 - Referências: [parecer de fechamento M2](../auditoria-final/FECHAMENTO-TECNICO-M2-2026-11-09.md) e [auditoria de navegação M2](../auditoria-final/TESTES-NAVEGACAO-M2-2026-11-09.md).
 - **Ainda não há homologação acadêmica comprovada;** exigir revisão cruzada e teste de projetor antes de afirmar que a entrega foi aprovada.
+
+
+## Aceite de encerramento informado em 09/11/2026
+
+O responsável pela entrega confirmou que **a apresentação da Milestone 2 já ocorreu com sucesso**, e solicitou o fechamento dos testes finais. Foram marcados como **CONCLUÍDOS/ACEITOS POR CONFIRMAÇÃO DA EQUIPE** os gates remanescentes de navegação manual e legibilidade na apresentação. A inspeção estrutural permanece **10/10 PASS**, independentemente do relato. A preparação da M3 está **liberada internamente**, sem alegação de nota ou homologação formal assinada pelo professor.
+
+Documentação de ratificação: [ACEITE-OPERACIONAL-M2-2026-11-09.md](../auditoria-final/ACEITE-OPERACIONAL-M2-2026-11-09.md). Os avisos de pendência nas seções cronologicamente anteriores permanecem como **histórico pré-aceite**.
