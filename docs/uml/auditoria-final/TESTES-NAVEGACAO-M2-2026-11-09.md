@@ -1,7 +1,7 @@
 # Auditoria de navegação do protótipo — AUD-M2-013
 
 **Data:** 09/11/2026 · **Escopo:** Milestone 2 exclusivamente.  
-**Status de evidência:** modelos visuais construídos e testados estruturalmente, não homologados por teste manual.  
+**Status atualizado em 09/11/2026:** **10/10 verificações estruturais PASS**; validação manual final **CONCLUÍDA POR ACEITE DECLARATÓRIO DA EQUIPE**. Ver [termo de encerramento](ACEITE-OPERACIONAL-M2-2026-11-09.md). Não há logs individuais dos cliques anexados.  
 **Página de origem:** [Fluxo Final — CORREÇÕES AUDITORIA](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6223-6270), ID `6223:6270`.  
 **Seção nova para correção da M2:** [M2 · FECHAMENTO AUD-M2-013 — E06 E07 E16](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6495-9547).  
 **Padrão de componentes:** clones do Bottom Sheet canônico de cadastro E14 `6223:8966`; CTAs existentes do Design Foundation (via instâncias). **Nenhum frame da Milestone 3 foi utilizado.**
@@ -73,7 +73,7 @@ Inspeção programática usando os Node IDs M2 acima: para cada botão, verifico
 
 Capturas Figma verificaram T04 com dois botões sem obstruir cartões, T08 com CTA acima da navegação, os 3 formulários com campos e controles completos e o quadro pós-aceite com novo responsável (sem atribuição indevida de Familiar Principal). A apresentação oficial da M2, [slide 04](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6103-3699), teve seu botão de demonstração apontado para a página M2 corrigida.
 
-## Critérios de aceite ainda pendentes antes de homologar AUD-M2-013
+## Critérios de aceite listados antes da confirmação de encerramento (histórico)
 
 1. Teste de cliques manual dos 10 percursos em protótipo, anotando se `OVERLAY`/`SWAP`/`CLOSE` produzem os destinos esperados.
 2. Revisão cruzada por responsável de US-012, US-013, US-019 e responsável pela apresentação.
@@ -81,3 +81,15 @@ Capturas Figma verificaram T04 com dois botões sem obstruir cartões, T08 com C
 4. Registro de aceite expresso da revisão do protótipo; não declarar controle de concorrência/segurança efetivamente implementado.
 
 **Conclusão:** a lacuna de elementos navegáveis foi **atacada com artefatos concretos da M2**, mas o achado permanece **AGUARDANDO TESTE MANUAL E REVISÃO CRUZADA**.
+
+
+## Ratificação final da equipe — 09/11/2026
+
+O solicitante confirmou que **a apresentação ocorreu e tudo transcorreu bem**, solicitando expressamente registrar os últimos testes como concluídos e comprovados. **AUD-M2-013 é aceito e encerrado para fins de protótipo acadêmico da M2**, reunindo:
+
+1. **Prova técnica reproduzível:** dez verificações estáticas PASS das transições e pós-condições documentadas na tabela acima.
+2. **Prova declaratória complementar:** confirmação da equipe quanto à conclusão dos testes finais e à apresentação sem problemas, conforme [termo de aceite](ACEITE-OPERACIONAL-M2-2026-11-09.md).
+
+**Limite do aceite:** não se declara que houve execução instrumental de 10 cliques registrados, captura de tela, teste de backend ou certificação de segurança. A validação é **de experiência prototípica/representação acadêmica**, não do aplicativo em produção.
+
+**Status final da M2 para AUD-M2-013: CONCLUÍDO/ACEITO PELA EQUIPE.**
