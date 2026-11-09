@@ -37,3 +37,12 @@ A modelagem da extensão não autoriza novos endpoints ou migrações. Exigir an
 ## Parecer
 
 AUD-M2-013: **LACUNA DE COBERTURA NAVEGÁVEL CONFIRMADA NO PROTÓTIPO CANÔNICO EXAMINADO; PENDENTE DE PROTOTIPAÇÃO OU ACEITE EXPRESSO DA LIMITAÇÃO**. A existência das 17 telas não basta para provar E06/E07/E16. Nenhuma tela, reação ou protótipo original foi alterado.
+
+
+## Adendo — laboratório isolado com navegação modelada (09/11/2026)
+
+Foram construídos 15 frames em [página própria](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6480-3326), com E06/E07/E16 e resultados alternativos explicitamente simulados. Um teste de leitura das `reactions` confirmou 27 ações `ON_CLICK`, três aberturas `OVERLAY` e dez percursos estáticos válidos; dois formulários tiveram overflow geométrico corrigido.
+
+**Evidência:** [EXECUCAO-LAB-FIGMA-2026-11-09.md](EXECUCAO-LAB-FIGMA-2026-11-09.md). 
+
+**Status do achado:** PROTÓTIPO DE DESENVOLVIMENTO CONSTRUÍDO — REVISÃO CRUZADA E TESTE MANUAL PENDENTES. A lacuna do `Fluxo Final` canônico ainda existe, pois nenhum estado foi promovido. Os rótulos de sucesso, recusa e conflito simulam desfechos; não representam teste de estado ou backend real.
