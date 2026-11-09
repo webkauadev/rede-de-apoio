@@ -94,3 +94,14 @@ Os contratos CL-01, CL-03 e SQ-02, assim como multiplicidades de CL-02/DB-C2, me
 | EER-D | 31 | [`6288:3484`](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6288-3484) | `diagrama_suporte_tecnico.svg` |
 
 Fontes em `entrega/sql-eer/` na branch `main` após o [PR #132](https://github.com/webkauadev/rede-de-apoio/pull/132). Conferência estrutural no Figma: cinco SVGs vetoriais novos, zero alertas temporários, versões antigas removidas, frames e sequência 13–31 preservados. Ver [status detalhado de correções](../auditoria-final/STATUS-CORRECOES-M2.md). Os SVGs panorâmicos exigem zoom para leitura integral de campos e não substituem consulta ao SQL V1.
+
+
+## Atualização de fechamento da M2 — 09/11/2026
+
+- O quadro **CL-03 — `6272:3484` (slide 24)** recebeu revisão geométrica das 8 associações e 16 multiplicidades; preservou 11 classes, regra XOR de anexos e a versão anterior arquivada em `6488:3484`.
+- No **slide 04 — `6103:3699`**, o link **ABRIR PROTÓTIPO CORRIGIDO NO FIGMA** abre a página [Fluxo Final — CORREÇÕES AUDITORIA](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6223-6270).
+- Essa página possui uma nova seção identificada expressamente como **M2 · FECHAMENTO AUD-M2-013 — E06 E07 E16**, `6495:9547`, com protótipos de solicitação/resposta de troca e registro de administração construídos por replicação de componentes anteriores da própria M2.
+- Foi realizada inspeção de 10 rotas de navegação com **10/10 PASS estrutural**; sem alegação de teste manual clicado ou validação de aplicação.
+- **Os 19 quadros da apresentação permanecem nos IDs e posições oficiais**, e os cinco SVGs EER nativos estão presentes.
+- Referências: [parecer de fechamento M2](../auditoria-final/FECHAMENTO-TECNICO-M2-2026-11-09.md) e [auditoria de navegação M2](../auditoria-final/TESTES-NAVEGACAO-M2-2026-11-09.md).
+- **Ainda não há homologação acadêmica comprovada;** exigir revisão cruzada e teste de projetor antes de afirmar que a entrega foi aprovada.
