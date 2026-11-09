@@ -80,3 +80,15 @@ A restrição `{exatamente um pai entre RegistroCuidado, Consulta ou Administrac
 6. Registrar no GitLab institucional responsabilidades, decisões, métricas e evidências de participação (conexão não disponível nesta sessão).
 
 **Parecer:** há entrega técnica nova e testes de grafo reproduzíveis, suficientes para solicitar revisão de M3, mas **não** para fechar AUD-008, AUD-013 ou declarar a Milestone 3 homologada.
+
+
+## 5. Ajuste de ancoragem dos três Bottom Sheets (09/11/2026)
+
+A inspeção da propriedade `overlayPositionType` revelou `CENTER` como padrão não editável dos novos frames. Embora a transição de entrada fosse `MOVE_IN BOTTOM`, isso **não bastava** para posicionar o formulário na borda inferior. O problema foi corrigido sem tocar na página canônica:
+
+1. Os três destinos `E06-B`, `E16-B` e `E16-E` passaram a ser frames de overlay de **390×844 px**.
+2. Cada frame ganhou um **scrim semitransparente** full-screen e uma superfície branca independente `Bottom Sheet / Surface` com todos os campos/botões preservados e alinhamento inferior.
+3. O layout foi verificado geometricamente por Node IDs: as superfícies terminam em **y=844**. E06-B: `6484:3326` (y=203, h=641); E16-B: `6484:3327` (y=176, h=668); E16-E: `6484:3328` (y=281, h=563).
+4. Capturas após ajuste confirmaram E06-B e E16-B legíveis sem botões cortados. Os frames originais `Fluxo Final` e `Apresentação M2` não sofreram mudança.
+
+**Nota de teste:** o resultado 10/10 de navegação estrutural foi obtido **antes do reparenting visual**; uma tentativa de reexecutar toda a verificação após o ajuste falhou por erro interno da ferramenta Figma, embora a leitura de metadados confirme os novos filhos e os botões antigos preservados. Assim, **não declarar o pós-ajuste como 10/10 retestado** até conseguir nova inspeção das `reactions` ou testes manuais de clique. Isto não altera a natureza simulada ou o gate de revisão do laboratório.
