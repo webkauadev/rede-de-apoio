@@ -83,3 +83,9 @@ A [cópia geométrica CL-03](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp
 **Atualização técnica:** foi criada [página isolada de validação E06/E07/E16](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6480-3326), com 15 estados demonstrativos, 27 interações `ON_CLICK` e dez verificações estruturais de caminhos/textos (**10/10 PASS na inspeção automatizada**). O histórico de testes está em [EXECUCAO-LAB-FIGMA-2026-11-09.md](EXECUCAO-LAB-FIGMA-2026-11-09.md).
 
 **NÃO significa fechamento do AUD-M2-013:** falta teste manual no modo apresentação, revisão cruzada e eventual promoção; `Fluxo Final` original permanece intacto. A inspeção focal da cópia CL-03 também foi documentada; AUD-M2-008 mantém testes de projeção e aprovação de adoção pendentes.
+
+### Conferência literal das 36 US (09/11)
+
+A auditoria [GATE-36-US-2026-11-09.md](GATE-36-US-2026-11-09.md) conferiu 36/36 IDs, origens, critérios aprovados, menções na matriz canônica e vínculos textuais nos contratos UC: 31 US com casos `U-xx` e 5 com notas `NT-xx`. **Não** fecha a cadeia semântica classe→dados→tela→prova nem a homologação acadêmica.
+
+O laboratório E06/E07/E16 recebeu ajuste posterior: três superfícies **Bottom Sheet** estão ancoradas na borda inferior de overlays full-screen com scrim. A revalidação de ações após esse ajuste ficou pendente por falha interna na leitura de `reactions`; ver adendo no [relatório da execução](EXECUCAO-LAB-FIGMA-2026-11-09.md).
