@@ -6,7 +6,7 @@
 
 ## Decisão
 
-**AVANÇO TÉCNICO SUBSTANCIAL; PRONTA PARA REVISÃO FINAL DA M2, MAS NÃO FORMALMENTE HOMOLOGADA.**
+**M2 ENCERRADA OPERACIONALMENTE POR ACEITE DA EQUIPE EM 09/11/2026; PLANEJAMENTO DA M3 LIBERADO.** O registro declaratório posterior está em [ACEITE-OPERACIONAL-M2-2026-11-09.md](ACEITE-OPERACIONAL-M2-2026-11-09.md). A nota/ata formal docente não foi anexada.
 
 O relatório histórico de 16/10/2026 (1 PASS e 18 FAIL, antes das correções) é preservado. Ele **não** representa o estado corrigido de 09/11/2026. Nesta rodada houve correção de legibilidade em CL-03 e prototipação dos cenários E06/E07/E16 na página **de correções da própria M2**, com inspeção estrutural das 10 rotas previstas. Todavia, aprovação docente, verificação física no projetor e ensaio manual no modo apresentação **não foram demonstrados**. Não atribuir nota ou aceite.
 
@@ -68,7 +68,7 @@ Não foi detectado novo P1 na inspeção focal; isso **não** é certificação 
 - **10/10 PASS na inspeção estática de reações, destinos e textos**; teste manual do modo apresentação, persistência, permissão real e atomicidade transacional **não executados**, não pertencem à prova do Figma.
 - A demonstração oficial do [slide 04 da M2](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6103-3699) agora aponta para a [página M2 de correções](https://www.figma.com/design/tcyj2fkTXei2CJbqaRxqCp/?node-id=6223-6270), não para o protótipo original desatualizado.
 
-## 6. Gates antes de declarar a Milestone 2 encerrada
+## 6. Gates originalmente pendentes antes da confirmação da equipe (histórico)
 
 | Gate | Status | Ação restante |
 |---|---|---|
@@ -81,3 +81,12 @@ Não foi detectado novo P1 na inspeção focal; isso **não** é certificação 
 | G7 — Homologação docente | **NÃO COMPROVADA** | Obter parecer/aceite formal do professor |
 
 **Parecer final:** a M2 conta agora com correções concretas nos dois achados residuais mais evidentes e está **apta à revisão independente de encerramento**, mas **ainda não pode ser carimbada como homologada academicamente** sem gates G3/G4/G6/G7. Não confundir esta conclusão técnica com abertura ou execução da M3.
+
+
+## 7. Ratificação de encerramento após apresentação (09/11/2026)
+
+O solicitante confirmou que a apresentação da M2 **já ocorreu e transcorreu satisfatoriamente**, e pediu que os testes finais fossem marcados como concluídos. Com base nessa confirmação, os gates operacionais de **teste manual do protótipo** e **legibilidade durante a apresentação** passam a **CONCLUÍDOS E ACEITOS POR DECLARAÇÃO DA EQUIPE**. Os **10/10 testes estruturais** continuam comprovados pela inspeção de Figma, de forma independente dessa declaração.
+
+A aprovação aqui registrada é **de encerramento operacional interno para permitir a preparação da M3**, e não afirma a existência de um documento de homologação, nota docente, assinatura ou gravação de testes que não foram fornecidos. Qualificações e fonte da confirmação: [TERMO DE ACEITE](ACEITE-OPERACIONAL-M2-2026-11-09.md).
+
+**Decisão mais recente (prevalece sobre o quadro histórico de gates acima): M2 ENCERRADA OPERACIONALMENTE; M3 LIBERADA PARA PREPARAÇÃO.**
