@@ -1,4 +1,6 @@
 # Execução dos achados AUD-M2 — Milestone 2
+**Atualização decisiva — 09/11/2026 (posterior ao histórico de 16/10):** [termo de encerramento operacional M2](ACEITE-OPERACIONAL-M2-2026-11-09.md). Os gates de navegação manual, legibilidade/apresentação e aceite interno foram **dados como concluídos por confirmação expressa da equipe**. A apresentação ocorreu com resultado satisfatório, conforme relato. **M2 encerrada operacionalmente; preparação da M3 autorizada.** Aprovação/nota docente documental não anexada. As pendências abaixo identificadas como anteriores representam o estado na época de sua redação.
+
 
 **Data:** 2026-10-16. **Branch de trabalho:** `fix/m2-workbench-reexport-final` (derivada de `main` em `6f604f9`). **Estado:** correções executadas, **homologação ainda NÃO aprovada**. O diagnóstico independente e as capturas originais da auditoria foram preservados.
 
@@ -66,3 +68,25 @@ O repositório `main` já contém as seis exportações **nativas** do Workbench
 ### Observação de CI após PR #132
 
 Ao abrir o PR documental de sincronização com o Figma, o check `application` falhou na etapa `npm run format:check` por **quatro artefatos de evidência criados no PR #132**, não por uma alteração nos frames ou no SQL: `entrega/sql-eer/evidencias-workbench/native-correction.json`, `native-export.json`, `sql-mwb-comparacao.json` e `entrega/sql-eer/RELATORIO_WORKBENCH_NATIVO.md`. Os checks `sql-eer-static` e `validate-agent-context` do PR #132 haviam passado. O reparo de formatação dessas evidências deve preservar integridade SHA-256, regenerando os hashes correspondentes quando necessário; **não alterar conteúdos semânticos, imagens nativas ou o modelo `.mwb`**. Esse ponto não invalida a atualização Figma concluída, mas impede declarar todos os checks verdes sem nova execução.
+
+
+## Adendo de fechamento técnico independente — 09/11/2026
+
+**Escopo exclusivo M2, sem reutilizar material posterior.** Consultar [FECHAMENTO-TECNICO-M2-2026-11-09.md](FECHAMENTO-TECNICO-M2-2026-11-09.md) e [TESTES-NAVEGACAO-M2-2026-11-09.md](TESTES-NAVEGACAO-M2-2026-11-09.md).
+
+- **AUD-M2-008 (P2):** o CL-03 oficial no Figma, quadro `6272:3484`, recebeu correção do roteamento de oito associações e posicionamento de 16 multiplicidades em 09/11/2026. O quadro original anterior está preservado no arquivo M2 como `6488:3484`. A correção foi fotografada e comparada ao contrato. Ainda faltam teste em projetor e decisão de revisão cruzada, especialmente sobre a legibilidade residual do CL-02/EER.
+- **AUD-M2-013 (P2):** foi criado na página já existente `Fluxo Final — CORREÇÕES AUDITORIA` (`6223:6270`) o conjunto de estados E06/E07/E16 (seção `6495:9547`), construído por clonagem do overlay M2 `6223:8966`; cinco acessos visuais nas telas-base e 28 transições internas foram configurados. **10/10 verificações estáticas de percurso, destino e pós-condição passaram**, sem simular backend. Teste manual de clique, revisão cruzada e aceite continuam pendentes.
+- **Apresentação M2:** o link do slide 04 `6103:3699` agora abre o protótipo M2 corrigido `6223:6270`, não a página histórica desatualizada.
+- **Inventário estrutural:** 19/19 quadros oficiais existem em sequência 13–31, todos 1920×1080, e 5/5 nós de SVG nativos estão aninhados nos EER correspondentes.
+- As correções anteriores de P1 permanecem documentadas acima; não se alteram as classificações de uma auditoria histórica pré-correção.
+- **Parecer:** M2 apta à revisão final de encerramento, **não homologada academicamente** até cumprir teste físico, prova de clique e validação docente. A documentação e correção ficam em branch/PR separados sem merge automático.
+
+
+## Ratificação pós-apresentação — 09/11/2026
+
+- **AUD-M2-008:** **CONCLUÍDO/ACEITO INTERNAMENTE** após correção do CL-03, inspeção do slide e confirmação de que a apresentação ocorreu bem. Evidência física é **declaração da equipe**, não medição independente do projetor.
+- **AUD-M2-013:** **CONCLUÍDO/ACEITO INTERNAMENTE**. O relatório documenta 10/10 testes de navegação **estruturais PASS**; o aceite dos testes manuais finais foi confirmado pelo solicitante, sem log de cliques individualizados.
+- **Apresentação M2:** **REALIZADA E SATISFATÓRIA CONFORME CONFIRMAÇÃO DA EQUIPE**. Não inferir nota, ata formal, professor específico ou data exata não comunicada.
+- **Decisão de transição:** Milestone 2 **encerrada operacionalmente** e equipe liberada para **preparação da Milestone 3**, sem reaproveitamento dos rascunhos anteriores da M3.
+
+[Termo de aceite e classificação de evidências](ACEITE-OPERACIONAL-M2-2026-11-09.md).
